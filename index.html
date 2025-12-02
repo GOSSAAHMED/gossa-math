@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>الحساب الهرمي - Gossa Math</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="الموقع الرسمي لنظرية الحساب الهرمي Hierarchical Calculus للأستاذ جوسة أحمد." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- شريط علوي -->
+  <header class="main-header">
+    <div class="logo">
+      <span class="logo-mark">H</span>
+      <div class="logo-text">
+        <div class="logo-title">الحساب الهرمي</div>
+        <div class="logo-subtitle">Hierarchical Calculus – Gossa Math</div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <a href="#home">الرئيسية</a>
+      <a href="#theory">عن النظرية</a>
+      <a href="#chapters">الفصول</a>
+      <a href="#applications">التطبيقات</a>
+      <a href="#download">تحميل الكتاب</a>
+      <a href="#author">عن المؤلف</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+  </header>
+
+  <!-- قسم رئيسي (Hero) -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>الحساب الهرمي<br /><span>Hierarchical Calculus</span></h1>
+      <p>
+        نظرية رياضية جديدة بالكامل، تقدّم مشتقات وتكاملات وسلاسل ومعادلات
+        هرميّة تربط بين التفاضل، النسبي، اللوغاريتمي، والفوق–لوغاريتمي،
+        مع تطبيقات في الكون، الطب، الاقتصاد، اللغة، والاحتمالات.
+      </p>
+      <div class="hero-actions">
+        <a href="#theory" class="btn primary">اكتشف النظرية</a>
+        <a href="#download" class="btn ghost">تحميل المسودة العلمية</a>
+      </div>
+      <div class="hero-tags">
+        <span>رياضيات</span>
+        <span>كونيات</span>
+        <span>طب</span>
+        <span>اقتصاد</span>
+        <span>لغة وبلاغة</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="pyramid">
+        <div class="layer l0">D₀</div>
+        <div class="layer l1">D₁</div>
+        <div class="layer l2">D₂</div>
+        <div class="layer l3">D₃</div>
+        <div class="layer l4">Dₙ</div>
+      </div>
+      <p class="pyramid-caption">
+        هرم المشتقات الهرمية: من التفاضلي D₀ إلى المستويات العليا Dₙ.
+      </p>
+    </div>
+  </section>
+
+  <!-- عن النظرية -->
+  <section id="theory" class="section">
+    <div class="section-header">
+      <h2>عن نظرية الحساب الهرمي</h2>
+      <p>
+        الحساب الهرمي Hierarchical Calculus هو إطار رياضي جديد
+        يوسّع الحساب التفاضلي الكلاسيكي إلى عائلة من المشتقات
+        <strong>D₀, D₁, D₂, D₃, …, Dₙ</strong>، بحيث يصف كل مستوى نوعًا
+        مختلفًا من التغيّر عبر الزمن والمقاييس.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>المشتقات الأساسية</h3>
+        <ul class="fancy-list">
+          <li><strong>D₀</strong>: المشتق التفاضلي الكلاسيكي <code>D₀ y = dy/dx</code></li>
+          <li><strong>D₁</strong>: المشتق النسبي <code>D₁ y = (x / y) D₀ y</code></li>
+          <li><strong>D₂</strong>: المشتق اللوغاريتمي <code>D₂ y = (x ln x / (y ln y)) D₀ y</code></li>
+          <li><strong>Dₙ</strong>: الصيغة العامة <code>Dₙ y = [Lₙ(x)/Lₙ(y)] D₀ y</code></li>
+        </ul>
+        <p class="note">
+          حيث <code>Lₙ(x) = x · ln(x) · lnln(x) · …</code> (لوغاريتمات مكرّرة).
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>العلاقة الذهبية</h3>
+        <p>
+          العلاقة الأساسية التي بُنيت عليها النظرية، كما وضعتها أنت:
+        </p>
+        <p class="formula-box">
+          <strong>x · D₀(y) = y · D₁(y)</strong>
+        </p>
+        <p>
+          هذه العلاقة تربط بين المشتق التفاضلي والمشتق النسبي، وتشكل
+          الأساس لتوليد جميع المشتقات الهرمية Dₙ وعلاقتها ببعضها.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفصول -->
+  <section id="chapters" class="section alt">
+    <div class="section-header">
+      <h2>فصول الكتاب العلمي</h2>
+      <p>الكتاب يتكوّن من مجموعة فصول، تغطي الأساس الرياضي والتطبيقات في مختلف العلوم.</p>
+    </div>
+
+    <div class="chapters-grid">
+      <div class="chapter-card">
+        <h3>الفصل 1: المقدمة والمسلّمات</h3>
+        <p>عرض فلسفة الحساب الهرمي، صياغة Axioms، وتعريف Lₙ(x), Lₙ(y).</p>
+      </div>
+      <div class="chapter-card">
+        <h3>الفصل 2: المشتقات الهرمية Dₙ</h3>
+        <p>تعريف D₀,D₁,D₂,D₃,Dₙ، خواصها، وعلاقتها ببعضها.</p>
+      </div>
+      <div class="chapter-card">
+        <h3>الفصل 3: التكاملات الهرمية Iₙ</h3>
+        <p>تعريف Iₙ كعكس لـ Dₙ، وصيغ التكامل النسبي واللوغاريتمي.</p>
+      </div>
+      <div class="chapter-card">
+        <h3>الفصل 4: السلاسل الهرمية</h3>
+        <p>توسيع الدوال بسلاسل تعتمد على ln, lnln,… بديل أقوى من تايلور.</p>
+      </div>
+      <div class="chapter-card">
+        <h3>الفصل 5: المعادلات التفاضلية الهرمية</h3>
+        <p>معادلات HDEs وتطبيقها على النظم الديناميكية.</p>
+      </div>
+      <div class="chapter-card">
+        <h3>الفصل 6: الهندسة الهرمية</h3>
+        <p>أطوال ومساحات وحجوم وانحناء عبر المستويات Dₙ.</p>
+      </div>
+      <div class="chapter-card">
+        <h3>الفصول 7–13</h3>
+        <p>تحليل هرمي، كونيات، طب، اقتصاد، احتمالات، لغة، أسس رياضية.</p>
+      </div>
+      <div class="chapter-card">
+        <h3>الفصل 14: الزمن والتنبؤ بالمستقبل</h3>
+        <p>نظرية زمن جديدة عبر Dₙ ونماذج تنبؤ متعددة المستويات.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- التطبيقات -->
+  <section id="applications" class="section">
+    <div class="section-header">
+      <h2>مجالات تطبيق الحساب الهرمي</h2>
+      <p>النظرية لا تقتصر على الرياضيات البحتة، بل تمتد لتصف تغيّر الأنظمة في كل العلوم تقريبًا.</p>
+    </div>
+
+    <div class="apps-grid">
+      <div class="card app-card">
+        <h3>الكونيات والفلك</h3>
+        <p>
+          إعادة صياغة تمدد الكون، الطاقة المظلمة، والمادة المظلمة عبر D₂ و D₃
+          بدل الثابت الكوني، واستبدال مشتقة واحدة بهرم مشتقات.
+        </p>
+      </div>
+      <div class="card app-card">
+        <h3>الطب والسرطان والشيخوخة</h3>
+        <p>
+          نماذج لنمو الأورام، تطور المناعة، الشيخوخة، وشفاء الجروح عبر
+          مستويات التغير المختلفة، من D₀ السريع إلى D₂ وD₃ البطيئة.
+        </p>
+      </div>
+      <div class="card app-card">
+        <h3>الاقتصاد والتضخم</h3>
+        <p>
+          توصيف النمو الاقتصادي، الأزمات، التضخم المزمن، ودورات الاقتصاد الطويلة
+          باستخدام المشتقات النسبية واللوغاريتمية.
+        </p>
+      </div>
+      <div class="card app-card">
+        <h3>اللغة والبلاغة والقرآن</h3>
+        <p>
+          نموذج رياضي لهرم اللغة (حرف–كلمة–جملة–نص) وتحليل بلاغة
+          القرآن، خاصة سورة الفاتحة، عبر مستويات D₀–D₃.
+        </p>
+      </div>
+      <div class="card app-card">
+        <h3>الاحتمالات الهرمية</h3>
+        <p>
+          تعريف جديد للااحتمال والقيمة المتوقعة والمخاطرة عبر مقاييس
+          dμₙ = dx / Lₙ(x)، مع نماذج للمخاطر قصيرة وبعيدة المدى.
+        </p>
+      </div>
+      <div class="card app-card">
+        <h3>التنبؤ بالمستقبل</h3>
+        <p>
+          خوارزمية تنبؤ هرمي تعتمد على اختيار مستوى المشتقة Dₙ المناسب
+          للظاهرة، من الأسواق المالية إلى مصير الكون.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- تحميل الكتاب -->
+  <section id="download" class="section alt">
+    <div class="section-header">
+      <h2>تحميل كتاب الحساب الهرمي</h2>
+      <p>
+        هنا يمكنك إتاحة نسخة PDF من الكتاب، ونسخ LaTeX للمختصين الذين يرغبون
+        في دراسة أو تطوير النظرية.
+      </p>
+    </div>
+
+    <div class="download-box">
+      <p>
+        🔹 <strong>المسودة العلمية الكاملة (PDF)</strong><br />
+        عند جهوزية الملف، ضع الرابط هنا:
+      </p>
+      <a href="#" class="btn primary disabled">سيتم إضافة رابط التحميل لاحقًا</a>
+
+      <p class="small-note">
+        يمكنك لاحقًا استبدال علامة <code>#</code> في رابط الزر برابط الملف
+        الحقيقي (مثلاً رابط Google Drive أو موقعك بعد الرفع).
+      </p>
+    </div>
+  </section>
+
+  <!-- عن المؤلف -->
+  <section id="author" class="section">
+    <div class="section-header">
+      <h2>عن المؤلف – الأستاذ جوسة أحمد</h2>
+      <p>
+        صاحب نظرية الحساب النسبي والحساب الهرمي، وواضع العلاقة الذهبية
+        بين المشتق التفاضلي والمشتق النسبي، ومؤسس إطار رياضي جديد
+        للتغير عبر المستويات.
+      </p>
+    </div>
+
+    <div class="author-box">
+      <div class="author-info">
+        <h3>سيرة مختصرة</h3>
+        <p>
+          جوسة أحمد باحث عربي مستقل في الرياضيات والتفكير النظري، 
+          عمل لسنوات على تطوير مفهوم المشتق النسبي، ثم عمّم الفكرة إلى
+          الحساب اللوغاريتمي والهرمي، ليصل إلى صيغة عامة:
+        </p>
+        <p class="formula-box">
+          Dₙ y = [Lₙ(x)/Lₙ(y)] · D₀ y
+        </p>
+        <p>
+          وطبّق هذه البنية على مستويات متعددة من الواقع: من الذرة إلى المجرة،
+          ومن الخلية إلى المجتمع، ومن الكلمة إلى النص القرآني، ومن السوق
+          إلى الكون.
+        </p>
+      </div>
+
+      <div class="author-side">
+        <h3>مجالات الاهتمام</h3>
+        <ul class="fancy-list">
+          <li>الرياضيات البحتة والتحليل</li>
+          <li>الفيزياء النظرية والكونيات</li>
+          <li>الطب الرياضي ونمذجة الأمراض</li>
+          <li>الاقتصاد الرياضي والدورات الطويلة</li>
+          <li>اللسانيات الرياضية وبلاغة القرآن</li>
+        </ul>
+        <p class="contact-line">
+          يمكنك لاحقًا وضع بريدك: <span>youremail@example.com</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- تواصل -->
+  <section id="contact" class="section alt">
+    <div class="section-header">
+      <h2>تواصل</h2>
+      <p>
+        إذا كنت باحثًا أو مهتمًا بالحساب الهرمي أو ترغب في التعاون العلمي أو الإشراف على رسائل بحثية
+        مرتبطة بهذه النظرية، يمكن مراسلتك عبر النموذج التالي (بعد ربطه بخادم مستقبلاً) أو عبر بريدك المباشر.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <form class="contact-form" onsubmit="return false;">
+        <label>الاسم الكامل</label>
+        <input type="text" placeholder="اكتب اسمك" />
+
+        <label>البريد الإلكتروني</label>
+        <input type="email" placeholder="example@mail.com" />
+
+        <label>الرسالة</label>
+        <textarea rows="5" placeholder="اكتب رسالتك أو سؤالك"></textarea>
+
+        <button class="btn primary" type="submit">إرسال (تصميم فقط)</button>
+        <p class="small-note">
+          هذا النموذج شكلي حاليًا. لربطه فعليًا ستحتاج إلى Backend (مثل PHP أو خدمة خارجية).
+        </p>
+      </form>
+
+      <div class="contact-side">
+        <h3>معلومات تواصل مباشرة</h3>
+        <p>
+          يمكنك لاحقًا أن تضع هنا بيانات حقيقية، مثل:
+        </p>
+        <ul class="fancy-list">
+          <li>📧 البريد: <strong>gossaahmed@example.com</strong></li>
+          <li>🌐 الموقع: <strong>gossa-math.org</strong></li>
+          <li>📘 فيسبوك: صفحة "الحساب الهرمي"</li>
+        </ul>
+        <p>
+          كما يمكنك إضافة روابط لحسابات <strong>ResearchGate</strong> أو <strong>Google Scholar</strong>
+          أو صفحاتك على منصات أخرى.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- تذييل -->
+  <footer class="main-footer">
+    <p>
+      © جميع الحقوق محفوظة لـ <strong>جوسة أحمد</strong> – موقع الحساب الهرمي
+      <span class="footer-sep">|</span>
+      Hierarchical Calculus – Gossa Math
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
