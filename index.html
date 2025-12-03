@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>الحساب الهرمي – AHMED GOSSA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الموقع الرسمي للحساب الهرمي – نظرية رياضية جديدة من ابتكار AHMED GOSSA تجمع بين المشتقات التفاضلية والنسبية واللوغاريتمية والهرمية وتطبق على جميع العلوم.">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- MathJax للمعادلات -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo">
+            <span class="logo-mark">H</span>
+            <span class="logo-text">الحساب الهرمي</span>
+        </div>
+        <nav class="main-nav" id="mainNav">
+            <a href="#hero">الرئيسية</a>
+            <a href="#about">عن النظرية</a>
+            <a href="#derivatives">المشتقات الهرمية</a>
+            <a href="#series">المتسلسلات</a>
+            <a href="#integrals">التكاملات</a>
+            <a href="#applications">التطبيقات</a>
+            <a href="#book">الكتاب</a>
+            <a href="#contact">تواصل</a>
+        </nav>
+        <button class="nav-toggle" aria-label="القائمة" onclick="toggleNav()">
+            ☰
+        </button>
+    </div>
+</header>
+
+<main>
+
+    <!-- قسم البطل (Hero) -->
+    <section id="hero" class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <h1>الحساب الهرمي</h1>
+                <p class="hero-subtitle">
+                    نظرية رياضية جديدة من ابتكار <strong>AHMED GOSSA</strong>  
+                    تعيد صياغة مفهوم التغيّر من مستوى واحد (تفاضلي)  
+                    إلى مستويات هرمية من المشتقات والمتسلسلات والتكاملات.
+                </p>
+                <div class="hero-actions">
+                    <a href="#about" class="btn primary">ما هو الحساب الهرمي؟</a>
+                    <a href="#book" class="btn ghost">مشروع الكتاب</a>
+                </div>
+            </div>
+            <div class="hero-panel">
+                <h2>المشتقات الهرمية الأساسية</h2>
+                <div class="math-block">
+                    \[
+                    D_0 = \frac{dy}{dx}
+                    \]
+                    \[
+                    D_1 = \frac{dy \cdot x}{dx \cdot y}
+                    \]
+                    \[
+                    D_2 = \frac{dy \cdot x \ln x}{dx \cdot y \ln y}
+                    \]
+                    \[
+                    D_3 = \frac{dy \cdot x \ln x \ln(\ln x)}{dx \cdot y \ln y \ln(\ln y)}
+                    \]
+                </div>
+                <p class="hero-note">
+                    كل مستوى \(D_n\) يصف طبقة أعلى من التغيّر في الطبيعة.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- عن النظرية -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>ما هو الحساب الهرمي؟</h2>
+            <p>
+                الحساب الهرمي هو منظومة رياضية جديدة تصف التغيّر في الطبيعة عبر
+                <strong>طبقات هرمية</strong> من المشتقات، وليس عبر مشتق واحد فقط كما في
+                حساب التفاضل الكلاسيكي. يبدأ بالمشتق التفاضلي \(D_0\)، ثم المشتق النسبي \(D_1\)،
+                ثم اللوغاريتمي \(D_2\)، ثم فوق اللوغاريتمي \(D_3\)، ويتعمم إلى \(D_n\).
+            </p>
+            <p>
+                الفكرة الجوهرية هي أن الطبيعة لا تتغير فقط على شكل فروق خطية، بل على شكل
+                <strong>نِسَب ولوغاريتمات ودرجات أعلى</strong>، وكل طبقة من هذه الطبقات تحتاج إلى
+                مشتق خاص، ومتسلسلة خاصة، وتكامل خاص، ومعادلات خاصة.
+            </p>
+            <div class="grid two">
+                <div class="card">
+                    <h3>لماذا "هرمي"؟</h3>
+                    <p>
+                        لأن التغيّر ينتقل من:
+                        فروق \(\rightarrow\) نسب \(\rightarrow\) لوغاريتمات \(\rightarrow\)
+                        لوغاريتمات متدرجة… تمامًا مثل هرم.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>العلاقة مع التفاضل الكلاسيكي</h3>
+                    <p>
+                        حساب التفاضل الكلاسيكي هو <strong>الطبقة صفر</strong> في الحساب الهرمي.
+                        أي أن \(D_0\) لا يُلغى، بل يصبح جزءًا من منظومة أكبر تشمل
+                        \(D_1, D_2, D_3, \dots, D_n\).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المشتقات الهرمية -->
+    <section id="derivatives" class="section alt">
+        <div class="container">
+            <h2>المشتقات الهرمية</h2>
+            <p>
+                المشتقات الهرمية هي القلب الرياضي للنظرية. لكل طبقة \(n\) يوجد مشتق \(D_n\)
+                يربط بين طريقة تغيّر المتغير \(x\) وطريقة تغيّر التابع \(y\) على نفس الطبقة.
+            </p>
+
+            <div class="grid three">
+                <div class="card">
+                    <h3>المشتق التفاضلي \(D_0\)</h3>
+                    <div class="math-block">
+                        \[
+                        D_0 y = \frac{dy}{dx}
+                        \]
+                    </div>
+                    <p>
+                        يصف التغيّر الخطي التقليدي، وهو أساس حساب التفاضل الكلاسيكي.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>المشتق النسبي \(D_1\)</h3>
+                    <div class="math-block">
+                        \[
+                        D_1 y = \frac{dy \cdot x}{dx \cdot y}
+                        \]
+                    </div>
+                    <p>
+                        يربط بين نسب التغيّر في \(x\) و \(y\)، ويظهر في النظم
+                        ذات النمو النسبي والأسّي.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>المشتق اللوغاريتمي \(D_2\)</h3>
+                    <div class="math-block">
+                        \[
+                        D_2 y = \frac{dy \cdot x \ln x}{dx \cdot y \ln y}
+                        \]
+                    </div>
+                    <p>
+                        يصف طبقة أعلى من التغيّر، حيث تدخل اللوغاريتمات في بنية المشتق نفسه.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card wide">
+                <h3>المشتق العام من الرتبة \(n\)</h3>
+                <p>
+                    يمكن تعميم المشتقات إلى رتبة هرمية أعلى:
+                </p>
+                <div class="math-block">
+                    \[
+                    D_n y =
+                    \frac{
+                        dy \displaystyle\prod_{k=0}^{n-1} L_k(x)
+                    }{
+                        dx \displaystyle\prod_{k=0}^{n-1} L_k(y)
+                    }
+                    \]
+                    حيث:
+                    \[
+                    L_0(x) = x,\quad
+                    L_1(x) = \ln x,\quad
+                    L_2(x) = \ln(\ln x),\ \dots
+                    \]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المتسلسلات -->
+    <section id="series" class="section">
+        <div class="container">
+            <h2>المتسلسلات الهرمية</h2>
+            <p>
+                كما أن لسلسلة تايلور دورًا أساسيًا في تقريب الدوال في حساب التفاضل الكلاسيكي،
+                فإن للحساب الهرمي <strong>سلاسل هرمية</strong> خاصة به، تعتمد على
+                \(\ln(x/a)\) وطبقات أعلى بدلاً من \((x-a)\) فقط.
+            </p>
+
+            <div class="grid two">
+                <div class="card">
+                    <h3>سلسلة تايلور الكلاسيكية</h3>
+                    <div class="math-block">
+                        \[
+                        f(x) =
+                        \sum_{k=0}^{\infty}
+                        \frac{D_0^k f(a)}{k!}(x-a)^k
+                        \]
+                    </div>
+                    <p>
+                        مبنية على فروق خطية في المتغير \(x\)، وتناسب الدوال ذات السلوك المحلي البسيط.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>سلسلة هرمية نسبية مثالاً</h3>
+                    <div class="math-block">
+                        \[
+                        \ln f(x) =
+                        \ln f(a) +
+                        D_1 f(a)\,\ln\left(\frac{x}{a}\right)
+                        + \cdots
+                        \]
+                    </div>
+                    <p>
+                        هذا النوع من السلاسل مناسب للدوال ذات الطابع النسبي أو الأسّي،
+                        وغالبًا ما يتقارب أسرع من تايلور.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التكاملات الهرمية -->
+    <section id="integrals" class="section alt">
+        <div class="container">
+            <h2>التكاملات الهرمية</h2>
+            <p>
+                كما نملك مفهوم التكامل في الطبقة التفاضلية \(D_0\)، يمكننا تعريف
+                <strong>تكاملات هرمية</strong> مقابلة لكل طبقة \(D_n\)، تصف تراكم الظواهر
+                عبر الطبقات، وليس عبر الجمع البسيط فقط.
+            </p>
+            <p>
+                التكامل الهرمي من الرتبة \(n\) يمثّل "جمعًا" أو "تراكبًا" متوافقًا مع طبيعة
+                المشتقات الهرمية ويؤدي إلى معادلات هرمية في الفيزياء والطب والاقتصاد وغيرها.
+            </p>
+        </div>
+    </section>
+
+    <!-- التطبيقات -->
+    <section id="applications" class="section">
+        <div class="container">
+            <h2>التطبيقات في العلوم</h2>
+            <p>
+                الحساب الهرمي ليس نظرية مجردة فقط، بل هو مرشح ليكون
+                <strong>لغة جديدة للعلوم</strong>، من الفيزياء إلى الطب، ومن المناخ إلى الاقتصاد.
+            </p>
+
+            <div class="grid three">
+                <div class="card">
+                    <h3>الفيزياء والفلك</h3>
+                    <p>
+                        قوانين حركة هرمية، نماذج جديدة للجاذبية، وصف للمقاييس الكونية عبر طبقات
+                        \(D_n\).
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>الطب والأحياء</h3>
+                    <p>
+                        نماذج نمو هرمية للخلية، الأعضاء، الأجهزة، والجسم الكامل، مع وصف نسبي
+                        ولوغاريتمي.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>الاقتصاد والأنظمة المعقدة</h3>
+                    <p>
+                        وصف للحركة الاقتصادية، الأسواق، الشبكات، والمجتمعات عبر طبقات من المشتقات
+                        النسبية واللوغاريتمية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الكتاب -->
+    <section id="book" class="section alt">
+        <div class="container">
+            <h2>مشروع كتاب "الحساب الهرمي"</h2>
+            <p>
+                يعمل <strong>AHMED GOSSA</strong> على تأليف كتاب شامل من حوالي 250 صفحة
+                و30 فصلًا يغطي:
+            </p>
+            <ul class="bullet-list">
+                <li>ظروف نشأة الحساب الهرمي.</li>
+                <li>بديهياته وأسسه الرياضية.</li>
+                <li>المشتقات الهرمية لجميع الرتب.</li>
+                <li>المتسلسلات والتكاملات الهرمية.</li>
+                <li>المعادلات الهرمية وتطبيقاتها.</li>
+                <li>أمثلة عددية مكثفة في كل علم من العلوم الطبيعية والإنسانية.</li>
+            </ul>
+            <p>
+                سيتم توفير نسخة <strong>PDF</strong> من الكتاب على هذا الموقع عند اكتماله،
+                بالإضافة إلى ملفات LaTeX للباحثين.
+            </p>
+        </div>
+    </section>
+
+    <!-- تواصل -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>تواصل مع المؤلف</h2>
+            <p>
+                للملاحظات العلمية، التعاون البحثي، أو الاستفسار حول الحساب الهرمي،
+                يمكن التواصل مع المؤلف:
+            </p>
+            <div class="contact-card">
+                <p><strong>الاسم:</strong> AHMED GOSSA</p>
+                <p><strong>البريد الإلكتروني:</strong> gossaahmed@yahoo.fr (مثال – عدّل حسب بريدك الفعلي)</p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/gossaahmed" target="_blank">github.com/gossaahmed</a></p>
+            </div>
+            <p class="contact-note">
+                يمكن لاحقًا إضافة نموذج تواصل مباشر (Form) أو ربط مع Google Forms لاستقبال الرسائل.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© جميع الحقوق محفوظة للحساب الهرمي – AHMED GOSSA – <span id="year"></span></p>
+        <p class="footer-note">
+            هذا الموقع في طور التطوير العلمي، والمحتوى يتم تحديثه مع تطوّر النظرية.
+        </p>
+    </div>
+</footer>
+
+<script>
+    function toggleNav() {
+        const nav = document.getElementById('mainNav');
+        nav.classList.toggle('open');
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
