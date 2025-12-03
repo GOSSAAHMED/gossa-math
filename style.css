@@ -1,0 +1,326 @@
+/* إعدادات عامة */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: "Cairo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #050816;
+    color: #f5f5f5;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+}
+
+/* الهيدر */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 8, 22, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ff7a18, #af002d);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.logo-text {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.95rem;
+}
+
+.main-nav a {
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.main-nav a:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+/* زر الموبايل */
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* البطل */
+
+.hero {
+    padding: 4rem 0 3rem;
+    background: radial-gradient(circle at top, #1a1f3b 0, #050816 60%);
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: clamp(2.2rem, 3.2vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, #ff7a18, #af002d);
+    color: #fff;
+}
+
+.btn.ghost {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255,255,255,0.5);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.hero-panel {
+    background: rgba(10, 14, 35, 0.9);
+    border-radius: 18px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+}
+
+.hero-panel h2 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+}
+
+.math-block {
+    font-size: 0.95rem;
+    background: rgba(0,0,0,0.35);
+    border-radius: 12px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    overflow-x: auto;
+}
+
+.hero-note {
+    font-size: 0.85rem;
+    color: #c8c8c8;
+}
+
+/* الأقسام العامة */
+
+.section {
+    padding: 3.5rem 0;
+}
+
+.section.alt {
+    background: #090d22;
+}
+
+.section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.section p {
+    line-height: 1.9;
+    margin-bottom: 1rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.grid.two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* البطاقات */
+
+.card {
+    background: rgba(13, 17, 40, 0.9);
+    border-radius: 16px;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.card.wide {
+    margin-top: 1.75rem;
+}
+
+/* قوائم نقطية */
+
+.bullet-list {
+    margin-top: 0.75rem;
+    margin-right: 1.2rem;
+}
+
+.bullet-list li {
+    margin-bottom: 0.4rem;
+    line-height: 1.8;
+}
+
+/* قسم التواصل */
+
+.contact-card {
+    background: rgba(13, 17, 40, 0.9);
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-top: 1rem;
+}
+
+.contact-card p {
+    margin-bottom: 0.4rem;
+}
+
+.contact-note {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #bbbbbb;
+}
+
+/* الفوتر */
+
+.site-footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem 0 1.8rem;
+    background: #050816;
+}
+
+.footer-inner {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #c5c5c5;
+}
+
+.footer-note {
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #9f9f9f;
+}
+
+/* استجابة الشاشات الصغيرة */
+
+@media (max-width: 768px) {
+    .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero {
+        padding-top: 3rem;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 56px;
+        right: 0;
+        left: 0;
+        background: rgba(5, 8, 22, 0.98);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 1rem 0.75rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    .main-nav.open {
+        max-height: 260px;
+    }
+
+    .main-nav a {
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+    .grid.two,
+    .grid.three {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
