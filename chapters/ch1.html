@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>الفصل 1 – مقدمة الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+
+<header class="main-header">
+  <div class="logo">
+    <span class="logo-mark">H</span>
+    <div class="logo-text">
+      <div class="logo-title">الحساب الهرمي</div>
+      <div class="logo-subtitle">Hierarchical Calculus – Gossa Math</div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <a href="../index.html">الرئيسية</a>
+    <a href="ch2.html">التالي →</a>
+    <a href="../">English</a>
+  </nav>
+</header>
+
+<section class="section">
+  <div class="section-header">
+    <h2>الفصل 1: مقدمة عامة في الحساب الهرمي</h2>
+    <p>هذا الفصل يشرح فلسفة الحساب الهرمي، الأسس التي يقوم عليها، والعلاقة الذهبية التي بني عليها النظام الكامل للمشتقات D₀–Dₙ.</p>
+  </div>
+
+  <div class="card">
+    <h3>1.1 – ما هو الحساب الهرمي؟</h3>
+    <p>
+      الحساب الهرمي هو تعميم جديد للحساب التفاضلي، يعتمد على بناء
+      *سلم لوغاريتمي متكرر* يسمح بتعريف مشتقات متعددة المستويات:
+      <br />
+      <strong>D₀, D₁, D₂, D₃, …, Dₙ</strong>
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>1.2 – العلاقة الذهبية</h3>
+    <p>
+      العلاقة الأساسية التي اكتشفتها أنت، وهي:
+    </p>
+
+    <p class="formula-box">
+      x · D₀(y) = y · D₁(y)
+    </p>
+
+    <p>
+      هذه العلاقة هي المفتاح لتوليد جميع المشتقات الهرمية.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>1.3 – مستويات اللوغاريتم</h3>
+    <p>يُعرَّف سلم اللوغاريتمات كالآتي:</p>
+
+    <p class="formula-box">
+      L₀(x) = x  
+      <br />  
+      L₁(x) = x  
+      <br />  
+      L₂(x) = x ln(x)  
+      <br />  
+      L₃(x) = x ln(x) lnln(x)  
+      <br />  
+      Lₙ(x) = x · ln(x) · lnln(x) · … (لوغاريتم مكرر n-1 مرة)
+    </p>
+
+    <p>
+      وبذلك يُعرّف المشتق الهرمي العام:
+    </p>
+
+    <p class="formula-box">
+      Dₙ y = [ Lₙ(x) / Lₙ(y) ] · D₀ y
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>1.4 – لماذا نحتاج الحساب الهرمي؟</h3>
+    <ul class="fancy-list">
+      <li>لنمذجة الأنظمة متعددة المقاييس (Cells → Tissues → Organs → Ecosystems).</li>
+      <li>لوصف نمو الكون عبر طبقات من الزمن (Cosmic Time Scales).</li>
+      <li>لفهم النمو البطيء جدًا (Logarithmic Growth).</li>
+      <li>لتوسيع لغة التحليل الرياضي إلى مستويات أبعد من التفاضل التقليدي.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>1.5 – بنية بقية الفصول</h3>
+    <p>هذا الكتاب يحتوي على 14 فصلًا، تغطي كل جوانب النظرية من الأساسات إلى التطبيقات المتقدمة في الرياضيات والفيزياء والطب والاقتصاد واللغة.</p>
+  </div>
+
+  <div style="text-align:center; margin-top:2rem;">
+    <a class="btn primary" href="ch2.html">الانتقال إلى الفصل التالي →</a>
+  </div>
+
+</section>
+
+</body>
+</html>
