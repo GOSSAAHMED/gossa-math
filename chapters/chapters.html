@@ -1,322 +1,265 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>فهرس فصول كتاب الحساب الهرمي – AHMED GOSSA</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="فهرس الفصول لكتاب الحساب الهرمي من تأليف AHMED GOSSA، يتكوّن من ثلاثين فصلًا تغطي الأسس والبديهيات والمشتقات والمتسلسلات والتكاملات والتطبيقات العلمية.">
-    <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8" />
+  <title>فهرس فصول كتاب الحساب الهرمي – AHMED GOSSA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- MathJax للمعادلات (لو احتجنا) -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #f59e0b;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --max-width: 1060px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.5);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: var(--text-main);
+      line-height: 1.8;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      background: rgba(15,23,42,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(148,163,184,0.25);
+      position: sticky; top: 0; z-index: 20;
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; }
+
+    .brand-mark {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #facc15, #f97316, #b45309);
+      box-shadow: 0 0 14px rgba(234,179,8,0.8);
+      display: flex; align-items: center; justify-content: center;
+      color: #020617; font-size: 0.8rem;
+    }
+
+    .nav-links { display: flex; gap: 0.6rem; color: var(--text-muted); }
+
+    .nav-links a {
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 2rem auto;
+      padding: 0 1.2rem;
+    }
+
+    .intro-card {
+      background: #020617;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1.6rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .chapters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 1rem;
+    }
+
+    .chapter-card {
+      background: #020617;
+      border: 1px solid rgba(148,163,184,0.4);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .chapter-number { color: var(--accent); font-size: 0.8rem; }
+    .chapter-title { font-size: 1.1rem; font-weight: 700; margin: 0.4rem 0; }
+    .chapter-desc { color: var(--text-muted); font-size: 0.9rem; }
+    .tag { font-size: 0.75rem; color: var(--text-muted); }
+    .chapter-link { color: var(--accent); font-size: 0.85rem; }
+
+    .soon { opacity: 0.6; }
+  </style>
 </head>
+
 <body>
 
-<header class="site-header">
-    <div class="container header-inner">
-        <div class="logo">
-            <span class="logo-mark">H</span>
-            <span class="logo-text">الحساب الهرمي</span>
-        </div>
-        <nav class="main-nav" id="mainNav">
-            <a href="../index.html#hero">الرئيسية</a>
-<a href="../index.html#about">عن النظرية</a>
-<a href="../index.html#derivatives">المشتقات الهرمية</a>
-<a href="../index.html#series">المتسلسلات</a>
-<a href="../index.html#integrals">التكاملات</a>
-<a href="../index.html#applications">التطبيقات</a>
-<a href="chapters.html">الفصول</a> <!-- نحن داخل نفس المجلد -->
-<a href="../index.html#book">الكتاب</a>
-<a href="../index.html#contact">تواصل</a>
-
-        </nav>
-        <button class="nav-toggle" aria-label="القائمة" onclick="toggleNav()">
-            ☰
-        </button>
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-mark">H</div>
+      <div>فهرس الفصول</div>
     </div>
+
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="chapters.html" style="border-color: var(--accent); color: var(--accent);">الكتاب</a>
+      <a href="en/">EN</a>
+    </div>
+  </nav>
 </header>
 
 <main>
 
-    <section class="section">
-        <div class="container">
-            <h2>فهرس فصول كتاب الحساب الهرمي</h2>
-            <p>
-                هذا الفهرس يقدّم نظرة شاملة على الفصول الثلاثين لكتاب
-                <strong>الحساب الهرمي</strong> من تأليف <strong>AHMED GOSSA</strong>.
-                سيتم ربط كل فصل بملف مستقل عند اكتمال صياغته.
-            </p>
+  <div class="intro-card">
+    <h1>فهرس فصول كتاب الحساب الهرمي</h1>
+    <p class="subtitle">
+      يحتوي هذا الكتاب على ٣٠ فصلًا تغطي أساسيات ومفاهيم وتطبيقات الحساب الهرمي
+      من الطبقة التفاضلية وحتى أعلى طبقات التغيّر.
+    </p>
+  </div>
 
-            <!-- الجزء الأول -->
-            <h3 style="margin-top:2rem;">الجزء الأول: النشأة والتأسيس (الفصول 1–5)</h3>
-            <div class="grid two">
-                <div class="card">
-                    <h4>الفصل 1: مقدّمة عامة عن الحساب الهرمي</h4>
-                    <p>
-                        تقديم الفكرة الأساسية، الفرق بين التغيّر الخطي والتغيّر الطبقي، ولماذا نحتاج
-                        إلى حساب هرمي يصف الطبيعة كما هي.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 2: الظروف التاريخية والعلمية لظهور الحساب الهرمي</h4>
-                    <p>
-                        تحليل القصور في الحساب التفاضلي الكلاسيكي، وظهور الأنظمة المعقدة متعددة
-                        المستويات التي فرضت ظهور نظرية جديدة.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 3: الحاجة الرياضية للحساب الهرمي</h4>
-                    <p>
-                        توضيح الحاجة إلى مشتقات ومتسلسلات وتكاملات هرمية، ومقارنة سلوك الدوال
-                        بين التفاضلي والهرمي.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 4: مقارنة بين التفاضل الكلاسيكي والحساب الهرمي</h4>
-                    <p>
-                        مقارنة مفصلة بين \(D_0\) وبقية المشتقات الهرمية \(D_1, D_2, D_3, D_n\)،
-                        من حيث المعنى الرياضي والتطبيقات.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 5: بنية الطبيعة الطبقية وأثرها في الرياضيات</h4>
-                    <p>
-                        عرض للطبيعة الهرمية للكون: من الذرّة إلى المجرّة، ومن الخلية إلى المجتمع،
-                        وكيف يعكس الحساب الهرمي هذه البنية.
-                    </p>
-                </div>
-            </div>
+  <!-- شبكة الفصول -->
+  <section class="chapters-grid">
 
-            <!-- الجزء الثاني -->
-            <h3 style="margin-top:2rem;">الجزء الثاني: الأسس والبديهيات (الفصول 6–10)</h3>
-            <div class="grid two">
-                <div class="card">
-                    <h4>الفصل 6: المبادئ الأساسية للحساب الهرمي</h4>
-                    <p>
-                        تعريف المبادئ العامة التي تحكم المشتقات الهرمية، وعلاقة كل مستوى بما قبله
-                        وما بعده.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 7: البنى الهرمية للمتغيرات</h4>
-                    <p>
-                        دراسة سلم المتغيرات \(x, \ln x, \ln(\ln x), \dots\) وكيفية تمثيل
-                        التغيّر عبر هذا السلم.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 8: البنى الهرمية للتوابع</h4>
-                    <p>
-                        تحليل التوابع \(y(x)\) عبر طبقات مختلفة من التمثيل: نسبي، لوغاريتمي،
-                        فوق لوغاريتمي، وغيرها.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 9: النسق الهرمي للدوال \(L_n(x)\)</h4>
-                    <p>
-                        تعريف الدوال \(L_n\) المتدرجة وبناء السلم:
-                        \(L_0(x)=x, L_1(x)=\ln x, L_2(x)=\ln(\ln x), \dots\).
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 10: البديهيات الرياضية للحساب الهرمي</h4>
-                    <p>
-                        صياغة البديهيات التي يقوم عليها الحساب الهرمي، аналогًا لبديهيات
-                        الهندسة أو الجبر.
-                    </p>
-                </div>
-            </div>
+    <!-- ⚠️ 30 فصلاً (جاهزة بالكامل) -->
+    <!-- الفصل 1 -->
+    <article class="chapter-card">
+      <div class="chapter-number">الفصل ١</div>
+      <div class="chapter-title">مدخل إلى الحساب الهرمي</div>
+      <p class="chapter-desc">
+        مقدمة عامة للنظرية وبنية المشتقات الهرمية.
+      </p>
+      <span class="tag">منجز</span><br>
+      <a class="chapter-link" href="chapters/chapters/chapter1.html">قراءة الفصل الأول →</a>
+    </article>
 
-            <!-- الجزء الثالث -->
-            <h3 style="margin-top:2rem;">الجزء الثالث: المشتقات الهرمية (الفصول 11–15)</h3>
-            <div class="grid two">
-                <div class="card">
-                    <h4>الفصل 11: المشتق التفاضلي \(D_0\)</h4>
-                    <p>
-                        إعادة صياغة المشتق الكلاسيكي داخل الإطار الهرمي، وربطه ببقية المشتقات.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 12: المشتق النسبي \(D_1\)</h4>
-                    <p>
-                        تعريف \(D_1\) وخواصه وعلاقته بالنمو النسبي والأسّي وبالتطبيقات البيولوجية
-                        والاقتصادية.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 13: المشتق اللوغاريتمي \(D_2\)</h4>
-                    <p>
-                        دراسة \(D_2\) وربطه بالأنظمة ذات السلوك اللوغاريتمي والنظم الكونية
-                        والحرارية.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 14: المشتق فوق اللوغاريتمي \(D_3\)</h4>
-                    <p>
-                        توسيع المفهوم إلى طبقات أعلى من اللوغاريتمات، وتحليل تأثير ذلك على
-                        نمذجة الظواهر الكبرى.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 15: المشتق العام من الرتبة \(D_n\)</h4>
-                    <p>
-                        تعميم المشتقات إلى رتبة \(n\)، مع دراسة الخصائص العامة والعلاقات
-                        بين الطبقات المختلفة.
-                    </p>
-                </div>
-            </div>
+    <!-- بقية الفصول من 2 إلى 30 -->
+    <!-- كل فصل مكتوب يدوياً هنا 👇 -->
 
-            <!-- الجزء الرابع -->
-            <h3 style="margin-top:2rem;">الجزء الرابع: المتسلسلات الهرمية (الفصول 16–20)</h3>
-            <div class="grid two">
-                <div class="card">
-                    <h4>الفصل 16: السلسلة الهرمية في الطبقة 0</h4>
-                    <p>
-                        استعراض سلسلة تايلور في إطار هرمي، وربطها بـ \(D_0\) باعتبارها الحالة
-                        الأساسية.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 17: السلسلة النسبية المعتمدة على \(D_1\)</h4>
-                    <p>
-                        بناء سلسلة هرمية تعتمد على \(\ln(x/a)\) ومقارنة تقاربها مع سلسلة تايلور
-                        في أمثلة عددية.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 18: السلسلة اللوغاريتمية المعتمدة على \(D_2\)</h4>
-                    <p>
-                        تعريف سلسلات تعتمد على طبقة اللوغاريتمات، مناسبة للدوال ذات الطبيعة
-                        اللوغاريتمية.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 19: السلسلة فوق اللوغاريتمية المعتمدة على \(D_3\)</h4>
-                    <p>
-                        دراسة توسعات دوال تعتمد على \(\ln(\ln x)\) وطبقات أعلى.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 20: السلسلة العامة من الرتبة \(D_n\)</h4>
-                    <p>
-                        صياغة السلسلة الهرمية العامة وربطها بمفهوم التحليل على السلالم (scales).
-                    </p>
-                </div>
-            </div>
+    <!-- فصل 2 -->
+    <article class="chapter-card soon">
+      <div class="chapter-number">الفصل ٢</div>
+      <div class="chapter-title">المشتق التفاضلي D₀</div>
+      <p class="chapter-desc">الأساس الكلاسيكي للتغيير.</p>
+      <span class="tag">قريبًا</span>
+    </article>
 
-            <!-- الجزء الخامس -->
-            <h3 style="margin-top:2rem;">الجزء الخامس: التكاملات الهرمية (الفصول 21–23)</h3>
-            <div class="grid two">
-                <div class="card">
-                    <h4>الفصل 21: تكامل الطبقة 0 (التكامل الكلاسيكي)</h4>
-                    <p>
-                        مراجعة للتكامل التقليدي في ضوء الإطار الهرمي، وعلاقته بالمشتق \(D_0\).
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 22: التكامل النسبي \(I_1\)</h4>
-                    <p>
-                        تعريف التكامل المناسب للمشتق النسبي \(D_1\)، وتفسيره كـ "تراكم نسبي"
-                        للكمّيات.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 23: التكامل اللوغاريتمي وفوق اللوغاريتمي \(I_2, I_3, I_n\)</h4>
-                    <p>
-                        تعميم مفهوم التكامل إلى الطبقات اللوغاريتمية وما فوقها، ودراسة خواص هذه
-                        التكاملات.
-                    </p>
-                </div>
-            </div>
+    <!-- فصل 3 -->
+    <article class="chapter-card soon">
+      <div class="chapter-number">الفصل ٣</div>
+      <div class="chapter-title">المشتق النسبي D₁</div>
+      <p class="chapter-desc">التغيير كنسب.</p>
+      <span class="tag">قريبًا</span>
+    </article>
 
-            <!-- الجزء السادس -->
-            <h3 style="margin-top:2rem;">الجزء السادس: المعادلات الهرمية (الفصول 24–25)</h3>
-            <div class="grid two">
-                <div class="card">
-                    <h4>الفصل 24: المعادلات الهرمية الخطية</h4>
-                    <p>
-                        تعريف المعادلات التي تربط \(y\) ومشتقاته الهرمية بصورة خطية، وتحليل حلولها.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 25: المعادلات الهرمية غير الخطية</h4>
-                    <p>
-                        دراسة المعادلات التي تحتوي على تراكيب غير خطية في \(D_n y\)،
-                        ونماذج من الأنظمة المعقدة.
-                    </p>
-                </div>
-            </div>
+    <!-- … -->
+    <!-- سأكمل الآن إضافة الفصول 4 حتى 30 كلها جاهزة 👇 -->
 
-            <!-- الجزء السابع -->
-            <h3 style="margin-top:2rem;">الجزء السابع: التطبيقات العلمية (الفصول 26–30)</h3>
-            <div class="grid two">
-                <div class="card">
-                    <h4>الفصل 26: تطبيقات في الفيزياء</h4>
-                    <p>
-                        قوانين حركة هرمية، نماذج للجاذبية، الحركة النسبية، وتطبيقات في فيزياء
-                        الجسيمات والكونيات.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 27: تطبيقات في الكيمياء</h4>
-                    <p>
-                        نمذجة التفاعلات الكيميائية، الحركية، وسرعات التفاعل عبر مشتقات نسبية
-                        ولوغاريتمية.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 28: تطبيقات في الطب وعلوم الأحياء</h4>
-                    <p>
-                        نماذج نمو الخلايا، الأعضاء، انتشار الأمراض، والأنظمة الحيوية متعددة
-                        الطبقات.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 29: تطبيقات في علوم المناخ والفلك</h4>
-                    <p>
-                        وصف التغيّر المناخي، طبقات الغلاف الجوي، والمقاييس الكونية عبر مشتقات
-                        هرمية.
-                    </p>
-                </div>
-                <div class="card">
-                    <h4>الفصل 30: تطبيقات في الهندسة والذكاء الاصطناعي والاقتصاد</h4>
-                    <p>
-                        نماذج للأنظمة الهندسية، الشبكات العصبية، الأسواق، والمجتمعات، باستخدام
-                        المعادلات الهرمية.
-                    </p>
-                </div>
-            </div>
+    <!-- باقي الفصول -->
+    <!-- جاهزة، بنفس النمط -->
 
-            <p style="margin-top:2rem;">
-                سيتم ربط كل فصل لاحقًا بملفات تفصيلية (HTML أو PDF) عند الانتهاء من
-                الكتابة العلمية الكاملة، ليصبح هذا الفهرس مدخلًا شاملًا لكتاب
-                <strong>الحساب الهرمي</strong>.
-            </p>
+    <!-- الفصل 4 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٤</div><div class="chapter-title">المشتق اللوغاريتمي D₂</div><p class="chapter-desc">طبقة اللوغاريتمات.</p><span class="tag">قريبًا</span></article>
 
-        </div>
-    </section>
+    <!-- الفصل 5 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٥</div><div class="chapter-title">المشتقات العليا Dₙ</div><p class="chapter-desc">طبقات أعلى من التحويلات.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 6 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٦</div><div class="chapter-title">الهياكل الهرمية</div><p class="chapter-desc">سلاسل التحويلات Lk.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 7 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٧</div><div class="chapter-title">المتتاليات الهرمية</div><p class="chapter-desc">متتاليات نسبية ولوغاريتمية.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 8 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٨</div><div class="chapter-title">المتسلسلات الهرمية</div><p class="chapter-desc">تعميم لسلاسل تايلور.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 9 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٩</div><div class="chapter-title">التقارب الهرمي</div><p class="chapter-desc">مناطق تقارب طبقية.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 10 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١٠</div><div class="chapter-title">التكاملات الهرمية</div><p class="chapter-desc">تكاملات موازية للمشتقات.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 11 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١١</div><div class="chapter-title">المعادلات الهرمية 1</div><p class="chapter-desc">معادلات تعتمد على طبقات متعددة.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 12 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١٢</div><div class="chapter-title">المعادلات الهرمية 2</div><p class="chapter-desc">حلول ومعادلات عامة.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 13 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١٣</div><div class="chapter-title">المعادلات التكاملية</div><p class="chapter-desc">معادلات تعتمد على التكامل الهرمي.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 14 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١٤</div><div class="chapter-title">الطرق العددية</div><p class="chapter-desc">خوارزميات هرميّة.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 15 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١٥</div><div class="chapter-title">العلاقات الذهبية</div><p class="chapter-desc">تعميم علاقة D0–D1.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 16 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١٦</div><div class="chapter-title">الميكانيكا الهرمية</div><p class="chapter-desc">نماذج فيزيائية.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 17 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١٧</div><div class="chapter-title">الكهرومغناطيسية الهرمية</div><p class="chapter-desc">طبقات للحقول.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 18 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١٨</div><div class="chapter-title">الديناميكا الحرارية</div><p class="chapter-desc">نظم متعددة المقاييس.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 19 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ١٩</div><div class="chapter-title">النسبية وعلم الكون</div><p class="chapter-desc">نماذج كونية.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 20 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢٠</div><div class="chapter-title">البيولوجيا السكانية</div><p class="chapter-desc">نمو الأنظمة الحيوية.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 21 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢١</div><div class="chapter-title">علم الأوبئة</div><p class="chapter-desc">انتشار الأمراض.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 22 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢٢</div><div class="chapter-title">الاقتصاد الكلي</div><p class="chapter-desc">النمو والتضخم.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 23 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢٣</div><div class="chapter-title">الأسواق المالية</div><p class="chapter-desc">تقلبات أسعار.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 24 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢٤</div><div class="chapter-title">الشبكات المعقدة</div><p class="chapter-desc">أنظمة مترابطة.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 25 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢٥</div><div class="chapter-title">نظرية التحكم</div><p class="chapter-desc">تحكم هرمي.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 26 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢٦</div><div class="chapter-title">الضوضاء والمعلومات</div><p class="chapter-desc">تأثير الضوضاء.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 27 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢٧</div><div class="chapter-title">الصياغة المجردة</div><p class="chapter-desc">النظرية في إطار مجرد.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 28 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢٨</div><div class="chapter-title">المصفوفات والمتجهات</div><p class="chapter-desc">تعميق هرمي للدوال المتجهية.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 29 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٢٩</div><div class="chapter-title">الحساب الهرمي المنفصل</div><p class="chapter-desc">الأنظمة غير المتصلة.</p><span class="tag">قريبًا</span></article>
+
+    <!-- الفصل 30 -->
+    <article class="chapter-card soon"><div class="chapter-number">الفصل ٣٠</div><div class="chapter-title">مسائل مفتوحة</div><p class="chapter-desc">آفاق بحثية.</p><span class="tag">قريبًا</span></article>
+
+  </section>
 
 </main>
 
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <p>© جميع الحقوق محفوظة للحساب الهرمي – AHMED GOSSA – <span id="year"></span></p>
-        <p class="footer-note">
-            هذا القسم يعرض فهرس فصول الكتاب، وسيتم تحديثه مع تقدم العمل في كتابة المحتوى العلمي.
-        </p>
-    </div>
-</footer>
-
-<script>
-    function toggleNav() {
-        const nav = document.getElementById('mainNav');
-        nav.classList.toggle('open');
-    }
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
 </body>
 </html>
+
