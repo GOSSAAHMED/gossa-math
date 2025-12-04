@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>فهرس فصول كتاب الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #f59e0b;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --max-width: 1060px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.5);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: var(--text-main);
+      line-height: 1.8;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      background: rgba(15,23,42,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(148,163,184,0.25);
+      position: sticky; top: 0; z-index: 20;
+    }
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; }
+    .brand-mark {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #facc15, #f97316, #b45309);
+      box-shadow: 0 0 14px rgba(234,179,8,0.8);
+      display: flex; align-items: center; justify-content: center;
+      color: #020617; font-size: 0.8rem;
+    }
+    .nav-links { display: flex; gap: 0.6rem; color: var(--text-muted); }
+    .nav-links a {
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .nav-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    main {
+      max-width: var(--max-width);
+      margin: 1.8rem auto 2.4rem;
+      padding: 0 1.2rem;
+    }
+    .intro {
+      background: #020617;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 1.4rem;
+    }
+    .chapters-list {
+      background: #020617;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-soft);
+    }
+    h1 { margin-top: 0; font-size: 1.6rem; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li {
+      border-bottom: 1px solid rgba(55,65,81,0.5);
+      padding: 0.45rem 0;
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+    li span { color: var(--text-muted); font-size: 0.85rem; }
+    li:last-child { border-bottom: none; }
+    .tag { color: var(--accent); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-mark">H</div>
+      <div>الحساب الهرمي – فهرس الفصول</div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="chapters.html" style="border-color:var(--accent); color:var(--accent);">الكتاب</a>
+      <a href="en/">EN</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="intro">
+    <h1>فهرس فصول كتاب الحساب الهرمي</h1>
+    <p>
+      هذه الصفحة تعرض نظرة عامة على فصول الكتاب (١ إلى ٣٠).
+      حاليًا الفصل الأول فقط متاح كنص كامل، وباقي الفصول قيد الإعداد.
+    </p>
+  </section>
+
+  <section class="chapters-list">
+    <ul>
+      <li>
+        <div>
+          الفصل ١: مدخل إلى الحساب الهرمي
+          <br><span>مقدمة عامة عن الفكرة وأهداف النظرية.</span>
+        </div>
+        <a class="tag" href="chapters/chapters/chapter1.html">قراءة</a>
+      </li>
+
+      <li>
+        <div>
+          الفصل ٢: المشتق التفاضلي D₀ – الطبقة الصفرية
+          <br><span>قيد الإعداد.</span>
+        </div>
+        <span class="tag">قريبًا</span>
+      </li>
+
+      <li>
+        <div>
+          الفصل ٣: المشتق النسبي D₁ – التغيّر كنمو نسبي
+          <br><span>قيد الإعداد.</span>
+        </div>
+        <span class="tag">قريبًا</span>
+      </li>
+
+      <!-- يمكنك تكرار نفس النمط حتى الفصل ٣٠ -->
+      <li>
+        <div>
+          الفصل ٤ إلى ٣٠
+          <br><span>فصول مخطط لها حول المشتقات الأعلى، المتسلسلات، التكاملات والتطبيقات.</span>
+        </div>
+        <span class="tag">قريبًا</span>
+      </li>
+    </ul>
+  </section>
+</main>
+
+</body>
+</html>
