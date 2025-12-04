@@ -1,274 +1,330 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>الفصل الأول – مقدّمة عامة عن الحساب الهرمي – AHMED GOSSA</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="الفصل الأول من كتاب الحساب الهرمي لأحمد GOSSA: مقدّمة عامة عن الحساب الهرمي، وفكرته الأساسية، ولماذا نحتاجه.">
-    <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8" />
+  <title>الفصل الأول – مدخل إلى الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- MathJax للمعادلات -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --bg-card: #020617;
+      --accent: #f59e0b;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --max-width: 900px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Cairo", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #facc15, #f97316, #b45309);
+      box-shadow: 0 0 14px rgba(234, 179, 8, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #020617;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 1.6rem auto 2.8rem;
+      padding: 0 1.2rem;
+    }
+
+    .chapter-card {
+      background: linear-gradient(145deg, #020617, #020617);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-soft);
+      padding: 1.6rem 1.4rem 1.8rem;
+    }
+
+    .chapter-label {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    h1 {
+      margin: 0 0 0.4rem;
+      font-size: 1.6rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.25rem;
+      border-right: 3px solid var(--accent);
+      padding-right: 0.5rem;
+    }
+
+    h3 {
+      margin-top: 1.4rem;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0.4rem 0;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .info-line {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.6rem 0 1.2rem;
+    }
+
+    .pill {
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .math-block {
+      margin: 0.8rem 0;
+      padding: 0.7rem 0.9rem;
+      border-radius: 12px;
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(55, 65, 81, 0.8);
+      padding: 1rem 1.2rem 1.8rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: #020617;
+    }
+
+    footer div {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="container header-inner">
-        <div class="logo">
-            <span class="logo-mark">H</span>
-            <span class="logo-text">الحساب الهرمي</span>
-        </div>
-        <nav class="main-nav" id="mainNav">
-            <a href="../index.html#hero">الرئيسية</a>
-            <a href="../index.html#about">عن النظرية</a>
-            <a href="../index.html#derivatives">المشتقات الهرمية</a>
-            <a href="../index.html#series">المتسلسلات</a>
-            <a href="../index.html#integrals">التكاملات</a>
-            <a href="../index.html#applications">التطبيقات</a>
-            <a href="chapters.html">الفصول</a>
-            <a href="../index.html#book">الكتاب</a>
-            <a href="../index.html#contact">تواصل</a>
-        </nav>
-        <button class="nav-toggle" aria-label="القائمة" onclick="toggleNav()">
-            ☰
-        </button>
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-mark">H</div>
+      <div>
+        <div>الحساب الهرمي</div>
+        <small style="color: var(--text-muted); font-weight: 400;">
+          الفصل الأول – مدخل إلى النظرية
+        </small>
+      </div>
     </div>
+
+    <div class="nav-links">
+      <a href="/gossa-math/">الرئيسية</a>
+      <a href="/gossa-math/#book">الكتاب</a>
+      <a href="/gossa-math/en/">EN</a>
+    </div>
+  </nav>
 </header>
 
 <main>
+  <article class="chapter-card">
+    <div class="chapter-label">الفصل الأول</div>
+    <h1>مدخل إلى الحساب الهرمي</h1>
+    <div class="info-line">
+      هذا الفصل يقدّم الفكرة العامة للنظرية، والدوافع الرياضية والفيزيائية
+      وراء الانتقال من مشتق واحد إلى مشتقات هرمية متعددة.
+    </div>
 
-    <section class="section">
-        <div class="container">
+    <div class="pill-row">
+      <div class="pill">فلسفة التغيّر</div>
+      <div class="pill">الهرمية في الطبيعة</div>
+      <div class="pill">حدود حساب التفاضل الكلاسيكي</div>
+    </div>
 
-            <h2>الفصل الأول: مقدّمة عامة عن الحساب الهرمي</h2>
-            <p>
-                <strong>تأليف: AHMED GOSSA</strong>
-            </p>
+    <h2>1. لماذا نحتاج إلى حساب هرمي؟</h2>
+    <p>
+      يبدأ الحساب الكلاسيكي من المشتق التفاضلي
+      \(D_0 y = \dfrac{dy}{dx}\) بوصفه مقياسًا خطيًا للتغيّر.
+      لكن كثيرًا من الظواهر في الفيزياء، والطب، والاقتصاد، لا تتصرّف
+      وفق تغيّر خطي بسيط، بل وفق نسب ولوغاريتمات وطبقات متراكبة
+      من البُنى الرياضية.
+    </p>
 
-            <div class="card" style="margin-top:1.5rem;">
-                <h3>1.1 تمهيد</h3>
-                <p>
-                    شهد تاريخ الرياضيات ثلاث ثورات كبرى غيّرت مسار العلوم: الثورة الإغريقية في
-                    الهندسة، والثورة الجبرية في العالم الإسلامي، والثورة التفاضلية على يد نيوتن
-                    ولايبنتز. لكن جميع هذه الثورات اشتركت في أمر واحد: كانت تحاول توصيف تغيّر
-                    الظواهر الطبيعية <strong>على مستوى واحد فقط</strong>.
-                </p>
-                <p>
-                    حساب التفاضل الكلاسيكي يفترض أن التغير في الطبيعة يحدث عبر
-                    <strong>فروق صغيرة</strong> بين قيمتين؛ أي أن العالم يتحرك بطريقة “خطّية” أو
-                    “مستمرّة” يمكن وصفها بالمشتق:
-                </p>
-                <div class="math-block">
-                    \[
-                    D_0 y = \frac{dy}{dx}
-                    \]
-                </div>
-                <p>
-                    غير أن الطبيعة، حين ننظر إليها بعمق، لا تعمل وفق تغيير خطّي واحد، بل تعمل
-                    عبر <strong>طبقات هرمية متدرجة</strong>: من الذرة إلى الجزيء، ومن الخلية إلى
-                    النسيج، ومن الفرد إلى المجتمع، ومن الكوكب إلى المجرة. وهكذا تتغير الظواهر
-                    بطبقات متداخلة، كل طبقة لها قوانينها ومسارات تغير مختلفة.
-                </p>
-                <p>
-                    هذه الملاحظة الجوهرية هي الأساس الذي قام عليه <strong>الحساب الهرمي</strong>.
-                </p>
-            </div>
+    <p>
+      في <strong>الحساب الهرمي</strong> نفترض أن العالم يمكن أن يُقرأ على
+      طبقات: طبقة تفاضلية، طبقة نسبية، طبقة لوغاريتمية، وهكذا. لكل طبقة
+      مشتق خاص، ومتسلسلة خاصة، وتكامل خاص، ومعادلات خاصة.
+    </p>
 
-            <div class="card" style="margin-top:1.5rem;">
-                <h3>1.2 ما هو الحساب الهرمي؟</h3>
-                <p>
-                    الحساب الهرمي هو منظومة رياضية جديدة تهدف إلى وصف الظواهر الطبيعية وغيرها
-                    عبر <strong>مستويات متدرجة من التغيّر</strong>. بدل أن يكون التغيّر بين
-                    \(x\) و \(y\) دائماً عبر الفرق \(dy/dx\)، فإن الحساب الهرمي يقدّم
-                    مشتقات متعددة:
-                </p>
-                <div class="math-block">
-                    \[
-                    D_0 = \frac{dy}{dx},\quad
-                    D_1 = \frac{dy \cdot x}{dx \cdot y},\quad
-                    D_2 = \frac{dy \cdot x \ln x}{dx \cdot y \ln y},\quad
-                    D_3 = \frac{dy \cdot x \ln x \ln(\ln x)}{dx \cdot y \ln y \ln(\ln y)},\ \dots
-                    \]
-                </div>
-                <p>
-                    كل مستوى من هذه المستويات يعكس <strong>شكل التغيّر الحقيقي</strong> في طبقة
-                    معينة من الطبيعة، وليس شكلاً مفروضًا عليها. وهكذا يصبح التغيّر ليس خطّيًا
-                    فقط، بل نسبيًا، أو لوغاريتميًا، أو لوغاريتمًا مركّبًا… وهذا يفتح بابًا
-                    لفهم الظواهر التي كانت رياضيات القرن الماضي عاجزة عن وصفها بدقة.
-                </p>
-            </div>
+    <h2>2. المشتقات الأساسية ولغتها</h2>
 
-            <div class="card" style="margin-top:1.5rem;">
-                <h3>1.3 لماذا "هرمي"؟</h3>
-                <p>
-                    لأن المتغيرات في الطبيعة لا تتغير على مستوى واحد، بل على
-                    <strong>درجات</strong>:
-                </p>
-                <ul class="bullet-list">
-                    <li>الدرجة الأولى: فرق بسيط → مشتق تفاضلي \(D_0\).</li>
-                    <li>الدرجة الثانية: نسبة → مشتق نسبي \(D_1\).</li>
-                    <li>الدرجة الثالثة: لوغاريتم → مشتق لوغاريتمي \(D_2\).</li>
-                    <li>الدرجة الرابعة: لوغاريتم اللوغاريتم → مشتق فوق لوغاريتمي \(D_3\).</li>
-                    <li>وهكذا نصل إلى طبقة عامة \(D_n\).</li>
-                </ul>
-                <p>
-                    وصف الطبيعة بمنهج هرمي يجعل الرياضيات
-                    <strong>متوافقة مع بنية الكون</strong>، لأن:
-                </p>
-                <ul class="bullet-list">
-                    <li>المادة هرمية.</li>
-                    <li>الطاقة هرمية.</li>
-                    <li>الكائنات الحية هرمية.</li>
-                    <li>المجتمعات والاقتصادات هرمية.</li>
-                    <li>حتى السلوك النفسي والعقلي يتّخذ بنية هرمية.</li>
-                </ul>
-                <p>
-                    وبالتالي، الحساب الهرمي ليس مجرد تحسين رياضي صغير، بل هو
-                    <strong>إعادة صياغة جذرية لفهم التغيّر</strong>.
-                </p>
-            </div>
+    <div class="math-block">
+      <p style="margin-top:0;">
+        نلخّص المشتقات الأساسية في الطبقات الأولى:
+      </p>
+      $$ D_0 y = \frac{dy}{dx} $$
+      $$ D_1 y = \frac{dy \cdot x}{dx \cdot y} $$
+      $$ D_2 y = \frac{dy \cdot x \ln x}{dx \cdot y \ln y} $$
+      $$ D_n y =
+         \frac{dy \displaystyle\prod_{k=0}^{n-1} L_k(x)}
+              {dx \displaystyle\prod_{k=0}^{n-1} L_k(y)}, \quad
+         L_0(x)=x,\ L_1(x)=\ln x,\ L_2(x)=\ln(\ln x),\dots $$
+    </div>
 
-            <div class="card" style="margin-top:1.5rem;">
-                <h3>1.4 جذور الفكرة والدافع وراء ابتكارها</h3>
-                <p>
-                    ظهرت الحاجة للحساب الهرمي نتيجة ملاحظات علمية متكررة، من أهمها:
-                </p>
-                <ul class="bullet-list">
-                    <li>
-                        <strong>عجز التفاضل الكلاسيكي عن وصف بعض الأنظمة المعقدة</strong>،
-                        مثل المناخ، الاقتصاد، الأحياء الجزيئية، والنظم الفوضوية.
-                    </li>
-                    <li>
-                        <strong>وجود تغيّر نسبي أو لوغاريتمي في كثير من الظواهر</strong>،
-                        مثل التفاعل الكيميائي، انتشار الأوبئة، نمو الكائنات، تمدد الكون،
-                        وتراكم البيانات.
-                    </li>
-                    <li>
-                        <strong>الطبيعة تعتمد على نسب وليس فروق فقط</strong>، فجسم يسقط
-                        يمكن وصفه بسرعات نسبية، وموجة تنتشر لها طاقة نسبية، وأنظمة حيوية
-                        كثيرة تتبع قوانين نسبية أو لوغاريتمية.
-                    </li>
-                    <li>
-                        <strong>اللوغاريتمات المتدرجة تظهر تلقائيًا في العلم</strong>،
-                        في الجاذبية، والديناميكا الحرارية، وتعقيد البيانات، والمعلوماتية
-                        الحيوية، والفيزياء الكونية.
-                    </li>
-                </ul>
-                <p>
-                    كل هذه الأدلة تؤكد أن التغيّر في الكون ليس "مستوى واحد"، بل
-                    <strong>عدة مستويات هرمية متعاقبة</strong>. ومن هنا جاء الحساب الهرمي
-                    كاستجابة طبيعية لهذه الحاجة.
-                </p>
-            </div>
+    <p>
+      في هذا الفصل نركّز على المعنى المفهومي لهذه الصيغ أكثر من
+      التفاصيل التقنية، لكي تصبح اللغة الهرمية مألوفة قبل الانتقال
+      إلى الاشتقاق الصارم في الفصول اللاحقة.
+    </p>
 
-            <div class="card" style="margin-top:1.5rem;">
-                <h3>1.5 من التفاضل إلى الهرمية: توسّع طبيعي</h3>
-                <p>
-                    الحساب الهرمي لا يلغي حساب التفاضل التقليدي، بل:
-                </p>
-                <ul class="bullet-list">
-                    <li>يجعله <strong>الطبقة 0</strong> في سلم التغيّر.</li>
-                    <li>ويضيف فوقه طبقات أخرى \(D_1, D_2, D_3, \dots, D_n\).</li>
-                    <li>ويربطها كلها بعلاقات رياضية محكمة.</li>
-                </ul>
-                <p>
-                    وبذلك يصبح:
-                </p>
-                <div class="math-block">
-                    \[
-                    D_0,\ D_1,\ D_2,\ D_3,\ \dots,\ D_n
-                    \]
-                </div>
-                <p>
-                    هي درجات التغير في الطبيعة. كما يكون الضوء له أطوال موجية متعددة، والطاقة
-                    لها مستويات، والمجتمع له طبقات، والكون له مقاييس، كذلك أيضًا
-                    <strong>التغيّر الرياضي له طبقات</strong>.
-                </p>
-            </div>
+    <h2>3. العلاقة الذهبية</h2>
+    <p>
+      العلاقة المحورية التي تربط بين الطبقة التفاضلية والطبقة النسبية هي:
+    </p>
 
-            <div class="card" style="margin-top:1.5rem;">
-                <h3>1.6 الفرق الجوهري بين الحساب الهرمي والتفاضل</h3>
-                <p>
-                    يمكن تلخيص الفرق في جملة واحدة:
-                </p>
-                <p style="font-weight:bold; margin-top:0.5rem;">
-                    التفاضل يقيس التغيّر بين نقطتين؛  
-                    الحساب الهرمي يقيس التغيّر بين <strong>طبقتين</strong>.
-                </p>
-                <p>
-                    في حساب التفاضل نلاحظ:
-                </p>
-                <div class="math-block">
-                    \[
-                    y(x + \Delta x) - y(x)
-                    \]
-                </div>
-                <p>
-                    بينما في الحساب الهرمي، ننظر أيضًا إلى:
-                </p>
-                <div class="math-block">
-                    \[
-                    \frac{y(x)}{y(x_1)},\quad
-                    \ln y(x) - \ln y(x_1),\quad
-                    L_n(y(x)) - L_n(y(x_1))
-                    \]
-                </div>
-                <p>
-                    حيث \(L_n\) هي الدوال الهرمية المتدرجة. هذا التحول من الفرق إلى النسبة
-                    واللوغاريتم والطبقات يصنع فارقًا كبيرًا في فهم الظواهر.
-                </p>
-            </div>
+    <div class="math-block">
+      $$ x \cdot D_0(y) = y \cdot D_1(y) $$
+    </div>
 
-            <div class="card" style="margin-top:1.5rem;">
-                <h3>1.7 ما سيأتي في هذا الكتاب</h3>
-                <p>
-                    هذا الفصل التمهيدي يفتح الباب أمام بناء نظرية متكاملة، سيأتي في الفصول
-                    التالية صياغتها بدقة. يتضمن الكتاب:
-                </p>
-                <ul class="bullet-list">
-                    <li>تعريفًا رسميًا للحساب الهرمي وبديهياته.</li>
-                    <li>تعريف المشتقات \(D_0, D_1, D_2, D_3, D_n\) وخواصها.</li>
-                    <li>بناء المتسلسلات الهرمية ومقارنتها بسلسلة تايلور.</li>
-                    <li>تعريف التكاملات الهرمية وتفسيرها الفيزيائي.</li>
-                    <li>قانون الحركة الهرمي والمعادلات الهرمية.</li>
-                    <li>تطبيقات في الفيزياء، الكيمياء، الطب، الأحياء، المناخ، الفلك، الاقتصاد، وغيرها.</li>
-                </ul>
-                <p>
-                    بهذا يصبح الحساب الهرمي مرشحًا ليكون لغة رياضية جديدة لفهم التغيّر في
-                    القرن الحادي والعشرين.
-                </p>
-            </div>
+    <p>
+      هذه العلاقة ليست مجرد مساواة رمزية، بل هي جسر بين
+      رؤية خطية للتغيّر ورؤية نسبية له. وهي التي تسمح ببناء
+      قواميس ترجمة بين معادلات الطبقة صفر ومعادلات الطبقة واحد.
+    </p>
 
-            <!-- أزرار التنقل بين الفصول -->
-            <div style="margin-top:2rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
-                <a href="chapters.html" class="btn ghost">← العودة إلى فهرس الفصول</a>
-                <a href="chapter2.html" class="btn primary">الفصل التالي: الفصل الثاني →</a>
-            </div>
+    <h2>4. نظرة عامة على فصول الكتاب</h2>
+    <p>
+      بعد هذا الفصل التمهيدي، ينتقل الكتاب إلى فصول تتناول:
+    </p>
+    <ul style="color: var(--text-muted); font-size:0.95rem; padding-right:1.2rem;">
+      <li>التعريف الصارم للمشتقات الهرمية لجميع الرتب.</li>
+      <li>المتسلسلات الهرمية وأنواع التقارب الجديدة.</li>
+      <li>التكاملات الهرمية والمعادلات الهرمية.</li>
+      <li>تطبيقات في الفيزياء، والطب، والاقتصاد، وغيرها.</li>
+    </ul>
 
-        </div>
-    </section>
-
+    <a class="back-link" href="/gossa-math/#book">
+      ← العودة إلى فهرس الكتاب في الصفحة الرئيسية
+    </a>
+  </article>
 </main>
 
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <p>© جميع الحقوق محفوظة للحساب الهرمي – AHMED GOSSA – <span id="year"></span></p>
-        <p class="footer-note">
-            هذا الفصل جزء من مشروع كتاب الحساب الهرمي، والمحتوى قيد التطوير العلمي المستمر.
-        </p>
-    </div>
+<footer>
+  <div>
+    © الحساب الهرمي – AHMED GOSSA. هذا الفصل في طور التطوير
+    العلمي، وسيُحدَّث مع تطوّر النظرية.
+  </div>
 </footer>
-
-<script>
-    function toggleNav() {
-        const nav = document.getElementById('mainNav');
-        nav.classList.toggle('open');
-    }
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
 
 </body>
 </html>
+
