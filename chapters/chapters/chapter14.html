@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الرابع عشر – التقارب الهرمي وشروطه | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #d1d5db;
+    }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover {
+      background: #f59e0b;
+      color: #111;
+    }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل الرابع عشر: التقارب الهرمي وشروطه</h1>
+
+  <p>
+    بعد بناء المتسلسلات الهرمية (سلسلة تايلور الهرمية، السلسلة النسبية، سلاسل D₂)،
+    يصبح السؤال الحاسم:
+    <strong>متى تتقارب هذه السلاسل إلى الدالة الأصلية؟</strong>  
+    في هذا الفصل نعرض إطارًا مفهوميًا للتقارب الهرمي وشروطه العامة.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 2rem 0;">
+
+  <h2>1. مفهوم التقارب في السلاسل الكلاسيكية</h2>
+
+  <p>
+    في حالة سلسلة تايلور الكلاسيكية، نعرف أن:
+  </p>
+
+  <div class="code-box">
+    $$
+    f(x) =
+    \sum_{k=0}^{\infty}
+    \frac{D_0^k f(a)}{k!}(x-a)^k
+    $$
+  </div>
+
+  <p>
+    لا تتقارب دائمًا لكل \(x\)، بل داخل مجال معيّن حول \(a\) يسمى
+    <strong>نصف قطر التقارب</strong>.  
+    ويُدرس التقارب عادة عبر اختبارات مقارنة، أو عبر
+    الحدود العليا لمعاملات السلسلة.
+  </p>
+
+  <h2>2. خصوصية التقارب في السلاسل الهرمية</h2>
+
+  <p>
+    في السلاسل الهرمية، المتغيّرات ليست فقط \((x-a)\)،
+    بل متغيّرات مثل:
+  </p>
+
+  <div class="code-box">
+    $$
+    \ln\!\left(\frac{x}{a}\right),\quad
+    \ln(\ln x) - \ln(\ln a),\quad
+    L_n(x;a)
+    $$
+  </div>
+
+  <p>
+    لذلك، يرتبط التقارب هنا بسلوك:
+  </p>
+
+  <ul>
+    <li>هذه المتغيّرات الهرمية عندما يقترب x من a.</li>
+    <li>ومدى بقاء هذه المتغيّرات في "مجال صغير" مناسب للتقريب.</li>
+  </ul>
+
+  <h2>3. مثال: تقارب السلسلة النسبية العامة</h2>
+
+  <p>
+    في السلسلة النسبية العامة:
+  </p>
+
+  <div class="code-box">
+    $$
+    \ln f(x)
+    =
+    \ln f(a)
+    + \sum_{k=1}^{\infty}
+    \frac{D_1^k f(a)}{k!}\,
+    \big[\ln\!\left(\tfrac{x}{a}\right)\big]^k
+    $$
+  </div>
+
+  <p>
+    الشرط الطبيعي للتقارب هو أن تكون
+    \(\left|\ln\!\left(\frac{x}{a}\right)\right|\)
+    صغيرة بما يكفي، وأن لا تنمو معاملات
+    \(\frac{D_1^k f(a)}{k!}\)
+    بسرعة كبيرة.  
+    أي أن:
+  </p>
+
+  <div class="code-box">
+    $$
+    \sum_{k=1}^{\infty}
+    \left|
+      \frac{D_1^k f(a)}{k!}\,
+      \big[\ln\!\left(\tfrac{x}{a}\right)\big]^k
+    \right|
+    \quad \text{متقاربة.}
+    $$
+  </div>
+
+  <h2>4. مثال: تقارب سلاسل D₂</h2>
+
+  <p>
+    في سلاسل الطبقة D₂، يظهر المتغيّر:
+  </p>
+
+  <div class="code-box">
+    $$
+    L_2(x;a) =
+    \ln(\ln x) - \ln(\ln a)
+    $$
+  </div>
+
+  <p>
+    وهنا يكون التقارب مشروطًا بأن:
+  </p>
+
+  <ul>
+    <li>تبقى \(\ln x\) قريبة من \(\ln a\)،</li>
+    <li>وبالتالي تكون \(\ln(\ln x)\) قريبة من \(\ln(\ln a)\)،</li>
+    <li>وأن لا تنفجر معاملات السلسلة المرتبطة بـ D₂.</li>
+  </ul>
+
+  <p>
+    هذا يعني أن مجال التقارب قد يكون "واسعًا" على مستوى x،
+    لكنه "ضيق" على مستوى \(\ln x\)، وهو ما يميز
+    التقارب الهرمي عن التقارب الكلاسيكي.
+  </p>
+
+  <h2>5. مبدأ عام للتقارب الهرمي</h2>
+
+  <p>
+    يمكن صياغة مبدأ عام كالآتي:
+  </p>
+
+  <div class="code-box">
+    $$
+    \text{لكي تتقارب سلسلة هرمية، يجب أن تكون}
+    $$
+    $$
+    \text{المتغيرات الهرمية } L_n(x;a)
+    \text{ صغيرة،}
+    $$
+    $$
+    \text{ومعاملات السلسلة المرتبطة بـ D_n f(a)
+    لا تنمو بسرعة مفرطة.}
+    $$
+  </div>
+
+  <p>
+    هذا المبدأ يشمل السلاسل المبنية على D₁ و D₂
+    والطبقات الأعلى.
+  </p>
+
+  <h2>6. التقارب الموحد والتقارب على مجالات هرمية</h2>
+
+  <p>
+    يمكن أيضًا تعريف:
+  </p>
+
+  <ul>
+    <li><strong>تقارب هرمـي موحّد:</strong> عندما تتقارب السلسلة على مجال في x بحيث تبقى المتغيّرات الهرمية محدودة فيه.</li>
+    <li><strong>مجال تقارب هرمي:</strong> مجموعة قيم x التي تكون فيها
+      \(L_n(x;a)\) في "كرة صغيرة" حول الصفر (بالمعنى الهرمي).</li>
+  </ul>
+
+  <p>
+    هذه المفاهيم تسمح بتعميم أفكار التقارب التقليدية
+    إلى البنية الهرمية الجديدة.
+  </p>
+
+  <h2>7. أهمية دراسة التقارب في الحساب الهرمي</h2>
+
+  <p>
+    بدون فهم التقارب:
+  </p>
+
+  <ul>
+    <li>قد نستخدم سلاسل هرمية في مجالات لا تصلح فيها.</li>
+    <li>قد نخدع بأن تقريبًا هرميًا جيدًا في نقطة هو جيد في كل المجال.</li>
+    <li>لا نستطيع بناء نماذج عددية مستقرة تعتمد على هذه السلاسل.</li>
+  </ul>
+
+  <p>
+    لذلك يشكّل هذا الفصل جسرًا بين الجانب النظري
+    للحساب الهرمي والتطبيقات العملية الدقيقة.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter13.html">← الفصل السابق: سلاسل الطبقة D₂</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter15.html">الفصل التالي: نحو التكاملات الهرمية →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
