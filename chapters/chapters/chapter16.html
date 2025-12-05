@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل السادس عشر – التكامل النسبي D₁ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل السادس عشر: التكامل النسبي المقابل للمشتق D₁</h1>
+
+  <p>
+    في هذا الفصل نعرّف <strong>التكامل النسبي</strong> بوصفه العملية
+    العكسية للمشتق النسبي <strong>D₁</strong>.  
+    هذا النوع من التكاملات يناسب الظواهر التي يكون فيها
+    التغيّر طبيعيًا عبر <strong>النِسَب</strong> وليس الفروق الخطية،
+    مثل النمو السكاني، الفائدة المركبة، وانتشار العدوى.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 2rem 0;">
+
+  <h2>1. تذكير بالمشتق النسبي D₁</h2>
+
+  <p>
+    في الحساب الهرمي يُعرّف المشتق النسبي كما يلي:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y =
+    \frac{dy \cdot x}{dx \cdot y}
+    $$
+  </div>
+
+  <p>
+    أي أنه يقيس:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y \approx
+    \frac{\text{النمو النسبي لـ } y}{\text{النمو النسبي لـ } x}
+    $$
+  </div>
+
+  <p>
+    وبالعلاقة الذهبية بين D₀ و D₁:
+  </p>
+
+  <div class="code-box">
+    $$
+    x\,D_0(y) = y\,D_1(y)
+    $$
+  </div>
+
+  <p>
+    يمكن أن نكتب:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dy}{dx}
+    =
+    D_1 y \cdot \frac{y}{x}
+    $$
+  </div>
+
+  <p>
+    وهذه الصيغة هي المفتاح لتعريف التكامل النسبي.
+  </p>
+
+  <h2>2. تعريف التكامل النسبي</h2>
+
+  <p>
+    إذا كانت لدينا دالة نسبيّة <strong>معروفة</strong> \(F(x)\) بحيث:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y = F(x)
+    $$
+  </div>
+
+  <p>
+    فإنّ المعادلة التفاضلية المكافئة هي:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dy}{dx} = F(x)\,\frac{y}{x}
+    $$
+  </div>
+
+  <p>
+    يمكن إعادة كتابتها على شكل:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{1}{y}\,dy = F(x)\,\frac{1}{x}\,dx
+    $$
+  </div>
+
+  <p>
+    وبالدمج (التكامل) نحصل على:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int \frac{1}{y}\,dy
+    =
+    \int F(x)\,\frac{1}{x}\,dx
+    $$
+  </div>
+
+  <p>
+    أي:
+  </p>
+
+  <div class="code-box">
+    $$
+    \ln|y|
+    =
+    \int F(x)\,\frac{1}{x}\,dx + C
+    $$
+  </div>
+
+  <p>
+    ومن هنا نحصل على:
+  </p>
+
+  <div class="code-box">
+    $$
+    y(x) =
+    \exp\!\Bigg(
+      \int F(x)\,\frac{1}{x}\,dx + C
+    \Bigg)
+    $$
+  </div>
+
+  <p>
+    وهذا يقدّم <strong>التكامل النسبي</strong> بوصفه أداة لاسترجاع \(y\)
+    انطلاقًا من \(D_1 y\).
+  </p>
+
+  <h2>3. حالة خاصة: D₁ ثابت</h2>
+
+  <p>
+    لنفترض أن:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y = k
+    $$
+  </div>
+
+  <p>
+    عندئذ يكون:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{1}{y}\,dy
+    =
+    k\,\frac{1}{x}\,dx
+    $$
+  </div>
+
+  <p>وبالتكامل:</p>
+
+  <div class="code-box">
+    $$
+    \ln|y| = k\,\ln|x| + C
+    $$
+    $$
+    \Rightarrow\;
+    y(x) = C\,x^k
+    $$
+  </div>
+
+  <p>
+    أي أن التكامل النسبي في هذه الحالة يعيدنا إلى
+    <strong>دالة قوّية (Power Law)</strong>،
+    وهو ما ينسجم مع تفسير D₁ كنمو نسبي.
+  </p>
+
+  <h2>4. تعريف صوري للتكامل النسبي</h2>
+
+  <p>
+    يمكن أن نكتب بشكل صوري أن:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int^{(1)} F(x)\,d_1x
+    $$
+  </div>
+
+  <p>
+    يمثّل <strong>تكاملًا نسبيًا</strong> من الرتبة الأولى،
+    بحيث يلبّي العلاقة:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1
+    \Big(
+      \int^{(1)} F(x)\,d_1x
+    \Big)
+    =
+    F(x)
+    $$
+  </div>
+
+  <p>
+    وعند ترجمته إلى تكاملات كلاسيكية في x نحصل على الصيغ السابقة
+    التي تعتمد على \(\frac{1}{x}\,dx\).
+  </p>
+
+  <h2>5. تطبيقات للتكامل النسبي</h2>
+
+  <p>
+    يظهر التكامل النسبي طبيعيًا في:
+  </p>
+
+  <ul>
+    <li>النمو السكاني حيث \(\frac{1}{y}\frac{dy}{dx}\) نسبة ثابتة أو معروفة مع الزمن.</li>
+    <li>الفائدة المركبة في المال، حيث التغيّر في الرصيد نسبي لقيمته الحالية.</li>
+    <li>انتشار العدوى، عندما يكون معدّل الانتشار متناسبًا مع عدد المصابين الحالي.</li>
+  </ul>
+
+  <p>
+    في كل هذه النماذج، يكون حل المعادلة التفاضلية أسهل
+    في إطار التكامل النسبي من إطار D₀ فقط.
+  </p>
+
+  <h2>6. نحو تكاملات أعمق: D₂ وما بعده</h2>
+
+  <p>
+    الفصول القادمة ستعمّم هذه الفكرة إلى:
+  </p>
+
+  <ul>
+    <li>التكامل اللوغاريتمي المقابل لـ D₂،</li>
+    <li>التكامل فوق اللوغاريتمي D₃،</li>
+    <li>التكامل العام من الرتبة Dₙ.</li>
+  </ul>
+
+  <p>
+    ليكتمل بذلك بناء <strong>جبر هَرَمي</strong> متناسق بين المشتقات
+    والتكاملات على جميع الطبقات.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter15.html">← الفصل السابق: مقدّمة التكاملات الهرمية</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter17.html">الفصل التالي: التكامل اللوغاريتمي D₂ →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
