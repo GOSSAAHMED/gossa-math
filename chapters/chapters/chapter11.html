@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الحادي عشر – سلسلة تايلور الهرمية | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #d1d5db;
+    }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.4rem; }
+
+    .back-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover {
+      background: #f59e0b;
+      color: #111;
+    }
+
+    .btn-pill.secondary:hover {
+      border-color: #f59e0b;
+      color: #fbbf24;
+      background: rgba(15,23,42,0.7);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل الحادي عشر: سلسلة تايلور الهرمية</h1>
+
+  <p>
+    في هذا الفصل نطوّر نسخة هرمية من سلسلة تايلور الكلاسيكية.  
+    الهدف هو تقريب الدوال في سياقات يكون فيها التغيّر
+    ليس خطيًا فقط، بل نسبيًا ولوغاريتميًا وعبر طبقات أعلى من
+    المشتقات الهرمية <strong>D₀, D₁, D₂, \dots, Dₙ</strong>.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.2); margin: 2rem 0;">
+
+  <h2>1. تذكير بسلسلة تايلور الكلاسيكية</h2>
+
+  <p>
+    حول نقطة \(a\)، تعطى سلسلة تايلور لـ \(f\) في المتغير \(x\) بالصيغة:
+  </p>
+
+  <div class="code-box">
+    $$
+    f(x) =
+    \sum_{k=0}^{\infty}
+    \frac{D_0^k f(a)}{k!}(x-a)^k
+    $$
+  </div>
+
+  <p>
+    هذه الصيغة تعتمد فقط على المشتق التفاضلي <strong>D₀</strong>،
+    وتستخدم الفروق الخطية \((x-a)\).
+  </p>
+
+  <h2>2. الحاجة إلى تايلور هرمية</h2>
+
+  <p>
+    في الحساب الهرمي، لاحظنا أن:
+  </p>
+
+  <ul>
+    <li>بعض الظواهر توصف بشكل أفضل عبر التغيّر النسبي (باستخدام D₁).</li>
+    <li>ظواهر أخرى تتبع سلوكًا لوغاريتميًا أو فوق-لوغاريتمي (D₂, D₃, ...).</li>
+    <li>التقريب عبر حدود خطية فقط لا يكفي في الأنظمة المعقّدة.</li>
+  </ul>
+
+  <p>
+    لذلك يصبح طبيعيًا أن نبحث عن سلسلة تعتمد على مستويات مختلفة من
+    المشتقات الهرمية، وليس على D₀ وحده.
+  </p>
+
+  <h2>3. الفكرة العامة لسلسلة تايلور الهرمية</h2>
+
+  <p>
+    نريد بناء متسلسلة من الشكل:
+  </p>
+
+  <div class="code-box">
+    $$
+    f(x) \approx
+    A_0
+    + A_1 \,\Phi_1(x)
+    + A_2 \,\Phi_2(x)
+    + \dots
+    $$
+  </div>
+
+  <p>
+    حيث تعتمد الحدود \(\Phi_k(x)\) على
+    <strong>تركيبات من اللوغاريتمات</strong>
+    و<strong>المشتقات الهرمية Dₙ</strong>.
+  </p>
+
+  <h2>4. مثال: تقريب هرمي من الدرجة الأولى</h2>
+
+  <p>
+    إذا أردنا تقريبًا يستفيد من D₀ و D₁ حول نقطة مرجعية \(a\)،
+    يمكن التفكير في كتابة تقريب من النوع:
+  </p>
+
+  <div class="code-box">
+    $$
+    f(x) \approx
+    f(a)
+    + D_0 f(a)\,(x-a)
+    + D_1 f(a)\,\ln\!\left(\frac{x}{a}\right)
+    $$
+  </div>
+
+  <p>
+    الحد الأول خطي كلاسيكي، والحد الثاني يعكس التغيّر النسبي
+    حول النقطة نفسها. هذا مزيج بسيط لكنه هرمي في طبيعته.
+  </p>
+
+  <h2>5. صيغة عامة مقترحة لسلسلة تايلور الهرمية</h2>
+
+  <p>
+    يمكن اقتراح بنية عامة تعتمد على المشتقات Dₙ وقيم
+    الدوال اللوغاريتمية المتكررة:
+  </p>
+
+  <div class="code-box">
+    $$
+    f(x) \approx
+    \sum_{n=0}^{N}
+    C_n \,
+    \Psi_n(x;a)
+    $$
+  </div>
+
+  <p>
+    حيث تُبنى \(\Psi_n(x;a)\) من تراكيب مثل:
+  </p>
+
+  <div class="code-box">
+    $$
+    (x-a),\quad
+    \ln\!\left(\frac{x}{a}\right),\quad
+    \ln(\ln x) - \ln(\ln a),\quad
+    \dots
+    $$
+  </div>
+
+  <p>
+    وترتبط المعاملات \(C_n\) بقيم المشتقات الهرمية
+    \(D_n f(a)\) عبر صيغ سيتم تطويرها في الفصول اللاحقة.
+  </p>
+
+  <h2>6. نحو صياغة دقيقة</h2>
+
+  <p>
+    من أجل بناء صياغة صارمة، نحتاج إلى:
+  </p>
+
+  <ul>
+    <li>تحديد فضاء الدوال التي تقبل تمثيلاً هرميًا.</li>
+    <li>تعريف مفهوم نقطة التوسع الهرمية (Hierarchical expansion point).</li>
+    <li>صياغة شروط التقارب للسلسلة الهرمية.</li>
+  </ul>
+
+  <p>
+    هذه الأمور ستُعالج بالتفصيل في الفصول:
+  </p>
+
+  <ul>
+    <li>الفصل 12: السلسلة النسبية العامة.</li>
+    <li>الفصل 13: السلاسل المبنية على D₂ و D₃.</li>
+    <li>الفصل 14: التقارب الهرمي وشروطه.</li>
+  </ul>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.2); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter10.html">← الفصل السابق: مقدّمة المتسلسلات</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter12.html">الفصل التالي: السلسلة النسبية العامة →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
