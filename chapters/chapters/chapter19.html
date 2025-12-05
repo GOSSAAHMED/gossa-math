@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل التاسع عشر – التكامل الهرمي العام Dₙ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل التاسع عشر: التكامل الهرمي العام Dₙ</h1>
+
+  <p>
+    بعد أن تعرّفنا على التكاملات من الرتبة 0 و 1 و 2 و 3،  
+    نصل الآن إلى الصيغة العامة لـ <strong>التكامل الهرمي</strong>  
+    الذي يقابل المشتق الهرمي <strong>Dₙ</strong>.
+    هذا الفصل يمثّل القاعدة الموحّدة التي يجمع بين جميع طبقات التكامل.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 2rem 0;">
+
+  <h2>1. تذكير مختصر بالمشتق الهرمي Dₙ</h2>
+
+  <p>
+    يُعرّف المشتق الهرمي من الرتبة n بالصيغة:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n y =
+    \frac{dy}{dx}
+    \cdot
+    \frac{
+      \prod_{k=0}^{n-1} L_k(x)
+    }{
+      \prod_{k=0}^{n-1} L_k(y)
+    }
+    $$
+  </div>
+
+  <p>
+    حيث:
+  </p>
+
+  <div class="code-box">
+    $$
+    L_0(x)=x,\quad 
+    L_1(x)=\ln x,\quad
+    L_2(x)=\ln(\ln x),\quad
+    \dots
+    $$
+  </div>
+
+  <p>
+    وهذه اللوغاريتمات المتكررة هي أساس الطبقات الهرمية.
+  </p>
+
+  <h2>2. المعادلة التفاضلية المكافئة</h2>
+
+  <p>
+    إذا كان لدينا:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n y = F(x)
+    $$
+  </div>
+
+  <p>
+    فإن المعادلة تصبح:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dy}{dx}
+    =
+    F(x)
+    \cdot
+    \frac{
+      \prod_{k=0}^{n-1} L_k(y)
+    }{
+      \prod_{k=0}^{n-1} L_k(x)
+    }
+    $$
+  </div>
+
+  <p>
+    وهذا هو الأساس لتعريف التكامل العام من الرتبة n.
+  </p>
+
+  <h2>3. تعريف التكامل الهرمي العام</h2>
+
+  <p>
+    نرتّب الحدود لنحصل على الشكل:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{
+      dy
+    }{
+      \prod_{k=0}^{n-1} L_k(y)
+    }
+    =
+    F(x)
+    \cdot
+    \frac{
+      dx
+    }{
+      \prod_{k=0}^{n-1} L_k(x)
+    }
+    $$
+  </div>
+
+  <p>
+    وبالدمج من الطرفين:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int
+    \frac{
+      dy
+    }{
+      \prod_{k=0}^{n-1} L_k(y)
+    }
+    =
+    \int
+    F(x)
+    \cdot
+    \frac{
+      dx
+    }{
+      \prod_{k=0}^{n-1} L_k(x)
+    }
+    + C
+    $$
+  </div>
+
+  <p>
+    التكامل في الطرف الأيسر هو ما يسمّى:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int^{(n)}
+    \frac{1}{d_n y}
+    $$
+  </div>
+
+  <p>
+    أي التكامل من الرتبة n.
+  </p>
+
+  <h2>4. حل التكامل: بنية أسّية متكررة</h2>
+
+  <p>
+    من المعروف رياضيًا أن:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int \frac{dy}{y} = \ln y
+    $$
+    $$
+    \int \frac{dy}{y\ln y} = \ln(\ln y)
+    $$
+    $$
+    \int \frac{dy}{y\ln y\ln(\ln y)} = \ln(\ln(\ln y))
+    $$
+  </div>
+
+  <p>
+    وبالتعميم:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int
+    \frac{
+      dy
+    }{
+      \prod_{k=0}^{n-1} L_k(y)
+    }
+    =
+    L_n(y) + C
+    $$
+  </div>
+
+  <p>
+    إذن التكامل يعطينا <strong>Lₙ(y)</strong>.
+  </p>
+
+  <h2>5. الحل النهائي العام</h2>
+
+  <div class="code-box">
+    $$
+    L_n(y)
+    =
+    \int
+    F(x)
+    \cdot
+    \frac{
+      dx
+    }{
+      \prod_{k=0}^{n-1} L_k(x)
+    }
+    + C
+    $$
+  </div>
+
+  <p>
+    ولإيجاد y(x) نطبّق الدوال العكسية لـ Lₙ:
+  </p>
+
+  <div class="code-box">
+    $$
+    y(x)
+    =
+    L_n^{-1}
+    \left[
+      \int
+      F(x)
+      \frac{
+        dx
+      }{
+        \prod_{k=0}^{n-1} L_k(x)
+      }
+      + C
+    \right]
+    $$
+  </div>
+
+  <p>
+    الدالة العكسية لـ Lₙ تعني:
+  </p>
+
+  <div class="code-box">
+    $$
+    L_n^{-1}(z)
+    =
+    \exp(\exp(\dots(\exp(z))\dots))
+    $$
+  </div>
+
+  <p>
+    (n مرات من الأسّ).
+  </p>
+
+  <h2>6. تعريف التكامل الهرمي من الرتبة n</h2>
+
+  <p>
+    يمكن تلخيص العملية بالرمز:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int^{(n)} F(x)\,d_n x
+    $$
+  </div>
+
+  <p>
+    بحيث يتحقق:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n
+      \left(
+        \int^{(n)} F(x)\,d_n x
+      \right)
+    =
+    F(x)
+    $$
+  </div>
+
+  <p>
+    وهذا يثبت أن التكامل من الرتبة n هو العملية العكسية القياسية للمشتق Dₙ.
+  </p>
+
+  <h2>7. أمثلة تطبيقية</h2>
+
+  <ul>
+    <li>تحليل الأنظمة ذات الطبقات المتعددة من التباطؤ.</li>
+    <li>التدرّج الرياضي في الظواهر الكونية والحرارية.</li>
+    <li>بيانات تمرّ عبر مستويات log / log-log / log-log-log.</li>
+    <li>نظم اقتصادية أو بيولوجية ذات تباطؤ عميق.</li>
+  </ul>
+
+  <p>
+    التكامل الهرمي من الرتبة n يمنحنا أداة قوية لبناء نماذج دقيقة
+    لهذه الظواهر المعقدة.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter18.html">← الفصل السابق: التكامل فوق اللوغاريتمي D₃</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter20.html">الفصل التالي: أمثلة تطبيقية في التكاملات الهرمية →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
