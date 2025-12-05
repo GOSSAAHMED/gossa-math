@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل السابع – المشتق فوق-فوق-فوق-اللوغاريتمي D₅ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #d1d5db;
+    }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    .back-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover {
+      background: #f59e0b;
+      color: #111;
+    }
+
+    .btn-pill.secondary:hover {
+      border-color: #f59e0b;
+      color: #fbbf24;
+      background: rgba(15,23,42,0.7);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل السابع: المشتق من الطبقة الخامسة D₅</h1>
+
+  <p>
+    بعد الوصول إلى الطبقة الرابعة <strong>D₄</strong> التي تعتمد على
+    اللوغاريتم المتداخل ثلاث مرات، نصل الآن إلى الطبقة الخامسة
+    <strong>D₅</strong>، وهي المستوى الذي يصبح فيه التغيّر مرتبطًا
+    بأربع طبقات متداخلة من اللوغاريتمات.  
+    كل طبقة أعلى تُبطئ التغيّر أكثر وتجعله أكثر نعومة وتعقيدًا.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0;">
+
+  <h2>1. تعريف المشتق D₅</h2>
+
+  <p>
+    يمتد التعريف الهرمي المعتاد ليعطي الصيغة:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_5 y =
+    \frac{
+      dy \cdot x \ln x \ln(\ln x)\ln(\ln(\ln x))\ln(\ln(\ln(\ln x)))
+    }{
+      dx \cdot y \ln y \ln(\ln y)\ln(\ln(\ln y))\ln(\ln(\ln(\ln y)))
+    }
+    $$
+  </div>
+
+  <p>
+    هنا نرى أربع مستويات لوغاريتمية في المقام والبسط، مما يجعل D₅ مناسبًا لوصف
+    تغيّرات شديدة البطء تظهر فقط في الأنظمة الطويلة الأمد أو شديدة الحساسية.
+  </p>
+
+  <h2>2. العلاقة بين D₄ و D₅</h2>
+
+  <p>
+    مثل جميع الطبقات الهرمية، يمكن بناء D₅ مباشرةً من الطبقة السابقة D₄ عبر:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_5 y
+    =
+    D_4 y
+    \times
+    \frac{\ln(\ln(\ln(\ln x)))}{\ln(\ln(\ln(\ln y)))}
+    $$
+  </div>
+
+  <p>
+    هذا يعكس البنية المتكررة للنظرية: كل طبقة تضيف عاملًا لوغاريتميًا جديدًا.
+  </p>
+
+  <h2>3. أين يظهر D₅ في الطبيعة؟</h2>
+
+  <ul>
+    <li>أنظمة جيولوجية أو كونية تتغير على ملايين أو مليارات السنين.</li>
+    <li>نماذج اجتماعية/اقتصادية تصل إلى حالة تشبّع تدريجي بطيء للغاية.</li>
+    <li>محاكاة عميقة للذكاء الاصطناعي تعتمد على تصحيحات دقيقة جدًا.</li>
+  </ul>
+
+  <p>
+    في هذه الحالات، التغيرات تصبح ضعيفة جدًا بحيث لا يمكن وصفها إلا بمشتقات
+    عالية الطبقة مثل D₅ أو أعلى.
+  </p>
+
+  <h2>4. مكان D₅ داخل الهرم</h2>
+
+  <div class="code-box">
+    $$
+    D_0,\;
+    D_1,\;
+    D_2,\;
+    D_3,\;
+    D_4,\;
+    D_5,\;
+    D_6,\;
+    \dots,\;
+    D_n
+    $$
+  </div>
+
+  <p>
+    النموذج الهرمي مفتوح نحو الأعلى، بحيث يمكن دائمًا إضافة طبقات
+    جديدة حسب حاجة النظام المدروس.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter6.html">← الفصل السابق: D₄</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter8.html">الفصل التالي: D₆ →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
