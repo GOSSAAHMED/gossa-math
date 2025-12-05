@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الرابع – المشتق اللوغاريتمي D₂ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    /* ===== نفس تصميم بقية الفصول ===== */
+
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover {
+      color: #fbbf24;
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15, 23, 42, 0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #d1d5db;
+    }
+
+    .code-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .back-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .btn-pill:hover {
+      background: #f59e0b;
+      color: #111;
+    }
+
+    .btn-pill.secondary:hover {
+      border-color: #f59e0b;
+      color: #fbbf24;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    ul {
+      padding-right: 1.4rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== شريط علوي ===== -->
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<!-- ===== محتوى الفصل ===== -->
+<div class="main-container">
+
+  <h1>الفصل الرابع: المشتق اللوغاريتمي D₂ – التغيّر عبر اللوغاريتمات</h1>
+
+  <p>
+    بعد أن رأينا المشتق النسبي <strong>D₁</strong> الذي يقيس التغيّر كنسبة
+    بين القيم، ننتقل الآن إلى الطبقة الأعلى <strong>D₂</strong> حيث يبدأ
+    <strong>اللوغاريتم</strong> بالدخول إلى بنية المشتق ذاته.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+  <h2>1. تعريف المشتق اللوغاريتمي D₂</h2>
+
+  <p>
+    يُعرّف <strong>D₂</strong> بأنه مشتق يأخذ في الاعتبار لوغاريتمات المتغيرات:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 y =
+    \frac{dy \cdot x \ln x}{dx \cdot y \ln y}
+    $$
+  </div>
+
+  <p>
+    في هذه الطبقة لا نقيس فقط النسب، بل <strong>النسب عبر لوغاريتماتها</strong>.
+    أي أنّ التغيّر يقاس بعد تطبيق لوغاريتمات متكررة على \(x\) و \(y\).
+  </p>
+
+  <h2>2. لماذا يظهر اللوغاريتم في D₂؟</h2>
+
+  <p>
+    يعود السبب إلى أن بعض الظواهر لا تتغيّر نسبيًا فقط، بل تتغيّر
+    <strong>نسبيًا بالنسبة لمستوى اللوغاريتم</strong>.
+  </p>
+
+  <p>
+    مثال: في بعض النظم البيولوجية أو الاقتصادية، تكون الاستجابة للزيادة
+    في \(x\) سلوكية على شكل:
+  </p>
+
+  <div class="code-box">
+    $$ \text{تغيّر يعتمد على } \ln x \text{ وليس على } x $$
+  </div>
+
+  <p>
+    وهنا تصبح الطبقة D₁ غير كافية، ولذلك تُستخدم الطبقة D₂.
+  </p>
+
+  <h2>3. العلاقة بين D₁ و D₂</h2>
+
+  <p>
+    كما توجد علاقة ذهبية بين D₀ و D₁، توجد علاقة هيكلية بين
+    D₁ و D₂ أيضًا قائمة على تماثل في بنية الطبقات:
+  </p>
+
+  <div class="code-box">
+    $$ 
+      D_2 y = D_1 y \times 
+      \frac{\ln x}{\ln y}
+    $$
+  </div>
+
+  <p>
+    مما يعني أن الانتقال من الطبقة D₁ إلى الطبقة D₂ يعتمد على
+    تعديل بنيوي عبر لوغاريتمات المتغيرات.
+  </p>
+
+  <h2>4. أمثلة توضيحية</h2>
+
+  <ul>
+    <li>نظم تتغيّر وفق مراجع لوغاريتمية، مثل مقياس الديسيبل (dB) في الصوت.</li>
+    <li>الاستجابة العصبية التي تتناسب مع لوغاريتم شدة الإشارة.</li>
+    <li>سلوكيات نمو تعتمد على مستويات مضاعفة متكررة.</li>
+  </ul>
+
+  <h2>5. الطبقة D₂ في الهرم</h2>
+
+  <p>
+    تقع الطبقة اللوغاريتمية D₂ مباشرة فوق الطبقة النسبية D₁،
+    وتحت الطبقات الأعلى مثل D₃ و Dₙ.
+  </p>
+
+  <div class="code-box">
+    $$ D_0,\; D_1,\; D_2,\; D_3,\; \dots,\; D_n $$
+  </div>
+
+  <p>
+    كلما صعدنا طبقة، أصبح التغيّر أكثر تجريدًا وأكثر تناسبًا مع
+    الظواهر المعقّدة.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill" href="/gossa-math/chapters.html">← العودة إلى فهرس الفصول</a>
+    <a class="btn-pill secondary" href="/gossa-math/chapters/chapters/chapter3.html">الفصل السابق: D₁</a>
+  </div>
+
+</div>
+
+</body>
+</html>
