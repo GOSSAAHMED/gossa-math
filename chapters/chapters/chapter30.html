@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الثلاثون – تطبيقات الحساب الهرمي في علم الأحياء | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل الثلاثون: تطبيقات الحساب الهرمي في علم الأحياء</h1>
+
+  <p>
+    في علم الأحياء، تتغيّر الأنظمة على <strong>طبقات</strong> متعددة:
+    من الجزيئات، إلى الخلايا، إلى الأنسجة، إلى الأعضاء، إلى الكائن الكامل،  
+    وكل طبقة لها <strong>إيقاع تغيّر</strong> مختلف.  
+    هذه البنية الطبقية تجعل الحساب الهرمي إطارًا طبيعيًا
+    لوصف الظواهر البيولوجية.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <h2>1. النمو الخلوي والنمو النسبي D₁</h2>
+
+  <p>
+    إذا كان عدد الخلايا \(N(t)\) ينمو بحيث يتناسب التغيّر
+    مع العدد الحالي (انقسام خلوي مثالي تقريبًا)،  
+    فإن النمو الطبيعي يكتب على طبقة المشتق النسبي:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 N = r
+    $$
+  </div>
+
+  <p>
+    أي أن النمو النسبي ثابت. الحل:
+  </p>
+
+  <div class="code-box">
+    $$
+    N(t) = N_0\, t^{r}
+    $$
+  </div>
+
+  <p>
+    هذا النموذج يناسب:
+  </p>
+
+  <ul>
+    <li>مزارع الخلايا في المختبر.</li>
+    <li>نمو بعض البكتيريا في المراحل الأولى.</li>
+    <li>تكاثر كائنات دقيقة في بيئة شبه مستقرة.</li>
+  </ul>
+
+  <div class="box">
+    هنا يظهر بوضوح دور <strong>D₁</strong> في وصف النمو
+    الذي تقوده النِّسَب، لا الفروق الخطية.
+  </div>
+
+  <h2>2. النمو اللوجستي الهرمي (سكان – بكتيريا – أورام)</h2>
+
+  <p>
+    النمو اللوجستي في علم الأحياء يصف:
+  </p>
+
+  <ul>
+    <li>نمو عدد السكان في بيئة محدودة.</li>
+    <li>نمو البكتيريا في وسط غذائي محدود.</li>
+    <li>نمو الأورام قبل الوصول إلى حجم مشبع.</li>
+  </ul>
+
+  <p>
+    النسخة الهرمية من النمو اللوجستي على طبقة D₁:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 P = r \left(1 - \frac{P}{K}\right)
+    $$
+  </div>
+
+  <p>
+    حيث:
+  </p>
+
+  <ul>
+    <li>\(P(t)\): عدد الأفراد/الخلايا.</li>
+    <li>\(r\): معدل النمو النسبي.</li>
+    <li>\(K\): السعة الحاملة (الحد الأعلى للسكان).</li>
+  </ul>
+
+  <p>
+    هذا النموذج يعبّر عن نمو نسبي يتباطأ تدريجيًا
+    مع اقتراب \(P\) من \(K\).
+  </p>
+
+  <h2>3. انتشار المرض والعدوى (D₁ على مستوى I(t))</h2>
+
+  <p>
+    في نماذج SIR الكلاسيكية، عدد المصابين \(I(t)\)
+    يتغير عادة حسب:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dI}{dt}
+    =
+    \beta S I - \gamma I
+    $$
+  </div>
+
+  <p>
+    في الحساب الهرمي، يمكن كتابة نموذج نسبي مبسط:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 I = \beta S(t) - \gamma
+    $$
+  </div>
+
+  <p>
+    أي أن <strong>النمو النسبي</strong> لعدد المصابين
+    يساوي الفرق بين معدل العدوى \(\beta S\)  
+    ومعدل الشفاء أو إزالة الإصابة \(\gamma\).
+  </p>
+
+  <div class="box">
+    هذه الصيغة تسهّل فهم مراحل الوباء:  
+    – عندما يكون \(\beta S &gt; \gamma\) ينمو I نسبيًا،  
+    – وعندما يصبح \(\beta S &lt; \gamma\) يبدأ I في الانخفاض.
+  </div>
+
+  <h2>4. تباطؤ التئام الجروح وتجدد الأنسجة (D₂)</h2>
+
+  <p>
+    عملية التئام الجروح قد تكون سريعة في البداية،
+    ثم تتباطأ بشكل واضح كلما اقتربنا من الشفاء الكامل.  
+    يمكن نمذجة مستوى شفاء الجرح \(H(t)\)
+    بمعادلة لوغاريتمية:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 H = k\left(1 - \frac{H}{H_{\max}}\right)
+    $$
+  </div>
+
+  <p>
+    هنا:
+  </p>
+
+  <ul>
+    <li>\(H(t)\): مستوى الشفاء (من 0 إلى \(H_{\max}\)).</li>
+    <li>\(k\): ثابت سرعيّة الشفاء اللوغاريتمي.</li>
+  </ul>
+
+  <p>
+    هذا النموذج يعكس:
+  </p>
+
+  <ul>
+    <li>شفاء سريع في البداية.</li>
+    <li>ثم تباطؤ لوغاريتمي شديد كلما اقترب مستوى الشفاء من \(H_{\max}\).</li>
+  </ul>
+
+  <h2>5. هرمية البنى الحيوية (من الجين إلى الكائن)</h2>
+
+  <p>
+    يمكن النظر إلى الكائن الحي على أنه سلسلة من الطبقات:
+  </p>
+
+  <div class="code-box">
+    $$
+    \text{جزيئات} \to \text{جينات} \to \text{خلايا} \to
+    \text{أنسجة} \to \text{أعضاء} \to \text{أنظمة} \to \text{كائن كامل}
+    $$
+  </div>
+
+  <p>
+    يمكن أن نعطي لكل طبقة متغيّرًا:
+  </p>
+
+  <div class="code-box">
+    $$
+    X_0, X_1, X_2, \dots, X_n
+    $$
+  </div>
+
+  <p>
+    ثم نكتب نظامًا هرميًا:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n X_n = F_n(X_0,X_1,\dots,X_n)
+    $$
+  </div>
+
+  <p>
+    بحيث تصف كل طبقة نوعًا مختلفًا من التغيّر
+    (نسبي، لوغاريتمي، فوق لوغاريتمي…) في مستوى معين.
+  </p>
+
+  <div class="box">
+    هذه الرؤية تفتح الباب لنموذج <strong>بيولوجيا هرمية</strong>  
+    يربط بين الجينات والسلوك الظاهري بلغة واحدة.
+  </div>
+
+  <h2>6. النمو السرطاني كنمو هرمي</h2>
+
+  <p>
+    الأورام السرطانية تمر بمراحل:
+  </p>
+
+  <ul>
+    <li>مرحلة نمو سريع (نسبي – D₁).</li>
+    <li>مرحلة تباطؤ بسبب محدودية الموارد (نمو لوجستي هرمي).</li>
+    <li>مرحلة معقدة قد تتطلب نماذج فوق لوغاريتمية أو مختلطة.</li>
+  </ul>
+
+  <p>
+    نموذج مبسط:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 T = r\left(1 - \frac{T}{K}\right) - \alpha C
+    $$
+  </div>
+
+  <p>
+    حيث:
+  </p>
+
+  <ul>
+    <li>\(T(t)\): حجم الورم.</li>
+    <li>\(C(t)\): تأثير العلاج (مثل العلاج الكيميائي).</li>
+    <li>\(\alpha\): معامل استجابة الورم للعلاج.</li>
+  </ul>
+
+  <p>
+    هذا النموذج يعبّر عن:
+  </p>
+
+  <ul>
+    <li>نمو نسبي لوجستي للورم.</li>
+    <li>مع تأثير علاجي يقتطع نسبيًا من هذا النمو.</li>
+  </ul>
+
+  <h2>7. نظم أحيائية متعددة الطبقات (D₀–D₁–D₂)</h2>
+
+  <p>
+    يمكن بناء نظام هرمي يجمع بين:
+  </p>
+
+  <ul>
+    <li>تغيّر خطي في تركيز مادة (D₀).</li>
+    <li>تغيّر نسبي في عدد الخلايا (D₁).</li>
+    <li>تغيّر لوغاريتمي في استجابة الجهاز المناعي (D₂).</li>
+  </ul>
+
+  <p>
+    مثال نوعي:
+  </p>
+
+  <div class="code-box">
+    $$
+    \begin{cases}
+    D_0 C = f(C,T) \\
+    D_1 T = g(C,T,I) \\
+    D_2 I = h(T,I)
+    \end{cases}
+    $$
+  </div>
+
+  <p>
+    حيث:
+  </p>
+
+  <ul>
+    <li>\(C\): تركيز دواء.</li>
+    <li>\(T\): عدد خلايا tumor أو population.</li>
+    <li>\(I\): مستوى استجابة مناعية.</li>
+  </ul>
+
+  <p>
+    الحساب الهرمي يسمح بوصف كل مستوى بالنوع
+    المناسب من المشتق: خطي، نسبي، لوغاريتمي.
+  </p>
+
+  <h2>8. خاتمة: نحو بيولوجيا هرمية</h2>
+
+  <div class="box">
+    <ul>
+      <li>النمو الخلوي والسكان يناسبه D₁ (النمو النسبي).</li>
+      <li>التباطؤ في الشفاء والعمليات الطويلة يناسبه D₂.</li>
+      <li>الطبقات الأعلى Dₙ قد تناسب نظمًا معقّدة جدًا
+          مثل الشبكات العصبية الحيوية أو البيئات متعددة الأنواع.</li>
+      <li>الحساب الهرمي يقدّم إطارًا موحدًا لوصف التغيّر البيولوجي
+          عبر جميع المقاييس، من الخلية إلى الكائن إلى المجتمع.</li>
+    </ul>
+  </div>
+
+  <p>
+    بهذا الفصل يكتمل قوس الكتاب من التأسيس الرياضي
+    إلى التطبيقات في الفيزياء والاقتصاد وعلم الأحياء،  
+    لتظهر <strong>نظرية الحساب الهرمي</strong> كنواة
+    لمنظومة جديدة في رياضيات التغيّر.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter29.html">← الفصل السابق: تطبيقات في الاقتصاد</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+  </div>
+
+</div>
+
+</body>
+</html>
