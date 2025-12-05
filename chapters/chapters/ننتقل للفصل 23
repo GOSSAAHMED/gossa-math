@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+ <title>الفصل الثالث والعشرون – معادلات هرميّة من الطبقة D₂ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل الثالث والعشرون: معادلات هرميّة من الطبقة الثانية D₂</h1>
+
+  <p>
+    في هذا الفصل ندرس المعادلات الهرمية التي تعتمد على  
+    <strong>المشتق اللوغاريتمي D₂</strong>.  
+    هذه المعادلات تصف الظواهر التي يتحدد تغيّرها من خلال  
+    <strong>اللوغاريتمات</strong> وليس القيم المباشرة،  
+    مما يجعلها مناسبة للنظم ذات التباطؤ العميق أو التوسع البطيء.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <h2>1. تعريف معادلة الطبقة الثانية</h2>
+
+  <p>
+    تُكتب المعادلة الهرمية من الطبقة الثانية بالشكل:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 y = F(x,y)
+    $$
+  </div>
+
+  <p>
+    وبما أن:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 y =
+    \frac{dy \cdot x\ln x}{dx \cdot y\ln y}
+    $$
+  </div>
+
+  <p>
+    فإن المعادلة تتخذ الصورة التفاضلية:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dy}{dx}
+    =
+    F(x,y)\,\frac{y\ln y}{x\ln x}
+    $$
+  </div>
+
+  <p>
+    وهي تختلف عن معادلات D₀ و D₁ لأن اللوغاريتم يدخل
+    في بنية التغيّر نفسها.
+  </p>
+
+  <h2>2. حالة خطية: D₂ y = k</h2>
+
+  <p>
+    عندما يكون:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 y = k
+    $$
+  </div>
+
+  <p>
+    فإن الحل يعتمد على:
+  </p>
+
+  <div class="code-box">
+    $$
+    \ln(\ln y)
+    =
+    k\,\ln(\ln x) + C
+    $$
+  </div>
+
+  <p>
+    أي:
+  </p>
+
+  <div class="code-box">
+    $$
+    y(x)
+    =
+    \exp\!\left(
+      C_1 (\ln x)^k
+    \right)
+    $$
+  </div>
+
+  <p>
+    وهي حلول لوغاريتمية–أسّية بطيئة التغيّر.
+  </p>
+
+  <h2>3. نموذج فيزيائي: تباطؤ حراري لوغاريتمي</h2>
+
+  <p>
+    إذا كانت درجة الحرارة \(T\) تنخفض حسب:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 T = -\alpha
+    $$
+  </div>
+
+  <p>
+    فإن الحل:
+  </p>
+
+  <div class="code-box">
+    $$
+    \ln(\ln T)
+    =
+    -\alpha \,\ln(\ln x) + C
+    $$
+  </div>
+
+  <p>
+    يصف تباطؤًا حراريًا فوق خطي لكنه ليس نسبيًا.
+  </p>
+
+  <div class="box">
+    مثل هذه النماذج تستخدم في تحليل أنظمة التبريد البطيء  
+    وفي الفيزياء الحرارية الدقيقة.
+  </div>
+
+  <h2>4. نموذج اقتصادي: تباطؤ الربح</h2>
+
+  <p>
+    إذا كان الربح يتغير حسب:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 R = \frac{k}{\ln x}
+    $$
+  </div>
+
+  <p>
+    فإن الحل يأخذ صورة لوغاريتمية متداخلة،
+    مما يعكس سوقًا يتباطأ بعمق مع مرور الزمن.
+  </p>
+
+  <h2>5. نموذج بيولوجي: نمو بطيء جدًا</h2>
+
+  <p>
+    النمو الخاضع لـ D₂ يظهر في:
+  </p>
+
+  <ul>
+    <li>النمو البكتيري عند نقص الغذاء</li>
+    <li>الكائنات التي تعتمد على موارد تتناقص لوغاريتميًا</li>
+    <li>انتشار بطيء في الأنسجة</li>
+  </ul>
+
+  <p>
+    عندها يمكن كتابة النمو:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 P = r\left(1 - \frac{P}{K}\right)
+    $$
+  </div>
+
+  <p>
+    وهو نموذج لوجستي لكن على طبقة لوغاريتمية.
+  </p>
+
+  <h2>6. مقارنة بين معادلات D₁ و D₂</h2>
+
+  <div class="box">
+    <ul>
+      <li><strong>D₁:</strong> تغيّر نسبي → نمو أو تناقص سريع.</li>
+      <li><strong>D₂:</strong> تغيّر لوغاريتمي → تباطؤ واضح في السلوك.</li>
+    </ul>
+  </div>
+
+  <h2>7. الصيغة العامة لحل معادلات D₂</h2>
+
+  <p>
+    الحل العام يعتمد على تحويل معادلة D₂ إلى صيغة:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{1}{y\ln y}dy
+    =
+    F(x,y)\,
+    \frac{1}{x\ln x}dx
+    $$
+  </div>
+
+  <p>
+    ثم تكاملها كما فعلنا في الفصل 17.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter22.html">← الفصل السابق: معادلات الطبقة D₁</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter24.html">الفصل التالي: الأنظمة الهرمية المختلطة →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
