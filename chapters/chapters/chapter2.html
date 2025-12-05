@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<title>الفصل الثاني – المشتق التفاضلي D₀ | الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- MathJax -->
+<script id="MathJax-script" async
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+/* ===== نفس تصميم الفصل الأول بالكامل ===== */
+
+body {
+  margin: 0;
+  font-family: "Cairo", sans-serif;
+  background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+  color: #e5e7eb;
+  line-height: 1.9;
+}
+
+header {
+  background: rgba(15,23,42,0.9);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(148,163,184,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+header a {
+  text-decoration: none;
+  color: #e5e7eb;
+  margin-left: 1rem;
+}
+
+header a:hover { color: #f59e0b; }
+
+.main-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: rgba(15,23,42,0.7);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(148,163,184,0.25);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+h1 {
+  color: #fbbf24;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+h2 {
+  margin-top: 2.2rem;
+  border-right: 4px solid #f59e0b;
+  padding-right: 0.5rem;
+  font-size: 1.4rem;
+}
+
+p {
+  font-size: 1.05rem;
+  color: #d1d5db;
+}
+
+.code-box {
+  background: rgba(0,0,0,0.3);
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  border: 1px solid rgba(148,163,184,0.3);
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 2rem;
+  background: #fbbf24;
+  padding: 0.6rem 1.4rem;
+  color: #111;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background: #f59e0b;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ===== شريط علوي ===== -->
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<!-- ===== محتوى الفصل ===== -->
+<div class="main-container">
+
+<h1>الفصل الثاني: المشتق التفاضلي D₀ – الطبقة الصفرية</h1>
+
+<p>
+في الحساب الهرمي، يُعتبر المشتق التفاضلي التقليدي
+<strong>D₀</strong>
+هو الطبقة الأولى (أو الصفرية) من بنية المشتقات الهرمية.  
+وهو الأساس الذي تُبنى عليه الطبقات الأعلى مثل
+<strong>D₁</strong> النسبي  
+و <strong>D₂</strong> اللوغاريتمي  
+و <strong>Dₙ</strong> للرتب العليا.
+</p>
+
+<hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+<h2>1. تعريف المشتق التفاضلي D₀</h2>
+
+<p>
+المشتق التفاضلي كما نعرفه هو معدل التغيّر اللحظي للدالة:
+</p>
+
+<div class="code-box">
+  $$ D_0 y = \frac{dy}{dx} $$
+</div>
+
+<p>
+وهو يعبّر عن التغيّر <strong>الخطّي</strong> بين \(x\) و\(y\).
+أي عندما يتغير \(x\) قليلًا، يتغير \(y\) بنسبة ثابتة تقريبًا.
+</p>
+
+<h2>2. لماذا D₀ هو الطبقة الصفرية؟</h2>
+
+<p>
+في معظم الظواهر الطبيعية، العلاقة بين المتغيرات ليست خطية تمامًا.
+لكنّ <strong>D₀</strong> يبقى هو أبسط نموذج تغيّر،
+وهو يمثل الطبقة الأولى في الهرم لأنه:
+</p>
+
+<ul>
+  <li>لا يعتمد على نسب أو لوغاريتمات.</li>
+  <li>يعتمد فقط على الفروق الخطية.</li>
+  <li>هو الأساس الذي يستخدم في كل من D₁ وD₂ وDₙ.</li>
+</ul>
+
+<h2>3. العلاقة بين D₀ و D₁ (العلاقة الذهبية)</h2>
+
+<p>
+يظهر الارتباط بين الطبقة الصفرية والطبقة النسبية في الصيغة الذهبية:
+</p>
+
+<div class="code-box">
+$$ x \cdot D_0(y) = y \cdot D_1(y) $$
+</div>
+
+<p>
+وهذه العلاقة تُظهر كيف تُترجَم تغيّرات الطبقة الخطية إلى تغيّرات نسبية.
+</p>
+
+<h2>4. أمثلة تطبيقية على المشتق D₀</h2>
+
+<p> مثال 1: السرعة اللحظية لجسم متحرك: </p>
+
+<div class="code-box">
+  $$ v = \frac{dx}{dt} $$
+</div>
+
+<p> مثال 2: معدل تغيّر الحرارة، التراكيز الكيميائية، التيار الكهربائي… </p>
+
+<p>
+كل هذه الأمثلة تعتمد على تغيّر خطي وهو ما يُمثله D₀.
+</p>
+
+<h2>5. دور D₀ في الحساب الهرمي</h2>
+
+<p>
+بدون الطبقة الصفرية، لا يمكن تعريف الطبقات الأعلى.  
+حيث تعتمد <strong>كل مشتقات D₁ وD₂ وDₙ</strong> على D₀ في بُنيتها.
+</p>
+
+<hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+<a class="back-button" href="/gossa-math/chapters.html">← العودة إلى فهرس الفصول</a>
+
+</div>
+
+</body>
+</html>
