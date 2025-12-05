@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل السادس – المشتق فوق-فوق-اللوغاريتمي D₄ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    /* ===== نفس تصميم الفصول السابقة ===== */
+
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover {
+      color: #fbbf24;
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15, 23, 42, 0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #d1d5db;
+    }
+
+    .code-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .back-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .btn-pill:hover {
+      background: #f59e0b;
+      color: #111;
+    }
+
+    .btn-pill.secondary:hover {
+      border-color: #f59e0b;
+      color: #fbbf24;
+      background: rgba(15, 23, 42, 0.7);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== شريط علوي ===== -->
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<!-- ===== محتوى الفصل ===== -->
+<div class="main-container">
+
+  <h1>الفصل السادس: المشتق فوق-فوق-اللوغاريتمي D₄</h1>
+
+  <p>
+    في هذا الفصل نتابع صعود الهرم بعد <strong>D₃</strong> إلى الطبقة
+    الأعلى <strong>D₄</strong>، حيث يصبح التغيّر مرتبطًا بمستويات
+    أعمق من اللوغاريتمات المتداخلة.  
+    إذا عبّر D₂ عن تغيّر على مستوى <strong>\(\ln x\)</strong>،
+    وعبّر D₃ عن تغيّر على مستوى <strong>\(\ln(\ln x)\)</strong>،
+    فإن D₄ ينقلنا إلى مستوى <strong>\(\ln(\ln(\ln x))\)</strong>.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0;">
+
+  <h2>1. تعريف المشتق D₄</h2>
+
+  <p>يمتد البناء الهرمي ليعطي التعريف التالي:</p>
+
+  <div class="code-box">
+    $$
+    D_4 y =
+    \frac{
+      dy \cdot x \,\ln x \,\ln(\ln x)\,\ln(\ln(\ln x))
+    }{
+      dx \cdot y \,\ln y \,\ln(\ln y)\,\ln(\ln(\ln y))
+    }
+    $$
+  </div>
+
+  <p>
+    نلاحظ أن كل من \(x\) و\(y\) يمرّ عبر ثلاث مستويات من اللوغاريتم
+    داخل الضرب، مما يجعل هذه الطبقة قادرة على وصف تغيّرات
+    أبطأ وأعقد من الطبقات السابقة.
+  </p>
+
+  <h2>2. من D₃ إلى D₄</h2>
+
+  <p>
+    كما أن الانتقال من D₂ إلى D₃ تم عبر عامل يعتمد على
+    \(\ln(\ln x)\) و \(\ln(\ln y)\)، يمكن كتابة D₄ انطلاقًا من D₃
+    بإضافة عامل طبقة جديدة:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_4 y
+    = D_3 y \times
+    \frac{\ln(\ln(\ln x))}{\ln(\ln(\ln y))}
+    $$
+  </div>
+
+  <p>
+    هذا يوضّح البنية التكرارية للمشتقات الهرمية:
+    كل طبقة جديدة تضرب المشتق السابق بعامل يعتمد
+    على لوغاريتم جديد متداخل.
+  </p>
+
+  <h2>3. أمثلة نوعية على ظهور D₄</h2>
+
+  <p>
+    الطبقات العالية مثل D₄ لا تظهر عادة في الظواهر البسيطة،
+    بل في الأنظمة ذات التعقيد الشديد، مثل:
+  </p>
+
+  <ul>
+    <li>نماذج تطوّر في أزمنة كونية طويلة جدًّا.</li>
+    <li>أنظمة اجتماعية أو اقتصادية يتباطأ تغيّرها بشكل متزايد مع الحجم.</li>
+    <li>عمليات تكيّف طويلة الأمد تحتاج إلى وصف بطيء للغاية للتغيّر.</li>
+  </ul>
+
+  <h2>4. موضع D₄ داخل الهرم</h2>
+
+  <div class="code-box">
+    $$
+    D_0,\;
+    D_1,\;
+    D_2,\;
+    D_3,\;
+    D_4,\;
+    D_5,\;
+    \dots,\;
+    D_n
+    $$
+  </div>
+
+  <p>
+    يمكن النظر إلى D₄ بوصفه حلقة في سلسلة مفتوحة نحو الأعلى،
+    حيث لا يوجد حد نظري أقصى لعدد الطبقات، بل يتوقف الاختيار
+    على طبيعة الظاهرة التي نريد وصفها.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter5.html">← الفصل السابق: D₃</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter7.html">الفصل التالي: D₅ →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
