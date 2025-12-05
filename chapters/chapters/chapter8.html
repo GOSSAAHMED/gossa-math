@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الثامن – المشتق من الطبقة السادسة D₆ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover {
+      color: #fbbf24;
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #d1d5db;
+    }
+
+    .code-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .back-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover {
+      background: #f59e0b;
+      color: #111;
+    }
+
+    .btn-pill.secondary:hover {
+      border-color: #f59e0b;
+      color: #fbbf24;
+      background: rgba(15,23,42,0.7);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل الثامن: المشتق من الطبقة السادسة D₆</h1>
+
+  <p>
+    بعد وصولنا في الفصول السابقة إلى الطبقة الخامسة <strong>D₅</strong>، نكمل الآن
+    نحو طبقة أعمق: <strong>D₆</strong>.  
+    في هذه الطبقة يصبح التغيّر مرتبطًا بست مستويات متداخلة من اللوغاريتمات،
+    ما يجعل هذه الطبقة مناسبة للأنظمة ذات التغيّر البطيء جدًا جدًا.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0;">
+
+  <h2>1. تعريف المشتق D₆</h2>
+
+  <p>يمتد التعريف الهرمي المعتاد ليصل إلى:</p>
+
+  <div class="code-box">
+    $$
+    D_6 y =
+    \frac{
+      dy \cdot
+      x \,\ln x \,\ln(\ln x) \,\ln(\ln(\ln x)) \,
+      \ln(\ln(\ln(\ln x))) \,
+      \ln(\ln(\ln(\ln(\ln x))))
+    }{
+      dx \cdot
+      y \,\ln y \,\ln(\ln y) \,\ln(\ln(\ln y)) \,
+      \ln(\ln(\ln(\ln y))) \,
+      \ln(\ln(\ln(\ln(\ln y))))
+    }
+    $$
+  </div>
+
+  <p>
+    نلاحظ هنا ست طبقات متتالية من اللوغاريتم، مما يجعل D₆ أداة رياضية قوية
+    للغاية لوصف الأنظمة التي تتباطأ استجابتها مع الزمن أو الحجم.
+  </p>
+
+  <h2>2. العلاقة بين D₅ و D₆</h2>
+
+  <p>
+    كما اعتدنا في الطبقات السابقة، يمكن كتابة D₆ اعتمادًا على D₅ عبر
+    إضافة عامل لوغاريتمي جديد:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_6 y =
+    D_5 y \times
+    \frac{ \ln(\ln(\ln(\ln(\ln x)))) }
+         { \ln(\ln(\ln(\ln(\ln y)))) }
+    $$
+  </div>
+
+  <p>
+    هذا يعكس البنية الهرمية حيث كل طبقة هي تعديل دقيق للطبقة السابقة.
+  </p>
+
+  <h2>3. أمثلة على ظهور D₆ في النماذج</h2>
+
+  <ul>
+    <li>أنظمة كونية ذات تمدّد بطيء للغاية.</li>
+    <li>ديناميكيات بيولوجية تحتاج وقتًا طويلًا جدًا للتغيّر.</li>
+    <li>نماذج اجتماعية واقتصادية تصل لحالة ثبات تدريجي مع الزمن.</li>
+  </ul>
+
+  <p>
+    في هذه الحالات لا تكفي الطبقات D₃ أو D₄، بل نحتاج لطبقات أعلى مثل D₅ و D₆.
+  </p>
+
+  <h2>4. مكان D₆ داخل الهرم</h2>
+
+  <div class="code-box">
+    $$
+    D_0,\;
+    D_1,\;
+    D_2,\;
+    D_3,\;
+    D_4,\;
+    D_5,\;
+    D_6,\;
+    D_7,\;
+    \dots,\;
+    D_n
+    $$
+  </div>
+
+  <p>
+    هذا الفصل يمهّد الطريق للطبقات الأعلى مثل <strong>D₇</strong>،
+    وللفصل التاسع العام الذي يقدّم الصيغة الموحدة للمشتق الهرمي Dₙ.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter7.html">← الفصل السابق: D₅</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter9.html">الفصل التالي: D₇ →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
