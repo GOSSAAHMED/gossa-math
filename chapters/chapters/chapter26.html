@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل السادس والعشرون – حلول تحليلية متقدمة للمعادلات الهرمية | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل السادس والعشرون: حلول تحليلية متقدمة للمعادلات الهرمية</h1>
+
+  <p>
+    في هذا الفصل نطوّر تقنيات تحليلية متقدمة لحل المعادلات الهرمية  
+    من الطبقات <strong>D₀, D₁, D₂, Dₙ</strong>،  
+    مع التركيز على الأفكار العامة بدلاً من التفاصيل التقنية فقط.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <h2>1. تغيير المتغيّر إلى متغيّر هرمي</h2>
+
+  <p>
+    أول أداة قوية هي تغيير المتغيّر من <strong>y</strong> إلى أحد:
+  </p>
+
+  <div class="code-box">
+    $$
+    u = L_m(y)
+    $$
+  </div>
+
+  <p>
+    حيث:
+  </p>
+
+  <ul>
+    <li>\(L_0(y) = y\)</li>
+    <li>\(L_1(y) = \ln y\)</li>
+    <li>\(L_2(y) = \ln(\ln y)\)</li>
+    <li>\(L_3(y) = \ln(\ln(\ln y))\)، وهكذا…</li>
+  </ul>
+
+  <p>
+    الفكرة هي اختيار m بحيث تصبح المعادلة أبسط في المتغيّر u،
+    ثم نعود إلى y باستعمال الدالة العكسية \(L_m^{-1}\).
+  </p>
+
+  <div class="box">
+    مثال: في المعادلات من النوع D₂، يكون الاختيار الطبيعي هو  
+    \(u = \ln(\ln y)\)،  
+    وفي المعادلات من النوع D₃ نختار غالبًا  
+    \(u = \ln(\ln(\ln y))\).
+  </div>
+
+  <h2>2. تحويل معادلة Dₙ إلى معادلة في Lₙ(y)</h2>
+
+  <p>
+    إذا كانت المعادلة:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n y = F(x)
+    $$
+  </div>
+
+  <p>
+    فإن مبدأ التكامل الهرمي يعطي:
+  </p>
+
+  <div class="code-box">
+    $$
+    L_n(y)
+    =
+    \int
+    F(x)\,
+    \frac{dx}{
+      \prod_{k=0}^{n-1} L_k(x)
+    }
+    + C
+    $$
+  </div>
+
+  <p>
+    أي أننا حللنا المعادلة مباشرة في المتغيّر الهرمي \(L_n(y)\).
+  </p>
+
+  <p>
+    بعد إيجاد \(L_n(y)\) نعود إلى y عبر:
+  </p>
+
+  <div class="code-box">
+    $$
+    y(x)
+    =
+    L_n^{-1}
+    \left(
+      \int
+      F(x)\,
+      \frac{dx}{
+        \prod_{k=0}^{n-1} L_k(x)
+      }
+      + C
+    \right)
+    $$
+  </div>
+
+  <h2>3. حلول على شكل متسلسلات هرمية</h2>
+
+  <p>
+    في بعض الحالات لا يكون التكامل السابق سهلًا،  
+    فنلجأ إلى حلول على شكل متسلسلات في متغيّر هرمي مثل:
+  </p>
+
+  <div class="code-box">
+    $$
+    y(x)
+    =
+    \sum_{k=0}^{\infty}
+    a_k \,
+    \big( L_1(x) \big)^k
+    $$
+  </div>
+
+  <p>
+    أو:
+  </p>
+
+  <div class="code-box">
+    $$
+    y(x)
+    =
+    \sum_{k=0}^{\infty}
+    b_k \,
+    \big( L_2(x) \big)^k
+    $$
+  </div>
+
+  <p>
+    هذه المتسلسلات تشبه سلاسل تايلور،  
+    لكنها مبنية على اللوغاريتمات المتكررة بدلاً من (x - a).
+  </p>
+
+  <h2>4. حلول تقريبية (Asymptotic) للطبقات العليا</h2>
+
+  <p>
+    عندما يكون x كبيرًا جدًا،  
+    يمكن استخدام سلوك اللوغاريتمات:
+  </p>
+
+  <div class="code-box">
+    $$
+    \ln x \ll x, \quad
+    \ln(\ln x) \ll \ln x, \quad
+    \dots
+    $$
+  </div>
+
+  <p>
+    هذا يسمح ببناء تقريب طبقي:
+  </p>
+
+  <ul>
+    <li>نبدأ بالطبقة الأعلى (مثلاً D₃).</li>
+    <li>نقرّب المتغيّرات باستخدام لوغاريتمات كبيرة أو صغيرة.</li>
+    <li>ثم ننزل تدريجيًا إلى الطبقات الأدنى.</li>
+  </ul>
+
+  <div class="box">
+    مثل هذه التقرِبيات مفيدة في الفيزياء الكونية  
+    وفي تحليل التعقيد الحسابي للخوارزميات.
+  </div>
+
+  <h2>5. الربط بالمعادلات التفاضلية الكلاسيكية</h2>
+
+  <p>
+    من خلال تحويل Dₙ إلى D₀،  
+    يمكن في كثير من الحالات التعرف على معادلات كلاسيكية  
+    معروفة (مثل معادلات من نوع Bernoulli أو Cauchy أو Euler)،  
+    ثم استخدام حلولها المعروفة.
+  </p>
+
+  <p>
+    مثال بسيط: معادلة من النوع:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y = k y
+    $$
+  </div>
+
+  <p>
+    تتحول إلى:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dy}{dx}
+    =
+    k\,\frac{y^2}{x}
+    $$
+  </div>
+
+  <p>
+    وهي معادلة من نوع Bernoulli في الصورة الكلاسيكية،  
+    يمكن حلها بطرق ODE القياسية.
+  </p>
+
+  <h2>6. مبدأ "أعلى طبقة أولًا" في الأنظمة</h2>
+
+  <p>
+    في الأنظمة المختلطة مثل:
+  </p>
+
+  <div class="code-box">
+    $$
+    \begin{cases}
+    D_2 z = h(x,z) \\
+    D_1 y = g(x,y,z) \\
+    D_0 x = 1
+    \end{cases}
+    $$
+  </div>
+
+  <p>
+    المبدأ العام هو:
+  </p>
+
+  <div class="box">
+    <strong>ابدأ بحل المتغير الواقع على أعلى طبقة هرميّة،</strong>  
+    ثم انزل خطوة خطوة إلى المتغيّرات في الطبقات الأدنى.
+  </div>
+
+  <p>
+    لأن سلوك الطبقات العليا يحدد تقريبًا "الإطار"  
+    الذي تتطور فيه الطبقات الأدنى.
+  </p>
+
+  <h2>7. نحو نظرية كاملة للحلول الهرمية</h2>
+
+  <p>
+    المبادئ السابقة تشكل بداية نظرية حلّ عامة للمعادلات الهرمية،  
+    يمكن لاحقًا توسيعها إلى:
+  </p>
+
+  <ul>
+    <li>معادلات جزئية هرميّة (Hierarchical PDE).</li>
+    <li>أنظمة في الفضاءات الوظيفية.</li>
+    <li>ربط مع التحليل المركب والحساب الكسري (Fractional Calculus).</li>
+  </ul>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter25.html">← الفصل السابق: مبادئ حل المعادلات الهرمية</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter27.html">الفصل التالي: حلول عددية وخوارزميات حاسوبية →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
