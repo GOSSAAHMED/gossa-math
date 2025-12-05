@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الحادي والعشرون – مدخل إلى المعادلات الهرمية | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل الحادي والعشرون: مدخل إلى المعادلات الهرمية</h1>
+
+  <p>
+    بعد بناء المشتقات والمتسلسلات والتكاملات الهرمية،  
+    نصل الآن إلى المستوى الطبيعي التالي:
+    <strong>المعادلات الهرمية</strong>.  
+    هذه المعادلات تعمّم المعادلات التفاضلية الكلاسيكية بحيث
+    تعتمد على المشتقات:
+    <strong>D₀, D₁, D₂, \dots, Dₙ</strong>
+    بدل الاعتماد على D₀ وحده.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <h2>1. من المعادلة التفاضلية إلى المعادلة الهرمية</h2>
+
+  <p>
+    المعادلة التفاضلية الكلاسيكية من الرتبة الأولى تكتب غالبًا بالشكل:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_0 y = \frac{dy}{dx} = F(x,y)
+    $$
+  </div>
+
+  <p>
+    في الحساب الهرمي نسمح باستبدال D₀ بأي طبقة أخرى:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y = F_1(x,y),\quad
+    D_2 y = F_2(x,y),\quad
+    D_n y = F_n(x,y)
+    $$
+  </div>
+
+  <p>
+    هذه المعادلات لا تصف فقط "سرعة التغيّر"،  
+    بل تصف <strong>نوع التغيّر</strong>:
+    خطّي، نسبي، لوغاريتمي، فوق لوغاريتمي، وهكذا.
+  </p>
+
+  <h2>2. مثال: معادلة نمو نسبي من النوع D₁</h2>
+
+  <p>
+    لنفترض أن تعدادًا سكانيًا \(P(x)\) يخضع للمعادلة:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 P = k
+    $$
+  </div>
+
+  <p>
+    هذه معادلة هرميّة من الطبقة الأولى،
+    وتعني أن النمو النسبي ثابت.  
+    كما رأينا سابقًا، الحل يكون من الشكل:
+  </p>
+
+  <div class="code-box">
+    $$
+    P(x) = C\,x^{k}
+    $$
+  </div>
+
+  <p>
+    هنا المعادلة مكتوبة مباشرة بصيغة هرمية
+    بدل الصيغة الكلاسيكية:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dP}{dx} = \frac{k}{x}P
+    $$
+  </div>
+
+  <p>
+    إذن المعادلات الهرمية تسهّل التعبير عن طبيعة النمو.
+  </p>
+
+  <h2>3. مثال: معادلة تباطؤ لوغاريتمي من النوع D₂</h2>
+
+  <p>
+    إذا كان لدينا:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 y = -\alpha
+    $$
+  </div>
+
+  <p>
+    فهذا يعبّر عن نظام يتناقص بطريقة لوغاريتمية عميقة.  
+    من تعريف D₂:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 y
+    =
+    \frac{dy \cdot x\ln x}
+         {dx \cdot y\ln y}
+    $$
+  </div>
+
+  <p>
+    تعطي المعادلة المناظرة في صورة D₀،  
+    لكن الصيغة الهرمية تذكّرنا بطبيعة التغيّر:
+    أنه مرتبط بـ \(\ln x\) و \(\ln y\).
+  </p>
+
+  <h2>4. المعادلات الهرمية العامة من الرتبة n</h2>
+
+  <p>
+    في أبسط صورة، يمكن تعريف معادلة هرميّة من الرتبة n بـ:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n y = F_n(x,y)
+    $$
+  </div>
+
+  <p>
+    حيث قد يكون \(F_n\) دالة في x وفي y، وربما في
+    مشتقات أخرى أيضًا.  
+    باستخدام الصيغة العامة لـ Dₙ:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n y =
+    \frac{dy}{dx}
+    \cdot
+    \frac{
+      \prod_{k=0}^{n-1} L_k(x)
+    }{
+      \prod_{k=0}^{n-1} L_k(y)
+    }
+    $$
+  </div>
+
+  <p>
+    يمكن تحويل المعادلة إلى معادلة تفاضلية كلاسيكية،
+    لكن بقيم مختلفة تمامًا لهيكل التراكم.
+  </p>
+
+  <h2>5. مقارنة مفاهيمية بين الطبقات</h2>
+
+  <div class="box">
+    <ul>
+      <li><strong>معادلات D₀:</strong>  
+        تغيّر خطي في الزمن أو المتغيّر.</li>
+      <li><strong>معادلات D₁:</strong>  
+        تغيّر نسبي، نمو أو تناقص كنسبة من القيمة الحالية.</li>
+      <li><strong>معادلات D₂:</strong>  
+        تغيّر يتعلّق بلوغاريتم المتغيّرات.</li>
+      <li><strong>معادلات D₃:</strong>  
+        تغيّر فوق لوغاريتمي (log-log-log) بطيء للغاية.</li>
+      <li><strong>معادلات Dₙ:</strong>  
+        تغيّر على طبقة هرميّة عالية، مع لوغاريتمات متكررة من الدرجة n.</li>
+    </ul>
+  </div>
+
+  <h2>6. نحو نظام معادلات هرمي</h2>
+
+  <p>
+    يمكن أيضًا تعريف أنظمة من المعادلات الهرمية، مثل:
+  </p>
+
+  <div class="code-box">
+    $$
+    \begin{cases}
+      D_1 y_1 = F_1(x,y_1,y_2) \\
+      D_2 y_2 = F_2(x,y_1,y_2)
+    \end{cases}
+    $$
+  </div>
+
+  <p>
+    هذه الأنظمة تسمح بوصف تفاعل متغيرات
+    تقع على طبقات مختلفة من التغيّر:
+    متغيّر يغيّر نسبيًا، وآخر لوغاريتميًا، وهكذا.
+  </p>
+
+  <h2>7. خطة الفصول القادمة</h2>
+
+  <p>
+    في الفصول التالية نطوّر هذا المدخل إلى:
+  </p>
+
+  <ul>
+    <li>الفصل 22: معادلات هرميّة من النوع D₁ في الأحياء والاقتصاد.</li>
+    <li>الفصل 23: معادلات هرميّة من النوع D₂ في الفيزياء.</li>
+    <li>الفصل 24: أنظمة هرميّة مختلطة (D₀–D₁–D₂).</li>
+    <li>الفصل 25: مبادئ عامة لحل المعادلات الهرمية.</li>
+  </ul>
+
+  <p>
+    بذلك ينتقل الحساب الهرمي من كونه بناءً على مستوى الدوال فقط،
+    إلى كونه <strong>لغة كاملة للمعادلات</strong> في العلوم الطبيعية والإنسانية.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter20.html">← الفصل السابق: أمثلة على التكاملات الهرمية</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter22.html">الفصل التالي: معادلات هرميّة من الطبقة D₁ →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
