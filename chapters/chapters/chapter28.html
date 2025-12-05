@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الثامن والعشرون – تطبيقات الحساب الهرمي في الفيزياء | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل الثامن والعشرون: تطبيقات الحساب الهرمي في الفيزياء</h1>
+
+  <p>
+    في هذا الفصل نعرض نماذج فيزيائية يمكن صياغتها
+    بلغة <strong>المشتقات الهرمية D₀, D₁, D₂, Dₙ</strong>،  
+    مما يكشف كيف يمكن للحساب الهرمي أن يصبح إطارًا جديدًا
+    لوصف الظواهر الفيزيائية من الحركة الكلاسيكية إلى
+    المقاييس الكونية.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <h2>1. حركة جسيم تحت تأثير قوة نسبية (نمو D₁ في السرعة)</h2>
+
+  <p>
+    لنفترض جسيمًا كتلته \(m\) يتحرك على محور واحد،
+    وتكون قوة التأثير متناسبة مع سرعة الجسيم نسبيًا:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 v = -\gamma
+    $$
+  </div>
+
+  <p>
+    حيث \(v=v(t)\) سرعة الجسيم، و \(\gamma &gt; 0\) ثابت تباطؤ.
+  </p>
+
+  <p>
+    من تعريف المشتق النسبي:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 v =
+    \frac{dv \cdot t}{dt \cdot v}
+    $$
+  </div>
+
+  <p>
+    نحصل على:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{1}{v}\,dv = -\gamma\,\frac{1}{t}\,dt
+    $$
+  </div>
+
+  <p>
+    وبالتكامل:
+  </p>
+
+  <div class="code-box">
+    $$
+    \ln v = -\gamma \ln t + C
+    \quad\Rightarrow\quad
+    v(t) = C_1\, t^{-\gamma}
+    $$
+  </div>
+
+  <p>
+    أي أن السرعة تتناقص وفق قانون قوّي (Power Law)،
+    وهذا نموذج لحركة مع تباطؤ نسبي بدل التباطؤ الخطي.
+  </p>
+
+  <div class="box">
+    في مثل هذه النماذج، القوّة لا تعتمد فقط على v أو t
+    بل على النسبة بينهما، وهذا ما يلتقطه المشتق الهرمي D₁.
+  </div>
+
+  <h2>2. نموذج جاذبية هرمية على طبقة D₁</h2>
+
+  <p>
+    في نموذج مبسّط، لنفترض أن عجلة الجاذبية الفعّالة \(g(r)\)
+    عند نصف قطر \(r\) تتغيّر نسبيًا مع البعد:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 g = -\alpha
+    $$
+  </div>
+
+  <p>
+    أي:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dg}{dr}\,\frac{r}{g} = -\alpha
+    \quad\Rightarrow\quad
+    \frac{1}{g}\,dg = -\alpha\,\frac{1}{r}\,dr
+    $$
+  </div>
+
+  <p>وبالتكامل:</p>
+
+  <div class="code-box">
+    $$
+    \ln g = -\alpha \ln r + C
+    \quad\Rightarrow\quad
+    g(r) = C_1\, r^{-\alpha}
+    $$
+  </div>
+
+  <p>
+    وهي صيغة عامة تسمح ببناء نماذج جاذبية على شكل قانون قوة،
+    مع إمكانية اختيار \(\alpha\) حسب طبيعة البنية (مجرّات، عناقيد…).
+  </p>
+
+  <h2>3. تباطؤ لوغاريتمي في نظام فيزيائي (طبقة D₂)</h2>
+
+  <p>
+    افترض أن طاقة نظام فيزيائي \(E(t)\) تتناقص تبعًا
+    لمعادلة من الطبقة اللوغاريتمية:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 E = -k
+    $$
+  </div>
+
+  <p>من تعريف المشتق اللوغاريتمي:</p>
+
+  <div class="code-box">
+    $$
+    D_2 E
+    =
+    \frac{dE \cdot t \ln t}
+         {dt \cdot E \ln E}
+    $$
+  </div>
+
+  <p>
+    نحصل على:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{1}{E\ln E}\,dE
+    =
+    -k \,\frac{1}{t\ln t}\,dt
+    $$
+  </div>
+
+  <p>وبتكامل الطرفين:</p>
+
+  <div class="code-box">
+    $$
+    \ln(\ln E)
+    =
+    -k\,\ln(\ln t) + C
+    $$
+  </div>
+
+  <p>
+    ومنه:
+  </p>
+
+  <div class="code-box">
+    $$
+    E(t) =
+    \exp\!\Big(
+      C_1\,(\ln t)^{-k}
+    \Big)
+    $$
+  </div>
+
+  <p>
+    هذا النوع من السلوك يمثّل تباطؤًا عميقًا في فقدان الطاقة،
+    أبطأ بكثير من التناقص النسبي أو الخطي.
+  </p>
+
+  <div class="box">
+    هذا النموذج قد يظهر في أنظمة فيزيائية ذات احتكاك
+    أو تبادل طاقة على مدى زمني كبير جدًا.
+  </div>
+
+  <h2>4. مقاييس كونية ولوغاريتمات متكررة</h2>
+
+  <p>
+    في علم الكونيات (Cosmology) كثيرًا ما نستخدم المقاييس:
+  </p>
+
+  <div class="code-box">
+    $$
+    a(t),\quad \ln a(t),\quad \ln(\ln a(t)),\dots
+    $$
+  </div>
+
+  <p>
+    يمكن أن نعتبر أن تطور عامل التمدد الكوني \(a(t)\) يخضع
+    لمعادلة من طبقة أعلى مثل D₂ أو D₃، أي:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 a = F(t),\quad
+    D_3 a = G(t)
+    $$
+  </div>
+
+  <p>
+    عندها تصبح اللوغاريتمات المتكررة جزءًا من التعريف المباشر
+    لطريقة توسّع الكون، وليس مجرد دوال مساعدة.
+  </p>
+
+  <h2>5. انتشار حراري هرمي (نموذج نوعي)</h2>
+
+  <p>
+    معادلة الانتشار الحراري الكلاسيكية (في بعد واحد) هي:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{\partial T}{\partial t}
+    =
+    \kappa \,\frac{\partial^2 T}{\partial x^2}
+    $$
+  </div>
+
+  <p>
+    في الحساب الهرمي يمكن تصور نماذج يكون فيها
+    التغير الزمني من طبقة نسبيّة أو لوغاريتمية، مثلاً:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 T
+    =
+    \kappa \,\frac{\partial^2 T}{\partial x^2}
+    $$
+  </div>
+
+  <p>
+    أو:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 T
+    =
+    \kappa \,\frac{\partial^2 T}{\partial x^2}
+    $$
+  </div>
+
+  <p>
+    مثل هذه النماذج تصف نظمًا يكون فيها انتشار الحرارة
+    خاضعًا لقوانين تباطؤ نسبي أو لوغاريتمي (مواد معقّدة،
+    أوساط غير متجانسة، نظم ذات ذاكرة طويلة).
+  </p>
+
+  <h2>6. طاقة في طبقات هرمية (سلاسل طاقة متعددة الطبقات)</h2>
+
+  <p>
+    في بعض أنظمة الفيزياء (مثل الأنظمة المضطربة أو الفوضوية)،
+    يمكن تصور أن الطاقة موزعة على طبقات هرمية من المقاييس:
+  </p>
+
+  <div class="code-box">
+    $$
+    E_0,\,E_1,\,E_2,\dots,E_n
+    $$
+  </div>
+
+  <p>
+    بحيث تصف كل طبقة \(E_n\) مستوى معيّنًا من البنية:
+    جزئيات، ذرات، نوى، بنى فوق ذرية، … إلخ.
+  </p>
+
+  <p>
+    يمكن عندها كتابة معادلات حركة على الشكل:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n E_n = F_n(E_0,E_1,\dots,E_n)
+    $$
+  </div>
+
+  <p>
+    وهذا يفتح الباب لنموذج فيزيائي هرمي للطاقة،
+    يجمع بين المقاييس الدقيقة والكبيرة بلغة واحدة.
+  </p>
+
+  <h2>7. رؤية عامة</h2>
+
+  <div class="box">
+    <ul>
+      <li>المشتق النسبي D₁ مناسب لقوانين قوة في الجاذبية والحركة.</li>
+      <li>المشتق اللوغاريتمي D₂ مناسب للتباطؤ العميق في الطاقة والحرارة.</li>
+      <li>المشتقات الأعلى D₃, Dₙ مناسبة للمقاييس الكونية والأزمنة الهائلة.</li>
+      <li>يمكن للحساب الهرمي أن يبني ديناميكا جديدة للفيزياء متعددة المقاييس.</li>
+    </ul>
+  </div>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter27.html">← الفصل السابق: الحلول العددية والخوارزميات</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter29.html">الفصل التالي: تطبيقات في الاقتصاد →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
