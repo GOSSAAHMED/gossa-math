@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل العشرون – أمثلة تطبيقية على التكاملات الهرمية | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+    }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل العشرون: أمثلة تطبيقية على التكاملات الهرمية</h1>
+
+  <p>
+    بعد بناء التكاملات <strong>D₀ و D₁ و D₂ و D₃ و Dₙ</strong>،  
+    نعرض الآن تطبيقات تظهر كيف تختلف النماذج عندما نعتمد
+    على طبقة معيّنة من التكامل الهرمي.  
+    فالتكاملات الهرمية لا تمثل مجرد عمليات حسابية،  
+    بل تصف طبيعة التراكم في الأنظمة المعقدة.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <h2>1. مثال من الفيزياء: تباطؤ الطاقة في نظام فوق لوغاريتمي</h2>
+
+  <p>
+    لنفترض أن مستوى طاقة جسم فيزيائي يتناقص بمعدل:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_3 E = -k
+    $$
+  </div>
+
+  <p>باستخدام نتائج التكامل D₃ نحصل على:</p>
+
+  <div class="code-box">
+    $$
+    \ln(\ln(\ln E)) = -k\,\ln(\ln(\ln t)) + C
+    $$
+  </div>
+
+  <p>
+    هذا يعني أن الطاقة <strong>لا تنخفض خطيًا ولا نسبيًا ولا لوغاريتميًا</strong>،  
+    بل تنخفض فوق لوغاريتميًا → تباطؤ شديد الوتيرة!
+  </p>
+
+  <div class="box">
+    تستخدم مثل هذه النماذج في الأنظمة الفلكية والبنى الكونية الكبرى.
+  </div>
+
+  <h2>2. مثال من الأحياء: نمو بطيء خاضع لطبقة D₂</h2>
+
+  <p>
+    كائن حي ينمو بحيث يكون:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 P = r
+    $$
+  </div>
+
+  <p>
+    الحل يعطي تعبيرًا يتضمن \( \exp(\ln x)^r \) وهو نمو أبطأ من النسبي،
+    لكنه أسرع من النمو فوق اللوغاريتمي.
+  </p>
+
+  <h2>3. مثال من الاقتصاد: رأسمال بنمو نسبي ولكن بتباطؤ على المدى البعيد</h2>
+
+  <p>
+    شركة لها معدل ربح نسبي ولكنه يتناقص لوغاريتميًا مع الزمن:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 C = \frac{k}{\ln t}
+    $$
+  </div>
+
+  <p>يعطي تكامل D₁ للحالة:</p>
+
+  <div class="code-box">
+    $$
+    C(t) = C_0\,t^{k/\ln t}
+    $$
+  </div>
+
+  <div class="box">
+    نموذج كهذا يصف اقتصاديات الأسواق المشبعة حين ينخفض معدل الربح تدريجيًا.
+  </div>
+
+  <h2>4. مثال تعليمي: مقارنة 4 طبقات من التكامل</h2>
+
+  <p>
+    إذا كانت لدينا الدالة:
+  </p>
+
+  <div class="code-box">
+    $$
+    F(x) = 1
+    $$
+  </div>
+
+  <p>فإن:</p>
+
+  <ul>
+    <li><strong>D₀-integral:</strong> \( y = x + C \)</li>
+    <li><strong>D₁-integral:</strong> \( y = C\,x \)</li>
+    <li><strong>D₂-integral:</strong> \( y = \exp(C\,\ln x) = x^C \)</li>
+    <li><strong>D₃-integral:</strong> \( y = \exp(\exp(C\,\ln(\ln x))) \)</li>
+  </ul>
+
+  <p>
+    نلاحظ هنا أن كل طبقة تغيّر <strong>بنية التراكم</strong> نفسها،
+    وليس الناتج فقط.
+  </p>
+
+  <h2>5. مثال عام: التكامل الهرمي Dₙ</h2>
+
+  <p>
+    إذا كان:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n y = F(x)
+    $$
+  </div>
+
+  <p>فإن الحل العام هو:</p>
+
+  <div class="code-box">
+    $$
+    y(x)
+    =
+    L_n^{-1}
+    \left[
+      \int F(x)\,
+      \frac{dx}{\prod_{k=0}^{n-1} L_k(x)}
+      + C
+    \right]
+    $$
+  </div>
+
+  <p>
+    هذا يضع الطبقات كلها في خط واحد من التجريد الرياضي.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter19.html">← الفصل السابق: التكامل الهرمي العام Dₙ</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter21.html">الفصل التالي: مدخل إلى المعادلات الهرمية →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
