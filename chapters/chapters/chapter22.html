@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الثاني والعشرون – معادلات هرميّة من الطبقة D₁ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل الثاني والعشرون: معادلات هرميّة من الطبقة الأولى D₁</h1>
+
+  <p>
+    في هذا الفصل ندرس المعادلات الهرمية التي تعتمد على المشتق النسبي  
+    <strong>D₁</strong> بدلاً من المشتق التقليدي <strong>D₀</strong>.  
+    هذه المعادلات تعبّر عن ظواهر يكون التغيّر فيها نسبيًا،  
+    أي يعتمد على <strong>النسبة</strong> وليس على الفارق الخطي.
+  </p>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <h2>1. تعريف المعادلة من النوع D₁</h2>
+
+  <p>
+    تُعرّف معادلة هرميّة من الطبقة الأولى بالصورة:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y = F(x,y)
+    $$
+  </div>
+
+  <p>
+    وبما أنّ:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y =
+    \frac{dy \cdot x}{dx \cdot y}
+    $$
+  </div>
+
+  <p>
+    فإن المعادلة تتحول إلى:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dy}{dx}
+    =
+    F(x,y)\,\frac{y}{x}
+    $$
+  </div>
+
+  <p>
+    وهذا يقدم معادلة تفاضلية جديدة لكن بتفسير نسبي.
+  </p>
+
+  <h2>2. حالة أساسية: D₁ y = k</h2>
+
+  <p>
+    المعادلة:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y = k
+    $$
+  </div>
+
+  <p>تعني أن النمو النسبي ثابت.</p>
+
+  <p>
+    الحل:
+  </p>
+
+  <div class="code-box">
+    $$
+    y(x) = C\,x^{k}
+    $$
+  </div>
+
+  <p>
+    هذه النتيجة هي نموذج <strong>Power Law</strong>،  
+    وهي أساس الكثير من الظواهر الطبيعية.
+  </p>
+
+  <h2>3. معادلة لوجستية هرميّة</h2>
+
+  <p>
+    النمو اللوجستي في النسخة الهرمية يكون من الشكل:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 P = r\left(1 - \frac{P}{K}\right)
+    $$
+  </div>
+
+  <p>
+    أي أن النمو نسبي، لكن نسبة النمو تتغير حسب اقتراب \(P\) من الحد \(K\).
+  </p>
+
+  <p>
+    تتحول إلى المعادلة:
+  </p>
+
+  <div class="code-box">
+    $$
+    \frac{dP}{dx}
+    =
+    r\left(1 - \frac{P}{K}\right)\frac{P}{x}
+    $$
+  </div>
+
+  <p>
+    وهي وصف دقيق لنمو الكائنات الحية في الحجوم الواسعة.
+  </p>
+
+  <h2>4. معادلة انتشار عدوى</h2>
+
+  <p>
+    إذا كان معدل الانتشار نسبيًا لعدد المصابين:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 I = \beta I
+    $$
+  </div>
+
+  <p>
+    فإن الحل:
+  </p>
+
+  <div class="code-box">
+    $$
+    I(x) = I_0\, x^{\beta}
+    $$
+  </div>
+
+  <p>
+    أي أنّ عدد المصابين يتغيّر بطريقة نسبيّة حسب الزمن أو أي متغير آخر.
+  </p>
+
+  <h2>5. مثال اقتصادي: الفائدة المركبة الهرمية</h2>
+
+  <p>
+    إذا كان رأس المال \(C\) ينمو بنسبة تعتمد على قيمته الحالية:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 C = r
+    $$
+  </div>
+
+  <p>
+    فإن الحل هو:
+  </p>
+
+  <div class="code-box">
+    $$
+    C(x) = C_0\,x^{r}
+    $$
+  </div>
+
+  <p>
+    وهو النمو المرتبط بنسبة الربح وليس بالمبلغ المضاف.
+  </p>
+
+  <h2>6. نظام هرمي مختلط من طبقة واحدة</h2>
+
+  <p>
+    يمكن كتابة نظام مكون من متغيرين كلاهما يخضع لنفس الطبقة:
+  </p>
+
+  <div class="code-box">
+    $$
+    \begin{cases}
+    D_1 y_1 = F(x,y_1,y_2) \\
+    D_1 y_2 = G(x,y_1,y_2)
+    \end{cases}
+    $$
+  </div>
+
+  <p>
+    هذه الأنظمة تصف تفاعلات ذات طبيعة نسبية متبادلة.
+  </p>
+
+  <h2>7. ما الذي يميز معادلات D₁؟</h2>
+
+  <div class="box">
+    <ul>
+      <li>تصف النمو بوصفه نسبة وليس زيادة خطية.</li>
+      <li>تظهر في الاقتصاد والأحياء والطب والانتشار الاجتماعي.</li>
+      <li>حلولها تأخذ غالبًا شكل قوانين قوة (Power Laws).</li>
+      <li>وهي أبسط الطبقات الهرمية بعد D₀.</li>
+    </ul>
+  </div>
+
+  <h2>8. الفصول القادمة</h2>
+
+  <p>سننتقل في الفصول التالية إلى:</p>
+
+  <ul>
+    <li>الفصل 23: معادلات من الطبقة D₂ (لوغاريتمية).</li>
+    <li>الفصل 24: أنظمة مختلطة بين D₀ و D₁ و D₂.</li>
+    <li>الفصل 25: مبادئ عامة لحل المعادلات الهرمية.</li>
+  </ul>
+
+  <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter21.html">← الفصل السابق: مدخل إلى المعادلات الهرمية</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter23.html">الفصل التالي: معادلات الطبقة D₂ →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
