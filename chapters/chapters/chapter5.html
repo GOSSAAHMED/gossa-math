@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الخامس – المشتق فوق-اللوغاريتمي D₃ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    /* ===== نفس تصميم بقية الفصول ===== */
+
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover {
+      color: #fbbf24;
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15, 23, 42, 0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #d1d5db;
+    }
+
+    .code-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .back-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .btn-pill:hover {
+      background: #f59e0b;
+      color: #111;
+    }
+
+    .btn-pill.secondary:hover {
+      border-color: #f59e0b;
+      color: #fbbf24;
+      background: rgba(15, 23, 42, 0.7);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== شريط علوي ===== -->
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<!-- ===== محتوى الفصل ===== -->
+<div class="main-container">
+
+  <h1>الفصل الخامس: المشتق فوق-اللوغاريتمي D₃ – التغيّر عبر طبقات أعمق</h1>
+
+  <p>
+    بعد أن عرفنا الطبقة اللوغاريتمية <strong>D₂</strong> التي تقيس التغيّر
+    عبر لوغاريتمات \(x\) و\(y\)، نصل الآن إلى الطبقة الأعلى:
+    <strong>D₃</strong> وهي طبقة <em>فوق-لوغاريتمية</em>.
+  </p>
+
+  <p>
+    في هذه الطبقة، لا نقيس التغيّر عبر \(x\) فقط، ولا عبر
+    \(\ln x\) فقط، بل عبر <strong>\(\ln(\ln x)\)</strong>.
+    أي أن التغيّر يصبح مرتبطًا بمستويات أعمق من التحوّل.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0;">
+
+  <h2>1. تعريف المشتق فوق-اللوغاريتمي D₃</h2>
+
+  <p>يأخذ D₃ الشكل الهرمي التالي:</p>
+
+  <div class="code-box">
+    $$
+    D_3 y =
+    \frac{
+      dy \cdot x \ln x \ln(\ln x)
+    }{
+      dx \cdot y \ln y \ln(\ln y)
+    }
+    $$
+  </div>
+
+  <p>
+    أي أن D₃ يبني على D₂ لكنه يضيف <strong>طبقة لوغاريتمية جديدة</strong>،
+    مما يجعله مناسبًا لوصف أنظمة تغيّر بطيئة جدًا أو تفاعلات تراكمية
+    معقدة.
+  </p>
+
+  <h2>2. لماذا نحتاج الطبقة D₃؟</h2>
+
+  <p>
+    تظهر الطبقة D₃ في الظواهر التي يكون فيها النمو أو التغيّر
+    بطيئًا جدًا بحيث لا يكفي قياسه بالنسب (D₁) أو اللوغاريتمات (D₂).
+  </p>
+
+  <ul>
+    <li>نماذج تطوّر تعتمد على مضاعفات زمنية واسعة.</li>
+    <li>ظواهر تتباطأ بمرور الزمن بشكل فوق-لوغاريتمي.</li>
+    <li>أنظمة معقّدة تزداد مقاومتها للتغيّر كلما توسّعت.</li>
+  </ul>
+
+  <h2>3. العلاقة بين D₂ و D₃</h2>
+
+  <p>
+    يمكن كتابة D₃ بصيغة تعتمد مباشرة على D₂:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_3 y = D_2 y \times
+    \frac{\ln(\ln x)}{\ln(\ln y)}
+    $$
+  </div>
+
+  <p>
+    وهذا يعكس الطبيعة الهرمية المتناسقة لهذه المشتقات.
+  </p>
+
+  <h2>4. بنية السلسلة الهرمية</h2>
+
+  <div class="code-box">
+    $$
+    D_0,\;
+    D_1,\;
+    D_2,\;
+    D_3,\;
+    D_4,\;
+    \dots,\;
+    D_n
+    $$
+  </div>
+
+  <p>
+    عند الانتقال من طبقة إلى أخرى، نلاحظ أن كل طبقة تضيف
+    مستوى جديدًا من التجريد، مما يسمح للنظرية بالتعامل
+    مع ظواهر أكثر تعقيدًا.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter4.html">← الفصل السابق: D₂</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter6.html">الفصل التالي: D₄ →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
