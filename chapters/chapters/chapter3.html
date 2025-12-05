@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الثالث – المشتق النسبي D₁ | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    /* ===== نفس تصميم الفصلين 1 و 2 ===== */
+
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover {
+      color: #f59e0b;
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2.2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #d1d5db;
+    }
+
+    .code-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .back-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .btn-pill:hover {
+      background: #f59e0b;
+      color: #111;
+    }
+
+    .btn-pill.secondary:hover {
+      border-color: #f59e0b;
+      color: #fbbf24;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    ul {
+      padding-right: 1.4rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== شريط علوي ===== -->
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<!-- ===== محتوى الفصل ===== -->
+<div class="main-container">
+
+  <h1>الفصل الثالث: المشتق النسبي D₁ – التغيّر كنمو نسبي</h1>
+
+  <p>
+    في هذا الفصل ننتقل من الطبقة الصفرية <strong>D₀</strong> التي تعبّر عن
+    التغيّر الخطي، إلى الطبقة الأولى <strong>D₁</strong> التي تعبّر عن
+    <strong>التغيّر النسبي</strong>.  
+    الفكرة الأساسية هي أن بعض الظواهر لا تتحدد بقيمة
+    <em>كم تغيّرنا؟</em> بل بقيمة <em>كم تغيّرنا نسبةً إلى ما كان موجودًا؟</em>
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+  <h2>1. تعريف المشتق النسبي D₁</h2>
+
+  <p>
+    المشتق النسبي لـ \(y\) بالنسبة إلى \(x\) يُعرّف في الحساب الهرمي بالصورة:
+  </p>
+
+  <div class="code-box">
+    $$ D_1 y = \frac{dy \cdot x}{dx \cdot y} $$
+  </div>
+
+  <p>
+    أي أنه يقيس <strong>نسبة تغيّر \(y\)</strong> إلى قيمته،
+    بالمقارنة مع <strong>نسبة تغيّر \(x\)</strong> إلى قيمته.  
+    لذا يمكن أن نقرأه على أنه:
+  </p>
+
+  <div class="code-box">
+    $$ D_1 y \approx
+      \frac{\text{النمو النسبي لـ } y}{\text{النمو النسبي لـ } x} $$
+  </div>
+
+  <p>
+    عندما يكون <strong>D₁ ثابتًا</strong>، فهذا يعني أن
+    \(y\) ينمو (أو يتناقص) كنسبة ثابتة بالنسبة إلى \(x\)،
+    وهذا هو جوهر النمو الأسّي.
+  </p>
+
+  <h2>2. العلاقة الذهبية بين D₀ و D₁</h2>
+
+  <p>
+    في الحساب الهرمي توجد علاقة مركزية تربط بين الطبقة التفاضلية
+    والطبقة النسبية، وهي:
+  </p>
+
+  <div class="code-box">
+    $$ x \cdot D_0(y) = y \cdot D_1(y) $$
+  </div>
+
+  <p>
+    هذه العلاقة تسمح لنا بالانتقال من صياغة بالـ <strong>D₀</strong>
+    إلى صياغة مكافئة بـ <strong>D₁</strong>، والعكس بالعكس.  
+    ولذلك تُسمّى غالبًا <strong>العلاقة الذهبية</strong> في الحساب الهرمي.
+  </p>
+
+  <h2>3. مثال: النمو الأسّي</h2>
+
+  <p>
+    لنفترض أن دالة \(y(x)\) تحقق:
+  </p>
+
+  <div class="code-box">
+    $$ D_1 y = k \quad \text{(ثابت)} $$
+  </div>
+
+  <p>
+    باستخدام العلاقة الذهبية نحصل على:
+  </p>
+
+  <div class="code-box">
+    $$ x \cdot D_0(y) = y \cdot k
+      \;\Rightarrow\;
+      D_0(y) = \frac{k}{x}\, y $$
+  </div>
+
+  <p>
+    وهذه معادلة تفاضلية من النوع:
+  </p>
+
+  <div class="code-box">
+    $$ \frac{dy}{dx} = \frac{k}{x} y $$
+  </div>
+
+  <p>
+    بحلّها نحصل على:
+  </p>
+
+  <div class="code-box">
+    $$ y(x) = C\, x^{k} $$
+  </div>
+
+  <p>
+    أي أن دالة ذات مشتق نسبي ثابت هي <strong>دالة قوّية (power law)</strong>,
+    وهذا مثال بسيط يوضّح كيف يترجم <strong>D₁</strong>
+    إلى سلوك أسّي أو قوّي في \(y\) بالنسبة إلى \(x\).
+  </p>
+
+  <h2>4. أمثلة من الحياة والعلوم</h2>
+
+  <ul>
+    <li>النمو السكاني عندما يكون النمو نسبةً إلى عدد السكان الحالي.</li>
+    <li>الفائدة المركّبة في المال، حيث الزيادة تعتمد على الرصيد الحالي.</li>
+    <li>انتشار عدوى مرضية يعتمد على عدد المصابين الحالي.</li>
+  </ul>
+
+  <p>
+    في كل هذه الحالات، يكون القياس النسبي للتغيّر أكثر طبيعية من القياس
+    الخطي، ولذلك يصبح <strong>D₁</strong> أداة مناسبة لوصفها.
+  </p>
+
+  <h2>5. مكان D₁ في الهرم</h2>
+
+  <p>
+    الطبقة الأولى <strong>D₁</strong> تقع مباشرة فوق الطبقة الصفرية <strong>D₀</strong>،
+    وتحت الطبقة اللوغاريتمية <strong>D₂</strong>.  
+    في الفصول التالية سنرى كيف يتعامد هذا الهرم من:
+  </p>
+
+  <div class="code-box">
+    $$ D_0, \; D_1, \; D_2, \; \dots, \; D_n $$
+  </div>
+
+  <p>
+    بحيث يصف كل مشتق نوعًا مختلفًا من التغيّر:
+    خطي، نسبي، لوغاريتمي، وهكذا صعودًا في السلم.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill" href="/gossa-math/chapters.html">← العودة إلى فهرس الفصول</a>
+    <a class="btn-pill secondary" href="/gossa-math/chapters/chapters/chapter2.html">الفصل السابق: D₀</a>
+  </div>
+
+</div>
+
+</body>
+</html>
