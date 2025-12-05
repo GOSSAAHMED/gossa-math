@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الخامس عشر – مقدّمة إلى التكاملات الهرمية | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000);
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    header {
+      background: rgba(15,23,42,0.9);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-left: 1rem;
+    }
+
+    header a:hover { color: #fbbf24; }
+
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(15,23,42,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-right: 4px solid #f59e0b;
+      padding-right: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    p { font-size: 1.05rem; color: #d1d5db; }
+
+    .code-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    ul { padding-right: 1.3rem; }
+
+    .back-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      display: inline-block;
+      background: #fbbf24;
+      padding: 0.55rem 1.4rem;
+      color: #111;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-pill.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .btn-pill:hover { background: #f59e0b; color: #111; }
+
+    .btn-pill.secondary:hover {
+      background: rgba(15,23,42,0.7);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/gossa-math/">الرئيسية</a>
+  <a href="/gossa-math/chapters.html">الكتاب</a>
+</header>
+
+<div class="main-container">
+
+  <h1>الفصل الخامس عشر: مقدّمة إلى التكاملات الهرمية</h1>
+
+  <p>
+    بعد أن اكتمل بناء المشتقات الهرمية <strong>D₀, D₁, D₂, \dots, Dₙ</strong>,
+    نبدأ الآن في دراسة الجانب العكسي لها: <strong>التكاملات الهرمية</strong>.
+    تمامًا كما أن التكامل التقليدي هو العملية العكسية لـ D₀، يوجد أيضًا:
+  </p>
+
+  <ul>
+    <li>تكامل نسبي مقابل D₁،</li>
+    <li>تكامل لوغاريتمي مقابل D₂،</li>
+    <li>تكاملات هرمية أعلى مقابل Dₙ،</li>
+  </ul>
+
+  <p>
+    هذا الفصل هو مقدّمة عامة قبل الدخول في بناء كل طبقة من هذه الطبقات بالتفصيل.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 2rem 0;">
+
+  <h2>1. مراجعة: التكامل التقليدي</h2>
+
+  <p>
+    التكامل العادي هو العملية العكسية لـ D₀:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_0 y = \frac{dy}{dx}
+    \Rightarrow
+    y = \int D_0 y \, dx
+    $$
+  </div>
+
+  <p>
+    هذا التكامل يقوم بتجميع التغيّر الخطي في الدالة.
+  </p>
+
+  <h2>2. نحو تعريف التكامل النسبي</h2>
+
+  <p>
+    بما أنّ:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_1 y = \frac{dy \cdot x}{dx \cdot y}
+    $$
+  </div>
+
+  <p>
+    تصبح العملية العكسية له مرتبطة بـ:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int D_1 y \, \frac{y}{x}\, dx
+    $$
+  </div>
+
+  <p>
+    هذا التكامل يعيد إنتاج السلوك النسبي في الدالة، وسيتم تحديد
+    صيغة عامة له في الفصول اللاحقة.
+  </p>
+
+  <h2>3. التكامل اللوغاريتمي المقابل لـ D₂</h2>
+
+  <p>
+    عندما يكون المشتق:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_2 y =
+    \frac{dy \cdot x\ln x}
+         {dx \cdot y\ln y}
+    $$
+  </div>
+
+  <p>
+    يصبح التكامل العكسي مرتبطًا بمستويات لوغاريتمية:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int D_2 y \,
+    \frac{y\ln y}{x\ln x}\, dx
+    $$
+  </div>
+
+  <p>
+    وسنرى لاحقًا أن هذا النوع من التكامل مناسب جدًا للأنظمة
+    التي يتغير فيها السلوك تبعًا لـ \(\ln x\).
+  </p>
+
+  <h2>4. الفكرة العامة للتكامل الهرمي Dₙ</h2>
+
+  <p>
+    كما أن:
+  </p>
+
+  <div class="code-box">
+    $$
+    D_n y =
+    \frac{dy}{dx}
+    \cdot
+    \frac{
+      \prod_{k=0}^{n-1} L_k(x)
+    }{
+      \prod_{k=0}^{n-1} L_k(y)
+    }
+    $$
+  </div>
+
+  <p>
+    فإن التكامل المقابل لـ Dₙ يجب أن يكون من الشكل:
+  </p>
+
+  <div class="code-box">
+    $$
+    \int D_n y \cdot
+    \frac{
+      \prod_{k=0}^{n-1} L_k(y)
+    }{
+      \prod_{k=0}^{n-1} L_k(x)
+    } \, dx
+    $$
+  </div>
+
+  <p>
+    وهذه الصيغة تصبح أساس التكامل من الرتبة n التي سيتم تطويرها في الفصول التالية.
+  </p>
+
+  <h2>5. لماذا نحتاج تكاملات هرمية؟</h2>
+
+  <p>
+    التكامل التقليدي غير قادر على معالجة:
+  </p>
+
+  <ul>
+    <li>أنظمة النمو النسبي،</li>
+    <li>الفروق اللوغاريتمية،</li>
+    <li>التغيّرات البطيئة جدًا عبر الزمن،</li>
+    <li>الأنظمة التي تعتمد على سلسلة من التحويلات اللوغاريتمية.</li>
+  </ul>
+
+  <p>
+    بينما التكامل الهرمي يواكب طبيعة المشتقات الهرمية، ويمنح
+    تمثيلًا أدق للتراكم في الأنظمة المعقدة.
+  </p>
+
+  <h2>6. خطة الفصول القادمة</h2>
+
+  <p>سنخصص الفصول التالية لكل نوع من التكاملات:</p>
+
+  <ul>
+    <li>الفصل 16: التكامل النسبي المقابل لـ D₁</li>
+    <li>الفصل 17: التكامل اللوغاريتمي المقابل لـ D₂</li>
+    <li>الفصل 18: التكامل فوق اللوغاريتمي D₃</li>
+    <li>الفصل 19: التكامل العام من الرتبة Dₙ</li>
+  </ul>
+
+  <p>
+    وسيتم تقديم أمثلة تطبيقية من الفيزياء والاقتصاد لتحفيز الأسلوب الجديد.
+  </p>
+
+  <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 2rem 0;">
+
+  <div class="back-links">
+    <a class="btn-pill secondary" href="chapter14.html">← الفصل السابق: التقارب الهرمي</a>
+    <a class="btn-pill" href="/gossa-math/chapters.html">فهرس الفصول</a>
+    <a class="btn-pill secondary" href="chapter16.html">الفصل التالي: التكامل النسبي D₁ →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
