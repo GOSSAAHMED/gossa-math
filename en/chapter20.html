@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 20 – Applications in Physics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+
+    .example-box {
+      margin-top:1rem;
+      padding:0.9rem 1rem;
+      border-radius:10px;
+      background:rgba(90,110,180,0.12);
+      border:1px solid rgba(120,140,210,0.5);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals">Integrals</a>
+      <a href="index.html#applications" class="active">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 20
+    </div>
+
+    <h1>Chapter 20 – Applications in Physics</h1>
+
+    <p>
+      Physics provides many examples of processes that evolve on multiple
+      time and length scales. Classical calculus, based on the single derivative
+      \(D_0\), captures absolute rates of change.  
+      Hierarchical Calculus adds the relative and logarithmic derivatives
+      \(D_1, D_2, \dots\), which are well suited for phenomena with
+      scale–invariance, power–law dynamics and ultra–slow evolution.
+    </p>
+
+    <p>
+      In this chapter we present several illustrative applications:
+    </p>
+
+    <ul>
+      <li>relative motion and power–law damping,</li>
+      <li>ultra–slow relaxation on logarithmic time scales,</li>
+      <li>multi–scale transport where different levels dominate
+          different regimes.</li>
+    </ul>
+
+    <h2>20.1 Relative Motion and D₁</h2>
+
+    <p>
+      Consider a quantity \(x(t)\) (position, radius, energy…) evolving in time.
+      The classical velocity is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 x = \frac{dx}{dt}.
+      \]
+    </p>
+
+    <p>
+      The level–1 derivative of \(x\) with respect to time is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 x
+          = \frac{t}{x}\,\frac{dx}{dt}.
+      \]
+    </p>
+
+    <p>
+      This quantity measures how fast \(x\) changes per unit of <em>relative
+      time</em> and <em>relative state</em>: that is, the derivative of
+      \(\ln x\) with respect to \(\ln t\). Constant \(D_1 x\) corresponds to
+      a power–law relation between \(x\) and \(t\).
+    </p>
+
+    <div class="example-box">
+      <h3>Example 20.1 – Power-Law Expansion</h3>
+      <p>
+        Suppose a radius \(R(t)\) of a spherical shock grows according to
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_1 R(t) = k,
+        \]
+      </p>
+      <p>
+        where \(k\) is a constant. Solving this equation gives:
+      </p>
+      <p style="text-align:center;">
+        \[
+          R(t) = R_0 \left(\frac{t}{t_0}\right)^k,
+        \]
+      </p>
+      <p>
+        which is the standard power–law law often observed in blast waves
+        and self–similar fluid flows.  
+        Here the equation is written directly in terms of the relative derivative
+        \(D_1\), making the scale–invariance explicit.
+      </p>
+    </div>
+
+    <h2>20.2 Power-Law Damping and Energy Loss</h2>
+
+    <p>
+      In many dissipative systems the energy \(E(t)\) decays not exponentially
+      but as a power law. A simple hierarchical model is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 E(t) = -\alpha,
+      \]
+    </p>
+
+    <p>
+      with constant \(\alpha &gt; 0\). This equation reads:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{t}{E}\frac{dE}{dt} = -\alpha,
+      \]
+    </p>
+
+    <p>
+      and has the solution:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        E(t) = E_0 \left(\frac{t}{t_0}\right)^{-\alpha}.
+      \]
+    </p>
+
+    <p>
+      This describes a <strong>scale-free decay</strong> where no characteristic
+      time scale appears; every decade in time brings the same relative loss of
+      energy. Classical exponential models cannot capture this behaviour
+      naturally, while the \(D_1\) formulation does.
+    </p>
+
+    <div class="example-box">
+      <h3>Example 20.2 – Long-Time Tail in a Relaxation Process</h3>
+      <p>
+        Suppose a material relaxes after a sudden deformation. At short times the
+        stress may decay exponentially, but at long times experiments show a
+        power–law “tail”. Modelling the tail using
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_1 \sigma(t) = -\beta
+        \]
+      </p>
+      <p>
+        gives
+      </p>
+      <p style="text-align:center;">
+        \[
+          \sigma(t)
+            = \sigma_\infty + C \left(\frac{t}{t_0}\right)^{-\beta},
+        \]
+      </p>
+      <p>
+        where \(\sigma_\infty\) is a residual stress.  
+        The hierarchical derivative \(D_1\) thus offers a compact way to encode
+        power–law relaxation.
+      </p>
+    </div>
+
+    <h2>20.3 Ultra-Slow Relaxation and D₂</h2>
+
+    <p>
+      Some physical processes are even slower than power laws. Their evolution
+      depends on \(\ln t\) or \(\ln(\ln t)\). Examples include:
+    </p>
+
+    <ul>
+      <li>glassy relaxation and ageing,</li>
+      <li>creep of materials over astronomical times,</li>
+      <li>certain diffusion processes in disordered media.</li>
+    </ul>
+
+    <p>
+      The level–2 derivative with respect to time is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2 x(t)
+          = \frac{t \ln t}{x(t)\,\ln x(t)}\,\frac{dx}{dt}.
+      \]
+    </p>
+
+    <p>
+      Constant \(D_2 x\) corresponds to a relation where \(\ln(\ln x)\)
+      is linear in \(\ln(\ln t)\). This is suitable for <strong>ultra–slow
+      growth or decay</strong>.
+    </p>
+
+    <div class="example-box">
+      <h3>Example 20.3 – Double-Logarithmic Growth</h3>
+      <p>
+        Consider a domain size \(L(t)\) growing according to:
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_2 L(t) = \gamma,
+        \]
+      </p>
+      <p>
+        with constant \(\gamma&gt;0\). Then
+      </p>
+      <p style="text-align:center;">
+        \[
+          \ln(\ln L(t))
+            = \ln(\ln L_0)
+              + \gamma \,\ln\!\left(
+                   \frac{\ln t}{\ln t_0}
+                \right),
+        \]
+      </p>
+      <p>
+        so
+      </p>
+      <p style="text-align:center;">
+        \[
+          L(t)
+            = \exp\!\left(
+                \exp\!\left(
+                  \ln(\ln L_0)
+                  + \gamma\,
+                    \ln\!\left(
+                      \frac{\ln t}{\ln t_0}
+                    \right)
+                \right)
+              \right).
+        \]
+      </p>
+      <p>
+        This growth is extraordinarily slow: even huge changes in \(t\)
+        produce only modest changes in \(L\). Such models can describe
+        systems where rearrangements become rarer and rarer over time.
+      </p>
+    </div>
+
+    <h2>20.4 Hierarchical Time Scales</h2>
+
+    <p>
+      Many physical systems exhibit several distinct regimes:
+    </p>
+
+    <ul>
+      <li>an initial fast transient,</li>
+      <li>a power–law intermediate regime,</li>
+      <li>an ultra–slow asymptotic regime.</li>
+    </ul>
+
+    <p>
+      Hierarchical Calculus provides a natural language for these regimes:
+    </p>
+
+    <ul>
+      <li>\(D_0\)-models for fast, exponential-like dynamics,</li>
+      <li>\(D_1\)-models for scale-free, power-law behaviour,</li>
+      <li>\(D_2\)-models for logarithmically slow evolution.</li>
+    </ul>
+
+    <p>
+      A complete model might switch from one level to another as time grows, or
+      combine them in a single hierarchical differential equation with terms
+      involving \(D_0, D_1\) and \(D_2\).
+    </p>
+
+    <div class="example-box">
+      <h3>Example 20.4 – Three-Regime Relaxation Model</h3>
+      <p>
+        Let \(X(t)\) denote an observable (stress, magnetization, …). A simple
+        hierarchical model is:
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_0 X = -a_0 X
+          \quad (t \ll T_1),
+        \]
+        \[
+          D_1 X = -a_1
+          \quad (T_1 \ll t \ll T_2),
+        \]
+        \[
+          D_2 X = -a_2
+          \quad (t \gg T_2),
+        \]
+      </p>
+      <p>
+        where \(T_1, T_2\) mark crossovers between regimes.  
+        Each level has an analytic solution (exponential, power law, ultra–slow),
+        and matching conditions at \(T_1, T_2\) fix the constants.  
+        This illustrates how hierarchical derivatives describe multi–regime
+        dynamics in a unified way.
+      </p>
+    </div>
+
+    <h2>20.5 Spatial Scaling and Fields</h2>
+
+    <p>
+      Hierarchical derivatives can be applied not only to time but also to
+      spatial variables. For a field \(\phi(r)\) depending on a radius \(r\),
+      we can define:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(r)} \phi
+          = \frac{r}{\phi}\,\frac{d\phi}{dr},
+        \qquad
+        D_2^{(r)} \phi
+          = \frac{r\ln r}{\phi\,\ln\phi}\,\frac{d\phi}{dr},
+      \]
+    </p>
+
+    <p>
+      where the superscript \((r)\) indicates that the derivatives act with
+      respect to \(r\). These operators can model radial profiles with
+      power–law or ultra–slow variations, such as:
+    </p>
+
+    <ul>
+      <li>density profiles in astrophysics,</li>
+      <li>correlation functions decaying as powers of distance,</li>
+      <li>screening lengths growing slowly with system size.</li>
+    </ul>
+
+    <h2>20.6 Conceptual Role in Physics</h2>
+
+    <p>
+      The main ideas of this chapter can be summarized as follows:
+    </p>
+
+    <ul>
+      <li>\(D_0\) describes fast, absolute rates of change.</li>
+      <li>\(D_1\) captures scale–invariant power laws and relative dynamics.</li>
+      <li>\(D_2\) captures double–logarithmic, ultra–slow processes.</li>
+      <li>Physical systems often move from \(D_0\)-dominated regimes to
+          \(D_1\)- or \(D_2\)-dominated regimes at long times or large scales.</li>
+    </ul>
+
+    <p>
+      Hierarchical Calculus therefore acts as a bridge between classical
+      differential equations and the complex, multi–scale behavior observed in
+      real physical systems.
+    </p>
+
+    <h2>20.7 Summary of Chapter 20</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Introduced physical interpretations of \(D_1\) and \(D_2\)
+            in terms of relative and logarithmic time scales.</li>
+        <li>Modelled power–law expansion and damping using \(D_1\).</li>
+        <li>Modelled ultra–slow, double–logarithmic growth using \(D_2\).</li>
+        <li>Outlined multi–regime relaxation combining \(D_0, D_1\) and \(D_2\).</li>
+        <li>Discussed hierarchical derivatives with respect to spatial
+            variables.</li>
+      </ul>
+      <p>
+        These examples show how Hierarchical Calculus can be embedded into
+        physical modelling. In the next chapters we will explore similar ideas
+        in cosmology, biology, economics and other fields, where multi–scale
+        dynamics and ultra–slow evolution are equally important.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
