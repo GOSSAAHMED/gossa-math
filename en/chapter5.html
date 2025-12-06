@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 5 – The Differential Derivative D0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .lang-toggle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .lang-toggle a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.45);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.7rem;
+    }
+
+    h3 {
+      margin-top: 1.4rem;
+    }
+
+    .breadcrumb {
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .summary-box {
+      margin-top: 1.4rem;
+      padding: 1rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(255, 176, 46, 0.09);
+      border-radius: 8px;
+    }
+
+    ul, ol {
+      padding-left: 1.2rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding: 1.2rem;
+      text-align: center;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(58, 73, 120, 0.4);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {inlineMath: [['\\(', '\\)'], ['$', '$']]}
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-badge">H</div>
+        <div>
+          <div><strong>Hierarchical Calculus</strong></div>
+          <small style="color:var(--text-muted)">AHMED GOSSA</small>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#theory">Theory</a>
+        <a href="index.html#derivatives">Derivatives</a>
+        <a href="index.html#series">Series</a>
+        <a href="index.html#integrals">Integrals</a>
+        <a href="index.html#applications">Applications</a>
+        <a href="chapters.html" class="active">Chapters</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+      <div class="lang-toggle">
+        Language: العربية • <a href="chapter5.html">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="chapter-container">
+
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 5
+      </div>
+
+      <h1>Chapter 5 – The Differential Derivative D0</h1>
+
+      <p>
+        The differential derivative <strong>D<sub>0</sub></strong> is the base of the
+        entire hierarchical structure of derivatives. In this chapter we revisit the
+        classical derivative from the point of view of Hierarchical Calculus and clarify
+        its role as the <em>absolute</em> measure of change, from which all higher
+        hierarchical derivatives are built.
+      </p>
+
+      <h2>5.1 Definition of D<sub>0</sub></h2>
+
+      <p>
+        In Hierarchical Calculus we adopt the standard definition of the differential
+        derivative:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = \frac{dy}{dx}.
+        \]
+      </p>
+
+      <p>
+        More precisely, if \(y = f(x)\), then \(D_0 y\) is the limit
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x},
+        \]
+      </p>
+
+      <p>
+        whenever this limit exists. This is exactly the classical derivative
+        and measures the <strong>instantaneous rate of change</strong> of \(y\)
+        with respect to \(x\).
+      </p>
+
+      <h2>5.2 Geometric Meaning</h2>
+
+      <p>
+        Geometrically, \(D_0 y\) is the slope of the tangent line to the graph
+        of \(y = f(x)\) at a point:
+      </p>
+
+      <ul>
+        <li>If \(D_0 y &gt; 0\), the graph is increasing at that point.</li>
+        <li>If \(D_0 y &lt; 0\), the graph is decreasing.</li>
+        <li>If \(D_0 y = 0\), the graph is locally flat (critical point).</li>
+      </ul>
+
+      <p>
+        In Hierarchical Calculus, this slope is regarded as the
+        <strong>first layer of change</strong> in a hierarchy of deeper and more
+        refined measures of variation.
+      </p>
+
+      <h2>5.3 Algebraic Rules for D<sub>0</sub></h2>
+
+      <p>
+        The differential derivative satisfies the usual algebraic rules:
+      </p>
+
+      <h3>5.3.1 Linearity</h3>
+
+      <p>
+        For functions \(u(x)\) and \(v(x)\), and constants \(a, b\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 (a u + b v) = a\,D_0 u + b\,D_0 v.
+        \]
+      </p>
+
+      <h3>5.3.2 Product Rule</h3>
+
+      <p>
+        \[
+          D_0 (u v) = u\,D_0 v + v\,D_0 u.
+        \]
+      </p>
+
+      <h3>5.3.3 Quotient Rule</h3>
+
+      <p>
+        For \(v(x) \neq 0\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 \!\left(\frac{u}{v}\right)
+          = \frac{v\,D_0 u - u\,D_0 v}{v^2}.
+        \]
+      </p>
+
+      <h3>5.3.4 Chain Rule</h3>
+
+      <p>
+        If \(y = f(u)\) and \(u = g(x)\), then
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = \frac{dy}{dx} = \frac{dy}{du}\,\frac{du}{dx}.
+        \]
+      </p>
+
+      <p>
+        These rules remain valid within Hierarchical Calculus, since \(D_0\) is the
+        classical derivative.
+      </p>
+
+      <h2>5.4 D<sub>0</sub> and the Golden Relation</h2>
+
+      <p>
+        The central identity of Hierarchical Calculus is the
+        <strong>Golden Relation</strong>:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          x \, D_0(y) = y \, D_1(y).
+        \]
+      </p>
+
+      <p>
+        This equation links the absolute derivative \(D_0\) with the
+        relative derivative \(D_1\). Using the definition of \(D_1\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{dy \cdot x}{dx \cdot y},
+        \]
+      </p>
+
+      <p>
+        we see that \(D_1 y\) is essentially a rescaled version of \(D_0 y\):
+
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{x}{y} \, D_0 y.
+        \]
+      </p>
+
+      <p>
+        Thus, \(D_0\) serves as a <em>reference derivative</em>, and
+        higher hierarchical derivatives are obtained by multiplying \(D_0\) by
+        factors that encode scale and structure.
+      </p>
+
+      <h2>5.5 D<sub>0</sub> as the Base of the Hierarchy</h2>
+
+      <p>
+        In general, the \(n\)-th hierarchical derivative has the form
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y = \frac{L_n(x)}{L_n(y)} \, D_0 y,
+        \]
+      </p>
+
+      <p>
+        where \(L_n\) is the logarithmic ladder:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          L_0(x) = x,\quad
+          L_1(x) = \ln x,\quad
+          L_2(x) = \ln(\ln x),\quad \dots
+        \]
+      </p>
+
+      <p>
+        The key point is that <strong>every</strong> hierarchical derivative
+        \(D_n\) is constructed from \(D_0\) by a multiplicative factor that depends
+        on \(x\) and \(y\). This confirms the foundational role of the
+        differential derivative in the entire theory.
+      </p>
+
+      <h2>5.6 Examples of D<sub>0</sub> in the Hierarchical Context</h2>
+
+      <h3>5.6.1 Polynomials</h3>
+
+      <p>
+        Let \(y = x^k\), where \(k\) is a constant. Then
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = k x^{k-1}.
+        \]
+      </p>
+
+      <p>
+        The relative derivative is
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{x}{y} D_0 y
+                = \frac{x}{x^k} \cdot k x^{k-1}
+                = k,
+        \]
+      </p>
+
+      <p>
+        a constant. Thus, for power laws, \(D_1\) measures a fixed proportional
+        rate of change, while \(D_0\) still varies with \(x\).
+      </p>
+
+      <h3>5.6.2 Exponential Functions</h3>
+
+      <p>
+        Let \(y = e^{ax}\). Then
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = a e^{ax} = a y.
+        \]
+      </p>
+
+      <p>
+        The derivative is directly proportional to the function itself.
+        In hierarchical terms, \(D_0\) already behaves “relatively”
+        for exponentials, and higher derivatives like \(D_1\) and \(D_2\)
+        refine this behavior further.
+      </p>
+
+      <h3>5.6.3 Logarithmic Functions</h3>
+
+      <p>
+        Let \(y = \ln x\). Then
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = \frac{1}{x}.
+        \]
+      </p>
+
+      <p>
+        This is a classical example of a function whose change decreases
+        with scale. In a hierarchical framework, logarithmic functions
+        are naturally associated with higher levels \(D_1, D_2,\dots\),
+        but their base behavior is still encoded by \(D_0\).
+      </p>
+
+      <h2>5.7 Summary of Chapter 5</h2>
+
+      <div class="summary-box">
+        <p><strong>In this chapter we:</strong></p>
+        <ul>
+          <li>Reintroduced the classical derivative as the differential derivative \(D_0\).</li>
+          <li>Reviewed its geometric and algebraic properties.</li>
+          <li>Explained how the Golden Relation links \(D_0\) to the relative derivative \(D_1\).</li>
+          <li>Showed that every hierarchical derivative \(D_n\) is built from \(D_0\)
+              via the logarithmic ladder \(L_n(x)\).</li>
+          <li>Illustrated \(D_0\) with polynomial, exponential and logarithmic examples
+              in the hierarchical context.</li>
+        </ul>
+        <p>
+          The differential derivative \(D_0\) is therefore the
+          <em>foundation</em> of Hierarchical Calculus: it is the first step
+          in measuring change, upon which all higher layers of the hierarchy are constructed.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © AHMED GOSSA – Hierarchical Calculus
+  </footer>
+
+</body>
+</html>
