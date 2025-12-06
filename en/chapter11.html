@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 11 – Hierarchical Integrals (Introduction)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+    }
+
+    h2 { margin-top:2rem; border-left:4px solid var(--accent); padding-left:0.7rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals" class="active">Integrals</a>
+      <a href="index.html#applications">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 11
+    </div>
+
+    <h1>Chapter 11 – Hierarchical Integrals (Introduction)</h1>
+
+    <p>
+      In earlier chapters, Hierarchical Calculus introduced derivatives
+      \(D_0, D_1, D_2, \dots, D_n\) as progressively deeper measures of change.
+      The natural next step is to introduce their inverses:
+      the <strong>hierarchical integrals</strong>.
+    </p>
+
+    <h2>11.1 Why Hierarchical Integrals?</h2>
+
+    <p>
+      Classical integration inverts only the absolute derivative \(D_0\).
+      But hierarchical derivatives modify the rate of change through scale
+      factors like \(x\), \(\ln x\), \(\ln(\ln x)\), etc.
+    </p>
+
+    <p>
+      Therefore, each derivative level needs its own inverse operator:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_0,\; \mathcal{I}_1,\; \mathcal{I}_2,\; \dots
+      \]
+    </p>
+
+    <h2>11.2 What Does a Hierarchical Integral Do?</h2>
+
+    <p>
+      At level \(n\), the integral operator must satisfy:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_n(D_n y) = y + C_n.
+      \]
+    </p>
+
+    <p>
+      For \(n=0\):
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_0(D_0 y) = y + C.
+      \]
+    </p>
+
+    <h2>11.3 Inverting D₁</h2>
+
+    <p>
+      For the relative derivative:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 y = \frac{x}{y} D_0 y.
+      \]
+    </p>
+
+    Rearranging:
+
+    <p style="text-align:center;">
+      \[
+        D_0(\ln y) = \frac{D_1 y}{x}.
+      \]
+    </p>
+
+    Integrating:
+
+    <p style="text-align:center;">
+      \[
+        \ln y = \int \frac{D_1 y}{x} dx + C.
+      \]
+    </p>
+
+    So:
+
+    <p style="text-align:center;font-weight:bold;">
+      \[
+        y = \exp\!\left(\int \frac{D_1 y}{x} dx \right).
+      \]
+    </p>
+
+    <h2>11.4 Inverting D₂</h2>
+
+    <p>
+      For the logarithmic derivative:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2 y = \frac{x\ln x}{y\ln y}D_0 y.
+      \]
+    </p>
+
+    Rearranging:
+
+    <p style="text-align:center;">
+      \[
+        D_0(\ln(\ln y)) = \frac{D_2 y}{x\ln x}.
+      \]
+    </p>
+
+    Integrating twice:
+
+    <p style="text-align:center;font-weight:bold;">
+      \[
+        y = \exp\!\left( \exp\!\left(\int \frac{D_2 y}{x\ln x} dx\right)\right).
+      \]
+    </p>
+
+    <h2>11.5 Conceptual Meaning</h2>
+
+    <p>
+      Each integral level reconstructs a function from a deeper layer of change:
+    </p>
+
+    <ul>
+      <li>Level 0 → absolute reconstruction</li>
+      <li>Level 1 → relative reconstruction</li>
+      <li>Level 2 → logarithmic reconstruction</li>
+      <li>Level n → reconstruction across n nested scales</li>
+    </ul>
+
+    <h2>11.6 Summary</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Introduced hierarchical integrals as inverses of \(D_n\).</li>
+        <li>Showed how to invert \(D_1\) using exponentials.</li>
+        <li>Showed how to invert \(D_2\) using double exponentials.</li>
+        <li>Clarified that \(\mathcal{I}_n\) reconstructs a function across n levels of scale.</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
