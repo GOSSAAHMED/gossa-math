@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 6 – The Relative Derivative D1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .lang-toggle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .lang-toggle a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.45);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.7rem;
+    }
+
+    h3 {
+      margin-top: 1.4rem;
+    }
+
+    .breadcrumb {
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .summary-box {
+      margin-top: 1.4rem;
+      padding: 1rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(255, 176, 46, 0.09);
+      border-radius: 8px;
+    }
+
+    ul, ol {
+      padding-left: 1.2rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding: 1.2rem;
+      text-align: center;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(58, 73, 120, 0.4);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {inlineMath: [['\\(', '\\)'], ['$', '$']]}
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-badge">H</div>
+        <div>
+          <div><strong>Hierarchical Calculus</strong></div>
+          <small style="color:var(--text-muted)">AHMED GOSSA</small>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#theory">Theory</a>
+        <a href="index.html#derivatives">Derivatives</a>
+        <a href="index.html#series">Series</a>
+        <a href="index.html#integrals">Integrals</a>
+        <a href="index.html#applications">Applications</a>
+        <a href="chapters.html" class="active">Chapters</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+      <div class="lang-toggle">
+        Language: العربية • <a href="chapter6.html">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="chapter-container">
+
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 6
+      </div>
+
+      <h1>Chapter 6 – The Relative Derivative D1</h1>
+
+      <p>
+        The relative derivative <strong>D<sub>1</sub></strong> is the first genuinely
+        new object introduced by Hierarchical Calculus. While the differential
+        derivative \(D_0\) measures <em>absolute</em> change, \(D_1\) measures
+        <em>change relative to the current state of the system</em>.
+      </p>
+
+      <p>
+        In this chapter we define \(D_1\), study its meaning, establish its rules,
+        and show how it connects to growth, scaling and the Golden Relation.
+      </p>
+
+      <h2>6.1 Definition of the Relative Derivative</h2>
+
+      <p>
+        Let \(y = f(x)\). The relative derivative \(D_1 y\) is defined by:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{dy \cdot x}{dx \cdot y}.
+        \]
+      </p>
+
+      <p>
+        Equivalently, in terms of the classical derivative:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{x}{y}\, D_0 y
+          \quad\text{where}\quad
+          D_0 y = \frac{dy}{dx}.
+        \]
+      </p>
+
+      <p>
+        Thus \(D_1\) is a rescaled version of \(D_0\). The factors \(\frac{x}{y}\)
+        express that we are not only interested in how much \(y\) changes, but
+        <em>how that change compares to the size of \(y\) itself</em>.
+      </p>
+
+      <h2>6.2 Interpretation: Relative Change per Relative Step</h2>
+
+      <p>
+        Consider a small change \(\Delta x\) in the input and the corresponding
+        change \(\Delta y\) in the output. Then:
+      </p>
+
+      <ul>
+        <li>\(\dfrac{\Delta y}{y}\) measures the <strong>relative change</strong> in \(y\),</li>
+        <li>\(\dfrac{\Delta x}{x}\) measures the <strong>relative change</strong> in \(x\).</li>
+      </ul>
+
+      <p>
+        Informally, the relative derivative compares these two:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y \approx
+          \frac{\dfrac{\Delta y}{y}}{\dfrac{\Delta x}{x}}
+          \quad\text{as}\quad \Delta x \to 0.
+        \]
+      </p>
+
+      <p>
+        In other words:
+      </p>
+
+      <p style="text-align:center;">
+        <em>\(D_1 y\) measures the relative change of \(y\) per relative change of \(x\).</em>
+      </p>
+
+      <p>
+        This makes \(D_1\) the natural derivative for phenomena where
+        <strong>proportions, percentages or ratios</strong> are more meaningful
+        than absolute differences.
+      </p>
+
+      <h2>6.3 The Golden Relation Revisited</h2>
+
+      <p>
+        The Golden Relation is:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          x\,D_0(y) = y\,D_1(y).
+        \]
+      </p>
+
+      <p>
+        Substituting the definition of \(D_1\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          y\,D_1(y)
+            = y \cdot \frac{x}{y} D_0 y
+            = x \, D_0 y,
+        \]
+      </p>
+
+      <p>
+        which confirms the identity. Conceptually, this equation states that
+        absolute and relative change are tightly linked. Knowing \(D_0\) and
+        the ratio \(x/y\) is enough to compute \(D_1\), and vice versa.
+      </p>
+
+      <h2>6.4 Algebraic Rules for D<sub>1</sub></h2>
+
+      <p>
+        Because \(D_1\) is built from \(D_0\), it inherits many of its structural
+        properties. However, the presence of the factor \(\frac{x}{y}\) makes
+        the formulas richer and more informative.
+      </p>
+
+      <h3>6.4.1 Linearity Does Not Hold in the Same Way</h3>
+
+      <p>
+        For \(D_0\), we have:
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_0(a u + b v) = a D_0 u + b D_0 v.
+        \]
+      </p>
+
+      <p>
+        For \(D_1\), the situation is more subtle because \(y\) appears in the
+        denominator. For \(y = a u + b v\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{x}{y} D_0 y
+                 = \frac{x}{a u + b v} \big(a D_0 u + b D_0 v\big).
+        \]
+      </p>
+
+      <p>
+        So we do not get simple linearity; instead we get a <strong>weighted</strong>
+        combination of derivatives normalized by the current value of \(y\).
+        This is exactly what we expect from a <em>relative</em> concept.
+      </p>
+
+      <h3>6.4.2 Product Rule for Relative Derivatives</h3>
+
+      <p>
+        Suppose \(y = u \cdot v\). Then
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = u\,D_0 v + v\,D_0 u.
+        \]
+      </p>
+
+      <p>
+        Using the definition of \(D_1\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y
+            = \frac{x}{y} D_0 y
+            = \frac{x}{u v} (u\,D_0 v + v\,D_0 u).
+        \]
+      </p>
+
+      <p>
+        We now express \(D_0 u\) and \(D_0 v\) in terms of their relative derivatives:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 u = \frac{x}{u} D_0 u
+          \quad\Rightarrow\quad
+          D_0 u = \frac{u}{x} D_1 u,
+        \]
+        \[
+          D_1 v = \frac{x}{v} D_0 v
+          \quad\Rightarrow\quad
+          D_0 v = \frac{v}{x} D_1 v.
+        \]
+      </p>
+
+      <p>
+        Substituting:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y
+            = \frac{x}{u v}
+              \left(
+                u \cdot \frac{v}{x} D_1 v
+                + v \cdot \frac{u}{x} D_1 u
+              \right)
+            = \frac{x}{u v} \cdot \frac{u v}{x} (D_1 u + D_1 v)
+            = D_1 u + D_1 v.
+        \]
+      </p>
+
+      <p>
+        Therefore, for products:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1(u v) = D_1 u + D_1 v.
+        \]
+      </p>
+
+      <p>
+        This is a clean and elegant rule: the relative derivative of a product
+        is the sum of the relative derivatives. This mirrors the familiar rule
+        for logarithms:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          \ln(u v) = \ln u + \ln v.
+        \]
+      </p>
+
+      <p>
+        This connection between \(D_1\) and logarithms will become even more
+        important in higher levels of the hierarchy.
+      </p>
+
+      <h2>6.5 D<sub>1</sub> and Growth Models</h2>
+
+      <p>
+        Many natural processes are better described by relative rather than
+        absolute change. Examples include:
+      </p>
+
+      <ul>
+        <li>Population growth: rate proportional to population size.</li>
+        <li>Compound interest in finance.</li>
+        <li>Biological growth and decay processes.</li>
+        <li>Learning curves where improvement depends on current knowledge.</li>
+      </ul>
+
+      <p>
+        A typical differential equation for proportional growth is:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = k y,
+        \]
+      </p>
+
+      <p>
+        where \(k\) is a constant. The relative derivative here becomes:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{x}{y} D_0 y = \frac{x}{y} \cdot k y = k x.
+        \]
+      </p>
+
+      <p>
+        So while \(D_0 y\) is proportional to \(y\), the relative derivative
+        \(D_1 y\) grows linearly with \(x\). This reveals how the same growth
+        law looks different when viewed from absolute vs. relative perspectives.
+      </p>
+
+      <h2>6.6 Relationship to D<sub>0</sub> and D<sub>2</sub></h2>
+
+      <p>
+        The derivative \(D_1\) sits between:
+      </p>
+
+      <ul>
+        <li>\(D_0\): absolute change,</li>
+        <li>\(D_2\): logarithmic change.</li>
+      </ul>
+
+      <p>
+        In general, hierarchical derivatives are given by:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y = \frac{L_n(x)}{L_n(y)} D_0 y,
+        \]
+      </p>
+
+      <p>
+        where \(L_0(x) = x\), \(L_1(x) = \ln x\), \(L_2(x) = \ln(\ln x)\), etc.
+      </p>
+
+      <p>
+        For \(n = 1\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{L_0(x)}{L_0(y)} D_0 y
+                = \frac{x}{y} D_0 y,
+        \]
+      </p>
+
+      <p>
+        confirming the definition. For \(n = 2\), we obtain:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_2 y = \frac{x \ln x}{y \ln y} D_0 y,
+        \]
+      </p>
+
+      <p>
+        which can be seen as a “relative derivative of logarithmic scale”.
+        Thus \(D_1\) is the natural bridge from the absolute world of \(D_0\)
+        to the logarithmic world of \(D_2\).
+      </p>
+
+      <h2>6.7 Examples of the Relative Derivative</h2>
+
+      <h3>6.7.1 Power Functions</h3>
+
+      <p>
+        Let \(y = x^k\) for a constant \(k\). Then
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = k x^{k-1}.
+        \]
+      </p>
+
+      <p>
+        The relative derivative is:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{x}{y} D_0 y
+                = \frac{x}{x^k} \cdot k x^{k-1}
+                = k.
+        \]
+      </p>
+
+      <p>
+        So for power laws, \(D_1 y\) is a constant, equal to the exponent.
+        This shows that \(D_1\) extracts the “power” governing the growth of
+        the function.
+      </p>
+
+      <h3>6.7.2 Exponential Functions</h3>
+
+      <p>
+        Let \(y = e^{a x}\). Then
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = a e^{a x} = a y.
+        \]
+      </p>
+
+      <p>
+        The relative derivative becomes:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{x}{y} D_0 y
+                = \frac{x}{y} \cdot a y
+                = a x.
+        \]
+      </p>
+
+      <p>
+        Here, \(D_1 y\) grows linearly with \(x\), reflecting how the exponential
+        grows faster and faster over time relative to its own size.
+      </p>
+
+      <h3>6.7.3 Logarithmic Functions</h3>
+
+      <p>
+        Let \(y = \ln x\). Then
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = \frac{1}{x}.
+        \]
+      </p>
+
+      <p>
+        The relative derivative is:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{x}{\ln x} \cdot \frac{1}{x} = \frac{1}{\ln x}.
+        \]
+      </p>
+
+      <p>
+        This derivative decays very slowly as \(x\) increases, capturing the
+        ultra–slow relative change in logarithmic functions.
+      </p>
+
+      <h2>6.8 Summary of Chapter 6</h2>
+
+      <div class="summary-box">
+        <p><strong>In this chapter we:</strong></p>
+        <ul>
+          <li>Defined the relative derivative
+              \(D_1 y = \dfrac{dy \cdot x}{dx \cdot y} = \dfrac{x}{y} D_0 y\).</li>
+          <li>Interpreted \(D_1\) as the relative change of \(y\) per relative change of \(x\).</li>
+          <li>Revisited the Golden Relation \(x D_0(y) = y D_1(y)\).</li>
+          <li>Derived a product rule: \(D_1(u v) = D_1 u + D_1 v\).</li>
+          <li>Connected \(D_1\) to growth models and scaling phenomena.</li>
+          <li>Placed \(D_1\) between \(D_0\) (absolute change) and \(D_2\) (logarithmic change).</li>
+          <li>Worked out examples for power, exponential and logarithmic functions.</li>
+        </ul>
+        <p>
+          The relative derivative \(D_1\) is the first true step beyond classical
+          calculus. It provides a natural tool for systems where proportions and
+          scaling are more fundamental than raw differences.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © AHMED GOSSA – Hierarchical Calculus
+  </footer>
+
+</body>
+</html>
