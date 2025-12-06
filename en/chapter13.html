@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 13 – Simple Hierarchical Integral Examples</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals" class="active">Integrals</a>
+      <a href="index.html#applications">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 13
+    </div>
+
+    <h1>Chapter 13 – Simple Hierarchical Integral Examples</h1>
+
+    <p>
+      In Chapters 11 and 12 we introduced hierarchical integrals
+      as inverse operators to the derivatives \(D_n\).
+      In this chapter we work through a series of concrete examples,
+      starting from very simple cases and gradually moving to more
+      structured ones.
+    </p>
+
+    <p>
+      The goal is not to exhaust all possibilities, but to give a clear
+      <em>feeling</em> for what it means to “integrate” at levels
+      \(n = 0, 1, 2\).
+    </p>
+
+    <h2>13.1 Warm–Up: Classical Integral (𝓘₀)</h2>
+
+    <p>
+      At level \(n = 0\), the hierarchical integral is simply the usual
+      indefinite integral. If
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 y = F_0(x),
+      \]
+    </p>
+
+    <p>
+      then
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y(x) = \mathcal{I}_0[F_0](x) = \int F_0(x)\, dx + C.
+      \]
+    </p>
+
+    <h3>Example 13.1 – Polynomial Integrals</h3>
+
+    <p>
+      Let
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 y = 3x^2 - 4x + 1.
+      \]
+    </p>
+
+    <p>
+      Then
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y(x) = x^3 - 2x^2 + x + C.
+      \]
+    </p>
+
+    <p>
+      This is pure standard calculus, serving as our baseline.
+    </p>
+
+    <h2>13.2 Simple Integrals at Level 1 (Relative Integrals)</h2>
+
+    <p>
+      At level \(n = 1\), the hierarchical derivative is
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 y = \frac{x}{y}\, D_0 y.
+      \]
+    </p>
+
+    <p>
+      If we are given a function \(F_1(x)\) and we want
+      \(D_1 y = F_1(x)\), then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{x}{y}\, \frac{dy}{dx} = F_1(x)
+        \quad\Longrightarrow\quad
+        \frac{1}{y} \frac{dy}{dx} = \frac{F_1(x)}{x}.
+      \]
+    </p>
+
+    <p>
+      But
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{1}{y} \frac{dy}{dx} = \frac{d}{dx}(\ln y).
+      \]
+    </p>
+
+    <p>
+      So we obtain:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{d}{dx}(\ln y) = \frac{F_1(x)}{x},
+      \]
+      \[
+        \ln y(x) = \int \frac{F_1(x)}{x}\, dx + C,
+      \]
+      \[
+        y(x) = \exp\!\left(
+          \int \frac{F_1(x)}{x}\, dx + C
+        \right).
+      \]
+    </p>
+
+    <p>
+      This is the basic recipe for the level–1 integral
+      \(\mathcal{I}_1\).
+    </p>
+
+    <h3>Example 13.2 – Constant Relative Derivative</h3>
+
+    <p>
+      Suppose
+    </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = k
+        \]
+      </p>
+
+    <p>
+      for some constant \(k \in \mathbb{R}\).
+      Then
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{d}{dx}(\ln y) = \frac{k}{x}.
+      \]
+    </p>
+
+    <p>
+      Integrating:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln y = k \ln x + C,
+        \quad
+        y = e^{C} x^k.
+      \]
+    </p>
+
+    <p>
+      Denoting \(A = e^C\), we obtain
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        y(x) = A x^k.
+      \]
+    </p>
+
+    <p>
+      So a constant relative derivative generates a pure power law.
+      This is consistent with Chapter 6: for \(y = A x^k\), we have
+      \(D_1 y = k\).
+    </p>
+
+    <h3>Example 13.3 – Relative Derivative Proportional to ln x</h3>
+
+    <p>
+      Now suppose
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 y = a \ln x,
+      \]
+    </p>
+
+    <p>
+      where \(a\) is a constant. Then
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{d}{dx}(\ln y) = \frac{a \ln x}{x}.
+      \]
+    </p>
+
+    <p>
+      Integrating:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln y = a \int \frac{\ln x}{x} dx + C.
+      \]
+    </p>
+
+    <p>
+      We recall that
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \int \frac{\ln x}{x} dx = \frac{(\ln x)^2}{2}.
+      \]
+    </p>
+
+    <p>
+      Hence:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln y = a \frac{(\ln x)^2}{2} + C,
+        \quad
+        y = \exp\!\left(
+          \frac{a}{2} (\ln x)^2 + C
+        \right).
+      \]
+    </p>
+
+    <p>
+      Writing \(A = e^C\), we obtain:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        y(x) = A\, \exp\!\left( \frac{a}{2} (\ln x)^2 \right).
+      \]
+    </p>
+
+    <p>
+      This function grows faster than a power, but slower than an exponential
+      in \(x\). It is a natural object in the relative–integral world.
+    </p>
+
+    <h2>13.3 Simple Integrals at Level 2 (Logarithmic Integrals)</h2>
+
+    <p>
+      At level \(n = 2\), we have:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2 y = \frac{x \ln x}{y \ln y} D_0 y.
+      \]
+    </p>
+
+    <p>
+      Let \(F_2(x) = D_2 y(x)\). Rearranging gives:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{D_2 y}{x \ln x} = \frac{1}{y\ln y} \frac{dy}{dx}
+                              = \frac{d}{dx}(\ln(\ln y)).
+      \]
+    </p>
+
+    <p>
+      Thus:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{d}{dx}(\ln(\ln y)) = \frac{F_2(x)}{x\ln x},
+      \]
+      \[
+        \ln(\ln y(x)) = \int \frac{F_2(x)}{x\ln x}\, dx + C,
+      \]
+      \[
+        y(x) = \exp\!\left(
+          \exp\!\left(
+            \int \frac{F_2(x)}{x\ln x}\, dx + C
+          \right)
+        \right).
+      \]
+    </p>
+
+    <h3>Example 13.4 – Constant Logarithmic Derivative</h3>
+
+    <p>
+      Suppose
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2 y = k,
+      \]
+    </p>
+
+    <p>
+      with \(k\) a constant. Then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{d}{dx}(\ln(\ln y)) = \frac{k}{x\ln x}.
+      \]
+    </p>
+
+    <p>
+      Integrating:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln(\ln y) = k \int \frac{dx}{x\ln x} + C
+                   = k \ln(\ln x) + C.
+      \]
+    </p>
+
+    <p>
+      Exponentiating:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln y = e^{k \ln(\ln x) + C}
+              = e^C (\ln x)^k.
+      \]
+    </p>
+
+    <p>
+      Let \(A = e^C\). Then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln y = A (\ln x)^k,
+      \]
+      \[
+        y = \exp\!\left( A (\ln x)^k \right).
+      \]
+    </p>
+
+    <p>
+      For suitable \(A\) and \(k\), this describes a family of functions whose
+      growth sits between very slow and very fast, controlled by logarithmic
+      powers. They are natural “eigenfunctions” for \(D_2\).
+    </p>
+
+    <h2>13.4 Combined View: D₀, D₁, D₂ for One Function</h2>
+
+    <p>
+      It is instructive to examine a function whose derivatives at different
+      levels have simple forms.
+    </p>
+
+    <h3>Example 13.5 – A Power–Like Function</h3>
+
+    <p>
+      Consider
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y(x) = x^k,
+      \]
+    </p>
+
+    <p>
+      with \(k &gt; 0\). We already know:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 y = k x^{k-1},\quad
+        D_1 y = k,\quad
+        D_2 y = 1.
+      \]
+    </p>
+
+    <p>
+      Working in the opposite direction:
+    </p>
+
+    <ul>
+      <li>Starting from \(D_2 y = 1\), integrating at level 2 leads to a function
+          whose logarithm of logarithm is proportional to \(\ln(\ln x)\); under
+          suitable constants, this leads back to a power–like behavior.</li>
+      <li>Starting from \(D_1 y = k\) and using \(\mathcal{I}_1\) reproduces
+          exactly the power law \(y = A x^k\).</li>
+      <li>Starting from \(D_0 y = k x^{k-1}\) and using \(\mathcal{I}_0\) also
+          gives \(y = x^k + C\).</li>
+    </ul>
+
+    <p>
+      This shows that the same function can be reconstructed consistently from
+      different hierarchical levels, provided we know which derivative we are
+      given and we use the corresponding integral operator.
+    </p>
+
+    <h2>13.5 Interpretation and Applications</h2>
+
+    <p>
+      These examples suggest the following interpretation:
+    </p>
+
+    <ul>
+      <li>\(\mathcal{I}_0\) reconstructs a function from its <em>absolute</em> rate of change.</li>
+      <li>\(\mathcal{I}_1\) reconstructs a function from its <em>relative</em> rate of change.</li>
+      <li>\(\mathcal{I}_2\) reconstructs a function from its <em>logarithmic</em> rate of change.</li>
+    </ul>
+
+    <p>
+      In practice:
+    </p>
+
+    <ul>
+      <li>In finance, knowing the relative growth rate (in %) naturally calls
+          for a level–1 reconstruction.</li>
+      <li>In information theory or deep learning dynamics, extremely slow
+          changes could be naturally modeled via level–2 derivatives and
+          integrals.</li>
+      <li>In population or cosmological models, different phases of evolution
+          might be best described at different hierarchical levels.</li>
+    </ul>
+
+    <h2>13.6 Summary of Chapter 13</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Reviewed the basic inversion schemes for \(\mathcal{I}_0\),
+            \(\mathcal{I}_1\) and \(\mathcal{I}_2\).</li>
+        <li>Solved simple examples at level 1, including constant and
+            logarithmic relative derivatives.</li>
+        <li>Solved a basic example at level 2 with constant logarithmic
+            derivative \(D_2 y = k\).</li>
+        <li>Showed how the same power–like function can be reconstructed from
+            different hierarchical levels.</li>
+        <li>Outlined how hierarchical integrals naturally correspond to
+            reconstruction from absolute, relative and logarithmic dynamics.</li>
+      </ul>
+      <p>
+        These simple examples prepare the ground for more advanced applications:
+        hierarchical series expansions, hierarchical differential equations,
+        and models of multi–scale physical and informational systems.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
