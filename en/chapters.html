@@ -2,457 +2,466 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Book Chapters – Hierarchical Calculus</title>
+  <title>Book Chapters (English) – Hierarchical Calculus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     :root {
       --bg-main: #050814;
       --bg-panel: #0b1022;
-      --bg-header: #050814;
-      --border-soft: #1b2340;
       --text-main: #f4f4f8;
       --text-muted: #9aa3c5;
       --accent: #ffb02e;
-      --accent-soft: rgba(255, 176, 46, 0.14);
+      --panel-border: rgba(95, 110, 155, 0.7);
+      --row-hover: rgba(255, 176, 46, 0.06);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
       color: var(--text-main);
+      line-height: 1.6;
     }
 
-    /* HEADER / NAV */
+    a {
+      color: var(--accent);
+    }
+
     header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
       background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
       border-bottom: 1px solid rgba(58, 73, 120, 0.7);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
+
     .nav-inner {
       max-width: 1100px;
-      margin: 0 auto;
-      padding: 0.7rem 1.25rem;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 1.25rem;
+      align-items: center;
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 0.6rem;
     }
+
     .brand-badge {
       width: 32px;
       height: 32px;
-      border-radius: 999px;
+      border-radius: 50%;
       background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      color: #1b1305;
-      font-size: 0.95rem;
-      box-shadow: 0 0 25px rgba(255, 160, 0, 0.45);
+      font-weight: bold;
+      color: #1d1303;
     }
-    .brand-text-title {
-      font-size: 0.98rem;
-      font-weight: 650;
-      letter-spacing: 0.03em;
+
+    .brand-text small {
+      color: var(--text-muted);
+      font-size: 0.75rem;
     }
-    .brand-text-sub {
-      font-size: 0.78rem;
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
       color: var(--text-muted);
     }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
+
+    .nav-links a:hover {
+      color: #ffffff;
     }
-    .lang-toggle {
+
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .lang-switch {
       font-size: 0.8rem;
       color: var(--text-muted);
     }
-    .lang-toggle a {
+
+    .lang-switch a {
       color: var(--accent);
       text-decoration: none;
-      font-weight: 600;
-    }
-    nav .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.88rem;
-    }
-    nav .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      position: relative;
-      padding-bottom: 0.2rem;
-    }
-    nav .nav-links a:hover { color: #ffffff; }
-    nav .nav-links a.active {
-      color: var(--accent);
-    }
-    nav .nav-links a.active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.25rem;
-      width: 100%;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(to right, #ffb02e, #ff7f50);
     }
 
-    /* MAIN */
-    main { padding: 2.5rem 1.25rem 2.75rem; }
-    .chapters-shell {
-      max-width: 960px;
-      margin: 0 auto;
+    main {
+      padding: 2rem 1.2rem 3rem;
     }
-    .chapters-card {
-      background: radial-gradient(circle at top left, #161c38 0, #0b1022 45%, #060817 100%);
+
+    .chapters-wrapper {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .panel {
+      background: var(--bg-panel);
       border-radius: 18px;
-      border: 1px solid rgba(86, 104, 163, 0.7);
-      padding: 1.8rem 1.8rem 1.6rem;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 32px rgba(0, 0, 0, 0.45);
+      padding: 1.8rem 1.8rem 2.2rem;
     }
-    .chapters-title {
-      font-size: 1.4rem;
-      margin: 0 0 0.25rem;
-    }
-    .chapters-subtitle {
+
+    h1 {
       margin: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.7rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
       font-size: 0.9rem;
       color: var(--text-muted);
+      margin-bottom: 1.4rem;
     }
-    .breadcrumb {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.8rem;
-    }
-    .breadcrumb a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .breadcrumb a:hover { text-decoration: underline; }
 
-    /* TABLE */
-    .chapters-table-wrap {
-      margin-top: 1.6rem;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(79, 97, 150, 0.85);
-      background: rgba(4, 7, 20, 0.7);
+    .subtitle span.badge {
+      display: inline-block;
+      margin-left: 0.4rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(255, 176, 46, 0.12);
+      border: 1px solid rgba(255, 176, 46, 0.55);
+      color: var(--accent);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
+      border-spacing: 0;
       font-size: 0.9rem;
     }
-    thead { background: rgba(10, 16, 40, 0.98); }
-    th, td {
-      padding: 0.6rem 0.9rem;
-      text-align: left;
-    }
-    th {
-      font-weight: 600;
-      color: var(--text-main);
-      border-bottom: 1px solid rgba(79, 97, 150, 0.9);
-    }
-    tbody tr:nth-child(odd) { background: rgba(9, 13, 32, 0.9); }
-    tbody tr:nth-child(even) { background: rgba(6, 9, 25, 0.9); }
-    tbody tr:hover { background: rgba(33, 45, 92, 0.95); }
-    td {
-      border-bottom: 1px solid rgba(35, 46, 86, 0.9);
-      color: var(--text-main);
-    }
-    .chapter-num {
-      width: 48px;
-      color: var(--text-muted);
-      font-variant-numeric: tabular-nums;
-    }
-    .chapter-open a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 550;
-      font-size: 0.85rem;
-    }
-    .chapter-open a:hover { text-decoration: underline; }
-    .badge-wip {
-      display: inline-block;
-      padding: 0.08rem 0.45rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 176, 46, 0.6);
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 0.7rem;
-      margin-left: 0.45rem;
+
+    thead {
+      background: rgba(15, 23, 42, 0.95);
     }
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid rgba(43, 54, 94, 0.9);
-      padding: 1.2rem 1.25rem 1.4rem;
-      background: #050814;
+    thead th {
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      font-weight: 500;
       color: var(--text-muted);
+      border-bottom: 1px solid rgba(80, 100, 150, 0.7);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(45, 55, 95, 0.6);
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: var(--row-hover);
+    }
+
+    tbody td {
+      padding: 0.55rem 0.75rem;
+      vertical-align: middle;
+    }
+
+    .col-num {
+      width: 45px;
+      color: var(--text-muted);
+    }
+
+    .col-open {
+      width: 70px;
+      text-align: right;
+    }
+
+    .badge-wip {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      margin-left: 0.4rem;
+      font-size: 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 176, 46, 0.1);
+      border: 1px solid rgba(255, 176, 46, 0.6);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-open {
+      display: inline-block;
+      padding: 0.25rem 0.8rem;
       font-size: 0.8rem;
-    }
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .footer-inner a {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 176, 46, 0.75);
       color: var(--accent);
       text-decoration: none;
+      background: transparent;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.08s ease;
     }
-    .footer-inner a:hover { text-decoration: underline; }
+
+    .btn-open:hover {
+      background: var(--accent);
+      color: #1b1305;
+      transform: translateY(-1px);
+    }
+
+    footer {
+      margin-top: 2.2rem;
+      padding: 1.2rem 1.2rem 1.8rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 1px solid rgba(58, 73, 120, 0.4);
+    }
 
     @media (max-width: 720px) {
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.6rem;
       }
-      nav .nav-links {
+      .nav-links {
         flex-wrap: wrap;
-        row-gap: 0.4rem;
       }
-      .chapters-card {
-        padding: 1.4rem 1.1rem 1.3rem;
+      .panel {
+        padding: 1.4rem 1.1rem 1.7rem;
+      }
+      h1 {
+        font-size: 1.4rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="nav-inner">
-      <div class="brand">
-        <div class="brand-badge">H</div>
-        <div>
-          <div class="brand-text-title">Hierarchical Calculus</div>
-          <div class="brand-text-sub">AHMED GOSSA</div>
-        </div>
-      </div>
 
-      <div class="nav-right">
-        <div class="lang-toggle">
-          Language: العربية • <a href="chapters.html">EN</a>
-        </div>
-        <nav>
-          <div class="nav-links">
-            <a href="index.html#home">Home</a>
-            <a href="index.html#theory">Theory</a>
-            <a href="index.html#derivatives">Derivatives</a>
-            <a href="index.html#series">Series</a>
-            <a href="index.html#integrals">Integrals</a>
-            <a href="index.html#applications">Applications</a>
-            <a href="chapters.html" class="active">Chapters</a>
-            <a href="index.html#contact">Contact</a>
-          </div>
-        </nav>
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div class="brand-text">
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small>AHMED GOSSA</small>
       </div>
     </div>
-  </header>
 
-  <!-- MAIN -->
-  <main>
-    <div class="chapters-shell">
-      <div class="chapters-card">
-        <div class="breadcrumb">
-          <a href="index.html">Home</a> &raquo; Book &raquo; Chapters
-        </div>
-
-        <h1 class="chapters-title">Book Chapters (English)</h1>
-        <p class="chapters-subtitle">
-          This page lists the English chapters of the Hierarchical Calculus book.
-          Chapters marked with <span class="badge-wip">WIP</span> are still being written
-          (<strong>Work in progress</strong>).
-        </p>
-
-        <div class="chapters-table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Chapter Title</th>
-                <th>Open</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 1–30 -->
-              <tr>
-                <td class="chapter-num">1</td>
-                <td>Introduction to Hierarchical Calculus</td>
-                <td class="chapter-open"><a href="chapter1.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">2</td>
-                <td>Why Classical Calculus Is Not Enough <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter2.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">3</td>
-                <td>The Philosophy of Change <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter3.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">4</td>
-                <td>Hierarchy in Nature and Information <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter4.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">5</td>
-                <td>The Differential Derivative D<sub>0</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter5.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">6</td>
-                <td>The Relative Derivative D<sub>1</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter6.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">7</td>
-                <td>The Logarithmic Derivative D<sub>2</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter7.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">8</td>
-                <td>The General Hierarchical Derivative D<sub>n</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter8.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">9</td>
-                <td>Identities and Properties of D<sub>n</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter9.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">10</td>
-                <td>Hierarchical Chain Rules <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter10.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">11</td>
-                <td>The Hierarchical Integral I<sub>0</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter11.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">12</td>
-                <td>The Relative Integral I<sub>1</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter12.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">13</td>
-                <td>The Logarithmic Integral I<sub>2</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter13.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">14</td>
-                <td>General Hierarchical Integration I<sub>n</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter14.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">15</td>
-                <td>Inverse Relations Between D<sub>n</sub> and I<sub>n</sub> <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter15.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">16</td>
-                <td>Hierarchical Series <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter16.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">17</td>
-                <td>Relative Series Expansions <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter17.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">18</td>
-                <td>Logarithmic Series and Ultra-Slow Growth <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter18.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">19</td>
-                <td>Comparison with Classical Taylor Series <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter19.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">20</td>
-                <td>Applications in Physics <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter20.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">21</td>
-                <td>Applications in Cosmology <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter21.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">22</td>
-                <td>Applications in Biology <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter22.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">23</td>
-                <td>Applications in Economics <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter23.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">24</td>
-                <td>Applications in Medicine <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter24.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">25</td>
-                <td>Applications in Probability and Information <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter25.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">26</td>
-                <td>Hierarchical Interpretation of Human Understanding <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter26.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">27</td>
-                <td>Hierarchical Models of Intelligence and Learning <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter27.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">28</td>
-                <td>Hierarchical Thinking in Language and Patterns <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter28.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">29</td>
-                <td>Complex Hierarchical Dynamics and Future Research <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter29.html">Open</a></td>
-              </tr>
-              <tr>
-                <td class="chapter-num">30</td>
-                <td>Conclusion: A New Framework for Change <span class="badge-wip">WIP</span></td>
-                <td class="chapter-open"><a href="chapter30.html">Open</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals">Integrals</a>
+      <a href="index.html#applications">Applications</a>
+      <a href="chapters.html" class="active">Chapters</a>
+      <span class="lang-switch">
+        Language:
+        <a href="../index.html">العربية</a> • EN
+      </span>
     </div>
-  </main>
+  </div>
+</header>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      © AHMED GOSSA – Hierarchical Calculus
+<main>
+  <div class="chapters-wrapper">
+    <div class="panel">
+      <h1>Book Chapters (English)</h1>
+      <p class="subtitle">
+        This page lists the English chapters of the Hierarchical Calculus book.
+        Chapters marked with <span class="badge">WIP</span> are still being written.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th class="col-num">#</th>
+            <th>Chapter Title</th>
+            <th class="col-open">Open</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 1–10 -->
+          <tr>
+            <td class="col-num">1</td>
+            <td>Introduction to Hierarchical Calculus</td>
+            <td class="col-open"><a class="btn-open" href="chapter1.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">2</td>
+            <td>Why Classical Calculus Is Not Enough</td>
+            <td class="col-open"><a class="btn-open" href="chapter2.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">3</td>
+            <td>The Philosophy of Change</td>
+            <td class="col-open"><a class="btn-open" href="chapter3.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">4</td>
+            <td>Basic Principles of Hierarchical Change <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter4.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">5</td>
+            <td>The Differential Derivative D₀ <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter5.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">6</td>
+            <td>The Relative Derivative D₁ <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter6.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">7</td>
+            <td>The Logarithmic Derivative D₂ <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter7.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">8</td>
+            <td>The General Hierarchical Derivative Dₙ <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter8.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">9</td>
+            <td>Identities and Properties of Dₙ <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter9.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">10</td>
+            <td>Hierarchical Differential Rules and Examples <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter10.html">Open</a></td>
+          </tr>
+
+          <!-- 11–20 -->
+          <tr>
+            <td class="col-num">11</td>
+            <td>Hierarchical Integrals: Introduction <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter11.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">12</td>
+            <td>Basic Hierarchical Integral Techniques <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter12.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">13</td>
+            <td>The Logarithmic Integral I₂ <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter13.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">14</td>
+            <td>General Hierarchical Integration Iₙ <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter14.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">15</td>
+            <td>Inverse Relations Between Dₙ and Iₙ <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter15.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">16</td>
+            <td>Hierarchical Series <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter16.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">17</td>
+            <td>Relative Series Expansions <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter17.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">18</td>
+            <td>Logarithmic Series and Ultra-Slow Growth <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter18.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">19</td>
+            <td>Comparison with Classical Taylor Series <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter19.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">20</td>
+            <td>Applications in Physics <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter20.html">Open</a></td>
+          </tr>
+
+          <!-- 21–30 -->
+          <tr>
+            <td class="col-num">21</td>
+            <td>Applications in Cosmology <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter21.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">22</td>
+            <td>Applications in Biology <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter22.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">23</td>
+            <td>Applications in Economics <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter23.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">24</td>
+            <td>Applications in Medicine <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter24.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">25</td>
+            <td>Applications in Probability and Information <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter25.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">26</td>
+            <td>Hierarchical Interpretation of Human Understanding <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter26.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">27</td>
+            <td>Hierarchical Models of Intelligence and Learning <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter27.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">28</td>
+            <td>Hierarchical Thinking in Language and Patterns <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter28.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">29</td>
+            <td>Complex Hierarchical Dynamics and Future Research <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter29.html">Open</a></td>
+          </tr>
+          <tr>
+            <td class="col-num">30</td>
+            <td>Conclusion: A New Framework for Change <span class="badge-wip">WIP</span></td>
+            <td class="col-open"><a class="btn-open" href="chapter30.html">Open</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </footer>
+  </div>
+</main>
+
+<footer>
+  © AHMED GOSSA – Hierarchical Calculus
+</footer>
+
 </body>
 </html>
+
 
