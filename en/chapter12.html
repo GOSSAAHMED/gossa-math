@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 12 – The Hierarchical Integral Operator Iₙ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals" class="active">Integrals</a>
+      <a href="index.html#applications">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 12
+    </div>
+
+    <h1>Chapter 12 – The Hierarchical Integral Operator 𝓘<sub>n</sub></h1>
+
+    <p>
+      In Chapter 11 we introduced hierarchical integrals informally as inverses
+      of the derivatives \(D_0, D_1, D_2\). In this chapter we give a more
+      systematic description of the <strong>hierarchical integral operator</strong>
+      \(\mathcal{I}_n\) and its basic properties.
+    </p>
+
+    <h2>12.1 Inverse Perspective</h2>
+
+    <p>
+      Recall that the general hierarchical derivative is defined by
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_n y = \frac{L_n(x)}{L_n(y)}\, D_0 y,
+      \]
+    </p>
+
+    <p>
+      where \(D_0 y = \dfrac{dy}{dx}\) and \(L_n\) is the \(n\)-th hierarchical
+      scale function. The integral operator \(\mathcal{I}_n\) should invert this
+      action, at least formally:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_n(D_n y) = y + C_n,
+      \]
+    </p>
+
+    <p>
+      where \(C_n\) is a constant (or more generally, a constant of integration
+      adapted to level \(n\)).
+    </p>
+
+    <h2>12.2 Solving for D₀y in Terms of Dₙy</h2>
+
+    <p>
+      From the definition of \(D_n\) we can solve for the base derivative:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 y = \frac{L_n(y)}{L_n(x)}\, D_n y.
+      \]
+    </p>
+
+    <p>
+      This means that to reconstruct \(y\) from \(D_n y\), we must:
+    </p>
+
+    <ol>
+      <li>Multiply \(D_n y\) by the factor \(\dfrac{L_n(y)}{L_n(x)}\).</li>
+      <li>Integrate the result with respect to \(x\) at the base level.</li>
+    </ol>
+
+    <p>
+      Formally:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{dy}{dx} = \frac{L_n(y)}{L_n(x)}\, D_n y.
+      \]
+    </p>
+
+    <p>
+      This is a first–order differential equation for \(y\) whose right-hand side
+      involves both \(x\) and \(y\).
+    </p>
+
+    <h2>12.3 Operator Form: 𝓘ₙ Acting on a Given Function</h2>
+
+    <p>
+      Suppose we are given a function \(F_n(x)\) which we want to interpret
+      as a hierarchical derivative:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        F_n(x) = D_n y(x).
+      \]
+    </p>
+
+    <p>
+      Then \(y\) must satisfy:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{dy}{dx} = \frac{L_n(y)}{L_n(x)}\, F_n(x).
+      \]
+    </p>
+
+    <p>
+      The operator \(\mathcal{I}_n\) maps the “data” \(F_n\) to a solution \(y\).
+      In formal notation:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y(x) = \mathcal{I}_n[F_n](x).
+      \]
+    </p>
+
+    <p>
+      At low levels, this reproduces the constructions from Chapter 11:
+    </p>
+
+    <ul>
+      <li>
+        For \(n=0\): \(\dfrac{dy}{dx} = F_0(x)\) and
+        \(\mathcal{I}_0[F_0](x) = \displaystyle \int F_0(x)\,dx\).
+      </li>
+      <li>
+        For \(n=1\):
+        \(\dfrac{dy}{dx} = \dfrac{y}{x}F_1(x)\) and
+        \(\ln y = \displaystyle \int \dfrac{F_1(x)}{x}\,dx + C\).
+      </li>
+      <li>
+        For \(n=2\):
+        \(\dfrac{dy}{dx} = \dfrac{y\ln y}{x\ln x}F_2(x)\) and
+        \(\ln(\ln y) = \displaystyle \int \dfrac{F_2(x)}{x\ln x}\,dx + C\).
+      </li>
+    </ul>
+
+    <h2>12.4 Hierarchical Change of Variables</h2>
+
+    <p>
+      The structure of \(\mathcal{I}_n\) becomes clearer if we introduce
+      a new dependent variable adapted to the level \(n\). Define:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        z_n = \Phi_n(y),
+      \]
+    </p>
+
+    <p>
+      where \(\Phi_n\) is chosen so that \(D_n y\) becomes the ordinary derivative
+      of \(z_n\) up to a simple factor of \(x\). For example:
+    </p>
+
+    <ul>
+      <li>\(n=0\): we can take \(\Phi_0(y) = y\).</li>
+      <li>\(n=1\): we can take \(\Phi_1(y) = \ln y\).</li>
+      <li>\(n=2\): we can take \(\Phi_2(y) = \ln(\ln y)\).</li>
+    </ul>
+
+    <p>
+      Then, as shown previously:
+    </p>
+
+    <ul>
+      <li>
+        \(D_1 y\) relates to \(D_0(\ln y)\),
+        so integrating \(D_1 y\) is equivalent to integrating the derivative of \(\ln y\)
+        after rescaling by \(x\).
+      </li>
+      <li>
+        \(D_2 y\) relates to \(D_0(\ln(\ln y))\),
+        so integrating \(D_2 y\) is equivalent to integrating the derivative of
+        \(\ln(\ln y)\) after rescaling by \(x\ln x\).
+      </li>
+    </ul>
+
+    <p>
+      At level \(n\), \(\Phi_n\) is a multi–logarithmic transformation of \(y\)
+      aligned with the structure of \(L_n\).
+    </p>
+
+    <h2>12.5 𝓘ₙ as “Integrate Then Invert”</h2>
+
+    <p>
+      The examples for \(D_1\) and \(D_2\) show a common pattern:
+    </p>
+
+    <ol>
+      <li>Convert \(D_n y\) into a base–level derivative of \(\Phi_n(y)\)
+          using the definition of \(D_n\).</li>
+      <li>Integrate the resulting expression with respect to \(x\).</li>
+      <li>Apply the inverse transformation \(\Phi_n^{-1}\) to recover \(y\).</li>
+    </ol>
+
+    <p>
+      Symbolically, for suitable \(\Phi_n\), we have:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 \Phi_n(y) = \Psi_n(x)\, D_n y,
+      \]
+    </p>
+
+    <p>
+      for some scale factor \(\Psi_n(x)\) depending only on \(x\).
+      Then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \Phi_n(y(x)) = \int \Psi_n(x)\, D_n y(x)\, dx + C,
+      \]
+    </p>
+
+    <p>
+      and
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        y(x) = \Phi_n^{-1}\!\left(
+          \int \Psi_n(x)\, D_n y(x)\, dx + C
+        \right).
+      \]
+    </p>
+
+    <p>
+      This is the conceptual definition of \(\mathcal{I}_n\):
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_n[F_n](x)
+          = \Phi_n^{-1}\!\left(
+              \int \Psi_n(x)\, F_n(x)\, dx + C
+            \right),
+      \]
+    </p>
+
+    <p>
+      whenever \(F_n(x) = D_n y(x)\).
+    </p>
+
+    <h2>12.6 Low–Level Operators as Special Cases</h2>
+
+    <h3>12.6.1 𝓘₀ – Classical Integral</h3>
+
+    <p>
+      For \(n=0\), we have \(D_0 y = F_0(x)\). We can take
+      \(\Phi_0(y) = y\), \(\Psi_0(x) = 1\). Then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_0[F_0](x) = \int F_0(x)\, dx.
+      \]
+    </p>
+
+    <h3>12.6.2 𝓘₁ – Relative Integral</h3>
+
+    <p>
+      For \(n=1\), with \(F_1(x) = D_1 y(x)\), we found:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0(\ln y) = \frac{F_1(x)}{x}.
+      \]
+    </p>
+
+    <p>
+      So we can take:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \Phi_1(y) = \ln y,\quad
+        \Psi_1(x) = \frac{1}{x},
+      \]
+    </p>
+
+    <p>
+      giving:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln y(x) = \int \frac{F_1(x)}{x}\, dx + C,
+      \]
+      \[
+        \mathcal{I}_1[F_1](x)
+          = \exp\!\left(
+              \int \frac{F_1(x)}{x}\, dx + C
+            \right).
+      \]
+    </p>
+
+    <h3>12.6.3 𝓘₂ – Logarithmic Integral</h3>
+
+    <p>
+      For \(n=2\), with \(F_2(x) = D_2 y(x)\), we found:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0(\ln(\ln y)) = \frac{F_2(x)}{x\ln x}.
+      \]
+    </p>
+
+    <p>
+      Thus:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \Phi_2(y) = \ln(\ln y),\quad
+        \Psi_2(x) = \frac{1}{x\ln x},
+      \]
+    </p>
+
+    <p>
+      and:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln(\ln y(x)) = \int \frac{F_2(x)}{x\ln x}\, dx + C,
+      \]
+      \[
+        \mathcal{I}_2[F_2](x)
+          = \exp\!\left(
+              \exp\!\left(
+                \int \frac{F_2(x)}{x\ln x}\, dx + C
+              \right)
+            \right).
+      \]
+    </p>
+
+    <h2>12.7 Conceptual Interpretation of 𝓘ₙ</h2>
+
+    <p>
+      We can summarize the role of \(\mathcal{I}_n\) as:
+    </p>
+
+    <ul>
+      <li>
+        At level \(n\), we no longer integrate “raw” changes, but changes that
+        have been filtered through \(n\) hierarchical scales.
+      </li>
+      <li>
+        The operator \(\mathcal{I}_n\) first unpacks those scales (via
+        \(\Psi_n(x)\) and the integral), then inverts the structural
+        transformation (via \(\Phi_n^{-1}\)).
+      </li>
+      <li>
+        The higher \(n\) is, the more compressed the information is, and the
+        more nested exponentials/logarithms appear in the reconstruction.
+      </li>
+    </ul>
+
+    <h2>12.8 Summary of Chapter 12</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Defined the hierarchical integral operator \(\mathcal{I}_n\) as
+            the formal inverse of \(D_n\).</li>
+        <li>Derived the differential equation
+            \(\dfrac{dy}{dx} = \dfrac{L_n(y)}{L_n(x)} D_n y\) for reconstruction.</li>
+        <li>Introduced the idea of a transformed variable \(\Phi_n(y)\) that
+            linearizes the effect of \(D_n\) at level \(n\).</li>
+        <li>Expressed \(\mathcal{I}_n\) schematically as
+            \(\mathcal{I}_n[F_n](x)
+              = \Phi_n^{-1}\!\left(\int \Psi_n(x) F_n(x)\, dx + C\right)\).</li>
+        <li>Showed that classical, relative and logarithmic integrals
+            (\(\mathcal{I}_0, \mathcal{I}_1, \mathcal{I}_2\)) fit this scheme
+            as special cases.</li>
+      </ul>
+      <p>
+        In later chapters, hierarchical integrals will be used to construct
+        series, solve differential equations and model systems whose dynamics
+        unfold across multiple levels of scale.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
