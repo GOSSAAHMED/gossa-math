@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 9 – Identities and Properties of Dn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .lang-toggle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .lang-toggle a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.45);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.7rem;
+    }
+
+    h3 {
+      margin-top: 1.4rem;
+    }
+
+    .breadcrumb {
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .summary-box {
+      margin-top: 1.4rem;
+      padding: 1rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(255, 176, 46, 0.09);
+      border-radius: 8px;
+    }
+
+    ul, ol {
+      padding-left: 1.2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    table th, table td {
+      border: 1px solid #283155;
+      padding: 0.45rem 0.5rem;
+      text-align: left;
+    }
+
+    table th {
+      background: #070b1a;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding: 1.2rem;
+      text-align: center;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(58, 73, 120, 0.4);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {inlineMath: [['\\(', '\\)'], ['$', '$']]}
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-badge">H</div>
+        <div>
+          <div><strong>Hierarchical Calculus</strong></div>
+          <small style="color:var(--text-muted)">AHMED GOSSA</small>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#theory">Theory</a>
+        <a href="index.html#derivatives">Derivatives</a>
+        <a href="index.html#series">Series</a>
+        <a href="index.html#integrals">Integrals</a>
+        <a href="index.html#applications">Applications</a>
+        <a href="chapters.html" class="active">Chapters</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+      <div class="lang-toggle">
+        Language: العربية • <a href="chapter9.html">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="chapter-container">
+
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 9
+      </div>
+
+      <h1>Chapter 9 – Identities and Properties of D<sub>n</sub></h1>
+
+      <p>
+        In the previous chapters we introduced the basic hierarchy of derivatives:
+        the differential derivative \(D_0\), the relative derivative \(D_1\),
+        the logarithmic derivative \(D_2\), and the general derivative \(D_n\).
+        In this chapter we collect and organize the main
+        <strong>identities and structural properties</strong> that these
+        derivatives satisfy.
+      </p>
+
+      <p>
+        Our goal is to show that the family \(\{D_n\}\) forms a coherent algebraic
+        system, connected by simple formulas that reflect the layered nature of change.
+      </p>
+
+      <h2>9.1 Recap: Definition of D<sub>n</sub></h2>
+
+      <p>
+        Let \(y = f(x)\), with \(x\) and \(y\) in a domain where the hierarchical
+        scales are defined. We use a <strong>logarithmic ladder</strong>
+        \(L_n(z)\), built from \(z\) by multiplying successive logarithmic factors
+        (for example, at low levels:
+        \(L_1(z) = z\), \(L_2(z) = z \ln z\), \(L_3(z) = z \ln z \ln(\ln z)\), etc.,
+        whenever defined).
+      </p>
+
+      <p>
+        The general hierarchical derivative is defined by:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y = \frac{L_n(x)}{L_n(y)}\, D_0 y,
+        \]
+      </p>
+
+      <p>
+        where \(D_0 y = \dfrac{dy}{dx}\) is the usual differential derivative.
+      </p>
+
+      <p>
+        For the first levels we recover:
+      </p>
+
+      <ul>
+        <li>\(D_0 y = \dfrac{dy}{dx}\) &nbsp;&nbsp; (differential derivative),</li>
+        <li>\(D_1 y = \dfrac{dy \cdot x}{dx \cdot y} = \dfrac{x}{y} D_0 y\) &nbsp;&nbsp; (relative derivative),</li>
+        <li>\(D_2 y = \dfrac{dy \cdot x \ln x}{dx \cdot y \ln y}
+                     = \dfrac{x \ln x}{y \ln y} D_0 y\) &nbsp;&nbsp; (logarithmic derivative).</li>
+      </ul>
+
+      <h2>9.2 Iterative Identity Between Consecutive Levels</h2>
+
+      <p>
+        The general formula may be written in iterative form. For \(n \ge 1\),
+        we have:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y
+            = \frac{L_n(x)}{L_n(y)}\, D_0 y
+            = \frac{L_n(x)}{L_n(y)} \cdot \frac{L_{n-1}(y)}{L_{n-1}(x)} \, D_{n-1} y.
+        \]
+      </p>
+
+      <p>
+        This can be rewritten as:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y
+            = \frac{L_n(x) L_{n-1}(y)}{L_n(y) L_{n-1}(x)} \, D_{n-1} y.
+        \]
+      </p>
+
+      <p>
+        At low levels, this gives:
+      </p>
+
+      <ul>
+        <li>\(D_1 y = \dfrac{L_1(x)}{L_1(y)} D_0 y\),</li>
+        <li>\(D_2 y = \dfrac{L_2(x) L_1(y)}{L_2(y) L_1(x)} D_1 y\),</li>
+        <li>\(D_3 y = \dfrac{L_3(x) L_2(y)}{L_3(y) L_2(x)} D_2 y\),</li>
+      </ul>
+
+      <p>
+        Each derivative level \(D_n\) is thus obtained from \(D_{n-1}\) by
+        re–normalizing with respect to a deeper hierarchical scale.
+      </p>
+
+      <h2>9.3 Chains of Golden–Type Relations</h2>
+
+      <p>
+        For the first levels we already know the <strong>Golden Relations</strong>:
+      </p>
+
+      <ul>
+        <li>\(x D_0(y) = y D_1(y)\),</li>
+        <li>\(x \ln x \, D_0(y) = y \ln y \, D_2(y)\),</li>
+      </ul>
+
+      <p>
+        more generally:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          L_n(x)\, D_0(y) = L_n(y)\, D_n(y).
+        \]
+      </p>
+
+      <p>
+        This is just another way of writing the definition of \(D_n\), but it
+        highlights an important symmetry:
+      </p>
+
+      <p style="text-align:center;">
+        <em>The product of a scale factor in \(x\) with \(D_0(y)\) equals the
+        product of the corresponding scale factor in \(y\) with \(D_n(y)\).</em>
+      </p>
+
+      <p>
+        For example, for \(n = 1\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          x D_0(y) = y D_1(y),
+        \]
+      </p>
+
+      <p>
+        and for \(n = 2\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          x \ln x \, D_0(y) = y \ln y \, D_2(y).
+        \]
+      </p>
+
+      <p>
+        Such relations form a <strong>chain of identities</strong> connecting
+        the base derivative \(D_0\) to all higher levels.
+      </p>
+
+      <h2>9.4 Ratios Between Different Levels D<sub>n</sub> and D<sub>m</sub></h2>
+
+      <p>
+        An important property of the hierarchy is the ability to compare
+        different levels directly. Using the general definition:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y = \frac{L_n(x)}{L_n(y)} D_0 y,
+          \qquad
+          D_m y = \frac{L_m(x)}{L_m(y)} D_0 y,
+        \]
+      </p>
+
+      <p>
+        we obtain:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          \frac{D_n y}{D_m y}
+          = \frac{L_n(x) L_m(y)}{L_m(x) L_n(y)}.
+        \]
+      </p>
+
+      <p>
+        This ratio does not involve \(D_0\) at all. It expresses a pure
+        <strong>hierarchical comparison</strong> between levels \(n\) and \(m\)
+        for a given pair \((x, y)\).
+      </p>
+
+      <p>
+        For example, for \(n = 2\) and \(m = 1\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          \frac{D_2 y}{D_1 y}
+          = \frac{L_2(x) L_1(y)}{L_1(x) L_2(y)}.
+        \]
+      </p>
+
+      <p>
+        This type of expression describes how the logarithmic layer of change
+        compares to the relative layer for the same function.
+      </p>
+
+      <h2>9.5 Behavior Under Scaling and Power Laws</h2>
+
+      <h3>9.5.1 Power Functions: \(y = x^k\)</h3>
+
+      <p>
+        Consider again the power function \(y = x^k\), with \(k &gt; 0\).
+        We recall:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = k x^{k-1},\quad
+          D_1 y = k,\quad
+          D_2 y = 1.
+        \]
+      </p>
+
+      <p>
+        For higher levels, each \(D_n\) for \(n \ge 2\) tends to extremely simple
+        behavior, because the ratios involving \(L_n(x)\) and \(L_n(y)\) often
+        simplify drastically when \(y\) is a pure power of \(x\).
+      </p>
+
+      <p>
+        This illustrates a general principle:
+      </p>
+
+      <p style="text-align:center;">
+        <em>Power laws are “natural eigenfunctions” for the hierarchical derivatives.</em>
+      </p>
+
+      <p>
+        At low levels, \(D_1\) extracts the exponent \(k\), and \(D_2\)
+        collapses to the constant 1. Higher levels reveal whether there
+        is any additional hierarchical structure beyond a simple power law.
+      </p>
+
+      <h3>9.5.2 Exponential Functions: \(y = e^{a x}\)</h3>
+
+      <p>
+        For exponential functions we previously found:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = a y,\quad
+          D_1 y = a x,\quad
+          D_2 y = \text{(logarithmic in } x \text{)}.
+        \]
+      </p>
+
+      <p>
+        Here the hierarchy unfolds differently:
+      </p>
+
+      <ul>
+        <li>\(D_0\) is proportional to \(y\),</li>
+        <li>\(D_1\) grows like a power of \(x\),</li>
+        <li>\(D_2\) grows like a logarithm of \(x\),</li>
+        <li>\(D_n\) for larger \(n\) captures increasingly slow variations.</li>
+      </ul>
+
+      <p>
+        This illustrates how the same function can display very different
+        behaviors depending on which derivative level we use.
+      </p>
+
+      <h2>9.6 Product Rules at Different Levels</h2>
+
+      <h3>9.6.1 Product Rule for D<sub>1</sub></h3>
+
+      <p>
+        We have already shown that for \(y = u v\),
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 (u v) = D_1 u + D_1 v.
+        \]
+      </p>
+
+      <p>
+        This is a very clean rule: the relative derivative of a product
+        is the sum of the relative derivatives, mirroring the logarithmic identity
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          \ln(u v) = \ln u + \ln v.
+        \]
+      </p>
+
+      <h3>9.6.2 Product Behavior for Higher Levels</h3>
+
+      <p>
+        For higher levels \(D_n\) with \(n \ge 2\), the product rules become more
+        involved, because the normalization factors \(L_n(x)/L_n(y)\) interact
+        with the structure of \(u\) and \(v\). Nevertheless, a general pattern
+        remains:
+      </p>
+
+      <ul>
+        <li>Products at level \(D_n\) often correspond to <em>sums</em>
+            at the level of transformed variables \(L_{n-1}\) or deeper.</li>
+        <li>In many cases, taking logarithms of \(u\) and \(v\) simplifies the
+            analysis of \(D_n(u v)\).</li>
+      </ul>
+
+      <p>
+        The exact formulas depend on the explicit choice of the ladder
+        \(L_n\), but the qualitative behavior is robust: higher levels
+        treat multiplication as an additive effect in some transformed scale.
+      </p>
+
+      <h2>9.7 Composition and Change of Variables</h2>
+
+      <p>
+        Let \(y = f(x)\) and suppose we apply a change of variables
+        \(x = g(t)\). Then \(y\) becomes a function of \(t\),
+        and all derivatives \(D_n\) can be re–expressed in terms of \(t\).
+      </p>
+
+      <p>
+        At level \(D_0\) we have the usual chain rule:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          \frac{dy}{dt} = \frac{dy}{dx} \cdot \frac{dx}{dt}.
+        \]
+      </p>
+
+      <p>
+        For \(D_n\), the transformation introduces the scale factors
+        \(L_n(x)\) and \(L_n(y)\) evaluated now as functions of \(t\).
+        Schematically:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n^{(t)} y
+            = \frac{L_n(x(t))}{L_n(y(t))} \frac{dy}{dt}.
+        \]
+      </p>
+
+      <p>
+        This means that a change of variables may shift which level in the
+        hierarchy is most natural. Sometimes a complicated behavior in \(x\)
+        becomes simpler in another variable \(t\), or vice versa.
+      </p>
+
+      <h2>9.8 Summary of Chapter 9</h2>
+
+      <div class="summary-box">
+        <p><strong>In this chapter we:</strong></p>
+        <ul>
+          <li>Recalled the general definition
+              \(D_n y = \dfrac{L_n(x)}{L_n(y)} D_0 y\).</li>
+          <li>Derived iterative identities relating \(D_n\) to \(D_{n-1}\).</li>
+          <li>Presented a chain of Golden–type relations connecting
+              scale factors and derivatives at all levels.</li>
+          <li>Computed ratios \(D_n y / D_m y\) purely in terms of the ladder
+              functions \(L_n\) and \(L_m\).</li>
+          <li>Analyzed the behavior of \(D_n\) for power and exponential functions.</li>
+          <li>Reviewed the clean product rule for \(D_1\) and discussed the
+              more subtle product behavior for higher levels.</li>
+          <li>Outlined how changes of variables interact with the hierarchy.</li>
+        </ul>
+        <p>
+          These identities show that the family \(\{D_n\}\) is not a loose
+          collection of operators, but a tightly connected hierarchy. Each
+          level refines our description of change, and the algebraic structure
+          of the system reflects the layered structure of nature itself.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © AHMED GOSSA – Hierarchical Calculus
+  </footer>
+
+</body>
+</html>
