@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 16 – Hierarchical Series</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series" class="active">Series</a>
+      <a href="index.html#integrals">Integrals</a>
+      <a href="index.html#applications">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 16
+    </div>
+
+    <h1>Chapter 16 – Hierarchical Series</h1>
+
+    <p>
+      Classical calculus uses power series and Taylor expansions to represent
+      smooth functions locally. These series are built from repeated
+      applications of the differential operator \(D_0\).  
+      In Hierarchical Calculus we have an entire family of derivatives
+      \(D_0, D_1, D_2, \dots, D_n\).  
+      It is natural to ask:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      Can we build <em>hierarchical series</em> that expand a function using
+      the whole ladder of derivatives?
+    </p>
+
+    <p>
+      This chapter introduces the basic idea of hierarchical series and outlines
+      their structure and interpretation.
+    </p>
+
+    <h2>16.1 Motivation: Beyond Classical Taylor Series</h2>
+
+    <p>
+      The classical Taylor expansion of a smooth function \(f\) at a point
+      \(x_0\) is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x) = \sum_{k=0}^{\infty}
+          \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k,
+      \]
+    </p>
+
+    <p>
+      where the coefficients involve repeated derivatives \(D_0^k f\).
+      This expansion is well–adapted to functions whose behavior is governed
+      by <em>absolute</em> change.
+    </p>
+
+    <p>
+      But many systems are controlled by relative or logarithmic change:
+    </p>
+
+    <ul>
+      <li>growth rates in percentage,</li>
+      <li>ultra–slow dynamics driven by \(\ln x\) or \(\ln(\ln x)\),</li>
+      <li>multi–scale processes with cross–level interactions.</li>
+    </ul>
+
+    <p>
+      Hierarchical series aim to capture such behavior by using the derivatives
+      \(D_n\) and the associated scale functions \(L_n\).
+    </p>
+
+    <h2>16.2 Hierarchical Coordinates Around a Base Point</h2>
+
+    <p>
+      In classical analysis, we expand around a point \(x_0\) using the
+      coordinate \((x - x_0)\). In the hierarchical setting, we introduce a
+      family of coordinates adapted to different levels:
+    </p>
+
+    <ul>
+      <li>Level 0: \(u_0 = x - x_0\).</li>
+      <li>Level 1: \(u_1 = \ln\!\left(\frac{x}{x_0}\right)\).</li>
+      <li>Level 2: \(u_2 = \ln\!\left(\frac{\ln x}{\ln x_0}\right)\).</li>
+      <li>In general: \(u_n\) involves ratios of hierarchical scales
+          \(L_n(x)\) to \(L_n(x_0)\).</li>
+    </ul>
+
+    <p>
+      These coordinates measure distance not only in absolute space, but also
+      along logarithmic and higher layers.
+    </p>
+
+    <h2>16.3 Prototype of a Hierarchical Series</h2>
+
+    <p>
+      Informally, a hierarchical series for a function \(f\) near \(x_0\)
+      takes the form:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        f(x)
+          \approx \sum_{n=0}^{N}
+          \sum_{k=0}^{K_n}
+            a_{n,k}\,
+            \bigl(u_n(x)\bigr)^k,
+      \]
+    </p>
+
+    <p>
+      where:
+    </p>
+
+    <ul>
+      <li>\(u_n(x)\) is a level–\(n\) coordinate (absolute, relative,
+          logarithmic, …),</li>
+      <li>the coefficients \(a_{n,k}\) depend on hierarchical derivatives
+          \(D_n f\) evaluated at \(x_0\).</li>
+    </ul>
+
+    <p>
+      In this way, the standard Taylor series is the special case where only
+      the level–0 coordinate is used:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x) = \sum_k a_{0,k}\, u_0(x)^k.
+      \]
+    </p>
+
+    <h2>16.4 Level-1 Series: Relative Expansions</h2>
+
+    <p>
+      A simple hierarchical series at level 1 expands not in powers of
+      \((x - x_0)\), but in powers of the relative coordinate
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        u_1(x) = \ln\!\left(\frac{x}{x_0}\right).
+      \]
+    </p>
+
+    <p>
+      For functions whose natural variable is \(\ln x\), such as power laws
+      \(x^k\), this choice leads to much simpler expansions.
+    </p>
+
+    <h3>Example 16.1 – Power Law Around x₀</h3>
+
+    <p>
+      Consider:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x) = x^k = e^{k\ln x}.
+      \]
+    </p>
+
+    <p>
+      Around \(x_0\), we can write:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln x = \ln x_0 + u_1(x),
+      \]
+      \[
+        f(x) = e^{k(\ln x_0 + u_1(x))}
+             = x_0^k \, e^{k u_1(x)}.
+      \]
+    </p>
+
+    <p>
+      Expanding the exponential in a classical Taylor series:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        e^{k u_1} = \sum_{m=0}^{\infty} \frac{k^m}{m!}\, u_1^m.
+      \]
+    </p>
+
+    <p>
+      Thus:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        f(x)
+          = x_0^k
+            \sum_{m=0}^{\infty}
+              \frac{k^m}{m!}
+              \bigl(\ln(x/x_0)\bigr)^m.
+      \]
+    </p>
+
+    <p>
+      This is a <em>relative series</em> in powers of \(\ln(x/x_0)\), naturally
+      aligned with the derivative \(D_1\).
+    </p>
+
+    <h2>16.5 Level-2 Series: Logarithmic Expansions</h2>
+
+    <p>
+      At level 2, we introduce the coordinate:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        u_2(x)
+          = \ln\!\left(
+              \frac{\ln x}{\ln x_0}
+            \right).
+      \]
+    </p>
+
+    <p>
+      Functions that depend on \((\ln x)^k\) or
+      on \(\exp((\ln x)^k)\) can have expansions that are much simpler in terms
+      of \(u_2\) than in terms of \((x - x_0)\).
+    </p>
+
+    <h3>Example 16.2 – Logarithmic-Exponential Function</h3>
+
+    <p>
+      Consider:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x) = \exp\!\bigl(A (\ln x)^2 \bigr).
+      \]
+    </p>
+
+    <p>
+      Note that:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        (\ln x)^2 =
+          \bigl(\ln x_0 + \ln(x/x_0)\bigr)^2,
+      \]
+    </p>
+
+    <p>
+      or, using \(u_1 = \ln(x/x_0)\),
+      we can rewrite \(f\) as an exponential of a quadratic polynomial in \(u_1\).
+      Alternatively, we may define \(u_2\) so that \(\ln x = \ln x_0 e^{u_2}\),
+      and express \(f\) in powers of \(u_2\). In both cases, the hierarchical
+      coordinates reveal a more natural expansion variable than \((x-x_0)\).
+    </p>
+
+    <h2>16.6 Using Hierarchical Derivatives as Coefficients</h2>
+
+    <p>
+      In classical Taylor theory, the coefficients are given by derivatives:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        a_{0,k} = \frac{f^{(k)}(x_0)}{k!}.
+      \]
+    </p>
+
+    <p>
+      In hierarchical series, we can define families of coefficients using
+      the derivatives \(D_n\). For instance, a pure level–1 series might use:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x)
+          \approx \sum_{k=0}^{K}
+            \frac{D_1^k f(x_0)}{k!}
+            \bigl(\ln(x/x_0)\bigr)^k,
+      \]
+    </p>
+
+    <p>
+      where \(D_1^k\) denotes repeated application of \(D_1\).  
+      Mixed series could use a combination of \(D_0, D_1, D_2,\dots\),
+      with coefficients tailored to each scale.
+    </p>
+
+    <h2>16.7 Conceptual Picture</h2>
+
+    <p>
+      Hierarchical series can be viewed as:
+    </p>
+
+    <ul>
+      <li>Local expansions of \(f\) in several <em>scale coordinates</em>
+          simultaneously.</li>
+      <li>A way to decompose \(f\) into contributions coming from absolute,
+          relative, and logarithmic behavior.</li>
+      <li>A bridge between hierarchical derivatives and practical
+          approximation methods.</li>
+    </ul>
+
+    <p>
+      Just as classical Taylor series support numerical analysis and
+      differential equations, hierarchical series will be tools for
+      analyzing hierarchical differential equations and multi–scale models.
+    </p>
+
+    <h2>16.8 Outlook</h2>
+
+    <p>
+      This introductory chapter sketches the structure of hierarchical series
+      without entering into full convergence theory. Later chapters will:
+    </p>
+
+    <ul>
+      <li>Develop <strong>relative series expansions</strong> (Level–1 Taylor),
+          where coefficients are based on \(D_1\).</li>
+      <li>Introduce <strong>logarithmic series</strong> and
+          <strong>ultra–slow growth</strong> (Level–2 and beyond).</li>
+      <li>Compare hierarchical series with classical Taylor series and
+          study when one outperforms the other.</li>
+    </ul>
+
+    <h2>16.9 Summary of Chapter 16</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Motivated the need for hierarchical series as extensions of Taylor series.</li>
+        <li>Introduced hierarchical coordinates \(u_n(x)\) aligned with different levels.</li>
+        <li>Described the general form of a hierarchical series as a double sum over
+            levels and powers.</li>
+        <li>Gave examples of relative and logarithmic expansions for simple functions.</li>
+        <li>Outlined how hierarchical derivatives \(D_n\) can be used to define
+            series coefficients.</li>
+      </ul>
+      <p>
+        Hierarchical series provide the language for approximating and
+        analyzing functions whose behavior is governed by absolute, relative
+        and logarithmic scales all at once.  
+        The next chapters will specialize this framework to relative series,
+        logarithmic series and ultra–slow growth.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
