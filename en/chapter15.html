@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 15 – Inverse Relations Between Dₙ and Iₙ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals" class="active">Integrals</a>
+      <a href="index.html#applications">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 15
+    </div>
+
+    <h1>Chapter 15 – Inverse Relations Between D<sub>n</sub> and I<sub>n</sub></h1>
+
+    <p>
+      In Chapters 11–14 we introduced the hierarchical derivative operators
+      \(D_n\) and the corresponding integral operators \(\mathcal{I}_n\).
+      The purpose of this chapter is to make the <strong>inverse relations</strong>
+      between these operators precise, and to understand the role of
+      hierarchical constants of integration.
+    </p>
+
+    <h2>15.1 The Classical Prototype (n = 0)</h2>
+
+    <p>
+      At level \(n = 0\) we recover standard calculus. For a differentiable
+      function \(y(x)\):
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 y = \frac{dy}{dx}.
+      \]
+    </p>
+
+    <p>
+      The classical integral operator \(\mathcal{I}_0\) satisfies:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_0(D_0 y)(x) = y(x) + C,
+      \]
+      \[
+        D_0(\mathcal{I}_0 f)(x) = f(x),
+      \]
+    </p>
+
+    <p>
+      whenever \(f\) is integrable and differentiable in the appropriate sense.
+      These two identities are the guiding pattern we generalize to higher
+      hierarchical levels.
+    </p>
+
+    <h2>15.2 Formal Inverse Relations at Level n</h2>
+
+    <p>
+      Let \(D_n\) be the hierarchical derivative of level \(n\) and
+      \(\mathcal{I}_n\) its integral operator as constructed in Chapter 14.
+      Formally, we want:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        \mathcal{I}_n(D_n y)(x) = y(x) + C_n,
+      \]
+      \[
+        D_n(\mathcal{I}_n f)(x) = f(x),
+      \]
+    </p>
+
+    <p>
+      where \(C_n\) is a “constant of integration at level \(n\)”.
+      The structure of \(C_n\) depends on the transformation \(\Phi_n\) used
+      to define \(\mathcal{I}_n\).
+    </p>
+
+    <h3>15.2.1 Using the Transform Φₙ</h3>
+
+    <p>
+      Recall from Chapter 14 that for each level \(n\) we introduced a
+      transformed variable
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        z_n = \Phi_n(y),
+      \]
+    </p>
+
+    <p>
+      such that
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 z_n = \Psi_n(x)\, D_n y,
+      \]
+    </p>
+
+    <p>
+      with \(\Psi_n(x)\) depending only on \(x\). If we set
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        F_n(x) = D_n y(x),
+      \]
+    </p>
+
+    <p>
+      then
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 z_n(x) = \Psi_n(x)\, F_n(x).
+      \]
+    </p>
+
+    <p>
+      Integrating at level 0:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        z_n(x) = \int \Psi_n(x)\, F_n(x)\, dx + C,
+      \]
+    </p>
+
+    <p>
+      and therefore:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y(x) = \Phi_n^{-1}\!\left(
+          \int \Psi_n(x)\, F_n(x)\, dx + C
+        \right).
+      \]
+    </p>
+
+    <p>
+      This is exactly the definition of \(\mathcal{I}_n\), so we get the first
+      inverse relation:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        \mathcal{I}_n(D_n y)(x)
+          = \Phi_n^{-1}\!\left(
+              \Phi_n(y(x)) + C
+            \right).
+      \]
+    </p>
+
+    <p>
+      In particular, if we choose \(C = 0\), we recover \(y(x)\) exactly.
+      For general \(C\), we obtain a transformed constant \(C_n\) which may be
+      multiplicative or even double–exponential when mapped back through
+      \(\Phi_n^{-1}\).
+    </p>
+
+    <h2>15.3 Hierarchical Constants of Integration</h2>
+
+    <p>
+      At level 0, the constant of integration is simply an additive constant
+      in \(y\). At higher levels, the constant appears inside logarithms or
+      exponentials.
+    </p>
+
+    <ul>
+      <li>
+        <strong>Level 0:</strong>  
+        \(\mathcal{I}_0(D_0 y) = y + C\).
+      </li>
+      <li>
+        <strong>Level 1:</strong> with \(\Phi_1(y) = \ln y\), a constant in
+        \(\Phi_1(y)\) becomes a multiplicative constant in \(y\):  
+        \(\ln y = \ln y_0 + C \Rightarrow y = e^C y_0\).
+      </li>
+      <li>
+        <strong>Level 2:</strong> with \(\Phi_2(y) = \ln(\ln y)\), a constant in
+        \(\Phi_2(y)\) becomes a multiplicative constant in \(\ln y\), and hence
+        a double–exponential constant in \(y\).
+      </li>
+    </ul>
+
+    <p>
+      In general, a constant in the transformed coordinate \(\Phi_n(y)\) becomes
+      a constant at level \(n\) when mapped back through \(\Phi_n^{-1}\).
+    </p>
+
+    <h2>15.4 Checking the Inverse Relations at Low Levels</h2>
+
+    <h3>15.4.1 Level 1: D₁ and I₁</h3>
+
+    <p>
+      For \(D_1\) we have:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 y = \frac{x}{y} \frac{dy}{dx}.
+      \]
+    </p>
+
+    <p>
+      The integral operator \(\mathcal{I}_1\) acts on a function \(F_1\) by:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_1[F_1](x)
+          = \exp\!\left(
+              \int \frac{F_1(x)}{x}\, dx + C
+            \right).
+      \]
+    </p>
+
+    <p>
+      If \(F_1(x) = D_1 y(x)\), then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{F_1(x)}{x}
+          = \frac{1}{y}\frac{dy}{dx}
+          = D_0(\ln y),
+      \]
+    </p>
+
+    <p>
+      so:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \int \frac{F_1(x)}{x}\, dx
+          = \ln y(x) + C_0,
+      \]
+      \[
+        \mathcal{I}_1(D_1 y)(x)
+          = \exp\!\left(\ln y(x) + C_0 + C\right)
+          = e^{C_0+C} y(x).
+      \]
+    </p>
+
+    <p>
+      Thus:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        \mathcal{I}_1(D_1 y) = A_1\, y,
+      \]
+    </p>
+
+    <p>
+      where \(A_1 &gt; 0\) is a constant.  
+      This is the natural inverse relation at level 1.
+    </p>
+
+    <p>
+      For the other direction, if we set
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y(x) = \mathcal{I}_1[F_1](x)
+              = \exp\!\left(
+                  \int \frac{F_1(x)}{x}\, dx
+                \right),
+      \]
+    </p>
+
+    <p>
+      then
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln y(x) = \int \frac{F_1(x)}{x}\, dx,
+      \]
+      \[
+        \frac{d}{dx}(\ln y) = \frac{F_1(x)}{x},
+      \]
+      \[
+        D_1 y = \frac{x}{y} \frac{dy}{dx} = F_1(x).
+      \]
+    </p>
+
+    <p>
+      So
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        D_1(\mathcal{I}_1[F_1]) = F_1.
+      \]
+    </p>
+
+    <h3>15.4.2 Level 2: D₂ and I₂</h3>
+
+    <p>
+      For \(D_2\) we have:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2 y = \frac{x\ln x}{y\ln y} \frac{dy}{dx},
+      \]
+      \[
+        \frac{D_2 y}{x\ln x}
+          = \frac{1}{y\ln y} \frac{dy}{dx}
+          = D_0(\ln(\ln y)).
+      \]
+    </p>
+
+    <p>
+      The integral operator \(\mathcal{I}_2\) is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_2[F_2](x)
+          = \exp\!\left(
+              \exp\!\left(
+                \int \frac{F_2(x)}{x\ln x}\, dx + C
+              \right)
+            \right).
+      \]
+    </p>
+
+    <p>
+      Setting \(F_2(x) = D_2 y(x)\) gives:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \int \frac{F_2(x)}{x\ln x} dx
+          = \ln(\ln y(x)) + C_0,
+      \]
+      \[
+        \mathcal{I}_2(D_2 y)(x)
+          = \exp\!\left(
+              \exp\!\left(
+                \ln(\ln y(x)) + C_0 + C
+              \right)
+            \right).
+      \]
+    </p>
+
+    <p>
+      The inner exponential yields a multiplicative factor in \(\ln y\),
+      which then becomes a double–exponential factor in \(y\).
+      Thus:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        \mathcal{I}_2(D_2 y) = A_2(y)\, y,
+      \]
+    </p>
+
+    <p>
+      where \(A_2(y)\) encodes the level–2 constant; in many applications we can
+      fix this constant by imposing a boundary condition such as
+      \(y(x_0) = y_0\).
+    </p>
+
+    <p>
+      Conversely, if:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y(x) = \mathcal{I}_2[F_2](x),
+      \]
+    </p>
+
+    <p>
+      then
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln(\ln y(x))
+          = \int \frac{F_2(x)}{x\ln x}\, dx,
+      \]
+      \[
+        D_0(\ln(\ln y)) = \frac{F_2(x)}{x\ln x},
+      \]
+      \[
+        D_2 y = F_2(x).
+      \]
+    </p>
+
+    <p>
+      So again we have:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        D_2(\mathcal{I}_2[F_2]) = F_2.
+      \]
+    </p>
+
+    <h2>15.5 Abstract Inverse Pair (Dₙ, Iₙ)</h2>
+
+    <p>
+      At level \(n\), the pair \((D_n, \mathcal{I}_n)\) behaves like:
+    </p>
+
+    <ul>
+      <li>
+        \(D_n\) measures change after compressing the variables through the
+        scale functions \(L_n(x)\) and \(L_n(y)\).
+      </li>
+      <li>
+        \(\mathcal{I}_n\) reconstructs the original function by:
+        <ol>
+          <li>transforming to the variable \(\Phi_n(y)\),</li>
+          <li>integrating against the factor \(\Psi_n(x)\),</li>
+          <li>and inverting \(\Phi_n\).</li>
+        </ol>
+      </li>
+    </ul>
+
+    <p>
+      Formally they satisfy:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_n(D_n y) = y + C_n,\qquad
+        D_n(\mathcal{I}_n f) = f,
+      \]
+    </p>
+
+    <p>
+      with \(C_n\) determined by boundary or normalization conditions.
+    </p>
+
+    <h2>15.6 Interpretation</h2>
+
+    <p>
+      The inverse relations between \(D_n\) and \(\mathcal{I}_n\) show that
+      Hierarchical Calculus is a complete calculus system:
+    </p>
+
+    <ul>
+      <li>Derivatives \(D_n\) describe multi-scale change.</li>
+      <li>Integrals \(\mathcal{I}_n\) reconstruct multi-scale structure.</li>
+      <li>Constants of integration appear at progressively deeper levels
+          (additive, multiplicative, double exponential, …).</li>
+    </ul>
+
+    <p>
+      This duality is the key to building hierarchical series, solving
+      hierarchical differential equations, and designing models where dynamics
+      unfold across many layers of scale.
+    </p>
+
+    <h2>15.7 Summary of Chapter 15</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Stated the formal inverse relations between \(D_n\) and \(\mathcal{I}_n\).</li>
+        <li>Used the transformed variable \(\Phi_n(y)\) and scale factor \(\Psi_n(x)\)
+            to derive these relations.</li>
+        <li>Analyzed hierarchical constants of integration and how they differ from
+            level to level.</li>
+        <li>Verified explicitly the inverse relations for \(n=1\) and \(n=2\).</li>
+        <li>Interpreted the pair \((D_n, \mathcal{I}_n)\) as a full multi-scale
+            generalization of the classical derivative–integral pair.</li>
+      </ul>
+      <p>
+        In the next chapter, we will use these inverse relations to construct
+        <strong>hierarchical series</strong>, generalizing power series and
+        Taylor expansions to the hierarchical setting.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
