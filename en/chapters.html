@@ -1,85 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Chapters – Hierarchical Calculus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Book Chapters – Hierarchical Calculus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --bg-header: #050814;
+      --border-soft: #1b2340;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --accent-soft: rgba(255, 176, 46, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: system-ui, sans-serif;
       margin: 0;
-      background: #f9f9f9;
-      color: #222;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
     }
-    header, footer {
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-      padding: 0.8rem 1.2rem;
+
+    /* HEADER / NAV */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(18px);
     }
-    nav a {
-      margin-right: 1rem;
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.7rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #1b1305;
+      font-size: 0.95rem;
+      box-shadow: 0 0 25px rgba(255, 160, 0, 0.45);
+    }
+
+    .brand-text-title {
+      font-size: 0.98rem;
+      font-weight: 650;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-text-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .lang-toggle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .lang-toggle a {
+      color: var(--accent);
       text-decoration: none;
-      color: #0066cc;
+      font-weight: 600;
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 1rem;
-      background: #fff;
-      margin-top: 1.2rem;
-      border: 1px solid #e0e0e0;
+
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.88rem;
     }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    nav .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    nav .nav-links a.active {
+      color: var(--accent);
+    }
+
+    nav .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #ffb02e, #ff7f50);
+    }
+
+    /* MAIN LAYOUT */
+
+    main {
+      padding: 2.5rem 1.25rem 2.75rem;
+    }
+
+    .chapters-shell {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .chapters-card {
+      background: radial-gradient(circle at top left, #161c38 0, #0b1022 45%, #060817 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(86, 104, 163, 0.7);
+      padding: 1.8rem 1.8rem 1.6rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .chapters-title {
+      font-size: 1.4rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .chapters-subtitle {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* TABLE */
+
+    .chapters-table-wrap {
+      margin-top: 1.6rem;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(79, 97, 150, 0.85);
+      background: rgba(4, 7, 20, 0.7);
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1rem;
+      font-size: 0.9rem;
     }
+
+    thead {
+      background: rgba(10, 16, 40, 0.98);
+    }
+
     th, td {
-      border: 1px solid #ddd;
-      padding: 0.6rem;
+      padding: 0.6rem 0.9rem;
       text-align: left;
     }
+
     th {
-      background: #f0f0f0;
+      font-weight: 600;
+      color: var(--text-main);
+      border-bottom: 1px solid rgba(79, 97, 150, 0.9);
+    }
+
+    tbody tr:nth-child(odd) {
+      background: rgba(9, 13, 32, 0.9);
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(6, 9, 25, 0.9);
+    }
+
+    tbody tr:hover {
+      background: rgba(33, 45, 92, 0.95);
+    }
+
+    td {
+      border-bottom: 1px solid rgba(35, 46, 86, 0.9);
+      color: var(--text-main);
+    }
+
+    .chapter-num {
+      width: 48px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .chapter-open a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 550;
+      font-size: 0.85rem;
+    }
+
+    .chapter-open a:hover {
+      text-decoration: underline;
+    }
+
+    .badge-wip {
+      display: inline-block;
+      padding: 0.08rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 176, 46, 0.6);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.7rem;
+      margin-left: 0.45rem;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(43, 54, 94, 0.9);
+      padding: 1.2rem 1.25rem 1.4rem;
+      background: #050814;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-inner a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-inner a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav .nav-links {
+        flex-wrap: wrap;
+        row-gap: 0.4rem;
+      }
+      .chapters-card {
+        padding: 1.4rem 1.1rem 1.3rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-badge">H</div>
+        <div>
+          <div class="brand-text-title">Hierarchical Calculus</div>
+          <div class="brand-text-sub">AHMED GOSSA</div>
+        </div>
+      </div>
 
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="#theory">Theory</a>
-    <a href="#derivatives">Derivatives</a>
-    <a href="#series">Series</a>
-    <a href="#integrals">Integrals</a>
-    <a href="#applications">Applications</a>
-    <a href="chapters.html">Chapters</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+      <div class="nav-right">
+        <div class="lang-toggle">
+          Language: العربية • <a href="chapters.html">EN</a>
+        </div>
+        <nav>
+          <div class="nav-links">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#theory">Theory</a>
+            <a href="index.html#derivatives">Derivatives</a>
+            <a href="index.html#series">Series</a>
+            <a href="index.html#integrals">Integrals</a>
+            <a href="index.html#applications">Applications</a>
+            <a href="chapters.html" class="active">Chapters</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-<div class="container">
-  <h1>Book Chapters (English)</h1>
+  <!-- MAIN -->
+  <main>
+    <div class="chapters-shell">
+      <div class="chapters-card">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> &raquo; Book &raquo; Chapters
+        </div>
 
-  <table>
-    <tr>
-      <th>#</th>
-      <th>Chapter Title</th>
-      <th>Open</th>
-    </tr>
+        <h1 class="chapters-title">Book Chapters (English)</h1>
+        <p class="chapters-subtitle">
+          This page lists the English chapters of the Hierarchical Calculus book.
+          Chapters marked with <span class="badge-wip">WIP</span> are still being written.
+        </p>
 
-    <tr><td>1</td><td>Introduction to Hierarchical Calculus</td><td><a href="chapter1.html">Open</a></td></tr>
-    <tr><td>2</td><td>Why Classical Calculus Is Not Enough</td><td><a href="chapter2.html">Open</a></td></tr>
-    <tr><td>3</td><td>The Philosophy of Change</td><td><a href="chapter3.html">Open</a></td></tr>
-    <!-- كرّر باقي الفصول حتى 30 -->
-  </table>
-</div>
+        <div class="chapters-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Chapter Title</th>
+                <th>Open</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="chapter-num">1</td>
+                <td>Introduction to Hierarchical Calculus</td>
+                <td class="chapter-open"><a href="chapter1.html">Open</a></td>
+              </tr>
+              <tr>
+                <td class="chapter-num">2</td>
+                <td>Why Classical Calculus Is Not Enough <span class="badge-wip">WIP</span></td>
+                <td class="chapter-open"><a href="chapter2.html">Open</a></td>
+              </tr>
+              <tr>
+                <td class="chapter-num">3</td>
+                <td>The Philosophy of Change <span class="badge-wip">WIP</span></td>
+                <td class="chapter-open"><a href="chapter3.html">Open</a></td>
+              </tr>
+              <!-- أضِف صفوفًا أخرى لبقية الفصول عندما تنشئ ملفاتها -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
 
-<footer>
-  <p>&copy; AHMED GOSSA – Hierarchical Calculus</p>
-</footer>
-
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      © AHMED GOSSA – Hierarchical Calculus
+    </div>
+  </footer>
 </body>
 </html>
+
