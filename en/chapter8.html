@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 8 – The General Hierarchical Derivative Dn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .lang-toggle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .lang-toggle a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.45);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.7rem;
+    }
+
+    h3 {
+      margin-top: 1.4rem;
+    }
+
+    .breadcrumb {
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .summary-box {
+      margin-top: 1.4rem;
+      padding: 1rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(255, 176, 46, 0.09);
+      border-radius: 8px;
+    }
+
+    ul, ol {
+      padding-left: 1.2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    table th, table td {
+      border: 1px solid #283155;
+      padding: 0.45rem 0.5rem;
+      text-align: left;
+    }
+
+    table th {
+      background: #070b1a;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding: 1.2rem;
+      text-align: center;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(58, 73, 120, 0.4);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {inlineMath: [['\\(', '\\)'], ['$', '$']]}
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-badge">H</div>
+        <div>
+          <div><strong>Hierarchical Calculus</strong></div>
+          <small style="color:var(--text-muted)">AHMED GOSSA</small>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#theory">Theory</a>
+        <a href="index.html#derivatives">Derivatives</a>
+        <a href="index.html#series">Series</a>
+        <a href="index.html#integrals">Integrals</a>
+        <a href="index.html#applications">Applications</a>
+        <a href="chapters.html" class="active">Chapters</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+      <div class="lang-toggle">
+        Language: العربية • <a href="chapter8.html">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="chapter-container">
+
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 8
+      </div>
+
+      <h1>Chapter 8 – The General Hierarchical Derivative D<sub>n</sub></h1>
+
+      <p>
+        In the previous chapters we studied the three fundamental hierarchical derivatives:
+        the differential derivative \(D_0\), the relative derivative \(D_1\),
+        and the logarithmic derivative \(D_2\). In this chapter we generalize
+        these ideas and define the full family
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0, D_1, D_2, \dots, D_n, \dots
+        \]
+      </p>
+
+      <p>
+        Each level \(D_n\) corresponds to a deeper layer of sensitivity to change,
+        constructed systematically from a <em>logarithmic ladder</em> \(L_n\).
+      </p>
+
+      <h2>8.1 The Logarithmic Ladder L<sub>n</sub></h2>
+
+      <p>
+        The general hierarchical derivative is built from a sequence of functions
+        \(L_n(x)\), which we call the <strong>logarithmic ladder</strong>.
+        The simplest form of this ladder is defined recursively by:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          L_0(x) = x,\quad
+          L_1(x) = \ln x,\quad
+          L_2(x) = \ln(\ln x),\quad
+          L_3(x) = \ln(\ln(\ln x)),\quad \dots
+        \]
+      </p>
+
+      <p>
+        In words, \(L_n(x)\) is obtained by applying the natural logarithm
+        \(n\) times, starting from \(x\). In practice, the hierarchy is used
+        in the region where all these expressions are well–defined and positive.
+      </p>
+
+      <p>
+        The ladder encodes how we progressively “compress” the scale of \(x\):
+        from linear, to logarithmic, to log–of–log, and so on. The same construction
+        is applied to \(y\).
+      </p>
+
+      <h2>8.2 General Definition of D<sub>n</sub></h2>
+
+      <p>
+        Let \(y = f(x)\) with \(x\) and \(y\) in a domain where all the relevant
+        \(L_k(x)\) and \(L_k(y)\) are defined and nonzero. The
+        <strong>general hierarchical derivative</strong> of order \(n\) is defined by:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y
+            = \frac{L_n(x)}{L_n(y)}\, D_0 y,
+        \]
+      </p>
+
+      <p>
+        where \(D_0 y = \dfrac{dy}{dx}\) is the usual differential derivative.
+      </p>
+
+      <p>
+        For small values of \(n\), this reproduces:
+      </p>
+
+      <ul>
+        <li>\(n = 0\): \(D_0 y = \dfrac{L_0(x)}{L_0(y)} D_0 y = \dfrac{x}{y} D_0 y\)
+            does not give new information, so by convention we take \(D_0\)
+            as the base derivative \(\dfrac{dy}{dx}\).</li>
+        <li>\(n = 1\): \(D_1 y = \dfrac{L_0(x)}{L_0(y)} D_0 y = \dfrac{x}{y} D_0 y\),
+            the relative derivative.</li>
+        <li>\(n = 2\): \(D_2 y = \dfrac{L_1(x)}{L_1(y)} D_1 y
+            = \dfrac{\ln x}{\ln y} D_1 y\),
+            the logarithmic derivative as studied in Chapter 7.</li>
+      </ul>
+
+      <p>
+        In general, each level \(D_n\) introduces a new layer of scaling through
+        the functions \(L_n\).
+      </p>
+
+      <h2>8.3 Iterative Construction of D<sub>n</sub></h2>
+
+      <p>
+        The formula
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y = \frac{L_n(x)}{L_n(y)}\, D_0 y
+        \]
+      </p>
+
+      <p>
+        can be written in an iterative way. For \(n \ge 1\) we define
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y = \frac{L_{n-1}(x)}{L_{n-1}(y)}\, D_{n-1} y.
+        \]
+      </p>
+
+      <p>
+        This shows that:
+      </p>
+
+      <ul>
+        <li>Starting from \(D_0\), each step multiplies by a scaling factor
+            depending on \(L_{n-1}(x)\) and \(L_{n-1}(y)\).</li>
+        <li>Each new level is obtained by “normalizing” the previous derivative
+            with respect to a deeper logarithmic layer.</li>
+      </ul>
+
+      <p>
+        For example:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_1 y = \frac{L_0(x)}{L_0(y)} D_0 y = \frac{x}{y} D_0 y,
+        \]
+        \[
+          D_2 y = \frac{L_1(x)}{L_1(y)} D_1 y
+                = \frac{\ln x}{\ln y} D_1 y,
+        \]
+        \[
+          D_3 y = \frac{L_2(x)}{L_2(y)} D_2 y
+                = \frac{\ln(\ln x)}{\ln(\ln y)} D_2 y,
+        \]
+      </p>
+
+      <p>
+        and so on. Each level refines our description of change by moving one
+        step higher on the logarithmic ladder.
+      </p>
+
+      <h2>8.4 Hierarchical Golden–Type Relations</h2>
+
+      <p>
+        For the first levels, we have seen:
+      </p>
+
+      <ul>
+        <li>\(x D_0(y) = y D_1(y)\),</li>
+        <li>\(\ln x \, D_1(y) = \ln y \, D_2(y)\).</li>
+      </ul>
+
+      <p>
+        These are examples of a more general pattern. If we define
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          G_n(x, y) = L_n(x) D_n(y),
+        \]
+      </p>
+
+      <p>
+        then the relation
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          L_n(x)\, D_n(y) = L_n(y)\, D_{n+1}(y)
+        \]
+      </p>
+
+      <p>
+        expresses a <strong>hierarchical Golden Relation</strong>: each level
+        \(D_{n+1}\) is linked to \(D_n\) via the same type of identity, but now
+        on the scale of \(L_n\). The absolute, relative and logarithmic cases
+        are simply the first instances of this infinite chain.
+      </p>
+
+      <h2>8.5 Examples: Power and Exponential Functions</h2>
+
+      <h3>8.5.1 Power Functions</h3>
+
+      <p>
+        Let \(y = x^k\) with \(k &gt; 0\). We already know:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = k x^{k-1},\quad
+          D_1 y = k,\quad
+          D_2 y = 1.
+        \]
+      </p>
+
+      <p>
+        For higher levels, we use
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_n y = \frac{L_n(x)}{L_n(y)} D_0 y.
+        \]
+      </p>
+
+      <p>
+        Because \(y = x^k\), we have \(L_n(y) = L_n(x^k)\). Due to the slow
+        variation of the logarithmic ladder, many of these ratios tend to
+        constants or very slowly varying functions. The important conceptual
+        point is that for power laws, \(D_n y\) quickly becomes simple:
+        \(D_1\) gives the exponent, \(D_2\) gives 1, and higher levels detect
+        finer structure if present.
+      </p>
+
+      <h3>8.5.2 Exponential Functions</h3>
+
+      <p>
+        Let \(y = e^{a x}\). We already found:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0 y = a y,\quad
+          D_1 y = a x,\quad
+          D_2 y = \ln x.
+        \]
+      </p>
+
+      <p>
+        For \(D_3\), we use the iterative definition:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_3 y = \frac{L_2(x)}{L_2(y)} D_2 y
+                 = \frac{\ln(\ln x)}{\ln(\ln y)} \ln x.
+        \]
+      </p>
+
+      <p>
+        Here \(\ln y = a x\), so \(\ln(\ln y) = \ln(a x)\). Thus,
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_3 y = \frac{\ln(\ln x)}{\ln(a x)} \ln x,
+        \]
+      </p>
+
+      <p>
+        which varies extremely slowly and captures subtle changes in how
+        different logarithmic scales interact.
+      </p>
+
+      <h2>8.6 Hierarchical View of Sensitivity</h2>
+
+      <p>
+        Each derivative \(D_n\) provides a different measure of
+        <strong>sensitivity</strong> of \(y\) with respect to \(x\):
+      </p>
+
+      <table>
+        <tr>
+          <th>Level</th>
+          <th>Derivative</th>
+          <th>Type of Sensitivity</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>\(D_0\)</td>
+          <td>Absolute change: \(dy/dx\).</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>\(D_1\)</td>
+          <td>Relative change: how \(y\) changes compared to its own size.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>\(D_2\)</td>
+          <td>Logarithmic change: behavior on compressed scales.</td>
+        </tr>
+        <tr>
+          <td>\(n\)</td>
+          <td>\(D_n\)</td>
+          <td>Change after \(n\) levels of logarithmic compression.</td>
+        </tr>
+      </table>
+
+      <p>
+        In complex systems, different phenomena may be most naturally described
+        at different hierarchical levels. The power of Hierarchical Calculus
+        lies in its ability to move up and down this ladder systematically.
+      </p>
+
+      <h2>8.7 Conceptual Summary</h2>
+
+      <p>
+        The general hierarchical derivative \(D_n\) is not just a formal extension.
+        It encodes the idea that:
+      </p>
+
+      <ul>
+        <li>Change has many layers: absolute, relative, logarithmic, and beyond.</li>
+        <li>Each layer corresponds to a particular way of compressing and comparing scales.</li>
+        <li>The logarithmic ladder \(L_n\) provides the structure to build these layers.</li>
+        <li>Golden–type relations connect all levels into a coherent algebraic system.</li>
+      </ul>
+
+      <h2>8.8 Summary of Chapter 8</h2>
+
+      <div class="summary-box">
+        <p><strong>In this chapter we:</strong></p>
+        <ul>
+          <li>Introduced the logarithmic ladder \(L_n(x)\) as a central tool.</li>
+          <li>Defined the general hierarchical derivative
+              \(D_n y = \dfrac{L_n(x)}{L_n(y)} D_0 y\).</li>
+          <li>Showed the iterative construction:
+              \(D_n y = \dfrac{L_{n-1}(x)}{L_{n-1}(y)} D_{n-1} y\).</li>
+          <li>Extended Golden–type relations to all levels.</li>
+          <li>Illustrated the behavior of \(D_n\) on power and exponential functions.</li>
+          <li>Interpreted each \(D_n\) as a distinct layer of sensitivity to change,
+              associated with \(n\)-fold logarithmic compression.</li>
+        </ul>
+        <p>
+          The family \(\{D_n\}_{n\ge 0}\) is the backbone of Hierarchical Calculus.
+          It provides a unified language for describing how systems evolve across
+          many scales of magnitude and complexity.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © AHMED GOSSA – Hierarchical Calculus
+  </footer>
+
+</body>
+</html>
