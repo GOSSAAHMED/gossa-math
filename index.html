@@ -445,9 +445,21 @@
       </div>
       <div class="equation-block">
         <div class="eq-label">المشتق من الرتبة ‎\(n\)</div>
-        $$ D_n y = \frac{dy \displaystyle\prod_{k=0}^{n-1} L_k(x)}
-                        {dx \displaystyle\prod_{k=0}^{n-1} L_k(y)}, \quad
-           L_0(x)=x,\ L_1(x)=\ln x,\ L_2(x)=\ln(\ln x),\dots $$
+        $$
+L_0(z) = z,\quad
+L_1(z) = \ln z,\quad
+L_2(z) = \ln(\ln z),\dots
+$$
+
+$$
+L_n(z) = \prod_{k=0}^{n-1} \ln^{(k)}(z), \quad
+\ln^{(0)}(z)=z,\ \ln^{(1)}(z)=\ln z,\ \ln^{(2)}(z)=\ln(\ln z),\dots
+$$
+
+$$
+D_n y = \frac{dy}{dx}\,\frac{L_n(x)}{L_n(y)}
+$$
+
       </div>
 
       <div class="golden">
