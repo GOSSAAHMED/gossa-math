@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 25 – Applications in Probability and Information</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    .example-box {
+      margin-top:1rem;
+      padding:0.9rem 1rem;
+      border-radius:10px;
+      background:rgba(90,110,180,0.12);
+      border:1px solid rgba(120,140,210,0.5);
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals">Integrals</a>
+      <a href="index.html#applications" class="active">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 25
+    </div>
+
+    <h1>Chapter 25 – Applications in Probability and Information</h1>
+
+    <p>
+      Probability and information theory are naturally logarithmic:
+      probabilities multiply, while information and entropy add.
+      This makes them an ideal domain for Hierarchical Calculus, where
+      the derivatives \(D_0, D_1, D_2\) are designed to operate on
+      nested logarithmic scales.
+    </p>
+
+    <p>
+      In this chapter we explore:
+    </p>
+
+    <ul>
+      <li>hierarchical derivatives on probabilities and odds,</li>
+      <li>information content and entropy,</li>
+      <li>heavy-tailed distributions and relative behaviour in the tails,</li>
+      <li>growth of information and ultra–slow learning.</li>
+    </ul>
+
+    <h2>25.1 Probabilities, Odds and Log-Probabilities</h2>
+
+    <p>
+      Let \(p(x)\) be a probability density or mass function depending on a
+      parameter \(x\). A central object in statistics is the log–likelihood
+      \(\ln p(x)\), and ratios of probabilities.  
+      The level–1 derivative with respect to \(x\) is
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(x)} p
+          = \frac{x}{p}\,\frac{dp}{dx}.
+      \]
+    </p>
+
+    <p>
+      This quantity measures the <em>relative rate of change</em> of
+      probability with respect to the relative change in the parameter.
+      It is the derivative of \(\ln p\) with respect to \(\ln x\).
+    </p>
+
+    <div class="example-box">
+      <h3>Example 25.1 – Power-Law Prior</h3>
+      <p>
+        Consider a prior distribution on a positive parameter:
+      </p>
+      <p style="text-align:center;">
+        \[
+          p(x) \propto x^{-\alpha},
+        \]
+      </p>
+      <p>
+        with \(\alpha&gt;0\). Then
+      </p>
+      <p style="text-align:center;">
+        \[
+          \ln p(x) = -\alpha \ln x + \text{const}
+          \quad\Rightarrow\quad
+          D_1^{(x)} p = -\alpha.
+        \]
+      </p>
+      <p>
+        The heavy-tail exponent \(\alpha\) is exactly the hierarchical derivative
+        \(D_1^{(x)} p\). This connects power-law priors directly to the
+        framework of Hierarchical Calculus.
+      </p>
+    </div>
+
+    <h2>25.2 Information Content and Hierarchical Derivatives</h2>
+
+    <p>
+      The self-information of an event of probability \(p\) is
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        I = -\ln p.
+      \]
+    </p>
+
+    <p>
+      If \(p\) depends on a parameter \(x\), then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{dI}{dx}
+          = -\frac{1}{p}\frac{dp}{dx}.
+      \]
+    </p>
+
+    <p>
+      Using the level–1 derivative \(D_1^{(x)} p\), we can write:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{dI}{d\ln x}
+          = -\frac{1}{p}\frac{dp}{dx}\,\frac{dx}{d\ln x}
+          = -\frac{x}{p}\frac{dp}{dx}
+          = -D_1^{(x)} p.
+      \]
+    </p>
+
+    <p>
+      Thus the change of information with respect to \(\ln x\) is directly
+      related to the hierarchical derivative of \(p\).
+    </p>
+
+    <h2>25.3 Entropy and Relative Sensitivity</h2>
+
+    <p>
+      For a discrete distribution \(\{p_i(x)\}\) depending on a parameter
+      \(x\), the Shannon entropy is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        H(x) = -\sum_i p_i(x)\,\ln p_i(x).
+      \]
+    </p>
+
+    <p>
+      Differentiating with respect to \(x\) and reorganising terms, one finds
+      expressions involving derivatives of \(\ln p_i\). In hierarchical form,
+      the sensitivity of entropy to relative changes in \(x\) can be written
+      using \(D_1^{(x)} p_i\).
+    </p>
+
+    <div class="example-box">
+      <h3>Example 25.2 – Entropy vs Scale Parameter</h3>
+      <p>
+        Consider a family of distributions parameterised by a scale \(\sigma\),
+        such as Gaussian or Laplace families. The level–1 derivative
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_1^{(\sigma)} H
+            = \frac{\sigma}{H}\frac{dH}{d\sigma}
+        \]
+      </p>
+      <p>
+        measures the percentage change in entropy per percentage change
+        in the scale. In heavy-tailed families this can behave very
+        differently from light-tailed ones, which can be analysed with
+        hierarchical derivatives of the underlying \(p(x;\sigma)\).
+      </p>
+    </div>
+
+    <h2>25.4 Heavy-Tailed Distributions and Relative Behaviour</h2>
+
+    <p>
+      Many probabilistic models in physics, finance and information theory
+      involve heavy-tailed distributions, where moments may diverge and
+      tails follow a power law:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        P(X &gt; x) \sim C x^{-\gamma},
+      \]
+    </p>
+
+    <p>
+      for large \(x\). The tail exponent \(\gamma\) determines the relative
+      frequency of extreme events.
+    </p>
+
+    <p>
+      Using hierarchical derivatives with respect to \(x\):
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(x)} P(X &gt; x)
+          = \frac{x}{P(X &gt; x)}\frac{d}{dx}P(X &gt; x)
+          \approx -\gamma
+      \]
+    </p>
+
+    <p>
+      for large \(x\). Hierarchical Calculus thus encodes the tail exponent
+      as a derivative on logarithmic scales.
+    </p>
+
+    <div class="example-box">
+      <h3>Example 25.3 – Slowly Changing Tail Exponent</h3>
+      <p>
+        In some models the exponent \(\gamma\) itself can depend on scale:
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_1^{(x)} P(X &gt; x,t) \approx -\gamma(t).
+        \]
+      </p>
+      <p>
+        Hierarchical series in \(\ln(t/t_0)\) can track how \(\gamma(t)\)
+        evolves over time, which is relevant for systems where risk profiles
+        slowly change (e.g. networks, markets, or environments).
+      </p>
+    </div>
+
+    <h2>25.5 Information Growth and D₁, D₂</h2>
+
+    <p>
+      Let \(K(t)\) be a cumulative measure of information or knowledge,
+      such as the total number of distinct patterns learned by a system
+      over time. We can study its growth on different levels.
+    </p>
+
+    <ul>
+      <li><strong>Absolute growth:</strong>
+        \(D_0^{(t)} K = \frac{dK}{dt}\).</li>
+      <li><strong>Relative growth:</strong>
+        \(D_1^{(t)} K = \frac{t}{K}\frac{dK}{dt}\).</li>
+      <li><strong>Logarithmic growth:</strong>
+        \(D_2^{(t)} K = \frac{t\ln t}{K\,\ln K}\frac{dK}{dt}\).</li>
+    </ul>
+
+    <p>
+      Exponential learning corresponds to constant \(D_0^{(t)} K / K\), power-law
+      learning to constant \(D_1^{(t)} K\), and ultra-slow saturation to
+      nearly constant \(D_2^{(t)} K\).
+    </p>
+
+    <div class="example-box">
+      <h3>Example 25.4 – Ultra-Slow Information Saturation</h3>
+      <p>
+        Suppose a learning system approaches a limit of complexity it can
+        represent. The effective number of distinct patterns \(K(t)\) may
+        grow extremely slowly, perhaps like
+      </p>
+      <p style="text-align:center;">
+        \[
+          K(t) \approx \exp\!\bigl(A(\ln t)^{\beta}\bigr).
+        \]
+      </p>
+      <p>
+        For such forms, the level–2 derivative \(D_2^{(t)} K\) can become
+        approximately constant, making it a natural descriptor of the
+        remaining learning capacity on double–logarithmic time scales.
+      </p>
+    </div>
+
+    <h2>25.6 Mutual Information and Relative Change</h2>
+
+    <p>
+      Mutual information \(I(X;Y)\) measures the dependence between random
+      variables \(X\) and \(Y\). It often changes slowly as a function of
+      some parameter \(\theta\) (e.g. channel quality, training time,
+      model size).
+    </p>
+
+    <p>
+      The hierarchical derivative:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(\theta)} I
+          = \frac{\theta}{I}\frac{dI}{d\theta}
+      \]
+    </p>
+
+    <p>
+      measures the percentage change of information per percentage change
+      in \(\theta\). For ultra–slow regimes, one can move to \(D_2\) acting
+      on \(I\) as a function of \(\theta\) or time.
+    </p>
+
+    <h2>25.7 Conceptual Summary</h2>
+
+    <p>
+      The main conceptual links between Hierarchical Calculus and probability
+      / information are:
+    </p>
+
+    <ul>
+      <li>
+        Logarithms of probabilities and tail functions fit naturally with
+        hierarchical coordinates \(\ln x\) and \(\ln(\ln x)\).
+      </li>
+      <li>
+        Heavy-tail exponents, scaling exponents and sensitivity of entropy
+        can be expressed as hierarchical derivatives \(D_1\).
+      </li>
+      <li>
+        Ultra–slow changes in distributions or information content can be
+        modelled with \(D_2\).
+      </li>
+      <li>
+        Information growth over time can be organised into exponential,
+        power-law and ultra–slow regimes linked to \(D_0, D_1, D_2\).
+      </li>
+    </ul>
+
+    <h2>25.8 Summary of Chapter 25</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Applied hierarchical derivatives to probabilities, odds and
+            log–likelihoods.</li>
+        <li>Related information content and entropy changes to \(D_1\).</li>
+        <li>Described heavy-tailed distributions and tail exponents via
+            hierarchical derivatives.</li>
+        <li>Modelled information growth and ultra–slow saturation using
+            \(D_1\) and \(D_2\).</li>
+        <li>Outlined how mutual information and other information-theoretic
+            quantities fit into the hierarchical framework.</li>
+      </ul>
+      <p>
+        These results show that Hierarchical Calculus is deeply compatible
+        with the logarithmic nature of probability and information.
+        In the next chapters we will move from external systems to internal
+        ones: hierarchical models of human understanding and intelligence.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
