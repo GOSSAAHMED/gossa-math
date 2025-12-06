@@ -274,19 +274,47 @@
         <strong>general hierarchical derivative</strong> of order \(n\) is defined by:
       </p>
 
-      <p style="text-align:center;">
-        \[
-          D_n y
-            = \frac{L_n(x)}{L_n(y)}\, D_0 y,
-        \]
-      </p>
+     <p>
+We now define the general hierarchical derivative by combining all levels 
+of the ladder up to order \(n-1\).
+</p>
 
-      <p>
-        where \(D_0 y = \dfrac{dy}{dx}\) is the usual differential derivative.
-      </p>
+<p style="text-align:center;">
+\[
+D_n y
+  = D_0 y \,
+    \prod_{k=0}^{\,n-1} \frac{L_k(x)}{L_k(y)},
+\]
+</p>
 
-      <p>
-        For small values of \(n\), this reproduces:
+<p>
+where
+\[
+D_0 y = \frac{dy}{dx},
+\qquad
+L_0(z)=z,\; L_1(z)=\ln z,\; L_2(z)=\ln(\ln z),\dots
+\]
+</p>
+
+<p>
+For the first levels this becomes:
+</p>
+
+<p style="text-align:center;">
+\[
+D_1 y = \frac{L_0(x)}{L_0(y)} D_0 y = \frac{x}{y} D_0 y,
+\]
+\[
+D_2 y = 
+\frac{L_0(x)L_1(x)}{L_0(y)L_1(y)} D_0 y
+= \frac{x \ln x}{y \ln y} D_0 y.
+\]
+</p>
+
+<p>
+These match the relative and logarithmic derivatives introduced earlier.
+</p>
+
       </p>
 
       <ul>
