@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 19 – Comparison with Classical Taylor Series</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+
+    .compare-table {
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.95rem;
+      margin-top:1rem;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      border:1px solid rgba(120,140,190,0.5);
+      padding:0.5rem 0.7rem;
+    }
+
+    .compare-table th {
+      background:rgba(255,176,46,0.12);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series" class="active">Series</a>
+      <a href="index.html#integrals">Integrals</a>
+      <a href="index.html#applications">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 19
+    </div>
+
+    <h1>Chapter 19 – Comparison with Classical Taylor Series</h1>
+
+    <p>
+      Hierarchical series extend the classical Taylor expansion by incorporating
+      multiple scales of change through the derivatives
+      \(D_0, D_1, D_2, \dots\).  
+      In this chapter we compare hierarchical series with the classical Taylor
+      series, highlight their similarities and differences, and indicate when
+      each type of expansion is most appropriate.
+    </p>
+
+    <h2>19.1 Classical Taylor Series: A Short Reminder</h2>
+
+    <p>
+      Let \(f\) be sufficiently smooth near a point \(x_0\). The classical Taylor
+      series is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x)
+          = \sum_{k=0}^{\infty}
+              \frac{D_0^k f(x_0)}{k!}\,(x-x_0)^k,
+      \]
+    </p>
+
+    <p>
+      where \(D_0^k f\) is the \(k\)-th ordinary derivative. The expansion uses
+      the <strong>absolute coordinate</strong> \((x-x_0)\) and approximates \(f\)
+      by a polynomial in this coordinate.
+    </p>
+
+    <p>
+      Classical Taylor series work extremely well when:
+    </p>
+
+    <ul>
+      <li>the function is analytic in a neighbourhood of \(x_0\),</li>
+      <li>the important behaviour is captured by absolute change in \(x\),</li>
+      <li>no large scale variations in powers or logarithms of \(x\) occur.</li>
+    </ul>
+
+    <h2>19.2 Hierarchical Series: A New Family</h2>
+
+    <p>
+      Hierarchical series use coordinates and coefficients adapted to the
+      derivatives \(D_1, D_2,\dots\). The first levels are:
+    </p>
+
+    <ul>
+      <li>
+        <strong>Relative series (level 1):</strong><br/>
+        Coordinate:
+        \(\displaystyle u_1 = \ln\!\left(\frac{x}{x_0}\right)\).  
+        Expansion of: \(\ln f(x)\).  
+        Coefficients: derivatives of \(\ln f\) with respect to \(\ln x\),
+        linked to \(D_1 f\).
+      </li>
+      <li>
+        <strong>Logarithmic series (level 2):</strong><br/>
+        Coordinate:
+        \(\displaystyle u_2 = \ln(\ln x) - \ln(\ln x_0)\).  
+        Expansion of: \(\ln(\ln f(x))\).  
+        Coefficients: derivatives of \(\ln(\ln f)\) with respect to
+        \(\ln(\ln x)\), linked to \(D_2 f\).
+      </li>
+    </ul>
+
+    <p>
+      The general hierarchical series combines these levels and higher ones
+      to approximate functions whose behaviour is governed by multiple scales
+      simultaneously.
+    </p>
+
+    <h2>19.3 A Conceptual Comparison</h2>
+
+    <table class="compare-table">
+      <tr>
+        <th>Aspect</th>
+        <th>Classical Taylor (Level 0)</th>
+        <th>Hierarchical Series (Levels ≥ 1)</th>
+      </tr>
+      <tr>
+        <td>Local coordinate</td>
+        <td>\(x-x_0\)</td>
+        <td>\(\ln(x/x_0)\), \(\ln(\ln x)-\ln(\ln x_0)\), …</td>
+      </tr>
+      <tr>
+        <td>Derivative used</td>
+        <td>Repeated \(D_0\)</td>
+        <td>Derived from \(D_1, D_2,\dots\) and their iterates</td>
+      </tr>
+      <tr>
+        <td>Best for</td>
+        <td>Analytic functions with absolute scaling</td>
+        <td>Power laws, ultra–slow growth, multi–scale behaviour</td>
+      </tr>
+      <tr>
+        <td>Typical term</td>
+        <td>\(\frac{D_0^k f(x_0)}{k!}(x-x_0)^k\)</td>
+        <td>Expressions in powers of \(\ln(x/x_0)\) or \(\ln(\ln x)-\ln(\ln x_0)\)</td>
+      </tr>
+      <tr>
+        <td>Geometry</td>
+        <td>Linear space around \(x_0\)</td>
+        <td>Curved space of logarithmic scales</td>
+      </tr>
+    </table>
+
+    <h2>19.4 Example: Power Law Function</h2>
+
+    <p>
+      Consider the function
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x) = x^k,
+      \]
+    </p>
+
+    <p>
+      with base point \(x_0 &gt; 0\).
+    </p>
+
+    <h3>19.4.1 Classical Taylor Expansion</h3>
+
+    <p>
+      The derivatives are:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0^n f(x)
+          = k(k-1)\cdots(k-n+1)\,x^{k-n}.
+      \]
+    </p>
+
+    <p>
+      The Taylor series at \(x_0\) is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x)
+          = \sum_{n=0}^{\infty}
+              \frac{k(k-1)\cdots(k-n+1)}{n!}
+              x_0^{k-n}\,(x-x_0)^n.
+      \]
+    </p>
+
+    <p>
+      This expression is correct but not very transparent: all powers of
+      \((x-x_0)\) appear, and the power–law structure is not obvious.
+    </p>
+
+    <h3>19.4.2 Relative Series Expansion</h3>
+
+    <p>
+      Using the coordinate \(u = \ln(x/x_0)\), we have:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x) = x^k = x_0^k e^{k u}.
+      \]
+    </p>
+
+    <p>
+      Expanding the exponential:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        e^{k u}
+          = \sum_{m=0}^{\infty}
+              \frac{k^m}{m!}\,u^m.
+      \]
+    </p>
+
+    <p>
+      Hence the relative series is:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        f(x)
+          = x_0^k
+            \sum_{m=0}^{\infty}
+              \frac{k^m}{m!}
+              \bigl(\ln(x/x_0)\bigr)^m.
+      \]
+    </p>
+
+    <p>
+      Here the coefficients depend only on the exponent \(k\), and the
+      structure of the power law is completely explicit.  
+      For many purposes, this expansion is more natural than the classical
+      Taylor series.
+    </p>
+
+    <h2>19.5 Example: Ultra-Slow Growth</h2>
+
+    <p>
+      Consider the function
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x) = \exp\!\bigl(A (\ln x)^2\bigr),
+      \]
+    </p>
+
+    <p>
+      with \(A&gt;0\). This function grows much faster than any power of \(x\),
+      but its growth is controlled by \(\ln x\).
+    </p>
+
+    <h3>19.5.1 Classical Taylor View</h3>
+
+    <p>
+      Expanding \(f(x)\) in powers of \((x-x_0)\) produces extremely complicated
+      coefficients involving chained derivatives of \(\ln x\).  
+      The resulting Taylor series does not reveal the simple structure
+      \(\exp(A (\ln x)^2)\).
+    </p>
+
+    <h3>19.5.2 Logarithmic Series View</h3>
+
+    <p>
+      Define \(v = \ln(\ln x)\) and observe that:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln f(x) = A (\ln x)^2,
+        \qquad
+        \ln(\ln f(x))
+          = \ln A + 2 \ln(\ln x).
+      \]
+    </p>
+
+    <p>
+      Thus:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln(\ln f(x))
+          = \ln(\ln f(x_0))
+            + 2\Bigl(\ln(\ln x) - \ln(\ln x_0)\Bigr),
+      \]
+    </p>
+
+    <p>
+      so the logarithmic Taylor series around \(x_0\) truncates after the
+      first order term: the function is exactly linear in \(v\).  
+      The level–2 derivative satisfies
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2 f(x) = 2,
+      \]
+    </p>
+
+    <p>
+      showing that \(f\) is a “perfect” example of a logarithmic series
+      of order 1.
+    </p>
+
+    <h2>19.6 Convergence and Domains of Validity</h2>
+
+    <p>
+      Classical Taylor series and hierarchical series are both local
+      approximations, but their natural domains of validity differ:
+    </p>
+
+    <ul>
+      <li>
+        Taylor series converge in a disk \(|x-x_0| &lt; R\) in the complex plane,
+        limited by the nearest singularity of \(f\).
+      </li>
+      <li>
+        Relative and logarithmic series converge in regions where
+        \(|\ln(x/x_0)|\) or \(|\ln(\ln x) - \ln(\ln x_0)|\) are small.  
+        This can correspond to very large ranges of \(x\) when \(x\) grows
+        exponentially or double–exponentially.
+      </li>
+    </ul>
+
+    <p>
+      In practice this means:
+    </p>
+
+    <ul>
+      <li>For moderate \(x\), classical Taylor often suffices.</li>
+      <li>For very large or very small \(x\), hierarchical series may give
+          more stable approximations because they track the function on
+          logarithmic scales.</li>
+    </ul>
+
+    <h2>19.7 When to Use Which Expansion?</h2>
+
+    <p>
+      The choice between classical and hierarchical series depends on the
+      structure of the problem:
+    </p>
+
+    <ul>
+      <li>
+        Use <strong>Taylor series</strong> when:
+        <ul>
+          <li>the function is analytic and well-behaved near \(x_0\),</li>
+          <li>dominant behaviour is polynomial or exponential in \(x\),</li>
+          <li>no strong scale invariance or logarithmic effects are present.</li>
+        </ul>
+      </li>
+      <li>
+        Use <strong>relative series</strong> when:
+        <ul>
+          <li>the function is close to a power law,</li>
+          <li>data is naturally expressed in percentages or ratios,</li>
+          <li>you are modelling scale-invariant systems.</li>
+        </ul>
+      </li>
+      <li>
+        Use <strong>logarithmic series</strong> when:
+        <ul>
+          <li>growth is ultra–slow and driven by \(\ln x\) or \(\ln(\ln x)\),</li>
+          <li>classical derivatives are almost zero over wide ranges,</li>
+          <li>you need asymptotics over extremely large scales of \(x\).</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>19.8 Unified View</h2>
+
+    <p>
+      We can think of classical Taylor and hierarchical series as different
+      <em>projections</em> of the same underlying function onto different
+      coordinate systems:
+    </p>
+
+    <ul>
+      <li>Level 0: linear coordinate in \(x\),</li>
+      <li>Level 1: logarithmic coordinate in \(x\),</li>
+      <li>Level 2: logarithmic coordinate in \(\ln x\),</li>
+      <li>Higher levels: deeper nested logarithms.</li>
+    </ul>
+
+    <p>
+      Each projection reveals different aspects of the function, and together
+      they provide a rich multi–scale description.  
+      Hierarchical Calculus therefore does not replace classical Taylor theory,
+      but <strong>extends and complements</strong> it.
+    </p>
+
+    <h2>19.9 Summary of Chapter 19</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Reviewed the classical Taylor series as a level–0 expansion.</li>
+        <li>Compared it with relative and logarithmic series built from \(D_1\)
+            and \(D_2\).</li>
+        <li>Showed that power laws are naturally captured by relative series,
+            while ultra–slow laws such as \(\exp((\ln x)^2)\) are captured by
+            logarithmic series.</li>
+        <li>Discussed the different domains of convergence and when each
+            expansion is most useful.</li>
+        <li>Presented a unified picture where all series correspond to
+            different coordinates on the same function.</li>
+      </ul>
+      <p>
+        Classical Taylor series remain central for local analytic behaviour,
+        while hierarchical series provide powerful tools for multi–scale and
+        scale–invariant phenomena. Together, they form a complete toolbox for
+        describing change across all levels.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
