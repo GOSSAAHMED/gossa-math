@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 21 – Applications in Cosmology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    .example-box {
+      margin-top:1rem;
+      padding:0.9rem 1rem;
+      border-radius:10px;
+      background:rgba(90,110,180,0.12);
+      border:1px solid rgba(120,140,210,0.5);
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals">Integrals</a>
+      <a href="index.html#applications" class="active">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 21
+    </div>
+
+    <h1>Chapter 21 – Applications in Cosmology</h1>
+
+    <p>
+      Cosmology studies the evolution of the universe on the largest possible
+      scales. The key dynamical quantity is the <em>scale factor</em>
+      \(a(t)\), describing how distances between comoving galaxies change with
+      cosmic time \(t\).  
+      Classical models use ordinary derivatives of \(a(t)\).  
+      In this chapter we show how hierarchical derivatives
+      \(D_0, D_1, D_2\) provide a natural language for
+      power–law expansion, accelerated expansion and ultra–slow variations of
+      cosmological quantities.
+    </p>
+
+    <h2>21.1 Scale Factor and Hubble Parameters</h2>
+
+    <p>
+      The classical Hubble parameter is defined by
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        H(t) = \frac{1}{a(t)}\frac{da}{dt}.
+      \]
+    </p>
+
+    <p>
+      In terms of the level–1 derivative of the scale factor with respect to
+      time,
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(t)} a
+          = \frac{t}{a}\,\frac{da}{dt},
+      \]
+    </p>
+
+    <p>
+      we can write:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(t)} a(t)
+          = t\,H(t).
+      \]
+    </p>
+
+    <p>
+      Thus \(D_1^{(t)} a\) is a <strong>dimensionless Hubble parameter</strong>
+      measuring relative expansion per logarithmic time step
+      \(\ln t\). It is particularly convenient for power–law cosmologies.
+    </p>
+
+    <h2>21.2 Power-Law Cosmologies and D₁</h2>
+
+    <p>
+      Many simple cosmological models have a scale factor of the form
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        a(t) = a_0 \left(\frac{t}{t_0}\right)^{p},
+      \]
+    </p>
+
+    <p>
+      where the exponent \(p\) depends on the dominant energy component
+      (radiation, matter, dark energy…). For this power–law form:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        H(t) = \frac{p}{t},
+        \qquad
+        D_1^{(t)} a(t) = p.
+      \]
+    </p>
+
+    <p>
+      The level–1 derivative is constant and directly equal to the cosmological
+      exponent. This makes \(D_1^{(t)} a\) a very compact descriptor of the
+      expansion regime.
+    </p>
+
+    <div class="example-box">
+      <h3>Example 21.1 – Radiation and Matter Eras</h3>
+      <p>
+        In standard cosmology:
+      </p>
+      <ul>
+        <li>Radiation domination: \(a(t) \propto t^{1/2}\) ⇒ \(D_1^{(t)} a = 1/2\).</li>
+        <li>Matter domination: \(a(t) \propto t^{2/3}\) ⇒ \(D_1^{(t)} a = 2/3\).</li>
+      </ul>
+      <p>
+        A change of \(D_1^{(t)} a\) from \(1/2\) to \(2/3\) signals the
+        transition from radiation to matter domination.  
+        Instead of tracking \(H(t)\) and \(a(t)\) separately, the
+        hierarchical derivative \(D_1^{(t)} a\) encodes the expansion regime in a
+        single number.
+      </p>
+    </div>
+
+    <h2>21.3 Slowly Varying Exponents</h2>
+
+    <p>
+      In more realistic models, the expansion is not a pure power law: the
+      effective exponent can vary slowly with time. Suppose
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        a(t) = a_0 \left(\frac{t}{t_0}\right)^{p(t)},
+      \]
+    </p>
+
+    <p>
+      where \(p(t)\) is a smooth, slowly varying function. Then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln a(t)
+          = \ln a_0 + p(t)\,\ln\!\left(\frac{t}{t_0}\right),
+      \]
+    </p>
+
+    <p>
+      and after some algebra one finds that \(D_1^{(t)} a\) contains both \(p(t)\)
+      and its logarithmic derivative. Hierarchical series in \(\ln(t/t_0)\)
+      (Chapter 17) can be used to approximate such models, with coefficients
+      expressed directly in terms of \(D_1^{(t)} a\) and its derivatives.
+    </p>
+
+    <h2>21.4 Ultra-Slow Evolution and D₂</h2>
+
+    <p>
+      Certain cosmological quantities may change so slowly that their evolution
+      is visible only on double–logarithmic scales. Examples include:
+    </p>
+
+    <ul>
+      <li>very slow running of fundamental constants,</li>
+      <li>late-time corrections to dark energy,</li>
+      <li>cumulative effects over many orders of magnitude in time.</li>
+    </ul>
+
+    <p>
+      For a quantity \(X(t)\) depending on cosmic time, the level–2 derivative
+      is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2^{(t)} X
+          = \frac{t \ln t}{X\,\ln X}\,\frac{dX}{dt}.
+      \]
+    </p>
+
+    <p>
+      This is the derivative of \(\ln(\ln X)\) with respect to
+      \(\ln(\ln t)\). A model of the form
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2^{(t)} X(t) = \varepsilon,
+      \]
+    </p>
+
+    <p>
+      with small constant \(\varepsilon\), describes a <strong>double–logarithmic
+      drift</strong> of \(X\) over cosmic time.
+    </p>
+
+    <div class="example-box">
+      <h3>Example 21.2 – Ultra-Slow Drift of a Cosmological Parameter</h3>
+      <p>
+        Let \(G(t)\) be an effective gravitational coupling allowed to vary
+        extremely slowly. If
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_2^{(t)} G(t) = \varepsilon,
+        \]
+      </p>
+      <p>
+        then
+      </p>
+      <p style="text-align:center;">
+        \[
+          \ln(\ln G(t))
+            = \ln(\ln G_0)
+              + \varepsilon
+                \ln\!\left(
+                  \frac{\ln t}{\ln t_0}
+                \right).
+        \]
+      </p>
+      <p>
+        This evolution is so slow that it would manifest only over enormous
+        cosmic time intervals, yet it is naturally captured by the level–2
+        derivative \(D_2^{(t)}\).
+      </p>
+    </div>
+
+    <h2>21.5 Hierarchical View of Cosmological Time Scales</h2>
+
+    <p>
+      The history of the universe spans many orders of magnitude in time:
+      from fractions of a second after the Big Bang to billions of years.
+      Hierarchical Calculus lets us organise these scales as:
+    </p>
+
+    <ul>
+      <li>Level 0: absolute time \(t\), suitable for early fast processes.</li>
+      <li>Level 1: logarithmic time \(\ln t\), relevant for power–law expansion
+          and many epochs of “scale–invariant” behaviour.</li>
+      <li>Level 2: double–logarithmic time \(\ln(\ln t)\), relevant for very
+          late–time corrections and ultra–slow drifts.</li>
+    </ul>
+
+    <p>
+      Differential equations written with \(D_0^{(t)}, D_1^{(t)}, D_2^{(t)}\)
+      can model different epochs and connect them smoothly.
+    </p>
+
+    <div class="example-box">
+      <h3>Example 21.3 – Piecewise Hierarchical Expansion</h3>
+      <p>
+        A schematic model for the cosmic scale factor could be:
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_0^{(t)} a = f_{\text{early}}(a)
+          \quad (t \ll T_1),
+        \]
+        \[
+          D_1^{(t)} a = p_{\text{mid}}
+          \quad (T_1 \ll t \ll T_2),
+        \]
+        \[
+          D_2^{(t)} a = \varepsilon_{\text{late}}
+          \quad (t \gg T_2),
+        \]
+      </p>
+      <p>
+        representing an early epoch governed by ordinary differential equations,
+        a middle epoch with power–law expansion, and a late epoch with
+        ultra–slow deviations. Hierarchical integration techniques from
+        previous chapters can be used to construct approximate solutions.
+      </p>
+    </div>
+
+    <h2>21.6 Density Parameters and Relative Derivatives</h2>
+
+    <p>
+      Cosmic densities (\(\rho_m, \rho_r, \rho_\Lambda\)) often follow power or
+      exponential laws with respect to the scale factor. In terms of \(a\),
+      the relative derivative
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(a)} \rho
+          = \frac{a}{\rho}\,\frac{d\rho}{da}
+      \]
+    </p>
+
+    <p>
+      measures how many percent the density changes per factor of \(a\).
+      For example:
+    </p>
+
+    <ul>
+      <li>Non-relativistic matter: \(\rho_m \propto a^{-3}\) ⇒
+          \(D_1^{(a)} \rho_m = -3\).</li>
+      <li>Radiation: \(\rho_r \propto a^{-4}\) ⇒
+          \(D_1^{(a)} \rho_r = -4\).</li>
+    </ul>
+
+    <p>
+      Any deviation from \(-3\) or \(-4\) can be interpreted as a hierarchical
+      correction captured by higher–order relative series in \(\ln a\).
+    </p>
+
+    <h2>21.7 Summary of Chapter 21</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Expressed the Hubble parameter and power–law cosmologies in terms
+            of the level–1 derivative \(D_1^{(t)} a\).</li>
+        <li>Showed how \(D_1\) compactly encodes different expansion regimes
+            (radiation, matter, etc.).</li>
+        <li>Introduced level–2 models \(D_2^{(t)} X\) for ultra–slow evolution
+            of cosmological quantities.</li>
+        <li>Discussed hierarchical organisation of cosmic time scales using
+            \(t\), \(\ln t\) and \(\ln(\ln t)\).</li>
+        <li>Applied relative derivatives with respect to the scale factor to
+            standard density scalings.</li>
+      </ul>
+      <p>
+        These ideas illustrate how Hierarchical Calculus can be used as a
+        conceptual framework for cosmology, complementing the traditional
+        differential equations of relativistic cosmology.  
+        In the next chapters we will apply similar reasoning to biology,
+        economics, medicine and other complex systems, where multi–scale
+        dynamics are also fundamental.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
