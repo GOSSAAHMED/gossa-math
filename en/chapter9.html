@@ -237,11 +237,14 @@
 
       <p>
         Let \(y = f(x)\), with \(x\) and \(y\) in a domain where the hierarchical
-        scales are defined. We use a <strong>logarithmic ladder</strong>
-        \(L_n(z)\), built from \(z\) by multiplying successive logarithmic factors
-        (for example, at low levels:
-        \(L_1(z) = z\), \(L_2(z) = z \ln z\), \(L_3(z) = z \ln z \ln(\ln z)\), etc.,
-        whenever defined).
+        scales are defined. We use a hierarchical scale \(H_n(z)\), built from \(z\) by multiplying successive logarithmic factors. For example, at low levels:
+\[
+H_1(z) = z,\quad
+H_2(z) = z \ln z,\quad
+H_3(z) = z \ln z \ln(\ln z),\ \dots
+\]
+whenever these expressions are defined.
+
       </p>
 
       <p>
@@ -249,9 +252,8 @@
       </p>
 
       <p style="text-align:center;">
-        \[
-          D_n y = \frac{L_n(x)}{L_n(y)}\, D_0 y,
-        \]
+        \[ D_n y = \frac{H_n(x)}{H_n(y)}\, D_0 y, \]
+
       </p>
 
       <p>
@@ -278,10 +280,9 @@
 
       <p style="text-align:center;">
         \[
-          D_n y
-            = \frac{L_n(x)}{L_n(y)}\, D_0 y
-            = \frac{L_n(x)}{L_n(y)} \cdot \frac{L_{n-1}(y)}{L_{n-1}(x)} \, D_{n-1} y.
-        \]
+         \[ D_n y = \frac{H_n(x)}{H_n(y)}\, D_0 y
+        = \frac{H_n(x)}{H_n(y)} \cdot \frac{H_{n-1}(y)}{H_{n-1}(x)} \, D_{n-1} y. \]
+
       </p>
 
       <p>
@@ -290,8 +291,8 @@
 
       <p style="text-align:center;">
         \[
-          D_n y
-            = \frac{L_n(x) L_{n-1}(y)}{L_n(y) L_{n-1}(x)} \, D_{n-1} y.
+         \[ D_n y = \frac{H_n(x) H_{n-1}(y)}{H_n(y) H_{n-1}(x)} \, D_{n-1} y. \]
+
         \]
       </p>
 
@@ -300,9 +301,10 @@
       </p>
 
       <ul>
-        <li>\(D_1 y = \dfrac{L_1(x)}{L_1(y)} D_0 y\),</li>
-        <li>\(D_2 y = \dfrac{L_2(x) L_1(y)}{L_2(y) L_1(x)} D_1 y\),</li>
-        <li>\(D_3 y = \dfrac{L_3(x) L_2(y)}{L_3(y) L_2(x)} D_2 y\),</li>
+       * \(D_1 y = \dfrac{H_1(x)}{H_1(y)} D_0 y\),
+* \(D_2 y = \dfrac{H_2(x) H_1(y)}{H_2(y) H_1(x)} D_1 y\),
+* \(D_3 y = \dfrac{H_3(x) H_2(y)}{H_3(y) H_2(x)} D_2 y\),
+
       </ul>
 
       <p>
@@ -326,9 +328,8 @@
       </p>
 
       <p style="text-align:center;">
-        \[
-          L_n(x)\, D_0(y) = L_n(y)\, D_n(y).
-        \]
+        \[ H_n(x)\, D_0(y) = H_n(y)\, D_n(y). \]
+
       </p>
 
       <p>
@@ -374,11 +375,7 @@
       </p>
 
       <p style="text-align:center;">
-        \[
-          D_n y = \frac{L_n(x)}{L_n(y)} D_0 y,
-          \qquad
-          D_m y = \frac{L_m(x)}{L_m(y)} D_0 y,
-        \]
+       \[ D_n y = \frac{H_n(x)}{H_n(y)} D_0 y, \qquad D_m y = \frac{H_m(x)}{H_m(y)} D_0 y, \]
       </p>
 
       <p>
@@ -386,10 +383,7 @@
       </p>
 
       <p style="text-align:center;">
-        \[
-          \frac{D_n y}{D_m y}
-          = \frac{L_n(x) L_m(y)}{L_m(x) L_n(y)}.
-        \]
+        \[ \frac{D_n y}{D_m y} = \frac{H_n(x) H_m(y)}{H_m(x) H_n(y)}. \]
       </p>
 
       <p>
@@ -403,10 +397,7 @@
       </p>
 
       <p style="text-align:center;">
-        \[
-          \frac{D_2 y}{D_1 y}
-          = \frac{L_2(x) L_1(y)}{L_1(x) L_2(y)}.
-        \]
+       \[ \frac{D_2 y}{D_1 y} = \frac{H_2(x) H_1(y)}{H_1(x) H_2(y)}. \]
       </p>
 
       <p>
@@ -554,9 +545,8 @@
 
       <p style="text-align:center;">
         \[
-          D_n^{(t)} y
-            = \frac{L_n(x(t))}{L_n(y(t))} \frac{dy}{dt}.
-        \]
+          \[ D_n^{(t)} y = \frac{H_n(x(t))}{H_n(y(t))} \frac{dy}{dt}. \]
+
       </p>
 
       <p>
@@ -571,7 +561,8 @@
         <p><strong>In this chapter we:</strong></p>
         <ul>
           <li>Recalled the general definition
-              \(D_n y = \dfrac{L_n(x)}{L_n(y)} D_0 y\).</li>
+              * Recalled the general definition \(D_n y = \dfrac{H_n(x)}{H_n(y)} D_0 y\).
+
           <li>Derived iterative identities relating \(D_n\) to \(D_{n-1}\).</li>
           <li>Presented a chain of Golden–type relations connecting
               scale factors and derivatives at all levels.</li>
