@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 14 – Hierarchical Integral Equations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals">Integrals</a>
+      <a href="index.html#applications" class="active">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 14
+    </div>
+
+    <h1>Chapter 14 – Hierarchical Integral Equations</h1>
+
+    <p>
+      In previous chapters we introduced the hierarchical integral operators
+      \(\mathcal{I}_n\) and studied simple examples.  
+      In this chapter we take the next step: **hierarchical integral equations**—  
+      equations in which the unknown function appears inside a hierarchical
+      integral or its derivative \(D_n\).
+    </p>
+
+    <h2>14.1 What Is a Hierarchical Integral Equation?</h2>
+
+    <p>
+      A hierarchical integral equation is any equation of the form:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y(x) = \mathcal{I}_n[F(x, y(x))],
+      \]
+    </p>
+
+    <p>
+      or equivalently,
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_n y(x) = G(x, y(x)).
+      \]
+    </p>
+
+    <p>
+      At level \(n = 0\) this reduces to standard integral equations in calculus.
+      Higher levels introduce non-linearities through the hierarchical scales.
+    </p>
+
+    <h2>14.2 The Three Fundamental Types</h2>
+
+    <p>
+      At level \(n = 0, 1, 2\), hierarchical integral equations take three forms:
+    </p>
+
+    <ul>
+      <li><strong>Type A – Given \(D_n y = f(x)\)</strong><br>  
+          Solve using hierarchical integration.</li>
+      <li><strong>Type B – Given \(D_n y = f(y)\)</strong><br>  
+          Leads to separable hierarchical ODEs.</li>
+      <li><strong>Type C – Given \(D_n y = f(x,y)\)</strong><br>  
+          Fully general nonlinear equations.</li>
+    </ul>
+
+    <h2>14.3 Level-1 Integral Equations (Relative Level)</h2>
+
+    <p>
+      A simple level-1 equation is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 y = k,
+      \]
+    </p>
+
+    <p>
+      which we solved earlier to obtain:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y(x) = A x^k.
+      \]
+    </p>
+
+    <p>
+      Now consider the more general case:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 y = a y.
+      \]
+    </p>
+
+    <p>
+      Substituting the definition:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{x}{y} \frac{dy}{dx} = ay,
+      \]
+    </p>
+
+    <p>
+      gives:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{dy}{dx} = a \frac{y^2}{x}.
+      \]
+    </p>
+
+    <p>
+      This is a nonlinear separable ODE:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{dy}{y^2} = a \frac{dx}{x}.
+      \]
+    </p>
+
+    <p>
+      Integrating both sides:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        -\frac{1}{y} = a \ln x + C,
+      \]
+      \[
+        y = -\frac{1}{a\ln x + C}.
+      \]
+    </p>
+
+    <p>
+      This shows how even at level-1, hierarchical integral equations can create
+      **hyperbolic-logarithmic solutions**.
+    </p>
+
+    <h2>14.4 Level-2 Integral Equations (Logarithmic Level)</h2>
+
+    <p>
+      Consider:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2 y = c,
+      \]
+    </p>
+
+    <p>
+      a constant logarithmic derivative.  
+      We solved this in Chapter 13 and obtained:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        y = \exp\!\left(A (\ln x)^c \right).
+      \]
+    </p>
+
+    <h3>Now consider a new equation:</h3>
+
+    <p style="text-align:center;">
+      \[
+        D_2 y = \alpha y.
+      \]
+    </p>
+
+    <p>
+      Substituting the definition:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{x\ln x}{y\ln y} \frac{dy}{dx} = \alpha y,
+      \]
+    </p>
+
+    <p>
+      yields:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{dy}{dx} = \alpha \frac{y^2 \ln y}{x\ln x}.
+      \]
+    </p>
+
+    <p>
+      Let:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        u = \ln y.
+      \]
+    </p>
+
+    <p>
+      Then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{du}{dx} = \alpha \frac{y u}{x\ln x}.
+      \]
+    </p>
+
+    <p>
+      But \(y = e^u\), so:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{du}{dx} = \alpha \frac{u e^u}{x\ln x}.
+      \]
+    </p>
+
+    <p>
+      This is a nonlinear exponential-logarithmic differential equation.
+      Such equations often arise in multi-scale growth systems.
+    </p>
+
+    <p>
+      Separation of variables:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{du}{u e^u} = \alpha \frac{dx}{x\ln x}.
+      \]
+    </p>
+
+    <p>
+      Integrating the LHS gives the exponential integral function \(\operatorname{Ei}\),
+      showing that hierarchical integral equations naturally lead to **special
+      functions**—a common theme in advanced calculus.
+    </p>
+
+    <h2>14.5 General Integral Equation at Level-n</h2>
+
+    <p>
+      A general hierarchical integral equation has the form:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_n y = F(x, y).
+      \]
+    </p>
+
+    <p>
+      By substitution:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{dy}{dx} = \frac{L_n(y)}{L_n(x)} F(x, y).
+      \]
+    </p>
+
+    <p>
+      This converts any hierarchical integral equation into a nonlinear
+      first-order differential equation—  
+      a powerful and general technique.
+    </p>
+
+    <h2>14.6 Interpretation</h2>
+
+    <p>
+      Hierarchical integral equations describe systems where dynamics occur
+      across nested scales:
+    </p>
+
+    <ul>
+      <li>economic growth with accelerating relative effects,</li>
+      <li>information systems where learning slows logarithmically,</li>
+      <li>biological evolution over deep time,</li>
+      <li>cosmological expansion with multi-scale feedback.</li>
+    </ul>
+
+    <p>
+      Using hierarchical integral equations allows us to model these systems at
+      the appropriate level of complexity.
+    </p>
+
+    <h2>14.7 Summary of Chapter 14</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Defined hierarchical integral equations.</li>
+        <li>Showed three fundamental types: \(f(x)\), \(f(y)\), and \(f(x,y)\).</li>
+        <li>Solved nonlinear examples at level 1 and level 2.</li>
+        <li>Showed how level-n equations reduce to first-order ODEs.</li>
+        <li>Explained their importance in multi-scale modeling.</li>
+      </ul>
+      <p>
+        The next chapters will expand these equations into hierarchical
+        differential systems, series solutions, and applications across physics,
+        biology, economics and information theory.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
