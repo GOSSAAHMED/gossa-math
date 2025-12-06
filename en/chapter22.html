@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 22 – Applications in Biology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    .example-box {
+      margin-top:1rem;
+      padding:0.9rem 1rem;
+      border-radius:10px;
+      background:rgba(90,110,180,0.12);
+      border:1px solid rgba(120,140,210,0.5);
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series">Series</a>
+      <a href="index.html#integrals">Integrals</a>
+      <a href="index.html#applications" class="active">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 22
+    </div>
+
+    <h1>Chapter 22 – Applications in Biology</h1>
+
+    <p>
+      Biological systems operate across many scales: molecules, cells, tissues,
+      organisms, populations and ecosystems. Their dynamics often combine fast
+      processes with slow adaptation and ultra–slow evolutionary change.  
+      Hierarchical Calculus provides a natural language for describing such
+      multi–scale behaviour, using the derivatives
+      \(D_0\) (absolute), \(D_1\) (relative) and \(D_2\) (logarithmic).
+    </p>
+
+    <p>
+      In this chapter we illustrate three classes of applications:
+    </p>
+
+    <ul>
+      <li>population and epidemic dynamics,</li>
+      <li>allometric scaling and growth of organisms,</li>
+      <li>adaptation and ultra–slow changes in biological parameters.</li>
+    </ul>
+
+    <h2>22.1 Population Growth: From Exponential to Relative Dynamics</h2>
+
+    <p>
+      Let \(N(t)\) denote the size of a biological population at time \(t\).
+      The classical exponential growth model is
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_0 N = r N,
+      \]
+    </p>
+
+    <p>
+      with intrinsic growth rate \(r\). The solution is
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        N(t) = N_0 e^{r(t-t_0)}.
+      \]
+    </p>
+
+    <p>
+      This model is appropriate when growth is roughly constant per unit time.
+      However, many populations follow power–law or scale–invariant dynamics,
+      especially when environmental changes also depend on time.
+      For such cases, the level–1 derivative is more natural:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(t)} N
+          = \frac{t}{N}\,\frac{dN}{dt}.
+      \]
+    </p>
+
+    <div class="example-box">
+      <h3>Example 22.1 – Power-Law Population Growth</h3>
+      <p>
+        Assume the relative derivative is constant:
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_1^{(t)} N(t) = k.
+        \]
+      </p>
+      <p>
+        Then
+      </p>
+      <p style="text-align:center;">
+        \[
+          \frac{t}{N}\frac{dN}{dt} = k
+          \quad\Rightarrow\quad
+          N(t) = N_0 \left(\frac{t}{t_0}\right)^k.
+        \]
+      </p>
+      <p>
+        The population follows a power law in time rather than an exponential.
+        This behaviour is often seen in systems with growth limited by
+        scale–dependent resources or slowly expanding habitats.
+      </p>
+    </div>
+
+    <h2>22.2 Epidemic Growth and Relative Series</h2>
+
+    <p>
+      In epidemiology, the number of infected individuals \(I(t)\) often grows
+      super–exponentially at early times, then slows down as immunity or
+      interventions appear. Relative derivatives can help disentangle these
+      phases.
+    </p>
+
+    <p>
+      Define the relative time derivative of \(I(t)\):
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(t)} I = \frac{t}{I}\frac{dI}{dt}.
+      \]
+    </p>
+
+    <p>
+      A constant value of \(D_1^{(t)} I\) corresponds to a pure power law in
+      time, whereas a decaying \(D_1^{(t)} I\) indicates a slowdown in the
+      epidemic after accounting for scale in time and cases.
+    </p>
+
+    <div class="example-box">
+      <h3>Example 22.2 – Analysing an Epidemic Curve</h3>
+      <p>
+        Suppose data for \(I(t)\) over several decades of time shows that
+        \(\ln I\) is approximately linear in \(\ln t\) during an intermediate
+        phase. This implies
+      </p>
+      <p style="text-align:center;">
+        \[
+          I(t) \approx C t^{\alpha},
+        \]
+      </p>
+      <p>
+        and therefore
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_1^{(t)} I(t) \approx \alpha.
+        \]
+      </p>
+      <p>
+        Deviations of \(D_1^{(t)} I\) from a constant value can be interpreted as
+        interventions, behavioural changes or depletion of susceptible
+        individuals. Hierarchical derivatives thus provide a compact view of
+        epidemic phases.
+      </p>
+    </div>
+
+    <h2>22.3 Allometric Scaling and D₁ with Respect to Size</h2>
+
+    <p>
+      Allometric laws relate biological quantities to body size. A typical
+      relation has the form
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        Y(M) = Y_0 M^{\beta},
+      \]
+    </p>
+
+    <p>
+      where \(M\) is body mass and \(Y\) could be metabolic rate, heart rate,
+      lifespan, etc. The level–1 derivative with respect to \(M\) is
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1^{(M)} Y
+          = \frac{M}{Y}\frac{dY}{dM}.
+      \]
+    </p>
+
+    <p>
+      For a pure allometric law, we obtain:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        Y(M) = Y_0 M^{\beta}
+        \quad\Rightarrow\quad
+        D_1^{(M)} Y = \beta.
+      \]
+    </p>
+
+    <p>
+      Thus \(D_1^{(M)} Y\) directly measures the allometric exponent. This
+      provides a differential definition of allometry which generalizes to
+      cases where \(\beta\) varies slowly with size.
+    </p>
+
+    <div class="example-box">
+      <h3>Example 22.3 – Size-Dependent Metabolic Exponent</h3>
+      <p>
+        Suppose empirical data suggest that the metabolic exponent is not
+        perfectly constant, but slowly increases with body mass:
+      </p>
+      <p style="text-align:center;">
+        \[
+          D_1^{(M)} Y(M) = \beta(M).
+        \]
+      </p>
+      <p>
+        Hierarchical series in \(\ln(M/M_0)\) (Chapter 17) can be used to
+        approximate \(\beta(M)\), and reconstruct \(Y(M)\) using hierarchical
+        integration. This goes beyond fixed–exponent power laws.
+      </p>
+    </div>
+
+    <h2>22.4 Ultra-Slow Adaptation and D₂</h2>
+
+    <p>
+      Many biological parameters adapt very slowly: mutation rates, gene
+      expression thresholds, ecosystem carrying capacities, etc. Their dynamics
+      may be visible only over many generations or environmental cycles.
+    </p>
+
+    <p>
+      Let \(P(t)\) be such a parameter. The level–2 derivative with respect to
+      time is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2^{(t)} P
+          = \frac{t\ln t}{P\,\ln P}\,\frac{dP}{dt}.
+      \]
+    </p>
+
+    <p>
+      A model of the form
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2^{(t)} P(t) = \varepsilon,
+      \]
+    </p>
+
+    <p>
+      with small \(\varepsilon\) describes <strong>ultra–slow adaptation</strong>
+      where \(\ln(\ln P)\) is nearly linear in \(\ln(\ln t)\).
+    </p>
+
+    <div class="example-box">
+      <h3>Example 22.4 – Slow Environmental Adaptation</h3>
+      <p>
+        Consider a population adapting to a gradually changing climate.
+        Let \(P(t)\) represent the mean tolerance to temperature extremes.
+        If experiments or simulations indicate that
+      </p>
+      <p style="text-align:center;">
+        \[
+          \ln(\ln P(t))
+        \]
+      </p>
+      <p>
+        is nearly linear in \(\ln(\ln t)\), then a constant \(D_2^{(t)} P\)
+        provides a compact model for long-term adaptation. Classical derivatives
+        would show almost no change, but \(D_2\) reveals structure on
+        logarithmic time scales.
+      </p>
+    </div>
+
+    <h2>22.5 Hierarchical View of Biological Time Scales</h2>
+
+    <p>
+      Biological systems exhibit a hierarchy of time scales:
+    </p>
+
+    <ul>
+      <li>fast molecular reactions (microseconds to seconds),</li>
+      <li>cell cycles and organism lifetimes (hours to years),</li>
+      <li>population dynamics (years to centuries),</li>
+      <li>evolutionary change (thousands to millions of years).</li>
+    </ul>
+
+    <p>
+      Hierarchical Calculus aligns naturally with this structure:
+    </p>
+
+    <ul>
+      <li>\(D_0\) for fast processes at fixed scales,</li>
+      <li>\(D_1\) for scale–invariant growth and decay across generations,</li>
+      <li>\(D_2\) for ultra–slow evolutionary or ecological drift.</li>
+    </ul>
+
+    <p>
+      Models that combine these derivatives can describe how short-term
+      dynamics and long-term adaptation interact.
+    </p>
+
+    <h2>22.6 Conceptual Advantages</h2>
+
+    <p>
+      Using hierarchical derivatives in biology offers several advantages:
+    </p>
+
+    <ul>
+      <li>A clear separation between absolute change, relative change and
+          logarithmic drift.</li>
+      <li>Natural descriptions of power laws and allometric relations.</li>
+      <li>Tools for ultra–slow processes that are almost invisible to
+          classical derivatives.</li>
+      <li>A unified language linking molecular, organism and population
+          scales.</li>
+    </ul>
+
+    <h2>22.7 Summary of Chapter 22</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Applied \(D_1\) to population and epidemic dynamics, showing how
+            power–law behaviour arises naturally.</li>
+        <li>Used relative derivatives with respect to body mass to describe
+            allometric scaling laws.</li>
+        <li>Introduced \(D_2\) as a tool for modelling ultra–slow biological
+            adaptation.</li>
+        <li>Discussed how hierarchical time scales match the hierarchy of
+            biological processes.</li>
+      </ul>
+      <p>
+        These examples demonstrate that Hierarchical Calculus is not limited to
+        abstract mathematics, but provides a flexible framework for modelling
+        complex living systems across scales. In the next chapter we will
+        explore similar ideas in economics, where growth, inequality and
+        market dynamics also span many orders of magnitude.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
