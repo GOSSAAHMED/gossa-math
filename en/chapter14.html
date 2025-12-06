@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Chapter 14 – Hierarchical Integral Equations</title>
+  <title>Chapter 14 – General Hierarchical Integration Iₙ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
@@ -145,13 +145,14 @@
         <small style="color:var(--text-muted)">AHMED GOSSA</small>
       </div>
     </div>
+
     <div class="nav-links">
       <a href="index.html#home">Home</a>
       <a href="index.html#theory">Theory</a>
       <a href="index.html#derivatives">Derivatives</a>
       <a href="index.html#series">Series</a>
-      <a href="index.html#integrals">Integrals</a>
-      <a href="index.html#applications" class="active">Applications</a>
+      <a href="index.html#integrals" class="active">Integrals</a>
+      <a href="index.html#applications">Applications</a>
       <a href="chapters.html">Chapters</a>
       <a href="index.html#contact">Contact</a>
     </div>
@@ -165,302 +166,400 @@
       <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 14
     </div>
 
-    <h1>Chapter 14 – Hierarchical Integral Equations</h1>
+    <h1>Chapter 14 – General Hierarchical Integration I<sub>n</sub></h1>
 
     <p>
-      In previous chapters we introduced the hierarchical integral operators
-      \(\mathcal{I}_n\) and studied simple examples.  
-      In this chapter we take the next step: **hierarchical integral equations**—  
-      equations in which the unknown function appears inside a hierarchical
-      integral or its derivative \(D_n\).
+      Chapter 13 introduced the logarithmic integral \(\mathcal{I}_2\) as the
+      inverse of the derivative \(D_2\). In this chapter we move to the general
+      case and define the <strong>hierarchical integral operator of level \(n\)</strong>,
+      denoted \(\mathcal{I}_n\), which inverts the derivative \(D_n\).
     </p>
 
-    <h2>14.1 What Is a Hierarchical Integral Equation?</h2>
+    <p>
+      The goal is to describe a unified pattern that includes the classical
+      integral \(\mathcal{I}_0\), the relative integral \(\mathcal{I}_1\) and
+      the logarithmic integral \(\mathcal{I}_2\) as special cases.
+    </p>
+
+    <h2>14.1 Reminder: The General Hierarchical Derivative Dₙ</h2>
 
     <p>
-      A hierarchical integral equation is any equation of the form:
+      The \(n\)-th level derivative is defined by
     </p>
 
     <p style="text-align:center;">
       \[
-        y(x) = \mathcal{I}_n[F(x, y(x))],
+        D_n y = \frac{L_n(x)}{L_n(y)} D_0 y
+             = \frac{L_n(x)}{L_n(y)} \frac{dy}{dx},
       \]
     </p>
 
     <p>
-      or equivalently,
-    </p>
-
-    <p style="text-align:center;">
-      \[
-        D_n y(x) = G(x, y(x)).
-      \]
-    </p>
-
-    <p>
-      At level \(n = 0\) this reduces to standard integral equations in calculus.
-      Higher levels introduce non-linearities through the hierarchical scales.
-    </p>
-
-    <h2>14.2 The Three Fundamental Types</h2>
-
-    <p>
-      At level \(n = 0, 1, 2\), hierarchical integral equations take three forms:
+      where \(D_0 y = \dfrac{dy}{dx}\) is the classical derivative and
+      \(L_n\) is the \(n\)-th hierarchical scale function:
     </p>
 
     <ul>
-      <li><strong>Type A – Given \(D_n y = f(x)\)</strong><br>  
-          Solve using hierarchical integration.</li>
-      <li><strong>Type B – Given \(D_n y = f(y)\)</strong><br>  
-          Leads to separable hierarchical ODEs.</li>
-      <li><strong>Type C – Given \(D_n y = f(x,y)\)</strong><br>  
-          Fully general nonlinear equations.</li>
+      <li>\(L_0(x) = 1\),</li>
+      <li>\(L_1(x) = x\),</li>
+      <li>\(L_2(x) = x\ln x\),</li>
+      <li>\(L_3(x) = x\ln x\ln(\ln x)\),</li>
+      <li>and so on, by multiplying successive logarithmic layers.</li>
     </ul>
 
-    <h2>14.3 Level-1 Integral Equations (Relative Level)</h2>
+    <p>
+      The same ladder is used for the dependent variable \(y\) through \(L_n(y)\).
+    </p>
+
+    <h2>14.2 Inverting Dₙ: Strategy</h2>
 
     <p>
-      A simple level-1 equation is:
+      Suppose we are given a function \(F_n(x)\) and we want to find \(y(x)\)
+      such that
     </p>
 
     <p style="text-align:center;">
       \[
-        D_1 y = k,
+        D_n y(x) = F_n(x).
       \]
     </p>
 
     <p>
-      which we solved earlier to obtain:
+      Using the definition of \(D_n\), this is equivalent to
     </p>
 
     <p style="text-align:center;">
       \[
-        y(x) = A x^k.
+        \frac{L_n(x)}{L_n(y)} \frac{dy}{dx} = F_n(x),
+      \]
+      \[
+        \frac{dy}{dx} = \frac{L_n(y)}{L_n(x)}\, F_n(x).
       \]
     </p>
 
     <p>
-      Now consider the more general case:
+      This is a first–order nonlinear differential equation for \(y\).
+      The idea behind \(\mathcal{I}_n\) is to transform it into
+      an equation that is linear in some new variable.
+    </p>
+
+    <h2>14.3 Choosing the Hierarchical Variable Φₙ(y)</h2>
+
+    <p>
+      For each level \(n\), we introduce a transformed variable
     </p>
 
     <p style="text-align:center;">
       \[
-        D_1 y = a y.
+        z_n = \Phi_n(y),
       \]
     </p>
 
     <p>
-      Substituting the definition:
+      chosen so that the derivative of \(z_n\) is proportional to \(D_n y\)
+      with a factor depending only on \(x\). Formally, we want:
     </p>
 
     <p style="text-align:center;">
       \[
-        \frac{x}{y} \frac{dy}{dx} = ay,
+        D_0 z_n = \Psi_n(x) \, D_n y,
       \]
     </p>
 
     <p>
-      gives:
-    </p>
-
-    <p style="text-align:center;">
-      \[
-        \frac{dy}{dx} = a \frac{y^2}{x}.
-      \]
-    </p>
-
-    <p>
-      This is a nonlinear separable ODE:
-    </p>
-
-    <p style="text-align:center;">
-      \[
-        \frac{dy}{y^2} = a \frac{dx}{x}.
-      \]
-    </p>
-
-    <p>
-      Integrating both sides:
-    </p>
-
-    <p style="text-align:center;">
-      \[
-        -\frac{1}{y} = a \ln x + C,
-      \]
-      \[
-        y = -\frac{1}{a\ln x + C}.
-      \]
-    </p>
-
-    <p>
-      This shows how even at level-1, hierarchical integral equations can create
-      **hyperbolic-logarithmic solutions**.
-    </p>
-
-    <h2>14.4 Level-2 Integral Equations (Logarithmic Level)</h2>
-
-    <p>
-      Consider:
-    </p>
-
-    <p style="text-align:center;">
-      \[
-        D_2 y = c,
-      \]
-    </p>
-
-    <p>
-      a constant logarithmic derivative.  
-      We solved this in Chapter 13 and obtained:
-    </p>
-
-    <p style="text-align:center;">
-      \[
-        y = \exp\!\left(A (\ln x)^c \right).
-      \]
-    </p>
-
-    <h3>Now consider a new equation:</h3>
-
-    <p style="text-align:center;">
-      \[
-        D_2 y = \alpha y.
-      \]
-    </p>
-
-    <p>
-      Substituting the definition:
-    </p>
-
-    <p style="text-align:center;">
-      \[
-        \frac{x\ln x}{y\ln y} \frac{dy}{dx} = \alpha y,
-      \]
-    </p>
-
-    <p>
-      yields:
-    </p>
-
-    <p style="text-align:center;">
-      \[
-        \frac{dy}{dx} = \alpha \frac{y^2 \ln y}{x\ln x}.
-      \]
-    </p>
-
-    <p>
-      Let:
-    </p>
-
-    <p style="text-align:center;">
-      \[
-        u = \ln y.
-      \]
-    </p>
-
-    <p>
+      where \(\Psi_n(x)\) is some scale function depending only on \(x\).
       Then:
     </p>
 
     <p style="text-align:center;">
       \[
-        \frac{du}{dx} = \alpha \frac{y u}{x\ln x}.
+        z_n(x) = \int \Psi_n(x)\, F_n(x)\, dx + C,
+      \]
+      \[
+        y(x) = \Phi_n^{-1}\bigl(z_n(x)\bigr).
       \]
     </p>
 
     <p>
-      But \(y = e^u\), so:
+      This gives the abstract form of the hierarchical integral:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        \mathcal{I}_n[F_n](x)
+          = \Phi_n^{-1}\!\left(
+              \int \Psi_n(x)\, F_n(x)\, dx + C
+            \right).
+      \]
+    </p>
+
+    <h2>14.4 Low-Level Cases as a Guide</h2>
+
+    <h3>14.4.1 Level 0 – Classical Integral</h3>
+
+    <p>
+      For \(n=0\),
     </p>
 
     <p style="text-align:center;">
       \[
-        \frac{du}{dx} = \alpha \frac{u e^u}{x\ln x}.
+        D_0 y = F_0(x), \quad
+        \Phi_0(y) = y, \quad
+        \Psi_0(x) = 1.
       \]
     </p>
 
     <p>
-      This is a nonlinear exponential-logarithmic differential equation.
-      Such equations often arise in multi-scale growth systems.
-    </p>
-
-    <p>
-      Separation of variables:
+      Then
     </p>
 
     <p style="text-align:center;">
       \[
-        \frac{du}{u e^u} = \alpha \frac{dx}{x\ln x}.
+        y(x) = \int F_0(x)\, dx + C.
       \]
     </p>
 
-    <p>
-      Integrating the LHS gives the exponential integral function \(\operatorname{Ei}\),
-      showing that hierarchical integral equations naturally lead to **special
-      functions**—a common theme in advanced calculus.
-    </p>
-
-    <h2>14.5 General Integral Equation at Level-n</h2>
+    <h3>14.4.2 Level 1 – Relative Integral</h3>
 
     <p>
-      A general hierarchical integral equation has the form:
+      For \(n=1\),
     </p>
 
     <p style="text-align:center;">
       \[
-        D_n y = F(x, y).
+        D_1 y = \frac{x}{y} \frac{dy}{dx}.
       \]
     </p>
 
     <p>
-      By substitution:
+      Setting \(\Phi_1(y) = \ln y\), one checks that
     </p>
 
     <p style="text-align:center;">
       \[
-        \frac{dy}{dx} = \frac{L_n(y)}{L_n(x)} F(x, y).
+        \frac{d}{dx}(\ln y) = \frac{D_1 y}{x},
+      \]
+      \[
+        \Psi_1(x) = \frac{1}{x}.
       \]
     </p>
 
     <p>
-      This converts any hierarchical integral equation into a nonlinear
-      first-order differential equation—  
-      a powerful and general technique.
+      Therefore:
     </p>
 
-    <h2>14.6 Interpretation</h2>
+    <p style="text-align:center;">
+      \[
+        \ln y(x) = \int \frac{F_1(x)}{x}\, dx + C,
+      \]
+      \[
+        \mathcal{I}_1[F_1](x)
+          = \exp\!\left(
+              \int \frac{F_1(x)}{x}\, dx + C
+            \right).
+      \]
+    </p>
+
+    <h3>14.4.3 Level 2 – Logarithmic Integral</h3>
 
     <p>
-      Hierarchical integral equations describe systems where dynamics occur
-      across nested scales:
+      For \(n=2\),
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_2 y = \frac{x\ln x}{y\ln y} \frac{dy}{dx}.
+      \]
+    </p>
+
+    <p>
+      Choosing \(\Phi_2(y) = \ln(\ln y)\) gives:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{d}{dx}(\ln(\ln y)) = \frac{D_2 y}{x\ln x},
+      \]
+      \[
+        \Psi_2(x) = \frac{1}{x\ln x},
+      \]
+    </p>
+
+    <p>
+      and so:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln(\ln y(x)) =
+          \int \frac{F_2(x)}{x\ln x}\, dx + C,
+      \]
+      \[
+        \mathcal{I}_2[F_2](x)
+          = \exp\!\left(
+              \exp\!\left(
+                \int \frac{F_2(x)}{x\ln x}\, dx + C
+              \right)
+            \right).
+      \]
+    </p>
+
+    <p>
+      These three cases illustrate the general pattern clearly.
+    </p>
+
+    <h2>14.5 Structure of Φₙ and Ψₙ</h2>
+
+    <p>
+      At each level \(n\), the function \(\Phi_n\) is built by applying
+      \(n\) logarithms to \(y\), while \(\Psi_n\) involves the corresponding
+      hierarchy of logarithms of \(x\). For example:
     </p>
 
     <ul>
-      <li>economic growth with accelerating relative effects,</li>
-      <li>information systems where learning slows logarithmically,</li>
-      <li>biological evolution over deep time,</li>
-      <li>cosmological expansion with multi-scale feedback.</li>
+      <li>
+        \(n = 0\): no logarithms, \(\Phi_0(y) = y\), \(\Psi_0(x) = 1\).
+      </li>
+      <li>
+        \(n = 1\): one logarithm in \(y\), one in \(x\),
+        \(\Phi_1(y) = \ln y\), \(\Psi_1(x) = 1/x\).
+      </li>
+      <li>
+        \(n = 2\): two logarithms in \(y\), two in \(x\),
+        \(\Phi_2(y) = \ln(\ln y)\), \(\Psi_2(x) = 1/(x\ln x)\).
+      </li>
     </ul>
 
     <p>
-      Using hierarchical integral equations allows us to model these systems at
-      the appropriate level of complexity.
+      More generally, one may define:
     </p>
 
-    <h2>14.7 Summary of Chapter 14</h2>
+    <p style="text-align:center;">
+      \[
+        \Phi_n(y) = \underbrace{\ln(\ln(\cdots \ln y))}_{n\ \text{times}},
+      \]
+      \[
+        \Psi_n(x) = \frac{1}{x \ln x \ln(\ln x)\cdots},
+      \]
+    </p>
+
+    <p>
+      where the product in the denominator contains the first \(n-1\) logarithmic layers.
+      This choice aligns the structure of \(\Phi_n\) and \(\Psi_n\) with the scale
+      function \(L_n\).
+    </p>
+
+    <h2>14.6 Formal Definition of Iₙ</h2>
+
+    <p>
+      Combining these ideas, we can write the formal expression:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        \boxed{
+        \mathcal{I}_n[F_n](x)
+          = \Phi_n^{-1}\!\left(
+              \int \Psi_n(x)\, F_n(x)\, dx + C
+            \right),
+        }
+      \]
+    </p>
+
+    <p>
+      where:
+    </p>
+
+    <ul>
+      <li>\(\Phi_n\) is an \(n\)-fold logarithmic transform of \(y\),</li>
+      <li>\(\Psi_n\) is the corresponding scale factor in \(x\),</li>
+      <li>\(F_n(x)\) plays the role of the hierarchical derivative \(D_n y\).</li>
+    </ul>
+
+    <p>
+      This formula is not meant as a closed-form expression for all \(n\), but
+      as a structural rule that generalizes the familiar cases \(n = 0, 1, 2\).
+    </p>
+
+    <h2>14.7 Example: Constant Dₙ</h2>
+
+    <p>
+      Consider the equation
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_n y = k,
+      \]
+    </p>
+
+    <p>
+      with \(k\) constant. Then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \Phi_n(y(x)) =
+          \int \Psi_n(x)\, k\, dx + C
+          = k \int \Psi_n(x)\, dx + C.
+      \]
+    </p>
+
+    <p>
+      At each level, this gives a simple relationship between the hierarchical
+      coordinate \(\Phi_n(y)\) and a primitive of \(\Psi_n(x)\). For:
+    </p>
+
+    <ul>
+      <li>\(n=0\): \(\Phi_0(y)=y\), \(\Psi_0(x)=1\) ⇒ \(y = kx + C\).</li>
+      <li>\(n=1\): \(\Phi_1(y)=\ln y\), \(\Psi_1(x)=1/x\) ⇒ \(\ln y = k\ln x+C\) ⇒ \(y = A x^k\).</li>
+      <li>\(n=2\): \(\Phi_2(y)=\ln(\ln y)\), \(\Psi_2(x)=1/(x\ln x)\) ⇒ \(\ln(\ln y) = k\ln(\ln x)+C\) ⇒ \(y = \exp(A (\ln x)^k)\).</li>
+    </ul>
+
+    <p>
+      Higher levels continue this pattern with deeper nested exponentials.
+    </p>
+
+    <h2>14.8 Relationship to Inverse Functions of Dₙ</h2>
+
+    <p>
+      Since \(D_n\) is defined in terms of \(L_n(x)\) and \(L_n(y)\), and
+      \(\mathcal{I}_n\) is defined through \(\Phi_n\) and \(\Psi_n\), we can
+      view \(\mathcal{I}_n\) as the <em>functional inverse</em> of \(D_n\):
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \mathcal{I}_n(D_n y) = y + C_n,
+      \]
+      \[
+        D_n(\mathcal{I}_n[F_n]) = F_n,
+      \]
+    </p>
+
+    <p>
+      whenever the expressions are well-defined. The next chapter will explore
+      these inverse relations in more detail.
+    </p>
+
+    <h2>14.9 Summary of Chapter 14</h2>
 
     <div class="summary-box">
       <p><strong>In this chapter we:</strong></p>
       <ul>
-        <li>Defined hierarchical integral equations.</li>
-        <li>Showed three fundamental types: \(f(x)\), \(f(y)\), and \(f(x,y)\).</li>
-        <li>Solved nonlinear examples at level 1 and level 2.</li>
-        <li>Showed how level-n equations reduce to first-order ODEs.</li>
-        <li>Explained their importance in multi-scale modeling.</li>
+        <li>Started from the general definition \(D_n y = \dfrac{L_n(x)}{L_n(y)} D_0 y\).</li>
+        <li>Introduced the transformed variable \(\Phi_n(y)\) and scale factor \(\Psi_n(x)\).</li>
+        <li>Derived the structural formula
+            \(\mathcal{I}_n[F_n](x) = \Phi_n^{-1}\bigl(\int \Psi_n(x) F_n(x)\, dx + C\bigr)\).</li>
+        <li>Showed how \(\mathcal{I}_0\), \(\mathcal{I}_1\) and \(\mathcal{I}_2\) fit this general scheme.</li>
+        <li>Discussed the example \(D_n y = k\) and the resulting families of solutions.</li>
+        <li>Prepared the ground for a detailed study of the inverse relations between
+            \(D_n\) and \(\mathcal{I}_n\) in Chapter 15.</li>
       </ul>
       <p>
-        The next chapters will expand these equations into hierarchical
-        differential systems, series solutions, and applications across physics,
-        biology, economics and information theory.
+        General hierarchical integration completes the basic operator pair
+        \((D_n, \mathcal{I}_n)\) at all levels, giving Hierarchical Calculus a
+        full toolkit for describing and reconstructing multi-scale change.
       </p>
     </div>
 
@@ -473,3 +572,4 @@
 
 </body>
 </html>
+
