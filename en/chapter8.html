@@ -421,7 +421,23 @@
 
       <p style="text-align:center;">
         \[
-          D_n y = \frac{L_n(x)}{L_n(y)} D_0 y.
+         We define the iterated logarithms by
+$$
+\ln^{(0)}(z)=z,\quad
+\ln^{(1)}(z)=\ln z,\quad
+\ln^{(2)}(z)=\ln(\ln z),\dots
+$$
+
+and the hierarchical ladder by
+$$
+L_n(z)=\prod_{k=0}^{n-1}\ln^{(k)}(z).
+$$
+
+Then the $n$-th hierarchical derivative of $y$ with respect to $x$ is
+$$
+D_n(y)=\frac{dy}{dx}\,\frac{L_n(x)}{L_n(y)}.
+$$
+
         \]
       </p>
 
