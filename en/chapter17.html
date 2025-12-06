@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 17 – Relative Series Expansions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color:white; }
+    .nav-links a.active { color:var(--accent); }
+
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0,0,0,0.45);
+    }
+
+    h1 {
+      text-align:center;
+      font-size:1.8rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      border-left:4px solid var(--accent);
+      padding-left:0.7rem;
+    }
+
+    h3 { margin-top:1.4rem; }
+
+    .breadcrumb {
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      color:var(--text-muted);
+    }
+
+    .breadcrumb a { color:var(--accent); text-decoration:none; }
+
+    .summary-box {
+      margin-top:1.4rem;
+      padding:1rem;
+      border-left:4px solid var(--accent);
+      background:rgba(255,176,46,0.09);
+      border-radius:8px;
+    }
+
+    ul, ol { padding-left:1.2rem; }
+
+    footer {
+      margin-top:2rem;
+      padding:1.2rem;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid rgba(58,73,120,0.4);
+    }
+  </style>
+
+  <script>
+    window.MathJax={ tex:{inlineMath:[['\\(','\\)'],['$','$']]} };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">H</div>
+      <div>
+        <div><strong>Hierarchical Calculus</strong></div>
+        <small style="color:var(--text-muted)">AHMED GOSSA</small>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#theory">Theory</a>
+      <a href="index.html#derivatives">Derivatives</a>
+      <a href="index.html#series" class="active">Series</a>
+      <a href="index.html#integrals">Integrals</a>
+      <a href="index.html#applications">Applications</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="chapter-container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 17
+    </div>
+
+    <h1>Chapter 17 – Relative Series Expansions</h1>
+
+    <p>
+      In the previous chapter we introduced the general idea of hierarchical
+      series. In this chapter we specialize to the <strong>relative level</strong>,
+      based on the derivative \(D_1\).  
+      The goal is to develop series expansions that are naturally adapted to
+      functions governed by <em>relative change</em> rather than absolute change.
+    </p>
+
+    <h2>17.1 From Classical Taylor to Relative Taylor</h2>
+
+    <p>
+      The classical Taylor series of a smooth function \(f\) at a base point
+      \(x_0\) is
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x)
+          = \sum_{k=0}^{\infty}
+              \frac{D_0^k f(x_0)}{k!}\,(x-x_0)^k,
+      \]
+    </p>
+
+    <p>
+      where \(D_0\) is the ordinary derivative.  
+      This expansion uses the <em>absolute displacement</em> \((x-x_0)\) as the
+      local coordinate.
+    </p>
+
+    <p>
+      For many phenomena (economic growth, population, compounding processes),
+      the natural variable is not \(x\) itself, but \(\ln x\) or relative
+      change \(\tfrac{x}{x_0}\). This leads us to build series in the
+      <strong>relative coordinate</strong>:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        u = \ln\!\left(\frac{x}{x_0}\right).
+      \]
+    </p>
+
+    <h2>17.2 The Relative Derivative D₁ and the u–Variable</h2>
+
+    <p>
+      Recall that the level–1 derivative is
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 f(x) = \frac{x}{f(x)}\,\frac{df}{dx}.
+      \]
+    </p>
+
+    <p>
+      It measures the <em>relative rate of change</em> of \(f\) with respect
+      to the relative change of \(x\).  
+      To see this, note that with
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        u = \ln x \quad\Rightarrow\quad \frac{du}{dx} = \frac{1}{x},
+      \]
+    </p>
+
+    <p>
+      we can write
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{d f}{du} = \frac{df}{dx}\,\frac{dx}{du}
+                      = x\,\frac{df}{dx},
+      \]
+      \[
+        D_1 f
+          = \frac{1}{f}\frac{df}{du}
+          = \frac{d}{du}(\ln f).
+      \]
+    </p>
+
+    <p>
+      So \(D_1 f\) is exactly the derivative of \(\ln f\) with respect to
+      \(\ln x\).  
+      This suggests expanding \(\ln f\) as a classical Taylor series in
+      the variable \(u-u_0\), where
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        u_0 = \ln x_0,\qquad
+        u - u_0 = \ln\!\left(\frac{x}{x_0}\right).
+      \]
+    </p>
+
+    <h2>17.3 First–Order Relative Approximation</h2>
+
+    <p>
+      For small relative changes \(|u-u_0| \ll 1\), we can write a first–order
+      approximation:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln f(x)
+          \approx \ln f(x_0)
+             + \left.\frac{d}{du}\ln f\right|_{u_0} (u-u_0).
+      \]
+    </p>
+
+    <p>
+      But \(\tfrac{d}{du}\ln f = D_1 f\), so:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln f(x)
+          \approx \ln f(x_0)
+             + D_1 f(x_0)\,\ln\!\left(\frac{x}{x_0}\right),
+      \]
+      \[
+        f(x)
+          \approx f(x_0)\,
+            \exp\!\left(
+              D_1 f(x_0)\,\ln\!\left(\frac{x}{x_0}\right)
+            \right)
+          = f(x_0)\left(\frac{x}{x_0}\right)^{D_1 f(x_0)}.
+      \]
+    </p>
+
+    <p>
+      This is the simplest <strong>relative series expansion</strong>:
+      near \(x_0\), the function behaves like a power law with exponent
+      \(D_1 f(x_0)\).
+    </p>
+
+    <h3>Example 17.1 – Recovering a Power Law</h3>
+
+    <p>
+      If \(f(x) = A x^k\), then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 f(x) = k \quad (\text{constant}).
+      \]
+    </p>
+
+    <p>
+      The first–order relative expansion gives:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x)
+          \approx f(x_0)
+          \left(\frac{x}{x_0}\right)^{k}
+          = A x_0^k \left(\frac{x}{x_0}\right)^k
+          = A x^k,
+      \]
+    </p>
+
+    <p>
+      which is <em>exact</em>.  
+      This shows that relative expansions are perfectly adapted to power laws.
+    </p>
+
+    <h2>17.4 Relative Taylor Series for ln f</h2>
+
+    <p>
+      To go beyond first order, we expand \(\ln f\) as a classical Taylor
+      series in the variable \(u=\ln x\):
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln f(u)
+          = \sum_{k=0}^{\infty}
+              \frac{1}{k!}
+              \left.\frac{d^k}{du^k}\ln f(u)\right|_{u_0}
+              (u-u_0)^k.
+      \]
+    </p>
+
+    <p>
+      The first derivative is:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \frac{d}{du}\ln f
+          = D_1 f.
+      \]
+    </p>
+
+    <p>
+      Higher derivatives with respect to \(u\) can be expressed in terms of
+      \(D_1 f\) and its derivatives, but for the conceptual picture we simply
+      denote:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        R_k(x_0)
+          := \left.\frac{d^k}{du^k}\ln f(u)\right|_{u_0}.
+      \]
+    </p>
+
+    <p>
+      Then:
+    </p>
+
+    <p style="text-align:center; font-weight:bold;">
+      \[
+        \ln f(x)
+          = \sum_{k=0}^{\infty}
+              \frac{R_k(x_0)}{k!}
+              \bigl(\ln(x/x_0)\bigr)^k,
+      \]
+      \[
+        f(x)
+          = \exp\!\left(
+              \sum_{k=0}^{\infty}
+                \frac{R_k(x_0)}{k!}
+                \bigl(\ln(x/x_0)\bigr)^k
+            \right).
+      \]
+    </p>
+
+    <p>
+      This is a <strong>relative Taylor series</strong> for \(f\) around
+      the base point \(x_0\).
+    </p>
+
+    <h2>17.5 Relative Series in Terms of D₁</h2>
+
+    <p>
+      Since the first derivative of \(\ln f\) with respect to \(u\) is \(D_1 f\),
+      we have:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        R_1(x_0) = D_1 f(x_0).
+      \]
+    </p>
+
+    <p>
+      Higher coefficients involve higher derivatives with respect to \(u\),
+      which can be expressed schematically as:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        R_k(x_0) = \bigl(D_1^{(k-1)} D_1 f\bigr)(x_0),
+      \]
+    </p>
+
+    <p>
+      where the superscript indicates repeated differentiation with respect to
+      \(u = \ln x\).  
+      In this sense, the relative series is generated by the <em>hierarchy of
+      relative derivatives</em> of \(f\).
+    </p>
+
+    <h3>Example 17.2 – Slightly Deformed Power Law</h3>
+
+    <p>
+      Suppose a function behaves like a power law with a slowly varying
+      exponent:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        f(x) = x^{k(x)},
+      \]
+    </p>
+
+    <p>
+      with \(k(x)\) smooth and slowly changing. Then:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        \ln f(x) = k(x)\,\ln x,
+      \]
+    </p>
+
+    <p>
+      and:
+    </p>
+
+    <p style="text-align:center;">
+      \[
+        D_1 f(x)
+          = \frac{d}{du}\bigl(\ln f(x)\bigr)
+          = k(x) + (\ln x)\,k'(x).
+      \]
+    </p>
+
+    <p>
+      Evaluating at \(x_0\) gives a first–order correction to the pure power
+      law. Higher–order terms in the relative series capture the slow drift
+      of the exponent \(k(x)\).
+    </p>
+
+    <h2>17.6 Interpretation and Use Cases</h2>
+
+    <p>
+      Relative series expansions are particularly useful when:
+    </p>
+
+    <ul>
+      <li>the underlying dynamics are multiplicative (compounding, growth in %),</li>
+      <li>functions behave like power laws or nearly power laws,</li>
+      <li>the natural variable is \(\ln x\) instead of \(x\).</li>
+    </ul>
+
+    <p>
+      In such cases:
+    </p>
+
+    <ul>
+      <li>The coordinate \(\ln(x/x_0)\) is small even for large variations in \(x\),</li>
+      <li>The first relative term already captures most of the behavior,</li>
+      <li>Higher–order terms provide controlled corrections on a logarithmic scale.</li>
+    </ul>
+
+    <p>
+      Relative series form the bridge between Hierarchical Calculus and
+      practical modelling of power–law and scale–invariant phenomena.
+    </p>
+
+    <h2>17.7 Summary of Chapter 17</h2>
+
+    <div class="summary-box">
+      <p><strong>In this chapter we:</strong></p>
+      <ul>
+        <li>Moved from classical Taylor series to <em>relative Taylor series</em>.</li>
+        <li>Used the coordinate \(u = \ln(x/x_0)\) as the natural expansion variable.</li>
+        <li>Showed that the first–order relative approximation is
+            \(f(x) \approx f(x_0)(x/x_0)^{D_1 f(x_0)}\).</li>
+        <li>Defined a full relative series by expanding \(\ln f\) in powers of
+            \(\ln(x/x_0)\).</li>
+        <li>Linked the coefficients to derivatives with respect to \(\ln x\),
+            closely related to the operator \(D_1\).</li>
+        <li>Discussed applications to power laws and slowly varying exponents.</li>
+      </ul>
+      <p>
+        Relative series expansions are the first concrete example of hierarchical
+        series. In the next chapter we will extend these ideas further to
+        <strong>logarithmic series</strong> and <strong>ultra–slow growth</strong>
+        governed by the higher–level derivatives \(D_2\) and beyond.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+© AHMED GOSSA – Hierarchical Calculus
+</footer>
+
+</body>
+</html>
