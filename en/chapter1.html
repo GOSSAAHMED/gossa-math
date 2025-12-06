@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 1 – Introduction to Hierarchical Calculus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1022;
+      --text-main: #f4f4f8;
+      --text-muted: #9aa3c5;
+      --accent: #ffb02e;
+      --panel-border: rgba(95, 110, 155, 0.7);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #11182e 0, #050814 50%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(to bottom, #050814, rgba(5, 8, 20, 0.92));
+      border-bottom: 1px solid rgba(58, 73, 120, 0.7);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Branding */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe9a5, #ff9f1a 55%, #ff7a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1d1303;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .lang-toggle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .lang-toggle a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .chapter-container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.45);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.7rem;
+    }
+
+    .breadcrumb {
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* SUMMARY BOX */
+    .summary-box {
+      margin-top: 1.4rem;
+      padding: 1rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(255, 176, 46, 0.09);
+      border-radius: 8px;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 2rem;
+      padding: 1.2rem;
+      text-align: center;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(58, 73, 120, 0.4);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {inlineMath: [['\\(', '\\)'], ['$', '$']]}
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-badge">H</div>
+        <div>
+          <div><strong>Hierarchical Calculus</strong></div>
+          <small style="color:var(--text-muted)">AHMED GOSSA</small>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#theory">Theory</a>
+        <a href="index.html#derivatives">Derivatives</a>
+        <a href="index.html#series">Series</a>
+        <a href="index.html#integrals">Integrals</a>
+        <a href="index.html#applications">Applications</a>
+        <a href="chapters.html">Chapters</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+      <div class="lang-toggle">
+        Language: العربية • <a href="chapter1.html">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="chapter-container">
+
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> » <a href="chapters.html">Book</a> » Chapter 1
+      </div>
+
+      <h1>Chapter 1 – Introduction to Hierarchical Calculus</h1>
+
+      <p>
+        <strong>Hierarchical Calculus</strong> is a new mathematical framework that extends
+        classical calculus by introducing a <em>hierarchy of derivatives and integrals</em>.
+        It generalizes the single notion of change found in standard differential calculus.
+      </p>
+
+      <p>
+        Instead of one derivative \(D_0\), Hierarchical Calculus builds a sequence:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+          D_0,\; D_1,\; D_2,\; D_3,\; \ldots
+        \]
+      </p>
+
+      <p>
+        Each \(D_n\) measures a deeper level of change—from absolute, to relative,
+        to logarithmic, and beyond.
+      </p>
+
+      <h2>1.1 What Is Hierarchical Calculus?</h2>
+
+      <p>
+        Classical calculus captures <em>absolute</em> change.  
+        But many systems in nature evolve hierarchically:  
+        physical, biological, informational, and cognitive processes.
+      </p>
+
+      <p>
+        Hierarchical Calculus provides a unified mathematical language for these
+        multi-layered phenomena.
+      </p>
+
+      <h2>1.2 The Golden Relation</h2>
+
+      <p>At the heart of the theory lies the identity:</p>
+
+      <p style="text-align:center;">
+        \[
+          x\,D_0(y) \;=\; y\,D_1(y)
+        \]
+      </p>
+
+      <p>
+        This equation links absolute change with relative change.  
+        It forms the bridge between classical and hierarchical differentiation.
+      </p>
+
+      <h2>1.3 Hierarchical Derivatives</h2>
+
+      <p>The first three hierarchical derivatives are:</p>
+
+      <p style="text-align:center;">
+        \[
+          D_0y = \frac{dy}{dx}
+        \]
+        \[
+          D_1y = \frac{dy \cdot x}{dx \cdot y}
+        \]
+        \[
+          D_2y = \frac{dy \cdot x\ln x}{dx \cdot y\ln y}
+        \]
+      </p>
+
+      <p>
+        Higher-order derivatives incorporate iterated logarithms,
+        forming an infinite ladder of sensitivity to change.
+      </p>
+
+      <h2>1.4 A New Framework for Change</h2>
+
+      <p>
+        Hierarchical Calculus captures how systems evolve across scales:
+        microscopic → macroscopic → global.
+      </p>
+
+      <p>
+        It reveals structures and invariants invisible to standard calculus.
+      </p>
+
+      <div class="summary-box">
+        <strong>Summary:</strong>
+        <ul>
+          <li>Hierarchical Calculus extends classical calculus to multiple layers.</li>
+          <li>Each derivative \(D_n\) reveals a new level of change.</li>
+          <li>The Golden Relation is the core identity linking these levels.</li>
+          <li>The framework models complex systems across physics, biology, cognition, and more.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © AHMED GOSSA – Hierarchical Calculus
+  </footer>
+
+</body>
+</html>
