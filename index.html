@@ -1,345 +1,523 @@
-<div class="lang">
-  <a href="index-en.html">English</a>
-</div>
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <title>الحساب الهرمي | Hierarchical Calculus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الحساب الهرمي — الموقع الرسمي (DOI)</title>
 
-  <!-- MathJax -->
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <!-- Arabic Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="الحساب الهرمي: إطار رياضي للمشتقات والمعادلات متعددة الطبقات. DOI رسمي عبر Zenodo." />
+  <meta name="author" content="GOSSA AHMED" />
 
   <style>
-    :root {
-      --primary: #0b132b;
-      --secondary: #1c2541;
-      --accent: #5bc0be;
-      --bg: linear-gradient(135deg, #0b132b, #1c2541);
-      --card: #1f2a44;
-      --text: #eaeaea;
+    :root{
+      --bg0:#0b1220;
+      --bg1:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.14);
+      --text:#eaf2ff;
+      --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3;
+      --accent2:#7aa7ff;
+      --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Amiri', serif;
-      background: var(--bg);
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 60px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1100px; margin:0 auto; padding:10px 18px;
+      display:flex; align-items:center; gap:12px; justify-content:space-between;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px; min-width:220px;
+    }
+    .logo{
+      width:36px; height:36px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{
+      display:flex; flex-direction:column; line-height:1.15;
+    }
+    .brand .title strong{font-size:14px; letter-spacing:.2px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+    }
+    nav a{
+      padding:8px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
       color: var(--text);
-      line-height: 2;
+      text-decoration:none;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    .actions{
+      display:flex; gap:10px; align-items:center; justify-content:flex-end; min-width:220px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:9px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 13px;
+      cursor:pointer;
+    }
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.12);
     }
 
-    header {
-      background: linear-gradient(135deg, #020617, #0b132b);
-      text-align: center;
-      padding: 4rem 1.5rem 3rem;
+    header.hero{
+      margin-top:20px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 22px;
+      overflow:hidden;
+      position:relative;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+      filter: blur(0px);
+    }
+    header.hero > *{position:relative}
+
+    .hero h1{
+      margin:0 0 8px 0;
+      font-size: 34px;
+      letter-spacing:.3px;
+    }
+    .hero p{
+      margin:8px 0 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 900px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      color: #ffffff;
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr}
+      .brand, .actions{min-width:auto}
     }
 
-    header p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #cbd5e1;
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
     }
-
-    nav {
-      background: #020617;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem;
-      flex-wrap: wrap;
+    .card h2{
+      margin:0 0 10px 0;
+      font-size: 18px;
+      letter-spacing:.2px;
+      display:flex; align-items:center; gap:10px;
     }
-
-    nav a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 1.05rem;
-      border-bottom: 2px solid transparent;
-      transition: 0.3s;
+    .bar{
+      width:4px; height:18px; border-radius:99px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      display:inline-block;
     }
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
 
-    nav a:hover {
-      color: #ffffff;
-      border-bottom: 2px solid var(--accent);
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      background: var(--card);
-      padding: 2.5rem;
-      margin-bottom: 2.5rem;
+    .doi-box{
+      border:1px solid rgba(57,211,195,.28);
+      background: rgba(57,211,195,.08);
       border-radius: 14px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      padding: 12px 12px;
+      margin-top: 12px;
+      line-height: 1.9;
+    }
+    .doi-box a{color:#bfe8ff}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px;
+      color: var(--muted);
+      margin: 6px 6px 0 0;
     }
 
-    section h2 {
-      margin-top: 0;
-      color: var(--accent);
-      font-size: 1.9rem;
-      border-right: 5px solid var(--accent);
-      padding-right: 1rem;
+    .block{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .label{
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin-bottom: 8px;
+      color: var(--text);
+      display:flex; align-items:center; gap:10px;
+    }
+    .label .tag{
+      font-size: 12px;
+      color: rgba(255,255,255,.8);
+      background: rgba(122,167,255,.12);
+      border: 1px solid rgba(122,167,255,.22);
+      padding: 2px 8px;
+      border-radius: 999px;
     }
 
-    ul {
-      padding-right: 1.5rem;
-    }
-
-    li {
-      margin-bottom: 0.6rem;
-    }
-
-    .math-box {
-      background: linear-gradient(135deg, #233554, #1f2a44);
-      color: #ffffff;
-      padding: 1.6rem;
-      margin: 1.6rem 0;
+    .math-box{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
       border-radius: 12px;
-      direction: ltr;
-      text-align: center;
-      font-size: 1.25rem;
-      box-shadow: inset 0 0 0 1px rgba(91,192,190,0.4);
+      padding: 10px 12px;
+      overflow:auto;
+      direction:ltr; /* مهم: المعادلات */
+      text-align:left;
     }
 
-    footer {
-      background: #020617;
-      color: #94a3b8;
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 4rem;
-      font-size: 0.95rem;
+    .cite-block{
+      margin-top: 10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      border-radius: 12px;
+      padding: 12px 12px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      white-space: pre-wrap;
+      direction:ltr;
+      text-align:left;
     }
 
-    footer strong {
-      color: #ffffff;
+    .quicklinks{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    @media (max-width: 600px){
+      .quicklinks{grid-template-columns: 1fr}
+    }
+    .linkcard{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 12px 12px;
+    }
+    .linkcard strong{display:block; margin-bottom:6px}
+    .linkcard span{color:var(--muted); font-size:13px; line-height:1.6}
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
     }
   </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>الحساب الهرمي</strong>
+          <span>الموقع الرسمي + DOI (Zenodo)</span>
+        </div>
+      </div>
 
-<header>
-  <h1>الحساب الهرمي</h1>
-  <p>نظرية رياضية عامة للتغيّر المتصاعد</p>
-  <p><strong>GOSSA AHMED</strong></p>
-</header>
+      <nav aria-label="التنقل">
+        <a href="#overview">نظرة عامة</a>
+        <a href="#core">التعريفات الأساسية</a>
+        <a href="#equations">المعادلات الهرمية</a>
+        <a href="#cite">الاستشهاد</a>
+        <a href="#links">صفحات المرجع</a>
+      </nav>
 
-<nav>
-  <a href="#intro">المقدمة</a>
-  <a href="#theory">الأساس النظري</a>
-  <a href="#derivatives">المشتقات الهرمية</a>
-  <a href="#applications">التطبيقات</a>
-  <a href="#papers">المنشورات</a>
-  <a href="#contact">تواصل</a>
-</nav>
-
-<main>
-
-<section id="intro">
-  <h2>مقدمة</h2>
-  <p>
-    الحساب الهرمي هو إطار رياضي جديد يهدف إلى توصيف التغيّر عندما تصبح العمليات نفسها
-    (الجمع، القسمة، اللوغاريتم، التتريش) متصاعدة هرميًا.
-    يمثّل هذا الموقع المرجع الرسمي للنظرية وتثبيت أسبقيتها العلمية.
-  </p>
-<section id="theory">
-  <h2>الأساس النظري</h2>
-
-  <p><strong>الطبقة 0 — المشتق التفاضلي</strong></p>
-  <div class="math-box">
-    \[
-      D_0 f(x) = \frac{df(x)}{dx}
-    \]
+      <div class="actions">
+        <a class="btn" href="index-en.html" title="English version">English</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
   </div>
 
-  <p><strong>الطبقة 1 — المشتق النسبي</strong></p>
-  <div class="math-box">
-    \[
-      D_1 f(x) = \frac{d \ln f(x)}{d \ln x}
-    \]
+  <div class="wrap">
+    <header class="hero" id="overview">
+      <h1>الحساب الهرمي</h1>
+      <p>
+        إطار رياضي يقدّم طبقات مشتقات ومعادلات متعددة المستويات: من التفاضلي <span class="muted">(الطبقة 0)</span>
+        إلى النسبي <span class="muted">(الطبقة 1)</span> واللوغاريتمي <span class="muted">(الطبقة 2)</span>
+        والتتريشي <span class="muted">(الطبقة 3)</span> وصولًا إلى المشتق الهرمي العام <span class="muted">(الطبقة n)</span>.
+        هذا الموقع هو مرجع تعريفي/تقني للإصدارات المؤرشفة رسميًا عبر Zenodo.
+      </p>
+
+      <div class="doi-box">
+        <div><strong>DOI (Concept — المرجع الأساسي):</strong>
+          <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+            https://doi.org/10.5281/zenodo.17917302
+          </a>
+        </div>
+        <div class="small">
+          <strong>DOI (v1.0.0):</strong>
+          <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
+          <span class="muted">— إصدار الموقع v1.0.0</span>
+        </div>
+        <div class="small muted">
+          GitHub: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GOSSAAHMED/gossa-math</a>
+          · تواصل: <a href="mailto:ahmedgossa50@gmail.com">ahmedgossa50@gmail.com</a>
+        </div>
+      </div>
+
+      <div style="margin-top:10px">
+        <span class="pill">Zenodo (CERN) Archive</span>
+        <span class="pill">MathJax Typesetting</span>
+        <span class="pill">Arabic + English</span>
+        <span class="pill">Release v1.0.0</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card" id="core">
+        <h2><span class="bar"></span>التعريفات الأساسية</h2>
+        <p class="muted small">
+          نرمز بـ \(D_0\) للمشتق التفاضلي (الطبقة صفر)، وبـ \(D_1\) للمشتق النسبي (الطبقة 1).
+          تعميم الطبقات يُكتب بصيغة موحّدة باستعمال اللوغاريتمات المتكررة.
+        </p>
+
+        <div class="block">
+          <div class="label">تعريف <span class="tag">Definition</span></div>
+          <p class="muted small" style="margin:0">
+            المشتق الهرمي من الطبقة \(n\) يُعرَّف (تحت شروط المجال) كما يلي:
+          </p>
+          <div class="math-box">
+            \[
+              D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
+            \]
+          </div>
+          <p class="muted small" style="margin:8px 0 0 0">
+            حيث \(\ln^{(n)}\) هو اللوغاريتم المتكرر \(n\) مرات (مثال: \(\ln^{(3)}(x)=\ln(\ln(\ln x))\)).
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="label">طبقات خاصة <span class="tag">Levels</span></div>
+
+          <div class="math-box">
+            \[
+              D_0 f(x)=\frac{df(x)}{dx}
+            \]
+          </div>
+
+          <div class="math-box">
+            \[
+              D_1 f(x)=\frac{d\ln f(x)}{d\ln x}
+            \]
+          </div>
+
+          <div class="math-box">
+            \[
+              D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+            \]
+          </div>
+
+          <div class="math-box">
+            \[
+              D_3 f(x)=\frac{d\ln^{(3)} f(x)}{d\ln^{(3)} x}
+            \]
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h2><span class="bar"></span>روابط سريعة</h2>
+        <div class="quicklinks">
+          <div class="linkcard">
+            <strong>سجل Zenodo</strong>
+            <span>المصدر المؤرشف للإصدار v1.0.0 وملفاته.</span><br>
+            <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">فتح السجل</a>
+          </div>
+          <div class="linkcard">
+            <strong>GitHub Releases</strong>
+            <span>قائمة الإصدارات والتحديثات المستقبلية.</span><br>
+            <a href="https://github.com/GOSSAAHMED/gossa-math/releases" target="_blank" rel="noopener">فتح الإصدارات</a>
+          </div>
+          <div class="linkcard">
+            <strong>تحميل</strong>
+            <span>ZIP / PDF (لاحقًا) + روابط الاستشهاد.</span><br>
+            <a href="#links">انتقل لصفحات المرجع</a>
+          </div>
+          <div class="linkcard">
+            <strong>التواصل</strong>
+            <span>للتعاون العلمي أو الاستفسار.</span><br>
+            <a href="mailto:ahmedgossa50@gmail.com">إرسال بريد</a>
+          </div>
+        </div>
+
+        <div class="block" style="margin-top:12px">
+          <div class="label">ملاحظة أكاديمية <span class="tag">Note</span></div>
+          <p class="muted small" style="margin:0; line-height:1.8">
+            للاستشهاد العلمي العام بالمشروع استخدم <strong>Concept DOI</strong>.
+            أمّا عند الإشارة إلى نتائج مرتبطة بالإصدار الحالي فاستعمل <strong>Version DOI</strong>.
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <section class="card" id="equations" style="margin-top:16px">
+      <h2><span class="bar"></span>المعادلات الهرمية</h2>
+      <p class="muted small">
+        المعادلات الهرمية تعمّم المعادلات التفاضلية باستخدام مشتقات من طبقات مختلفة. الصيغة العامة:
+      </p>
+
+      <div class="math-box">
+        \[
+          D_n y = F(x,y)
+        \]
+      </div>
+
+      <div class="block">
+        <div class="label">مثال <span class="tag">Example</span></div>
+        <p class="muted small" style="margin:0">
+          مثال إرشادي على تحويل معادلة انفجارية:
+        </p>
+        <div class="math-box">
+          \[
+            \frac{dy}{dx}=y\ln y
+          \]
+        </div>
+        <p class="muted small" style="margin:8px 0 0 0">
+          باستعمال التحويل الهرمي المناسب قد تُكتب بصيغة أبسط في طبقة أعلى (يعرض التفصيل في صفحة المعادلات).
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="cite" style="margin-top:16px">
+      <h2><span class="bar"></span>كيفية الاستشهاد</h2>
+      <p class="muted small">
+        هذا القسم جاهز للنسخ في أي بحث أو رسالة أو مقال.
+      </p>
+
+      <div class="block">
+        <div class="label">استشهاد نصي <span class="tag">Text</span></div>
+        <div class="cite-block">GOSSA AHMED. Hierarchical Calculus — Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).</div>
+      </div>
+
+      <div class="block">
+        <div class="label">BibTeX <span class="tag">LaTeX</span></div>
+        <div class="cite-block">@software{gossa_hierarchical_calculus_2025,
+  author = {Gossa Ahmed},
+  title  = {Hierarchical Calculus},
+  year   = {2025},
+  doi    = {10.5281/zenodo.17917302},
+  url    = {https://github.com/GOSSAAHMED/gossa-math}
+}</div>
+      </div>
+    </section>
+
+    <section class="card" id="links" style="margin-top:16px">
+      <h2><span class="bar"></span>صفحات المرجع (قيد الإضافة)</h2>
+      <p class="muted small">
+        هذه الروابط مُعدّة لتقسيم المحتوى إلى مرجع أكاديمي كامل. يمكنك إنشاء هذه الملفات لاحقًا بنفس القالب.
+      </p>
+
+      <div class="quicklinks">
+        <div class="linkcard">
+          <strong>النظرية</strong>
+          <span>تعريفات، بديهيات، مبرهنات، خواص.</span><br>
+          <a href="theory.html">theory.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>المعادلات</strong>
+          <span>معادلات هرميّة + تحويلات + حلول.</span><br>
+          <a href="equations.html">equations.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>الحساب العددي</strong>
+          <span>Calcul numérique + مقارنة أخطاء.</span><br>
+          <a href="numerics.html">numerics.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>المراجع</strong>
+          <span>قائمة مراجع + توثيق + استشهادات.</span><br>
+          <a href="references.html">references.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>تنزيلات</strong>
+          <span>PDF/ZIP + إصدارات + DOI.</span><br>
+          <a href="download.html">download.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>English Pages</strong>
+          <span>نفس البنية بالإنجليزية.</span><br>
+          <a href="index-en.html">index-en.html</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+    </footer>
   </div>
-
-  <p><strong>الطبقة 2 — المشتق اللوغاريتمي</strong></p>
-  <div class="math-box">
-    \[
-      D_2 f(x) = \frac{d \ln(\ln f(x))}{d \ln(\ln x)}
-    \]
-  </div>
-
-  <p><strong>الطبقة 3 — المشتق التتريشي</strong></p>
-  <div class="math-box">
-    \[
-      D_3 f(x) = \frac{d \ln^{(3)} f(x)}{d \ln^{(3)} x}
-    \]
-  </div>
-  <p>
-    حيث:
-    \[
-      \ln^{(3)}(x)=\ln(\ln(\ln x))
-    \]
-  </p>
-
-  <p><strong>الطبقة n — المشتق الهرمي العام</strong></p>
-  <div class="math-box">
-    \[
-      D_n f(x) = \frac{d \ln^{(n)}(f(x))}{d \ln^{(n)}(x)}
-    \]
-  </div>
-</section>
-
-
-<section id="derivatives">
-  <h2>المشتقات الهرمية</h2>
-  <p>التعريف العام للمشتق الهرمي من الرتبة \( n \):</p>
-  <div class="math-box">
-    \[
-      D_n f(x) =
-      \frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
-    \]
-  </div>
-  <p>
-    هذا التعريف يوحّد المشتق التفاضلي، النسبي، اللوغاريتمي، والتتريشي
-    ضمن صيغة رياضية واحدة متناسقة.
-  </p>
-</section>
-<section id="equations">
-  <h2>المعادلات الهرمية</h2>
-
-  <p>
-    المعادلات الهرمية هي تعميم للمعادلات التفاضلية التقليدية،
-    حيث يُستعمل المشتق الهرمي من رتبة معيّنة بدل الاقتصار
-    على المشتق التفاضلي من الطبقة الصفرية.
-  </p>
-
-  <p><strong>الصيغة العامة:</strong></p>
-  <div class="math-box">
-    \[
-      D_n y = F(x,y)
-    \]
-  </div>
-
-  <p>
-    يسمح هذا الإطار بتحويل معادلات غير خطية أو انفجارية
-    إلى معادلات أبسط عبر الصعود في الهرم.
-  </p>
-
-  <hr>
-
-  <p><strong>مثال 1 — معادلة انفجارية:</strong></p>
-  <div class="math-box">
-    \[
-      \frac{dy}{dx} = y \ln y
-    \]
-  </div>
-
-  <p>
-    باستعمال المشتق النسبي نحصل على:
-  </p>
-  <div class="math-box">
-    \[
-      D_1 y = \ln x
-    \]
-  </div>
-
-  <p>
-    ومنه:
-  </p>
-  <div class="math-box">
-    \[
-      \ln(\ln y) = \ln(\ln x) + C
-    \]
-  </div>
-
-  <hr>
-
-  <p><strong>مثال 2 — معادلة لوغاريتمية:</strong></p>
-  <div class="math-box">
-    \[
-      D_2 y = 1
-    \]
-  </div>
-
-  <p>
-    الحل المباشر:
-  </p>
-  <div class="math-box">
-    \[
-      \ln(\ln y) = \ln(\ln x) + C
-    \]
-  </div>
-
-  <hr>
-
-  <p><strong>مثال 3 — معادلة هرمية عامة:</strong></p>
-  <div class="math-box">
-    \[
-      D_n y = k
-    \]
-  </div>
-
-  <p>
-    الحل العام:
-  </p>
-  <div class="math-box">
-    \[
-      \ln^{(n)} y = k\,\ln^{(n)} x + C
-    \]
-  </div>
-</section>
-
-<section id="applications">
-  <h2>التطبيقات العلمية</h2>
-  <ul>
-    <li>الفيزياء والأنظمة غير الخطية</li>
-    <li>الكيمياء والتفاعلات المتسلسلة</li>
-    <li>البيولوجيا ونمو الكائنات الحية</li>
-    <li>الطب وانتشار الأوبئة</li>
-    <li>الاقتصاد والفقاعات المالية</li>
-    <li>المناخ والأنظمة الجيوفيزيائية</li>
-    <li>الذكاء الاصطناعي والأنظمة المعقّدة</li>
-  </ul>
-</section>
-
-<section id="papers">
-  <h2>المنشورات</h2>
-  <p>
-    سيتم نشر الكتاب الكامل <strong>الحساب الهرمي</strong>،
-    إضافة إلى مقالات علمية محكّمة، عبر منصات مفتوحة ومجلات مجانية.
-  </p>
-</section>
-
-<section id="contact">
-  <h2>تواصل</h2>
-  <p>للتواصل العلمي أو التعاون البحثي:</p>
-  <p><strong>ahmedgossa50@gmail.com</strong></p>
-</section>
-
-</main>
-
-<footer>
-  <p>© 2025 — <strong>Hierarchical Calculus</strong> | الحساب الهرمي</p>
-</footer>
-
 </body>
 </html>
-
-
-
-
 
 
 
