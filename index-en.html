@@ -224,6 +224,90 @@
     derivatives into a single coherent formalism.
   </p>
 </section>
+<section id="equations">
+  <h2>Hierarchical Equations</h2>
+
+  <p>
+    Hierarchical equations generalize classical differential equations by using
+    hierarchical derivatives of different levels, rather than restricting the formulation
+    to the level-0 (standard) derivative.
+  </p>
+
+  <p><strong>General form:</strong></p>
+  <div class="math-box">
+    \[
+      D_n y = F(x,y)
+    \]
+  </div>
+
+  <p>
+    The key principle is that “ascending the hierarchy” can transform highly nonlinear
+    or blow-up-type equations into simpler (often linear) equations in higher levels.
+  </p>
+
+  <hr>
+
+  <p><strong>Example 1 — Blow-up type equation:</strong></p>
+  <div class="math-box">
+    \[
+      \frac{dy}{dx} = y \ln y
+    \]
+  </div>
+
+  <p>
+    Using the relative (level-1) derivative leads to:
+  </p>
+  <div class="math-box">
+    \[
+      D_1 y = \ln x
+    \]
+  </div>
+
+  <p>
+    Hence, one obtains:
+  </p>
+  <div class="math-box">
+    \[
+      \ln(\ln y) = \ln(\ln x) + C
+    \]
+  </div>
+
+  <hr>
+
+  <p><strong>Example 2 — Logarithmic level equation:</strong></p>
+  <div class="math-box">
+    \[
+      D_2 y = 1
+    \]
+  </div>
+
+  <p>
+    Direct integration yields:
+  </p>
+  <div class="math-box">
+    \[
+      \ln(\ln y) = \ln(\ln x) + C
+    \]
+  </div>
+
+  <hr>
+
+  <p><strong>Example 3 — General hierarchical equation:</strong></p>
+  <div class="math-box">
+    \[
+      D_n y = k
+    \]
+  </div>
+
+  <p>
+    The general solution is:
+  </p>
+  <div class="math-box">
+    \[
+      \ln^{(n)} y = k\,\ln^{(n)} x + C
+    \]
+  </div>
+</section>
 
 <section id="applications">
   <h2>Scientific Applications</h2>
