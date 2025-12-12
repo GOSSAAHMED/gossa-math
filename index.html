@@ -216,6 +216,90 @@
     ضمن صيغة رياضية واحدة متناسقة.
   </p>
 </section>
+<section id="equations">
+  <h2>المعادلات الهرمية</h2>
+
+  <p>
+    المعادلات الهرمية هي تعميم للمعادلات التفاضلية التقليدية،
+    حيث يُستعمل المشتق الهرمي من رتبة معيّنة بدل الاقتصار
+    على المشتق التفاضلي من الطبقة الصفرية.
+  </p>
+
+  <p><strong>الصيغة العامة:</strong></p>
+  <div class="math-box">
+    \[
+      D_n y = F(x,y)
+    \]
+  </div>
+
+  <p>
+    يسمح هذا الإطار بتحويل معادلات غير خطية أو انفجارية
+    إلى معادلات أبسط عبر الصعود في الهرم.
+  </p>
+
+  <hr>
+
+  <p><strong>مثال 1 — معادلة انفجارية:</strong></p>
+  <div class="math-box">
+    \[
+      \frac{dy}{dx} = y \ln y
+    \]
+  </div>
+
+  <p>
+    باستعمال المشتق النسبي نحصل على:
+  </p>
+  <div class="math-box">
+    \[
+      D_1 y = \ln x
+    \]
+  </div>
+
+  <p>
+    ومنه:
+  </p>
+  <div class="math-box">
+    \[
+      \ln(\ln y) = \ln(\ln x) + C
+    \]
+  </div>
+
+  <hr>
+
+  <p><strong>مثال 2 — معادلة لوغاريتمية:</strong></p>
+  <div class="math-box">
+    \[
+      D_2 y = 1
+    \]
+  </div>
+
+  <p>
+    الحل المباشر:
+  </p>
+  <div class="math-box">
+    \[
+      \ln(\ln y) = \ln(\ln x) + C
+    \]
+  </div>
+
+  <hr>
+
+  <p><strong>مثال 3 — معادلة هرمية عامة:</strong></p>
+  <div class="math-box">
+    \[
+      D_n y = k
+    \]
+  </div>
+
+  <p>
+    الحل العام:
+  </p>
+  <div class="math-box">
+    \[
+      \ln^{(n)} y = k\,\ln^{(n)} x + C
+    \]
+  </div>
+</section>
 
 <section id="applications">
   <h2>التطبيقات العلمية</h2>
@@ -252,6 +336,7 @@
 
 </body>
 </html>
+
 
 
 
