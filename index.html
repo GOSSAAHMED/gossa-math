@@ -156,18 +156,51 @@
     (الجمع، القسمة، اللوغاريتم، التتريش) متصاعدة هرميًا.
     يمثّل هذا الموقع المرجع الرسمي للنظرية وتثبيت أسبقيتها العلمية.
   </p>
-</section>
-
 <section id="theory">
   <h2>الأساس النظري</h2>
-  <ul>
-    <li>الطبقة 0: الجمع ⟵ الحساب التفاضلي</li>
-    <li>الطبقة 1: القسمة ⟵ الحساب النسبي</li>
-    <li>الطبقة 2: اللوغاريتم ⟵ الحساب اللوغاريتمي</li>
-    <li>الطبقة 3: التتريش ⟵ الحساب التتريشي</li>
-    <li>الطبقة n: الحساب الهرمي العام</li>
-  </ul>
+
+  <p><strong>الطبقة 0 — المشتق التفاضلي</strong></p>
+  <div class="math-box">
+    \[
+      D_0 f(x) = \frac{df(x)}{dx}
+    \]
+  </div>
+
+  <p><strong>الطبقة 1 — المشتق النسبي</strong></p>
+  <div class="math-box">
+    \[
+      D_1 f(x) = \frac{d \ln f(x)}{d \ln x}
+    \]
+  </div>
+
+  <p><strong>الطبقة 2 — المشتق اللوغاريتمي</strong></p>
+  <div class="math-box">
+    \[
+      D_2 f(x) = \frac{d \ln(\ln f(x))}{d \ln(\ln x)}
+    \]
+  </div>
+
+  <p><strong>الطبقة 3 — المشتق التتريشي</strong></p>
+  <div class="math-box">
+    \[
+      D_3 f(x) = \frac{d \ln^{(3)} f(x)}{d \ln^{(3)} x}
+    \]
+  </div>
+  <p>
+    حيث:
+    \[
+      \ln^{(3)}(x)=\ln(\ln(\ln x))
+    \]
+  </p>
+
+  <p><strong>الطبقة n — المشتق الهرمي العام</strong></p>
+  <div class="math-box">
+    \[
+      D_n f(x) = \frac{d \ln^{(n)}(f(x))}{d \ln^{(n)}(x)}
+    \]
+  </div>
 </section>
+
 
 <section id="derivatives">
   <h2>المشتقات الهرمية</h2>
@@ -219,6 +252,7 @@
 
 </body>
 </html>
+
 
 
 
