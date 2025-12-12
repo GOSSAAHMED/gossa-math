@@ -1,346 +1,494 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Hierarchical Calculus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hierarchical Calculus — Official Website (DOI)</title>
 
-  <!-- MathJax -->
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Hierarchical Calculus: a multi-level framework of derivatives and equations. Official DOI via Zenodo." />
+  <meta name="author" content="GOSSA AHMED" />
 
   <style>
-    :root {
-      --primary: #0b132b;
-      --secondary: #1c2541;
-      --accent: #5bc0be;
-      --bg: linear-gradient(135deg, #0b132b, #1c2541);
-      --card: #1f2a44;
-      --text: #eaeaea;
+    :root{
+      --bg0:#0b1220;
+      --bg1:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text:#eaf2ff;
+      --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3;
+      --accent2:#7aa7ff;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 60px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1100px; margin:0 auto; padding:10px 18px;
+      display:flex; align-items:center; gap:12px; justify-content:space-between;
+    }
+    .brand{display:flex; align-items:center; gap:10px; min-width:220px}
+    .logo{
+      width:36px; height:36px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px; letter-spacing:.2px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
+    nav a{
+      padding:8px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      text-decoration:none;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    .actions{display:flex; gap:10px; align-items:center; justify-content:flex-end; min-width:220px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:9px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 13px;
+      cursor:pointer;
+    }
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.12);
     }
 
-    body {
-      margin: 0;
-      font-family: 'Amiri', serif;
-      background: var(--bg);
-      color: var(--text);
+    header.hero{
+      margin-top:20px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 22px;
+      overflow:hidden;
+      position:relative;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    .hero h1{margin:0 0 8px 0; font-size: 34px; letter-spacing:.3px}
+    .hero p{margin:8px 0 0 0; color: var(--muted); font-size: 15px; line-height: 1.8; max-width: 900px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr}
+      .brand, .actions{min-width:auto}
+    }
+
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+    }
+    .card h2{
+      margin:0 0 10px 0;
+      font-size: 18px;
+      letter-spacing:.2px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .bar{
+      width:4px; height:18px; border-radius:99px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      display:inline-block;
+    }
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .doi-box{
+      border:1px solid rgba(57,211,195,.28);
+      background: rgba(57,211,195,.08);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top: 12px;
       line-height: 1.9;
     }
+    .doi-box a{color:#bfe8ff}
 
-    header {
-      background: linear-gradient(135deg, #020617, #0b132b);
-      text-align: center;
-      padding: 4rem 1.5rem 3rem;
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px;
+      color: var(--muted);
+      margin: 6px 6px 0 0;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      color: #ffffff;
-    }
-
-    header p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #cbd5e1;
-    }
-
-    nav {
-      background: #020617;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 1.05rem;
-      border-bottom: 2px solid transparent;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #ffffff;
-      border-bottom: 2px solid var(--accent);
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      background: var(--card);
-      padding: 2.5rem;
-      margin-bottom: 2.5rem;
+    .block{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
       border-radius: 14px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .label{
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin-bottom: 8px;
+      color: var(--text);
+      display:flex; align-items:center; gap:10px;
+    }
+    .label .tag{
+      font-size: 12px;
+      color: rgba(255,255,255,.8);
+      background: rgba(122,167,255,.12);
+      border: 1px solid rgba(122,167,255,.22);
+      padding: 2px 8px;
+      border-radius: 999px;
     }
 
-    section h2 {
-      margin-top: 0;
-      color: var(--accent);
-      font-size: 1.9rem;
-      border-left: 5px solid var(--accent);
-      padding-left: 1rem;
-    }
-
-    ul {
-      padding-left: 1.5rem;
-    }
-
-    .math-box {
-      background: linear-gradient(135deg, #233554, #1f2a44);
-      color: #ffffff;
-      padding: 1.6rem;
-      margin: 1.6rem 0;
+    .math-box{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
       border-radius: 12px;
-      text-align: center;
-      font-size: 1.25rem;
-      box-shadow: inset 0 0 0 1px rgba(91,192,190,0.4);
+      padding: 10px 12px;
+      overflow:auto;
+      text-align:left;
     }
 
-    footer {
-      background: #020617;
-      color: #94a3b8;
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 4rem;
-      font-size: 0.95rem;
+    .cite-block{
+      margin-top: 10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      border-radius: 12px;
+      padding: 12px 12px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      white-space: pre-wrap;
+      text-align:left;
     }
 
-    footer strong {
-      color: #ffffff;
+    .quicklinks{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
     }
-
-    .lang {
-      position: absolute;
-      top: 20px;
-      right: 25px;
-      font-size: 0.95rem;
+    @media (max-width: 600px){
+      .quicklinks{grid-template-columns: 1fr}
     }
-
-    .lang a {
-      color: #cbd5e1;
-      text-decoration: none;
-      margin-left: 10px;
+    .linkcard{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 12px 12px;
     }
+    .linkcard strong{display:block; margin-bottom:6px}
+    .linkcard span{color:var(--muted); font-size:13px; line-height:1.6}
 
-    .lang a:hover {
-      color: #ffffff;
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
     }
   </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Hierarchical Calculus</strong>
+          <span>Official website + DOI (Zenodo)</span>
+        </div>
+      </div>
 
-<div class="lang">
-  <a href="index.html">العربية</a>
-</div>
+      <nav aria-label="Navigation">
+        <a href="#overview">Overview</a>
+        <a href="#core">Core Definitions</a>
+        <a href="#equations">Hierarchical Equations</a>
+        <a href="#cite">Cite</a>
+        <a href="#links">Reference Pages</a>
+      </nav>
 
-<header>
-  <h1>Hierarchical Calculus</h1>
-  <p>A General Mathematical Theory of Hierarchical Change</p>
-  <p><strong>GOSSA AHMED</strong></p>
-</header>
-
-<nav>
-  <a href="#intro">Introduction</a>
-  <a href="#theory">Theoretical Basis</a>
-  <a href="#derivatives">Hierarchical Derivatives</a>
-  <a href="#applications">Applications</a>
-  <a href="#papers">Publications</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<main>
-
-<section id="intro">
-  <h2>Introduction</h2>
-  <p>
-    Hierarchical Calculus is a novel mathematical framework designed to describe
-    change when the operations themselves (addition, division, logarithm,
-    tetration) become hierarchically layered.
-    This website serves as the official reference and priority record of the theory.
-  </p>
-</section>
-
-<section id="theory">
-  <h2>Theoretical Basis</h2>
-
-  <p><strong>Level 0 — Differential Calculus</strong></p>
-  <div class="math-box">
-    \[
-      D_0 f(x) = \frac{df(x)}{dx}
-    \]
+      <div class="actions">
+        <a class="btn" href="index.html" title="النسخة العربية">العربية</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
   </div>
 
-  <p><strong>Level 1 — Relative Calculus</strong></p>
-  <div class="math-box">
-    \[
-      D_1 f(x) = \frac{d \ln f(x)}{d \ln x}
-    \]
+  <div class="wrap">
+    <header class="hero" id="overview">
+      <h1>Hierarchical Calculus</h1>
+      <p>
+        A mathematical framework introducing multi-level derivatives and equations:
+        differential (level 0), relative (level 1), logarithmic (level 2), tetrational (level 3),
+        and the general hierarchical derivative (level n). This website serves as a technical
+        reference for the officially archived releases on Zenodo.
+      </p>
+
+      <div class="doi-box">
+        <div><strong>Concept DOI (main reference):</strong>
+          <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+            https://doi.org/10.5281/zenodo.17917302
+          </a>
+        </div>
+        <div class="small">
+          <strong>Version DOI (v1.0.0):</strong>
+          <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
+          <span class="muted">— website release v1.0.0</span>
+        </div>
+        <div class="small muted">
+          GitHub: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GOSSAAHMED/gossa-math</a>
+          · Contact: <a href="mailto:ahmedgossa50@gmail.com">ahmedgossa50@gmail.com</a>
+        </div>
+      </div>
+
+      <div style="margin-top:10px">
+        <span class="pill">Zenodo (CERN) Archive</span>
+        <span class="pill">MathJax Typesetting</span>
+        <span class="pill">Arabic + English</span>
+        <span class="pill">Release v1.0.0</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card" id="core">
+        <h2><span class="bar"></span>Core Definitions</h2>
+        <p class="muted small">
+          We denote \(D_0\) as the level-0 (differential) derivative and \(D_1\) as the level-1 (relative) derivative.
+          The hierarchy is expressed with iterated logarithms.
+        </p>
+
+        <div class="block">
+          <div class="label">Definition <span class="tag">General</span></div>
+          <p class="muted small" style="margin:0">
+            The level-\(n\) hierarchical derivative (domain conditions apply):
+          </p>
+          <div class="math-box">
+            \[
+              D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
+            \]
+          </div>
+          <p class="muted small" style="margin:8px 0 0 0">
+            where \(\ln^{(n)}\) denotes the iterated logarithm (e.g., \(\ln^{(3)}(x)=\ln(\ln(\ln x))\)).
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="label">Special Levels <span class="tag">D₀–D₃</span></div>
+
+          <div class="math-box">
+            \[
+              D_0 f(x)=\frac{df(x)}{dx}
+            \]
+          </div>
+
+          <div class="math-box">
+            \[
+              D_1 f(x)=\frac{d\ln f(x)}{d\ln x}
+            \]
+          </div>
+
+          <div class="math-box">
+            \[
+              D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+            \]
+          </div>
+
+          <div class="math-box">
+            \[
+              D_3 f(x)=\frac{d\ln^{(3)} f(x)}{d\ln^{(3)} x}
+            \]
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h2><span class="bar"></span>Quick Links</h2>
+
+        <div class="quicklinks">
+          <div class="linkcard">
+            <strong>Zenodo Record</strong>
+            <span>Archived record for v1.0.0 and files.</span><br>
+            <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">Open record</a>
+          </div>
+          <div class="linkcard">
+            <strong>GitHub Releases</strong>
+            <span>All versions and future updates.</span><br>
+            <a href="https://github.com/GOSSAAHMED/gossa-math/releases" target="_blank" rel="noopener">Open releases</a>
+          </div>
+          <div class="linkcard">
+            <strong>Downloads</strong>
+            <span>ZIP / PDF (later) + citation.</span><br>
+            <a href="#links">Go to reference pages</a>
+          </div>
+          <div class="linkcard">
+            <strong>Contact</strong>
+            <span>Scientific collaboration & questions.</span><br>
+            <a href="mailto:ahmedgossa50@gmail.com">Email</a>
+          </div>
+        </div>
+
+        <div class="block" style="margin-top:12px">
+          <div class="label">Academic Note <span class="tag">DOI</span></div>
+          <p class="muted small" style="margin:0; line-height:1.8">
+            For general citation, use the <strong>Concept DOI</strong>.
+            For a specific release (e.g., v1.0.0), cite the <strong>Version DOI</strong>.
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <section class="card" id="equations" style="margin-top:16px">
+      <h2><span class="bar"></span>Hierarchical Equations</h2>
+      <p class="muted small">
+        Hierarchical equations generalize differential equations by using derivatives of level \(n\). General form:
+      </p>
+
+      <div class="math-box">
+        \[
+          D_n y = F(x,y)
+        \]
+      </div>
+
+      <div class="block">
+        <div class="label">Example <span class="tag">Sketch</span></div>
+        <p class="muted small" style="margin:0">
+          A guiding example of a blow-up type equation:
+        </p>
+        <div class="math-box">
+          \[
+            \frac{dy}{dx}=y\ln y
+          \]
+        </div>
+        <p class="muted small" style="margin:8px 0 0 0">
+          With an appropriate hierarchical transformation, one may obtain a simpler expression in a higher level (details in the equations page).
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="cite" style="margin-top:16px">
+      <h2><span class="bar"></span>Citation</h2>
+      <p class="muted small">
+        Copy/paste-ready references for papers and reports.
+      </p>
+
+      <div class="block">
+        <div class="label">Text Citation <span class="tag">Text</span></div>
+        <div class="cite-block">GOSSA AHMED. Hierarchical Calculus — Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).</div>
+      </div>
+
+      <div class="block">
+        <div class="label">BibTeX <span class="tag">LaTeX</span></div>
+        <div class="cite-block">@software{gossa_hierarchical_calculus_2025,
+  author = {Gossa Ahmed},
+  title  = {Hierarchical Calculus},
+  year   = {2025},
+  doi    = {10.5281/zenodo.17917302},
+  url    = {https://github.com/GOSSAAHMED/gossa-math}
+}</div>
+      </div>
+    </section>
+
+    <section class="card" id="links" style="margin-top:16px">
+      <h2><span class="bar"></span>Reference Pages (to be added)</h2>
+      <p class="muted small">
+        These links are prepared to split the content into a complete academic reference.
+      </p>
+
+      <div class="quicklinks">
+        <div class="linkcard">
+          <strong>Theory</strong>
+          <span>Definitions, axioms, theorems, properties.</span><br>
+          <a href="theory-en.html">theory-en.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>Equations</strong>
+          <span>Hierarchical equations + transformations + solutions.</span><br>
+          <a href="equations-en.html">equations-en.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>Numerics</strong>
+          <span>Numerical examples + error comparisons.</span><br>
+          <a href="numerics-en.html">numerics-en.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>References</strong>
+          <span>Bibliography + citation formats.</span><br>
+          <a href="references-en.html">references-en.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>Downloads</strong>
+          <span>PDF/ZIP + versions + DOI.</span><br>
+          <a href="download-en.html">download-en.html</a>
+        </div>
+        <div class="linkcard">
+          <strong>Arabic Pages</strong>
+          <span>Same structure in Arabic.</span><br>
+          <a href="index.html">index.html</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+    </footer>
   </div>
-
-  <p><strong>Level 2 — Logarithmic Calculus</strong></p>
-  <div class="math-box">
-    \[
-      D_2 f(x) = \frac{d \ln(\ln f(x))}{d \ln(\ln x)}
-    \]
-  </div>
-
-  <p><strong>Level 3 — Tetrational Calculus</strong></p>
-  <div class="math-box">
-    \[
-      D_3 f(x) = \frac{d \ln^{(3)} f(x)}{d \ln^{(3)} x}
-    \]
-  </div>
-
-  <p><strong>Level n — General Hierarchical Calculus</strong></p>
-  <div class="math-box">
-    \[
-      D_n f(x) = \frac{d \ln^{(n)}(f(x))}{d \ln^{(n)}(x)}
-    \]
-  </div>
-</section>
-
-<section id="derivatives">
-  <h2>Hierarchical Derivatives</h2>
-  <p>General definition of the hierarchical derivative of order \( n \):</p>
-  <div class="math-box">
-    \[
-      D_n f(x) =
-      \frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
-    \]
-  </div>
-  <p>
-    This definition unifies differential, relative, logarithmic, and tetrational
-    derivatives into a single coherent formalism.
-  </p>
-</section>
-<section id="equations">
-  <h2>Hierarchical Equations</h2>
-
-  <p>
-    Hierarchical equations generalize classical differential equations by using
-    hierarchical derivatives of different levels, rather than restricting the formulation
-    to the level-0 (standard) derivative.
-  </p>
-
-  <p><strong>General form:</strong></p>
-  <div class="math-box">
-    \[
-      D_n y = F(x,y)
-    \]
-  </div>
-
-  <p>
-    The key principle is that “ascending the hierarchy” can transform highly nonlinear
-    or blow-up-type equations into simpler (often linear) equations in higher levels.
-  </p>
-
-  <hr>
-
-  <p><strong>Example 1 — Blow-up type equation:</strong></p>
-  <div class="math-box">
-    \[
-      \frac{dy}{dx} = y \ln y
-    \]
-  </div>
-
-  <p>
-    Using the relative (level-1) derivative leads to:
-  </p>
-  <div class="math-box">
-    \[
-      D_1 y = \ln x
-    \]
-  </div>
-
-  <p>
-    Hence, one obtains:
-  </p>
-  <div class="math-box">
-    \[
-      \ln(\ln y) = \ln(\ln x) + C
-    \]
-  </div>
-
-  <hr>
-
-  <p><strong>Example 2 — Logarithmic level equation:</strong></p>
-  <div class="math-box">
-    \[
-      D_2 y = 1
-    \]
-  </div>
-
-  <p>
-    Direct integration yields:
-  </p>
-  <div class="math-box">
-    \[
-      \ln(\ln y) = \ln(\ln x) + C
-    \]
-  </div>
-
-  <hr>
-
-  <p><strong>Example 3 — General hierarchical equation:</strong></p>
-  <div class="math-box">
-    \[
-      D_n y = k
-    \]
-  </div>
-
-  <p>
-    The general solution is:
-  </p>
-  <div class="math-box">
-    \[
-      \ln^{(n)} y = k\,\ln^{(n)} x + C
-    \]
-  </div>
-</section>
-
-<section id="applications">
-  <h2>Scientific Applications</h2>
-  <ul>
-    <li>Physics and nonlinear systems</li>
-    <li>Chemistry and chain reactions</li>
-    <li>Biology and living growth</li>
-    <li>Medicine and epidemic spreading</li>
-    <li>Economics and financial bubbles</li>
-    <li>Climate and geophysical systems</li>
-    <li>Artificial intelligence and complex networks</li>
-  </ul>
-</section>
-
-<section id="papers">
-  <h2>Publications</h2>
-  <p>
-    The complete book <strong>Hierarchical Calculus</strong>, along with peer-reviewed
-    scientific papers, will be released through open platforms and free journals.
-  </p>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Scientific correspondence and collaboration:</p>
-  <p><strong>ahmedgossa50@gmail.com</strong></p>
-</section>
-
-</main>
-
-<footer>
-  <p>© 2025 — <strong>Hierarchical Calculus</strong></p>
-</footer>
-
 </body>
 </html>
+
