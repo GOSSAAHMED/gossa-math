@@ -1,0 +1,161 @@
+<div class="hr"></div>
+<h3>أمثلة محلولة بالكامل (حل تحليلي)</h3>
+<p class="small">
+نستعمل هنا الترميز: \(D_0\) تفاضلي، \(D_1\) نسبي، \(D_2\) لوغاريتمي.  
+نؤكد أن الشروط المعتادة مطلوبة عند استعمال اللوغاريتمات: \(x>0\)، و\(f(x)>0\) (وعند \(D_2\): \(\ln f(x)>0\)).
+</p>
+
+<div class="hr"></div>
+<h3>مثال 1 — معادلة نسبية من الدرجة الأولى</h3>
+<p class="small">
+حل المعادلة:
+\[
+D_1 f(x)=k \quad (\text{ثابت})
+\]
+</p>
+<div class="math">
+\[
+D_1 f(x)=\frac{d\ln f}{d\ln x}=k
+\quad\Longrightarrow\quad
+d\ln f = k\, d\ln x
+\]
+\[
+\ln f = k\ln x + C
+\quad\Longrightarrow\quad
+f(x)=C_0\,x^{k}
+\]
+</div>
+<p class="small">
+إذن: معادلة المستوى النسبي تعطي مباشرة قانون قدرة (Power law).  
+وهذا يظهر كيف يصبح “نمو القدرة” خطيًا في فضاء \(\ln f\) مقابل \(\ln x\).
+</p>
+
+<div class="hr"></div>
+<h3>مثال 2 — معادلة نسبية غير خطية تصبح قابلة للفصل</h3>
+<p class="small">
+حل المعادلة:
+\[
+D_1 f(x)=a+b\ln f(x)
+\]
+(حيث \(a,b\) ثوابت و\(f>0\)).
+</p>
+<div class="math">
+\[
+\frac{d\ln f}{d\ln x}=a+b\ln f
+\]
+ضع \(u=\ln f\) فيصبح:
+\[
+\frac{du}{d\ln x}=a+bu
+\]
+وهي معادلة خطية في \(u\):
+\[
+\frac{du}{d\ln x}-bu=a
+\]
+حلها:
+\[
+u(\ln x)=C\,e^{b\ln x}-\frac{a}{b}
+= C\,x^{b}-\frac{a}{b}
+\]
+إذًا:
+\[
+\ln f(x)=C\,x^{b}-\frac{a}{b}
+\quad\Longrightarrow\quad
+f(x)=\exp\!\left(C\,x^{b}-\frac{a}{b}\right)
+\]
+</div>
+
+<div class="hr"></div>
+<h3>مثال 3 — معادلة لوغاريتمية بسيطة (مستوى 2)</h3>
+<p class="small">
+حل المعادلة:
+\[
+D_2 f(x)=k
+\]
+حيث \(x>1\) و\(f(x)>e\) لضمان \(\ln(\ln x)\) و\(\ln(\ln f)\).
+</p>
+<div class="math">
+\[
+D_2 f(x)=\frac{d\ln(\ln f)}{d\ln(\ln x)}=k
+\quad\Longrightarrow\quad
+d\ln(\ln f)=k\,d\ln(\ln x)
+\]
+\[
+\ln(\ln f)=k\ln(\ln x)+C
+\quad\Longrightarrow\quad
+\ln f = C_1\,(\ln x)^k
+\]
+\[
+f(x)=\exp\!\big(C_1(\ln x)^k\big)
+\]
+</div>
+<p class="small">
+هذا النمو “متعدد المقاييس” يظهر كثيرًا في نماذج تعتمد على \((\ln x)^k\).
+</p>
+
+<div class="hr"></div>
+<h2>مثال فيزيائي حقيقي (ترموديناميك)</h2>
+<p class="small">
+في الترموديناميك، كثير من القوانين تُكتب على شكل علاقات نسبية. مثال شهير:  
+قانون الغازات المثالية عند عملية <strong>أدياباتية</strong> (غاز مثالي):
+\[
+P\,V^\gamma=\text{ثابت}
+\]
+بأخذ اللوغاريتم:
+\[
+\ln P + \gamma \ln V = \text{ثابت}
+\Rightarrow
+\frac{d\ln P}{d\ln V}=-\gamma
+\]
+إذن بصيغة المشتق النسبي:
+\[
+D_1^{(V)} P(V)=\frac{d\ln P}{d\ln V}=-\gamma
+\]
+</p>
+<div class="callout">
+<div style="font-weight:900;margin-bottom:6px">نتيجة مباشرة</div>
+<div class="small">
+المعادلة الفيزيائية الأدياباتية هي أصلًا “معادلة نسبية ثابتة” في الحجم \(V\).  
+حلها يعود فورًا إلى:
+\(
+P(V)=C\,V^{-\gamma}
+\)
+وهو شكل قدرة — وهذا يبرهن أن المستوى النسبي هو “اللغة الطبيعية” هنا.
+</div>
+</div>
+
+<div class="hr"></div>
+<h2>مقطع عددي (مقارنة أخطاء)</h2>
+<p class="small">
+سنقارن تقريبًا عدديًا لنموذج “متعدد المقاييس”:
+\[
+f(x)=\exp\big((\ln x)^2\big)
+\]
+عند \(x=10\).  
+القيمة الحقيقية:
+\[
+f(10)=\exp\big((\ln 10)^2\big)
+\]
+</p>
+
+<div class="math">
+\[
+\ln 10 \approx 2.302585093
+\Rightarrow (\ln 10)^2 \approx 5.30189811
+\Rightarrow f(10)\approx e^{5.30189811}\approx 200.336
+\]
+</div>
+
+<p class="small">
+<strong>تقريب بسيط من مستوى 2:</strong>  
+بدل العمل على \(f\) مباشرة، نعمل على \(\ln f=(\ln x)^2\).  
+أي أن الخطأ يصبح على مقياس أصغر (لوغاريتمي) ثم نرجع بالأسّ.
+هذه الفكرة هي جوهر التفوق العددي عند الصعود في الهرم.
+</p>
+
+<div class="callout">
+<div style="font-weight:900;margin-bottom:6px">ملاحظة مهمة</div>
+<div class="small">
+في صفحة <code>numerics.html</code> سنضع جدول أخطاء كامل (Taylor مقابل نسبي مقابل لوغاريتمي) مع قيم متعددة لـ \(x\)،
+لإظهار التفوق العددي بوضوح.
+</div>
+</div>
