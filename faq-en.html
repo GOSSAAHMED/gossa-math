@@ -172,6 +172,45 @@ window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\
         For \(f(x)=x^k\), we get \(D_1 f=k\) constant, i.e., power laws become linear in log coordinates.
       </div>
     </details>
+<details>
+  <summary>8) Are hierarchical derivatives genuinely new, or just coordinate changes?</summary>
+  <div class="answer small">
+    This is a fundamental question.
+    Formally, some hierarchical derivatives (such as \(D_1\) and \(D_2\))
+    can indeed be interpreted as classical derivatives after an appropriate
+    <strong>change of variables</strong> (e.g. \(u=\ln x\), \(v=\ln(\ln x)\)).
+    <br><br>
+    However, the contribution of Hierarchical Calculus is not the transformation itself, but:
+    <ul>
+      <li>The systematic organization of such transformations into a <strong>hierarchical structure</strong>.</li>
+      <li>The interpretation of each level as a <strong>natural language of change</strong> for a class of phenomena.</li>
+      <li>A practical criterion to select the appropriate level before solving or approximating.</li>
+    </ul>
+    In this sense, Hierarchical Calculus does not replace classical calculus,
+    but <strong>reorganizes its use</strong> to reveal hidden structures.
+  </div>
+</details>
+<details>
+  <summary>9) What is the rigorous definition of \(D_2\) and \(D_3\)? Are they mathematically consistent?</summary>
+  <div class="answer small">
+    Locally, the hierarchical derivative of order \(n\) is defined as:
+    <div class="math">
+      \[
+      D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
+      \]
+    </div>
+    where \(\ln^{(n)}\) denotes the \(n\)-fold iterated logarithm.
+    <br><br>
+    This definition:
+    <ul>
+      <li>Relies only on <strong>classical differentiation</strong> and the chain rule.</li>
+      <li>Is valid on explicitly stated domains (e.g. \(x>1\), \(f(x)>1\)).</li>
+      <li>Is fully compatible with real analysis when viewed as differentiation after variable transformation.</li>
+    </ul>
+    The novelty lies not in breaking existing theory, but in <strong>elevating these constructions into a unified framework</strong>
+    for equations and approximations across multiple scales.
+  </div>
+</details>
 
     <details>
       <summary>3) Why can lifting improve numerical approximations?</summary>
