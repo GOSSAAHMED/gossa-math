@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Theory — Hierarchical Calculus</title>
+
+<style>
+body{
+  margin:0;
+  font-family: system-ui, Arial;
+  background: radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
+              linear-gradient(180deg,#0b1220,#0f1b2e);
+  color:#eaf2ff;
+}
+a{color:#7aa7ff;text-decoration:none}
+.container{max-width:1000px;margin:auto;padding:40px 18px}
+h1,h2,h3{margin-top:28px}
+.card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  padding:18px;
+  margin:16px 0;
+}
+.label{
+  font-weight:800;
+  margin-bottom:8px;
+  color:#bfe8ff;
+}
+.math{
+  background:rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  padding:12px;
+  margin-top:8px;
+}
+.note{color:#cfe3ff;font-size:14px}
+</style>
+
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Foundational Theory of Hierarchical Calculus</h1>
+
+<div class="card">
+<p>
+Hierarchical Calculus is a mathematical framework designed to
+<strong>unify the description of change</strong>
+through ascending operational levels: addition, division,
+logarithm, tetration, and beyond.
+</p>
+</div>
+
+<h2>1. Hierarchical Principle</h2>
+<div class="card">
+<div class="label">Fundamental Principle</div>
+<p>
+Each level of the hierarchy measures variation using a more abstract
+operation than the previous one.
+</p>
+<div class="math">
+\[
+\text{Change operator}:
+\begin{cases}
+\text{Addition} &\Rightarrow \text{Differential} \ (D_0)\\
+\text{Division} &\Rightarrow \text{Relative} \ (D_1)\\
+\text{Logarithm} &\Rightarrow \text{Logarithmic} \ (D_2)\\
+\text{Tetration} &\Rightarrow \text{Tetrational} \ (D_3)\\
+\vdots &\Rightarrow D_n
+\end{cases}
+\]
+</div>
+</div>
+
+<h2>2. General Definition</h2>
+<div class="card">
+<div class="label">Definition</div>
+<p>
+Let \(f(x)\) be a positive function on a suitable domain.
+The level-\(n\) hierarchical derivative is defined as:
+</p>
+<div class="math">
+\[
+D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
+\]
+</div>
+</div>
+
+<h2>3. Special Cases</h2>
+<div class="card">
+<div class="label">Lower Levels</div>
+
+<div class="math">\[
+D_0 f(x)=\frac{df(x)}{dx}
+\]</div>
+
+<div class="math">\[
+D_1 f(x)=\frac{d\ln f(x)}{d\ln x}
+\]</div>
+
+<div class="math">\[
+D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+\]</div>
+
+<div class="math">\[
+D_3 f(x)=\frac{d\ln^{(3)}f(x)}{d\ln^{(3)}x}
+\]</div>
+</div>
+
+<h2>4. Hierarchical Consistency</h2>
+<div class="card">
+<div class="label">Theorem</div>
+<p>
+If a function admits a hierarchical derivative of order \(n\),
+then it admits all lower-order derivatives:
+</p>
+<div class="math">
+\[
+D_n f(x)\Rightarrow D_{n-1} f(x)\Rightarrow \dots \Rightarrow D_0 f(x)
+\]
+</div>
+</div>
+
+<h2>5. Interpretation</h2>
+<div class="card">
+<ul>
+<li>Level 0: absolute change</li>
+<li>Level 1: relative (self-scaled) change</li>
+<li>Level 2: logarithmic structural change</li>
+<li>Level ≥3: hierarchical accelerated change</li>
+</ul>
+</div>
+
+<div class="card">
+<p class="note">
+Official reference DOI:
+<a href="https://doi.org/10.5281/zenodo.17917302" target="_blank">
+10.5281/zenodo.17917302
+</a>
+</p>
+</div>
+
+</div>
+</body>
+</html>
