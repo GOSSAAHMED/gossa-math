@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>الورقة العلمية — الحساب الهرمي</title>
+
+<style>
+:root{
+  --bg1:#0b1220; --bg2:#0f1b2e;
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(0,0,0,.22);
+  --b: rgba(255,255,255,.12);
+  --txt:#eaf2ff; --mut:#cfe3ff;
+  --accent:#61d2d2; --accent2:#7aa7ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, Arial, "Noto Sans Arabic";
+  background:
+    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
+    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--txt);
+}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:auto;padding:34px 16px 70px}
+.top{
+  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  padding:14px 16px;border-bottom:1px solid var(--b);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
+}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{
+  width:34px;height:34px;border-radius:10px;
+  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
+              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
+              rgba(255,255,255,.06);
+  border:1px solid var(--b);
+}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+nav a{
+  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
+  background:rgba(255,255,255,.03);
+}
+h1{margin:22px 0 10px;font-size:34px}
+h2{margin:0 0 10px}
+.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.85}
+.card{
+  background:var(--card);border:1px solid var(--b);border-radius:18px;
+  padding:18px;margin:14px 0;
+}
+.small{font-size:14px;color:var(--mut);line-height:1.95}
+.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+.tag{
+  display:inline-block;padding:2px 10px;border:1px solid var(--b);
+  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
+}
+.math{
+  background:var(--card2);border:1px solid var(--b);border-radius:14px;
+  padding:12px;margin-top:10px;overflow:auto
+}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.btn{
+  display:inline-block;padding:9px 12px;border-radius:999px;
+  border:1px solid var(--b);background:rgba(255,255,255,.04);
+}
+.btn.primary{border-color:rgba(97,210,210,.45);background:rgba(97,210,210,.12)}
+.toc a{display:block;padding:8px 10px;border:1px solid var(--b);border-radius:12px;background:rgba(0,0,0,.16);margin:8px 0}
+.callout{
+  border-right:4px solid var(--accent);
+  padding:12px 14px;border-radius:14px;
+  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
+  margin-top:12px;
+}
+code{background:rgba(0,0,0,.25);padding:2px 6px;border-radius:8px;border:1px solid rgba(255,255,255,.12)}
+ul{margin:10px 0 0 0; padding-right:18px}
+li{margin:7px 0}
+.note{opacity:.95}
+</style>
+
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<div class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true"></div>
+    <div>
+      <div style="font-weight:900">الحساب الهرمي</div>
+      <div style="font-size:12px;color:var(--mut)">Paper Version — نسخة عربية</div>
+    </div>
+  </div>
+
+  <nav aria-label="التنقل">
+    <a href="../index.html">الرئيسية</a>
+    <a href="../theory.html">النظرية</a>
+    <a href="../equations.html">المعادلات</a>
+    <a href="../physics.html">الفيزياء</a>
+    <a href="../numerics.html">العددي</a>
+    <a href="../faq.html">أسئلة شائعة</a>
+    <a href="paper.html">English</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <h1>الحساب الهرمي: إطار موحَّد للمشتق التفاضلي والنسبي واللوغاريتمي</h1>
+  <p class="subtitle">
+    نسخة المؤلف (Preprint). هذه الصفحة تجمع محتوى الموقع في بنية أكاديمية واحدة قابلة للتحكيم والأرشفة.
+  </p>
+
+  <div class="card">
+    <div class="small">
+      <div><strong>المؤلف:</strong> GOSSA AHMED</div>
+      <div><strong>الموقع:</strong> <span class="tag">gossa-math</span></div>
+      <div><strong>DOI (للأسبقية):</strong>
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </div>
+    </div>
+
+    <div class="btns">
+      <a class="btn primary" href="paper-ar.pdf">تحميل PDF (paper-ar.pdf)</a>
+      <a class="btn" href="#abstract">اقرأ الملخص</a>
+      <a class="btn" href="#toc">فهرس المحتويات</a>
+    </div>
+
+    <div class="callout">
+      <div style="font-weight:900;margin-bottom:6px">ملاحظة</div>
+      <div class="small note">
+        إذا لم ترفع ملف <code>paper-ar.pdf</code> بعد، قد يظهر الرابط 404. لاحقًا ارفعه داخل <code>/paper/paper-ar.pdf</code>.
+      </div>
+    </div>
+  </div>
+
+  <div id="toc" class="card toc">
+    <h2>فهرس المحتويات</h2>
+    <a href="#abstract">الملخص</a>
+    <a href="#keywords">الكلمات المفتاحية</a>
+    <a href="#introduction">1. المقدمة</a>
+    <a href="#definitions">2. التعاريف الصارمة للمشتقات الهرمية</a>
+    <a href="#golden-theorem">3. النظرية الأساسية (الصيغة الذهبية)</a>
+    <a href="#hierarchical-equations">4. المعادلات الهرمية</a>
+    <a href="#physics-application">5. تطبيق فيزيائي: عملية أديباتية</a>
+    <a href="#numerical-validation">6. تحقق عددي</a>
+    <a href="#scope-limitations">7. مجال التطبيق والحدود</a>
+    <a href="#conclusion">8. الخلاصة والآفاق</a>
+  </div>
+
+  <!-- ABSTRACT -->
+  <div id="abstract" class="card">
+    <h2>الملخص</h2>
+    <p class="small">
+      نقدّم في هذا العمل الحساب الهرمي بوصفه إطارًا موحّدًا ينظم أنماط التغيّر المختلفة—الجمعي والنسبي واللوغاريتمي وما فوقه—
+      في بنية هرمية واحدة. يظهر الاشتقاق الكلاسيكي بوصفه المستوى الأدنى، بينما تمثل المستويات الأعلى مشتقات نسبية ومشتقات
+      لوغاريتمية مكررة. نشتق علاقة عامة تربط كل المشتقات الهرمية وتبيّن أن كل مستوى يُستحصل من المستوى السابق عبر إعادة
+      تحجيم منهجية. يوفّر هذا الإطار لغة طبيعية للقوانين ذات الثبات على المقياس (Scale invariance) أو السلوك متعدد المقاييس.
+      كتطبيق، نعيد صياغة العملية الأديباتية في الترموديناميك باستخدام المشتق النسبي لنحصل على تمثيل بسيط للغاية. كما تبيّن
+      تجارب عددية أولية متانة الصياغة الهرمية تجاه أخطاء التقريب والتدوير. لا يهدف الحساب الهرمي إلى استبدال التحليل الكلاسيكي،
+      بل إلى استكماله عبر تنظيم اللغات المناسبة للتغيّر واختيار المستوى الأمثل للوصف.
+    </p>
+  </div>
+
+  <div id="keywords" class="card">
+    <h2>الكلمات المفتاحية</h2>
+    <p class="small">
+      الحساب الهرمي؛ المشتق النسبي؛ المشتق اللوغاريتمي؛ الثبات على المقياس؛ العملية الأديباتية؛ الاستقرار العددي
+    </p>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <div id="introduction" class="card">
+    <h2>1. المقدمة</h2>
+    <p class="small">
+      يُعد مفهوم الاشتقاق أحد أعمدة التحليل الرياضي وتطبيقاته في الفيزياء والهندسة والعلوم الطبيعية. في صيغته الكلاسيكية يقيس
+      الاشتقاق التغيّر الجمعي للكميات، وقد أثبت فعالية كبيرة في نمذجة الظواهر المستمرة.
+    </p>
+    <p class="small">
+      غير أن كثيرًا من القوانين في الفيزياء والبيولوجيا والاقتصاد وغيرها لا تُكتب طبيعيًا بلغة الفروق الجمعيّة، بل بلغة النِّسب
+      والتناسبات وثبات المقياس. تظهر هذه البنية في قوانين القوة، والنمو الأسي، والعلاقات الترموديناميكية، والظواهر متعددة المقاييس.
+      لذلك فإن إعادة الصياغة في إحداثيات لوغاريتمية أو نسبية كثيرًا ما تقود إلى صيغ أبسط وأكثر شفافية.
+    </p>
+    <p class="small">
+      توجد في الأدبيات أدوات مثل المشتق اللوغاريتمي وصيغ الثبات على المقياس، إلا أنها غالبًا تُقدّم بصورة جزئية دون إطار موحد
+      يوضح علاقاتها أو يرشد إلى اختيار الصياغة الأنسب.
+    </p>
+    <p class="small">
+      يهدف هذا العمل إلى تقديم تنظيم منهجي لهذه اللغات ضمن بنية واحدة نسميها <em>الحساب الهرمي</em>. في هذا الإطار يمثل الاشتقاق
+      الكلاسيكي المستوى الأدنى، بينما تمثل المستويات الأعلى مشتقات نسبية ومشتقات لوغاريتمية مكررة. إن الانتقال بين المستويات ليس
+      إدخال مؤثرات جديدة، بل تغيير منظم في “لغة القياس” بما يتوافق مع طبيعة الظاهرة.
+    </p>
+    <p class="small">
+      النتيجة المحورية في هذا العمل هي اشتقاق علاقة عامة تربط كل المشتقات الهرمية وتحدد آلية الصعود في الهرم على شكل إعادة
+      تحجيم دقيقة. ونتيجة لذلك قد تتحول معادلات لاخطية أو معقدة في المستوى التفاضلي إلى صيغ بسيطة للغاية في مستويات أعلى.
+    </p>
+  </div>
+
+  <!-- DEFINITIONS -->
+  <div id="definitions" class="card">
+    <h2>2. التعاريف الصارمة للمشتقات الهرمية</h2>
+    <p class="small">
+      نفترض نعومة كافية للدوال، وأن جميع اللوغاريتمات معرّفة فقط عندما تكون الحجج موجبة وغير منعدمة.
+    </p>
+
+    <div class="math">
+      \[
+      D_0 f(x) := \frac{df}{dx}(x).
+      \]
+      \[
+      D_1 f(x) := \frac{d\ln f(x)}{d\ln x}
+               = \frac{x}{f(x)}\,\frac{df}{dx}(x).
+      \]
+      \[
+      D_2 f(x) := \frac{d\ln(\ln f(x))}{d\ln(\ln x)}.
+      \]
+      \[
+      D_n f(x) := \frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}\quad (n\ge 1),
+      \qquad \ln^{(n)}=\underbrace{\ln\circ\cdots\circ\ln}_{n\ \text{مرات}}.
+      \]
+    </div>
+
+    <div class="callout">
+      <div style="font-weight:900;margin-bottom:6px">شروط المجال</div>
+      <div class="small">
+        يتطلب كل مستوى أن تكون \(\ln^{(k)}(x)\) و \(\ln^{(k)}(f(x))\) معرفة وغير منعدمة.
+        المستويات الأعلى تفرض مجالات أكثر تقييدًا (مثل \(x>1\)، \(f(x)>1\) في صيغ لوغ–لوغ).
+      </div>
+    </div>
+  </div>
+
+  <!-- GOLDEN THEOREM -->
+  <div id="golden-theorem" class="card">
+    <h2>3. النظرية الأساسية (الصيغة الذهبية)</h2>
+
+    <p class="small">
+      العلاقة التالية تمثل البنية الجوهرية للحساب الهرمي.
+    </p>
+
+    <div class="math">
+      \[
+      \boxed{
+      D_{n+1} f(x)
+      =
+      D_n f(x)\,
+      \frac{\ln^{(n)}(x)}{\ln^{(n)}(f(x))}
+      }
+      \]
+    </div>
+
+    <p class="small">
+      <strong>فكرة البرهان:</strong>
+      من التعريف \(D_{n+1} f = \dfrac{d\ln(\ln^{(n)} f)}{d\ln(\ln^{(n)} x)}\)، ثم نطبق قاعدة السلسلة على البسط والمقام
+      ونعيد ترتيب الحدود لنحصل على الصيغة.
+    </p>
+
+    <div class="math">
+      \[
+      D_n f(x)
+      =
+      D_{n+1} f(x)\,
+      \frac{\ln^{(n)}(f(x))}{\ln^{(n)}(x)}.
+      \]
+    </div>
+  </div>
+
+  <!-- HIERARCHICAL EQUATIONS -->
+  <div id="hierarchical-equations" class="card">
+    <h2>4. المعادلات الهرمية</h2>
+
+    <p class="small">
+      تُعرّف المعادلة الهرمية من المستوى \(n\) على أنها علاقة تربط \(x\) و\(f(x)\) وواحدًا أو أكثر من المشتقات \(D_k f(x)\) حيث
+      \(0\le k\le n\). ويمكن كتابتها:
+    </p>
+
+    <div class="math">
+      \[
+      \mathcal{F}\bigl(x,f(x),D_0 f(x),D_1 f(x),\dots,D_n f(x)\bigr)=0.
+      \]
+    </div>
+
+    <p class="small">
+      مثال (معادلة القوة):
+    </p>
+
+    <div class="math">
+      \[
+      \frac{df}{dx} = k\,\frac{f(x)}{x}
+      \quad\Longleftrightarrow\quad
+      D_1 f(x)=k
+      \quad\Longrightarrow\quad
+      f(x)=C\,x^k.
+      \]
+    </div>
+  </div>
+
+  <!-- PHYSICS APPLICATION -->
+  <div id="physics-application" class="card">
+    <h2>5. تطبيق فيزيائي: العملية الأديباتية (غاز مثالي)</h2>
+
+    <p class="small">
+      في عملية أديباتية لغاز مثالي:
+    </p>
+
+    <div class="math">
+      \[
+      P\,V^{\gamma}=\text{ثابت}, \qquad \gamma=\frac{C_p}{C_v}>1.
+      \]
+    </div>
+
+    <p class="small">
+      الصيغة التفاضلية (المستوى 0):
+    </p>
+
+    <div class="math">
+      \[
+      \frac{dP}{dV}=-\gamma\frac{P}{V}.
+      \]
+    </div>
+
+    <p class="small">
+      الصيغة الهرمية (المستوى 1):
+    </p>
+
+    <div class="math">
+      \[
+      D_1 P(V)=\frac{d\ln P}{d\ln V}
+      \quad\Rightarrow\quad
+      \boxed{D_1P=-\gamma.}
+      \]
+    </div>
+
+    <p class="small">
+      الحل:
+    </p>
+
+    <div class="math">
+      \[
+      P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}.
+      \]
+    </div>
+  </div>
+
+  <!-- NUMERICAL VALIDATION -->
+  <div id="numerical-validation" class="card">
+    <h2>6. تحقق عددي</h2>
+
+    <p class="small">
+      نأخذ \(\gamma=1.4\)، \(V_0=1.00\) لتر، \(P_0=100.00\) كيلوباسكال، فيكون \(K=P_0V_0^\gamma=100.00\).
+      وباستعمال \(P(V)=P_0(V/V_0)^{-\gamma}\) يمكن حساب \(K_i=P_iV_i^\gamma\) بعد تدوير \(P_i\) لمنزلتين عشريتين للتحقق من المتانة.
+    </p>
+
+    <div class="math">
+      \[
+      D_1P \approx \frac{\ln(P_2/P_1)}{\ln(V_2/V_1)}.
+      \]
+    </div>
+
+    <p class="small">
+      (يمكن نقل الجدول العددي التفصيلي من صفحة <a href="../physics.html">الفيزياء</a> إلى هذه الورقة في إصدار لاحق.)
+    </p>
+
+    <div class="callout">
+      <div style="font-weight:900;margin-bottom:6px">الخلاصة</div>
+      <div class="small">
+        التحقق القائم على النِّسب واللوغاريتمات يكون عادةً أكثر ثباتًا أمام التدوير، وهو ما ينسجم مع البنية ذات الثبات على المقياس.
+      </div>
+    </div>
+  </div>
+
+  <!-- SCOPE & LIMITATIONS -->
+  <div id="scope-limitations" class="card">
+    <h2>7. مجال التطبيق والحدود</h2>
+
+    <p class="small">
+      ينظم الحساب الهرمي لغات التغيّر ضمن بنية واحدة ويساعد على اختيار المستوى الأنسب للظواهر متعددة المقاييس. لا يهدف إلى استبدال
+      التحليل الكلاسيكي، ولا يضمن تبسيط كل معادلة.
+    </p>
+
+    <ul class="small">
+      <li><strong>مجال التطبيق:</strong> الثبات على المقياس، قوانين القوة، سلوك متعدد المقاييس، متانة عددية عبر النِّسب.</li>
+      <li><strong>ما لا يدّعيه:</strong> قوانين فيزيائية جديدة، تبسيط شامل، صلاحية دون شروط مجال.</li>
+      <li><strong>شروط المجال:</strong> يجب أن تكون اللوغاريتمات المكررة معرفة وغير منعدمة في المستوى المختار.</li>
+      <li><strong>المستويات العليا:</strong> تمثل تحجيمًا لوغاريتميًا مكررًا ولا ينبغي الخلط بينها وبين التتريش بمعناه الأسي الكلاسيكي.</li>
+    </ul>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div id="conclusion" class="card">
+    <h2>8. الخلاصة والآفاق</h2>
+
+    <p class="small">
+      قدّمنا الحساب الهرمي بوصفه إطارًا يربط بين المشتقات التفاضلية والنسبية واللوغاريتمية المكررة. تمثل الصيغة الذهبية العلاقة
+      البنيوية التي تربط المستويات، وهي مؤسسة بالكامل على الاشتقاق الكلاسيكي وقاعدة السلسلة. أوضحنا عبر المعادلات الهرمية وتطبيق
+      أديباتي في الترموديناميك كيف يمكن لقوانين ذات ثبات على المقياس أن تتحول إلى علاقات ثابتة عند اختيار المستوى المناسب. كما
+      تشير التحققات العددية إلى متانة صيغ النِّسب واللوغاريتمات تجاه أخطاء التقريب.
+    </p>
+
+    <p class="small">
+      تشمل الآفاق المستقبلية: تعميم الإطار إلى PDE، وبناء مخططات عددية خاصة بالمستويات العليا، وتطبيقات أوسع في النمذجة متعددة
+      المقاييس في الفيزياء والبيولوجيا والاقتصاد.
+    </p>
+
+    <div class="btns">
+      <a class="btn primary" href="paper-ar.pdf">تحميل PDF</a>
+      <a class="btn" href="../references.html">المراجع</a>
+      <a class="btn" href="../faq.html">أسئلة شائعة</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
