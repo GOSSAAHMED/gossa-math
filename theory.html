@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>النظرية — الحساب الهرمي</title>
+
+<style>
+body{
+  margin:0;
+  font-family: system-ui, Arial, "Noto Sans Arabic";
+  background: radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
+              linear-gradient(180deg,#0b1220,#0f1b2e);
+  color:#eaf2ff;
+}
+a{color:#7aa7ff;text-decoration:none}
+.container{max-width:1000px;margin:auto;padding:40px 18px}
+h1,h2,h3{margin-top:28px}
+.card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  padding:18px;
+  margin:16px 0;
+}
+.label{
+  font-weight:800;
+  margin-bottom:8px;
+  color:#bfe8ff;
+}
+.math{
+  background:rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  padding:12px;
+  margin-top:8px;
+  direction:ltr;
+}
+.note{color:#cfe3ff;font-size:14px}
+</style>
+
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+<h1>النظرية الأساسية للحساب الهرمي</h1>
+
+<div class="card">
+<p>
+الحساب الهرمي هو إطار رياضي يهدف إلى <strong>توحيد توصيف التغير</strong>
+عبر طبقات متصاعدة من العمليات: الجمع، القسمة، اللوغاريتم، التتريش،
+وما بعدها.  
+يمثل هذا الإطار تعميمًا منظمًا للتفاضل الكلاسيكي.
+</p>
+</div>
+
+<h2>1. مبدأ الهرمية</h2>
+<div class="card">
+<div class="label">مبدأ أساسي</div>
+<p>
+كل مستوى من مستويات الحساب الهرمي يعبّر عن التغير باستخدام عملية
+أكثر تجريدًا من المستوى السابق.
+</p>
+<div class="math">
+\[
+\text{عملية التغير}:
+\quad
+\begin{cases}
+\text{الجمع} &\Rightarrow \text{تفاضلي} \ (D_0)\\
+\text{القسمة} &\Rightarrow \text{نسبي} \ (D_1)\\
+\text{اللوغاريتم} &\Rightarrow \text{لوغاريتمي} \ (D_2)\\
+\text{التتريش} &\Rightarrow \text{تتريشي} \ (D_3)\\
+\vdots &\Rightarrow D_n
+\end{cases}
+\]
+</div>
+</div>
+
+<h2>2. تعريف المشتق الهرمي العام</h2>
+<div class="card">
+<div class="label">تعريف (Definition)</div>
+<p>
+لتكن \(f(x)\) دالة موجبة معرفة على مجال مناسب.  
+نعرّف المشتق الهرمي من الرتبة \(n\) بالعلاقة:
+</p>
+<div class="math">
+\[
+D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
+\]
+</div>
+<p class="note">
+حيث \(\ln^{(n)}\) تمثل اللوغاريتم المتكرر \(n\) مرات.
+</p>
+</div>
+
+<h2>3. الحالات الخاصة</h2>
+<div class="card">
+<div class="label">الطبقات الأولى</div>
+
+<div class="math">
+\[
+D_0 f(x)=\frac{df(x)}{dx}
+\]
+</div>
+
+<div class="math">
+\[
+D_1 f(x)=\frac{d\ln f(x)}{d\ln x}
+\]
+</div>
+
+<div class="math">
+\[
+D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+\]
+</div>
+
+<div class="math">
+\[
+D_3 f(x)=\frac{d\ln^{(3)}f(x)}{d\ln^{(3)}x}
+\]
+</div>
+</div>
+
+<h2>4. خاصية التدرج الهرمي</h2>
+<div class="card">
+<div class="label">مبرهنة (Theorem)</div>
+<p>
+إذا كانت \(f(x)\) قابلة للاشتقاق هرميًا من الرتبة \(n\)،
+فإنها قابلة للاشتقاق من جميع الرتب الأدنى:
+</p>
+<div class="math">
+\[
+D_n f(x) \;\Rightarrow\; D_{n-1} f(x) \;\Rightarrow\; \dots \;\Rightarrow\; D_0 f(x)
+\]
+</div>
+</div>
+
+<h2>5. المعنى الفيزيائي</h2>
+<div class="card">
+<p>
+يمثل كل مستوى من المشتقات الهرمية <strong>طريقة مختلفة لقياس التغير</strong>:
+</p>
+<ul>
+<li>المستوى 0: تغير مطلق</li>
+<li>المستوى 1: تغير نسبي (قياس ذاتي)</li>
+<li>المستوى 2: تغير بنيوي لوغاريتمي</li>
+<li>المستوى 3+: تغير هرمي متسارع</li>
+</ul>
+</div>
+
+<div class="card">
+<p class="note">
+هذه الصفحة تشكّل الأساس النظري الرسمي للحساب الهرمي.
+للاستشهاد استخدم DOI:
+<a href="https://doi.org/10.5281/zenodo.17917302" target="_blank">
+10.5281/zenodo.17917302
+</a>
+</p>
+</div>
+
+</div>
+</body>
+</html>
