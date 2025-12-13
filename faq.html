@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>أسئلة شائعة — الحساب الهرمي</title>
+
+<style>
+:root{
+  --bg1:#0b1220; --bg2:#0f1b2e;
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(0,0,0,.22);
+  --b: rgba(255,255,255,.12);
+  --txt:#eaf2ff; --mut:#cfe3ff;
+  --accent:#61d2d2; --accent2:#7aa7ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, Arial, "Noto Sans Arabic";
+  background:
+    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
+    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--txt);
+}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
+.top{
+  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  padding:14px 16px;border-bottom:1px solid var(--b);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
+}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{
+  width:34px;height:34px;border-radius:10px;
+  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
+              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
+              rgba(255,255,255,.06);
+  border:1px solid var(--b);
+}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+nav a{
+  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
+  background:rgba(255,255,255,.03);
+}
+h1{margin:22px 0 8px;font-size:30px}
+.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.85}
+.card{
+  background:var(--card);border:1px solid var(--b);border-radius:18px;
+  padding:18px;margin:14px 0;
+}
+.small{font-size:14px;color:var(--mut);line-height:1.95}
+.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+.tag{
+  display:inline-block;padding:2px 10px;border:1px solid var(--b);
+  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
+}
+.math{
+  background:var(--card2);border:1px solid var(--b);border-radius:14px;
+  padding:12px;margin-top:10px;overflow:auto
+}
+details{
+  border:1px solid var(--b);
+  background:rgba(0,0,0,.18);
+  border-radius:14px;
+  padding:10px 12px;
+  margin:10px 0;
+}
+summary{
+  cursor:pointer;
+  font-weight:900;
+  color:#bfe8ff;
+  list-style:none;
+}
+summary::-webkit-details-marker{display:none}
+.answer{padding-top:10px}
+.callout{
+  border-right:4px solid var(--accent);
+  padding:12px 14px;border-radius:14px;
+  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
+  margin-top:12px;
+}
+ul{margin:10px 0 0 0;padding:0 18px}
+li{margin:7px 0}
+</style>
+
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<div class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true"></div>
+    <div>
+      <div style="font-weight:900">الحساب الهرمي</div>
+      <div style="font-size:12px;color:var(--mut)">FAQ — أسئلة شائعة</div>
+    </div>
+  </div>
+
+  <nav aria-label="التنقل">
+    <a href="index.html">الرئيسية</a>
+    <a href="theory.html">النظرية</a>
+    <a href="equations.html">المعادلات</a>
+    <a href="numerics.html">العددي</a>
+    <a href="glossary.html">المصطلحات</a>
+    <a href="references.html">المراجع</a>
+    <a href="faq-en.html">English</a>
+  </nav>
+</div>
+
+<div class="container">
+  <h1>أسئلة شائعة (FAQ)</h1>
+  <p class="subtitle">
+    هذه الصفحة موجهة للقارئ الذي يرى “الحساب الهرمي” لأول مرة: ما هو؟ ماذا يضيف؟ كيف يُستعمل؟ وما حدوده؟
+  </p>
+
+  <div class="card">
+    <h2>الفكرة العامة في سطرين</h2>
+    <p class="small">
+      الحساب الهرمي هو طريقة لتنظيم “لغات التغيّر”:
+      <span class="tag">جمع</span> (تفاضلي) ⟶
+      <span class="tag">قسمة</span> (نسبي) ⟶
+      <span class="tag">لوغاريتم</span> ⟶
+      <span class="tag">تتريش</span> ⟶ …
+      بحيث نختار المستوى الذي يجعل القانون أبسط.
+    </p>
+
+    <div class="math">
+      \[
+      D_0 f=\frac{df}{dx},\qquad
+      D_1 f=\frac{d\ln f}{d\ln x},\qquad
+      D_2 f=\frac{d\ln(\ln f)}{d\ln(\ln x)}
+      \]
+    </div>
+
+    <div class="callout">
+      <div style="font-weight:900;margin-bottom:6px">قاعدة ذهبية</div>
+      <div class="small">
+        إذا كانت الظاهرة “قانون قدرة” فغالبًا المستوى النسبي \(D_1\) هو الأنسب.  
+        وإذا كانت الظاهرة “متعددة المقاييس” مثل \(\exp((\ln x)^k)\) فغالبًا المستوى \(D_2\) يعطي تمثيلًا أدق.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>أسئلة وأجوبة</h2>
+
+    <details open>
+      <summary>1) هل الحساب الهرمي بديل عن التفاضل والتكامل؟</summary>
+      <div class="answer small">
+        لا. هو <strong>إطار عام</strong> يضم التفاضل (مستوى 0) كحالة خاصة، ويضيف مستويات أخرى مناسبة لظواهر
+        يكون فيها القياس النسبي أو اللوغاريتمي هو اللغة الطبيعية (مثل قوانين القدرة والعمليات متعددة المقاييس).
+      </div>
+    </details>
+
+    <details>
+      <summary>2) ما الفرق بين \(D_0\) و \(D_1\) بشكل بسيط؟</summary>
+      <div class="answer small">
+        \(D_0\) يقيس تغيرًا “جمعيًا” (فرق).  
+        \(D_1\) يقيس تغيرًا “نسبيًا” (نسبة):
+        <div class="math">
+          \[
+          D_1 f=\frac{d\ln f}{d\ln x}=\frac{x}{f}\frac{df}{dx}
+          \]
+        </div>
+        مثال: في قانون القدرة \(f(x)=x^k\) يكون \(D_1 f = k\) ثابتًا، وهذا يجعل قوانين القدرة خطية في فضاء اللوغاريتمات.
+      </div>
+    </details>
+
+    <details>
+      <summary>3) لماذا يمكن أن تكون التقريبات العددية أفضل عند الصعود في الهرم؟</summary>
+      <div class="answer small">
+        لأنك تقرّب في فضاء تكون فيه الدالة “أقل حساسية” أو “أقرب للخطية”.  
+        بدل تقريب \(f\) مباشرة، تقرّب \(\ln f\) أو \(\ln(\ln f)\)، ثم ترجع.  
+        هذا يقلّل عادة تضخيم الخطأ خصوصًا عند القيم الكبيرة أو النمو السريع.
+        <ul>
+          <li>شاهد صفحة <a href="numerics.html">الجزء العددي</a> لمقارنة الأخطاء.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>4) هل توجد أمثلة فيزيائية حقيقية؟</summary>
+      <div class="answer small">
+        نعم. كثير من قوانين الفيزياء تُكتب طبيعيًا بشكل نسبي.  
+        مثال أديباتي (غاز مثالي): \(P V^\gamma=\text{ثابت}\) ويعطي:
+        <div class="math">
+          \[
+          \frac{d\ln P}{d\ln V}=-\gamma
+          \]
+        </div>
+        وهذا بالضبط معادلة على مستوى \(D_1\).
+      </div>
+    </details>
+
+    <details>
+      <summary>5) ما شروط المجال عند استعمال \(D_2\) أو مستويات أعلى؟</summary>
+      <div class="answer small">
+        عند استعمال \(\ln(\ln x)\) يجب أن يكون \(\ln x>0\) أي \(x>1\).  
+        وعند استعمال \(\ln(\ln f)\) يجب أن يكون \(f>1\) و\(\ln f>0\).
+        <ul>
+          <li>راجع: <a href="glossary.html#domain">شروط المجال</a>.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>6) هل هذا العمل “مُثبت” بأسبقية رسمية؟</summary>
+      <div class="answer small">
+        نعم من ناحية الأرشفة: عبر Zenodo و DOI.  
+        هذا يعطي تاريخًا ثابتًا وإسنادًا رسميًا للمشروع وإصداراته.
+        <ul>
+          <li>راجع: <a href="references.html#cite">الاستشهاد الرسمي</a>.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>7) أين أبدأ إذا كنت قارئًا جديدًا؟</summary>
+      <div class="answer small">
+        ننصح بهذا الترتيب:
+        <ol style="margin:10px 0 0 0;">
+          <li><a href="theory.html">النظرية</a> (الفكرة العامة والعمليات)</li>
+          <li><a href="equations.html">المعادلات الهرمية</a> (التعريفات والأمثلة)</li>
+          <li><a href="numerics.html">الجزء العددي</a> (الأرقام ومقارنة الأخطاء)</li>
+          <li><a href="glossary.html">المصطلحات</a> ثم <a href="references.html">المراجع</a></li>
+        </ol>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="card">
+    <h2>للمراسلات والاستشهاد</h2>
+    <p class="small">
+      DOI (Concept): <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
