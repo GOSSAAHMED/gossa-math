@@ -1,161 +1,349 @@
-<div class="hr"></div>
-<h3>أمثلة محلولة بالكامل (حل تحليلي)</h3>
-<p class="small">
-نستعمل هنا الترميز: \(D_0\) تفاضلي، \(D_1\) نسبي، \(D_2\) لوغاريتمي.  
-نؤكد أن الشروط المعتادة مطلوبة عند استعمال اللوغاريتمات: \(x>0\)، و\(f(x)>0\) (وعند \(D_2\): \(\ln f(x)>0\)).
-</p>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>المعادلات الهرمية — الحساب الهرمي</title>
 
-<div class="hr"></div>
-<h3>مثال 1 — معادلة نسبية من الدرجة الأولى</h3>
-<p class="small">
-حل المعادلة:
-\[
-D_1 f(x)=k \quad (\text{ثابت})
-\]
-</p>
-<div class="math">
-\[
-D_1 f(x)=\frac{d\ln f}{d\ln x}=k
-\quad\Longrightarrow\quad
-d\ln f = k\, d\ln x
-\]
-\[
-\ln f = k\ln x + C
-\quad\Longrightarrow\quad
-f(x)=C_0\,x^{k}
-\]
-</div>
-<p class="small">
-إذن: معادلة المستوى النسبي تعطي مباشرة قانون قدرة (Power law).  
-وهذا يظهر كيف يصبح “نمو القدرة” خطيًا في فضاء \(\ln f\) مقابل \(\ln x\).
-</p>
+<style>
+:root{
+  --bg1:#0b1220; --bg2:#0f1b2e;
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(0,0,0,.22);
+  --b: rgba(255,255,255,.12);
+  --txt:#eaf2ff; --mut:#cfe3ff;
+  --accent:#61d2d2; --accent2:#7aa7ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, Arial, "Noto Sans Arabic";
+  background:
+    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
+    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--txt);
+}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
+.top{
+  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  padding:14px 16px;border-bottom:1px solid var(--b);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
+}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{
+  width:34px;height:34px;border-radius:10px;
+  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
+              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
+              rgba(255,255,255,.06);
+  border:1px solid var(--b);
+}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+nav a{
+  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
+  background:rgba(255,255,255,.03);
+}
+h1{margin:22px 0 8px;font-size:30px}
+.subtitle{color:var(--mut);margin:0 0 16px}
+.card{
+  background:var(--card);border:1px solid var(--b);border-radius:18px;
+  padding:18px;margin:14px 0;
+}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}
+.kpi{
+  background:rgba(0,0,0,.20);border:1px solid var(--b);border-radius:16px;
+  padding:14px;
+}
+.kpi h3{margin:0 0 8px;font-size:16px;color:#bfe8ff}
+.small{font-size:14px;color:var(--mut);line-height:1.8}
+.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+.tag{
+  display:inline-block;padding:3px 10px;border-radius:999px;
+  border:1px solid var(--b);background:rgba(255,255,255,.03);
+  font-size:12px;color:#bfe8ff
+}
+.math{
+  background:var(--card2);border:1px solid var(--b);border-radius:14px;
+  padding:12px;margin-top:10px;overflow:auto
+}
+.callout{
+  border-right:4px solid var(--accent);
+  padding:12px 14px;border-radius:14px;
+  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
+}
+ul{margin:10px 0 0 0; padding:0 18px}
+li{margin:6px 0}
+.footer{
+  margin-top:22px;padding:14px 16px;border:1px solid var(--b);border-radius:16px;
+  background:rgba(255,255,255,.04)
+}
+</style>
 
-<div class="hr"></div>
-<h3>مثال 2 — معادلة نسبية غير خطية تصبح قابلة للفصل</h3>
-<p class="small">
-حل المعادلة:
-\[
-D_1 f(x)=a+b\ln f(x)
-\]
-(حيث \(a,b\) ثوابت و\(f>0\)).
-</p>
-<div class="math">
-\[
-\frac{d\ln f}{d\ln x}=a+b\ln f
-\]
-ضع \(u=\ln f\) فيصبح:
-\[
-\frac{du}{d\ln x}=a+bu
-\]
-وهي معادلة خطية في \(u\):
-\[
-\frac{du}{d\ln x}-bu=a
-\]
-حلها:
-\[
-u(\ln x)=C\,e^{b\ln x}-\frac{a}{b}
-= C\,x^{b}-\frac{a}{b}
-\]
-إذًا:
-\[
-\ln f(x)=C\,x^{b}-\frac{a}{b}
-\quad\Longrightarrow\quad
-f(x)=\exp\!\left(C\,x^{b}-\frac{a}{b}\right)
-\]
-</div>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
 
-<div class="hr"></div>
-<h3>مثال 3 — معادلة لوغاريتمية بسيطة (مستوى 2)</h3>
-<p class="small">
-حل المعادلة:
-\[
-D_2 f(x)=k
-\]
-حيث \(x>1\) و\(f(x)>e\) لضمان \(\ln(\ln x)\) و\(\ln(\ln f)\).
-</p>
-<div class="math">
-\[
-D_2 f(x)=\frac{d\ln(\ln f)}{d\ln(\ln x)}=k
-\quad\Longrightarrow\quad
-d\ln(\ln f)=k\,d\ln(\ln x)
-\]
-\[
-\ln(\ln f)=k\ln(\ln x)+C
-\quad\Longrightarrow\quad
-\ln f = C_1\,(\ln x)^k
-\]
-\[
-f(x)=\exp\!\big(C_1(\ln x)^k\big)
-\]
-</div>
-<p class="small">
-هذا النمو “متعدد المقاييس” يظهر كثيرًا في نماذج تعتمد على \((\ln x)^k\).
-</p>
+<body>
 
-<div class="hr"></div>
-<h2>مثال فيزيائي حقيقي (ترموديناميك)</h2>
-<p class="small">
-في الترموديناميك، كثير من القوانين تُكتب على شكل علاقات نسبية. مثال شهير:  
-قانون الغازات المثالية عند عملية <strong>أدياباتية</strong> (غاز مثالي):
-\[
-P\,V^\gamma=\text{ثابت}
-\]
-بأخذ اللوغاريتم:
-\[
-\ln P + \gamma \ln V = \text{ثابت}
-\Rightarrow
-\frac{d\ln P}{d\ln V}=-\gamma
-\]
-إذن بصيغة المشتق النسبي:
-\[
-D_1^{(V)} P(V)=\frac{d\ln P}{d\ln V}=-\gamma
-\]
-</p>
-<div class="callout">
-<div style="font-weight:900;margin-bottom:6px">نتيجة مباشرة</div>
-<div class="small">
-المعادلة الفيزيائية الأدياباتية هي أصلًا “معادلة نسبية ثابتة” في الحجم \(V\).  
-حلها يعود فورًا إلى:
-\(
-P(V)=C\,V^{-\gamma}
-\)
-وهو شكل قدرة — وهذا يبرهن أن المستوى النسبي هو “اللغة الطبيعية” هنا.
-</div>
+<div class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true"></div>
+    <div>
+      <div style="font-weight:900">الحساب الهرمي</div>
+      <div style="font-size:12px;color:var(--mut)">صفحة المعادلات الهرمية</div>
+    </div>
+  </div>
+
+  <nav aria-label="التنقل">
+    <a href="index.html">الرئيسية</a>
+    <a href="theory.html">النظرية</a>
+    <a href="#definitions">تعريفات</a>
+    <a href="#examples">أمثلة</a>
+    <a href="#method">مبدأ الصعود</a>
+    <a href="#cite">الاستشهاد</a>
+    <a href="index-en.html">English</a>
+  </nav>
 </div>
 
-<div class="hr"></div>
-<h2>مقطع عددي (مقارنة أخطاء)</h2>
-<p class="small">
-سنقارن تقريبًا عدديًا لنموذج “متعدد المقاييس”:
-\[
-f(x)=\exp\big((\ln x)^2\big)
-\]
-عند \(x=10\).  
-القيمة الحقيقية:
-\[
-f(10)=\exp\big((\ln 10)^2\big)
-\]
-</p>
+<div class="container">
 
-<div class="math">
-\[
-\ln 10 \approx 2.302585093
-\Rightarrow (\ln 10)^2 \approx 5.30189811
-\Rightarrow f(10)\approx e^{5.30189811}\approx 200.336
-\]
-</div>
+  <h1>المعادلات الهرمية</h1>
+  <p class="subtitle">
+    تعميم للمعادلات التفاضلية نحو طبقات أعلى (نسبي/لوغاريتمي/تتريشي...) بهدف تبسيط البنية عند “الصعود في الهرم”.
+  </p>
 
-<p class="small">
-<strong>تقريب بسيط من مستوى 2:</strong>  
-بدل العمل على \(f\) مباشرة، نعمل على \(\ln f=(\ln x)^2\).  
-أي أن الخطأ يصبح على مقياس أصغر (لوغاريتمي) ثم نرجع بالأسّ.
-هذه الفكرة هي جوهر التفوق العددي عند الصعود في الهرم.
-</p>
+  <div class="grid">
+    <div class="card">
+      <h2 id="definitions">1) التعريف العام</h2>
+      <p class="small">
+        نسمّي <strong>معادلة هرمية من الرتبة \(n\)</strong> كل علاقة تربط الدالة \(f\) ومشتقاتها الهرمية حتى المستوى \(n\).
+        الصيغة العامة:
+      </p>
+      <div class="math">
+        \[
+          \mathcal{E}_n\big(x,\; f,\; D_0 f,\; D_1 f,\; \dots,\; D_n f\big)=0
+        \]
+      </div>
 
-<div class="callout">
-<div style="font-weight:900;margin-bottom:6px">ملاحظة مهمة</div>
-<div class="small">
-في صفحة <code>numerics.html</code> سنضع جدول أخطاء كامل (Taylor مقابل نسبي مقابل لوغاريتمي) مع قيم متعددة لـ \(x\)،
-لإظهار التفوق العددي بوضوح.
+      <div class="hr"></div>
+
+      <p class="small">
+        حيث نستخدم ترميزك المعتمد:
+        <span class="tag">D0 للتفاضلي</span> و <span class="tag">D1 للنسبي</span>.
+        وبشكل نموذجي:
+      </p>
+
+      <div class="math">
+        \[
+        D_0 f(x)=\frac{df}{dx},
+        \qquad
+        D_1 f(x)=\frac{d\ln f(x)}{d\ln x}=\frac{x}{f(x)}\,\frac{df}{dx}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+        D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)},
+        \qquad
+        D_3 f(x)=\frac{d\ln^{(3)}(f(x))}{d\ln^{(3)}(x)}
+        \]
+      </div>
+
+      <div class="callout" style="margin-top:14px">
+        <div style="font-weight:900;margin-bottom:6px">الفكرة المحورية</div>
+        <div class="small">
+          كثير من المعادلات “غير الخطية” في مستوى معيّن تصبح “أقرب إلى الخطية” أو أبسط بنيويًا عند
+          الانتقال إلى مستوى أعلى مناسب (Lift).
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2) تصنيف سريع</h2>
+
+      <div class="kpi">
+        <h3>تفاضلية (مستوى 0)</h3>
+        <div class="math">\[
+          F\big(x,f,D_0 f,\dots\big)=0
+        \]</div>
+        <div class="small">البنية الأساسية: فروق/جمع.</div>
+      </div>
+
+      <div class="kpi">
+        <h3>نسبية (مستوى 1)</h3>
+        <div class="math">\[
+          F\big(x,f,D_1 f,\dots\big)=0
+        \]</div>
+        <div class="small">البنية الأساسية: نسب/قسمة (تغير ذاتي).</div>
+      </div>
+
+      <div class="kpi">
+        <h3>لوغاريتمية (مستوى 2)</h3>
+        <div class="math">\[
+          F\big(x,f,D_2 f,\dots\big)=0
+        \]</div>
+        <div class="small">البنية الأساسية: لوغاريتمات متكررة.</div>
+      </div>
+
+      <div class="kpi">
+        <h3>تتريشية (مستوى 3)</h3>
+        <div class="math">\[
+          F\big(x,f,D_3 f,\dots\big)=0
+        \]</div>
+        <div class="small">البنية الأساسية: تتريش/طبقات عليا.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="examples">
+    <h2>3) أمثلة معيارية (Forme canonique)</h2>
+    <p class="small">
+      الأمثلة التالية تُظهر كيف نكتب المعادلات في مستويات مختلفة، وكيف يمكن أحيانًا تحويل مسألة صعبة في مستوى
+      إلى مسألة أبسط في مستوى أعلى.
+    </p>
+
+    <div class="hr"></div>
+
+    <h3>مثال A — معادلة مستوى 0 (تفاضلية)</h3>
+    <div class="math">
+      \[
+        D_0 f(x)=g(x)
+        \quad \Longleftrightarrow \quad
+        \frac{df}{dx}=g(x)
+      \]
+    </div>
+    <p class="small">حلها معروف بالتكامل التفاضلي التقليدي.</p>
+
+    <div class="hr"></div>
+
+    <h3>مثال B — معادلة مستوى 1 (نسبية)</h3>
+    <div class="math">
+      \[
+        D_1 f(x)=g(x)
+        \quad \Longleftrightarrow \quad
+        \frac{d\ln f}{d\ln x}=g(x)
+      \]
+    </div>
+    <p class="small">
+      وهي مكافئة (عند توفّر الشروط) إلى:
+    </p>
+    <div class="math">
+      \[
+        \frac{d\ln f}{dx}= \frac{g(x)}{x}
+        \quad \Longrightarrow \quad
+        \ln f(x)=\int \frac{g(x)}{x}\,dx + C
+      \]
+    </div>
+
+    <div class="hr"></div>
+
+    <h3>مثال C — معادلة مستوى 2 (لوغاريتمية)</h3>
+    <div class="math">
+      \[
+        D_2 f(x)=g(x)
+        \quad \Longleftrightarrow \quad
+        \frac{d\ln(\ln f)}{d\ln(\ln x)}=g(x)
+      \]
+    </div>
+    <p class="small">
+      هذه الصيغة تُفيد عندما تكون الدالة والنمو يتضمنان “طبقة لوغاريتمية ثانية” (مثل ظواهر متعددة المقاييس).
+    </p>
+
+    <div class="hr"></div>
+
+    <h3>مثال D — مثال “رفع هرمي” (Lift)</h3>
+    <p class="small">
+      لنفرض أن المعادلة في مستوى 0 تظهر بشكل غير خطي معقّد في \(f\)، بينما تصبح أبسط إذا عرّفنا متغيّرًا جديدًا
+      على شكل \(\,u=\ln f\) أو \(\,u=\ln(\ln f)\) (أي الانتقال لمستوى أعلى).
+    </p>
+    <div class="math">
+      \[
+        \text{ضع } u=\ln f \;\; \Longrightarrow \;\; D_1 f = \frac{d u}{d\ln x}
+      \]
+    </div>
+    <div class="math">
+      \[
+        \text{ضع } v=\ln(\ln f) \;\; \Longrightarrow \;\; D_2 f = \frac{d v}{d\ln(\ln x)}
+      \]
+    </div>
+
+    <div class="callout" style="margin-top:14px">
+      <div style="font-weight:900;margin-bottom:6px">ملاحظة تحكيمية</div>
+      <div class="small">
+        في النسخة العلمية الصارمة، نوضح دائمًا شروط المجال: موجبية \(x\)، وموجبية \(f\) عند الحاجة، وتفادي نقاط
+        \(\ln x=0\) أو \(\ln f=0\) عندما نستخدم \(\ln(\ln(\cdot))\).
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="method">
+    <h2>4) مبدأ الصعود الهرمي (Hierarchical Lifting)</h2>
+    <p class="small">
+      جوهر الحساب الهرمي في حل المعادلات هو: اختيار تمثيل مناسب للتغير.  
+      في كثير من الحالات، إعادة كتابة المعادلة عبر \(\ln\) أو \(\ln\ln\) (أو طبقات أعلى) تقلّل التعقيد البنيوي.
+    </p>
+
+    <div class="math">
+      \[
+        \mathcal{E}_k\big(x,f,D_0 f,\dots,D_k f\big)=0
+        \quad \xrightarrow{\;\text{Lift}\;}
+        \widetilde{\mathcal{E}}_{k+1}\big(x,\,\ln^{(k+1)}f,\, D_{k+1}f\big)=0
+      \]
+    </div>
+
+    <p class="small">
+      الهدف من “Lift” ليس إلغاء التفاضل، بل نقل المعادلة إلى مستوى تصبح فيه البنية أقرب إلى الخطية أو قابلة للفصل.
+    </p>
+
+    <div class="hr"></div>
+
+    <h3>قالب عملي للحلول</h3>
+    <ul class="small">
+      <li>حدّد نوع النمو/التغير (أسّي؟ قدرة؟ متعدد المقاييس؟)</li>
+      <li>اختر المستوى \(k\) المناسب (0 أو 1 أو 2 أو 3 ...)</li>
+      <li>حوّل المعادلة إلى متغيّر: \(u=\ln^{(k)} f\)</li>
+      <li>حل في متغيّر \(u\) ثم ارجع بعكس التحويل (exponentiation iterated)</li>
+    </ul>
+  </div>
+
+  <div class="card" id="cite">
+    <h2>5) الاستشهاد العلمي (Citation)</h2>
+    <p class="small">
+      للاستشهاد بمرجع الموقع/النظرية استخدم DOI:
+      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+        10.5281/zenodo.17917302
+      </a>
+    </p>
+
+    <div class="math">
+<pre style="margin:0;direction:ltr;color:#eaf2ff">
+@software{gossa_hierarchical_calculus_2025,
+  author = {Gossa Ahmed},
+  title  = {Hierarchical Calculus},
+  year   = {2025},
+  doi    = {10.5281/zenodo.17917302},
+  url    = {https://github.com/GOSSAAHMED/gossa-math}
+}
+</pre>
+    </div>
+
+    <div class="footer small">
+      روابط مفيدة:
+      <ul>
+        <li><a href="index.html">الصفحة الرئيسية</a></li>
+        <li><a href="theory.html">النظرية</a></li>
+        <li><a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">DOI الإصدار v1.0.0</a></li>
+      </ul>
+    </div>
+  </div>
+
 </div>
-</div>
+</body>
+</html>
