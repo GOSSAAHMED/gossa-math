@@ -1,57 +1,237 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<title>تطبيق فيزيائي — عملية أديباتية</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>تطبيق فيزيائي — العملية الأديباتية (الحساب الهرمي)</title>
+
+<style>
+:root{
+  --bg1:#0b1220; --bg2:#0f1b2e;
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(0,0,0,.22);
+  --b: rgba(255,255,255,.12);
+  --txt:#eaf2ff; --mut:#cfe3ff;
+  --accent:#61d2d2; --accent2:#7aa7ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, Arial, "Noto Sans Arabic";
+  background:
+    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
+    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--txt);
+}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
+.top{
+  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  padding:14px 16px;border-bottom:1px solid var(--b);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
+}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{
+  width:34px;height:34px;border-radius:10px;
+  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
+              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
+              rgba(255,255,255,.06);
+  border:1px solid var(--b);
+}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+nav a{
+  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
+  background:rgba(255,255,255,.03);
+}
+h1{margin:22px 0 8px;font-size:30px}
+.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.85}
+.card{
+  background:var(--card);border:1px solid var(--b);border-radius:18px;
+  padding:18px;margin:14px 0;
+}
+.small{font-size:14px;color:var(--mut);line-height:1.95}
+.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+.tag{
+  display:inline-block;padding:2px 10px;border:1px solid var(--b);
+  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
+}
+.math{
+  background:var(--card2);border:1px solid var(--b);border-radius:14px;
+  padding:12px;margin-top:10px;overflow:auto
+}
+.callout{
+  border-right:4px solid var(--accent);
+  padding:12px 14px;border-radius:14px;
+  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
+  margin-top:12px;
+}
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  border:1px solid var(--b);
+  border-radius:14px;
+  background:rgba(0,0,0,.18);
+}
+th,td{
+  padding:10px 10px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  font-size:14px;
+  text-align:center;
+  white-space:nowrap;
+}
+th{color:#bfe8ff;background:rgba(255,255,255,.04);font-weight:900}
+tr:last-child td{border-bottom:none}
+.ok{color:#7dffb0}
+</style>
 
 <script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]}};
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<section class="card">
-<h1>🧪 تطبيق ترموديناميكي: العملية الأديباتية</h1>
+<div class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true"></div>
+    <div>
+      <div style="font-weight:900">الحساب الهرمي</div>
+      <div style="font-size:12px;color:var(--mut)">تطبيقات فيزيائية</div>
+    </div>
+  </div>
 
-<h2>1) القانون الفيزيائي</h2>
-\[
-P V^\gamma = \text{ثابت}
-\]
+  <nav aria-label="التنقل">
+    <a href="index.html">الرئيسية</a>
+    <a href="theory.html">النظرية</a>
+    <a href="equations.html">المعادلات</a>
+    <a href="numerics.html">العددي</a>
+    <a href="glossary.html">المصطلحات</a>
+    <a href="references.html">المراجع</a>
+    <a href="physics-en.html">English</a>
+  </nav>
+</div>
 
-<h2>2) الصيغة التفاضلية (D0)</h2>
-\[
-\frac{dP}{dV} = -\gamma \frac{P}{V}
-\]
+<div class="container">
+  <h1>🧪 تطبيق ترموديناميكي: العملية الأديباتية (غاز مثالي)</h1>
+  <p class="subtitle">
+    هذا المثال يوضح لماذا تكون لغة <span class="tag">المستوى 1</span> (النسبي \(D_1\))
+    هي اللغة الطبيعية في كثير من قوانين الفيزياء: القوانين تربط <strong>النِّسب</strong> أكثر من الفروق.
+  </p>
 
-<h2>3) الصيغة الهرمية (D1)</h2>
-\[
-D_1 P = \frac{d\ln P}{d\ln V}
-\]
-ومن القانون مباشرة:
-\[
-\boxed{D_1 P = -\gamma}
-\]
+  <div class="card">
+    <h2>1) القانون الفيزيائي</h2>
+    <p class="small">في عملية أديباتية لغاز مثالي:</p>
+    <div class="math">
+      \[
+      P\,V^{\gamma}=\text{ثابت},
+      \qquad
+      \gamma=\frac{C_p}{C_v}
+      \]
+    </div>
+    <p class="small">
+      حيث \(P\) الضغط، و\(V\) الحجم، و\(\gamma\) نسبة السعات الحرارية.
+    </p>
+  </div>
 
-<h2>4) الحل الهرمي</h2>
-\[
-P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}
-\]
+  <div class="card">
+    <h2>2) الصيغة التفاضلية التقليدية (المستوى 0 / D0)</h2>
+    <p class="small">نأخذ اللوغاريتم ثم نشتق:</p>
+    <div class="math">
+      \[
+      \ln P + \gamma \ln V = \text{ثابت}
+      \]
+      \[
+      \frac{dP}{P}+\gamma\frac{dV}{V}=0
+      \quad\Rightarrow\quad
+      \frac{dP}{dV}=-\gamma\frac{P}{V}
+      \]
+    </div>
+    <p class="small">
+      هذه معادلة تفاضلية في \(P(V)\). هي معروفة، لكنها ليست “خطية” في المتغيرات الأصلية.
+    </p>
+  </div>
 
-<h2>5) التفسير الفيزيائي</h2>
-<p>
-العملية الأديباتية ظاهرة <strong>نسبية القياس</strong>.  
-الضغط لا يتغير جمعيًا مع الحجم، بل نسبيًا.
-</p>
+  <div class="card">
+    <h2>3) الصيغة الهرمية النسبيّة (المستوى 1 / D1)</h2>
+    <p class="small">نعرّف المشتق النسبي:</p>
+    <div class="math">
+      \[
+      D_1 P(V)=\frac{d\ln P}{d\ln V}
+      \]
+    </div>
+    <p class="small">
+      من \(\ln P = -\gamma \ln V + \text{ثابت}\) نحصل فورًا على:
+    </p>
+    <div class="math">
+      \[
+      \boxed{D_1 P = -\gamma}
+      \]
+    </div>
 
-<h2>6) الخلاصة</h2>
-<p>
-الحساب الهرمي لا يغير الفيزياء،  
-بل يختار <strong>لغة التغير الصحيحة</strong>.
-</p>
-</section>
+    <div class="callout">
+      <div style="font-weight:900;margin-bottom:6px">الملاحظة الأساسية</div>
+      <div class="small">
+        في المستوى النسبي، تتحول العلاقة إلى <strong>ثابت</strong>.
+        وهذا يعكس أن القانون طبيعي في فضاء اللوغاريتمات (لغة النِّسب).
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>4) استرجاع الحل</h2>
+    <p class="small">إذا كان \(D_1 P=-\gamma\) ثابتًا، فإن:</p>
+    <div class="math">
+      \[
+      P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}
+      \]
+    </div>
+    <p class="small">وهذا هو الحل الفيزيائي القياسي.</p>
+  </div>
+
+  <div class="card">
+    <h2>5) مقارنة مختصرة (مناسبة للتحكيم)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>المقاربة</th>
+          <th>المعادلة</th>
+          <th>الطبيعة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>تقليدية (D0)</td>
+          <td>\(\dfrac{dP}{dV}=-\gamma\dfrac{P}{V}\)</td>
+          <td>معادلة تفاضلية في \(P(V)\)</td>
+        </tr>
+        <tr>
+          <td class="ok">هرمية (D1)</td>
+          <td class="ok">\(D_1 P=-\gamma\)</td>
+          <td class="ok">ثابت (خطية في فضاء اللوغاريتم)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>6) تفسير</h2>
+    <p class="small">
+      الحساب الهرمي لا يغيّر الفيزياء، بل يختار “لغة التغيّر” الملائمة لبنية القانون.
+      في الأديباتي، التغيّر نسبي: الضغط يتبع الحجم على مقياس لوغاريتمي.
+    </p>
+    <p class="small">
+      متابعة مقترحة:
+      <a href="equations.html">المعادلات الهرمية</a> ·
+      <a href="numerics.html">الجزء العددي</a> ·
+      <a href="glossary.html">المصطلحات</a>
+    </p>
+  </div>
+</div>
+
 </body>
 </html>
