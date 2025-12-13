@@ -227,6 +227,115 @@ window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\
       </tbody>
     </table>
   </div>
+<div class="card">
+  <h2>🧮 5-b) Small Numerical Experiment: Verification & Approximate Error</h2>
+
+  <p class="small">
+    We choose a realistic numerical example for an ideal gas close to air:
+    \(\gamma = 1.4\).
+    Let the reference state be:
+    \(V_0 = 1.00\,\text{L}\),
+    \(P_0 = 100.00\,\text{kPa}\).
+    The adiabatic constant is therefore:
+  </p>
+
+  <div class="math">
+    \[
+    K = P_0\,V_0^{\gamma} = 100.00 \; (\text{kPa}\cdot \text{L}^{\gamma})
+    \]
+  </div>
+
+  <p class="small">
+    We compute the theoretical pressure for different volumes:
+    \[
+    P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}
+    \]
+    and verify the constancy of \(K_i=P_iV_i^\gamma\).
+    To illustrate an <em>approximation error</em>, pressures are rounded to two decimals.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>\(V\) (L)</th>
+        <th>Theoretical \(P\) (kPa)</th>
+        <th>Rounded \(P\)</th>
+        <th>\(K_i=P_iV^\gamma\)</th>
+        <th>Relative error %</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.20</td>
+        <td>\(\approx 77.4723\)</td>
+        <td>77.47</td>
+        <td>\(\approx 99.9971\)</td>
+        <td>\(\approx 0.0029\%\)</td>
+      </tr>
+      <tr>
+        <td>1.50</td>
+        <td>\(\approx 56.6855\)</td>
+        <td>56.69</td>
+        <td>\(\approx 100.0079\)</td>
+        <td>\(\approx 0.0079\%\)</td>
+      </tr>
+      <tr>
+        <td>2.00</td>
+        <td>\(\approx 37.8929\)</td>
+        <td>37.89</td>
+        <td>\(\approx 99.9923\)</td>
+        <td>\(\approx 0.0077\%\)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div style="font-weight:900;margin-bottom:6px">Result</div>
+    <div class="small">
+      Even after rounding the pressure values, \(K_i\) remains extremely close to
+      \(K=100\), with relative errors below \(0.01\%\).
+      This illustrates why relative/logarithmic formulations are numerically robust.
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <h3 style="margin:0 0 8px">Additional check: constancy of the relative derivative \(D_1P\)</h3>
+  <p class="small">
+    The theory predicts:
+    \(\;D_1P=\dfrac{d\ln P}{d\ln V}=-\gamma\).
+    Numerically, between two points, we approximate:
+  </p>
+
+  <div class="math">
+    \[
+    D_1P \approx \frac{\ln(P_2/P_1)}{\ln(V_2/V_1)}
+    \]
+  </div>
+
+  <p class="small">
+    Using the <strong>rounded</strong> values above:
+    <ul class="small">
+      <li>
+        Between \(V=1.20\) and \(V=1.50\):
+        \(\;D_1P \approx -1.3995\) (very close to \(-1.4\)).
+      </li>
+      <li>
+        Between \(V=1.50\) and \(V=2.00\):
+        \(\;D_1P \approx -1.4005\) (very close to \(-1.4\)).
+      </li>
+    </ul>
+  </p>
+
+  <div class="callout">
+    <div style="font-weight:900;margin-bottom:6px">Hierarchical insight</div>
+    <div class="small">
+      At Level 1, the adiabatic law reads as a constant \(-\gamma\).
+      Numerical verification is therefore naturally performed using ratios and logarithms,
+      rather than finite differences.
+    </div>
+  </div>
+</div>
 
   <div class="card">
     <h2>6) Interpretation</h2>
