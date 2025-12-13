@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FAQ — Hierarchical Calculus</title>
+
+<style>
+:root{
+  --bg1:#0b1220; --bg2:#0f1b2e;
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(0,0,0,.22);
+  --b: rgba(255,255,255,.12);
+  --txt:#eaf2ff; --mut:#cfe3ff;
+  --accent:#61d2d2; --accent2:#7aa7ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, Arial;
+  background:
+    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
+    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--txt);
+}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
+.top{
+  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  padding:14px 16px;border-bottom:1px solid var(--b);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
+}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{
+  width:34px;height:34px;border-radius:10px;
+  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
+              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
+              rgba(255,255,255,.06);
+  border:1px solid var(--b);
+}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+nav a{
+  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
+  background:rgba(255,255,255,.03);
+}
+h1{margin:22px 0 8px;font-size:30px}
+.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.85}
+.card{
+  background:var(--card);border:1px solid var(--b);border-radius:18px;
+  padding:18px;margin:14px 0;
+}
+.small{font-size:14px;color:var(--mut);line-height:1.95}
+.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+.tag{
+  display:inline-block;padding:2px 10px;border:1px solid var(--b);
+  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
+}
+.math{
+  background:var(--card2);border:1px solid var(--b);border-radius:14px;
+  padding:12px;margin-top:10px;overflow:auto
+}
+details{
+  border:1px solid var(--b);
+  background:rgba(0,0,0,.18);
+  border-radius:14px;
+  padding:10px 12px;
+  margin:10px 0;
+}
+summary{
+  cursor:pointer;
+  font-weight:900;
+  color:#bfe8ff;
+  list-style:none;
+}
+summary::-webkit-details-marker{display:none}
+.answer{padding-top:10px}
+.callout{
+  border-left:4px solid var(--accent);
+  padding:12px 14px;border-radius:14px;
+  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
+  margin-top:12px;
+}
+ul{margin:10px 0 0 0; padding-left:18px}
+li{margin:7px 0}
+</style>
+
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<div class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true"></div>
+    <div>
+      <div style="font-weight:900">Hierarchical Calculus</div>
+      <div style="font-size:12px;color:var(--mut)">FAQ</div>
+    </div>
+  </div>
+
+  <nav aria-label="Navigation">
+    <a href="index-en.html">Home</a>
+    <a href="theory-en.html">Theory</a>
+    <a href="equations-en.html">Equations</a>
+    <a href="numerics-en.html">Numerics</a>
+    <a href="glossary-en.html">Glossary</a>
+    <a href="references-en.html">References</a>
+    <a href="faq.html">العربية</a>
+  </nav>
+</div>
+
+<div class="container">
+  <h1>Frequently Asked Questions (FAQ)</h1>
+  <p class="subtitle">
+    This page is for first-time readers: what is Hierarchical Calculus, what does it add, how is it used, and what are its limitations?
+  </p>
+
+  <div class="card">
+    <h2>The idea in two lines</h2>
+    <p class="small">
+      Hierarchical Calculus organizes “languages of change”:
+      <span class="tag">addition</span> (level 0) →
+      <span class="tag">division</span> (level 1) →
+      <span class="tag">log</span> (level 2) →
+      <span class="tag">tetration</span> (level 3) → …
+      so you can choose the level where the law becomes simplest.
+    </p>
+
+    <div class="math">
+      \[
+      D_0 f=\frac{df}{dx},\qquad
+      D_1 f=\frac{d\ln f}{d\ln x},\qquad
+      D_2 f=\frac{d\ln(\ln f)}{d\ln(\ln x)}
+      \]
+    </div>
+
+    <div class="callout">
+      <div style="font-weight:900;margin-bottom:6px">Rule of thumb</div>
+      <div class="small">
+        Power-law behavior → level 1 (\(D_1\)) is often the natural coordinate system.  
+        Multi-scale behavior like \(\exp((\ln x)^k)\) → level 2 (\(D_2\)) often yields a much more stable representation.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Q & A</h2>
+
+    <details open>
+      <summary>1) Is this a replacement for classical calculus?</summary>
+      <div class="answer small">
+        No. It is a <strong>general framework</strong> that includes classical differentiation (level 0) as a special case,
+        and adds higher levels that are sometimes more natural for ratio/log/log-log behaviors.
+      </div>
+    </details>
+
+    <details>
+      <summary>2) What is the difference between \(D_0\) and \(D_1\)?</summary>
+      <div class="answer small">
+        \(D_0\) measures additive change.  
+        \(D_1\) measures relative (scale-invariant) change:
+        <div class="math">
+          \[
+          D_1 f=\frac{d\ln f}{d\ln x}=\frac{x}{f}\frac{df}{dx}
+          \]
+        </div>
+        For \(f(x)=x^k\), we get \(D_1 f=k\) constant, i.e., power laws become linear in log coordinates.
+      </div>
+    </details>
+
+    <details>
+      <summary>3) Why can lifting improve numerical approximations?</summary>
+      <div class="answer small">
+        Because you approximate in a coordinate system where the function is closer to linear and often better conditioned.
+        Instead of approximating \(f\) directly, approximate \(\ln f\) or \(\ln(\ln f)\), then transform back.
+        <ul>
+          <li>See: <a href="numerics-en.html">Numerics</a>.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>4) Are there real physics examples?</summary>
+      <div class="answer small">
+        Yes. Many physical laws are naturally relative.
+        For an ideal gas in an <strong>adiabatic</strong> process: \(P V^\gamma=\text{const}\), hence:
+        <div class="math">
+          \[
+          \frac{d\ln P}{d\ln V}=-\gamma
+          \]
+        </div>
+        which is exactly a level-1 equation.
+      </div>
+    </details>
+
+    <details>
+      <summary>5) What domain assumptions are needed for \(D_2\) and higher?</summary>
+      <div class="answer small">
+        For \(\ln(\ln x)\) you need \(\ln x>0\) i.e., \(x>1\).
+        For \(\ln(\ln f)\) you typically need \(f>1\) and \(\ln f>0\).
+        <ul>
+          <li>See: <a href="glossary-en.html#domain">Domain assumptions</a>.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>6) Is priority timestamped formally?</summary>
+      <div class="answer small">
+        Yes via Zenodo and DOI, providing a stable archive and timestamped releases.
+        <ul>
+          <li>See: <a href="references-en.html#cite">Official citation</a>.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>7) Where should a new reader start?</summary>
+      <div class="answer small">
+        Recommended path:
+        <ol style="margin:10px 0 0 0;">
+          <li><a href="theory-en.html">Theory</a></li>
+          <li><a href="equations-en.html">Hierarchical Equations</a></li>
+          <li><a href="numerics-en.html">Numerics</a></li>
+          <li><a href="glossary-en.html">Glossary</a> and <a href="references-en.html">References</a></li>
+        </ol>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="card">
+    <h2>Citation</h2>
+    <p class="small">
+      DOI (Concept): <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
