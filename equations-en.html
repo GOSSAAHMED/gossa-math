@@ -1,141 +1,331 @@
-<div class="hr"></div>
-<h3>Fully Solved Examples (Analytic)</h3>
-<p class="small">
-Notation: \(D_0\) differential, \(D_1\) relative, \(D_2\) logarithmic.  
-Domain assumptions apply when using logs: \(x>0\), \(f(x)>0\), and for \(D_2\): \(\ln f(x)>0\).
-</p>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hierarchical Equations — Hierarchical Calculus</title>
 
-<div class="hr"></div>
-<h3>Example 1 — Level-1 equation</h3>
-<p class="small">
-Solve:
-\[
-D_1 f(x)=k \quad (\text{constant})
-\]
-</p>
-<div class="math">
-\[
-D_1 f(x)=\frac{d\ln f}{d\ln x}=k
-\Rightarrow d\ln f = k\, d\ln x
-\]
-\[
-\ln f = k\ln x + C
-\Rightarrow f(x)=C_0\,x^{k}
-\]
-</div>
-<p class="small">
-Thus, a constant relative derivative yields a power law directly.
-</p>
+<style>
+:root{
+  --bg1:#0b1220; --bg2:#0f1b2e;
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(0,0,0,.22);
+  --b: rgba(255,255,255,.12);
+  --txt:#eaf2ff; --mut:#cfe3ff;
+  --accent:#61d2d2; --accent2:#7aa7ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, Arial;
+  background:
+    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
+    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--txt);
+}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
+.top{
+  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  padding:14px 16px;border-bottom:1px solid var(--b);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
+}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{
+  width:34px;height:34px;border-radius:10px;
+  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
+              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
+              rgba(255,255,255,.06);
+  border:1px solid var(--b);
+}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+nav a{
+  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
+  background:rgba(255,255,255,.03);
+}
+h1{margin:22px 0 8px;font-size:30px}
+.subtitle{color:var(--mut);margin:0 0 16px}
+.card{
+  background:var(--card);border:1px solid var(--b);border-radius:18px;
+  padding:18px;margin:14px 0;
+}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}
+.kpi{
+  background:rgba(0,0,0,.20);border:1px solid var(--b);border-radius:16px;
+  padding:14px;
+}
+.kpi h3{margin:0 0 8px;font-size:16px;color:#bfe8ff}
+.small{font-size:14px;color:var(--mut);line-height:1.8}
+.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+.tag{
+  display:inline-block;padding:3px 10px;border-radius:999px;
+  border:1px solid var(--b);background:rgba(255,255,255,.03);
+  font-size:12px;color:#bfe8ff
+}
+.math{
+  background:var(--card2);border:1px solid var(--b);border-radius:14px;
+  padding:12px;margin-top:10px;overflow:auto
+}
+.callout{
+  border-left:4px solid var(--accent);
+  padding:12px 14px;border-radius:14px;
+  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
+}
+ul{margin:10px 0 0 0; padding-left:18px}
+li{margin:6px 0}
+.footer{
+  margin-top:22px;padding:14px 16px;border:1px solid var(--b);border-radius:16px;
+  background:rgba(255,255,255,.04)
+}
+pre{white-space:pre-wrap}
+</style>
 
-<div class="hr"></div>
-<h3>Example 2 — Nonlinear relative equation becomes linear</h3>
-<p class="small">
-Solve:
-\[
-D_1 f(x)=a+b\ln f(x)
-\]
-with constants \(a,b\) and \(f>0\).
-</p>
-<div class="math">
-\[
-\frac{d\ln f}{d\ln x}=a+b\ln f
-\]
-Let \(u=\ln f\). Then:
-\[
-\frac{du}{d\ln x}=a+bu
-\Rightarrow \frac{du}{d\ln x}-bu=a
-\]
-Solution:
-\[
-u(\ln x)=C\,e^{b\ln x}-\frac{a}{b}=C\,x^{b}-\frac{a}{b}
-\]
-Hence:
-\[
-\ln f(x)=C\,x^{b}-\frac{a}{b}
-\Rightarrow f(x)=\exp\!\left(C\,x^{b}-\frac{a}{b}\right)
-\]
-</div>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
 
-<div class="hr"></div>
-<h3>Example 3 — Level-2 equation</h3>
-<p class="small">
-Solve:
-\[
-D_2 f(x)=k
-\]
-Assume \(x>1\) and \(f(x)>e\).
-</p>
-<div class="math">
-\[
-\frac{d\ln(\ln f)}{d\ln(\ln x)}=k
-\Rightarrow d\ln(\ln f)=k\,d\ln(\ln x)
-\]
-\[
-\ln(\ln f)=k\ln(\ln x)+C
-\Rightarrow \ln f = C_1(\ln x)^k
-\]
-\[
-f(x)=\exp\!\big(C_1(\ln x)^k\big)
-\]
-</div>
+<body>
 
-<div class="hr"></div>
-<h2>Real Physics Example (Thermodynamics)</h2>
-<p class="small">
-For an ideal gas in an <strong>adiabatic</strong> process:
-\[
-P\,V^\gamma=\text{constant}
-\]
-Taking logs:
-\[
-\ln P + \gamma \ln V = \text{constant}
-\Rightarrow \frac{d\ln P}{d\ln V}=-\gamma
-\]
-So in relative-derivative form:
-\[
-D_1^{(V)} P(V)=\frac{d\ln P}{d\ln V}=-\gamma
-\]
-</p>
-<div class="callout">
-<div style="font-weight:900;margin-bottom:6px">Direct outcome</div>
-<div class="small">
-The adiabatic law is naturally a constant level-1 equation, giving immediately:
-\(
-P(V)=C\,V^{-\gamma}
-\).
-This illustrates why level-1 is the “native language” for such laws.
-</div>
-</div>
+<div class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true"></div>
+    <div>
+      <div style="font-weight:900">Hierarchical Calculus</div>
+      <div style="font-size:12px;color:var(--mut)">Hierarchical Equations</div>
+    </div>
+  </div>
 
-<div class="hr"></div>
-<h2>Numerical Note (Error Perspective)</h2>
-<p class="small">
-Consider the multi-scale model:
-\[
-f(x)=\exp\big((\ln x)^2\big)
-\]
-at \(x=10\). The true value is:
-\[
-f(10)=\exp\big((\ln 10)^2\big)
-\]
-</p>
-
-<div class="math">
-\[
-\ln 10 \approx 2.302585093
-\Rightarrow (\ln 10)^2 \approx 5.30189811
-\Rightarrow f(10)\approx e^{5.30189811}\approx 200.336
-\]
+  <nav aria-label="Navigation">
+    <a href="index-en.html">Home</a>
+    <a href="theory-en.html">Theory</a>
+    <a href="#definitions">Definitions</a>
+    <a href="#examples">Examples</a>
+    <a href="#method">Lifting</a>
+    <a href="#cite">Citation</a>
+    <a href="index.html">العربية</a>
+  </nav>
 </div>
 
-<p class="small">
-A level-2 viewpoint computes \(\ln f=(\ln x)^2\) first (smaller-scale error),
-then exponentiates—often more stable than approximating \(f\) directly.
-</p>
+<div class="container">
 
-<div class="callout">
-<div style="font-weight:900;margin-bottom:6px">Next step</div>
-<div class="small">
-In <code>numerics-en.html</code> we will add full error tables (Taylor vs relative vs logarithmic) over multiple \(x\)-values.
+  <h1>Hierarchical Equations</h1>
+  <p class="subtitle">
+    A generalization of classical differential equations toward higher levels (relative/logarithmic/tetrational...) to simplify structure via hierarchical lifting.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h2 id="definitions">1) General Definition</h2>
+      <p class="small">
+        A <strong>level-\(n\) hierarchical equation</strong> is any relation linking a function \(f\) with its hierarchical derivatives up to level \(n\).
+      </p>
+      <div class="math">
+        \[
+          \mathcal{E}_n\big(x,\; f,\; D_0 f,\; D_1 f,\; \dots,\; D_n f\big)=0
+        \]
+      </div>
+
+      <div class="hr"></div>
+
+      <p class="small">
+        Using your notation:
+        <span class="tag">D0 = differential</span> and <span class="tag">D1 = relative</span>.
+        Typical forms:
+      </p>
+
+      <div class="math">
+        \[
+        D_0 f(x)=\frac{df}{dx},
+        \qquad
+        D_1 f(x)=\frac{d\ln f(x)}{d\ln x}=\frac{x}{f(x)}\,\frac{df}{dx}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+        D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)},
+        \qquad
+        D_3 f(x)=\frac{d\ln^{(3)}(f(x))}{d\ln^{(3)}(x)}
+        \]
+      </div>
+
+      <div class="callout" style="margin-top:14px">
+        <div style="font-weight:900;margin-bottom:6px">Key idea</div>
+        <div class="small">
+          Many equations that look highly nonlinear at one level become structurally simpler (often closer to linear/separable) after a suitable lift to a higher level.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2) Quick Classification</h2>
+
+      <div class="kpi">
+        <h3>Differential (Level 0)</h3>
+        <div class="math">\[
+          F\big(x,f,D_0 f,\dots\big)=0
+        \]</div>
+        <div class="small">Base structure: additive change.</div>
+      </div>
+
+      <div class="kpi">
+        <h3>Relative (Level 1)</h3>
+        <div class="math">\[
+          F\big(x,f,D_1 f,\dots\big)=0
+        \]</div>
+        <div class="small">Base structure: ratios/self-scaling.</div>
+      </div>
+
+      <div class="kpi">
+        <h3>Logarithmic (Level 2)</h3>
+        <div class="math">\[
+          F\big(x,f,D_2 f,\dots\big)=0
+        \]</div>
+        <div class="small">Base structure: iterated logs.</div>
+      </div>
+
+      <div class="kpi">
+        <h3>Tetrational (Level 3)</h3>
+        <div class="math">\[
+          F\big(x,f,D_3 f,\dots\big)=0
+        \]</div>
+        <div class="small">Base structure: higher-level layering.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="examples">
+    <h2>3) Canonical Examples</h2>
+    <p class="small">
+      These examples show how to express equations at different levels and how lifting can reduce structural complexity.
+    </p>
+
+    <div class="hr"></div>
+
+    <h3>Example A — Level 0</h3>
+    <div class="math">
+      \[
+        D_0 f(x)=g(x)
+        \quad \Longleftrightarrow \quad
+        \frac{df}{dx}=g(x)
+      \]
+    </div>
+
+    <div class="hr"></div>
+
+    <h3>Example B — Level 1</h3>
+    <div class="math">
+      \[
+        D_1 f(x)=g(x)
+        \quad \Longleftrightarrow \quad
+        \frac{d\ln f}{d\ln x}=g(x)
+      \]
+    </div>
+    <div class="math">
+      \[
+        \frac{d\ln f}{dx}= \frac{g(x)}{x}
+        \quad \Longrightarrow \quad
+        \ln f(x)=\int \frac{g(x)}{x}\,dx + C
+      \]
+    </div>
+
+    <div class="hr"></div>
+
+    <h3>Example C — Level 2</h3>
+    <div class="math">
+      \[
+        D_2 f(x)=g(x)
+        \quad \Longleftrightarrow \quad
+        \frac{d\ln(\ln f)}{d\ln(\ln x)}=g(x)
+      \]
+    </div>
+
+    <div class="hr"></div>
+
+    <h3>Example D — Lifting sketch</h3>
+    <div class="math">
+      \[
+        u=\ln f \;\Rightarrow\; D_1 f=\frac{d u}{d\ln x}
+      \]
+    </div>
+    <div class="math">
+      \[
+        v=\ln(\ln f) \;\Rightarrow\; D_2 f=\frac{d v}{d\ln(\ln x)}
+      \]
+    </div>
+
+    <div class="callout" style="margin-top:14px">
+      <div style="font-weight:900;margin-bottom:6px">Reviewer note</div>
+      <div class="small">
+        A strict version should always state domain assumptions: \(x>0\), \(f(x)>0\), and avoid singular points where \(\ln x=0\) or \(\ln f=0\) when using \(\ln(\ln(\cdot))\).
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="method">
+    <h2>4) Hierarchical Lifting</h2>
+    <p class="small">
+      The goal is not to “replace calculus”, but to choose the right level representation of change so that the equation becomes structurally simpler (often separable/linearizable).
+    </p>
+
+    <div class="math">
+      \[
+        \mathcal{E}_k\big(x,f,D_0 f,\dots,D_k f\big)=0
+        \quad \xrightarrow{\;\text{Lift}\;}
+        \widetilde{\mathcal{E}}_{k+1}\big(x,\,\ln^{(k+1)}f,\, D_{k+1}f\big)=0
+      \]
+    </div>
+
+    <div class="hr"></div>
+
+    <h3>Practical workflow</h3>
+    <ul class="small">
+      <li>Identify the growth/variation type (power? exponential? multi-scale?).</li>
+      <li>Choose a suitable level \(k\).</li>
+      <li>Transform via \(u=\ln^{(k)} f\).</li>
+      <li>Solve in \(u\), then invert (iterated exponentiation).</li>
+    </ul>
+  </div>
+
+  <div class="card" id="cite">
+    <h2>5) Citation</h2>
+    <p class="small">
+      Official reference DOI:
+      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+        10.5281/zenodo.17917302
+      </a>
+    </p>
+
+    <div class="math">
+<pre style="margin:0;color:#eaf2ff">
+@software{gossa_hierarchical_calculus_2025,
+  author = {Gossa Ahmed},
+  title  = {Hierarchical Calculus},
+  year   = {2025},
+  doi    = {10.5281/zenodo.17917302},
+  url    = {https://github.com/GOSSAAHMED/gossa-math}
+}
+</pre>
+    </div>
+
+    <div class="footer small">
+      Useful links:
+      <ul>
+        <li><a href="index-en.html">Home</a></li>
+        <li><a href="theory-en.html">Theory</a></li>
+        <li><a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">Version DOI (v1.0.0)</a></li>
+      </ul>
+    </div>
+  </div>
+
 </div>
-</div>
+</body>
+</html>
+
