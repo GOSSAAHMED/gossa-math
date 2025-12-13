@@ -127,6 +127,39 @@ D_n f(x)\Rightarrow D_{n-1} f(x)\Rightarrow \dots \Rightarrow D_0 f(x)
 \]
 </div>
 </div>
+<div class="card">
+  <h2>✨ Golden Relations of Hierarchical Derivatives</h2>
+
+  <div class="math">
+  \[
+  D_0 f=\frac{df}{dx}
+  \]
+  \[
+  D_1 f=\frac{x}{f}D_0 f
+  \]
+  \[
+  D_2 f=D_1 f\frac{\ln x}{\ln f}
+  \]
+  \[
+  D_3 f=D_2 f\frac{\ln(\ln x)}{\ln(\ln f)}
+  \]
+  </div>
+
+  <div class="math">
+  \[
+  \boxed{
+  D_{n+1} f
+  =
+  D_n f\frac{\ln^{(n)}(x)}{\ln^{(n)}(f)}
+  }
+  \]
+  </div>
+
+  <p class="small">
+    These identities form the structural core of Hierarchical Calculus,
+    showing that each derivative level is a rescaled version of classical differentiation.
+  </p>
+</div>
 
 <h2>5. Interpretation</h2>
 <div class="card">
