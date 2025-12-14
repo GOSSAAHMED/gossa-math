@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hierarchical Series – Hierarchical Calculus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Main site CSS -->
+  <link rel="stylesheet" href="assets/site.css">
+
+  <!-- Page-specific tweaks (light) -->
+  <style>
+    .kicker{opacity:.75;margin-top:6px}
+    .note strong{font-weight:700}
+    a{color:inherit}
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<!-- ===== Unified Header ===== -->
+<header class="hc-header" role="banner">
+  <div class="hc-inner">
+
+    <a class="hc-brand" href="index-en.html" aria-label="Hierarchical Calculus Home">
+      <img class="hc-logo" src="assets/logo.png" alt="Hierarchical Calculus Logo">
+      <div class="hc-titles">
+        <div class="hc-title-ar" lang="ar" dir="rtl">الحساب الهرمي</div>
+        <div class="hc-title-en">Hierarchical Calculus</div>
+      </div>
+    </a>
+
+    <nav class="hc-nav" aria-label="Primary navigation">
+      <a href="start-here-en.html">Start Here</a>
+      <a href="theory.html">Theory</a>
+      <a href="equations-en.html">Equations</a>
+      <a href="numerics-en.html">Numerical</a>
+      <a href="physics-en.html">Physics</a>
+      <a href="faq-en.html">FAQ</a>
+      <a class="hc-lang" href="hierarchical-series.html" lang="ar" dir="rtl">AR</a>
+    </nav>
+
+  </div>
+</header>
+<!-- ========================= -->
+
+<main>
+
+  <h1>Hierarchical Series</h1>
+  <p class="kicker">
+    A conceptual extension associated with Hierarchical Calculus.
+  </p>
+
+  <div class="note">
+    <strong>Academic note:</strong>
+    The material presented on this page is intended as a
+    <em>conceptual extension</em> of hierarchical calculus,
+    aimed at building intuition and guiding further research.
+    A fully rigorous formulation may be developed in future work.
+  </div>
+
+  <div class="card toc">
+    <strong>Contents</strong>
+    <div style="margin-top:10px; line-height:1.9">
+      <div>1) <a href="#motivation">Why hierarchical series?</a></div>
+      <div>2) <a href="#idea">Core idea</a></div>
+      <div>3) <a href="#informal-def">Informal definition</a></div>
+      <div>4) <a href="#example">Illustrative example</a></div>
+      <div>5) <a href="#workflow">How to use them</a></div>
+      <div>6) <a href="#notes">Domain and remarks</a></div>
+      <div>7) <a href="#future">Future directions</a></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2 id="motivation">1) Why hierarchical series?</h2>
+  <p>
+    In classical analysis, Taylor series expand a function \(f(x)\)
+    around a point \(x_0\) using its derivatives:
+  </p>
+
+  <div class="card">
+    \[
+      f(x) \approx f(x_0) + f'(x_0)(x-x_0)
+      + \frac{f''(x_0)}{2!}(x-x_0)^2 + \cdots
+    \]
+  </div>
+
+  <p>
+    However, for functions exhibiting compound growth or
+    multi-scale behavior, expanding \(f(x)\) itself may be inefficient.
+    Hierarchical calculus suggests a natural alternative:
+    expand the function after lifting it to a suitable hierarchical level,
+    such as \(\ln f(x)\) or \(\ln\ln f(x)\), and then reconstruct.
+  </p>
+
+  <hr>
+
+  <h2 id="idea">2) Core idea</h2>
+
+  <div class="card">
+    <p>
+      The essential idea is simple:
+      <strong>perform approximation at the level where the structure
+      becomes simpler</strong>.
+    </p>
+    <p>
+      Instead of approximating \(f(x)\) directly (level \(D_0\)),
+      we may approximate a transformed function
+      \(g(x)=T_k(f(x))\) at a higher hierarchical level \(D_k\),
+      and then apply the inverse transformation.
+    </p>
+  </div>
+
+  <hr>
+
+  <h2 id="informal-def">3) Informal definition</h2>
+
+  <div class="card">
+    <p>
+      <strong>Informal definition.</strong>
+      Let \(f(x)\) be a positive function on a suitable domain.
+      Define hierarchical transformations
+    </p>
+
+    \[
+      T_0(f)=f,\quad
+      T_1(f)=\ln f,\quad
+      T_2(f)=\ln(\ln f),\ \dots
+    \]
+
+    <p>
+      Choose a level \(k\) and form a Taylor expansion of
+      \(g(x)=T_k(f(x))\) around \(x_0\):
+    </p>
+
+    \[
+      g(x) \approx \sum_{n=0}^{N} \frac{g^{(n)}(x_0)}{n!}(x-x_0)^n
+    \]
+
+    <p>
+      An approximation of \(f(x)\) is then obtained by applying
+      the inverse transformation \(T_k^{-1}\).
+    </p>
+  </div>
+
+  <hr>
+
+  <h2 id="example">4) Illustrative example</h2>
+
+  <p>
+    Consider the function
+    \[
+      y(x)=\exp\!\big(e^x\big).
+    \]
+  </p>
+
+  <div class="card">
+    \[
+      \ln y(x)=e^x,\qquad
+      \ln\ln y(x)=x.
+    \]
+  </div>
+
+  <p>
+    At level \(D_2\), the transformed function is simply linear:
+    \(g(x)=x\).
+    Its Taylor expansion around \(x_0\) is exact,
+    and reconstruction yields a highly accurate approximation
+    of \(y(x)\).
+  </p>
+
+  <hr>
+
+  <h2 id="workflow">5) How to use hierarchical series</h2>
+
+  <div class="card">
+    <ol>
+      <li>Identify whether the function exhibits multi-scale or compound growth.</li>
+      <li>Select a hierarchical level \(k\) where the structure simplifies.</li>
+      <li>Expand the transformed function \(T_k(f(x))\) via Taylor series.</li>
+      <li>Reconstruct the approximation using \(T_k^{-1}\).</li>
+      <li>Verify domain conditions (positivity, logarithmic constraints).</li>
+    </ol>
+  </div>
+
+  <hr>
+
+  <h2 id="notes">6) Domain and remarks</h2>
+
+  <div class="card">
+    <ul>
+      <li>Level \(D_1\) requires \(f(x)>0\).</li>
+      <li>Level \(D_2\) requires \(\ln f(x)>0\).</li>
+      <li>Hierarchical series are not meant to replace Taylor series universally.</li>
+      <li>They are most effective when the hierarchical transformation
+          simplifies the functional structure.</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <h2 id="future">7) Future directions</h2>
+
+  <div class="card">
+    <p>
+      Possible future developments include:
+    </p>
+    <ul>
+      <li>Rigorous convergence analysis of hierarchical series.</li>
+      <li>Error estimates after inverse hierarchical reconstruction.</li>
+      <li>Numerical comparisons with Taylor and Padé approximations.</li>
+      <li>Applications to differential equations that linearize
+          at higher hierarchical levels.</li>
+    </ul>
+  </div>
+
+</main>
+
+</body>
+</html>
