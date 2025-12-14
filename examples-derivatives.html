@@ -347,6 +347,225 @@
       \]
     </div>
   </div>
+<!-- ===================== أمثلة إضافية مفصّلة ===================== -->
+
+<hr>
+<h2>أمثلة إضافية مفصّلة (9–18)</h2>
+
+<!-- 9) cos x -->
+<h2 id="cos">9) \(f(x)=\cos x\)</h2>
+<div class="card">
+  <div class="note">
+    <strong>شرط المجال لـ D1:</strong> يجب \(\cos x>0\) (مثلًا على \((-\pi/2,\pi/2)\)).
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 1: حساب \(D0\)</strong>
+    \[
+      D0(\cos x)=-\sin x
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: حساب \(D1\)</strong>
+    \[
+      D1(\cos x)=\frac{-\sin x}{\cos x}=-\tan x
+    \]
+    أو:
+    \[
+      D1(\cos x)=\frac{d}{dx}(\ln(\cos x))
+    \]
+  </div>
+</div>
+
+<!-- 10) tan x -->
+<h2 id="tan">10) \(f(x)=\tan x\)</h2>
+<div class="card">
+  <div class="note">
+    <strong>شرط المجال:</strong> \(\tan x>0\) وعلى أن \(\cos x\neq0\).
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 1: حساب \(D0\)</strong>
+    \[
+      D0(\tan x)=\sec^2 x
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: حساب \(D1\)</strong>
+    \[
+      D1(\tan x)=\frac{\sec^2 x}{\tan x}
+    \]
+  </div>
+</div>
+
+<!-- 11) sqrt(x) -->
+<h2 id="sqrt">11) \(f(x)=\sqrt{x}=x^{1/2}\)</h2>
+<div class="card">
+  <div class="note">
+    <strong>شرط المجال:</strong> \(x>0\).
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 1: حساب \(D0\)</strong>
+    \[
+      D0(\sqrt{x})=\frac{1}{2\sqrt{x}}
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: حساب \(D1\)</strong>
+    \[
+      D1(\sqrt{x})=\frac{1}{2x}
+    \]
+    لأن:
+    \[
+      \ln(\sqrt{x})=\frac12\ln x
+    \]
+  </div>
+</div>
+
+<!-- 12) ln(ln x) -->
+<h2 id="lnln">12) \(f(x)=\ln(\ln x)\)</h2>
+<div class="card">
+  <div class="note">
+    <strong>شرط المجال:</strong> \(x>1\) و \(\ln x>1\) لحساب \(D1\).
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 1: حساب \(D0\)</strong>
+    \[
+      D0(\ln(\ln x))=\frac{1}{x\ln x}
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: حساب \(D1\)</strong>
+    \[
+      D1(\ln(\ln x))=\frac{1}{\ln(\ln x)}\cdot\frac{1}{x\ln x}
+    \]
+  </div>
+</div>
+
+<!-- 13) e^{x^2} -->
+<h2 id="ex2">13) \(f(x)=e^{x^2}\)</h2>
+<div class="card">
+  <div class="step">
+    <strong>الخطوة 1: حساب \(D0\)</strong>
+    \[
+      D0(e^{x^2})=2x\,e^{x^2}
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: حساب \(D1\)</strong>
+    \[
+      \ln f=x^2 \Rightarrow D1(e^{x^2})=\frac{d}{dx}(x^2)=2x
+    \]
+  </div>
+</div>
+
+<!-- 14) (ax+b)^n -->
+<h2 id="axb">14) \(f(x)=(ax+b)^n\)</h2>
+<div class="card">
+  <div class="note">
+    <strong>شرط المجال:</strong> \(ax+b>0\).
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 1: حساب \(D0\)</strong>
+    \[
+      D0((ax+b)^n)=n a (ax+b)^{n-1}
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: حساب \(D1\)</strong>
+    \[
+      D1((ax+b)^n)=\frac{d}{dx}\big(n\ln(ax+b)\big)=\frac{na}{ax+b}
+    \]
+  </div>
+</div>
+
+<!-- 15) x e^x -->
+<h2 id="xex">15) \(f(x)=x e^x\)</h2>
+<div class="card">
+  <div class="step">
+    <strong>الخطوة 1: احسب \(\ln f\)</strong>
+    \[
+      \ln f=\ln x + x
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: احسب \(D1\)</strong>
+    \[
+      D1 f=\frac{1}{x}+1
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 3: استرجاع \(D0\)</strong>
+    \[
+      D0(xe^x)=xe^x\left(\frac{1}{x}+1\right)=e^x+xe^x
+    \]
+  </div>
+</div>
+
+<!-- 16) ln(x^2+1) -->
+<h2 id="lnx2">16) \(f(x)=\ln(x^2+1)\)</h2>
+<div class="card">
+  <div class="step">
+    <strong>الخطوة 1: حساب \(D0\)</strong>
+    \[
+      D0(\ln(x^2+1))=\frac{2x}{x^2+1}
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: حساب \(D1\)</strong>
+    \[
+      D1(\ln(x^2+1))=\frac{2x}{(x^2+1)\ln(x^2+1)}
+    \]
+  </div>
+</div>
+
+<!-- 17) x^3 -->
+<h2 id="x3">17) \(f(x)=x^3\)</h2>
+<div class="card">
+  <div class="step">
+    <strong>الخطوة 1: \(D0\)</strong>
+    \[
+      D0(x^3)=3x^2
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: \(D1\)</strong>
+    \[
+      D1(x^3)=\frac{3}{x}
+    \]
+  </div>
+</div>
+
+<!-- 18) e^{ax+b} -->
+<h2 id="eaxb">18) \(f(x)=e^{ax+b}\)</h2>
+<div class="card">
+  <div class="step">
+    <strong>الخطوة 1: \(D0\)</strong>
+    \[
+      D0(e^{ax+b})=a e^{ax+b}
+    \]
+  </div>
+
+  <div class="step">
+    <strong>الخطوة 2: \(D1\)</strong>
+    \[
+      \ln f=ax+b \Rightarrow D1(e^{ax+b})=a
+    \]
+  </div>
+</div>
 
   <hr>
 
