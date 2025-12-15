@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>المعادلات الهرمية (أمثلة محلولة) | الحساب الهرمي</title>
+
+  <!-- MathJax (LaTeX) -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root{
+      --bg:#0b1220; --card:#101b2f; --text:#e9eef8; --muted:#b7c3da;
+      --accent:#7dd3fc; --border:rgba(255,255,255,.10);
+    }
+    body{margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic","Noto Sans Arabic",Arial,sans-serif;
+      line-height:1.85}
+    header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
+    nav a:hover{border-color:rgba(125,211,252,.55)}
+    main{max-width:1100px;margin:0 auto;padding:0 18px 50px}
+    h1{font-size:30px;margin:14px 0 6px}
+    h2{font-size:22px;margin:26px 0 10px}
+    h3{font-size:18px;margin:18px 0 8px}
+    p{color:var(--muted);margin:8px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 16px;margin:14px 0}
+    .doi{display:flex;flex-direction:column;gap:6px}
+    .doi a{color:var(--accent);text-decoration:none}
+    .eq{overflow:auto}
+    .note{border-right:4px solid var(--accent);padding-right:12px}
+    .small{font-size:14px}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+    table{width:100%;border-collapse:collapse;margin-top:10px;overflow:hidden;border-radius:14px}
+    th,td{border:1px solid var(--border);padding:10px 10px;text-align:right}
+    th{background:rgba(255,255,255,.05);color:var(--text);font-weight:700}
+    td{color:var(--muted)}
+    .kpi{color:var(--text);font-weight:700}
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="./index.html">نظرة عامة</a>
+      <a href="./theory.html">التعريفات الأساسية</a>
+      <a href="./series.html">المتسلسلات الهرمية</a>
+      <a href="./rules.html">قوانين الاشتقاق الهرمي</a>
+      <a href="./integrals.html">التكامل الهرمي</a>
+      <a href="./equations.html">المعادلات الهرمية</a>
+      <a href="./equations-solved.html" aria-current="page">المعادلات الهرمية (أمثلة محلولة)</a>
+      <a href="./citation.html">كيفية الاستشهاد</a>
+    </nav>
+
+    <h1>المعادلات الهرمية (أمثلة محلولة بالكامل)</h1>
+    <p class="small">
+      الهدف من هذه الصفحة: إغلاق باب “أخذ الفكرة العامة ثم استخراج نتائج وتطبيقات ونسبتها لغير صاحبها” عبر نشر أمثلة محلولة بالكامل (نسبية \(D_1\) ولوغاريتمية \(D_2\)) مع منهج التحويل.
+    </p>
+
+    <div class="card doi">
+      <strong>DOI والأسبقية</strong>
+      <div class="small">
+        <div>Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></div>
+        <div>Version DOI (v1.0.0): <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a></div>
+      </div>
+      <div class="note small">
+        هذه الأمثلة جزء من البرنامج البحثي للحساب الهرمي. أي استعمال أو توسعة يجب أن تُرفق بالاستشهاد بـ Zenodo وبالموقع الرسمي.
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h2>1) مبدأ التحويل الهرمي للمعادلات</h2>
+      <p>
+        كثير من المعادلات التفاضلية “الصعبة” تصبح أسهل عندما نكتبها على المقياس المناسب:
+        <strong>المقياس النسبي</strong> أو <strong>المقياس اللوغاريتمي</strong>.
+      </p>
+
+      <div class="eq">
+        \[
+        \boxed{
+        D_1 y=\frac{d\ln y}{d\ln x}=\frac{x}{y}\,\frac{dy}{dx}
+        }
+        \qquad (x>0,\;y>0)
+        \]
+      </div>
+
+      <div class="eq">
+        \[
+        \boxed{
+        D_2 y=\frac{d\ln y}{d\ln\ln x}
+        =\frac{\dfrac{d\ln y}{dx}}{\dfrac{d\ln\ln x}{dx}}
+        =\frac{\dfrac{1}{y}\dfrac{dy}{dx}}{\dfrac{1}{x\ln x}}
+        =\frac{x\ln x}{y}\,\frac{dy}{dx}
+        }
+        \qquad (x>1,\;y>0)
+        \]
+      </div>
+
+      <div class="note small">
+        <strong>قاعدة ذهبية:</strong><br/>
+        إذا كانت المعادلة على شكل
+        \(\displaystyle \frac{dy}{dx}=\frac{y}{x}\,F(x,y)\)
+        فإنها تصبح مباشرة
+        \(\displaystyle D_1 y = F(x,y)\).<br/>
+        وإذا كانت على شكل
+        \(\displaystyle \frac{dy}{dx}=\frac{y}{x\ln x}\,G(x,y)\)
+        فإنها تصبح مباشرة
+        \(\displaystyle D_2 y = G(x,y)\).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) ستة أمثلة محلولة</h2>
+
+      <!-- Example 1 -->
+      <h3>مثال 1 (نسبية مباشرة): \(\;y'=\dfrac{a}{x}y\)</h3>
+      <p class="small">هذه معادلة تفاضلية شائعة (قانون قدرة). على المقياس النسبي تصبح خطية جدًا.</p>
+
+      <div class="eq">
+        \[
+        \frac{dy}{dx}=\frac{a}{x}y
+        \;\Longrightarrow\;
+        \frac{x}{y}\frac{dy}{dx}=a
+        \;\Longrightarrow\;
+        \boxed{D_1 y=a}
+        \]
+      </div>
+
+      <div class="eq">
+        \[
+        D_1 y=a
+        \;\Longrightarrow\;
+        \frac{d\ln y}{d\ln x}=a
+        \;\Longrightarrow\;
+        \ln y=a\ln x + C
+        \;\Longrightarrow\;
+        \boxed{y=C_\times x^a}
+        \]
+      </div>
+
+      <!-- Example 2 -->
+      <h3>مثال 2 (نسبية أسهل من التفاضلي): \(\;y'=\dfrac{y}{x}\,\ln x\)</h3>
+      <div class="eq">
+        \[
+        \frac{dy}{dx}=\frac{y}{x}\ln x
+        \;\Longrightarrow\;
+        \boxed{D_1 y=\ln x}
+        \]
+      </div>
+
+      <div class="eq">
+        \[
+        D_1 y=\ln x
+        \;\Longrightarrow\;
+        \frac{d\ln y}{d\ln x}=\ln x
+        \]
+      </div>
+
+      <p class="small">
+        ضع \(t=\ln x\). عندها \(d\ln x=dt\) وتصبح:
+      </p>
+      <div class="eq">
+        \[
+        \frac{d\ln y}{dt}=t
+        \;\Longrightarrow\;
+        \ln y=\frac{t^2}{2}+C
+        \;\Longrightarrow\;
+        \boxed{y=C_\times\,\exp\!\left(\frac{(\ln x)^2}{2}\right)}
+        \]
+      </div>
+
+      <!-- Example 3 -->
+      <h3>مثال 3 (لوغاريتمي مباشر): \(\;y'=\dfrac{a}{x\ln x}\,y\)</h3>
+      <p class="small">هذه معادلة تصبح “ثابتة” على مستوى \(D_2\).</p>
+
+      <div class="eq">
+        \[
+        \frac{dy}{dx}=\frac{a}{x\ln x}\,y
+        \;\Longrightarrow\;
+        \frac{x\ln x}{y}\frac{dy}{dx}=a
+        \;\Longrightarrow\;
+        \boxed{D_2 y=a}
+        \]
+      </div>
+
+      <div class="eq">
+        \[
+        D_2 y=a
+        \;\Longrightarrow\;
+        \frac{d\ln y}{d\ln\ln x}=a
+        \;\Longrightarrow\;
+        \ln y=a\ln\ln x + C
+        \;\Longrightarrow\;
+        \boxed{y=C_\times\,(\ln x)^a}
+        \]
+      </div>
+
+      <!-- Example 4 -->
+      <h3>مثال 4 (نسبية + تكامل نسبي): \(\;y'=\dfrac{y}{x}\,(a+b\ln x)\)</h3>
+      <div class="eq">
+        \[
+        \frac{dy}{dx}=\frac{y}{x}(a+b\ln x)
+        \;\Longrightarrow\;
+        \boxed{D_1 y=a+b\ln x}
+        \]
+      </div>
+
+      <p class="small">ضع \(t=\ln x\). عندها:</p>
+      <div class="eq">
+        \[
+        \frac{d\ln y}{dt}=a+bt
+        \;\Longrightarrow\;
+        \ln y=at+\frac{b}{2}t^2 + C
+        \]
+      </div>
+
+      <div class="eq">
+        \[
+        \boxed{
+        y=C_\times\,\exp\!\left(a\ln x+\frac{b}{2}(\ln x)^2\right)
+        =C_\times\,x^a\,\exp\!\left(\frac{b}{2}(\ln x)^2\right)
+        }
+        \]
+      </div>
+
+      <!-- Example 5 -->
+      <h3>مثال 5 (غير خطي لكنه قابل للفصل نسبيًا): \(\;y'=\dfrac{1}{x}\,y^m\)</h3>
+      <p class="small">
+        هذه معادلة غير خطية في \(D_0\)، لكنها تصبح قابلة للفصل بسهولة على المقياس النسبي.
+      </p>
+
+      <div class="eq">
+        \[
+        \frac{dy}{dx}=\frac{1}{x}y^m
+        \;\Longrightarrow\;
+        \frac{x}{y}\frac{dy}{dx}=y^{m-1}
+        \;\Longrightarrow\;
+        \boxed{D_1 y=y^{m-1}}
+        \]
+      </div>
+
+      <p class="small">نكتبها كمعادلة فصل بالنسبة لـ \(\ln x\):</p>
+      <div class="eq">
+        \[
+        \frac{d\ln y}{d\ln x}=y^{m-1}
+        \;\Longrightarrow\;
+        \frac{1}{y^{m-1}}\,d\ln y = d\ln x
+        \]
+      </div>
+
+      <p class="small">وبما أن \(d\ln y=\frac{dy}{y}\):</p>
+      <div class="eq">
+        \[
+        \frac{1}{y^{m-1}}\cdot \frac{dy}{y}= \frac{dy}{y^m}=d\ln x
+        \]
+      </div>
+
+      <div class="eq">
+        \[
+        \int y^{-m}\,dy=\int d\ln x
+        \;\Longrightarrow\;
+        \frac{y^{1-m}}{1-m}=\ln x + C
+        \]
+      </div>
+
+      <div class="eq">
+        \[
+        \boxed{
+        y(x)=\left((1-m)(\ln x+C)\right)^{\frac{1}{1-m}}
+        }\quad (m\neq 1,\;x>0)
+        \]
+      </div>
+
+      <!-- Example 6 -->
+      <h3>مثال 6 (لوغاريتمي طبيعي): \(\;y'=\dfrac{y}{x\ln x}\,\ln\ln x\)</h3>
+      <p class="small">هنا يصبح الطرف الأيمن “بسيطًا جدًا” على مستوى \(D_2\).</p>
+
+      <div class="eq">
+        \[
+        \frac{dy}{dx}=\frac{y}{x\ln x}\,\ln\ln x
+        \;\Longrightarrow\;
+        \boxed{D_2 y=\ln\ln x}
+        \]
+      </div>
+
+      <p class="small">ضع \(u=\ln\ln x\). عندها \(d\ln\ln x = du\) وتصبح:</p>
+      <div class="eq">
+        \[
+        \frac{d\ln y}{du}=u
+        \;\Longrightarrow\;
+        \ln y=\frac{u^2}{2}+C
+        \;\Longrightarrow\;
+        \boxed{
+        y=C_\times\,\exp\!\left(\frac{(\ln\ln x)^2}{2}\right)
+        }
+        \]
+      </div>
+
+      <div class="note small">
+        <strong>خلاصة الأمثلة:</strong>
+        المعادلات التي تُكتب طبيعيًا على شكل \(\frac{y}{x}\times(\cdots)\) تُحل بسهولة على مستوى \(D_1\)،
+        والمعادلات التي تُكتب على شكل \(\frac{y}{x\ln x}\times(\cdots)\) تُحل بسهولة على مستوى \(D_2\).
+        هذا يوضح أن “الاستعصاء” قد يكون بسبب اختيار مقياس خاطئ، لا بسبب المعادلة نفسها.
+      </div>
+
+    </section>
+
+    <section class="card">
+      <h2>3) الاستشهاد بهذه الصفحة</h2>
+      <p class="small">صيغة استشهاد مقترحة:</p>
+      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
+        <code>
+          GOSSA AHMED. Hierarchical Calculus — Hierarchical Equations (Solved Examples D1 &amp; D2). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
+        </code>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px">
+    © 2025 — الحساب الهرمي | Gossa Ahmed — مؤرشف عبر Zenodo (DOI).
+  </footer>
+</body>
+</html>
