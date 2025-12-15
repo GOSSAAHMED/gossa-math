@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>قوانين الاشتقاق الهرمي | الحساب الهرمي</title>
+
+  <!-- MathJax (LaTeX) -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root{
+      --bg:#0b1220; --card:#101b2f; --text:#e9eef8; --muted:#b7c3da;
+      --accent:#7dd3fc; --border:rgba(255,255,255,.10);
+    }
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic","Noto Sans Arabic",Arial,sans-serif;line-height:1.85}
+    header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
+    nav a:hover{border-color:rgba(125,211,252,.55)}
+    main{max-width:1100px;margin:0 auto;padding:0 18px 50px}
+    h1{font-size:30px;margin:14px 0 6px}
+    h2{font-size:22px;margin:26px 0 10px}
+    h3{font-size:18px;margin:18px 0 8px}
+    p{color:var(--muted);margin:8px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 16px;margin:14px 0}
+    .doi{display:flex;flex-direction:column;gap:6px}
+    .doi a{color:var(--accent);text-decoration:none}
+    .eq{overflow:auto}
+    .note{border-right:4px solid var(--accent);padding-right:12px}
+    .small{font-size:14px}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+    table{width:100%;border-collapse:collapse;margin-top:10px;overflow:hidden;border-radius:14px}
+    th,td{border:1px solid var(--border);padding:10px 10px;text-align:right}
+    th{background:rgba(255,255,255,.05);color:var(--text);font-weight:700}
+    td{color:var(--muted)}
+    .kpi{color:var(--text);font-weight:700}
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="./index.html">نظرة عامة</a>
+      <a href="./theory.html">التعريفات الأساسية</a>
+      <a href="./series.html">المتسلسلات الهرمية</a>
+      <a href="./rules.html" aria-current="page">قوانين الاشتقاق الهرمي</a>
+      <a href="./integrals.html">التكامل الهرمي</a>
+      <a href="./equations.html">المعادلات الهرمية</a>
+      <a href="./citation.html">كيفية الاستشهاد</a>
+    </nav>
+
+    <h1>قوانين الاشتقاق الهرمي</h1>
+    <p class="small">
+      في هذه الصفحة نعرض القواعد الأساسية للاشتقاق الهرمي. نبدأ بالمشتق النسبي \(D_1\)، ثم نُعمِّم إلى \(D_n\).
+    </p>
+
+    <div class="card doi">
+      <strong>DOI والأسبقية</strong>
+      <div class="small">
+        <div>Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></div>
+        <div>Version DOI (v1.0.0): <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a></div>
+      </div>
+      <div class="note small">
+        هذه القوانين جزء من الإطار التأسيسي للحساب الهرمي. أي استعمال أو توسعة يجب أن تُرفق بالاستشهاد بـ Zenodo وبالموقع الرسمي.
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h2>1) تعريف سريع للمشتق النسبي \(D_1\)</h2>
+      <p>
+        نعتبر دالة موجبة \(f(x)>0\) على مجال \(x>0\). المشتق النسبي يقيس التغير بالنسبة لمقياس نسبي.
+      </p>
+
+      <div class="eq">
+        \[
+        \boxed{
+        D_1 f(x)=\frac{d}{d\ln x}\big(\ln f(x)\big)=\frac{d\ln f(x)}{d\ln x}
+        }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>فكرة:</strong>
+        إذا كانت \(D_1 f\) ثابتًا، فهذا يعني أن \(f\) تتصرف كقوة \(x^\alpha\) (قانون تحجيم).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) القواعد الأساسية لـ \(D_1\)</h2>
+
+      <h3>2.1) ثابت مضروب</h3>
+      <div class="eq">
+        \[
+        \boxed{
+        D_1(C\,f)=D_1 f
+        \qquad (C>0\ \text{ثابت})
+        }
+        \]
+      </div>
+      <p class="small">لأن \(\ln(Cf)=\ln C+\ln f\) واشتقاق \(\ln C\) يساوي صفرًا.</p>
+
+      <h3>2.2) قاعدة الضرب (التراكب النسبي)</h3>
+      <div class="eq">
+        \[
+        \boxed{
+        D_1(fg)=D_1 f + D_1 g
+        }
+        \]
+      </div>
+      <p class="small">برهان مختصر: \(\ln(fg)=\ln f+\ln g\) ثم الاشتقاق بالنسبة لـ \(\ln x\).</p>
+
+      <h3>2.3) قاعدة القسمة</h3>
+      <div class="eq">
+        \[
+        \boxed{
+        D_1\!\left(\frac{f}{g}\right)=D_1 f - D_1 g
+        }
+        \]
+      </div>
+      <p class="small">لأن \(\ln(f/g)=\ln f-\ln g\).</p>
+
+      <h3>2.4) ثابت أُسّي (رفع لقوة ثابتة)</h3>
+      <div class="eq">
+        \[
+        \boxed{
+        D_1\!\left(f^a\right)=a\,D_1 f
+        \qquad (a\ \text{ثابت})
+        }
+        \]
+      </div>
+      <p class="small">لأن \(\ln(f^a)=a\ln f\).</p>
+
+      <h3>2.5) دالة قوة: \(x^\alpha\)</h3>
+      <div class="eq">
+        \[
+        \boxed{
+        D_1(x^\alpha)=\alpha
+        }
+        \]
+      </div>
+      <p class="small">لأن \(\ln(x^\alpha)=\alpha\ln x\) واشتقاقها بالنسبة لـ \(\ln x\) يساوي \(\alpha\).</p>
+
+      <h3>2.6) قاعدة السلسلة (Chain Rule) — النسخة النسبية</h3>
+      <p class="small">
+        لتكن \(u=u(x)\) موجبة و\(f=f(u)\) موجبة. عندئذٍ:
+      </p>
+      <div class="eq">
+        \[
+        \boxed{
+        D_1\big(f(u(x))\big)=\Big(D_1 f\Big)(u)\;\cdot\;D_1 u(x)
+        }
+        \]
+      </div>
+      <div class="note small">
+        <strong>المعنى:</strong>
+        “معدل التغير النسبي للمركب” يساوي حاصل ضرب المعدلين النسبيين.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) أمثلة تحقق سريعة لـ \(D_1\)</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>الدالة \(f(x)\)</th>
+            <th>النتيجة</th>
+            <th>تعليق</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>\(f(x)=x^3\)</td>
+            <td class="kpi">\(D_1 f=3\)</td>
+            <td>تجانس نسبي صريح</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=\sqrt{x}=x^{1/2}\)</td>
+            <td class="kpi">\(D_1 f=\tfrac{1}{2}\)</td>
+            <td>قانون قوة</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=e^x\)</td>
+            <td class="kpi">\(D_1 f=x\)</td>
+            <td>\(\ln f=x\) ثم الاشتقاق بالنسبة لـ \(\ln x\)</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=\ln x\)</td>
+            <td class="kpi">\(D_1 f=\frac{1}{\ln x}\)</td>
+            <td>لأن \(\ln(\ln x)\) مشتقتها بالنسبة لـ \(\ln x\) هي \(1/\ln x\)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>4) التعميم إلى \(D_n\)</h2>
+      <p>
+        المبدأ الهرمي العام: عند الانتقال من رتبة إلى رتبة أعلى نستبدل مقياس التغير.
+      </p>
+
+      <div class="eq">
+        \[
+        \boxed{
+        D_n f(x)=\frac{d}{d\ln^{(n)}x}\big(\ln f(x)\big)
+        }
+        \]
+      </div>
+
+      <p class="small">
+        ومع هذا التعريف، تتكرر القواعد البنيوية نفسها على كل رتبة (مع نفس الفكرة):
+        \(\ln\) يحوّل عمليات “الرتبة” إلى جمع، ثم الاشتقاق يعيدها إلى قانون بسيط.
+      </p>
+
+      <div class="eq">
+        \[
+        \boxed{
+        D_n(fg)=D_n f + D_n g,\qquad
+        D_n\!\left(\frac{f}{g}\right)=D_n f - D_n g,\qquad
+        D_n(f^a)=a\,D_n f
+        }
+        \]
+      </div>
+
+      <div class="note small">
+        <strong>تراكب هرمي (فكرة أساسية):</strong>
+        في الرتبة 0 التراكب جمعي، في الرتبة 1 التراكب ضربي، وفي الرتب الأعلى يصبح التراكب هرميًا وفق مقياس الرتبة.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) الاستشهاد بهذه الصفحة</h2>
+      <p class="small">صيغة استشهاد مقترحة:</p>
+      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
+        <code>
+          GOSSA AHMED. Hierarchical Calculus — Derivation Rules (D1 then Dn). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
+        </code>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px">
+    © 2025 — الحساب الهرمي | Gossa Ahmed — مؤرشف عبر Zenodo (DOI).
+  </footer>
+</body>
+</html>
