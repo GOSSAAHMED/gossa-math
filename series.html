@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>المتسلسلات الهرمية | الحساب الهرمي</title>
+
+  <!-- MathJax (LaTeX) -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root{
+      --bg:#0b1220; --card:#101b2f; --text:#e9eef8; --muted:#b7c3da;
+      --accent:#7dd3fc; --border:rgba(255,255,255,.10);
+    }
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic","Noto Sans Arabic",Arial,sans-serif;line-height:1.8}
+    header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
+    nav a:hover{border-color:rgba(125,211,252,.55)}
+    main{max-width:1100px;margin:0 auto;padding:0 18px 50px}
+    h1{font-size:30px;margin:14px 0 6px}
+    h2{font-size:22px;margin:26px 0 10px}
+    p{color:var(--muted);margin:8px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 16px;margin:14px 0}
+    .doi{display:flex;flex-direction:column;gap:6px}
+    .doi a{color:var(--accent);text-decoration:none}
+    .eq{overflow:auto}
+    .note{border-right:4px solid var(--accent);padding-right:12px}
+    .small{font-size:14px}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+    footer{max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px}
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="./index.html">نظرة عامة</a>
+      <a href="./theory.html">التعريفات الأساسية</a>
+      <a href="./series.html" aria-current="page">المتسلسلات الهرمية</a>
+      <a href="./integrals.html">التكامل الهرمي</a>
+      <a href="./equations.html">المعادلات الهرمية</a>
+      <a href="./citation.html">كيفية الاستشهاد</a>
+    </nav>
+
+    <h1>المتسلسلات الهرمية</h1>
+    <p class="small">هذه الصفحة تثبّت صيغتي التقريب المعتمدتين: المتسلسلة الجمعية (تايلور بصيغة \(D_0\)) والمتسلسلة الصَّرْبِيّة النسبية (بصيغة \(D_1\) وقوى \(\frac{x}{x_0}\) فقط).</p>
+
+    <div class="card doi">
+      <strong>DOI والأسبقية</strong>
+      <div class="small">
+        <div>Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></div>
+        <div>Version DOI (v1.0.0): <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a></div>
+      </div>
+      <div class="note small">
+        أي استعمال أو توسعة لهذه المتسلسلات يجب أن يُرفق بالاستشهاد بـ Zenodo وبالموقع الرسمي.
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1) المتسلسلة الجمعية (تايلور التفاضلية) — رتبة \(n\)</h2>
+      <p>نعتمد المشتق التفاضلي التقليدي \(D_0\).</p>
+
+      <div class="eq">
+        \[
+        \boxed{
+        f(x)\;\approx\;\sum_{k=0}^{n}\frac{D_0^{\,k}f(x_0)}{k!}\,(x-x_0)^k
+        }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>برهان مختصر (فكرة):</strong>
+        هذه هي صيغة تايلور القياسية الناتجة عن تطوير \(f\) حول \(x_0\) بالنسبة لمقياس القرب الجمعي \((x-x_0)\).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) المتسلسلة الصَّرْبِيّة النسبية — رتبة \(n\)</h2>
+      <p>
+        نضع النسبة \(r=\frac{x}{x_0}\). المتسلسلة هنا تعمل على مقياس نسبي خالص:
+        <strong>قوى \(\frac{x}{x_0}\) فقط</strong> دون لوغاريتم ودون \((-1)\).
+      </p>
+
+      <div class="eq">
+        \[
+        \boxed{
+        \frac{f(x)}{f(x_0)}
+        \;\approx\;
+        \sum_{k=0}^{n}\frac{A_k(x_0)}{k!}\left(\frac{x}{x_0}\right)^k
+        }
+        \]
+      </div>
+
+      <p class="small">
+        حيث نعرّف معاملات السلسلة (تطبيعًا لضمان أن الحدّ الصفري يساوي \(1\)):
+      </p>
+
+      <div class="eq">
+        \[
+        \boxed{
+        A_k(x_0)=\frac{D_1^{\,k}f(x_0)}{f(x_0)}
+        \qquad\text{و}\qquad
+        D_1^{\,0}f=f
+        }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>برهان مختصر (فكرة):</strong>
+        المتغير البنيوي هنا هو \(r=\frac{x}{x_0}\)، لذا تُبنى حدود التقريب على قوى \(r\).
+        أما المعاملات \(A_k(x_0)\) فهي معلومات مشتقية نسبية عند \(x_0\) بعد التطبيع بقيمة \(f(x_0)\) حتى تكون السلسلة توسعًا مباشرًا للنسبة \(\frac{f(x)}{f(x_0)}\) ويكون حدّها الأول مساويًا لـ \(1\).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) متى نستخدم الجمعية ومتى نستخدم النسبية؟</h2>
+      <ul class="small" style="color:var(--muted);margin:0 18px 0 0">
+        <li><strong>تايلور الجمعية</strong> مناسبة عندما يكون القرب طبيعيًا جمعيًا: \(|x-x_0|\) صغير.</li>
+        <li><strong>الصَّرْبِيّة النسبية</strong> مناسبة عندما يكون القرب طبيعيًا نسبيًا: \(\frac{x}{x_0}\) هو المقياس الأهم (تحجيم/Scaling).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>4) أمثلة عددية</h2>
+      <p class="small">
+        (سنضيف هنا ثلاثة أمثلة عددية بجدول أخطاء نسبية، بعد أن تختار أنت قيم \(x_0\) ومجال \(x\) الذي تريد اعتماده رسميًا في الموقع.)
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>5) الاستشهاد بهذه الصفحة</h2>
+      <p class="small">صيغة استشهاد مقترحة:</p>
+      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
+        <code>
+          GOSSA AHMED. Hierarchical Calculus — Series (Additive &amp; Serbi Relative). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
+        </code>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 — الحساب الهرمي | Gossa Ahmed — مؤرشف عبر Zenodo (DOI).
+  </footer>
+</body>
+</html>
