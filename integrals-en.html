@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hierarchical Integrals | Hierarchical Calculus</title>
+
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root{--bg:#0b1220;--card:#101b2f;--text:#e9eef8;--muted:#b7c3da;--accent:#7dd3fc;--border:rgba(255,255,255,.10);}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.85}
+    header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
+    nav a:hover{border-color:rgba(125,211,252,.55)}
+    main{max-width:1100px;margin:0 auto;padding:0 18px 50px}
+    h1{font-size:30px;margin:14px 0 6px}
+    h2{font-size:22px;margin:26px 0 10px}
+    h3{font-size:18px;margin:18px 0 8px}
+    p{color:var(--muted);margin:8px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin:14px 0}
+    .doi a{color:var(--accent);text-decoration:none}
+    .eq{overflow:auto}
+    .note{border-left:4px solid var(--accent);padding-left:12px}
+    .small{font-size:14px}
+    table{width:100%;border-collapse:collapse;margin-top:10px;border-radius:14px;overflow:hidden}
+    th,td{border:1px solid var(--border);padding:10px;text-align:left}
+    th{background:rgba(255,255,255,.05);color:var(--text);font-weight:700}
+    td{color:var(--muted)}
+    .kpi{color:var(--text);font-weight:700}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+  </style>
+</head>
+
+<body>
+<header>
+  <nav>
+    <a href="./index.html">Home</a>
+    <a href="./integrals.html">AR Integrals</a>
+    <a href="./integrals-en.html" aria-current="page">EN Integrals</a>
+    <a href="./series-en.html">EN Series</a>
+    <a href="./rules-en.html">EN Rules</a>
+    <a href="./equations-solved-en.html">EN Solved Equations</a>
+    <a href="./citation.html">Cite</a>
+  </nav>
+
+  <h1>Hierarchical Integrals</h1>
+  <p class="small note">
+    This is the <strong>English version</strong> of the original Arabic formulation authored by <strong>Gossa Ahmed (2025)</strong>.
+  </p>
+
+  <div class="card doi">
+    <strong>DOI & Priority</strong>
+    <div class="small">
+      <div>Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></div>
+      <div>Version DOI (v1.0.0): <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a></div>
+    </div>
+    <div class="note small">Any reuse or extension should cite the Zenodo record and this official website.</div>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1) Definition: the hierarchical integral \(\mathcal{I}_n\)</h2>
+    <p>\(\mathcal{I}_n\) is the natural inverse of the hierarchical derivative \(D_n\) (on a suitable domain, up to a hierarchical integration constant).</p>
+    <div class="eq">
+      \[
+      \boxed{D_n\big(\mathcal{I}_n[f]\big)=f}
+      \]
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2) Fundamental theorem of hierarchical integration</h2>
+
+    <h3>2.1) Left-inverse property</h3>
+    <div class="eq">\[\boxed{D_n(\mathcal{I}_n[f])=f}\]</div>
+
+    <h3>2.2) Right-inverse property (up to a hierarchical constant)</h3>
+    <p class="small">If \(D_n F=f\), then:</p>
+    <div class="eq">
+      \[
+      \boxed{\mathcal{I}_n[D_n F]=F\;\odot\;C_n}
+      \]
+    </div>
+
+    <p class="small">The constant and the operation depend on the level:</p>
+    <table>
+      <thead><tr><th>Level</th><th>Constant form</th><th>Operation \(\odot\)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td class="kpi">Additive constant \(C\)</td><td>\(+\)</td></tr>
+        <tr><td>1</td><td class="kpi">Multiplicative constant \(C_\times>0\)</td><td>\(\times\)</td></tr>
+        <tr><td>2</td><td class="kpi">Structural/exponential constant \(C_{\exp}>1\)</td><td>exponential-level composition</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note small" style="margin-top:12px">
+      Intuition: each level has its own notion of accumulation (additive → multiplicative → structural).
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3) Relative integral \(\mathcal{I}_1\) — 5 examples</h2>
+    <p class="small">Practical formula:</p>
+    <div class="eq">
+      \[
+      \boxed{\mathcal{I}_1[f](x)=\exp\!\left(\int \frac{f(x)}{x}\,dx\right)}
+      \]
+    </div>
+
+    <table>
+      <thead><tr><th>\(f(x)\)</th><th>\(\mathcal{I}_1[f](x)\)</th><th>Quick check</th></tr></thead>
+      <tbody>
+        <tr><td>\(1\)</td><td class="kpi">\(x\)</td><td>\(D_1(x)=1\)</td></tr>
+        <tr><td>\(a\) (constant)</td><td class="kpi">\(x^a\)</td><td>\(D_1(x^a)=a\)</td></tr>
+        <tr><td>\(\ln x\)</td><td class="kpi">\(e^{(\ln x)^2/2}\)</td><td>\(D_1(\cdot)=\ln x\)</td></tr>
+        <tr><td>\(x^k\)</td><td class="kpi">\(e^{x^k/k}\ (k\neq0)\)</td><td>\(D_1(\cdot)=x^k\)</td></tr>
+        <tr><td>\(\frac{1}{\ln x}\)</td><td class="kpi">\(\ln x\)</td><td>\(D_1(\ln x)=\frac1{\ln x}\)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>4) Logarithmic integral \(\mathcal{I}_2\) — 5 examples</h2>
+    <p class="small">For \(x>1\) (so \(\ln x>0\)), a practical formula:</p>
+    <div class="eq">
+      \[
+      \boxed{
+      \mathcal{I}_2[f](x)=
+      \exp\!\left(
+        \exp\!\left(\int \frac{f(x)}{x\,\ln x}\,dx\right)
+      \right)
+      }
+      \]
+    </div>
+
+    <table>
+      <thead><tr><th>\(f(x)\)</th><th>\(\mathcal{I}_2[f](x)\)</th><th>Quick check</th></tr></thead>
+      <tbody>
+        <tr><td>\(1\)</td><td class="kpi">\(x\)</td><td>\(D_2(x)=1\)</td></tr>
+        <tr><td>\(a\) (constant)</td><td class="kpi">\(e^{(\ln x)^a}\)</td><td>\(D_2(\cdot)=a\)</td></tr>
+        <tr><td>\(\ln\ln x\)</td><td class="kpi">\(\exp(\exp((\ln\ln x)^2/2))\)</td><td>\(D_2(\cdot)=\ln\ln x\)</td></tr>
+        <tr><td>\(\ln x\)</td><td class="kpi">\(e^{x}\)</td><td>\(D_2(e^x)=\ln x\)</td></tr>
+        <tr><td>\((\ln\ln x)^n\)</td><td class="kpi">\(\exp(\exp((\ln\ln x)^{n+1}/(n+1)))\)</td><td>\(D_2(\cdot)=(\ln\ln x)^n\)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note small" style="margin-top:12px">
+      At level 2, accumulation naturally involves iterated exponential structure because the measuring scale is \(\ln\ln x\).
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>5) How to cite this page</h2>
+    <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
+      <code>
+        GOSSA AHMED. Hierarchical Calculus — Hierarchical Integrals (Fundamental Theorem + Examples). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
+      </code>
+    </div>
+  </section>
+</main>
+
+<footer style="max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px">
+  © 2025 — Hierarchical Calculus | Gossa Ahmed — Archived via Zenodo (DOI).
+</footer>
+</body>
+</html>
