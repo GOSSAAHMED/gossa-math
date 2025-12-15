@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>التكامل الهرمي | الحساب الهرمي</title>
+
+  <!-- MathJax (LaTeX) -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root{
+      --bg:#0b1220; --card:#101b2f; --text:#e9eef8; --muted:#b7c3da;
+      --accent:#7dd3fc; --border:rgba(255,255,255,.10);
+    }
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic","Noto Sans Arabic",Arial,sans-serif;line-height:1.85}
+    header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
+    nav a:hover{border-color:rgba(125,211,252,.55)}
+    main{max-width:1100px;margin:0 auto;padding:0 18px 50px}
+    h1{font-size:30px;margin:14px 0 6px}
+    h2{font-size:22px;margin:26px 0 10px}
+    h3{font-size:18px;margin:18px 0 8px}
+    p{color:var(--muted);margin:8px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 16px;margin:14px 0}
+    .doi{display:flex;flex-direction:column;gap:6px}
+    .doi a{color:var(--accent);text-decoration:none}
+    .eq{overflow:auto}
+    .note{border-right:4px solid var(--accent);padding-right:12px}
+    .small{font-size:14px}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+    table{width:100%;border-collapse:collapse;margin-top:10px;overflow:hidden;border-radius:14px}
+    th,td{border:1px solid var(--border);padding:10px 10px;text-align:right}
+    th{background:rgba(255,255,255,.05);color:var(--text);font-weight:700}
+    td{color:var(--muted)}
+    .kpi{color:var(--text);font-weight:700}
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="./index.html">نظرة عامة</a>
+      <a href="./theory.html">التعريفات الأساسية</a>
+      <a href="./series.html">المتسلسلات الهرمية</a>
+      <a href="./rules.html">قوانين الاشتقاق الهرمي</a>
+      <a href="./integrals.html" aria-current="page">التكامل الهرمي</a>
+      <a href="./equations.html">المعادلات الهرمية</a>
+      <a href="./citation.html">كيفية الاستشهاد</a>
+    </nav>
+
+    <h1>التكامل الهرمي</h1>
+    <p class="small">
+      التكامل الهرمي هو المعكوس الطبيعي للمشتقات الهرمية. في الرتبة 0 يكون التراكم جمعيًا، في الرتبة 1 يصبح التراكم نسبيًا (ضربيًا)، وفي الرتبة 2 يصبح التراكم لوغاريتميًا (أُسّيًا على مستوى البنية).
+    </p>
+
+    <div class="card doi">
+      <strong>DOI والأسبقية</strong>
+      <div class="small">
+        <div>Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></div>
+        <div>Version DOI (v1.0.0): <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a></div>
+      </div>
+      <div class="note small">
+        هذه التعريفات والنتائج جزء من الإطار التأسيسي للحساب الهرمي. أي استعمال أو توسعة يجب أن تُرفق بالاستشهاد بـ Zenodo وبالموقع الرسمي.
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h2>1) التعريف: التكامل الهرمي \(\mathcal{I}_n\)</h2>
+      <p>
+        نرمز للتكامل الهرمي من الرتبة \(n\) بالعامل \(\mathcal{I}_n\)، وهو معكوس المشتق الهرمي \(D_n\) (على مجال مناسب وبثابت تكاملي هرمي).
+      </p>
+
+      <div class="eq">
+        \[
+        \boxed{
+        D_n\big(\mathcal{I}_n[f]\big)=f
+        }
+        \]
+      </div>
+
+      <div class="note small">
+        <strong>ملاحظة:</strong>
+        كما يظهر ثابت التكامل جمعيًا في الرتبة 0، يظهر في الرتبة 1 بثابت ضربي، وفي الرتبة 2 بثابت أُسّي… إلخ.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) النظرية الأساسية للتكامل الهرمي</h2>
+
+      <h3>2.1) المعكوسية الأولى</h3>
+      <div class="eq">
+        \[
+        \boxed{
+        D_n\!\big(\mathcal{I}_n[f]\big)=f
+        }
+        \]
+      </div>
+
+      <h3>2.2) المعكوسية الثانية (حتى ثابت تكاملي هرمي)</h3>
+      <p class="small">
+        إذا كانت \(F\) تحقق \(D_n F=f\) فإن:
+      </p>
+      <div class="eq">
+        \[
+        \boxed{
+        \mathcal{I}_n[D_n F]=F\;\odot\;C_n
+        }
+        \]
+      </div>
+
+      <p class="small">
+        حيث العملية \(\odot\) وثابت التكامل \(C_n\) يعتمدان على الرتبة:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>الرتبة</th>
+            <th>شكل الثابت</th>
+            <th>العملية \(\odot\)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td class="kpi">\(C\) (جمعي)</td>
+            <td>\(+\)</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td class="kpi">\(C_\times>0\) (ضربي)</td>
+            <td>\(\times\)</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td class="kpi">\(C_{\exp}>1\) (أُسّي/بنيوي)</td>
+            <td>تركيب أُسّي</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note small" style="margin-top:12px">
+        <strong>الفكرة:</strong>
+        في كل رتبة، “الثابت” يأخذ طبيعة التراكم في تلك الرتبة: جمع ← ضرب ← أسّ ← ...
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) التكامل النسبي \(\mathcal{I}_1\) (الرتبة الأولى) — 5 أمثلة</h2>
+      <p class="small">
+        نعتمد الصيغة العملية:
+      </p>
+      <div class="eq">
+        \[
+        \boxed{
+        \mathcal{I}_1[f](x)=\exp\!\left(\int \frac{f(x)}{x}\,dx\right)
+        }
+        \]
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>الدالة \(f(x)\)</th>
+            <th>التكامل النسبي \(\mathcal{I}_1[f](x)\)</th>
+            <th>تحقق سريع</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>\(f(x)=1\)</td>
+            <td class="kpi">\(\mathcal{I}_1[1]=x\)</td>
+            <td>\(D_1(x)=1\)</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=a\) (ثابت)</td>
+            <td class="kpi">\(\mathcal{I}_1[a]=x^a\)</td>
+            <td>\(D_1(x^a)=a\)</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=\ln x\)</td>
+            <td class="kpi">\(\mathcal{I}_1[\ln x]=e^{(\ln x)^2/2}\)</td>
+            <td>\(D_1(\cdot)=\ln x\)</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=x^k\)</td>
+            <td class="kpi">\(\mathcal{I}_1[x^k]=e^{x^k/k}\;\;(k\neq0)\)</td>
+            <td>\(D_1(\cdot)=x^k\)</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=\dfrac{1}{\ln x}\)</td>
+            <td class="kpi">\(\mathcal{I}_1\!\left[\frac{1}{\ln x}\right]=\ln x\)</td>
+            <td>\(D_1(\ln x)=\frac1{\ln x}\)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note small" style="margin-top:12px">
+        هذه الأمثلة تُظهر أن التكامل النسبي يبني “نموًا مضبوطًا نسبيًا”: يظهر الضرب والأسّ بصورة طبيعية.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) التكامل اللوغاريتمي \(\mathcal{I}_2\) (الرتبة الثانية) — 5 أمثلة</h2>
+      <p class="small">
+        على مجال \(x>1\) (حتى تكون \(\ln x>0\)) نعتمد الصيغة العملية:
+      </p>
+      <div class="eq">
+        \[
+        \boxed{
+        \mathcal{I}_2[f](x)=
+        \exp\!\left(
+          \exp\!\left(\int \frac{f(x)}{x\,\ln x}\,dx\right)
+        \right)
+        }
+        \]
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>الدالة \(f(x)\)</th>
+            <th>التكامل اللوغاريتمي \(\mathcal{I}_2[f](x)\)</th>
+            <th>تحقق سريع</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>\(f(x)=1\)</td>
+            <td class="kpi">\(\mathcal{I}_2[1]=x\)</td>
+            <td>\(D_2(x)=1\)</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=a\) (ثابت)</td>
+            <td class="kpi">\(\mathcal{I}_2[a]=e^{(\ln x)^a}\)</td>
+            <td>\(D_2(\cdot)=a\)</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=\ln\ln x\)</td>
+            <td class="kpi">\(\mathcal{I}_2[\ln\ln x]=\exp\!\big(\exp((\ln\ln x)^2/2)\big)\)</td>
+            <td>\(D_2(\cdot)=\ln\ln x\)</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=\ln x\)</td>
+            <td class="kpi">\(\mathcal{I}_2[\ln x]=e^{x}\)</td>
+            <td>\(D_2(e^x)=\ln x\)</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=(\ln\ln x)^n\)</td>
+            <td class="kpi">\(\mathcal{I}_2[(\ln\ln x)^n]=\exp\!\Big(\exp\big((\ln\ln x)^{n+1}/(n+1)\big)\Big)\)</td>
+            <td>\(D_2(\cdot)=(\ln\ln x)^n\)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note small" style="margin-top:12px">
+        التكامل اللوغاريتمي يبني “تراكمًا بنيويًا”: يظهر الأسّ المكرر طبيعيًا لأن مقياس القياس هو \(\ln\ln x\).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) الاستشهاد بهذه الصفحة</h2>
+      <p class="small">صيغة استشهاد مقترحة:</p>
+      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
+        <code>
+          GOSSA AHMED. Hierarchical Calculus — Hierarchical Integrals (Fundamental Theorem + Examples). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
+        </code>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px">
+    © 2025 — الحساب الهرمي | Gossa Ahmed — مؤرشف عبر Zenodo (DOI).
+  </footer>
+</body>
+</html>
