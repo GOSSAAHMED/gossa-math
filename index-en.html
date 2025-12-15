@@ -41,7 +41,28 @@
 </head>
 
 <body>
-  <header>
+ 
+    header.hero{
+      margin-top:20px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 22px;
+      overflow:hidden;
+      position:relative;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    .hero h1{margin:0 0 8px 0; font-size: 34px; letter-spacing:.3px}
+    .hero p{margin:8px 0 0 0; color: var(--muted); font-size: 15px; line-height: 1.8; max-width: 900px}
     <nav>
       <a href="./index.html">AR Home</a>
       <a href="./index-en.html" aria-current="page">EN Home</a>
