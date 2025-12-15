@@ -19,7 +19,7 @@
       --bg:#0b1220; --card:#101b2f; --text:#e9eef8; --muted:#b7c3da;
       --accent:#7dd3fc; --border:rgba(255,255,255,.10);
     }
-    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic","Noto Sans Arabic",Arial,sans-serif;line-height:1.8}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic","Noto Sans Arabic",Arial,sans-serif;line-height:1.85}
     header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
     nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
     nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
@@ -35,7 +35,14 @@
     .note{border-right:4px solid var(--accent);padding-right:12px}
     .small{font-size:14px}
     code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
-    footer{max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px}
+
+    table{width:100%;border-collapse:collapse;margin-top:10px;overflow:hidden;border-radius:14px}
+    th,td{border:1px solid var(--border);padding:10px 10px;text-align:right}
+    th{background:rgba(255,255,255,.05);color:var(--text);font-weight:700}
+    td{color:var(--muted)}
+    .kpi{color:var(--text);font-weight:700}
+    .good{color:#a7f3d0;font-weight:700}
+    .bad{color:#fecaca;font-weight:700}
   </style>
 </head>
 
@@ -51,7 +58,9 @@
     </nav>
 
     <h1>المتسلسلات الهرمية</h1>
-    <p class="small">هذه الصفحة تثبّت صيغتي التقريب المعتمدتين: المتسلسلة الجمعية (تايلور بصيغة \(D_0\)) والمتسلسلة الصَّرْبِيّة النسبية (بصيغة \(D_1\) وقوى \(\frac{x}{x_0}\) فقط).</p>
+    <p class="small">
+      هذه الصفحة تثبّت صيغتي التقريب المعتمدتين: المتسلسلة الجمعية (تايلور بصيغة \(D_0\)) والمتسلسلة الصَّرْبِيّة النسبية (بصيغة \(D_1\) وقوى \(\frac{x}{x_0}\) فقط).
+    </p>
 
     <div class="card doi">
       <strong>DOI والأسبقية</strong>
@@ -128,13 +137,91 @@
         <li><strong>تايلور الجمعية</strong> مناسبة عندما يكون القرب طبيعيًا جمعيًا: \(|x-x_0|\) صغير.</li>
         <li><strong>الصَّرْبِيّة النسبية</strong> مناسبة عندما يكون القرب طبيعيًا نسبيًا: \(\frac{x}{x_0}\) هو المقياس الأهم (تحجيم/Scaling).</li>
       </ul>
+      <p class="small note" style="margin-top:12px">
+        في الأمثلة العددية التالية اخترنا مجالات يكون فيها الفرق الجمعي كبيرًا بينما الفرق النسبي معبّرًا (مثل \(r=5\) أو \(r=3\)) لإظهار أن “صعوبة” التقريب قد تكون نتيجة اختيار المقياس، لا الدالة نفسها.
+      </p>
     </section>
 
     <section class="card">
-      <h2>4) أمثلة عددية</h2>
+      <h2>4) خمسة أمثلة عددية تُظهر تفوّق النسبية بالأرقام (رتبة \(n=4\))</h2>
       <p class="small">
-        (سنضيف هنا ثلاثة أمثلة عددية بجدول أخطاء نسبية، بعد أن تختار أنت قيم \(x_0\) ومجال \(x\) الذي تريد اعتماده رسميًا في الموقع.)
+        نقارن تقريب نسبة \(\frac{f(x)}{f(x_0)}\) بين:
+        <strong>تايلور الجمعية</strong> (نأخذ \(T_4(x)/f(x_0)\))
+        و<strong>الصَّرْبِيّة النسبية</strong> (نأخذ \(S_4(x)\)).
       </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>الدالة</th>
+            <th>\(x_0\)</th>
+            <th>\(x\)</th>
+            <th class="kpi">القيمة الحقيقية \(\frac{f(x)}{f(x_0)}\)</th>
+            <th>تقريب تايلور (نسبة)</th>
+            <th>تقريب صربي (نسبة)</th>
+            <th>الخطأ النسبي (تايلور)</th>
+            <th>الخطأ النسبي (صربي)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>\(f(x)=e^x\)</td>
+            <td>2</td>
+            <td>10</td>
+            <td class="kpi">2980.957987</td>
+            <td>297.000000</td>
+            <td class="good">2992.250000</td>
+            <td class="bad">90.0368%</td>
+            <td class="good">0.3788%</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=\sinh(x)\)</td>
+            <td>2</td>
+            <td>10</td>
+            <td class="kpi">3036.574788</td>
+            <td>300.482707</td>
+            <td class="good">3049.916791</td>
+            <td class="bad">90.1046%</td>
+            <td class="good">0.4394%</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=\cosh(x)\)</td>
+            <td>2</td>
+            <td>10</td>
+            <td class="kpi">2927.341857</td>
+            <td>293.642574</td>
+            <td class="good">2936.657623</td>
+            <td class="bad">89.9689%</td>
+            <td class="good">0.3182%</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=1+e^x\)</td>
+            <td>2</td>
+            <td>10</td>
+            <td class="kpi">2625.738287</td>
+            <td>261.715935</td>
+            <td class="good">2635.684260</td>
+            <td class="bad">90.0327%</td>
+            <td class="good">0.3788%</td>
+          </tr>
+          <tr>
+            <td>\(f(x)=\exp((\ln x)^2)\)</td>
+            <td>50</td>
+            <td>150</td>
+            <td class="kpi">18079.646024</td>
+            <td>1921.288313</td>
+            <td class="good">17842.567439</td>
+            <td class="bad">89.3732%</td>
+            <td class="good">1.3113%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note small" style="margin-top:12px">
+        <strong>ملاحظة:</strong>
+        في هذه المجالات (تحجيم كبير)، يتدهور التقريب الجمعي بسرعة لأن \((x-x_0)\) كبير،
+        بينما يبقى التقريب النسبي أقرب عندما يكون وصف الظاهرة قائمًا على النِّسَب.
+      </div>
     </section>
 
     <section class="card">
@@ -142,13 +229,13 @@
       <p class="small">صيغة استشهاد مقترحة:</p>
       <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
         <code>
-          GOSSA AHMED. Hierarchical Calculus — Series (Additive &amp; Serbi Relative). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
+          GOSSA AHMED. Hierarchical Calculus — Series (Additive D0 &amp; Serbi Relative D1). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
         </code>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer style="max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px">
     © 2025 — الحساب الهرمي | Gossa Ahmed — مؤرشف عبر Zenodo (DOI).
   </footer>
 </body>
