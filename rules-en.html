@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hierarchical Derivation Rules | Hierarchical Calculus</title>
+
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root{--bg:#0b1220;--card:#101b2f;--text:#e9eef8;--muted:#b7c3da;--accent:#7dd3fc;--border:rgba(255,255,255,.10);}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.85}
+    header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
+    nav a:hover{border-color:rgba(125,211,252,.55)}
+    main{max-width:1100px;margin:0 auto;padding:0 18px 50px}
+    h1{font-size:30px;margin:14px 0 6px}
+    h2{font-size:22px;margin:26px 0 10px}
+    h3{font-size:18px;margin:18px 0 8px}
+    p{color:var(--muted);margin:8px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin:14px 0}
+    .doi a{color:var(--accent);text-decoration:none}
+    .eq{overflow:auto}
+    .note{border-left:4px solid var(--accent);padding-left:12px}
+    .small{font-size:14px}
+    table{width:100%;border-collapse:collapse;margin-top:10px;border-radius:14px;overflow:hidden}
+    th,td{border:1px solid var(--border);padding:10px;text-align:left}
+    th{background:rgba(255,255,255,.05);color:var(--text);font-weight:700}
+    td{color:var(--muted)}
+    .kpi{color:var(--text);font-weight:700}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+  </style>
+</head>
+
+<body>
+<header>
+  <nav>
+    <a href="./index.html">Home</a>
+    <a href="./theory.html">Definitions</a>
+    <a href="./rules.html">AR Rules</a>
+    <a href="./rules-en.html" aria-current="page">EN Rules</a>
+    <a href="./series-en.html">EN Series</a>
+    <a href="./integrals-en.html">EN Integrals</a>
+    <a href="./equations-solved-en.html">EN Solved Equations</a>
+    <a href="./citation.html">Cite</a>
+  </nav>
+
+  <h1>Hierarchical Derivation Rules</h1>
+  <p class="small note">
+    This is the <strong>English version</strong> of the original Arabic formulation authored by <strong>Gossa Ahmed (2025)</strong>.
+  </p>
+
+  <div class="card doi">
+    <strong>DOI & Priority</strong>
+    <div class="small">
+      <div>Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></div>
+      <div>Version DOI (v1.0.0): <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a></div>
+    </div>
+    <div class="note small">Any reuse or extension should cite the Zenodo record and this official website.</div>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1) Quick definition of the relative derivative \(D_1\)</h2>
+    <p>Assume \(x>0\) and \(f(x)>0\). The relative derivative measures change with respect to a relative scale.</p>
+    <div class="eq">
+      \[
+      \boxed{D_1 f(x)=\frac{d}{d\ln x}\big(\ln f(x)\big)=\frac{d\ln f(x)}{d\ln x}}
+      \]
+    </div>
+    <div class="note small">
+      If \(D_1 f\) is constant, then \(f\) follows a power-law structure \(f(x)\propto x^\alpha\).
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2) Core rules for \(D_1\)</h2>
+
+    <h3>2.1) Multiplying by a constant</h3>
+    <div class="eq">
+      \[
+      \boxed{D_1(Cf)=D_1 f \qquad (C>0\ \text{constant})}
+      \]
+    </div>
+    <p class="small">Because \(\ln(Cf)=\ln C+\ln f\) and \(d(\ln C)/d(\ln x)=0\).</p>
+
+    <h3>2.2) Product rule (relative superposition)</h3>
+    <div class="eq">
+      \[
+      \boxed{D_1(fg)=D_1 f + D_1 g}
+      \]
+    </div>
+
+    <h3>2.3) Quotient rule</h3>
+    <div class="eq">
+      \[
+      \boxed{D_1\!\left(\frac{f}{g}\right)=D_1 f - D_1 g}
+      \]
+    </div>
+
+    <h3>2.4) Constant power</h3>
+    <div class="eq">
+      \[
+      \boxed{D_1(f^a)=a\,D_1 f \qquad (a\ \text{constant})}
+      \]
+    </div>
+
+    <h3>2.5) Power function</h3>
+    <div class="eq">
+      \[
+      \boxed{D_1(x^\alpha)=\alpha}
+      \]
+    </div>
+
+    <h3>2.6) Chain rule (relative form)</h3>
+    <p class="small">Let \(u=u(x)>0\) and \(f=f(u)>0\). Then:</p>
+    <div class="eq">
+      \[
+      \boxed{
+      D_1\big(f(u(x))\big)=\big(D_1 f\big)(u)\cdot D_1 u(x)
+      }
+      \]
+    </div>
+    <div class="note small">
+      Meaning: the relative rate of change of a composition equals the product of relative rates.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3) Quick checks</h2>
+    <table>
+      <thead>
+        <tr><th>\(f(x)\)</th><th>Result</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>\(x^3\)</td><td class="kpi">\(D_1 f=3\)</td><td>Pure scaling</td></tr>
+        <tr><td>\(\sqrt{x}=x^{1/2}\)</td><td class="kpi">\(D_1 f=\tfrac12\)</td><td>Power rule</td></tr>
+        <tr><td>\(e^x\)</td><td class="kpi">\(D_1 f=x\)</td><td>\(\ln f=x\)</td></tr>
+        <tr><td>\(\ln x\)</td><td class="kpi">\(D_1 f=\frac1{\ln x}\)</td><td>\(\ln(\ln x)\) derivative vs \(\ln x\)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>4) Generalization to \(D_n\)</h2>
+    <p>In the hierarchical framework, each level corresponds to a scale \(\ln^{(n)}x\).</p>
+    <div class="eq">
+      \[
+      \boxed{
+      D_n f(x)=\frac{d}{d\ln^{(n)}x}\big(\ln f(x)\big)
+      }
+      \]
+    </div>
+
+    <p class="small">
+      The same structural rules extend across levels (under the same positivity/domain assumptions):
+    </p>
+    <div class="eq">
+      \[
+      \boxed{
+      D_n(fg)=D_n f + D_n g,\quad
+      D_n\!\left(\frac{f}{g}\right)=D_n f - D_n g,\quad
+      D_n(f^a)=a\,D_n f
+      }
+      \]
+    </div>
+
+    <div class="note small">
+      Hierarchical superposition: level 0 is additive, level 1 is multiplicative, higher levels follow the hierarchy of scales.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>5) How to cite this page</h2>
+    <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
+      <code>
+        GOSSA AHMED. Hierarchical Calculus — Derivation Rules (D1 then Dn). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
+      </code>
+    </div>
+  </section>
+</main>
+
+<footer style="max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px">
+  © 2025 — Hierarchical Calculus | Gossa Ahmed — Archived via Zenodo (DOI).
+</footer>
+</body>
+</html>
