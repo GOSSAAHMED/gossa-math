@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hierarchical Derivatives Relationships</title>
+
+  <!-- ✅ MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- ✅ Colored Theme (self-contained) -->
+  <style>
+    :root{
+      --bg0:#070A12;
+      --bg1:#0B1220;
+      --card:#0F1B2D;
+      --text:#EAF0FF;
+      --muted:#B8C4E6;
+      --line:rgba(255,255,255,.12);
+      --accent:#4CC9F0;
+      --accent2:#7C3AED;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius:18px;
+      --maxw: 1040px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 5%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 500px at 85% 10%, rgba(76,201,240,.25), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      line-height:1.85;
+    }
+
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 16px; }
+
+    header.hero{
+      padding:34px 0 18px;
+      border-bottom:1px solid var(--line);
+      backdrop-filter: blur(6px);
+    }
+
+    .titleBlock h1{
+      margin:0;
+      font-size:1.75rem;
+    }
+    .titleBlock p{
+      margin:6px 0 0;
+      color:var(--muted);
+    }
+
+    nav.topnav{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    nav.topnav a{
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+    }
+
+    main{ padding:22px 0 64px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .card .hd{
+      padding:14px 16px;
+      background:
+        linear-gradient(90deg, rgba(76,201,240,.18), rgba(124,58,237,.14));
+      border-bottom:1px solid var(--line);
+    }
+    .card .hd h2{
+      margin:0;
+      font-size:1.18rem;
+    }
+
+    .card .bd{ padding:14px 16px 16px; }
+
+    .formula{
+      margin:14px 0;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(124,58,237,.35);
+      background:rgba(124,58,237,.10);
+    }
+
+    ul{ margin:10px 0 0; padding-left:18px; }
+    li{ margin:6px 0; }
+
+    footer{
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      padding:18px 0;
+      font-size:.95rem;
+    }
+
+    mjx-container{ color: var(--text) !important; }
+
+    @media (min-width: 920px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .span2{ grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="titleBlock">
+        <h1>Hierarchical Derivatives Relationships</h1>
+        <p>Connections between levels in the derivative hierarchy</p>
+      </div>
+
+      <!-- Optional navigation -->
+      <nav class="topnav">
+        <a href="./index.html">Home</a>
+        <a href="./derivatives.html">Derivatives</a>
+        <a href="./series.html">Series</a>
+        <a href="./integrals.html">Integrals</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="grid">
+
+        <section class="card span2">
+          <div class="hd"><h2>Introduction</h2></div>
+          <div class="bd">
+            <p>
+              In Hierarchical Calculus, the derivatives
+              \(D_0, D_1, D_2, \dots\) are not independent operators.
+              They represent <strong>interconnected levels</strong>
+              within a single derivative hierarchy.
+            </p>
+            <p>
+              This page presents the explicit mathematical formulas
+              that relate these hierarchical derivatives directly from
+              their definitions.
+            </p>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="hd"><h2>General Definition</h2></div>
+          <div class="bd">
+            <p>For a function \(y=y(x)\), the hierarchical derivative of order \(n\) is:</p>
+            <div class="formula">
+              \[
+              D_n y
+              =
+              \frac{dy}{dx}\;
+              \frac{x\,\phi_n(x)}{y\,\phi_n(y)}.
+              \]
+            </div>
+            <p>Hierarchical scaling functions:</p>
+            <div class="formula">
+              \[
+              \phi_1(t)=1,\quad
+              \phi_2(t)=\ln t,\quad
+              \phi_3(t)=\ln\ln t,\;\dots
+              \]
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="hd"><h2>First Levels</h2></div>
+          <div class="bd">
+            <div class="formula">
+              \[
+              D_0 y=\frac{dy}{dx},\qquad
+              D_1 y=\frac{dy\cdot x}{dx\cdot y},\qquad
+              D_2 y=\frac{dy\cdot x\ln x}{dx\cdot y\ln y}.
+              \]
+            </div>
+          </div>
+        </section>
+
+        <section class="card span2">
+          <div class="hd"><h2>Relation with the Classical Derivative</h2></div>
+          <div class="bd">
+            <div class="formula">
+              \[
+              \boxed{
+              D_n y
+              =
+              D_0 y
+              \;\frac{x\,\phi_n(x)}{y\,\phi_n(y)}
+              }
+              \]
+            </div>
+          </div>
+        </section>
+
+        <section class="card span2">
+          <div class="hd"><h2>Relation Between Consecutive Levels</h2></div>
+          <div class="bd">
+            <div class="formula">
+              \[
+              \boxed{
+              D_{n+1} y
+              =
+              D_n y
+              \;\frac{\phi_{n+1}(x)}{\phi_n(x)}
+              \;\frac{\phi_n(y)}{\phi_{n+1}(y)}
+              }
+              \]
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="hd"><h2>Low-Level Examples</h2></div>
+          <div class="bd">
+            <div class="formula">
+              \[
+              D_1 y = D_0 y\;\frac{x}{y}
+              \]
+            </div>
+            <div class="formula">
+              \[
+              D_2 y = D_1 y\;\frac{\ln x}{\ln y}
+              \]
+            </div>
+            <div class="formula">
+              \[
+              D_3 y = D_2 y\;\frac{\ln\ln x}{\ln\ln y}
+              \]
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="hd"><h2>Compact Hierarchical Form</h2></div>
+          <div class="bd">
+            <div class="formula">
+              \[
+              \boxed{
+              D_n y
+              =
+              D_1 y
+              \prod_{k=2}^{n}
+              \frac{\phi_k(x)}{\phi_k(y)}
+              }
+              \]
+            </div>
+            <div class="formula">
+              \[
+              \boxed{
+              D_n y
+              =
+              D_0 y
+              \;\frac{x}{y}
+              \prod_{k=2}^{n}
+              \frac{\phi_k(x)}{\phi_k(y)}
+              }
+              \]
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © Hierarchical Calculus — Hierarchical Derivatives Relationships
+    </div>
+  </footer>
+</body>
+</html>
