@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 6 — Overview of Hierarchical Calculus | Hierarchical Calculus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+    .wrap{max-width:980px;margin:auto;padding:32px 16px 80px;}
+    header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+    h1{margin:0;font-size:1.9rem;}
+    .subtitle{margin-top:8px;color:#b8c4e6;}
+    h2{margin-top:32px;font-size:1.35rem;border-left:4px solid #4cc9f0;padding-left:10px;}
+    h3{margin-top:18px;font-size:1.1rem;color:#cfe0ff;}
+    .section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+    .note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;color:#cbd6ff;margin-top:12px;}
+    .map{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);border-radius:16px;padding:14px;margin-top:12px;}
+    .map ul{margin:8px 0 0;padding-left:22px;}
+    .map li{margin:8px 0;}
+    .nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+    .btn{display:inline-block;padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);color:#eaf0ff;}
+    .btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+    .btn:hover{opacity:.9;text-decoration:none;}
+    footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;font-size:.95rem;}
+    mjx-container{color:#eaf0ff!important;}
+    a{color:#4cc9f0;text-decoration:none;}
+    a:hover{text-decoration:underline;}
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Chapter 6 — Overview of Hierarchical Calculus</h1>
+    <div class="subtitle">Book: Hierarchical Calculus</div>
+
+    <div class="nav">
+      <a href="./index.html" class="btn primary">📘 Book Index</a>
+      <a href="./chapter-05.html" class="btn">⟵ Previous</a>
+      <a href="./chapter-07.html" class="btn">Next ⟶</a>
+    </div>
+  </header>
+
+  <div class="section">
+    <h2>6.1 The Purpose of This Chapter</h2>
+    <p>
+      This chapter serves as the roadmap of the book. After establishing motivation,
+      limitations of classical measurement, historical foundations, and the hierarchy principle,
+      we now provide a global view answering:
+    </p>
+    <ul>
+      <li>What is the overall structure of Hierarchical Calculus?</li>
+      <li>How do measurement levels \(D_0, D_1, D_2, \dots\) fit together?</li>
+      <li>What is gained by moving between levels?</li>
+      <li>How are series, equations, and applications developed across levels?</li>
+    </ul>
+
+    <div class="note">
+      The goal is not to finalize definitions here, but to let the reader see the full picture
+      before entering the technical construction.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>6.2 The Levels: From \(D_0\) to \(D_n\)</h2>
+    <p>
+      Hierarchical Calculus organizes measurement of change in levels. The base level is the
+      classical derivative:
+    </p>
+    \[
+      D_0 y = \frac{dy}{dx}.
+    \]
+    <p>
+      We then move to a higher level capturing relative change, denoted \(D_1\).
+      A deeper level associated with logarithmic structure is denoted \(D_2\),
+      and higher levels \(D_n\) follow.
+    </p>
+
+    <div class="map">
+      <strong>A simplified hierarchy:</strong>
+      <ul>
+        <li><strong>\(D_0\):</strong> absolute change (direct slope).</li>
+        <li><strong>\(D_1\):</strong> relative change (change normalized by magnitude).</li>
+        <li><strong>\(D_2\):</strong> logarithm-structured relative change (deeper than \(D_1\)).</li>
+        <li><strong>\(D_n\):</strong> higher levels defined generally and used as needed.</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:14px;">
+      Each level captures structure that the previous level cannot represent without additional machinery.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>6.3 What Is a “Transition Relation” Between Levels?</h2>
+    <p>
+      For hierarchy to be mathematical, levels must be linked. Hierarchical Calculus searches for relations of the form:
+    </p>
+    \[
+      \text{(higher level)} \quad \longleftrightarrow \quad \text{(lower level)}.
+    \]
+    <p>
+      These relations are not intended to reduce one level entirely to another, but to provide transformations that allow:
+    </p>
+    <ul>
+      <li>moving a problem to a level where it becomes simpler,</li>
+      <li>interpreting results across levels,</li>
+      <li>building new series and equations adapted to the chosen level.</li>
+    </ul>
+
+    <div class="note">
+      The technical chapters (especially 12 and 13) develop general formulas linking \(D_n\) and \(D_{n+1}\)
+      from the defining structure of hierarchical derivatives.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>6.4 “Which Level Should I Use?”</h2>
+    <p>
+      A practical question: when should we use \(D_0\) versus \(D_1\) or \(D_2\)?
+      In Hierarchical Calculus, level choice depends on the phenomenon:
+    </p>
+    <ul>
+      <li>Local behavior where direct slopes are meaningful → \(D_0\).</li>
+      <li>Processes governed by ratios, growth, inflation, scaling → \(D_1\).</li>
+      <li>Multi-scale systems where the structure of ratios itself evolves → \(D_2\) and beyond.</li>
+    </ul>
+
+    <div class="note">
+      Choosing a level is analogous to choosing coordinates in geometry: there is no absolute “best,”
+      only what makes the structure clearer.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>6.5 Series: Approximation Formulas Across Levels</h2>
+    <p>
+      One of the most powerful tools in classical calculus is Taylor series.
+      In this book (as fixed by the author), we adopt two primary approximation templates:
+    </p>
+    <ul>
+      <li><strong>Additive Taylor expansion in \(D_0\) form.</strong></li>
+      <li><strong>A relative series (power series in \((x/x_0)\) only).</strong></li>
+    </ul>
+    <p>
+      The key idea is that approximation itself may change with the measurement level:
+      additive structure in \(D_0\), relative structure in \(D_1\) and above.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>6.6 Equations: Why They May Simplify at Higher Levels</h2>
+    <p>
+      Many differential equations look complicated in \(D_0\) because the underlying
+      phenomenon is inherently relative or multi-scale. Moving to \(D_1\) or \(D_2\)
+      can transform the equation into a simpler or more stable form.
+    </p>
+    <div class="note">
+      Part IV presents examples where level transformation becomes decisive for clear solutions
+      and more faithful interpretation of growth and stability.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>6.7 From Theory to Applications: What Comes Next</h2>
+    <p>
+      After the foundational part (Chapters 1–6), the book proceeds as follows:
+    </p>
+    <div class="map">
+      <ul>
+        <li><strong>Part II:</strong> definitions and properties of hierarchical derivatives.</li>
+        <li><strong>Part III:</strong> integrals and series across levels.</li>
+        <li><strong>Part IV:</strong> hierarchical equations and level transformations.</li>
+        <li><strong>Part V:</strong> scientific scope and multi-scale applications.</li>
+        <li><strong>Part VI:</strong> comparisons, conclusions, and research outlook.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>6.8 Chapter Summary</h2>
+    <p>
+      Hierarchical Calculus is best understood as a structured ladder of measurements:
+      levels rather than a single tool. This ladder enables:
+    </p>
+    <ul>
+      <li>scale-aware measurement of change,</li>
+      <li>level-adapted approximation series,</li>
+      <li>systematic reformulation of equations,</li>
+      <li>a unified framework for multi-scale interpretation.</li>
+    </ul>
+    <p>
+      Beginning with Chapter 7, we enter the technical construction of the levels and their properties.
+    </p>
+  </div>
+
+  <div class="nav" style="margin-top:18px;">
+    <a href="./index.html" class="btn primary">📘 Book Index</a>
+    <a href="./chapter-05.html" class="btn">⟵ Previous</a>
+    <a href="./chapter-07.html" class="btn">Next ⟶</a>
+  </div>
+
+  <footer>
+    © Hierarchical Calculus — Chapter 6
+  </footer>
+
+</div>
+</body>
+</html>
 
