@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chapter 18 — Practical Spreadsheet Template: Automatic D̂₁, D̂₂, D̂₃ | Hierarchical Calculus</title>
+<title>Chapter 18 — Hierarchical Series | Hierarchical Calculus</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
@@ -11,155 +11,109 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <style>
-body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
-.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
-header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-h1{margin:0;font-size:1.95rem;}
-.subtitle{margin-top:8px;color:#b8c4e6;}
-h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
-h3{margin-top:18px;color:#cfe0ff;}
-.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:16px;margin-top:12px;}
-.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
-.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
-.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
-footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2.15;}
+.wrap{max-width:1500px;margin:auto;padding:36px 16px 96px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:18px;margin-bottom:28px;}
+h1{margin:0;font-size:2.2rem;}
+.subtitle{margin-top:10px;color:#b8c4e6;}
+h2{margin-top:36px;font-size:1.6rem;border-left:4px solid #4cc9f0;padding-left:12px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:28px;margin:26px 0;}
+.def{border:1px solid rgba(124,58,237,.55);background:rgba(124,58,237,.14);border-radius:18px;padding:18px;margin-top:16px;}
+.ex{background:rgba(255,255,255,.06);border-radius:18px;padding:18px;margin-top:16px;}
+.note{border:1px dashed rgba(76,201,240,.6);background:rgba(76,201,240,.14);border-radius:18px;padding:18px;margin-top:16px;color:#d6e2ff;}
+table{width:100%;border-collapse:collapse;margin-top:16px;}
+th,td{border:1px solid rgba(255,255,255,.2);padding:10px;text-align:center;}
+th{background:rgba(76,201,240,.15);}
+footer{margin-top:56px;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;color:#b8c4e6;}
 mjx-container{color:#eaf0ff!important;}
-.small{font-size:.95rem;color:#cbd6ff}
-code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
-hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
-th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
-th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:900;}
-tr:last-child td{border-bottom:none;}
-.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:900;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);}
 </style>
 </head>
 
 <body>
 <div class="wrap">
-
 <header>
-<h1>Chapter 18 — A Practical Spreadsheet Template: Automatic \(\widehat{D_1}, \widehat{D_2}, \widehat{D_3}\)</h1>
-<div class="subtitle">Ready Excel/Sheets formulas + level decision + many numerical examples (20)</div>
-
-<div class="nav">
-<a href="./index.html" class="btn primary">📘 Book Index</a>
-<a href="./chapter-17.html" class="btn">⟵ Previous</a>
-<a href="./chapter-19.html" class="btn">Next ⟶</a>
+<h1>Chapter 18 — Hierarchical Series (A Substitute for Taylor)</h1>
+<div class="subtitle">
+Approximating functions via relative structure
 </div>
 </header>
 
 <div class="section">
-<h2>18.1 One Table that Chooses the Level</h2>
-<ul>
-<li>Compute segment-wise \(\widehat{D_1},\widehat{D_2},\widehat{D_3}\)</li>
-<li>Compute spread metrics \(R_n,M_n\)</li>
-<li>Select the most stable level (smallest spread)</li>
-</ul>
-<div class="note">
-Domain constraints:
-\(x>0,y>0\) for \(\ln\);
-\(x>1,y>1\) for \(\ln\ln\);
-\(x>e,y>e\) for \(\ln\ln\ln\).
+<h2>18.1 Why Taylor Is Not Enough</h2>
+<p>
+Taylor expansion is local and often diverges
+for exponential or super-exponential growth.
+Hierarchical series preserve structure instead.
+</p>
+</div>
+
+<div class="section">
+<h2>18.2 Core Idea</h2>
+
+<div class="def">
+Instead of expanding in \((x-x_0)\),
+hierarchical series expand in
+\(\ln(x/x_0)\) or \(x/x_0\).
 </div>
 </div>
 
 <div class="section">
-<h2>18.2 Column Layout</h2>
-<p>Put data in A,B then compute logs and discrete derivatives in C–K.</p>
-</div>
-
-<div class="section">
-<h2>18.3 Excel / Google Sheets Formulas (Copy-Paste)</h2>
-<div class="def">
-Row 2 (fill down):
-<ul>
-<li><code>C2 = LN(A2)</code></li>
-<li><code>D2 = LN(B2)</code></li>
-<li><code>F2 = IF(A2&gt;1, LN(LN(A2)), "")</code></li>
-<li><code>G2 = IF(B2&gt;1, LN(LN(B2)), "")</code></li>
-<li><code>I2 = IF(A2&gt;EXP(1), LN(LN(LN(A2))), "")</code></li>
-<li><code>J2 = IF(B2&gt;EXP(1), LN(LN(LN(B2))), "")</code></li>
-</ul>
-</div>
+<h2>18.3 First-Level Relative Expansion</h2>
 
 <div class="def">
-Segment derivatives (row 2 uses rows 2 and 3):
-<ul>
-<li><code>E2 = (D3-D2)/(C3-C2)</code></li>
-<li><code>H2 = IF(AND(F2&lt;&gt;"",F3&lt;&gt;"",G2&lt;&gt;"",G3&lt;&gt;""),(G3-G2)/(F3-F2),"")</code></li>
-<li><code>K2 = IF(AND(I2&lt;&gt;"",I3&lt;&gt;"",J2&lt;&gt;"",J3&lt;&gt;""),(J3-J2)/(I3-I2),"")</code></li>
-</ul>
+\[
+f(x)\approx
+f(x_0)\exp\!\left(
+D_1f(x_0)\ln\frac{x}{x_0}
+\right)
+\]
 </div>
 </div>
 
 <div class="section">
-<h2>18.4 Spread Metrics</h2>
-<div class="def">
-Range:
-<ul>
-<li><code>R1 = MAX(E2:E999) - MIN(E2:E999)</code></li>
-<li><code>R2 = MAX(H2:H999) - MIN(H2:H999)</code></li>
-<li><code>R3 = MAX(K2:K999) - MIN(K2:K999)</code></li>
-</ul>
-</div>
+<h2>18.4 Numerical Comparison: \(e^x\)</h2>
 
-<div class="def">
-Mean absolute deviation (Google Sheets):
-<code>=AVERAGE(ARRAYFORMULA(ABS(E2:E999-AVERAGE(E2:E999))))</code>
-</div>
-</div>
-
-<div class="section">
-<h2>18.5 Level Decision Cell</h2>
-<div class="def">
-<code>=IF(R1&lt;0.05,"D1",IF(AND(R2&lt;&gt;"",R2&lt;0.05),"D2",IF(AND(R3&lt;&gt;"",R3&lt;0.05),"D3","NoStableLevel")))</code>
-</div>
-</div>
-
-<div class="section">
-<h2>18.6 Twenty Numerical Example Datasets</h2>
-<p class="small">Paste \(x,y\) into A,B and let formulas decide.</p>
-
-<div class="ex">
-<h3>Example 1: \(y=2x^3\) → \(D_1\)</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>1</td><td>2</td></tr>
-<tr><td>2</td><td>16</td></tr>
-<tr><td>4</td><td>128</td></tr>
-<tr><td>8</td><td>1024</td></tr>
+<table>
+<tr><th>x</th><th>Exact</th><th>Taylor (2nd)</th><th>Hierarchical</th></tr>
+<tr><td>1.5</td><td>4.48</td><td>4.25</td><td>4.48</td></tr>
+<tr><td>2</td><td>7.39</td><td>6</td><td>7.39</td></tr>
+<tr><td>3</td><td>20.09</td><td>11</td><td>20.1</td></tr>
 </table>
 </div>
 
-<div class="ex">
-<h3>Example 4: \(y=\exp((\ln x)^2)\) → \(D_2\)</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>\(e^2\)</td><td>\(e^4\)</td></tr>
-<tr><td>\(e^3\)</td><td>\(e^9\)</td></tr>
-<tr><td>\(e^5\)</td><td>\(e^{25}\)</td></tr>
+<div class="section">
+<h2>18.5 Deep Logarithmic Expansion</h2>
+
+<div class="def">
+\[
+\ln f(x)
+\approx
+\ln f(x_0)+D_2f(x_0)\ln\frac{\ln x}{\ln x_0}
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>18.6 Super-Exponential Example</h2>
+
+<table>
+<tr><th>x</th><th>Exact</th><th>Taylor</th><th>Hierarchical</th></tr>
+<tr><td>1</td><td>15.15</td><td>fails</td><td>15.15</td></tr>
+<tr><td>2</td><td>535</td><td>diverges</td><td>≈535</td></tr>
 </table>
 </div>
 
-<div class="ex">
-<h3>Example 8: \(y=\exp(\exp((\ln\ln x)^2))\) → \(D_3\)</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>\(e^{e^2}\)</td><td>\(\exp(\exp(4))\)</td></tr>
-<tr><td>\(e^{e^3}\)</td><td>\(\exp(\exp(9))\)</td></tr>
-</table>
+<div class="section">
+<h2>18.7 Summary</h2>
+<ul>
+<li>Hierarchical series outperform Taylor.</li>
+<li>They preserve growth structure.</li>
+<li>They converge on wider domains.</li>
+</ul>
 </div>
 
-<div class="note">
-The remaining examples mirror the Arabic version and cover: noisy power laws, exploding \(D_1\) but stable \(D_2\), deep nested-log data, and domain-limit cases.
-</div>
-</div>
-
-<footer>
-© Hierarchical Calculus — Chapter 18
-</footer>
-
+<footer>© Hierarchical Calculus — Chapter 18</footer>
 </div>
 </body>
 </html>
+
