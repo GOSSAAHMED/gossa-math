@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chapter 16 — Applications of Hierarchical Stability | Hierarchical Calculus</title>
+<title>Chapter 16 — Relative Integration | Hierarchical Calculus</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
@@ -11,177 +11,100 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <style>
-body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
-.wrap{max-width:1120px;margin:auto;padding:32px 16px 80px;}
-header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-h1{margin:0;font-size:1.9rem;}
-.subtitle{margin-top:8px;color:#b8c4e6;}
-h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
-h3{margin-top:18px;color:#cfe0ff;}
-.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
-.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
-.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
-ul{padding-left:20px;}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
-.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
-footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2.1;}
+.wrap{max-width:1450px;margin:auto;padding:34px 16px 90px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:18px;margin-bottom:26px;}
+h1{margin:0;font-size:2.1rem;}
+.subtitle{margin-top:10px;color:#b8c4e6;}
+h2{margin-top:34px;font-size:1.5rem;border-left:4px solid #4cc9f0;padding-left:12px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:26px;margin:24px 0;}
+.def{border:1px solid rgba(124,58,237,.5);background:rgba(124,58,237,.12);border-radius:18px;padding:18px;margin-top:16px;}
+.ex{background:rgba(255,255,255,.06);border-radius:18px;padding:18px;margin-top:16px;}
+.note{border:1px dashed rgba(76,201,240,.6);background:rgba(76,201,240,.12);border-radius:18px;padding:18px;margin-top:16px;color:#d6e2ff;}
+footer{margin-top:54px;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;color:#b8c4e6;}
 mjx-container{color:#eaf0ff!important;}
-.small{font-size:.95rem;color:#cbd6ff}
-code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
-hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:16px 0;}
 </style>
 </head>
 
 <body>
 <div class="wrap">
-
 <header>
-<h1>Chapter 16 — Applications of Hierarchical Stability</h1>
-<div class="subtitle">Physics / Economics / Engineering: choose \(D_n\), linearize on the right scale, solve fast (16 numerical examples)</div>
-
-<div class="nav">
-<a href="./index.html" class="btn primary">📘 Book Index</a>
-<a href="./chapter-15.html" class="btn">⟵ Previous</a>
-<a href="./chapter-17.html" class="btn">Next ⟶</a>
+<h1>Chapter 16 — Relative Integration</h1>
+<div class="subtitle">
+Reconstructing functions from relative growth laws
 </div>
 </header>
 
 <div class="section">
-<h2>16.1 A Practical Workflow</h2>
-<div class="def">
-<ol>
-<li>Write the empirical/physical law as given.</li>
-<li>Detect structure: \(y'/y \Rightarrow D_1\), \(y'/(y\ln y)\Rightarrow D_2\), \(y'/(y\ln y\ln\ln y)\Rightarrow D_3\).</li>
-<li>Choose scale: \(u=\ln x\), \(v=\ln\ln x\), \(s=\ln\ln\ln x\).</li>
-<li>Choose transform: \(w=\ln y\), \(z=\ln\ln y\), \(q=\ln\ln\ln y\).</li>
-<li>Make it linear in \(w(u)\) or \(z(v)\) or \(q(s)\), solve, invert back.</li>
-<li>Validate numerically at a chosen point.</li>
-</ol>
-</div>
+<h2>16.1 Conceptual Meaning</h2>
+<p>
+Relative integration reconstructs a function from its
+relative rate of change, rather than absolute slope.
+</p>
 </div>
 
 <div class="section">
-<h2>16.2 Quick Dictionary</h2>
+<h2>16.2 Formal Definition</h2>
+
 <div class="def">
+If
 \[
-D_1y=\frac{x}{y}y',\qquad
-D_2y=\frac{x\ln x}{y\ln y}y',\qquad
-D_3y=\frac{x\ln x\,\ln\ln x}{y\ln y\,\ln\ln y}y'.
+D_1y=f(x),
+\]
+then
+\[
+\ln y=\int f(x)\,d(\ln x)+C.
 \]
 </div>
 </div>
 
 <div class="section">
-<h2>16.3 Physics Examples (6)</h2>
-
-<div class="ex">
-<h3>(F1) Similarity law: constant \(D_1y\)</h3>
-\(D_1y=\alpha\Rightarrow y=Cx^\alpha\). Choose \(\alpha=2\). If \(y(3)=18\Rightarrow C=2\). Then \(y(10)=200\).
-</div>
-
-<div class="ex">
-<h3>(F2) \((\ln x)^2\)-driven law becomes trivial in \(u=\ln x\)</h3>
-\(D_1y=(\ln x)^2\Rightarrow \ln y=u^3/3 \Rightarrow y=\exp((\ln x)^3/3)\). Check: \(x=e^3\Rightarrow y=e^9=8103.08393\).
-</div>
-
-<div class="ex">
-<h3>(F3) Pattern \(y'/(y\ln y)\Rightarrow D_2\)</h3>
-\(y'=\frac{y\ln y}{x\ln x}\Rightarrow D_2y=1\Rightarrow y=x\). Check: \(x=500\Rightarrow y=500\).
-</div>
-
-<div class="ex">
-<h3>(F4) Constant \(D_2y\)</h3>
-\(D_2y=2\Rightarrow y=\exp((\ln x)^2)\). Check: \(x=e^3\Rightarrow y=e^9=8103.08393\).
-</div>
-
-<div class="ex">
-<h3>(F5) Deep multi-scale law: constant \(D_3y\)</h3>
-\(D_3y=2\Rightarrow y=\exp(\exp((\ln\ln x)^2))\). Check: \(x=e^{e^2}\Rightarrow y=\exp(\exp(4))\approx 2.51\times10^{23}\).
-</div>
-
-<div class="ex">
-<h3>(F6) \(D_2y=1+\ln\ln x\) integrates in \(v=\ln\ln x\)</h3>
-\(dz/dv=1+v\Rightarrow z=v+v^2/2\Rightarrow y=\exp(\exp(v+v^2/2))\). For \(x=e^{e^2}\Rightarrow v=2\Rightarrow y=\exp(\exp(4))\).
-</div>
-
-</div>
-
-<div class="section">
-<h2>16.4 Economics / Growth Examples (5)</h2>
-
-<div class="ex">
-<h3>(E1) Constant elasticity: \(D_1y=\varepsilon\)</h3>
-With \(\varepsilon=0.7\), \(y(100)=50\Rightarrow C\approx 1.9905\). Then \(y(200)\approx 81.22\).
-</div>
-
-<div class="ex">
-<h3>(E2) \(D_1y=1+\ln x\Rightarrow\) closed form</h3>
-\(d(\ln y)/du=1+u\Rightarrow y=x\exp((\ln x)^2/2)\). Check: \(x=e^2\Rightarrow y=e^4=54.59815\).
-</div>
-
-<div class="ex">
-<h3>(E3) \(D_2y=1+\frac{1}{\ln\ln x}\Rightarrow y=5^5\) at \(x=e^5\)</h3>
-\(y=\exp((\ln x)(\ln\ln x))\). Check: \(x=e^5\Rightarrow y=3125\).
-</div>
-
-<div class="ex">
-<h3>(E4) Nonlinear in \(y\) becomes linear in \(w=\ln y\)</h3>
-\(y'=\frac{y}{x}(2+\ln y)\Rightarrow dw/du=2+w\Rightarrow y=e^{x-2}\) with \(y(1)=e^{-1}\). Check: \(y(4)=e^2\).
-</div>
-
-<div class="ex">
-<h3>(E5) Deep-scale normalization: \(D_3y=1\Rightarrow y=x\)</h3>
-Choose \(C=0\Rightarrow y=x\). Check: \(x=e^{e^2}\Rightarrow y=e^{e^2}\).
-</div>
-
-</div>
-
-<div class="section">
-<h2>16.5 Engineering / Control / Materials Examples (5)</h2>
-
-<div class="ex">
-<h3>(G1) \(D_1y=a+b\ln x\Rightarrow y=Cx^a\exp(\frac{b}{2}(\ln x)^2)\)</h3>
-With \(a=b=C=1\): \(x=e^2\Rightarrow y=e^4=54.59815\).
-</div>
-
-<div class="ex">
-<h3>(G2) Direct design pattern: \(y'=\frac{2y\ln y}{x\ln x}\Rightarrow D_2y=2\)</h3>
-With \(y(e)=e\Rightarrow y=\exp((\ln x)^2)\). Check: \(x=e^3\Rightarrow y=e^9\).
-</div>
-
-<div class="ex">
-<h3>(G3) Linear control law on \(z=\ln\ln y\): \(D_2y=3+\frac12\ln\ln y\)</h3>
-Solve \(dz/dv=3+\frac12 z\). With \(x_0=e^2,y_0=e\), at \(x=e^5\): \(z\approx 3.4868\Rightarrow y=\exp(\exp(z))\sim 10^{14}\).
-</div>
-
-<div class="ex">
-<h3>(G4) Choose \(D_3\) due to \(\ln\ln\ln\) forcing</h3>
-\(D_3y=1+\frac{1}{\ln\ln\ln x}\Rightarrow q=s+\ln s\). If \(s=2\) (i.e., \(x=\exp(\exp(\exp(2)))\)), then \(q\approx 2.6931\Rightarrow \ln\ln y\approx 14.78\Rightarrow y=\exp(\exp(14.78))\).
-</div>
-
-<div class="ex">
-<h3>(G5) Calibration from two points under a power law</h3>
-\(y=Cx^\alpha\). From \(y(2)=10,y(8)=80\Rightarrow \alpha=3/2\), \(C\approx 3.5355339\). Then \(y(18)\approx 270.0\).
-</div>
-
-</div>
-
-<div class="section">
-<h2>16.6 Practical Takeaway</h2>
+<h2>16.3 Why Relative Integration Is Simpler</h2>
 <ul>
-<li>Start from structure, not from brute-force solving.</li>
-<li>Pick \(D_1/D_2/D_3\) based on the pattern in the equation.</li>
-<li>Linearize in \(\ln y\), \(\ln\ln y\), \(\ln\ln\ln y\) on the matching scale.</li>
-<li>Always validate numerically at at least one point.</li>
+<li>Direct handling of power laws.</li>
+<li>Multiplicative structures become additive.</li>
+<li>Nonlinear ODEs reduce to simple integrals.</li>
 </ul>
 </div>
 
-<footer>
-© Hierarchical Calculus — Chapter 16
-</footer>
+<div class="section">
+<h2>16.4 Twelve Numerical Examples</h2>
 
+<div class="ex"><strong>1.</strong> \(D_1y=2 \Rightarrow y=Cx^2\)</div>
+<div class="ex"><strong>2.</strong> \(D_1y=-1 \Rightarrow y=C/x\)</div>
+<div class="ex"><strong>3.</strong> \(D_1y=x \Rightarrow y=Ce^x\)</div>
+<div class="ex"><strong>4.</strong> \(D_1y=\ln x \Rightarrow y=\exp((\ln x)^2/2)\)</div>
+<div class="ex"><strong>5.</strong> \(D_1y=a+b/\ln x \Rightarrow y=Cx^a(\ln x)^b\)</div>
+<div class="ex"><strong>6.</strong> \(D_1y=3x^2 \Rightarrow y=Ce^{x^3}\)</div>
+<div class="ex"><strong>7.</strong> \(D_1y=1/\ln x \Rightarrow y=C\ln x\)</div>
+<div class="ex"><strong>8.</strong> \(D_1y=\ln\ln x \Rightarrow y=\exp(\int\ln\ln x\,d\ln x)\)</div>
+<div class="ex"><strong>9.</strong> \(D_1y=x^n \Rightarrow y=Ce^{x^{n+1}/(n+1)}\)</div>
+<div class="ex"><strong>10.</strong> \(D_1y=\sin(\ln x) \Rightarrow y=e^{-\cos(\ln x)}\)</div>
+<div class="ex"><strong>11.</strong> \(D_1y=\ln(x^2+1)\)</div>
+<div class="ex"><strong>12.</strong> \(D_1y=f(\ln x)\Rightarrow y=\exp(\int f(u)\,du)\)</div>
+
+</div>
+
+<div class="section">
+<h2>16.5 Geometric Interpretation</h2>
+<ul>
+<li>Integration occurs in log–log space.</li>
+<li>Rebuilds curves from scale-based slopes.</li>
+<li>Solutions are structurally meaningful.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>16.6 Summary</h2>
+<ul>
+<li>Relative integration is the inverse of \(D_1\).</li>
+<li>It simplifies complex differential equations.</li>
+<li>It is central to hierarchical calculus.</li>
+</ul>
+</div>
+
+<footer>© Hierarchical Calculus — Chapter 16</footer>
 </div>
 </body>
 </html>
+
