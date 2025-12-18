@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 26 — Transformations Between Hierarchical Levels</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],
+displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2.2;}
+.wrap{max-width:1600px;margin:auto;padding:40px 16px 110px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:22px;margin-bottom:32px;}
+h1{margin:0;font-size:2.4rem;}
+.subtitle{margin-top:12px;color:#b8c4e6;}
+h2{margin-top:42px;font-size:1.8rem;border-left:4px solid #4cc9f0;padding-left:16px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:26px;padding:32px;margin:30px 0;}
+.def{border:1px solid rgba(124,58,237,.6);background:rgba(124,58,237,.18);border-radius:22px;padding:22px;margin-top:20px;}
+.ex{background:rgba(255,255,255,.08);border-radius:22px;padding:22px;margin-top:20px;}
+.note{border:1px dashed rgba(76,201,240,.7);background:rgba(76,201,240,.18);border-radius:22px;padding:22px;margin-top:20px;color:#e0e9ff;}
+footer{margin-top:64px;border-top:1px solid rgba(255,255,255,.15);padding-top:24px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>Chapter 26 — Transformations Between Hierarchical Equation Levels</h1>
+<div class="subtitle">
+Changing the scale of description to simplify dynamics
+</div>
+</header>
+
+<div class="section">
+<h2>26.1 Conceptual Introduction</h2>
+<p>
+Hierarchical calculus allows systematic
+transformation between equation levels,
+revealing the natural scale of a system.
+</p>
+</div>
+
+<div class="section">
+<h2>26.2 Core Transformation Rule</h2>
+
+<div class="def">
+\[
+D_{n+1}y
+=
+\frac{d(\ln^{(n+1)}y)}{d(\ln^{(n+1)}x)}.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>26.3 Examples</h2>
+
+<div class="ex">\(y'=ky \Rightarrow D_1y=k\)</div>
+<div class="ex">\(D_1y=\ln y \Rightarrow D_2y=1\)</div>
+<div class="ex">\(y'=a\,y/x \Rightarrow D_1y=a \Rightarrow D_2y=0\)</div>
+<div class="ex">\(y'=y\ln y \Rightarrow D_2y=1\)</div>
+<div class="ex">\(y'=y^2 \Rightarrow D_2y=1\)</div>
+<div class="ex">\(y'=y(\ln y)^2 \Rightarrow D_2y=2\)</div>
+<div class="ex">\(y'=y\ln y\ln\ln y \Rightarrow D_3y=1\)</div>
+<div class="ex">\(y'=x y \Rightarrow D_1y=x \Rightarrow D_2y=\ln x\)</div>
+<div class="ex">\(y'=x^n y \Rightarrow D_2y=(n+1)\ln x\)</div>
+<div class="ex">\(y'=y e^{e^x} \Rightarrow D_3y=x\)</div>
+
+</div>
+
+<div class="section">
+<h2>26.4 Structural Meaning</h2>
+<ul>
+<li>Each transformation removes explosive growth.</li>
+<li>Constants mark stability levels.</li>
+<li>The hierarchy identifies the natural equation level.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>26.5 Summary</h2>
+<ul>
+<li>Hierarchical transformations are systematic.</li>
+<li>They simplify extreme nonlinear equations.</li>
+<li>They prepare the general \(D_n\) theory.</li>
+</ul>
+</div>
+
+<footer>© Hierarchical Calculus — Chapter 26</footer>
+</div>
+</body>
+</html>
 
