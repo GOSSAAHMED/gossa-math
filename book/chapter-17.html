@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 17 — استخراج D₁ و D₂ و D₃ من بيانات متقطعة | الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1200px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.95rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+ul{padding-right:22px;}
+li{margin:6px 0;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+.small{font-size:.95rem;color:#cbd6ff}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
+
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
+th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
+th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:900;}
+tr:last-child td{border-bottom:none;}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-weight:800;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>الفصل السابع عشر — استخراج \(D_1\) و\(D_2\) و\(D_3\) من بيانات متقطعة</h1>
+<div class="subtitle">خوارزمية قرار تلقائية + أمثلة عددية كثيرة تُظهر كيف نكتشف المستوى الصحيح من الجداول (Discrete Data)</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
+<a href="./chapter-16.html" class="btn">⟶ الفصل السابق</a>
+<a href="./chapter-18.html" class="btn">الفصل التالي ⟵</a>
+</div>
+</header>
+
+<div class="section">
+<h2>17.1 لماذا “البيانات المتقطعة” مهمة؟</h2>
+<p>
+في الواقع العملي (تجارب، اقتصاد، هندسة)، نملك قياسات عند نقاط متقطعة:
+\((x_i,y_i)\).
+المطلوب ليس فقط “اشتقاق” بالمعنى التفاضلي، بل استخراج
+<strong>قانون النمو المناسب</strong> وتحديد هل هو نسبي (\(D_1\)) أم لوغاريتمي أعمق (\(D_2\), \(D_3\)).
+</p>
+</div>
+
+<div class="section">
+<h2>17.2 مشتقات هرمية متقطعة (Discrete Hierarchical Derivatives)</h2>
+
+<div class="def">
+<strong>تقريب \(D_1\) بين نقطتين:</strong>
+\[
+\widehat{D_1}(x_i\!\to\!x_{i+1})
+=
+\frac{\ln y_{i+1}-\ln y_i}{\ln x_{i+1}-\ln x_i},
+\qquad (x_i>0,\ y_i>0).
+\]
+</div>
+
+<div class="def">
+<strong>تقريب \(D_2\) بين نقطتين:</strong>
+\[
+\widehat{D_2}(x_i\!\to\!x_{i+1})
+=
+\frac{\ln\ln y_{i+1}-\ln\ln y_i}{\ln\ln x_{i+1}-\ln\ln x_i},
+\qquad (\ln x_i>0,\ \ln y_i>0).
+\]
+</div>
+
+<div class="def">
+<strong>تقريب \(D_3\) بين نقطتين:</strong>
+\[
+\widehat{D_3}(x_i\!\to\!x_{i+1})
+=
+\frac{\ln\ln\ln y_{i+1}-\ln\ln\ln y_i}{\ln\ln\ln x_{i+1}-\ln\ln\ln x_i},
+\qquad (\ln\ln x_i>0,\ \ln\ln y_i>0).
+\]
+</div>
+
+<div class="note">
+هذه ليست “حيلًا”؛ إنها ترجمة مباشرة لتعريف:
+\[
+D_ny=\frac{d(L_n(y))}{d(L_n(x))}
+\]
+لكن باستخدام فرقين (Finite Difference) بدل التفاضل.
+</div>
+</div>
+
+<div class="section">
+<h2>17.3 كيف نقرر المستوى الأنسب تلقائيًا؟ (خوارزمية قرار)</h2>
+
+<div class="def">
+<strong>خوارزمية عملية:</strong>
+<ol>
+<li>احسب \(\widehat{D_1}\) على جميع المقاطع \([x_i,x_{i+1}]\).</li>
+<li>احسب “تشتت” القيم (مثلاً: المدى \(\max-\min\) أو متوسط الانحراف).</li>
+<li>إذا كان تشتت \(\widehat{D_1}\) صغيرًا ⇒ القانون نسبي ثابت تقريبًا ⇒ اختر \(D_1\).</li>
+<li>إذا كان تشتت \(\widehat{D_1}\) كبيرًا، وكان المجال يسمح (\(\ln x>0,\ln y>0\)) ⇒ احسب \(\widehat{D_2}\).</li>
+<li>إذا كان \(\widehat{D_2}\) أكثر ثباتًا بكثير ⇒ اختر \(D_2\).</li>
+<li>إذا بقي \(\widehat{D_2}\) متغيرًا بشدة، وكان المجال يسمح (\(\ln\ln x>0,\ln\ln y>0\)) ⇒ احسب \(\widehat{D_3}\).</li>
+<li>توقف عند أول مستوى يعطي “قانونًا بسيطًا”: ثابت تقريبًا أو خطي واضح.</li>
+</ol>
+</div>
+
+<div class="note">
+قاعدة مختصرة: <strong>اختر المستوى الذي يجعل \(\widehat{D_n}\) أقرب إلى الثبات.</strong>
+</div>
+</div>
+
+<div class="section">
+<h2>17.4 مقياسان عدديان سهلان للقرار</h2>
+<div class="def">
+<strong>(أ) مدى التشتت:</strong>
+\[
+R_n=\max_i \widehat{D_n}^{(i)}-\min_i \widehat{D_n}^{(i)}.
+\]
+</div>
+<div class="def">
+<strong>(ب) متوسط الانحراف عن المتوسط:</strong>
+\[
+M_n=\frac{1}{m}\sum_{i=1}^{m}\big|\widehat{D_n}^{(i)}-\overline{D_n}\big|.
+\]
+</div>
+<p class="small">
+القرار غالبًا: اختر المستوى الذي يعطي أصغر \(R_n\) و\(M_n\) ضمن المجال.
+</p>
+</div>
+
+<div class="section">
+<h2>17.5 أمثلة عددية كثيرة (18 مثالًا) مع جداول</h2>
+<p class="small">
+كل مثال يعرض بيانات \((x,y)\) ثم \(\widehat{D_1}\) أو \(\widehat{D_2}\) أو \(\widehat{D_3}\) على المقاطع.
+الأرقام مُختارة لتكون سهلة التحقق (كثير منها يعطي ثباتًا تامًا).
+</p>
+
+<hr>
+
+<div class="ex">
+<h3>مثال 1 — قانون قوة واضح: \(y=2x^3\) ⇒ \(\widehat{D_1}=3\) ثابت</h3>
+<table>
+<tr><th>\(x\)</th><th>\(y\)</th></tr>
+<tr><td>1</td><td>2</td></tr>
+<tr><td>2</td><td>16</td></tr>
+<tr><td>4</td><td>128</td></tr>
+</table>
+<div class="def">
+\[
+\widehat{D_1}(1\to2)=\frac{\ln16-\ln2}{\ln2-\ln1}=3,\quad
+\widehat{D_1}(2\to4)=\frac{\ln128-\ln16}{\ln4-\ln2}=3.
+\]
+</div>
+<span class="badge">القرار: \(D_1\)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 2 — قانون قوة بكسر: \(y=5x^{1/2}\) ⇒ \(\widehat{D_1}=0.5\)</h3>
+<table>
+<tr><th>\(x\)</th><th>\(y\)</th></tr>
+<tr><td>4</td><td>10</td></tr>
+<tr><td>9</td><td>15</td></tr>
+<tr><td>16</td><td>20</td></tr>
+</table>
+<div class="def">
+\[
+\widehat{D_1}(4\to9)=\frac{\ln15-\ln10}{\ln9-\ln4}=0.5,\quad
+\widehat{D_1}(9\to16)=\frac{\ln20-\ln15}{\ln16-\ln9}=0.5.
+\]
+</div>
+<span class="badge">القرار: \(D_1\)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 3 — أسّي: \(y=e^{0.2x}\) ⇒ \(\widehat{D_1}\) غير ثابت (يشير أن \(D_1\) ليس الأفضل لوصفه كثابت)</h3>
+<table>
+<tr><th>\(x\)</th><th>\(y\)</th></tr>
+<tr><td>5</td><td>\(e^1\approx 2.71828\)</td></tr>
+<tr><td>10</td><td>\(e^2\approx 7.38906\)</td></tr>
+<tr><td>15</td><td>\(e^3\approx 20.08554\)</td></tr>
+</table>
+<div class="note">
+هنا \(\widehat{D_1}\) يتغير لأن \(\ln y\) خطية في \(x\) وليس في \(\ln x\).
+في وصف البيانات، ستجد أن \(D_0\) مناسب كقانون ثابت: \(y'/y=0.2\).
+لكن هذا المثال هدفه توضيح: ليس كل شيء يُثبت في \(D_1\).
+</div>
+<span class="badge">القرار: ليس \(D_1\) ثابتًا — استخدم نموذجًا مناسبًا (مثل \(D_0\) أو نموذج آخر)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 4 — بنية \(D_2\) مثالية: \(y=\exp((\ln x)^2)\) ⇒ \(\widehat{D_2}=1\) ثابت</h3>
+<p class="small">اخترنا \(x=e^2,e^3,e^5\) لتكون \(\ln x\) أعدادًا صحيحة.</p>
+<table>
+<tr><th>\(x\)</th><th>\(\ln x\)</th><th>\(y\)</th><th>\(\ln y\)</th></tr>
+<tr><td>\(e^2\)</td><td>2</td><td>\(e^4\)</td><td>4</td></tr>
+<tr><td>\(e^3\)</td><td>3</td><td>\(e^9\)</td><td>9</td></tr>
+<tr><td>\(e^5\)</td><td>5</td><td>\(e^{25}\)</td><td>25</td></tr>
+</table>
+<div class="def">
+\[
+\ln\ln y = \ln((\ln x)^2)=\ln 2 + \ln\ln x \Rightarrow
+\widehat{D_2}=1\ \text{على أي مقطع}.
+\]
+</div>
+<span class="badge">القرار: \(D_2\)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 5 — \(y=\exp((\ln x)^3)\) ⇒ \(\widehat{D_2}=1\) ثابت أيضًا</h3>
+<table>
+<tr><th>\(x\)</th><th>\(\ln x\)</th><th>\(\ln y\)</th></tr>
+<tr><td>\(e^2\)</td><td>2</td><td>8</td></tr>
+<tr><td>\(e^3\)</td><td>3</td><td>27</td></tr>
+<tr><td>\(e^5\)</td><td>5</td><td>125</td></tr>
+</table>
+<div class="def">
+\[
+\ln\ln y=\ln((\ln x)^3)=\ln 3 + \ln\ln x \Rightarrow \widehat{D_2}=1.
+\]
+</div>
+<span class="badge">القرار: \(D_2\)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 6 — “طبقة ثالثة”: \(y=\exp(\exp((\ln\ln x)^2))\) ⇒ \(\widehat{D_3}=2\) ثابت</h3>
+<p class="small">اخترنا \(x=e^{e^2}, e^{e^3}\) حتى تكون \(\ln\ln x = 2,3\).</p>
+<table>
+<tr><th>\(x\)</th><th>\(\ln\ln x\)</th><th>\(\ln\ln y\)</th><th>\(\ln\ln\ln y\)</th></tr>
+<tr><td>\(e^{e^2}\)</td><td>2</td><td>\((2)^2=4\)</td><td>\(\ln 4\)</td></tr>
+<tr><td>\(e^{e^3}\)</td><td>3</td><td>\((3)^2=9\)</td><td>\(\ln 9\)</td></tr>
+</table>
+<div class="def">
+\[
+\widehat{D_3}=\frac{\ln(\,9\,)-\ln(\,4\,)}{\ln(\,3\,)-\ln(\,2\,)}=2.
+\]
+</div>
+<span class="badge">القرار: \(D_3\)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 7 — \(D_2\) ثابت من البيانات مباشرة: \(y=x\) مع شرط \(\frac{y'}{y\ln y}\) نمطي</h3>
+<table>
+<tr><th>\(x\)</th><th>\(y\)</th></tr>
+<tr><td>10</td><td>10</td></tr>
+<tr><td>20</td><td>20</td></tr>
+<tr><td>40</td><td>40</td></tr>
+</table>
+<div class="note">
+لأن \(y=x\) فإن \(\ln\ln y = \ln\ln x\) وبالتالي \(\widehat{D_2}=1\) و\(\widehat{D_1}=1\).
+القرار هنا يعتمد على شكل المعادلة/السياق: إن كان النمو نسبيًا خالصًا استخدم \(D_1\)،
+وإن كان مرتبطًا ببنية \(\ln\ln\) في النموذج استخدم \(D_2\).
+</div>
+<span class="badge">القرار: \(D_1\) أو \(D_2\) حسب السياق</span>
+</div>
+
+<div class="ex">
+<h3>مثال 8 — بيانات “قوة + ضوضاء صغيرة”: تقدير \(\alpha\) من متوسط \(\widehat{D_1}\)</h3>
+<p class="small">نفترض أن البيانات تقريبًا \(y\approx Cx^\alpha\). نستخدم متوسط \(\widehat{D_1}\) لتقدير \(\alpha\).</p>
+<table>
+<tr><th>\(x\)</th><th>\(y\)</th></tr>
+<tr><td>10</td><td>49.5</td></tr>
+<tr><td>20</td><td>79.8</td></tr>
+<tr><td>40</td><td>127.3</td></tr>
+</table>
+<div class="note">
+احسب \(\widehat{D_1}\) على المقاطع، ثم خذ متوسطها لتقدير \(\alpha\).
+إذا خرجت القيم متقاربة فهذا دليل أن نموذج القوة مناسب.
+</div>
+<span class="badge">القرار: غالبًا \(D_1\) (نمو قوة)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 9 — كشف أن \(D_2\) أفضل من \(D_1\) لأن \(\widehat{D_1}\) يتضخم</h3>
+<p class="small">لنفس نموذج \(y=\exp((\ln x)^{10})\) تظهر \(D_1\) ضخمة ومتغيرة، بينما \(D_2\) ثابت.</p>
+<table>
+<tr><th>\(x\)</th><th>\(\ln x\)</th><th>\(\ln y\)</th></tr>
+<tr><td>\(e^2\)</td><td>2</td><td>\(2^{10}=1024\)</td></tr>
+<tr><td>\(e^3\)</td><td>3</td><td>\(3^{10}=59049\)</td></tr>
+<tr><td>\(e^5\)</td><td>5</td><td>\(5^{10}=9765625\)</td></tr>
+</table>
+<div class="note">
+\(\widehat{D_1}\) هنا (تقريبًا) يتغير بعنف، أما \(\widehat{D_2}=1\) ثابت لأن \(\ln\ln y=\ln 10 + \ln\ln x\).
+</div>
+<span class="badge">القرار: \(D_2\)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 10 — تمييز “قانون لوغاريتمي”: \(y=(\ln x)^2\) (أفضل وصف على مقياس \(u=\ln x\))</h3>
+<table>
+<tr><th>\(x\)</th><th>\(\ln x\)</th><th>\(y\)</th></tr>
+<tr><td>\(e^2\)</td><td>2</td><td>4</td></tr>
+<tr><td>\(e^3\)</td><td>3</td><td>9</td></tr>
+<tr><td>\(e^5\)</td><td>5</td><td>25</td></tr>
+</table>
+<div class="note">
+هذه ليست قوة في \(x\)، لكنها “قوة” في \(\ln x\).
+يناسبها توصيف على مقياس \(u=\ln x\) (فوق تفاضلي على \(D_1\) في \(u\)).
+</div>
+<span class="badge">القرار: نمذجة على \(u=\ln x\) (مستوى هرمي مناسب)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 11 — كشف طبقة ثالثة من بيانات ضخمة جدًا</h3>
+<p class="small">اخترنا \(x_1=e^{e^2}\) و\(x_2=e^{e^4}\) بحيث \(\ln\ln x\) يقفز من 2 إلى 4.</p>
+<table>
+<tr><th>\(x\)</th><th>\(\ln\ln x\)</th><th>نموذج \(y=\exp(\exp((\ln\ln x)^2))\)</th></tr>
+<tr><td>\(e^{e^2}\)</td><td>2</td><td>\(y=\exp(\exp(4))\)</td></tr>
+<tr><td>\(e^{e^4}\)</td><td>4</td><td>\(y=\exp(\exp(16))\)</td></tr>
+</table>
+<div class="note">
+التحليل العددي يتم على \(\ln\ln\ln y\) و\(\ln\ln\ln x\) للحصول على \(D_3\) ثابت (=2).
+</div>
+<span class="badge">القرار: \(D_3\)</span>
+</div>
+
+<div class="ex">
+<h3>مثال 12 — تمييز بسيط عبر “خطية” في الرسوم: اختبار خطية \(L_n(y)\) مقابل \(L_n(x)\)</h3>
+<div class="def">
+<strong>اختبار عملي:</strong>
+إذا كانت النقاط \(\big(L_n(x_i),L_n(y_i)\big)\) تقع تقريبًا على خط مستقيم،
+فإن المستوى \(n\) هو الأنسب.
+</div>
+<span class="badge">مبدأ عام</span>
+</div>
+
+<hr>
+
+<div class="ex">
+<h3>أمثلة 13–18 (سريعة ومركزة)</h3>
+<ul>
+<li><strong>مثال 13:</strong> \(y=x\ln x\) — لا يعطي ثباتًا تامًا في \(D_1\)، لكنه يظهر انتظامًا في \(D_1\) مع إضافة حد \(\ln x\).</li>
+<li><strong>مثال 14:</strong> \(y=\exp(\sqrt{x})\) — مناسب أكثر لوصف \(D_0\) في \(x\)، بينما \(D_1\) ليس ثابتًا.</li>
+<li><strong>مثال 15:</strong> \(y=\exp((\ln x)(\ln\ln x))\) — يظهر ثباتًا قويًا في \(D_2\) عند اختيار بيانات مثل \(x=e^5\Rightarrow y=3125\).</li>
+<li><strong>مثال 16:</strong> بيانات “شبكات/مؤشرات” ضخمة: إذا استقر \(\widehat{D_3}\) بينما لم يستقر \(\widehat{D_2}\) فهذا دليل طبقة ثالثة.</li>
+<li><strong>مثال 17:</strong> إذا فشل \(D_1,D_2,D_3\) في الثبات، قد يكون النمو ليس من عائلة اللوغاريتمات المتداخلة (نحتاج نموذجًا مختلفًا).</li>
+<li><strong>مثال 18:</strong> بيانات موجبة لكن قريبة من 1: قد تفشل \(\ln\ln\) (لأن \(\ln y\) قد لا يكون موجبًا). هنا نلتزم بـ \(D_1\) أو نعيد تحجيم المتغيرات.</li>
+</ul>
+</div>
+
+</div>
+
+<div class="section">
+<h2>17.6 خلاصة الفصل</h2>
+<ul>
+<li>\(\widehat{D_1},\widehat{D_2},\widehat{D_3}\) هي “مشتقات هرمية متقطعة” مباشرة من التعريف.</li>
+<li>اختيار المستوى يتم عبر “ثبات” \(\widehat{D_n}\) (أصغر تشتت).</li>
+<li>من الأفضل دائمًا اختبار خطية \(\big(L_n(x),L_n(y)\big)\) بصريًا أو عدديًا.</li>
+<li>إذا لم يسمح المجال بـ \(\ln\ln\) أو \(\ln\ln\ln\)، لا نجبر البيانات؛ نعود لمستوى أدنى أو نُعيد تحجيمها.</li>
+</ul>
+
+<div class="note">
+إذا رغبت، الفصل 18 يمكن أن يكون: “أدوات عملية: قالب جدول Excel/Google Sheets لحساب \(\widehat{D_1},\widehat{D_2},\widehat{D_3}\) تلقائيًا + قرار المستوى + رسومات”.
+</div>
+</div>
+
+<footer>
+© كتاب الحساب الهرمي — الفصل السابع عشر
+</footer>
+
+</div>
+</body>
+</html>
