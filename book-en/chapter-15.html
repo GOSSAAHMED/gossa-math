@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chapter 15 — Hierarchical Stability and Convergence Metrics</title>
+<title>Chapter 15 — Integration in Hierarchical Calculus</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
@@ -12,145 +12,127 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\
 
 <style>
 body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
-.wrap{max-width:1120px;margin:auto;padding:32px 16px 80px;}
-header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-h1{margin:0;font-size:1.9rem;}
+.wrap{max-width:1400px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:22px;}
+h1{margin:0;font-size:2rem;}
 .subtitle{margin-top:8px;color:#b8c4e6;}
-h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
-h3{margin-top:18px;color:#cfe0ff;}
-.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
-.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
-.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
-ul{padding-left:20px;}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
-.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+h2{margin-top:32px;font-size:1.45rem;border-left:4px solid #4cc9f0;padding-left:12px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:22px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.1);border-radius:16px;padding:16px;margin-top:14px;}
+.ex{background:rgba(255,255,255,.05);border-radius:16px;padding:16px;margin-top:14px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.1);border-radius:16px;padding:16px;margin-top:14px;color:#cbd6ff;}
 footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
 mjx-container{color:#eaf0ff!important;}
-.small{font-size:.95rem;color:#cbd6ff}
 </style>
 </head>
 
 <body>
 <div class="wrap">
-
 <header>
-<h1>Chapter 15 — Hierarchical Stability and Convergence Metrics</h1>
-<div class="subtitle">When to stop at \(D_1\), and when to climb to \(D_2\), \(D_3\), or \(D_4\) — with many numerical examples</div>
-
-<div class="nav">
-<a href="./index.html" class="btn primary">📘 Book Index</a>
-<a href="./chapter-14.html" class="btn">⟵ Previous</a>
-<a href="./chapter-16.html" class="btn">Next ⟶</a>
+<h1>Chapter 15 — Integration in Hierarchical Calculus</h1>
+<div class="subtitle">
+Reconstructing functions from hierarchical derivatives
 </div>
 </header>
 
 <div class="section">
-<h2>15.1 What “Hierarchical Stability” Means</h2>
+<h2>15.1 Conceptual Introduction</h2>
 <p>
-A function/system is said to be hierarchically stable at level \(n\) if
-the law becomes constant or nearly constant (or at least much slower-varying)
-when expressed at that scale.
+In hierarchical calculus, integration reconstructs a function
+from its relative or logarithmic structure,
+rather than from absolute slopes.
 </p>
 </div>
 
 <div class="section">
-<h2>15.2 Two Practical Numerical Metrics</h2>
+<h2>15.2 Relative Integration (Inverse of \(D_1\))</h2>
 
 <div class="def">
-<strong>(A) Distance-to-1 stability index:</strong>
+If
 \[
-S_n(x)=|D_n y(x)-1|.
+D_1y=f(x),
 \]
-Small \(S_n\) over a wide domain indicates strong stability at level \(n\).
-</div>
-
-<div class="def">
-<strong>(B) Variation across a domain:</strong>
+then
 \[
-V_n(x_1,x_2)=|D_n y(x_2)-D_n y(x_1)|.
+\ln y=\int f(x)\,d(\ln x)+C.
 \]
-Small \(V_n\) indicates that level \(n\) is more stable than lower levels.
 </div>
 </div>
 
 <div class="section">
-<h2>15.3 Decision Rule: When to Climb</h2>
+<h2>15.3 Ten Numerical Examples</h2>
+
+<div class="ex">
+<strong>Example 1:</strong> \(D_1y=2 \Rightarrow y=Cx^2\)
+</div>
+
+<div class="ex">
+<strong>Example 2:</strong> \(D_1y=-1 \Rightarrow y=C/x\)
+</div>
+
+<div class="ex">
+<strong>Example 3:</strong> \(D_1y=x \Rightarrow y=Ce^x\)
+</div>
+
+<div class="ex">
+<strong>Example 4:</strong> \(D_1y=\ln x \Rightarrow y=\exp((\ln x)^2/2)\)
+</div>
+
+<div class="ex">
+<strong>Example 5:</strong> \(D_1y=a+b/\ln x \Rightarrow y=Cx^a(\ln x)^b\)
+</div>
+
+<div class="ex">
+<strong>Example 6:</strong> \(D_1y=3x^2 \Rightarrow y=Ce^{x^3}\)
+</div>
+
+<div class="ex">
+<strong>Example 7:</strong> \(D_1y=1/\ln x \Rightarrow y=C\ln x\)
+</div>
+
+<div class="ex">
+<strong>Example 8:</strong> \(D_1y=\ln\ln x \Rightarrow y=\exp(\int\ln\ln x\,d\ln x)\)
+</div>
+
+<div class="ex">
+<strong>Example 9:</strong> \(D_1y=x^n \Rightarrow y=Ce^{x^{n+1}/(n+1)}\)
+</div>
+
+<div class="ex">
+<strong>Example 10:</strong> \(D_1y=f(\ln x)\Rightarrow y=\exp(\int f(u)\,du)\)
+</div>
+
+</div>
+
+<div class="section">
+<h2>15.4 Logarithmic Integration (Inverse of \(D_2\))</h2>
+
 <div class="def">
+\[
+\ln\ln y=\int g(x)\,d(\ln\ln x)+C.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>15.5 Interpretation</h2>
 <ul>
-<li>Compute \(D_1\). If it varies fast or becomes huge, try \(D_2\).</li>
-<li>If \(D_2\) still varies clearly and the structure involves \(\ln\ln\), try \(D_3\).</li>
-<li>If \(\ln\ln\ln\) appears naturally, try \(D_4\).</li>
-<li>Stop at the first level where the law becomes constant/linear/directly integrable.</li>
+<li>Integration rebuilds hierarchical structure.</li>
+<li>Relative integrals are simpler than classical ones.</li>
+<li>Deep growth laws become explicit.</li>
 </ul>
 </div>
-</div>
 
 <div class="section">
-<h2>15.4 Typical Calibration Facts</h2>
+<h2>15.6 Summary</h2>
 <ul>
-<li>If \(y=x^a\): \(D_1=a\) and \(D_n=1\) for all \(n\ge2\).</li>
-<li>If \(y=\exp((\ln x)^m)\): \(D_2=1\) identically.</li>
-<li>If \(y=\exp(\exp((\ln\ln x)^p))\): \(D_3\) becomes constant (often \(=1\) or \(=p\)).</li>
-<li>If \(y=\exp(\exp(\exp((\ln\ln\ln x)^p)))\): \(D_4=1\) identically.</li>
+<li>Hierarchical integration is the natural inverse of \(D_n\).</li>
+<li>Ten examples demonstrate its power.</li>
+<li>This opens the door to hierarchical differential equations.</li>
 </ul>
 </div>
 
-<div class="section">
-<h2>15.5 Fourteen Numerical Examples</h2>
-<p class="small">
-We choose points such as \(x=e^2,e^3,e^5,e^{e^2}\) so logs become clean.
-</p>
-
-<div class="ex">
-<h3>Group (A): Stability begins at \(D_2\)</h3>
-<p><strong>Ex.1</strong> \(y=x^7\): \(D_1=7\), \(D_2=D_3=1\).</p>
-<p><strong>Ex.2</strong> \(y=x^{1/2}\): \(D_1=1/2\), \(D_2=D_3=1\).</p>
-<p><strong>Ex.3</strong> \(y=\exp((\ln x)^3)\): \(D_1=3(\ln x)^2\) varies (12 at \(e^2\), 75 at \(e^5\)), but \(D_2=1\).</p>
-<p><strong>Ex.4</strong> \(y=\exp((\ln x)^{10})\): \(D_1=10(\ln x)^9\) is huge (5120 at \(e^2\), 196830 at \(e^3\)), but \(D_2=1\).</p>
-</div>
-
-<div class="ex">
-<h3>Group (B): \(D_3\) stabilizes nested-log structures</h3>
-<p><strong>Ex.5</strong> \(y=\exp(\exp((\ln\ln x)^2))\): \(D_3=2\) constant; at \(x=e^{e^2}\), \(D_3=2\).</p>
-<p><strong>Ex.6</strong> \(y=\exp(\exp((\ln\ln x)^5))\): \(D_3=1\) constant.</p>
-<p><strong>Ex.7</strong> \(y=\exp(\exp(\ln\ln x))\): stable behavior is most visible in \(z=\ln\ln y\); at \(x=e^{e^2}\), \(y=\exp(\exp(2))\approx 1618.177\).</p>
-<p><strong>Ex.8</strong> \(y=\exp(\exp((\ln\ln x)^2+\ln\ln x))\): \(D_2\) varies; deeper-scale linearity emerges more naturally at level \(D_3\).</p>
-</div>
-
-<div class="ex">
-<h3>Group (C): Need \(D_4\) for a third nested scale</h3>
-<p><strong>Ex.9</strong> \(y=\exp(\exp(\exp(\ln\ln\ln x)))\): \(D_4=1\) clearly.</p>
-<p><strong>Ex.10</strong> \(y=\exp(\exp(\exp((\ln\ln\ln x)^3)))\): \(D_4=1\).</p>
-<p><strong>Ex.11</strong> \(y=\exp(\exp(\exp((\ln\ln\ln x)^2)))\): \(D_3\) varies strongly but \(D_4=1\).</p>
-</div>
-
-<div class="ex">
-<h3>Group (D): Metrics \(S_n\) and \(V_n\)</h3>
-<p><strong>Ex.12</strong> \(y=\exp((\ln x)^3)\): between \(x_1=e^2\) and \(x_2=e^5\), \(V_1=|75-12|=63\) while \(V_2=0\).</p>
-<p><strong>Ex.13</strong> \(y=\exp(\exp((\ln\ln x)^2))\): between \(x_1=e^{e^2}\) and \(x_2=e^{e^3}\), \(D_3\) stays constant (=2) so \(V_3=0\).</p>
-<p><strong>Ex.14</strong> \(y=\exp(\exp(\exp((\ln\ln\ln x)^3)))\): \(D_4=1\Rightarrow S_4=0\) and \(V_4=0\) on the domain.</p>
-</div>
-
-<div class="note">
-Core pattern: the deeper the nested-log structure of the phenomenon,
-the higher the level at which stability becomes visible.
-</div>
-</div>
-
-<div class="section">
-<h2>15.6 The “Depth Rule”</h2>
-<div class="def">
-If the natural law contains an iterated logarithm \(\ln^{(k)}\),
-then choosing level \(D_{k+1}\) often yields the simplest (constant/linear) description.
-</div>
-</div>
-
-<footer>
-© Hierarchical Calculus — Chapter 15
-</footer>
-
+<footer>© Hierarchical Calculus — Chapter 15</footer>
 </div>
 </body>
 </html>
