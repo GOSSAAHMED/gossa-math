@@ -1,1 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 31 — الاقتصاد ونماذج النمو النسبي | كتاب الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],
+displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.25;}
+.wrap{max-width:1750px;margin:auto;padding:44px 16px 130px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:26px;margin-bottom:40px;}
+h1{margin:0;font-size:2.7rem;}
+.subtitle{margin-top:12px;color:#b8c4e6;}
+h2{margin-top:50px;font-size:2rem;border-right:4px solid #4cc9f0;padding-right:18px;}
+h3{margin-top:30px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:30px;padding:38px;margin:38px 0;}
+.ex{background:rgba(255,255,255,.08);border-radius:22px;padding:22px;margin-top:18px;}
+.def{border:1px solid rgba(124,58,237,.6);background:rgba(124,58,237,.18);border-radius:22px;padding:22px;margin-top:22px;}
+.note{border:1px dashed rgba(76,201,240,.7);background:rgba(76,201,240,.18);border-radius:22px;padding:22px;margin-top:22px;color:#e0e9ff;}
+table{width:100%;border-collapse:collapse;margin-top:18px;}
+th,td{border:1px solid rgba(255,255,255,.25);padding:12px;text-align:center;}
+th{background:rgba(76,201,240,.18);}
+footer{margin-top:80px;border-top:1px solid rgba(255,255,255,.15);padding-top:30px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>الفصل 31 — الاقتصاد ونماذج النمو النسبي</h1>
+<div class="subtitle">
+من النمو الأسي إلى البنى الهرمية متعددة المقاييس
+</div>
+</header>
+
+<div class="section">
+<h2>31.1 مدخل عام: لماذا الاقتصاد علم نسبي؟</h2>
+<p>
+المتغيرات الاقتصادية الأساسية — الناتج، رأس المال، الدخل، الأسعار —
+لا تُفهم من خلال قيمها المطلقة،
+بل من خلال <strong>معدلات نموّها ونِسَب تغيّرها</strong>.
+</p>
+
+<div class="note">
+لهذا فإن المشتق النسبي
+\(
+D_1=\frac{d(\ln y)}{d(\ln t)}
+\)
+هو الأداة الطبيعية للاقتصاد.
+</div>
+</div>
+
+<div class="section">
+<h2>31.2 النمو الاقتصادي الكلاسيكي</h2>
+
+<div class="ex">
+نمو أسي:
+\[
+\frac{dY}{dt}=gY
+\Rightarrow
+D_1Y=g
+\]
+</div>
+
+<div class="note">
+معدل النمو \(g\) هو مشتق نسبي ثابت،
+وليس مجرد معامل تفاضلي.
+</div>
+</div>
+
+<div class="section">
+<h2>31.3 نموذج سولو (Solow Model)</h2>
+
+<div class="ex">
+\[
+\frac{dK}{dt}=sK^\alpha-\delta K
+\]
+</div>
+
+<div class="ex">
+هرميًا:
+\[
+D_1K = sK^{\alpha-1}-\delta
+\]
+</div>
+
+<div class="note">
+النمو يتحدد بمستوى \(D_1\)،
+بينما الاستقرار يظهر في \(D_2\).
+</div>
+</div>
+
+<div class="section">
+<h2>31.4 الدخل والأسعار والتضخم</h2>
+
+<div class="ex">
+التضخم:
+\[
+\pi=\frac{d(\ln P)}{dt}
+\Rightarrow
+\pi = D_1P \cdot \frac{d(\ln t)}{dt}
+\]
+</div>
+
+<div class="note">
+التضخم هو تغير نسبي للأسعار،
+وليس تغيرًا مطلقًا.
+</div>
+</div>
+
+<div class="section">
+<h2>31.5 المرونة الاقتصادية (Elasticity)</h2>
+
+<div class="def">
+المرونة السعرية:
+\[
+\varepsilon=\frac{d(\ln Q)}{d(\ln P)}=D_1 Q
+\]
+</div>
+
+<div class="note">
+المرونات هي مشتقات نسبية خالصة.
+</div>
+</div>
+
+<div class="section">
+<h2>31.6 أمثلة عددية (1–10)</h2>
+
+<table>
+<tr>
+<th>الظاهرة</th><th>العلاقة</th><th>\(D_1\)</th><th>التفسير</th>
+</tr>
+<tr>
+<td>ناتج قومي</td><td>\(Y\sim e^{0.03t}\)</td><td>0.03</td><td>نمو مستقر</td>
+</tr>
+<tr>
+<td>سكان</td><td>\(N\sim t^{1.2}\)</td><td>1.2</td><td>قوة ديموغرافية</td>
+</tr>
+<tr>
+<td>سعر</td><td>\(P\sim e^{0.1t}\)</td><td>0.1</td><td>تضخم</td>
+</tr>
+<tr>
+<td>طلب</td><td>\(Q\sim P^{-1.5}\)</td><td>-1.5</td><td>مرونة عالية</td>
+</tr>
+<tr>
+<td>رأس مال</td><td>\(K\sim t^{0.5}\)</td><td>0.5</td><td>تراكم بطيء</td>
+</tr>
+</table>
+</div>
+
+<div class="section">
+<h2>31.7 نماذج النمو المركب (المستوى \(D_2\))</h2>
+
+<div class="ex">
+\[
+Y=\exp(\exp(gt))
+\Rightarrow
+D_2Y=1
+\]
+</div>
+
+<div class="note">
+الاقتصادات السريعة جدًا
+تُفهم عند مستوى \(D_2\).
+</div>
+</div>
+
+<div class="section">
+<h2>31.8 أمثلة عددية إضافية (11–20)</h2>
+
+<div class="ex"><strong>11</strong> \(Y=t^2 \Rightarrow D_1=2\)</div>
+<div class="ex"><strong>12</strong> \(Y=e^{0.05t} \Rightarrow D_1=0.05\)</div>
+<div class="ex"><strong>13</strong> \(P=t^{-1} \Rightarrow D_1=-1\)</div>
+<div class="ex"><strong>14</strong> \(Q=P^{-0.8} \Rightarrow D_1=-0.8\)</div>
+<div class="ex"><strong>15</strong> \(K=e^{e^{0.02t}} \Rightarrow D_2=1\)</div>
+<div class="ex"><strong>16</strong> \(Y=\exp((\ln t)^2) \Rightarrow D_2=2\)</div>
+<div class="ex"><strong>17</strong> دخل فردي \(\sim t^{0.3}\)</div>
+<div class="ex"><strong>18</strong> ثروة \(\sim e^{0.07t}\)</div>
+<div class="ex"><strong>19</strong> دين \(\sim e^{0.12t}\)</div>
+<div class="ex"><strong>20</strong> إنتاجية \(\sim t^{0.8}\)</div>
+
+</div>
+
+<div class="section">
+<h2>31.9 التفسير الاقتصادي العميق</h2>
+<ul>
+<li>الاقتصاد تحكمه النِسَب لا القيم.</li>
+<li>الاستقرار يعني ثبات \(D_1\) أو \(D_2\).</li>
+<li>الأزمات تظهر عند تغيّر المستوى الهرمي.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>31.10 خلاصة الفصل</h2>
+<ul>
+<li>الحساب الهرمي لغة طبيعية للاقتصاد.</li>
+<li>النمو والتضخم والمرونة مشتقات نسبية.</li>
+<li>النماذج تصبح أوضح وأبسط هرميًا.</li>
+</ul>
+</div>
+
+<footer>© كتاب الحساب الهرمي — الفصل 31</footer>
+</div>
+</body>
+</html>
 
