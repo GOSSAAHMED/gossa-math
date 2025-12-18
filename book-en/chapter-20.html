@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 20 — Hierarchical Series Approximation: Beyond Taylor for Nested-Log Growth</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1280px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.95rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+.small{font-size:.95rem;color:#cbd6ff}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
+th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
+th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:900;}
+tr:last-child td{border-bottom:none;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>Chapter 20 — Hierarchical Series Approximation</h1>
+<div class="subtitle">Why expanding on the right scale (\(L_n\)) can outperform Taylor for multiplicative / nested-log growth (24 examples)</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 Book Index</a>
+<a href="./chapter-19.html" class="btn">⟵ Previous</a>
+<a href="./chapter-21.html" class="btn">Next ⟶</a>
+</div>
+</header>
+
+<div class="section">
+<h2>20.1 Why Taylor (D0) may fail outside a small neighborhood</h2>
+<p>
+Taylor expands on the additive scale of \(x\).  
+If the phenomenon is essentially multiplicative or nested-log, the natural scale is \(\ln x\) or \(\ln\ln x\).
+So we expand \(L_n(y)\) as a Taylor series in \(L_n(x)\).
+</p>
+</div>
+
+<div class="section">
+<h2>20.2 Level-1 approximation: linear \(\ln y\) vs \(\ln x\)</h2>
+<div class="def">
+If \(\ln y \approx a\ln x + b\), then \(y\approx e^b x^a\).
+This matches power-law behavior over wide ranges.
+</div>
+</div>
+
+<div class="section">
+<h2>20.3 Level-2 approximation: linear \(\ln\ln y\) vs \(\ln\ln x\)</h2>
+<div class="def">
+If \(\ln\ln y \approx a\ln\ln x + c\), then \(y\approx \exp(A(\ln x)^a)\).
+</div>
+</div>
+
+<div class="section">
+<h2>20.4 Level-3 approximation: linear \(\ln\ln\ln y\) vs \(\ln\ln\ln x\)</h2>
+<div class="def">
+If \(\ln\ln\ln y \approx a\ln\ln\ln x + c\), then \(y\approx \exp(\exp(A(\ln\ln x)^a))\).
+</div>
+</div>
+
+<div class="section">
+<h2>20.5 A General “Hierarchical Taylor”</h2>
+<div class="def">
+Let \(X=L_n(x)\), \(Y=L_n(y)\). Expand:
+\[
+Y(X)\approx Y(X_0)+Y'(X_0)(X-X_0)+\frac{Y''(X_0)}{2}(X-X_0)^2+\cdots
+\]
+Then invert \(L_n\) to recover \(y\).
+</div>
+</div>
+
+<div class="section">
+<h2>20.6 Twenty-Four Examples (Conceptual Comparisons)</h2>
+<ul>
+<li>Power laws: exact linearity at level \(D_1\).</li>
+<li>\(\exp((\ln x)^a)\)-type growth: stability at \(D_2\).</li>
+<li>\(\exp(\exp((\ln\ln x)^a))\)-type growth: stability at \(D_3\).</li>
+<li>Classical smooth functions near 0: Taylor (D0) remains best.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>20.7 Practical Recipe</h2>
+<ol>
+<li>Compute \(\widehat{D_1},\widehat{D_2},\widehat{D_3}\) from data.</li>
+<li>Select the most stable level.</li>
+<li>Fit a low-order polynomial for \(Y\) vs \(X\) at that level.</li>
+<li>Invert back to obtain \(y(x)\), validate on new points.</li>
+</ol>
+</div>
+
+<footer>
+© Hierarchical Calculus — Chapter 20
+</footer>
+
+</div>
+</body>
+</html>
