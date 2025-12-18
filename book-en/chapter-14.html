@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chapter 14 — Algorithm for Choosing the Level Dₙ | Hierarchical Calculus</title>
+<title>Chapter 14 — Geometric and Conceptual Interpretation</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
@@ -12,168 +12,140 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\
 
 <style>
 body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
-.wrap{max-width:1100px;margin:auto;padding:32px 16px 80px;}
-header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-h1{margin:0;font-size:1.9rem;}
+.wrap{max-width:1350px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:22px;}
+h1{margin:0;font-size:2rem;}
 .subtitle{margin-top:8px;color:#b8c4e6;}
-h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
-h3{margin-top:18px;color:#cfe0ff;}
-.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
-.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
-.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
-.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+h2{margin-top:32px;font-size:1.45rem;border-left:4px solid #4cc9f0;padding-left:12px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:22px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.1);border-radius:16px;padding:16px;margin-top:14px;}
+.ex{background:rgba(255,255,255,.05);border-radius:16px;padding:16px;margin-top:14px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.1);border-radius:16px;padding:16px;margin-top:14px;color:#cbd6ff;}
 footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
 mjx-container{color:#eaf0ff!important;}
-.small{font-size:.95rem;color:#cbd6ff}
+ul{padding-left:26px;}
+li{margin:8px 0;}
 </style>
 </head>
 
 <body>
 <div class="wrap">
-
 <header>
-<h1>Chapter 14 — An Algorithm for Choosing the Correct Level \(D_n\)</h1>
-<div class="subtitle">Decision rules + design method + many numerical examples showing strong simplification by climbing the hierarchy</div>
-
-<div class="nav">
-<a href="./index.html" class="btn primary">📘 Book Index</a>
-<a href="./chapter-13.html" class="btn">⟵ Previous</a>
-<a href="./chapter-15.html" class="btn">Next ⟶</a>
+<h1>Chapter 14 — Geometric and Conceptual Interpretation</h1>
+<div class="subtitle">
+How hierarchical derivatives flatten complexity
 </div>
 </header>
 
 <div class="section">
-<h2>14.1 Why an Algorithm?</h2>
+<h2>14.1 From Geometric Slope to Relative Slope</h2>
 <p>
-The key power of hierarchical calculus is not merely defining \(D_n\),
-but systematically choosing the level that turns a heavy/nonlinear \(D_0\) equation
-into a linear or directly integrable equation on a deeper scale.
+Classical derivatives measure geometric slope in Euclidean space.
+Hierarchical calculus shifts perspective toward scale-invariant geometry.
 </p>
 </div>
 
 <div class="section">
-<h2>14.2 Practical Decision Tree</h2>
+<h2>14.2 Geometry of \(D_1\)</h2>
+
 <div class="def">
+\[
+D_1=\frac{d(\ln y)}{d(\ln x)}
+\]
+is the slope of the curve in log–log space.
+</div>
+
+<div class="ex">
+<h3>Example A: Power law</h3>
+<p>\(y=x^3 \Rightarrow D_1=3\) (perfect linearity).</p>
+</div>
+
+<div class="ex">
+<h3>Example B: Exponential</h3>
+<p>\(y=e^x \Rightarrow D_1=x\) (nonlinear in log–log).</p>
+</div>
+</div>
+
+<div class="section">
+<h2>14.3 Geometry of \(D_2\)</h2>
+
+<div class="def">
+\[
+D_2=\frac{d(\ln\ln y)}{d(\ln\ln x)}
+\]
+</div>
+
+<div class="ex">
+<h3>Example C</h3>
+<p>\(y=x^a \Rightarrow D_2=1\).</p>
+</div>
+
+<div class="ex">
+<h3>Example D</h3>
+<p>\(y=e^x \Rightarrow D_2=\ln x\).</p>
+</div>
+</div>
+
+<div class="section">
+<h2>14.4 Hierarchical Flattening</h2>
 <ul>
-<li>If you see \(\frac{y'}{y}\) or \(\frac{x}{y}y'\): try \(D_1\).</li>
-<li>If you see \(\frac{y'}{y\ln y}\) or \(\frac{x\ln x}{y\ln y}y'\): try \(D_2\).</li>
-<li>If you see \(\frac{y'}{y\ln y\ln\ln y}\): try \(D_3\).</li>
-<li>If the natural forcing depends on \(\ln x\): use \(u=\ln x\) (level \(D_1\)).</li>
-<li>If it depends on \(\ln\ln x\): use \(v=\ln\ln x\) (level \(D_2\)).</li>
-</ul>
-</div>
-</div>
-
-<div class="section">
-<h2>14.3 Transformation Dictionary</h2>
-<div class="def">
-\[
-D_1y=\frac{x}{y}y' \iff y'=\frac{y}{x}D_1y.
-\]
-\[
-D_2y=\frac{x\ln x}{y\ln y}y' \iff y'=\frac{y\ln y}{x\ln x}D_2y.
-\]
-\[
-D_3y=\frac{x\ln x\,\ln\ln x}{y\ln y\,\ln\ln y}y'.
-\]
-</div>
-</div>
-
-<div class="section">
-<h2>14.4 A General Design Method</h2>
-<div class="def">
-<ol>
-<li>Inspect the equation: does it involve \(y,\ln y,\ln\ln y\) and \(x,\ln x,\ln\ln x\)?</li>
-<li>Choose the natural scale variable: \(u=\ln x\), \(v=\ln\ln x\), etc.</li>
-<li>Choose the solution transform: \(w=\ln y\), \(z=\ln\ln y\), etc.</li>
-<li>Rewrite to obtain a linear ODE in \(w(u)\) or \(z(v)\).</li>
-<li>Solve and invert back to \(y\).</li>
-<li>Validate with a numerical check.</li>
-</ol>
-</div>
-</div>
-
-<div class="section">
-<h2>14.5 Many Numerical Examples (12)</h2>
-
-<div class="ex">
-<h3>Example 1 (D1): \(D_1y=3\Rightarrow y=Cx^3\)</h3>
-With \(y(2)=16\Rightarrow C=2\), then \(y(5)=250\).
-</div>
-
-<div class="ex">
-<h3>Example 2 (D1): \(D_1y=1+\ln y\Rightarrow y=e^{x-1}\)</h3>
-Using \(y(1)=1\Rightarrow y=e^{x-1}\). Check: \(y(3)=e^2=7.3890561\).
-</div>
-
-<div class="ex">
-<h3>Example 3 (D1): \(D_1y=2\ln x\Rightarrow y=e^{(\ln x)^2}\)</h3>
-With \(y(e)=e\Rightarrow y=e^{(\ln x)^2}\). Check: \(y(e^3)=e^9=8103.08393\).
-</div>
-
-<div class="ex">
-<h3>Example 4 (D1): \(D_1y=a+b\ln x\Rightarrow y=Cx^a\exp(\tfrac{b}{2}(\ln x)^2)\)</h3>
-Take \(a=b=C=1\). Check: \(y(e^2)=e^4=54.59815\).
-</div>
-
-<div class="ex">
-<h3>Example 5 (D2): \(D_2y=2\Rightarrow y=\exp((\ln x)^2)\)</h3>
-Check: \(y(e^3)=e^9=8103.08393\).
-</div>
-
-<div class="ex">
-<h3>Example 6 (D2): \(D_2y=1+\frac{1}{\ln\ln x}\Rightarrow y=\exp((\ln x)(\ln\ln x))\)</h3>
-Check: \(y(e^5)=5^5=3125\).
-</div>
-
-<div class="ex">
-<h3>Example 7 (D2): \(D_2y=\ln\ln y\Rightarrow y=e^x\) (for a specific constant)</h3>
-One gets \(\ln\ln y=C\ln x\Rightarrow y=e^{x^C}\). Choose \(C=1\Rightarrow y=e^x\). Check: \(y(2)=e^2\).
-</div>
-
-<div class="ex">
-<h3>Example 8 (D2): \(D_2y=3+\tfrac12\ln\ln y\Rightarrow\) linear ODE in \(z=\ln\ln y\)</h3>
-With \(x_0=e^2,y_0=e\), at \(x=e^5\) one gets \(z\approx 3.4868\) hence \(y\approx \exp(\exp(z))\sim 10^{14}\).
-</div>
-
-<div class="ex">
-<h3>Example 9 (D1): \(y'=\frac{y}{x}(2+\ln y)\Rightarrow y=e^{x-2}\)</h3>
-Using \(y(1)=e^{-1}\Rightarrow y=e^{x-2}\). Check: \(y(4)=e^2\).
-</div>
-
-<div class="ex">
-<h3>Example 10 (D1): \(D_1y=(\ln x)^2\Rightarrow y=\exp((\ln x)^3/3)\)</h3>
-Check: \(y(e^3)=e^9=8103.08393\).
-</div>
-
-<div class="ex">
-<h3>Example 11 (D3): \(D_3y=2\Rightarrow \ln\ln y=(\ln\ln x)^2\)</h3>
-At \(x=e^{e^2}\) we have \(\ln\ln x=2\), so \(y=\exp(\exp(4))\approx 2.51\times 10^{23}\).
-</div>
-
-<div class="ex">
-<h3>Example 12 (Auto-choice): \(\;y'=\frac{y\ln y}{x\ln x}\Rightarrow D_2y=1\Rightarrow y=x\)</h3>
-Check: \(x=100\Rightarrow y=100\).
-</div>
-
-</div>
-
-<div class="section">
-<h2>14.6 Summary</h2>
-<ul>
-<li>Level choice is guided by structural patterns, not guesswork.</li>
-<li>\(\frac{y'}{y}\to D_1\), \(\frac{y'}{y\ln y}\to D_2\), \(\frac{y'}{y\ln y\ln\ln y}\to D_3\).</li>
-<li>After choosing the level, transform the dependent variable (\(\ln y\), \(\ln\ln y\)) to obtain a linear ODE.</li>
+<li>Each level removes curvature.</li>
+<li>Complex growth becomes simpler.</li>
+<li>Stability emerges as linearity.</li>
 </ul>
 </div>
 
-<footer>
-© Hierarchical Calculus — Chapter 14
-</footer>
+<div class="section">
+<h2>14.5 Extensive Numerical Comparisons</h2>
 
+<div class="ex">
+<h3>Example E (x = 10)</h3>
+<ul>
+<li>\(y=x^2:\; D_0=20,\; D_1=2,\; D_2=1\)</li>
+<li>\(y=e^x:\; D_0\approx2.2\times10^4,\; D_1=10,\; D_2\approx2.3\)</li>
+</ul>
+</div>
+
+<div class="ex">
+<h3>Example F: Double exponential</h3>
+<p>
+\(y=e^{e^x}:\;
+D_1=e^x,\;
+D_2=x,\;
+D_3=\ln x\).
+</p>
+</div>
+</div>
+
+<div class="section">
+<h2>14.6 Conceptual Meaning</h2>
+<ul>
+<li>\(D_0\): physical change.</li>
+<li>\(D_1\): relative elasticity.</li>
+<li>\(D_2\): change of elasticity.</li>
+<li>\(D_n\): multi-scale structure.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>14.7 Why Hierarchical Calculus?</h2>
+<ul>
+<li>Natural systems are scale-based.</li>
+<li>Data often follows relative laws.</li>
+<li>Hierarchy reveals hidden simplicity.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>14.8 Summary</h2>
+<ul>
+<li>Each derivative has a geometric meaning.</li>
+<li>Higher levels simplify complexity.</li>
+<li>Numerical examples confirm intuition.</li>
+</ul>
+</div>
+
+<footer>© Hierarchical Calculus — Chapter 14</footer>
 </div>
 </body>
 </html>
