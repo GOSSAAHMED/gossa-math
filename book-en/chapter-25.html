@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>الفصل 25 — المعادلات الهرمية في المستوى D₂ | كتاب الحساب الهرمي</title>
+<title>Chapter 25 — Hierarchical Equations at Level D₂</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
@@ -11,258 +11,112 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <style>
-body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.2;}
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2.2;}
 .wrap{max-width:1600px;margin:auto;padding:40px 16px 110px;}
 header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:22px;margin-bottom:32px;}
 h1{margin:0;font-size:2.4rem;}
-.subtitle{margin-top:12px;color:#b8c4e6;font-size:1.05rem;}
-h2{margin-top:42px;font-size:1.8rem;border-right:4px solid #4cc9f0;padding-right:16px;}
-h3{margin-top:26px;color:#cfe0ff;}
+.subtitle{margin-top:12px;color:#b8c4e6;}
+h2{margin-top:42px;font-size:1.8rem;border-left:4px solid #4cc9f0;padding-left:16px;}
 .section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:26px;padding:32px;margin:30px 0;}
 .def{border:1px solid rgba(124,58,237,.6);background:rgba(124,58,237,.18);border-radius:22px;padding:22px;margin-top:20px;}
 .ex{background:rgba(255,255,255,.08);border-radius:22px;padding:22px;margin-top:20px;}
 .note{border:1px dashed rgba(76,201,240,.7);background:rgba(76,201,240,.18);border-radius:22px;padding:22px;margin-top:20px;color:#e0e9ff;}
 footer{margin-top:64px;border-top:1px solid rgba(255,255,255,.15);padding-top:24px;color:#b8c4e6;}
 mjx-container{color:#eaf0ff!important;}
-ul{padding-right:34px;}
-li{margin:14px 0;}
 </style>
 </head>
 
 <body>
 <div class="wrap">
 <header>
-<h1>الفصل 25 — المعادلات الهرمية في المستوى \(D_2\)</h1>
+<h1>Chapter 25 — Hierarchical Equations at Level \(D_2\)</h1>
 <div class="subtitle">
-المعادلات التفاضلية عند مستوى تغيّر التغيّر النسبي
+Equations governing changes of relative change
 </div>
 </header>
 
 <div class="section">
-<h2>25.1 المدخل المفاهيمي</h2>
+<h2>25.1 Conceptual Overview</h2>
 <p>
-في المستوى \(D_1\) ندرس تغير النسبة:
-\[
-D_1=\frac{d(\ln y)}{d(\ln x)}.
-\]
-أما في المستوى \(D_2\)، فننتقل خطوة أعمق لدراسة
-<strong>تغير هذا التغير النسبي نفسه</strong>:
-\[
-D_2=\frac{d(\ln\ln y)}{d(\ln\ln x)}.
-\]
+Level \(D_2\) analyzes how relative growth itself evolves.
+This level naturally handles highly nonlinear
+and super-exponential systems.
 </p>
-
-<div class="note">
-هذا المستوى هو المكان الطبيعي
-للمعادلات ذات النمو الأسّي المركّب
-والنظم شديدة اللاخطية.
-</div>
 </div>
 
 <div class="section">
-<h2>25.2 التعريف العام لمعادلة هرمية في المستوى \(D_2\)</h2>
+<h2>25.2 General Definition</h2>
 
 <div class="def">
-المعادلة الهرمية من المستوى الثاني هي معادلة من الشكل:
+A level-\(D_2\) hierarchical equation has the form:
 \[
-F\!\big(x,\; y,\; D_1y,\; D_2y\big)=0.
+F(x,y,D_1y,D_2y)=0.
 \]
 </div>
-
-<ul>
-<li>\(D_0\): تغير القيمة.</li>
-<li>\(D_1\): تغير النسبة.</li>
-<li>\(D_2\): تغير المرونة.</li>
-</ul>
 </div>
 
 <div class="section">
-<h2>25.3 أبسط معادلة في المستوى \(D_2\): الثابت العميق</h2>
+<h2>25.3 Constant Deep Equation</h2>
 
 <div class="ex">
 \[
-D_2y = a
-\]
-</div>
-
-<div class="ex">
-الحل:
-\[
-\ln\ln y = a\ln\ln x + C
+D_2y=a
 \Rightarrow
 y=\exp\!\big((\ln x)^a\big)
 \]
 </div>
-
-<div class="note">
-هذه الدوال تمثّل
-<strong>نموًا فوق-نسبيًا منضبطًا</strong>.
-</div>
 </div>
 
 <div class="section">
-<h2>25.4 مثال 2 — معادلة غير خطية تتحول إلى ثابتة</h2>
-
-<div class="ex">
-المعادلة التقليدية:
-\[
-\frac{dy}{dx}=y\ln y
-\]
-</div>
-
-<div class="ex">
-إعادة الصياغة:
-\[
-D_1y=\ln y
-\Rightarrow
-D_2y=1
-\]
-</div>
-
-<div class="note">
-معادلة لاخطية شديدة
-تصبح ثابتة عند المستوى \(D_2\).
-</div>
-</div>
-
-<div class="section">
-<h2>25.5 مثال 3 — معادلة أسية مركبة</h2>
+<h2>25.4 Nonlinear ODE Becomes Constant</h2>
 
 <div class="ex">
 \[
-\frac{dy}{dx}=y(\ln y)^2
-\]
-</div>
-
-<div class="ex">
-\[
-D_1y=(\ln y)^2
-\Rightarrow
-D_2y=2
+y'=y\ln y \Rightarrow D_2y=1
 \]
 </div>
 </div>
 
 <div class="section">
-<h2>25.6 مثال 4 — معادلة مستحيلة تقليديًا</h2>
+<h2>25.5 Extreme Nonlinearity</h2>
 
 <div class="ex">
 \[
-\frac{dy}{dx}=y\ln y\ln\ln y
+y'=y\ln y\ln\ln y \Rightarrow D_3y=1
 \]
-</div>
-
-<div class="ex">
-\[
-D_2y=\ln\ln y
-\Rightarrow
-D_3y=1
-\]
-</div>
-
-<div class="note">
-الصعود في الهرم يزيل
-<strong>طبقات اللاخطية</strong>
-واحدة تلو الأخرى.
 </div>
 </div>
 
 <div class="section">
-<h2>25.7 أمثلة عددية موسّعة (5–10)</h2>
+<h2>25.6 Numerical Examples</h2>
 
-<div class="ex">
-<h3>مثال 5</h3>
-\[
-\frac{dy}{dx}=y^2
-\Rightarrow
-D_1y=y
-\Rightarrow
-D_2y=1
-\]
-</div>
-
-<div class="ex">
-<h3>مثال 6</h3>
-\[
-\frac{dy}{dx}=y^a(\ln y)^b
-\Rightarrow
-D_2y=b
-\]
-</div>
-
-<div class="ex">
-<h3>مثال 7</h3>
-\[
-\frac{dy}{dx}=y e^{x}
-\Rightarrow
-D_1y=e^{x}
-\Rightarrow
-D_2y=x
-\]
-</div>
-
-<div class="ex">
-<h3>مثال 8</h3>
-\[
-\frac{dy}{dx}=x y\ln y
-\Rightarrow
-D_2y=x
-\]
-</div>
-
-<div class="ex">
-<h3>مثال 9</h3>
-\[
-\frac{dy}{dx}=y(\ln y)(\ln\ln y)
-\Rightarrow
-D_3y=1
-\]
-</div>
-
-<div class="ex">
-<h3>مثال 10</h3>
-\[
-\frac{dy}{dx}=y(\ln y)^n
-\Rightarrow
-D_2y=n
-\]
-</div>
+<div class="ex">\(y'=y^2 \Rightarrow D_2y=1\)</div>
+<div class="ex">\(y'=y(\ln y)^2 \Rightarrow D_2y=2\)</div>
+<div class="ex">\(y'=y e^x \Rightarrow D_2y=x\)</div>
+<div class="ex">\(y'=x y\ln y \Rightarrow D_2y=x\)</div>
+<div class="ex">\(y'=y(\ln y)^n \Rightarrow D_2y=n\)</div>
 
 </div>
 
 <div class="section">
-<h2>25.8 التفسير الهندسي والبنيوي</h2>
+<h2>25.7 Structural Interpretation</h2>
 <ul>
-<li>المعادلات تعيش في فضاء \((\ln\ln x,\ln\ln y)\).</li>
-<li>الثوابت تمثل ميولًا عميقة.</li>
-<li>النمو الفوضوي يصبح منتظمًا.</li>
+<li>Each higher level removes nonlinearity.</li>
+<li>Constants reveal deep invariants.</li>
+<li>Level \(D_2\) is a stability level.</li>
 </ul>
 </div>
 
 <div class="section">
-<h2>25.9 مقارنة مع المستويات الأدنى</h2>
+<h2>25.8 Summary</h2>
 <ul>
-<li>\(D_0\): تعقيد شديد.</li>
-<li>\(D_1\): تبسيط جزئي.</li>
-<li>\(D_2\): استقرار بنيوي واضح.</li>
+<li>Level \(D_2\) simplifies extreme nonlinear equations.</li>
+<li>Super-exponential growth becomes tractable.</li>
+<li>This prepares the general theory of \(D_n\).</li>
 </ul>
 </div>
 
-<div class="section">
-<h2>25.10 خلاصة الفصل</h2>
-<ul>
-<li>المستوى \(D_2\) يكشف البنية العميقة للنظم.</li>
-<li>معادلات شديدة اللاخطية تصبح ثابتة.</li>
-<li>هذا يمهّد للمستويات العليا \(D_n\).</li>
-</ul>
-
-<div class="note">
-الفصل القادم يعمّم النتائج
-على المستوى \(D_n\).
-</div>
-</div>
-
-<footer>© كتاب الحساب الهرمي — الفصل 25</footer>
+<footer>© Hierarchical Calculus — Chapter 25</footer>
 </div>
 </body>
 </html>
