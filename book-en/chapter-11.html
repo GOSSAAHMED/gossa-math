@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chapter 11 — General Laws of Hierarchical Derivatives Dₙ</title>
+<title>Chapter 11 — Higher-Order Hierarchical Derivatives</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
@@ -12,113 +12,124 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\
 
 <style>
 body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
-.wrap{max-width:980px;margin:auto;padding:32px 16px 80px;}
-header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-h1{margin:0;font-size:1.9rem;}
+.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:22px;}
+h1{margin:0;font-size:1.95rem;}
 .subtitle{margin-top:8px;color:#b8c4e6;}
-h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
-.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
-.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;}
+h2{margin-top:30px;font-size:1.4rem;border-left:4px solid #4cc9f0;padding-left:10px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:18px;margin:16px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:14px;margin-top:12px;}
 .ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
-.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
-footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+footer{margin-top:44px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;color:#b8c4e6;}
 mjx-container{color:#eaf0ff!important;}
+ul{padding-left:22px;}
+li{margin:6px 0;}
 </style>
 </head>
 
 <body>
 <div class="wrap">
-
 <header>
-<h1>Chapter 11 — General Laws of Hierarchical Derivatives \(D_n\)</h1>
-<div class="subtitle">Structure, Properties, and Transition Relations</div>
-
-<div class="nav">
-<a href="./index.html" class="btn primary">📘 Book Index</a>
-<a href="./chapter-10.html" class="btn">⟵ Previous</a>
-<a href="./chapter-12.html" class="btn">Next ⟶</a>
+<h1>Chapter 11 — Higher-Order Hierarchical Derivatives \(D_n\)</h1>
+<div class="subtitle">
+Generalization, hierarchy, and scale stability
 </div>
 </header>
 
 <div class="section">
-<h2>11.1 Overview</h2>
+<h2>11.1 From \(D_1\) and \(D_2\) to \(D_n\)</h2>
 <p>
-With the formal definition established, we now derive the general laws
-governing hierarchical derivatives and show that they arise naturally
-from the scale structure itself.
+The logarithmic construction naturally extends to arbitrary depth,
+leading to a full hierarchy of derivatives.
 </p>
 </div>
 
 <div class="section">
 <h2>11.2 General Definition</h2>
+
 <div class="def">
+Let
 \[
-D_n y=\frac{d(L_n(y))}{d(L_n(x))},\quad
-L_n(t)=\ln^{(n)}(t)
+L_0(t)=t,\quad L_1(t)=\ln t,\quad L_2(t)=\ln\ln t,\dots
+\]
+Then:
+\[
+D_n y=\frac{d(L_n(y))}{d(L_n(x))}.
 \]
 </div>
 </div>
 
 <div class="section">
-<h2>11.3 Invariance under Scaling</h2>
+<h2>11.3 General Formula</h2>
+
 <div class="def">
-For any constant \(c>0\),
 \[
-D_n(cy)=D_n(y),\quad n\ge1.
+D_n y
+=
+\frac{x\prod_{k=1}^{n-1}\ln^{(k)}x}
+     {y\prod_{k=1}^{n-1}\ln^{(k)}y}
+\;\frac{dy}{dx}.
 \]
 </div>
 </div>
 
 <div class="section">
-<h2>11.4 Product Behavior</h2>
-<p>
-Only at level \(D_1\) does multiplication transform into addition.
-Higher levels encode product structure differently.
-</p>
-</div>
+<h2>11.4 Transition Between Levels</h2>
 
-<div class="section">
-<h2>11.5 Transition Formula</h2>
 <div class="def">
 \[
-D_{n+1}y=\frac{L_n(x)}{L_n(y)}\,D_n y
+D_{n+1}y=\frac{\ln^{(n)}x}{\ln^{(n)}y}\,D_n y.
 \]
 </div>
 </div>
 
 <div class="section">
-<h2>11.6 Power Laws</h2>
+<h2>11.5 Power Laws</h2>
+
+<div class="def">
+For \(y=Cx^a\):
+\[
+D_1y=a,\qquad D_ny=1\ (n\ge2).
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>11.6 Examples</h2>
+
 <div class="ex">
-If \(y=x^a\) with \(x>1\), then
-\(D_1y=a\) and \(D_ny=1\) for all \(n\ge2\).
+\(y=x^2:\; D_1=2,\; D_2=1,\; D_3=1.\)
+</div>
+
+<div class="ex">
+\(y=e^x:\; D_1=x,\; D_2=\ln x,\; D_3=\ln\ln x.\)
+</div>
+
+<div class="ex">
+\(y=e^{e^x}:\; D_1=e^x,\; D_2=x,\; D_3=\ln x.\)
 </div>
 </div>
 
 <div class="section">
-<h2>11.7 Functional Classification</h2>
+<h2>11.7 Interpretation</h2>
 <ul>
-<li>Power laws: rapid hierarchical stabilization.</li>
-<li>Exponential laws: gradual scale transition.</li>
-<li>Composite laws: multi-scale structure.</li>
+<li>Each level probes a deeper scale.</li>
+<li>Power laws are fixed points of the hierarchy.</li>
+<li>\(D_n\) captures multi-scale growth.</li>
 </ul>
 </div>
 
 <div class="section">
 <h2>11.8 Summary</h2>
 <ul>
-<li>Hierarchical laws follow from scale structure.</li>
-<li>The transition formula is central.</li>
-<li>Next chapters apply these laws to approximation and equations.</li>
+<li>Hierarchical derivatives form a structured sequence.</li>
+<li>Higher levels reveal deeper invariance.</li>
+<li>This framework enables new approximation methods.</li>
 </ul>
 </div>
 
-<footer>
-© Hierarchical Calculus — Chapter 11
-</footer>
-
+<footer>© Hierarchical Calculus — Chapter 11</footer>
 </div>
 </body>
 </html>
