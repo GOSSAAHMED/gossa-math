@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 17 — Estimating D₁, D₂, D₃ from Discrete Data | Hierarchical Calculus</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1200px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.95rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+.small{font-size:.95rem;color:#cbd6ff}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
+th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
+th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:900;}
+tr:last-child td{border-bottom:none;}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-weight:800;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>Chapter 17 — Estimating \(D_1\), \(D_2\), and \(D_3\) from Discrete Data</h1>
+<div class="subtitle">A decision algorithm + many numerical examples showing how the “right level” emerges from tables</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 Book Index</a>
+<a href="./chapter-16.html" class="btn">⟵ Previous</a>
+<a href="./chapter-18.html" class="btn">Next ⟶</a>
+</div>
+</header>
+
+<div class="section">
+<h2>17.1 Why Discrete Data?</h2>
+<p>
+In real experiments and field measurements we observe samples \((x_i,y_i)\).
+The goal is to detect which hierarchical level provides the simplest growth law:
+relative (\(D_1\)) vs nested-log (\(D_2\), \(D_3\)).
+</p>
+</div>
+
+<div class="section">
+<h2>17.2 Discrete Hierarchical Derivatives</h2>
+
+<div class="def">
+<strong>Two-point estimate of \(D_1\):</strong>
+\[
+\widehat{D_1}=
+\frac{\ln y_{i+1}-\ln y_i}{\ln x_{i+1}-\ln x_i},
+\quad (x_i>0,\ y_i>0).
+\]
+</div>
+
+<div class="def">
+<strong>Two-point estimate of \(D_2\):</strong>
+\[
+\widehat{D_2}=
+\frac{\ln\ln y_{i+1}-\ln\ln y_i}{\ln\ln x_{i+1}-\ln\ln x_i},
+\quad (\ln x_i>0,\ \ln y_i>0).
+\]
+</div>
+
+<div class="def">
+<strong>Two-point estimate of \(D_3\):</strong>
+\[
+\widehat{D_3}=
+\frac{\ln\ln\ln y_{i+1}-\ln\ln\ln y_i}{\ln\ln\ln x_{i+1}-\ln\ln\ln x_i},
+\quad (\ln\ln x_i>0,\ \ln\ln y_i>0).
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>17.3 Automatic Level Selection (Decision Algorithm)</h2>
+<div class="def">
+<ol>
+<li>Compute \(\widehat{D_1}\) on all segments.</li>
+<li>Measure spread (range or mean absolute deviation).</li>
+<li>If \(\widehat{D_1}\) is stable → choose \(D_1\).</li>
+<li>Else, if domain allows, compute \(\widehat{D_2}\) and compare stability.</li>
+<li>If \(\widehat{D_2}\) is much more stable → choose \(D_2\).</li>
+<li>Else, if domain allows, compute \(\widehat{D_3}\) → choose the first stable level.</li>
+</ol>
+</div>
+</div>
+
+<div class="section">
+<h2>17.4 Two Simple Stability Metrics</h2>
+<div class="def">
+\[
+R_n=\max \widehat{D_n}-\min \widehat{D_n},\qquad
+M_n=\frac{1}{m}\sum|\widehat{D_n}-\overline{D_n}|.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>17.5 Many Numerical Examples (18)</h2>
+
+<div class="ex">
+<h3>Example 1 — Power law \(y=2x^3\): \(\widehat{D_1}=3\) constant</h3>
+<table>
+<tr><th>\(x\)</th><th>\(y\)</th></tr>
+<tr><td>1</td><td>2</td></tr>
+<tr><td>2</td><td>16</td></tr>
+<tr><td>4</td><td>128</td></tr>
+</table>
+<div class="def">
+\(\widehat{D_1}(1\to2)=3,\ \widehat{D_1}(2\to4)=3\).
+</div>
+<span class="badge">Choose \(D_1\)</span>
+</div>
+
+<div class="ex">
+<h3>Example 2 — Fractional power \(y=5x^{1/2}\): \(\widehat{D_1}=0.5\)</h3>
+<table>
+<tr><th>\(x\)</th><th>\(y\)</th></tr>
+<tr><td>4</td><td>10</td></tr>
+<tr><td>9</td><td>15</td></tr>
+<tr><td>16</td><td>20</td></tr>
+</table>
+<span class="badge">Choose \(D_1\)</span>
+</div>
+
+<div class="ex">
+<h3>Example 3 — Exponential \(y=e^{0.2x}\): \(\widehat{D_1}\) is not constant</h3>
+<span class="badge">Not a constant-\(D_1\) law (often better modeled on \(x\) directly)</span>
+</div>
+
+<div class="ex">
+<h3>Example 4 — \(y=\exp((\ln x)^2)\): \(\widehat{D_2}=1\) constant</h3>
+<table>
+<tr><th>\(x\)</th><th>\(\ln x\)</th><th>\(\ln y\)</th></tr>
+<tr><td>\(e^2\)</td><td>2</td><td>4</td></tr>
+<tr><td>\(e^3\)</td><td>3</td><td>9</td></tr>
+<tr><td>\(e^5\)</td><td>5</td><td>25</td></tr>
+</table>
+<span class="badge">Choose \(D_2\)</span>
+</div>
+
+<div class="ex">
+<h3>Example 5 — \(y=\exp((\ln x)^3)\): \(\widehat{D_2}=1\) constant</h3>
+<span class="badge">Choose \(D_2\)</span>
+</div>
+
+<div class="ex">
+<h3>Example 6 — \(y=\exp(\exp((\ln\ln x)^2))\): \(\widehat{D_3}=2\) constant</h3>
+<table>
+<tr><th>\(x\)</th><th>\(\ln\ln x\)</th><th>\(\ln\ln y\)</th></tr>
+<tr><td>\(e^{e^2}\)</td><td>2</td><td>4</td></tr>
+<tr><td>\(e^{e^3}\)</td><td>3</td><td>9</td></tr>
+</table>
+<span class="badge">Choose \(D_3\)</span>
+</div>
+
+<div class="ex">
+<h3>Example 7 — \(y=x\): both \(\widehat{D_1}=1\) and \(\widehat{D_2}=1\)</h3>
+<span class="badge">Choose by context (relative vs nested-log model)</span>
+</div>
+
+<div class="ex">
+<h3>Example 8 — Noisy power-like data: estimate \(\alpha\) via mean \(\widehat{D_1}\)</h3>
+<table>
+<tr><th>\(x\)</th><th>\(y\)</th></tr>
+<tr><td>10</td><td>49.5</td></tr>
+<tr><td>20</td><td>79.8</td></tr>
+<tr><td>40</td><td>127.3</td></tr>
+</table>
+<span class="badge">Typically \(D_1\)</span>
+</div>
+
+<div class="ex">
+<h3>Example 9 — \(\exp((\ln x)^{10})\): \(D_1\) explodes but \(D_2\) stabilizes</h3>
+<span class="badge">Choose \(D_2\)</span>
+</div>
+
+<div class="ex">
+<h3>Example 10 — \((\ln x)^2\): natural modeling in \(u=\ln x\)</h3>
+<span class="badge">Model on the log-scale</span>
+</div>
+
+<div class="ex">
+<h3>Examples 11–18 — Quick guidance cases</h3>
+<ul>
+<li>Deep-scale jumps suggest \(D_3\) stability checks.</li>
+<li>If \(\ln\ln\) is not defined (values near 1), drop to \(D_1\) or rescale.</li>
+<li>If no level stabilizes, the phenomenon may not be nested-log-type.</li>
+</ul>
+</div>
+
+</div>
+
+<div class="section">
+<h2>17.6 Summary</h2>
+<ul>
+<li>Discrete \(\widehat{D_n}\) is a direct finite-difference translation of the formal definition.</li>
+<li>Select the level that minimizes spread (range/deviation) of \(\widehat{D_n}\).</li>
+<li>Always respect domain constraints for \(\ln\ln\) and \(\ln\ln\ln\).</li>
+</ul>
+</div>
+
+<footer>
+© Hierarchical Calculus — Chapter 17
+</footer>
+
+</div>
+</body>
+</html>
