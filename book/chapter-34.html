@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 34 — النمذجة متعددة المستويات | كتاب الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],
+displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.3;}
+.wrap{max-width:1900px;margin:auto;padding:50px 16px 160px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:32px;margin-bottom:48px;}
+h1{margin:0;font-size:3rem;}
+.subtitle{margin-top:14px;color:#b8c4e6;}
+h2{margin-top:56px;font-size:2.2rem;border-right:4px solid #4cc9f0;padding-right:20px;}
+h3{margin-top:34px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:36px;padding:46px;margin:46px 0;}
+.def{border:1px solid rgba(124,58,237,.6);background:rgba(124,58,237,.18);border-radius:28px;padding:28px;margin-top:28px;}
+.ex{background:rgba(255,255,255,.08);border-radius:28px;padding:28px;margin-top:28px;}
+.note{border:1px dashed rgba(76,201,240,.7);background:rgba(76,201,240,.18);border-radius:28px;padding:28px;margin-top:28px;color:#e0e9ff;}
+table{width:100%;border-collapse:collapse;margin-top:26px;}
+th,td{border:1px solid rgba(255,255,255,.25);padding:16px;text-align:center;}
+th{background:rgba(76,201,240,.18);}
+footer{margin-top:110px;border-top:1px solid rgba(255,255,255,.15);padding-top:40px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-right:40px;}
+li{margin:20px 0;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>الفصل 34 — النمذجة متعددة المستويات</h1>
+<div class="subtitle">
+من نموذج واحد إلى عائلة نماذج مترابطة هرميًا
+</div>
+</header>
+
+<div class="section">
+<h2>34.1 مدخل عام</h2>
+<p>
+تفشل كثير من النماذج الكلاسيكية لأنها تحاول
+وصف نظام معقّد باستخدام
+<strong>مستوى واحد فقط من الوصف</strong>.
+</p>
+
+<div class="note">
+النمذجة متعددة المستويات
+تعترف بأن لكل مقياس
+نموذجه الفعّال الخاص.
+</div>
+</div>
+
+<div class="section">
+<h2>34.2 المستويات والنماذج الفعّالة</h2>
+
+<div class="def">
+النموذج الفعّال هو نموذج صالح
+ضمن نطاق معيّن من المقاييس،
+ولا يُفترض أن يكون صالحًا خارجه.
+</div>
+
+<ul>
+<li>\(D_0\): نموذج محلي تفاضلي</li>
+<li>\(D_1\): نموذج نسبي (قوانين تشابه)</li>
+<li>\(D_2\): نموذج انتقالي بين المقاييس</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>34.3 الربط بين المستويات</h2>
+
+<div class="def">
+يتم الربط عبر التحويل:
+\[
+D_{n+1}=\frac{d(\ln^{(n+1)} y)}{d(\ln^{(n+1)} x)}
+\]
+</div>
+
+<div class="note">
+هذا الربط يحافظ على البنية
+ويغيّر زاوية الرؤية فقط.
+</div>
+</div>
+
+<div class="section">
+<h2>34.4 مثال فيزيائي: الحركة</h2>
+
+<div class="ex">
+حركة جسيم:
+\[
+x(t)=t^2 \Rightarrow
+D_0:\; x''=2,\quad
+D_1:\; 2,\quad
+D_2:\; 0
+\]
+</div>
+
+<div class="note">
+الحركة نفسها تُفسَّر
+بثلاثة نماذج متكاملة.
+</div>
+</div>
+
+<div class="section">
+<h2>34.5 مثال اقتصادي: النمو</h2>
+
+<div class="ex">
+\[
+Y(t)=e^{0.03t}
+\Rightarrow
+D_1Y=0.03,\quad
+D_2Y=0
+\]
+</div>
+
+<div class="note">
+النمو الأسي نموذج فعّال
+في مستوى \(D_1\).
+</div>
+</div>
+
+<div class="section">
+<h2>34.6 مثال من البيانات</h2>
+
+<div class="ex">
+\[
+P(x)\sim x^{-3}
+\Rightarrow
+D_1P=-3,\quad
+D_2P=0
+\]
+</div>
+
+<div class="note">
+التوزيع يُفهم
+كنموذج مستقر نسبيًا.
+</div>
+</div>
+
+<div class="section">
+<h2>34.7 مقارنة بين النمذجة الأحادية والمتعددة</h2>
+
+<table>
+<tr>
+<th>النهج</th><th>الوصف</th><th>القيود</th>
+</tr>
+<tr>
+<td>أحادي المستوى</td><td>بسيط</td><td>قابل للكسر</td>
+</tr>
+<tr>
+<td>متعدد المستويات</td><td>مرن</td><td>أعمق</td>
+</tr>
+</table>
+</div>
+
+<div class="section">
+<h2>34.8 مزايا النمذجة الهرمية</h2>
+<ul>
+<li>تفسير أفضل للبيانات.</li>
+<li>استقرار أعلى للنماذج.</li>
+<li>قابلية للتوسّع.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>34.9 حدود النمذجة</h2>
+<ul>
+<li>ليس كل نظام يحتاج مستويات عليا.</li>
+<li>الهرمية أداة لا عقيدة.</li>
+<li>اختيار المستوى مسألة علمية.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>34.10 خلاصة الفصل</h2>
+<ul>
+<li>النمذجة متعددة المستويات ضرورة للأنظمة المعقّدة.</li>
+<li>الحساب الهرمي يوفّر البنية الرياضية.</li>
+<li>النموذج يصبح عائلة مترابطة.</li>
+</ul>
+
+<div class="note">
+الفصل القادم:
+<strong>الخاتمة الكبرى — الحساب الهرمي كإطار موحِّد للعلوم</strong>.
+</div>
+</div>
+
+<footer>© كتاب الحساب الهرمي — الفصل 34</footer>
+</div>
+</body>
+</html>
 
