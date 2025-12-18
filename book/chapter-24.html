@@ -1,1 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 24 — المعادلات الهرمية في المستوى D₁ | كتاب الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.15;}
+.wrap{max-width:1550px;margin:auto;padding:38px 16px 100px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:20px;margin-bottom:30px;}
+h1{margin:0;font-size:2.3rem;}
+.subtitle{margin-top:10px;color:#b8c4e6;font-size:1.05rem;}
+h2{margin-top:40px;font-size:1.7rem;border-right:4px solid #4cc9f0;padding-right:14px;}
+h3{margin-top:24px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:30px;margin:28px 0;}
+.def{border:1px solid rgba(124,58,237,.55);background:rgba(124,58,237,.15);border-radius:20px;padding:20px;margin-top:18px;}
+.ex{background:rgba(255,255,255,.07);border-radius:20px;padding:20px;margin-top:18px;}
+.note{border:1px dashed rgba(76,201,240,.65);background:rgba(76,201,240,.15);border-radius:20px;padding:20px;margin-top:18px;color:#d6e2ff;}
+footer{margin-top:60px;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-right:32px;}
+li{margin:12px 0;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>الفصل 24 — المعادلات الهرمية في المستوى \(D_1\)</h1>
+<div class="subtitle">
+المعادلات التفاضلية عندما تُكتب بلغة التغير النسبي
+</div>
+</header>
+
+<div class="section">
+<h2>24.1 المدخل المفاهيمي</h2>
+<p>
+في هذا الفصل نبدأ بدراسة المعادلات الهرمية
+عند أول مستوى غير تقليدي، وهو المستوى النسبي \(D_1\).
+هذا المستوى يصف التغير في <strong>النسبة</strong> لا في القيمة المطلقة.
+</p>
+
+<div class="note">
+كثير من المعادلات التفاضلية المعروفة
+تصبح في هذا المستوى
+<strong>معادلات ثابتة أو خطية</strong>.
+</div>
+</div>
+
+<div class="section">
+<h2>24.2 التعريف العام لمعادلة هرمية من المستوى \(D_1\)</h2>
+
+<div class="def">
+المعادلة الهرمية من المستوى الأول هي معادلة من الشكل:
+\[
+F\!\big(x,\; y,\; D_1y\big)=0,
+\qquad
+D_1y=\frac{d(\ln y)}{d(\ln x)}.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>24.3 أبسط معادلة هرمية: الثابت النسبي</h2>
+
+<div class="ex">
+\[
+D_1y = a
+\]
+</div>
+
+<div class="ex">
+الحل:
+\[
+\ln y = a\ln x + C
+\Rightarrow
+y=Cx^a
+\]
+</div>
+
+<div class="note">
+كل قوانين القوى هي حلول
+لمعادلات هرمية ثابتة في المستوى \(D_1\).
+</div>
+</div>
+
+<div class="section">
+<h2>24.4 مثال 2 — معادلة نسبية غير ثابتة</h2>
+
+<div class="ex">
+\[
+D_1y = f(x)
+\]
+</div>
+
+<div class="ex">
+الحل العام:
+\[
+\ln y = \int f(x)\, d(\ln x)+C
+\]
+</div>
+
+<div class="note">
+هذه المعادلة تقابل
+فصل المتغيرات في التفاضل التقليدي،
+لكنها أبسط بنيويًا.
+</div>
+</div>
+
+<div class="section">
+<h2>24.5 أمثلة عددية أساسية (1–5)</h2>
+
+<div class="ex">
+<h3>مثال 1</h3>
+\[
+D_1y=2 \Rightarrow y=Cx^2
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 2</h3>
+\[
+D_1y=-1 \Rightarrow y=\frac{C}{x}
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 3</h3>
+\[
+D_1y=x \Rightarrow y=Ce^x
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 4</h3>
+\[
+D_1y=\ln x \Rightarrow y=e^{(\ln x)^2/2}
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 5</h3>
+\[
+D_1y=a+\frac{b}{\ln x}
+\Rightarrow y=Cx^a(\ln x)^b
+\]
+</div>
+
+</div>
+
+<div class="section">
+<h2>24.6 معادلات نسبية لاخطية تتحول إلى خطية</h2>
+
+<div class="ex">
+\[
+\frac{dy}{dx}=y^n x^m
+\Rightarrow
+D_1y = x^{m+1} y^{n-1}
+\]
+</div>
+
+<div class="note">
+عند اختيار المستوى الهرمي المناسب،
+تختفي اللاخطية.
+</div>
+</div>
+
+<div class="section">
+<h2>24.7 مثال تطبيقي: النمو السكاني</h2>
+
+<div class="ex">
+المعادلة التقليدية:
+\[
+\frac{dy}{dx}=k y
+\]
+</div>
+
+<div class="ex">
+الصياغة الهرمية:
+\[
+D_1y=k
+\Rightarrow y=Cx^k
+\]
+</div>
+
+<div class="note">
+النمو يصبح
+<strong>قانون قوة طبيعي</strong>
+في الزمن النسبي.
+</div>
+</div>
+
+<div class="section">
+<h2>24.8 التفسير الهندسي</h2>
+<ul>
+<li>المعادلة تعيش في فضاء \((\ln x,\ln y)\).</li>
+<li>الحل هو خط أو منحنى بسيط.</li>
+<li>الثوابت تظهر كمَيول هندسية.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>24.9 مقارنة مع المستوى التفاضلي \(D_0\)</h2>
+<ul>
+<li>\(D_0\): حساسية للوحدات.</li>
+<li>\(D_1\): استقلال عن القياس.</li>
+<li>\(D_1\): بساطة بنيوية أعلى.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>24.10 خلاصة الفصل</h2>
+<ul>
+<li>المعادلات الهرمية في \(D_1\) بسيطة وقوية.</li>
+<li>كثير من النماذج الكلاسيكية تصبح ثابتة.</li>
+<li>هذا المستوى هو المدخل الطبيعي للتطبيقات.</li>
+</ul>
+
+<div class="note">
+الفصل القادم ينتقل إلى
+المعادلات الهرمية في المستوى \(D_2\).
+</div>
+</div>
+
+<footer>© كتاب الحساب الهرمي — الفصل 24</footer>
+</div>
+</body>
+</html>
 
