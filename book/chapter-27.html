@@ -1,1 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 27 — الاستقرار والنمو والانفجار | كتاب الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],
+displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.2;}
+.wrap{max-width:1600px;margin:auto;padding:40px 16px 110px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:22px;margin-bottom:32px;}
+h1{margin:0;font-size:2.4rem;}
+.subtitle{margin-top:12px;color:#b8c4e6;}
+h2{margin-top:42px;font-size:1.85rem;border-right:4px solid #4cc9f0;padding-right:16px;}
+h3{margin-top:26px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:26px;padding:32px;margin:30px 0;}
+.def{border:1px solid rgba(124,58,237,.6);background:rgba(124,58,237,.18);border-radius:22px;padding:22px;margin-top:20px;}
+.ex{background:rgba(255,255,255,.08);border-radius:22px;padding:22px;margin-top:20px;}
+.note{border:1px dashed rgba(76,201,240,.7);background:rgba(76,201,240,.18);border-radius:22px;padding:22px;margin-top:20px;color:#e0e9ff;}
+table{width:100%;border-collapse:collapse;margin-top:18px;}
+th,td{border:1px solid rgba(255,255,255,.25);padding:12px;text-align:center;}
+th{background:rgba(76,201,240,.18);}
+footer{margin-top:64px;border-top:1px solid rgba(255,255,255,.15);padding-top:24px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-right:34px;}
+li{margin:14px 0;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>الفصل 27 — الاستقرار والنمو والانفجار</h1>
+<div class="subtitle">
+تحليل السلوك الديناميكي عبر المستويات الهرمية
+</div>
+</header>
+
+<div class="section">
+<h2>27.1 المدخل المفاهيمي</h2>
+<p>
+في التحليل التقليدي، يُحكم على الأنظمة بأنها مستقرة أو متفجرة
+انطلاقًا من السلوك في الزمن المطلق.
+أما في الحساب الهرمي، فإن الحكم يعتمد على
+<strong>المستوى المناسب للوصف</strong>.
+</p>
+
+<div class="note">
+ما يبدو انفجارًا في \(D_0\) قد يكون نموًا منتظمًا
+أو حتى استقرارًا في \(D_1\) أو \(D_2\).
+</div>
+</div>
+
+<div class="section">
+<h2>27.2 تعريفات هرمية أساسية</h2>
+
+<div class="def">
+نعرّف:
+<ul>
+<li><strong>الاستقرار</strong>: عندما تكون المشتقات الهرمية ثابتة أو منعدمة.</li>
+<li><strong>النمو</strong>: عندما تكون محدودة وغير ثابتة.</li>
+<li><strong>الانفجار</strong>: عندما تتزايد بلا حد في كل المستويات.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<h2>27.3 الاستقرار في المستوى \(D_0\)</h2>
+
+<div class="ex">
+\[
+\frac{dy}{dx}=-ky
+\Rightarrow y=Ce^{-kx}
+\]
+</div>
+
+<div class="note">
+هذا هو مفهوم الاستقرار الكلاسيكي،
+لكنه يعتمد بشدة على مقياس الزمن.
+</div>
+</div>
+
+<div class="section">
+<h2>27.4 الاستقرار في المستوى \(D_1\)</h2>
+
+<div class="ex">
+\[
+D_1y=a \quad(\text{ثابت})
+\Rightarrow y=Cx^a
+\]
+</div>
+
+<div class="note">
+النمو بالقوى يُعد <strong>مستقرًا هرميًا</strong>
+لأن التغير النسبي ثابت.
+</div>
+</div>
+
+<div class="section">
+<h2>27.5 الاستقرار العميق في المستوى \(D_2\)</h2>
+
+<div class="ex">
+\[
+D_2y=b \quad(\text{ثابت})
+\Rightarrow y=\exp\!\big((\ln x)^b\big)
+\]
+</div>
+
+<div class="note">
+حتى النمو فوق-الأسي قد يكون
+<strong>مستقرًا في مستوى أعمق</strong>.
+</div>
+</div>
+
+<div class="section">
+<h2>27.6 أمثلة عددية مقارنة (1–6)</h2>
+
+<table>
+<tr>
+<th>الدالة</th><th>\(D_0\)</th><th>\(D_1\)</th><th>\(D_2\)</th><th>التصنيف الهرمي</th>
+</tr>
+<tr>
+<td>\(y=e^x\)</td><td>نمو أسي</td><td>ثابت</td><td>0</td><td>مستقرة في \(D_1\)</td>
+</tr>
+<tr>
+<td>\(y=x^3\)</td><td>نمو</td><td>3</td><td>0</td><td>مستقرة</td>
+</tr>
+<tr>
+<td>\(y=e^{e^x}\)</td><td>انفجار</td><td>\(e^x\)</td><td>1</td><td>مستقرة في \(D_2\)</td>
+</tr>
+<tr>
+<td>\(y=\exp(\exp(\exp x))\)</td><td>انفجار شديد</td><td>انفجار</td><td>\(e^x\)</td><td>نمو عميق</td>
+</tr>
+<tr>
+<td>\(y=\ln x\)</td><td>تباطؤ</td><td>سالب</td><td>—</td><td>انكماش</td>
+</tr>
+<tr>
+<td>\(y=C\)</td><td>ثابت</td><td>0</td><td>—</td><td>استقرار مطلق</td>
+</tr>
+</table>
+</div>
+
+<div class="section">
+<h2>27.7 الانفجار الحقيقي</h2>
+
+<div class="def">
+الانفجار الحقيقي هو عندما:
+\[
+D_ny \to \infty \quad \forall n
+\]
+</div>
+
+<div class="ex">
+مثال:
+\[
+y=\exp(\exp(\exp(\exp x)))
+\]
+</div>
+
+<div class="note">
+هذا النوع نادر في الطبيعة،
+وغالبًا يدل على نموذج غير مناسب.
+</div>
+</div>
+
+<div class="section">
+<h2>27.8 التفسير الفيزيائي والرياضي</h2>
+<ul>
+<li>الاستقرار نسبي للمقياس.</li>
+<li>النمو ليس عيبًا بل سمة بنيوية.</li>
+<li>الانفجار الحقيقي يعني فشل الوصف.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>27.9 مقارنة مع التحليل التقليدي</h2>
+<ul>
+<li>التحليل الكلاسيكي يحكم مبكرًا على الانفجار.</li>
+<li>التحليل الهرمي يؤجل الحكم إلى المستوى الصحيح.</li>
+<li>هذا يعطي رؤية أعمق للأنظمة المعقدة.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>27.10 خلاصة الفصل</h2>
+<ul>
+<li>الاستقرار مفهوم هرمي.</li>
+<li>الصعود في الهرم يعيد تصنيف السلوك.</li>
+<li>كثير من “الانفجارات” ليست حقيقية.</li>
+</ul>
+
+<div class="note">
+الفصل القادم سيبحث
+النقاط الثابتة والاستقرار طويل الأمد.
+</div>
+</div>
+
+<footer>© كتاب الحساب الهرمي — الفصل 27</footer>
+</div>
+</body>
+</html>
 
