@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>الفصل الثاني عشر — المتسلسلات فوق التفاضلية والتقريب الهرمي | الحساب الهرمي</title>
+<title>الفصل 12 — التعريف العام للمشتق الهرمي Dₙ | كتاب الحساب الهرمي</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
@@ -12,249 +12,237 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\
 
 <style>
 body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
-.wrap{max-width:1050px;margin:auto;padding:32px 16px 80px;}
-header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-h1{margin:0;font-size:1.9rem;}
+.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:22px;}
+h1{margin:0;font-size:1.95rem;}
 .subtitle{margin-top:8px;color:#b8c4e6;}
-h2{margin-top:32px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
+h2{margin-top:30px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
 h3{margin-top:18px;color:#cfe0ff;}
-.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
-.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:18px;margin:16px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:14px;margin-top:12px;}
 .ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
 .btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
-footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+footer{margin-top:44px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;color:#b8c4e6;}
 mjx-container{color:#eaf0ff!important;}
-
-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
-th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
-th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:800;}
-tr:last-child td{border-bottom:none;}
-.small{font-size:.95rem;color:#cbd6ff}
+ul{padding-right:22px;}
+li{margin:6px 0;}
 code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
 </style>
 </head>
 
 <body>
 <div class="wrap">
-
 <header>
-<h1>الفصل الثاني عشر — المتسلسلات فوق التفاضلية والتقريب الهرمي</h1>
-<div class="subtitle">لماذا قد تكون المتسلسلات فوق التفاضلية أكثر تقاربية من متسلسلة تايلور \(D_0\)؟</div>
+<h1>الفصل 12 — التعريف العام للمشتق الهرمي \(D_n\)</h1>
+<div class="subtitle">
+الصياغة الموحدة، شروط المجال، وعلاقات الانتقال
+</div>
 
 <div class="nav">
-<a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
-<a href="./chapter-11.html" class="btn">⟶ الفصل السابق</a>
-<a href="./chapter-13.html" class="btn">الفصل التالي ⟵</a>
+<a class="btn primary" href="./index.html">📘 فهرس الكتاب</a>
+<a class="btn" href="./chapter-11.html">⟶ الفصل السابق</a>
+<a class="btn" href="./chapter-13.html">الفصل التالي ⟵</a>
 </div>
 </header>
 
 <div class="section">
-<h2>12.1 الفكرة الأساسية</h2>
+<h2>12.1 تمهيد</h2>
 <p>
-متسلسلة تايلور التقليدية (بصيغة \(D_0\)) تُطوّر الدالة حول \(x_0\) في المتغير \(x\):
+بعد دراسة المستويين \(D_1\) و\(D_2\) والمشتقات العليا بصورة جزئية،
+أصبح من الضروري تثبيت تعريف عام موحد
+يحتوي جميع المستويات الهرمية في صيغة واحدة دقيقة.
 </p>
+</div>
+
+<div class="section">
+<h2>12.2 دوال اللوغاريتم المتداخلة</h2>
+
 <div class="def">
+نعرّف المتتالية:
 \[
-f(x)\approx \sum_{k=0}^{N}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k.
+L_0(t)=t,
+\qquad
+L_1(t)=\ln t,
+\qquad
+L_2(t)=\ln(\ln t),
+\quad \dots
+\]
+وبصورة عامة:
+\[
+L_n(t)=\underbrace{\ln(\ln(\cdots\ln t))}_{n\ \text{مرات}}.
 \]
 </div>
 
-<p>
-أما في الحساب الهرمي فالفكرة هي: بدل التطوير في \(x\)، نطوّر في <strong>مقياس هرمي أعمق</strong>:
-</p>
+<div class="note">
+هذه الدوال تمثل <strong>مستويات القياس</strong> في الهرم.
+</div>
+</div>
+
+<div class="section">
+<h2>12.3 التعريف العام للمشتق الهرمي</h2>
+
+<div class="def">
+\[
+\boxed{
+D_n y
+=
+\frac{d\big(L_n(y)\big)}{d\big(L_n(x)\big)},
+\qquad n=0,1,2,\dots
+}
+\]
+</div>
+
+<div class="note">
+نلاحظ أن:
 <ul>
-  <li>مستوى \(D_1\): \(u=\ln x\)</li>
-  <li>مستوى \(D_2\): \(v=\ln\ln x\)</li>
-  <li>وبشكل عام: \(L_n(x)=\ln^{(n)}(x)\)</li>
+<li>\(D_0y=\dfrac{dy}{dx}\)</li>
+<li>\(D_1y=\dfrac{d(\ln y)}{d(\ln x)}\)</li>
+<li>\(D_2y=\dfrac{d(\ln\ln y)}{d(\ln\ln x)}\)</li>
 </ul>
-
-<div class="note">
-السبب الرئيسي في زيادة التقارب غالبًا هو أن:
-\[
-|\ln(x)-\ln(x_0)| \ll |x-x_0|
-\]
-عندما تكون \(x\) و\(x_0\) كبيرة أو عندما يتغير \(x\) بنسبة لا بمقدار مطلق.
-وبالمثل:
-\[
-|\ln\ln(x)-\ln\ln(x_0)| \ll |\ln(x)-\ln(x_0)|
-\]
-في المسافات الكبيرة جدًا.
 </div>
 </div>
 
 <div class="section">
-<h2>12.2 تعريف المتسلسلة فوق التفاضلية من المستوى \(D_1\)</h2>
-<p>
-نعرّف \(u=\ln x\) و\(F(u)=f(e^u)\). نطوّر \(F\) حول \(u_0=\ln x_0\):
-</p>
+<h2>12.4 شروط المجال</h2>
+
+<div class="def">
+لكي يكون \(D_ny\) معرفًا يجب أن:
+\[
+x>\exp^{(n-1)}(1),
+\qquad
+y>\exp^{(n-1)}(1).
+\]
+</div>
+
+<div class="note">
+كلما صعدنا في الهرم،
+أصبح المجال أضيق لكنه أكثر دلالة بنيوية.
+</div>
+</div>
+
+<div class="section">
+<h2>12.5 الصيغة العامة بدلالة \(D_0\)</h2>
+
+<div class="def">
+إذا كانت \(y(x)\) قابلة للاشتقاق:
+\[
+D_n y
+=
+\frac{x\displaystyle\prod_{k=1}^{n-1} L_k(x)}
+     {y\displaystyle\prod_{k=1}^{n-1} L_k(y)}
+\;\frac{dy}{dx}.
+\]
+</div>
+
+<div class="note">
+هذه الصيغة هي الجسر الحسابي
+بين التفاضل التقليدي والحساب الهرمي.
+</div>
+</div>
+
+<div class="section">
+<h2>12.6 علاقة الانتقال بين المستويات</h2>
+
 <div class="def">
 \[
-f(x)=F(u)\approx \sum_{k=0}^{N}\frac{F^{(k)}(u_0)}{k!}\,(u-u_0)^k
-\quad\text{حيث}\quad u=\ln x.
+\boxed{
+D_{n+1}y
+=
+\frac{L_n(x)}{L_n(y)}\,D_ny.
+}
 \]
 </div>
-<p class="small">
-هذه متسلسلة “فوق تفاضلية” لأنها تعمل على مقياس أعمق من \(x\) نفسه.
-</p>
-</div>
 
-<div class="section">
-<h2>12.3 تعريف المتسلسلة فوق التفاضلية من المستوى \(D_2\)</h2>
+<div class="ex">
+<h3>مثال</h3>
 <p>
-نعرّف \(v=\ln\ln x\) و\(G(v)=f(e^{e^v})\). نطوّر \(G\) حول \(v_0=\ln\ln x_0\):
-</p>
-<div class="def">
+إذا علمنا أن \(D_2y=1\)، فإن:
 \[
-f(x)=G(v)\approx \sum_{k=0}^{N}\frac{G^{(k)}(v_0)}{k!}\,(v-v_0)^k
-\quad\text{حيث}\quad v=\ln\ln x.
+D_3y=\frac{\ln\ln x}{\ln\ln y}.
 \]
-</div>
-
-<div class="note">
-في كثير من الدوال، يصبح \(G(v)\) “أبسط” بكثير من \(f(x)\)،
-وقد يتحول إلى خطي أو كثير حدود صغير الدرجة،
-فتظهر دقة كبيرة حتى لرتبة قطع صغيرة.
-</div>
-</div>
-
-<div class="section">
-<h2>12.4 سبعة أمثلة عددية تُظهر زيادة التقارب</h2>
-<p class="small">
-في كل مثال: نستخدم رتبة قطع واحدة \(N=4\) للمقارنة.
-نعرض الخطأ النسبي \(\\text{RelErr} = \\frac{|A-\\text{Exact}|}{|\\text{Exact}|}\)
-والخطأ المطلق \(\\text{AbsErr}=|A-\\text{Exact}|\).
 </p>
-
-<table>
-  <tr>
-    <th>#</th>
-    <th>الدالة</th>
-    <th>\(x_0\)</th>
-    <th>\(x\)</th>
-    <th>القيمة الحقيقية</th>
-    <th>RelErr (تايلور \(D_0\))</th>
-    <th>RelErr (فوق تفاضلي)</th>
-    <th>AbsErr \(D_0\)</th>
-    <th>AbsErr (فوق)</th>
-    <th>المستوى</th>
-  </tr>
-
-  <tr>
-    <td>1</td>
-    <td>\(f(x)=\ln(x)\)</td>
-    <td>1000</td>
-    <td>1200</td>
-    <td>7.0900768</td>
-    <td>7.74182e-6</td>
-    <td>0</td>
-    <td>5.48901e-5</td>
-    <td>0</td>
-    <td>\(D_1\)</td>
-  </tr>
-
-  <tr>
-    <td>2</td>
-    <td>\(f(x)=(\ln x)^2\)</td>
-    <td>1000</td>
-    <td>1200</td>
-    <td>50.26919</td>
-    <td>1.05993e-5</td>
-    <td>0</td>
-    <td>5.32819e-4</td>
-    <td>0</td>
-    <td>\(D_1\)</td>
-  </tr>
-
-  <tr>
-    <td>3</td>
-    <td>\(f(x)=\sqrt{x}\)</td>
-    <td>1e6</td>
-    <td>1.2e6</td>
-    <td>1095.4451</td>
-    <td>6.95152e-6</td>
-    <td>4.86298e-8</td>
-    <td>0.00761501</td>
-    <td>5.32713e-5</td>
-    <td>\(D_1\)</td>
-  </tr>
-
-  <tr>
-    <td>4</td>
-    <td>\(f(x)=1/x\)</td>
-    <td>100</td>
-    <td>150</td>
-    <td>0.0066666667</td>
-    <td>3.12500e-2</td>
-    <td>1.28239e-4</td>
-    <td>2.08333e-4</td>
-    <td>8.54800e-7</td>
-    <td>\(D_1\)</td>
-  </tr>
-
-  <tr>
-    <td>5</td>
-    <td>\(f(x)=x^{1/3}\)</td>
-    <td>1e9</td>
-    <td>1.1e9</td>
-    <td>1032.2801</td>
-    <td>2.71308e-7</td>
-    <td>2.62673e-10</td>
-    <td>0.000280031</td>
-    <td>2.71143e-7</td>
-    <td>\(D_1\)</td>
-  </tr>
-
-  <tr>
-    <td>6</td>
-    <td>\(f(x)=x^{0.7}\)</td>
-    <td>1e8</td>
-    <td>1.3e8</td>
-    <td>478366</td>
-    <td>2.87929e-5</td>
-    <td>1.49456e-6</td>
-    <td>13.77353</td>
-    <td>0.7149449</td>
-    <td>\(D_1\)</td>
-  </tr>
-
-  <tr>
-    <td>7</td>
-    <td>\(f(x)=\ln(\ln x)\)</td>
-    <td>10</td>
-    <td>1000</td>
-    <td>1.9326447</td>
-    <td>1.20388e+7</td>
-    <td>0</td>
-    <td>2.32667e+7</td>
-    <td>0</td>
-    <td>\(D_2\)</td>
-  </tr>
-</table>
-
-<div class="note">
-النتيجة العامة التي تُظهرها الأمثلة:
-عند اختيار مقياس هرمي مناسب للدالة وللمجال، تصبح المتسلسلة فوق التفاضلية
-أكثر تقاربًا (وأحيانًا تعطي نتيجة دقيقة تمامًا برتبة قطع صغيرة)،
-بينما قد تفشل متسلسلة \(D_0\) أو تتقارب ببطء شديد.
 </div>
 </div>
 
 <div class="section">
-<h2>12.5 قاعدة عمل مختصرة لاختيار المستوى</h2>
+<h2>12.7 أمثلة عددية توضيحية</h2>
+
+<div class="ex">
+<h3>مثال 1: \(y=x^2\)</h3>
+<p>
+\[
+D_1=2,\quad
+D_2=1,\quad
+D_3=1.
+\]
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال 2: \(y=e^x\)</h3>
+<p>
+\[
+D_1=x,\quad
+D_2=\ln x,\quad
+D_3=\ln\ln x.
+\]
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال 3: \(y=e^{e^x}\)</h3>
+<p>
+\[
+D_1=e^x,\quad
+D_2=x,\quad
+D_3=\ln x.
+\]
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال 4: \(y=x^2+1\)</h3>
+<p>
+عندما يكبر \(x\):
+\[
+D_2y\to1,\quad
+D_3y\to1.
+\]
+</p>
+</div>
+
+</div>
+
+<div class="section">
+<h2>12.8 المعنى البنيوي لـ \(D_n\)</h2>
 <ul>
-  <li>إذا كانت الدالة تعتمد طبيعيًا على \(\ln x\) (مثل \(\ln x\), \((\ln x)^2\), \(x^a\)) فاستعمل \(D_1\).</li>
-  <li>إذا ظهرت طبقات أعمق مثل \(\ln(\ln x)\) فاستعمل \(D_2\).</li>
-  <li>كلما اتسع المجال وتعددت المقاييس، زادت فائدة الصعود في الهرم.</li>
+<li>\(D_0\): تغير مطلق.</li>
+<li>\(D_1\): تغير نسبي.</li>
+<li>\(D_2\): تغير التغير النسبي.</li>
+<li>\(D_n\): تغير البنية عند مقياس هرمي أعمق.</li>
 </ul>
 </div>
 
-<footer>
-© كتاب الحساب الهرمي — الفصل الثاني عشر
-</footer>
+<div class="section">
+<h2>12.9 خلاصة الفصل</h2>
+<ul>
+<li>التعريف العام لـ \(D_n\) يوحد كل المستويات.</li>
+<li>العلاقة الانتقالية هي العمود الفقري للحساب الهرمي.</li>
+<li>قوانين القوى تمثل نقاط ثبات في الهرم.</li>
+<li>هذا التعريف يمهد لبناء المتسلسلات والمعادلات الهرمية.</li>
+</ul>
 
+<div class="note">
+الفصل التالي سيبني مباشرة
+<strong>المتسلسلات الهرمية</strong>
+كبديل لمتسلسلات تايلور.
+</div>
+</div>
+
+<footer>© كتاب الحساب الهرمي — الفصل 12</footer>
 </div>
 </body>
 </html>
