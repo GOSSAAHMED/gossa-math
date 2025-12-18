@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 21 — حل المعادلات التفاضلية الهرمية العامة | الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1300px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.95rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+ul{padding-right:22px;}
+li{margin:6px 0;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+.small{font-size:.95rem;color:#cbd6ff}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:900;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>الفصل الحادي والعشرون — حل المعادلات التفاضلية الهرمية العامة</h1>
+<div class="subtitle">تحويلات \(L_n\) تجعل المعادلات خطية/قابلة للفصل + 28 مثالًا عدديًا</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
+<a href="./chapter-20.html" class="btn">⟶ الفصل السابق</a>
+<a href="./chapter-22.html" class="btn">الفصل التالي ⟵</a>
+</div>
+</header>
+
+<div class="section">
+<h2>21.1 الفكرة العامة: ارفع المعادلة إلى المقياس الصحيح</h2>
+<p>
+السر في الحلول الهرمية هو اختيار:
+\[
+X=L_n(x),\qquad Y=L_n(y)
+\]
+بحيث تتحول المعادلة إلى واحدة من الأنواع القياسية:
+</p>
+<ul>
+<li>خطية: \( \frac{dY}{dX}=aY+b \)</li>
+<li>قابلة للفصل: \( \frac{dY}{dX}=g(X) \) أو \( \frac{dY}{dX}=f(Y) \)</li>
+<li>بيرنولي/ريكّاتي على المستوى \(n\)</li>
+</ul>
+
+<div class="note">
+تذكير سريع للعلاقات:
+\[
+D_1y=\frac{d(\ln y)}{d(\ln x)},\quad
+D_2y=\frac{d(\ln\ln y)}{d(\ln\ln x)},\quad
+D_3y=\frac{d(\ln\ln\ln y)}{d(\ln\ln\ln x)}.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>21.2 القاموس: كيف نحوّل المعادلة إلى \(dY/dX\)</h2>
+
+<div class="def">
+<strong>مستوى 1:</strong> ضع \(X=\ln x\), \(Y=\ln y\) ⇒
+\[
+D_1y=\frac{dY}{dX}.
+\]
+</div>
+
+<div class="def">
+<strong>مستوى 2:</strong> ضع \(X=\ln\ln x\), \(Y=\ln\ln y\) ⇒
+\[
+D_2y=\frac{dY}{dX}.
+\]
+</div>
+
+<div class="def">
+<strong>مستوى 3:</strong> ضع \(X=\ln\ln\ln x\), \(Y=\ln\ln\ln y\) ⇒
+\[
+D_3y=\frac{dY}{dX}.
+\]
+</div>
+
+<div class="note">
+بعد الحل في \(Y(X)\)، ارجع عكسيًا:
+\[
+Y=\ln y \Rightarrow y=e^Y,\quad
+Y=\ln\ln y \Rightarrow y=e^{e^Y},\quad
+Y=\ln\ln\ln y \Rightarrow y=e^{e^{e^Y}}.
+\]
+(مع مراعاة الشروط \(y>1\) أو \(y>e\) حسب المستوى.)
+</div>
+</div>
+
+<div class="section">
+<h2>21.3 النوع (I): معادلات ثابتة المستوى \(D_ny=a\)</h2>
+
+<div class="def">
+إذا:
+\[
+D_1y=a \Rightarrow \ln y=a\ln x+C \Rightarrow y=Cx^a.
+\]
+</div>
+
+<div class="def">
+إذا:
+\[
+D_2y=a \Rightarrow \ln\ln y=a\ln\ln x + C \Rightarrow y=\exp(A(\ln x)^a).
+\]
+</div>
+
+<div class="def">
+إذا:
+\[
+D_3y=a \Rightarrow y=\exp(\exp(A(\ln\ln x)^a)).
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 1</h3>
+\(D_1y=2\), و\(y(3)=18\) ⇒ \(y=2x^2\).
+</div>
+
+<div class="ex">
+<h3>مثال 2</h3>
+\(D_2y=2\), و\(y(e)=e\) ⇒ \(y=\exp((\ln x)^2)\).
+</div>
+
+<div class="ex">
+<h3>مثال 3</h3>
+\(D_3y=2\), و\(x=e^{e^2}\Rightarrow y=\exp(\exp(4))\) كشرط ⇒ \(A=1\) ⇒
+\(y=\exp(\exp((\ln\ln x)^2))\).
+</div>
+
+</div>
+
+<div class="section">
+<h2>21.4 النوع (II): \(D_ny=g(X)\) — قابل للفصل على المقياس</h2>
+
+<div class="def">
+إذا:
+\[
+D_ny=g(L_n(x)),
+\]
+ضع \(X=L_n(x)\), \(Y=L_n(y)\) ⇒
+\[
+\frac{dY}{dX}=g(X)\Rightarrow Y=\int g(X)\,dX + C.
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 4 (مستوى 1)</h3>
+\[
+D_1y=1+(\ln x)^2.
+\]
+ضع \(X=\ln x\), \(Y=\ln y\):
+\[
+\frac{dY}{dX}=1+X^2 \Rightarrow Y=X+\frac{X^3}{3}+C
+\Rightarrow y=\exp\!\left(\ln x+\frac{(\ln x)^3}{3}+C\right).
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 5 (مستوى 2)</h3>
+\[
+D_2y=1+X,\quad X=\ln\ln x.
+\]
+إذن \(Y=X+\frac{X^2}{2}+C\Rightarrow y=\exp(\exp(X+X^2/2+C))\).
+</div>
+
+<div class="ex">
+<h3>مثال 6 (مستوى 3)</h3>
+\[
+D_3y=2+\frac{1}{X},\quad X=\ln\ln\ln x.
+\]
+إذن \(Y=2X+\ln X + C\Rightarrow y=e^{e^{e^{(2X+\ln X + C)}}}\).
+</div>
+
+</div>
+
+<div class="section">
+<h2>21.5 النوع (III): معادلات خطية على المستوى \(n\)</h2>
+
+<div class="def">
+الصيغة العامة:
+\[
+\frac{dY}{dX}+p(X)Y=q(X),
+\quad\text{حيث } Y=L_n(y),\ X=L_n(x).
+\]
+حلها بعامل تكامل:
+\[
+\mu(X)=e^{\int p(X)dX},\qquad
+Y\mu=\int q(X)\mu\,dX + C.
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 7 (خطية في المستوى 1)</h3>
+\[
+D_1y=\ln y + 2.
+\]
+ضع \(X=\ln x, Y=\ln y\):
+\[
+\frac{dY}{dX}=Y+2 \Rightarrow \frac{dY}{dX}-Y=2.
+\]
+عامل التكامل \(e^{-X}\):
+\[
+(Y e^{-X})' = 2e^{-X}\Rightarrow
+Ye^{-X}=-2e^{-X}+C \Rightarrow Y=-2+Ce^{X}.
+\]
+إذن:
+\[
+\ln y=-2+Cx \Rightarrow y=e^{-2}e^{Cx}.
+\]
+شرط مثل \(y(1)=e^{-1}\Rightarrow C=1\Rightarrow y=e^{x-2}.
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 8 (خطية في المستوى 2)</h3>
+\[
+D_2y=\frac12\,\ln\ln y + 3.
+\]
+ضع \(X=\ln\ln x, Y=\ln\ln y\):
+\[
+\frac{dY}{dX}=\frac12 Y+3
+\Rightarrow \frac{dY}{dX}-\frac12Y=3.
+\]
+عامل التكامل \(e^{-X/2}\):
+\[
+(Ye^{-X/2})'=3e^{-X/2}\Rightarrow
+Ye^{-X/2}=-6e^{-X/2}+C \Rightarrow Y=-6+Ce^{X/2}.
+\]
+إذن:
+\[
+\ln\ln y=-6+C\sqrt{\ln x}\Rightarrow y=\exp(\exp(-6+C\sqrt{\ln x})).
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 9 (خطية في المستوى 3)</h3>
+\[
+D_3y=Y+1,\quad Y=\ln\ln\ln y,\ X=\ln\ln\ln x.
+\]
+\[
+\frac{dY}{dX}=Y+1 \Rightarrow Y=-1+Ce^{X}.
+\]
+ثم الرجوع: \(y=e^{e^{e^{(-1+Ce^X)}}}\).
+</div>
+
+</div>
+
+<div class="section">
+<h2>21.6 النوع (IV): معادلات بيرنولي على المستوى \(n\)</h2>
+
+<div class="def">
+إذا:
+\[
+\frac{dY}{dX}+p(X)Y=q(X)Y^m,
+\quad m\neq 0,1
+\]
+فهي بيرنولي. ضع \(Z=Y^{1-m}\) لتحويلها إلى خطية في \(Z\).
+</div>
+
+<div class="ex">
+<h3>مثال 10 (بيرنولي في المستوى 1)</h3>
+\[
+D_1y = (\ln y)^2.
+\]
+ضع \(X=\ln x, Y=\ln y\): \(dY/dX=Y^2\).
+قابلة للفصل:
+\[
+\frac{dY}{Y^2}=dX \Rightarrow -\frac1Y=X+C \Rightarrow
+Y=-\frac{1}{X+C}.
+\]
+إذن:
+\[
+y=\exp\!\left(-\frac{1}{\ln x + C}\right).
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 11 (بيرنولي في المستوى 2)</h3>
+\[
+D_2y = (\ln\ln y)^2.
+\]
+ضع \(X=\ln\ln x, Y=\ln\ln y\): \(dY/dX=Y^2\Rightarrow
+Y=-1/(X+C)\Rightarrow y=\exp(\exp(-1/( \ln\ln x + C))).
+\]
+</div>
+
+</div>
+
+<div class="section">
+<h2>21.7 النوع (V): ريكّاتي على المستوى \(n\) (أمثلة عملية)</h2>
+
+<div class="def">
+ريكّاتي:
+\[
+\frac{dY}{dX}=a(X)Y^2+b(X)Y+c(X).
+\]
+حلها العام صعب، لكن في حالات كثيرة مع معاملات ثابتة أو مع حل خاص يمكن تبسيطها.
+</div>
+
+<div class="ex">
+<h3>مثال 12 (ريكّاتي ثابتة معاملات في المستوى 1)</h3>
+\[
+\frac{dY}{dX}=Y^2.
+\]
+هذا في الحقيقة حالة بيرنولي/فصل (حلها سبق).
+</div>
+
+<div class="ex">
+<h3>مثال 13 (تقريب عملي)</h3>
+إذا كانت البيانات تشير أن \(Y\) صغير في نطاق معين، نُهمِل \(Y^2\) فنحصل على خطية.
+هذا منهج هندسي شائع (Linearization) لكنه هنا يتم على مقياس هرمي أنسب.
+</div>
+
+</div>
+
+<div class="section">
+<h2>21.8 28 مثالًا سريعًا إضافيًا (لزيادة التدريب)</h2>
+<ul>
+<li><strong>14:</strong> \(D_1y=a+b\ln x\Rightarrow y=Cx^a\exp(\frac{b}{2}(\ln x)^2)\).</li>
+<li><strong>15:</strong> \(D_2y=a+b\ln\ln x\Rightarrow \ln\ln y=aX+\frac{b}{2}X^2+C\).</li>
+<li><strong>16:</strong> \(D_1y=\frac{1}{\ln x}\Rightarrow \ln y=\ln\ln x + C \Rightarrow y=C\ln x\).</li>
+<li><strong>17:</strong> \(D_1y=\sin(\ln x)\Rightarrow \ln y=-\cos(\ln x)+C\).</li>
+<li><strong>18:</strong> \(D_2y=\frac{1}{X^2}\Rightarrow Y=-1/X+C\).</li>
+<li><strong>19:</strong> \(D_2y=e^{X}\Rightarrow Y=e^X + C\Rightarrow \ln\ln y=\ln\ln x + C\) (مع ضبط مناسب).</li>
+<li><strong>20:</strong> \(D_3y=1\Rightarrow y=x\) (في مجال كبير حيث \(\ln\ln\) معرف).</li>
+<li><strong>21:</strong> \(D_1y=Y\Rightarrow dY/dX=Y\Rightarrow y=\exp(Cx)\).</li>
+<li><strong>22:</strong> \(D_1y=Y+X\Rightarrow\) خطية: \(Y' -Y = X\).</li>
+<li><strong>23:</strong> \(D_2y=Y\Rightarrow \ln\ln y = C\ln\ln x \Rightarrow y=\exp((\ln x)^C)\).</li>
+<li><strong>24:</strong> \(D_2y=Y+1\Rightarrow\) خطية كما في مثال 8 مع \(+1\).</li>
+<li><strong>25:</strong> \(D_2y=Y^2+1\Rightarrow\) فصل/ظلّية حسب النطاق.</li>
+<li><strong>26:</strong> \(D_3y=\frac{1}{X}\Rightarrow Y=\ln X + C\).</li>
+<li><strong>27:</strong> \(D_3y=a+bX\Rightarrow Y=aX+\frac{b}{2}X^2 +C\).</li>
+<li><strong>28:</strong> “تحقق عددي”: اختر قيم \(x\) واحسب \(Y(X)\) ثم ارجع إلى \(y\).</li>
+</ul>
+
+<div class="note">
+هذه القائمة تجعل القارئ يكتسب “رد فعل سريع”:  
+بمجرد رؤية \(y'/(y)\) أو \(y'/(y\ln y)\) أو \(y'/(y\ln y\ln\ln y)\) يعرف المستوى الصحيح مباشرة.
+</div>
+</div>
+
+<div class="section">
+<h2>21.9 خلاصة الفصل</h2>
+<ul>
+<li>كل معادلة هرميّة تُحل غالبًا بإبدال \(X=L_n(x)\) و\(Y=L_n(y)\).</li>
+<li>الأنواع القياسية (فصل/خطية/بيرنولي) تنتقل كما هي إلى المستوى \(n\).</li>
+<li>بعد حل \(Y(X)\) نرجع عكسيًا إلى \(y(x)\) (مع شروط المجال).</li>
+</ul>
+
+<div class="note">
+الفصل 22 (إذا رغبت): “أنظمة ومعادلات متعددة المتغيرات + الاستقرار + أمثلة في الفيزياء والاقتصاد” أو “نظرية الوجود والوحدانية على المستوى الهرمي”.
+</div>
+</div>
+
+<footer>
+© كتاب الحساب الهرمي — الفصل الحادي والعشرون
+</footer>
+
+</div>
+</body>
+</html>
