@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 37 — مقارنة الحساب الهرمي بالتفاضل التقليدي | كتاب الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],
+displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.35;}
+.wrap{max-width:2000px;margin:auto;padding:56px 18px 180px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:36px;margin-bottom:56px;}
+h1{margin:0;font-size:3.2rem;}
+.subtitle{margin-top:16px;color:#b8c4e6;font-size:1.15rem;}
+h2{margin-top:62px;font-size:2.3rem;border-right:4px solid #4cc9f0;padding-right:22px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:40px;padding:52px;margin:52px 0;}
+.note{border:1px dashed rgba(76,201,240,.7);background:rgba(76,201,240,.18);border-radius:30px;padding:30px;margin-top:30px;color:#e0e9ff;}
+table{width:100%;border-collapse:collapse;margin-top:30px;}
+th,td{border:1px solid rgba(255,255,255,.25);padding:18px;text-align:center;}
+th{background:rgba(76,201,240,.18);}
+footer{margin-top:130px;border-top:1px solid rgba(255,255,255,.15);padding-top:46px;color:#b8c4e6;text-align:center;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-right:44px;}
+li{margin:22px 0;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>الفصل 37 — مقارنة الحساب الهرمي بالتفاضل التقليدي</h1>
+<div class="subtitle">
+من التغيّر المحلي إلى التغيّر متعدد المستويات
+</div>
+</header>
+
+<div class="section">
+<h2>37.1 المدخل المفاهيمي</h2>
+<p>
+التفاضل التقليدي هو أحد أعظم إنجازات الرياضيات،
+وقد صاغ العلم الكلاسيكي لقرون.
+لكن تطوّر العلوم كشف أن
+<strong>التغيّر ليس محليًا فقط</strong>.
+</p>
+
+<div class="note">
+الحساب الهرمي لا يناقض التفاضل،
+بل يوسّعه ويضعه في سياقه الصحيح.
+</div>
+</div>
+
+<div class="section">
+<h2>37.2 ما الذي يقيسه كل منهما؟</h2>
+
+<table>
+<tr>
+<th>المنهج</th><th>ما الذي يقيسه؟</th>
+</tr>
+<tr>
+<td>التفاضل التقليدي</td><td>معدل التغيّر المحلي المطلق</td>
+</tr>
+<tr>
+<td>الحساب النسبي \(D_1\)</td><td>معدل التغيّر النسبي</td>
+</tr>
+<tr>
+<td>الحساب الهرمي \(D_n\)</td><td>تغيّر معدلات التغيّر عبر المقاييس</td>
+</tr>
+</table>
+</div>
+
+<div class="section">
+<h2>37.3 مثال بسيط: النمو</h2>
+
+<p>
+لنأخذ:
+\[
+y=e^x
+\]
+</p>
+
+<ul>
+<li>\(D_0y = e^x\) (نمو متزايد)</li>
+<li>\(D_1y = 1\) (نمو نسبي ثابت)</li>
+<li>\(D_2y = 0\) (استقرار هرمي)</li>
+</ul>
+
+<div class="note">
+ما يبدو انفجارًا في \(D_0\)
+هو استقرار في مستوى أعلى.
+</div>
+</div>
+
+<div class="section">
+<h2>37.4 السلاسة مقابل البنية</h2>
+<ul>
+<li>التفاضل يركّز على السلاسة المحلية.</li>
+<li>الحساب الهرمي يركّز على البنية الكلّية.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>37.5 التعامل مع اللاخطية</h2>
+
+<table>
+<tr>
+<th>المسألة</th><th>التفاضل التقليدي</th><th>الحساب الهرمي</th>
+</tr>
+<tr>
+<td>نمو أسي</td><td>حل مباشر</td><td>ثابت نسبي</td>
+</tr>
+<tr>
+<td>نمو فوق أسي</td><td>انفجار</td><td>مستقر في \(D_2\)</td>
+</tr>
+<tr>
+<td>قوانين قوة</td><td>حساب مباشر</td><td>ثابت هرمي</td>
+</tr>
+</table>
+</div>
+
+<div class="section">
+<h2>37.6 الحساسية للمقياس</h2>
+<ul>
+<li>التفاضل يعتمد على وحدة القياس.</li>
+<li>الحساب النسبي مستقل عن الوحدات.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>37.7 متى نستخدم كل منهما؟</h2>
+<ul>
+<li>التفاضل: عند التحليل المحلي الدقيق.</li>
+<li>\(D_1\): عند دراسة النمو والمرونة.</li>
+<li>\(D_n\): عند تعدد المقاييس والانتقالات.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>37.8 المقارنة الفلسفية</h2>
+<ul>
+<li>التفاضل: فلسفة اللحظة.</li>
+<li>الحساب الهرمي: فلسفة البنية.</li>
+</ul>
+
+<div class="note">
+العلم الحديث يحتاج الاثنين معًا.
+</div>
+</div>
+
+<div class="section">
+<h2>37.9 التكامل لا الإلغاء</h2>
+<p>
+الحساب الهرمي لا يسعى
+لاستبدال التفاضل التقليدي،
+بل إلى:
+</p>
+<ul>
+<li>تحديد مجاله الطبيعي.</li>
+<li>تجاوزه عند الحاجة.</li>
+<li>ربطه بمستويات أعلى من الوصف.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>37.10 الخلاصة</h2>
+<ul>
+<li>التفاضل أساس لا غنى عنه.</li>
+<li>الحساب الهرمي يوسّع الأفق.</li>
+<li>التكامل بينهما هو الطريق الأمثل.</li>
+</ul>
+
+<div class="note">
+بهذا الفصل يكتمل
+التحليل المقارن للكتاب.
+</div>
+</div>
+
+<footer>
+© كتاب الحساب الهرمي — الفصل 37  
+<br>نهاية المقارنة.
+</footer>
+</div>
+</body>
+</html>
 
