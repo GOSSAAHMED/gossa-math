@@ -1,259 +1,352 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>الفصل 8 — المشتق النسبي D₁ | الحساب الهرمي</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>الفصل 8 — المشتق النسبي D₁ | كتاب الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] }
-    };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <style>
-    body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
-    .wrap{max-width:980px;margin:auto;padding:32px 16px 80px;}
-    header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-    h1{margin:0;font-size:1.9rem;}
-    .subtitle{margin-top:8px;color:#b8c4e6;}
-    h2{margin-top:32px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
-    h3{margin-top:18px;font-size:1.15rem;color:#cfe0ff;}
-    .section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-    .note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;color:#cbd6ff;margin-top:12px;}
-    .def{border:1px solid rgba(124,58,237,.35);background:rgba(124,58,237,.08);border-radius:16px;padding:14px;color:#d7d1ff;margin-top:12px;}
-    .ex{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);border-radius:16px;padding:14px;margin-top:12px;}
-    .ex strong{color:#cfe0ff;}
-    .nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-    .btn{display:inline-block;padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);color:#eaf0ff;}
-    .btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
-    .btn:hover{opacity:.9;text-decoration:none;}
-    footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;font-size:.95rem;}
-    mjx-container{color:#eaf0ff!important;}
-    a{color:#4cc9f0;text-decoration:none;}
-    a:hover{text-decoration:underline;}
-  </style>
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:22px;}
+h1{margin:0;font-size:1.95rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:30px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:18px;margin:16px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:14px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:44px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-right:22px;}
+li{margin:6px 0;}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
+th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
+th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:900;}
+tr:last-child td{border-bottom:none;}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-weight:900;}
+.small{font-size:.95rem;color:#cbd6ff}
+hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
+</style>
 </head>
 
 <body>
 <div class="wrap">
+<header>
+<h1>الفصل 8 — المشتق النسبي \(D_1\)</h1>
+<div class="subtitle">تعريف رسمي + صيغ مكافئة + تفسير فيزيائي/اقتصادي + أمثلة عددية كثيرة</div>
 
-  <header>
-    <h1>الفصل الثامن — المشتق النسبي \(D_1\)</h1>
-    <div class="subtitle">كتاب: الحساب الهرمي</div>
+<div class="nav">
+<a class="btn primary" href="./index.html">📘 فهرس الكتاب</a>
+<a class="btn" href="./chapter-7.html">⟶ الفصل السابق</a>
+<a class="btn" href="./chapter-9.html">الفصل التالي ⟵</a>
+</div>
+</header>
 
-    <div class="nav">
-      <a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
-      <a href="./chapter-07.html" class="btn">⟶ الفصل السابق</a>
-      <a href="./chapter-09.html" class="btn">الفصل التالي ⟵</a>
-    </div>
-  </header>
+<div class="section">
+<h2>8.1 التعريف الرسمي للمشتق النسبي \(D_1\)</h2>
 
-  <div class="section">
-    <h2>8.1 من \(D_0\) إلى \(D_1\): لماذا قياس نسبي؟</h2>
-    <p>
-      المشتق التفاضلي التقليدي \(D_0\) يقيس التغيّر المطلق:
-      مقدار تغير \(y\) عندما يتغير \(x\). لكن في كثير من الظواهر
-      لا يكون هذا كافيًا، لأن معنى التغيّر يعتمد على حجم الكمية نفسها.
-    </p>
-    <p>
-      لذلك نحتاج قياسًا يلتقط <strong>نسبة</strong> التغيّر لا مقداره فقط،
-      أي قياسًا نسبيًا.
-    </p>
+<div class="def">
+\[
+D_1y \;=\;\frac{d(\ln y)}{d(\ln x)}.
+\]
+</div>
 
-    <div class="note">
-      القياس النسبي هو اللغة الطبيعية للنمو والاقتصاد والبيانات
-      والأنظمة الحساسة للمقياس.
-    </div>
-  </div>
+<div class="note">
+<strong>شروط المجال:</strong> حتى يكون \(\ln x\) و\(\ln y\) معرفين نحتاج:
+\[
+x>0,\qquad y>0.
+\]
+</div>
 
-  <div class="section">
-    <h2>8.2 تعريف المشتق النسبي \(D_1\) (بدون لوغاريتم)</h2>
+<div class="ex">
+<h3>ماذا يقيس هذا التعريف؟</h3>
+<p>
+المشتق النسبي يقيس “التغير النسبي في \(y\)” مقابل “التغير النسبي في \(x\)”.  
+أي: إذا زاد \(x\) بنسبة معينة، كم تزيد \(y\) (تقريبًا) بنسبة؟
+</p>
+</div>
+</div>
 
-    <div class="def">
-      <strong>تعريف:</strong>
-      إذا كانت \(y=f(x)\) مع \(x\neq 0\) و\(y\neq 0\)، فإن المشتق النسبي يُعرّف بـ:
-      \[
-        D_1 y \;=\; \frac{\dfrac{dy}{y}}{\dfrac{dx}{x}}
-        \;=\; \frac{x}{y}\,\frac{dy}{dx}.
-      \]
-    </div>
+<div class="section">
+<h2>8.2 الربط بين \(D_1\) و\(D_0\) (صيغة عملية جدًا)</h2>
 
-    <p>
-      إذن \(D_1\) هو “معدل تغيّر \(y\) بالنسبة إلى \(x\)” لكن بعد تطبيع
-      كل تغيّر بقيمته. هذه الصيغة تجعل \(D_1\) يعبر عن “مرونة” النظام:
-      كيف تتغير \(y\) نسبيًا عندما تتغير \(x\) نسبيًا.
-    </p>
+<div class="def">
+إذا كان \(D_0y=\dfrac{dy}{dx}\) موجودًا، فإن:
+\[
+D_1y
+=\frac{\dfrac{d(\ln y)}{dx}}{\dfrac{d(\ln x)}{dx}}
+=\frac{\dfrac{1}{y}\dfrac{dy}{dx}}{\dfrac{1}{x}}
+=\frac{x}{y}\,\frac{dy}{dx}.
+\]
+</div>
 
-    <div class="note">
-      صيغة الربط المباشر بين المستويين:
-      \[
-        D_1 y = \frac{x}{y}\,D_0 y.
-      \]
-      وهذا هو أول مثال واضح على “علاقة انتقال” بين مستويات الهرم.
-    </div>
-  </div>
+<div class="note">
+إذن العلاقة الأساسية:
+\[
+D_1y=\frac{x}{y}\,D_0y.
+\]
+وبالعكس:
+\[
+D_0y=\frac{y}{x}\,D_1y.
+\]
+</div>
 
-  <div class="section">
-    <h2>8.3 تفسير \(D_1\): المعنى والبعدية</h2>
-    <p>
-      غالبًا ما يكون \(D_0 y\) ذا وحدة (بعد) مثل “متر/ثانية”.
-      لكن \(D_1\) في كثير من التطبيقات يصبح
-      <strong>عديم البعد</strong> (Dimensionless)، لأنه يقارن نسبًا.
-    </p>
-    <p>
-      لهذا السبب يظهر \(D_1\) طبيعيًا في قوانين التشابه،
-      وفي نماذج النمو، وفي تحليل الحساسية.
-    </p>
-  </div>
+<div class="ex">
+<h3>مثال عددي سريع</h3>
+<p>
+خذ \(y=x^2\). عند \(x=3\):  
+\(D_0y=2x=6\)، و\(y=9\).  
+إذن:
+\[
+D_1y=\frac{x}{y}D_0y=\frac{3}{9}\cdot 6=2.
+\]
+وهذا يطابق تمامًا أن \(D_1\) ثابت ويساوي الأس في قانون القوة.
+</p>
+</div>
+</div>
 
-  <div class="section">
-    <h2>8.4 خصائص أساسية للمشتق النسبي</h2>
+<div class="section">
+<h2>8.3 التفسير: “مرونة” (Elasticity) في الاقتصاد و”أسّ محلي” في القياس</h2>
 
-    <h3>8.4.1 ثبات الضرب في ثابت</h3>
-    <p>إذا كانت \(c\neq 0\) ثابتًا فإن:</p>
-    \[
-      D_1(cy)=D_1(y).
-    \]
-    <div class="note">
-      لأن \(D_1\) يقيس “النسبة”، والضرب في ثابت لا يغير النسب.
-    </div>
+<div class="def">
+عند تغييرات صغيرة:
+\[
+d(\ln y)\approx \frac{dy}{y},\qquad d(\ln x)\approx \frac{dx}{x}.
+\]
+إذن:
+\[
+D_1y=\frac{d(\ln y)}{d(\ln x)}\approx
+\frac{\dfrac{dy}{y}}{\dfrac{dx}{x}}.
+\]
+</div>
 
-    <h3>8.4.2 حاصل ضرب دالتين</h3>
-    <p>
-      إذا كانت \(y=uv\) (و\(u\neq 0, v\neq 0\)) فإن:
-    </p>
-    \[
-      D_1(uv)=D_1(u)+D_1(v).
-    \]
-    <p>
-      هذه خاصية محورية لأنها تبيّن أن البنية الطبيعية لـ \(D_1\)
-      تتعامل مع الضرب على نحو “جمعي” على مستوى القياس النسبي.
-    </p>
+<div class="note">
+يعني إذا كان \(D_1y=1.2\) قرب نقطة ما، فهذا يترجم عمليًا إلى:
+“زيادة \(x\) بنسبة 1% ⇒ زيادة \(y\) بنسبة 1.2% تقريبًا” قرب تلك النقطة.
+</div>
+</div>
 
-    <h3>8.4.3 القسمة</h3>
-    \[
-      D_1\left(\frac{u}{v}\right)=D_1(u)-D_1(v)\quad (v\neq 0).
-    \]
+<div class="section">
+<h2>8.4 النتيجة المركزية: قوانين القوى تُصبح خطية</h2>
 
-    <h3>8.4.4 قوة الدالة</h3>
-    <p>إذا كانت \(y=u^a\) (و\(u\neq 0\)) فإن:</p>
-    \[
-      D_1(u^a)=a\,D_1(u).
-    \]
+<div class="def">
+إذا:
+\[
+y=Cx^a,\quad C>0,
+\]
+فإن:
+\[
+\ln y=\ln C+a\ln x
+\Rightarrow
+D_1y=a \quad (\text{ثابت}).
+\]
+</div>
 
-    <h3>8.4.5 قاعدة السلسلة (صيغة \(D_1\))</h3>
-    <p>
-      إذا كانت \(y=f(u)\) و\(u=g(x)\)، فإن:
-    </p>
-    \[
-      D_1 y \;=\; \frac{u}{y}\frac{dy}{du}\; \cdot\; \frac{x}{u}\frac{du}{dx}.
-    \]
-    <p>
-      أي أن قاعدة السلسلة في \(D_1\) تُفهم كسلسلة نسبية:
-      نسبة تغيّر \(y\) بالنسبة إلى \(u\)، مضروبة في نسبة تغيّر \(u\) بالنسبة إلى \(x\).
-    </p>
-  </div>
+<div class="ex">
+<h3>مثال 1 (حساب كامل)</h3>
+<p>
+\(y=5x^{1.5}\).  
+\(\ln y=\ln 5+1.5\ln x\Rightarrow D_1y=1.5\) دائمًا.
+</p>
+</div>
 
-  <div class="section">
-    <h2>8.5 صيغ خاصة مهمة</h2>
+<div class="ex">
+<h3>مثال 2 (قانون عكسي)</h3>
+<p>
+\(y=\dfrac{10}{x^2}=10x^{-2}\Rightarrow D_1y=-2\).
+إشارة سالبة تعني أن \(y\) تنخفض نسبيًا عندما يرتفع \(x\).
+</p>
+</div>
+</div>
 
-    <div class="ex">
-      <strong>1) إذا كانت \(y = x^a\) (و\(x\neq 0\)):</strong><br>
-      \[
-        D_1 y = a.
-      \]
-      <p>
-        هذه نتيجة جوهرية: المشتق النسبي للقوى ثابت يساوي الأسّ.
-        لذلك يصبح \(D_1\) أداة طبيعية لكشف قوانين القوى.
-      </p>
-    </div>
+<div class="section">
+<h2>8.5 تقريب \(D_1\) من بيانات متقطعة (Discrete)</h2>
 
-    <div class="ex">
-      <strong>2) إذا كانت \(y = C x^a\) (و\(C\neq 0\)):</strong><br>
-      \[
-        D_1 y = a.
-      \]
-      <p>الثابت \(C\) لا يؤثر لأن القياس نسبي.</p>
-    </div>
+<div class="def">
+بين نقطتين \((x_i,y_i)\) و\((x_{i+1},y_{i+1})\):
+\[
+\widehat{D_1}=
+\frac{\ln y_{i+1}-\ln y_i}{\ln x_{i+1}-\ln x_i}.
+\]
+</div>
 
-    <div class="ex">
-      <strong>3) إذا كانت \(y = e^{kx}\):</strong><br>
-      \[
-        D_1 y = kx.
-      \]
-      <p>
-        هنا يظهر بوضوح الفرق بين النمو الخطي والنمو الأسي على مستوى القياس النسبي.
-      </p>
-    </div>
-  </div>
+<div class="note">
+إذا كانت \(\widehat{D_1}\) ثابتة تقريبًا عبر المقاطع، فهذا دليل قوي أن البيانات تتبع تقريبًا قانون قوة.
+</div>
 
-  <div class="section">
-    <h2>8.6 أمثلة محلولة</h2>
+<div class="ex">
+<h3>مثال 3 (بيانات قوة مثالية)</h3>
+<table>
+<tr><th>x</th><th>y</th></tr>
+<tr><td>2</td><td>16</td></tr>
+<tr><td>4</td><td>128</td></tr>
+<tr><td>8</td><td>1024</td></tr>
+</table>
+<p>
+نحسب على المقطع الأول:
+\[
+\widehat{D_1}=\frac{\ln 128-\ln 16}{\ln 4-\ln 2}
+=\frac{\ln(8)}{\ln(2)}=3.
+\]
+وعلى المقطع الثاني:
+\[
+\widehat{D_1}=\frac{\ln 1024-\ln 128}{\ln 8-\ln 4}
+=\frac{\ln(8)}{\ln(2)}=3.
+\]
+ثبات كامل ⇒ \(y=2x^3\).
+</p>
+</div>
 
-    <div class="ex">
-      <strong>مثال 1:</strong> احسب \(D_1(x^5)\).<br>
-      <strong>الحل:</strong> من الصيغة الخاصة:
-      \[
-        D_1(x^5)=5.
-      \]
-    </div>
+<div class="ex">
+<h3>مثال 4 (بيانات قوة مع ضوضاء)</h3>
+<table>
+<tr><th>x</th><th>y</th></tr>
+<tr><td>10</td><td>49.5</td></tr>
+<tr><td>20</td><td>79.8</td></tr>
+<tr><td>40</td><td>127.3</td></tr>
+<tr><td>80</td><td>205.0</td></tr>
+</table>
+<p class="small">
+توقع أن \(\widehat{D_1}\) لن تكون ثابتة تمامًا، لكن إذا بقيت ضمن نطاق ضيق فهذا يكفي لاستخراج أسّ تقريبي.
+</p>
+</div>
+</div>
 
-    <div class="ex">
-      <strong>مثال 2:</strong> إذا \(y = 3x^2\) فاحسب \(D_1 y\).<br>
-      <strong>الحل:</strong> الثابت لا يؤثر:
-      \[
-        D_1(3x^2)=D_1(x^2)=2.
-      \]
-    </div>
+<div class="section">
+<h2>8.6 أمثلة عددية كثيرة (مباشرة على \(D_1=\frac{x}{y}y'\))</h2>
 
-    <div class="ex">
-      <strong>مثال 3:</strong> إذا \(y = x^2(1+x)\) (و\(x\neq 0\), \(1+x\neq 0\)) فاحسب \(D_1 y\).<br>
-      <strong>الحل:</strong>
-      \[
-        D_1(x^2(1+x))=D_1(x^2)+D_1(1+x).
-      \]
-      لدينا:
-      \[
-        D_1(x^2)=2,\qquad D_1(1+x)=\frac{x}{1+x}.
-      \]
-      إذن:
-      \[
-        D_1 y = 2+\frac{x}{1+x}.
-      \]
-    </div>
-  </div>
+<div class="ex">
+<h3>مثال 5: \(y=x^3+1\)</h3>
+<p>
+\(y'=3x^2\) و
+\[
+D_1y=\frac{x}{x^3+1}\cdot 3x^2=\frac{3x^3}{x^3+1}.
+\]
+عند \(x=1\Rightarrow D_1=1.5\).  
+عند \(x=10\Rightarrow D_1\approx \frac{3000}{1001}\approx 2.997\) (يميل إلى 3 مع كبر \(x\)).
+</p>
+</div>
 
-  <div class="section">
-    <h2>8.7 تمهيد نحو المستوى التالي \(D_2\)</h2>
-    <p>
-      إذا كان \(D_1\) يقيس التغيّر النسبي، فإن السؤال التالي طبيعي:
-      ماذا لو كان <strong>التغيّر النسبي نفسه</strong> يتغير؟
-      أي أننا نبحث عن قياس أعلى يلتقط تغير \(D_1\) ضمن بنية أعمق.
-    </p>
-    <p>
-      هذا الاتجاه يقود إلى المستوى \(D_2\) الذي سيُقدَّم لاحقًا
-      بوصفه قياسًا أعلى في الهرم.
-    </p>
+<div class="ex">
+<h3>مثال 6: \(y=e^x\)</h3>
+<p>
+\(y'=e^x=y\) إذن:
+\[
+D_1y=\frac{x}{y}y'=x.
+\]
+عند \(x=2\Rightarrow D_1=2\).  
+يعني: \(e^x\) ليست قانون قوة، بل أسّها النسبي المحلي يزداد مع \(x\).
+</p>
+</div>
 
-    <div class="note">
-      الخلاصة: \(D_1\) هو أول انتقال من القياس المطلق إلى القياس النسبي،
-      وهو حجر الأساس في بناء الهرم.
-    </div>
-  </div>
+<div class="ex">
+<h3>مثال 7: \(y=\ln x\) (لـ \(x>1\))</h3>
+<p>
+\(y'=\frac{1}{x}\), إذن:
+\[
+D_1y=\frac{x}{\ln x}\cdot \frac{1}{x}=\frac{1}{\ln x}.
+\]
+عند \(x=e\Rightarrow D_1=1\).  
+عند \(x=e^2\Rightarrow D_1=1/2\).
+</p>
+</div>
 
-  <div class="nav" style="margin-top:18px;">
-    <a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
-    <a href="./chapter-07.html" class="btn">⟶ الفصل السابق</a>
-    <a href="./chapter-09.html" class="btn">الفصل التالي ⟵</a>
-  </div>
+<div class="ex">
+<h3>مثال 8: \(y=\sqrt{x}\)</h3>
+<p>
+\(y'=1/(2\sqrt{x})\) و\(y=\sqrt{x}\):
+\[
+D_1y=\frac{x}{\sqrt{x}}\cdot \frac{1}{2\sqrt{x}}=\frac12.
+\]
+ثابت ⇒ قانون قوة بأس \(1/2\).
+</p>
+</div>
 
-  <footer>
-    © كتاب الحساب الهرمي — الفصل الثامن
-  </footer>
+<div class="ex">
+<h3>مثال 9: \(y=\frac{1}{1+x}\)</h3>
+<p>
+\(y'=-\frac{1}{(1+x)^2}\):
+\[
+D_1y=\frac{x}{\frac{1}{1+x}}\left(-\frac{1}{(1+x)^2}\right)
+= x(1+x)\left(-\frac{1}{(1+x)^2}\right)
+=-\frac{x}{1+x}.
+\]
+عند \(x=1\Rightarrow D_1=-1/2\).  
+عند \(x=9\Rightarrow D_1=-0.9\).
+</p>
+</div>
 
+<div class="ex">
+<h3>مثال 10: \(y=x^a(\ln x)^b\) (نمو مركّب)</h3>
+<p>
+\[
+\ln y=a\ln x + b\ln(\ln x)\Rightarrow
+D_1y=\frac{d(\ln y)}{d(\ln x)}=a+\frac{b}{\ln x}.
+\]
+عند \(x=e^2\Rightarrow D_1=a+b/2\).  
+عند \(x=e^{10}\Rightarrow D_1\approx a\) (يقترب من \(a\)).
+</p>
+</div>
+
+</div>
+
+<div class="section">
+<h2>8.7 كيف نستخرج \(a\) و\(C\) من بيانات قانون قوة بسرعة؟</h2>
+
+<div class="def">
+إذا افترضنا \(y\approx Cx^a\) من ثبات \(\widehat{D_1}\)، فباستخدام نقطتين:
+\[
+a=\frac{\ln(y_2/y_1)}{\ln(x_2/x_1)},\qquad
+C=\frac{y_1}{x_1^a}.
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 11 (حساب كامل)</h3>
+<p>
+بيانات: \((x_1,y_1)=(10,50)\), \((x_2,y_2)=(40,127.3)\).  
+\[
+a=\frac{\ln(127.3/50)}{\ln(40/10)}
+=\frac{\ln(2.546)}{\ln(4)}
+\approx \frac{0.934}{1.386}\approx 0.674.
+\]
+ثم:
+\[
+C=\frac{50}{10^{0.674}}\approx \frac{50}{4.72}\approx 10.6.
+\]
+نموذج تقريبي: \(y\approx 10.6\,x^{0.674}\).
+</p>
+</div>
+
+</div>
+
+<div class="section">
+<h2>8.8 خلاصة الفصل</h2>
+<ul>
+<li>\(D_1\) هو المشتق “النسبي” الحقيقي: \(\;D_1=\dfrac{d(\ln y)}{d(\ln x)}\).</li>
+<li>يرتبط مباشرة بـ \(D_0\): \(\;D_1=\dfrac{x}{y}y'\).</li>
+<li>ثبات \(D_1\) ⇐⇒ قانون قوة \(y=Cx^a\).</li>
+<li>من بيانات متقطعة: \(\widehat{D_1}\) يكشف الأسّ بسرعة وبدقة.</li>
+</ul>
+
+<div class="note">
+في الفصل 9 سنبني “قوانين التشغيل”:  
+قاعدة الضرب/القسمة/القوة، تركيب الدوال، وكيف نحول معادلات \(D_1\) إلى معادلات خطية في \(D_0\) مع أمثلة عددية كثيرة.
+</div>
+</div>
+
+<footer>© كتاب الحساب الهرمي — الفصل 8</footer>
 </div>
 </body>
 </html>
