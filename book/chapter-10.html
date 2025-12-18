@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل العاشر — المستوى الثاني D₂ | الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:980px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.9rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>الفصل العاشر — المستوى الثاني \(D_2\)</h1>
+<div class="subtitle">تغيّر التغيّر النسبي والبنية اللوغاريتمية المتداخلة</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
+<a href="./chapter-09.html" class="btn">⟶ الفصل السابق</a>
+<a href="./chapter-11.html" class="btn">الفصل التالي ⟵</a>
+</div>
+</header>
+
+<div class="section">
+<h2>10.1 لماذا نحتاج مستوى أعلى من \(D_1\)؟</h2>
+<p>
+المشتق النسبي \(D_1\) يقيس نسبة التغيّر، لكنه يفترض ضمنيًا أن هذه
+النسبة هي الكمية الجوهرية. غير أن كثيرًا من الظواهر تُظهر أن
+<strong>النسبة نفسها تتغير مع المقياس</strong>.
+</p>
+<p>
+هنا يظهر المستوى الثاني \(D_2\)، الذي لا يقيس التغيّر مباشرة،
+ولا التغيّر النسبي، بل يقيس
+<strong>تغيّر البنية النسبية نفسها</strong>.
+</p>
+</div>
+
+<div class="section">
+<h2>10.2 التعريف الرسمي للمستوى الثاني \(D_2\)</h2>
+
+<div class="def">
+\[
+\boxed{
+D_2 y
+=
+\frac{d(\ln\ln y)}{d(\ln\ln x)}
+}
+\qquad
+(\ln x>0,\;\ln y>0)
+\]
+</div>
+
+<p>
+هذا التعريف هو تطبيق مباشر للتعريف العام للمشتقات الهرمية:
+\[
+D_n y=\frac{d(L_n(y))}{d(L_n(x))}.
+\]
+</p>
+
+<div class="note">
+\(D_2\) ليس مشتقًا لـ \(D_1\)،
+بل مشتق عند <strong>مقياس لوغاريتمي أعمق</strong>.
+</div>
+</div>
+
+<div class="section">
+<h2>10.3 الصيغة الحسابية بدلالة \(D_0\)</h2>
+
+<div class="def">
+\[
+D_2 y
+=
+\frac{x\ln x}{y\ln y}\,\frac{dy}{dx}
+=
+\frac{\ln x}{\ln y}\,D_1 y
+\]
+</div>
+
+<p>
+هذه الصيغة تُظهر بوضوح أن الانتقال من \(D_1\) إلى \(D_2\)
+يتم عبر <strong>نسبة اللوغاريتمات</strong>.
+</p>
+</div>
+
+<div class="section">
+<h2>10.4 تفسير هندسي–بنيوي</h2>
+<ul>
+<li>\(D_1\): كيف تتغير \(y\) نسبيًا مع \(x\).</li>
+<li>\(D_2\): كيف تتغير هذه النسبة عند الانتقال إلى مقياس أعمق.</li>
+</ul>
+
+<div class="note">
+إذا كان \(D_1\) ثابتًا ⇒ \(D_2=1\) أو \(0\) بحسب طبيعة النمو،
+وهذا تمييز لا يمكن لـ \(D_1\) وحده كشفه.
+</div>
+</div>
+
+<div class="section">
+<h2>10.5 أمثلة أساسية</h2>
+
+<div class="ex">
+<strong>مثال 1 — قانون قوة:</strong><br>
+إذا \(y=x^a\) و\(x>1\):
+\[
+D_1 y=a,\qquad
+D_2 y=\frac{d(\ln(a\ln x))}{d(\ln\ln x)}=1.
+\]
+</div>
+
+<div class="ex">
+<strong>مثال 2 — نمو أسي:</strong><br>
+إذا \(y=e^{kx}\):
+\[
+D_2 y=\frac{\ln x}{\ln(kx)}\cdot kx.
+\]
+</div>
+
+<div class="ex">
+<strong>مثال 3 — نمو مركّب:</strong><br>
+إذا \(y=e^{x^2}\):
+\[
+D_1 y=2x^2,\qquad
+D_2 y=\frac{d(\ln\ln(e^{x^2}))}{d(\ln\ln x)}=2.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>10.6 ماذا يكشف \(D_2\) ولا يكشفه \(D_1\)؟</h2>
+<ul>
+<li>تمييز قوانين القوى المتشابهة نسبيًا.</li>
+<li>كشف استقرار أو عدم استقرار البنية النسبية.</li>
+<li>فصل النمو الحقيقي عن النمو الظاهري.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>10.7 خلاصة الفصل</h2>
+<ul>
+<li>\(D_2\) مشتق هرمي عند مقياس لوغاريتمي متداخل.</li>
+<li>هو ليس تكرارًا اشتقاقيًا بل انتقالًا في المقياس.</li>
+<li>يمهّد مباشرة لتعريف المستويات العامة \(D_n\).</li>
+</ul>
+</div>
+
+<footer>
+© كتاب الحساب الهرمي — الفصل العاشر
+</footer>
+
+</div>
+</body>
+</html>
