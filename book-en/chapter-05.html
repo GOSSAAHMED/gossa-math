@@ -1,1 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 5 — Hierarchy as a General Mathematical Principle | Hierarchical Calculus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+    .wrap{max-width:980px;margin:auto;padding:32px 16px 80px;}
+    header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+    h1{margin:0;font-size:1.9rem;}
+    .subtitle{margin-top:8px;color:#b8c4e6;}
+    h2{margin-top:32px;font-size:1.35rem;border-left:4px solid #4cc9f0;padding-left:10px;}
+    h3{margin-top:18px;font-size:1.1rem;color:#cfe0ff;}
+    .section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+    .note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;color:#cbd6ff;margin-top:12px;}
+    .def{border:1px solid rgba(124,58,237,.35);background:rgba(124,58,237,.08);border-radius:16px;padding:14px;color:#d7d1ff;margin-top:12px;}
+    .nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+    .btn{display:inline-block;padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);color:#eaf0ff;}
+    .btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+    .btn:hover{opacity:.9;text-decoration:none;}
+    footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;font-size:.95rem;}
+    mjx-container{color:#eaf0ff!important;}
+    a{color:#4cc9f0;text-decoration:none;}
+    a:hover{text-decoration:underline;}
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Chapter 5 — Hierarchy as a General Mathematical Principle</h1>
+    <div class="subtitle">Book: Hierarchical Calculus</div>
+
+    <div class="nav">
+      <a href="./index.html" class="btn primary">📘 Book Index</a>
+      <a href="./chapter-04.html" class="btn">⟵ Previous</a>
+      <a href="./chapter-06.html" class="btn">Next ⟶</a>
+    </div>
+  </header>
+
+  <div class="section">
+    <h2>5.1 What Do We Mean by Hierarchy?</h2>
+    <p>
+      The word <strong>hierarchy</strong> does not necessarily mean “complexity.”
+      It means that a system can be understood in terms of <em>levels</em>.
+      Each level has its own description, yet remains connected to the others
+      through explicit transition relations.
+    </p>
+
+    <div class="def">
+      <strong>Definition (structural hierarchy):</strong>
+      A structure is hierarchical if there exists a collection of levels
+      \(\mathcal{L}_0, \mathcal{L}_1, \mathcal{L}_2, \dots\)
+      such that each level \(\mathcal{L}_k\) captures organization that is not fully
+      reducible to a lower level, while well-defined “transition links” connect levels.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>5.2 Hierarchy in Mathematics: Foundational Examples</h2>
+
+    <h3>5.2.1 Levels of operations</h3>
+    <p>
+      Even basic arithmetic exhibits a natural hierarchy: addition, multiplication,
+      exponentiation, and logarithms (as inverses). The key point is not that one is
+      “better” but that they represent different operational levels.
+    </p>
+
+    <h3>5.2.2 Levels of functions</h3>
+    <p>
+      Functions may be classified by growth behavior: constant, linear,
+      polynomial, exponential, logarithmic, etc. This creates a hierarchy
+      in terms of asymptotic scale.
+    </p>
+
+    <h3>5.2.3 Orders of change</h3>
+    <p>
+      Classical calculus has first derivatives, second derivatives, third derivatives…
+      This is an internal hierarchy of order. Hierarchical Calculus introduces
+      a different notion: <strong>levels of measurement</strong>.
+    </p>
+
+    <div class="note">
+      Hierarchical Calculus is not only about higher-order derivatives,
+      but about higher <strong>measurement levels</strong>.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>5.3 Hierarchy as a Response to the Scale Problem</h2>
+    <p>
+      Previous chapters emphasized that absolute change may not capture meaning
+      when significance depends on scale. Hierarchy provides a direct response:
+    </p>
+    <ul>
+      <li>If the meaning of change varies with scale,</li>
+      <li>then measurement must vary with scale as well.</li>
+    </ul>
+    <p>
+      This naturally motivates layers: absolute change, relative change,
+      logarithmic-structured change, and beyond.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>5.4 The Idea of a Hierarchical Operator</h2>
+    <p>
+      A common way to build hierarchy in mathematics is to define an operator
+      at one level and then define a new operator based on it. In this book,
+      we consider a sequence of operators:
+    </p>
+    \[
+      D_0,\; D_1,\; D_2,\; \dots
+    \]
+    <p>
+      Each \(D_k\) is a distinct way of measuring change, connected to the previous
+      level by transition relations developed later.
+    </p>
+
+    <div class="note">
+      The goal is not to replace \(D_0\) but to embed it within a larger structure:
+      the derivative hierarchy.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>5.5 Hierarchy and Non-Reducibility</h2>
+    <p>
+      A key feature of hierarchy is that higher-level organization is not always
+      reducible to lower-level descriptions. This does not deny connections; it
+      means that linking levels requires a consistent transition language.
+    </p>
+    <p>
+      Hierarchical Calculus aims to serve as such a transition language for change
+      across scales.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>5.6 Internal Consistency Between Levels</h2>
+    <p>
+      To be mathematical (not rhetorical), hierarchy must be consistent:
+    </p>
+    <ul>
+      <li><strong>Definitional consistency:</strong> each level is precisely defined.</li>
+      <li><strong>Transformational consistency:</strong> levels are linked by explicit relations.</li>
+      <li><strong>Explanatory consistency:</strong> each level adds genuine modeling power.</li>
+    </ul>
+
+    <div class="def">
+      <strong>Consistency principle:</strong>
+      A new level \(D_{k+1}\) is justified only if it captures structure that cannot be
+      represented in \(D_k\) without losing essential information.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>5.7 Why Hierarchy Suggests a Unifying Language</h2>
+    <p>
+      Modern sciences are rich in scale transitions: physics, economics, data analysis,
+      and complex systems. A layered measurement language can serve as a unifying
+      framework—without claiming to “solve everything.”
+    </p>
+
+    <div class="note">
+      “Unifying” means providing a common structural vocabulary, not replacing the
+      content of each science.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>5.8 Transition to the Next Chapter</h2>
+    <p>
+      Having established hierarchy as a general principle, we now ask:
+      how do we organize a full theory that begins with \(D_0\) and builds \(D_1\),
+      then \(D_2\), and beyond?
+      Chapter 6 provides a global overview before formal definitions.
+    </p>
+  </div>
+
+  <div class="nav" style="margin-top:18px;">
+    <a href="./index.html" class="btn primary">📘 Book Index</a>
+    <a href="./chapter-04.html" class="btn">⟵ Previous</a>
+    <a href="./chapter-06.html" class="btn">Next ⟶</a>
+  </div>
+
+  <footer>
+    © Hierarchical Calculus — Chapter 5
+  </footer>
+
+</div>
+</body>
+</html>
 
