@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 16 — تطبيقات الاستقرار الهرمي | الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1120px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.9rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+ul{padding-right:22px;}
+li{margin:6px 0;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+.small{font-size:.95rem;color:#cbd6ff}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:16px 0;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>الفصل السادس عشر — تطبيقات الاستقرار الهرمي</h1>
+<div class="subtitle">نماذج فيزيائية/اقتصادية/هندسية: كيف نختار المستوى \(D_n\) ونبني نموذجًا خطيًا أو مباشر الحل؟ (16 مثالًا عدديًا)</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
+<a href="./chapter-15.html" class="btn">⟶ الفصل السابق</a>
+<a href="./chapter-17.html" class="btn">الفصل التالي ⟵</a>
+</div>
+</header>
+
+<div class="section">
+<h2>16.1 منهج تطبيقي سريع</h2>
+<div class="def">
+<strong>الخطوات:</strong>
+<ol>
+<li>اكتب القانون أو المعادلة كما تظهر في البيانات/الفيزياء.</li>
+<li>فتّش عن بنية نسبية: \(\frac{y'}{y}\) ⇒ \(D_1\)، أو \(\frac{y'}{y\ln y}\) ⇒ \(D_2\)، أو \(\frac{y'}{y\ln y\ln\ln y}\) ⇒ \(D_3\).</li>
+<li>اختر متغير القياس: \(u=\ln x\), \(v=\ln\ln x\), \(s=\ln\ln\ln x\).</li>
+<li>اختر متحول الدالة: \(w=\ln y\) أو \(z=\ln\ln y\) أو \(q=\ln\ln\ln y\).</li>
+<li>اجعل المعادلة خطية في \(w(u)\) أو \(z(v)\) أو \(q(s)\)، ثم حل وارجع إلى \(y\).</li>
+<li>تحقق عدديًا بقيمة محددة.</li>
+</ol>
+</div>
+<div class="note">
+الفصل لا يفترض “تعقيدًا”؛ بالعكس: يهدف إلى تحويل النماذج الثقيلة إلى أشكال قياسية قصيرة.
+</div>
+</div>
+
+<div class="section">
+<h2>16.2 قاموس سريع (للرجوع أثناء الأمثلة)</h2>
+<div class="def">
+\[
+D_1y=\frac{x}{y}y',\qquad
+D_2y=\frac{x\ln x}{y\ln y}y',\qquad
+D_3y=\frac{x\ln x\,\ln\ln x}{y\ln y\,\ln\ln y}y'.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>16.3 أمثلة في الفيزياء (6 أمثلة)</h2>
+
+<div class="ex">
+<h3>مثال (F1) — قانون قياس/تشابه: \(D_1y\) ثابت</h3>
+<p>
+نموذج تشابه: \(D_1y=\alpha\Rightarrow y=Cx^\alpha\).
+اختر \(\alpha=2\). إذا \(y(3)=18\Rightarrow C=2\).
+تحقق: \(y(10)=200\).
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (F2) — طاقة/استجابة تعتمد على \((\ln x)^2\): أسهل في \(u=\ln x\)</h3>
+<p>
+لنفرض قانونًا تجريبيًا: \(D_1y=(\ln x)^2\).
+ضع \(u=\ln x\): \(\frac{d(\ln y)}{du}=u^2\Rightarrow \ln y=\frac{u^3}{3}+C\).
+اختر \(C=0\Rightarrow y=\exp((\ln x)^3/3)\).
+تحقق: عند \(x=e^3\Rightarrow y=e^9=8103.08393\).
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (F3) — قانون مع “احتكاك لوغاريتمي”: ظهور \(\frac{y'}{y\ln y}\) ⇒ \(D_2\)</h3>
+<p>
+\[
+y'=\frac{y\ln y}{x\ln x}\;\Rightarrow\; D_2y=1\;\Rightarrow\;\ln\ln y=\ln\ln x + C.
+\]
+اختر \(C=0\Rightarrow y=x\).
+تحقق: عند \(x=500\Rightarrow y=500\).
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (F4) — “تسارع بنيوي”: \(D_2y\) ثابت</h3>
+<p>
+\[
+D_2y=2 \Rightarrow \ln\ln y=2\ln\ln x + C \Rightarrow y=\exp(A(\ln x)^2).
+\]
+اختر \(A=1\Rightarrow y=e^{(\ln x)^2}\).
+تحقق: عند \(x=e^3\Rightarrow y=e^9=8103.08393\).
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (F5) — طبقة عميقة في الظواهر متعددة المقاييس: \(D_3y\) ثابت</h3>
+<p>
+\[
+D_3y=2\Rightarrow \ln\ln\ln y=2\ln\ln\ln x + C.
+\]
+اختر \(C=0\Rightarrow \ln\ln y=(\ln\ln x)^2\Rightarrow y=\exp(\exp((\ln\ln x)^2)).
+\]
+تحقق: عند \(x=e^{e^2}\Rightarrow \ln\ln x=2\Rightarrow y=\exp(\exp(4))=\exp(54.59815)\approx 2.51\times10^{23}.
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (F6) — قانون “مركّب”: \(D_2y = a + b\,\ln\ln x\)</h3>
+<p>
+اختر:
+\[
+D_2y = 1 + \ln\ln x.
+\]
+ضع \(v=\ln\ln x\), \(z=\ln\ln y\): \(\frac{dz}{dv}=1+v\Rightarrow z=v+\frac{v^2}{2}+C\).
+اختر \(C=0\Rightarrow \ln\ln y=v+v^2/2\Rightarrow y=\exp(\exp(v+v^2/2)).
+\]
+تحقق: عند \(x=e^{e}\Rightarrow \ln\ln x=\ln 1=0\) غير مناسب، فخذ \(x=e^{e^2}\Rightarrow v=2\):
+\[
+z=2+2=4\Rightarrow y=\exp(\exp(4))\approx 2.51\times10^{23}.
+\]
+</p>
+</div>
+
+</div>
+
+<div class="section">
+<h2>16.4 أمثلة في الاقتصاد/النمو (5 أمثلة)</h2>
+
+<div class="ex">
+<h3>مثال (E1) — مرونة ثابتة (Elasticity): \(D_1y\) ثابت</h3>
+<p>
+مرونة الطلب/الناتج:
+\[
+D_1y=\varepsilon \Rightarrow y=Cx^\varepsilon.
+\]
+اختر \(\varepsilon=0.7\), و\(y(100)=50\Rightarrow C=50/100^{0.7}\approx 1.9905\).
+تحقق: عند \(x=200\Rightarrow y\approx 1.9905\cdot 200^{0.7}\approx 81.22\).
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (E2) — نمو يتبع \(\ln x\): خطي في \(u=\ln x\)</h3>
+<p>
+\[
+D_1y = 1+\ln x.
+\]
+ضع \(u=\ln x\): \(\frac{d(\ln y)}{du}=1+u\Rightarrow \ln y=u+\frac{u^2}{2}+C\).
+اختر \(C=0\Rightarrow y=x\exp((\ln x)^2/2)\).
+تحقق: عند \(x=e^2\Rightarrow y=e^2\cdot e^{2}=e^4=54.59815.
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (E3) — “تباطؤ/تسارع” مرتبط بـ \(\ln\ln\): اختر \(D_2\)</h3>
+<p>
+\[
+D_2y = 1+\frac{1}{\ln\ln x}.
+\]
+كما سبق:
+\(\ln y=(\ln x)(\ln\ln x)\Rightarrow y=\exp((\ln x)(\ln\ln x))\).
+تحقق: عند \(x=e^5\Rightarrow y=5^5=3125\).
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (E4) — معادلة تبدو لاخطية في \(D_0\) لكنها خطية في \(w=\ln y\)</h3>
+<p>
+\[
+y'=\frac{y}{x}(2+\ln y)\Rightarrow D_1y=2+\ln y.
+\]
+ضع \(w=\ln y, u=\ln x\): \(dw/du=2+w\Rightarrow w+2=Ax\).
+اختر \(y(1)=e^{-1}\Rightarrow w(1)=-1\Rightarrow A=1\Rightarrow y=e^{x-2}\).
+تحقق: عند \(x=4\Rightarrow y=e^2=7.3890561.
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (E5) — طبقة ثالثة في بيانات ضخمة (مؤشرات/شبكات): \(D_3y=1\)</h3>
+<p>
+\[
+D_3y=1\Rightarrow \ln\ln\ln y=\ln\ln\ln x + C.
+\]
+اختر \(C=0\Rightarrow \ln\ln y=\ln\ln x\Rightarrow \ln y=\ln x\Rightarrow y=x.
+\]
+تحقق: عند \(x=e^{e^2}\Rightarrow y=e^{e^2}.
+</p>
+</div>
+
+</div>
+
+<div class="section">
+<h2>16.5 أمثلة في الهندسة/التحكم/المواد (5 أمثلة)</h2>
+
+<div class="ex">
+<h3>مثال (G1) — قانون تقادم/تعب: \(D_1y=a+ b\ln x\)</h3>
+<p>
+\[
+D_1y = a+b\ln x.
+\]
+ضع \(u=\ln x\): \(\frac{d(\ln y)}{du}=a+bu\Rightarrow \ln y=au+\frac{b}{2}u^2+C\).
+اختر \(a=1,b=1,C=0\Rightarrow y=x\exp((\ln x)^2/2)\).
+تحقق: \(x=e^2\Rightarrow y=e^4=54.59815.
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (G2) — معادلة تصميم مباشرة من نمط \(\frac{y'}{y\ln y}\): \(D_2\) يحلها فورًا</h3>
+<p>
+\[
+y'=\frac{2y\ln y}{x\ln x}\Rightarrow D_2y=2\Rightarrow y=\exp(A(\ln x)^2).
+\]
+إذا أردنا شرط تصميم: \(y(e)=e\Rightarrow A=1\).
+تحقق: \(x=e^3\Rightarrow y=e^9=8103.08393.
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (G3) — “خطية” في \(z=\ln\ln y\): تحكم بمستوى \(D_2\)</h3>
+<p>
+\[
+D_2y = 3+\frac12\ln\ln y.
+\]
+ضع \(z=\ln\ln y,\ v=\ln\ln x\): \(dz/dv=3+\frac12 z\) خطية.
+خذ \(x_0=e^2\Rightarrow v_0=\ln2\), و\(y_0=e\Rightarrow z_0=0\).
+عند \(x=e^5\Rightarrow v=\ln5\):
+\[
+z=(0+6)e^{\frac12(\ln5-\ln2)}-6=6\sqrt{\frac{5}{2}}-6\approx 3.48683298.
+\]
+إذن \(y=\exp(\exp(z))\approx \exp(\exp(3.4868))\sim 10^{14}\) (قيمة تحقق).
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (G4) — اختيار \(D_3\) بسبب وجود \(\ln\ln\ln\) في المعاملات</h3>
+<p>
+\[
+D_3y = 1 + \frac{1}{\ln\ln\ln x}.
+\]
+ضع \(s=\ln\ln\ln x\), \(q=\ln\ln\ln y\): \(\frac{dq}{ds}=1+\frac{1}{s}\Rightarrow q=s+\ln s + C\).
+اختر \(C=0\Rightarrow \ln\ln\ln y = \ln\ln\ln x + \ln(\ln\ln\ln x)\).
+اختيار عددي: خذ \(s=2\) (أي \(x=\exp(\exp(\exp(2)))\)):
+\[
+q=2+\ln2\approx 2.69314718.
+\]
+إذن \(\ln\ln y=\exp(q)\approx 14.78\Rightarrow y=\exp(\exp(14.78))\) (ضخم جدًا لكنه محسوب بوضوح).
+</p>
+</div>
+
+<div class="ex">
+<h3>مثال (G5) — نموذج معايرة سريع: “قانون قوة” + شرطين</h3>
+<p>
+افترض \(D_1y=\alpha\Rightarrow y=Cx^\alpha\).
+مع شرطين: \(y(2)=10\) و\(y(8)=80\):
+\[
+\frac{80}{10}=\left(\frac{8}{2}\right)^\alpha \Rightarrow 8=4^\alpha \Rightarrow \alpha=\frac{\ln8}{\ln4}=\frac{3}{2}.
+\]
+إذن \(C=10/2^{3/2}=10/2.8284271=3.5355339\).
+تحقق: عند \(x=18\):
+\[
+y\approx 3.5355339\cdot 18^{1.5}\approx 270.0.
+\]
+</p>
+</div>
+
+</div>
+
+<div class="section">
+<h2>16.6 خلاصة عامة: كيف تستخدم الفصل في مشروع حقيقي؟</h2>
+<ul>
+<li>ابدأ من البيانات: هل السلوك “نسبي” أم “لوغاريتمي متداخل”؟</li>
+<li>ابحث عن النمط الذي يرشح المستوى \(D_1/D_2/D_3\).</li>
+<li>حوّل إلى معادلة خطية في \(\ln y\) أو \(\ln\ln y\) على مقياس \(\ln x\) أو \(\ln\ln x\).</li>
+<li>أعد بناء الحل ثم ارجع إلى المتغيرات الأصلية.</li>
+<li>تحقق رقميًا بنقطتين على الأقل.</li>
+</ul>
+
+<div class="note">
+إذا أردت، في الفصل 17 يمكننا بناء “دليل عملي” لملاءمة البيانات:
+كيف نستخرج \(D_1\) و\(D_2\) من قياسات متقطعة (Discrete data) ونقرر المستوى تلقائيًا.
+</div>
+</div>
+
+<footer>
+© كتاب الحساب الهرمي — الفصل السادس عشر
+</footer>
+
+</div>
+</body>
+</html>
