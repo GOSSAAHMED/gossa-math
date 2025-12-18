@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chapter 12 — Super-Differential Series and Hierarchical Approximation</title>
+<title>Chapter 12 — General Definition of the Hierarchical Derivative Dₙ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
@@ -12,133 +12,137 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\
 
 <style>
 body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
-.wrap{max-width:1050px;margin:auto;padding:32px 16px 80px;}
-header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-h1{margin:0;font-size:1.9rem;}
+.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:22px;}
+h1{margin:0;font-size:1.95rem;}
 .subtitle{margin-top:8px;color:#b8c4e6;}
-h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
-.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
-.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
-.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
-footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+h2{margin-top:30px;font-size:1.4rem;border-left:4px solid #4cc9f0;padding-left:10px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:18px;margin:16px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:14px;margin-top:12px;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+footer{margin-top:44px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;color:#b8c4e6;}
 mjx-container{color:#eaf0ff!important;}
-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
-th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
-th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:800;}
-tr:last-child td{border-bottom:none;}
-.small{font-size:.95rem;color:#cbd6ff}
+ul{padding-left:22px;}
+li{margin:6px 0;}
 </style>
 </head>
 
 <body>
 <div class="wrap">
-
 <header>
-<h1>Chapter 12 — Super-Differential Series and Hierarchical Approximation</h1>
-<div class="subtitle">Why hierarchical-scale Taylor series can converge faster than classical \(D_0\)-Taylor</div>
-
-<div class="nav">
-<a href="./index.html" class="btn primary">📘 Book Index</a>
-<a href="./chapter-11.html" class="btn">⟵ Previous</a>
-<a href="./chapter-13.html" class="btn">Next ⟶</a>
+<h1>Chapter 12 — General Definition of the Hierarchical Derivative \(D_n\)</h1>
+<div class="subtitle">
+Unified formulation, domain conditions, and transition relations
 </div>
 </header>
 
 <div class="section">
-<h2>12.1 Core Idea</h2>
+<h2>12.1 Motivation</h2>
 <p>
-Classical Taylor (the \(D_0\) expansion) develops around \(x_0\) in the variable \(x\):
+After introducing low-order logarithmic derivatives,
+we now formalize a general definition encompassing all hierarchical levels.
 </p>
-<div class="def">
-\[
-f(x)\approx \sum_{k=0}^{N}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k.
-\]
 </div>
 
-<p>
-Hierarchical calculus proposes developing the same function on a deeper scale:
-</p>
+<div class="section">
+<h2>12.2 Iterated Logarithmic Functions</h2>
+
+<div class="def">
+\[
+L_0(t)=t,\quad
+L_1(t)=\ln t,\quad
+L_2(t)=\ln\ln t,\ \dots
+\]
+\[
+L_n(t)=\ln^{(n)}(t).
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>12.3 General Definition</h2>
+
+<div class="def">
+\[
+D_n y=\frac{d(L_n(y))}{d(L_n(x))},\qquad n=0,1,2,\dots
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>12.4 Domain Conditions</h2>
+
+<div class="def">
+\[
+x>\exp^{(n-1)}(1),\qquad
+y>\exp^{(n-1)}(1).
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>12.5 General Formula</h2>
+
+<div class="def">
+\[
+D_n y
+=
+\frac{x\prod_{k=1}^{n-1}L_k(x)}
+     {y\prod_{k=1}^{n-1}L_k(y)}
+\frac{dy}{dx}.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>12.6 Transition Relation</h2>
+
+<div class="def">
+\[
+D_{n+1}y=\frac{L_n(x)}{L_n(y)}\,D_ny.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>12.7 Examples</h2>
+
+<div class="ex">
+\(y=x^2:\; D_1=2,\; D_2=1,\; D_3=1.\)
+</div>
+
+<div class="ex">
+\(y=e^x:\; D_1=x,\; D_2=\ln x,\; D_3=\ln\ln x.\)
+</div>
+
+<div class="ex">
+\(y=e^{e^x}:\; D_1=e^x,\; D_2=x,\; D_3=\ln x.\)
+</div>
+</div>
+
+<div class="section">
+<h2>12.8 Interpretation</h2>
 <ul>
-<li>\(D_1\)-scale: \(u=\ln x\)</li>
-<li>\(D_2\)-scale: \(v=\ln\ln x\)</li>
-<li>In general: \(L_n(x)=\ln^{(n)}(x)\)</li>
+<li>\(D_0\): absolute change</li>
+<li>\(D_1\): relative change</li>
+<li>\(D_2\): change of relative change</li>
+<li>\(D_n\): deeper hierarchical change</li>
 </ul>
-
-<div class="note">
-Often, \( |\ln(x)-\ln(x_0)| \) is much smaller than \( |x-x_0| \),
-and similarly \( |\ln\ln(x)-\ln\ln(x_0)| \) can be even smaller on very large ranges.
-Smaller expansion variables typically mean faster convergence for the same truncation order.
-</div>
 </div>
 
 <div class="section">
-<h2>12.2 The \(D_1\) Super-Differential Series</h2>
-<p>
-Let \(u=\ln x\) and \(F(u)=f(e^u)\). Expand at \(u_0=\ln x_0\):
-</p>
-<div class="def">
-\[
-f(x)=F(u)\approx \sum_{k=0}^{N}\frac{F^{(k)}(u_0)}{k!}\,(u-u_0)^k,
-\quad u=\ln x.
-\]
-</div>
+<h2>12.9 Summary</h2>
+<ul>
+<li>A unified definition covers all hierarchical derivatives.</li>
+<li>Transition relations link consecutive levels.</li>
+<li>Power laws are fixed points of the hierarchy.</li>
+<li>This framework enables hierarchical series and equations.</li>
+</ul>
 </div>
 
-<div class="section">
-<h2>12.3 The \(D_2\) Super-Differential Series</h2>
-<p>
-Let \(v=\ln\ln x\) and \(G(v)=f(e^{e^v})\). Expand at \(v_0=\ln\ln x_0\):
-</p>
-<div class="def">
-\[
-f(x)=G(v)\approx \sum_{k=0}^{N}\frac{G^{(k)}(v_0)}{k!}\,(v-v_0)^k,
-\quad v=\ln\ln x.
-\]
-</div>
-</div>
-
-<div class="section">
-<h2>12.4 Seven Numerical Examples (Same truncation order \(N=4\))</h2>
-<p class="small">
-We report relative error \(\\mathrm{RelErr}=|A-Exact|/|Exact|\) and absolute error \(\\mathrm{AbsErr}=|A-Exact|\).
-</p>
-
-<table>
-  <tr>
-    <th>#</th>
-    <th>Function</th>
-    <th>\(x_0\)</th>
-    <th>\(x\)</th>
-    <th>Exact</th>
-    <th>RelErr (Taylor \(D_0\))</th>
-    <th>RelErr (Super)</th>
-    <th>AbsErr \(D_0\)</th>
-    <th>AbsErr (Super)</th>
-    <th>Level</th>
-  </tr>
-
-  <tr><td>1</td><td>\(\ln(x)\)</td><td>1000</td><td>1200</td><td>7.0900768</td><td>7.74182e-6</td><td>0</td><td>5.48901e-5</td><td>0</td><td>\(D_1\)</td></tr>
-  <tr><td>2</td><td>\((\ln x)^2\)</td><td>1000</td><td>1200</td><td>50.26919</td><td>1.05993e-5</td><td>0</td><td>5.32819e-4</td><td>0</td><td>\(D_1\)</td></tr>
-  <tr><td>3</td><td>\(\sqrt{x}\)</td><td>1e6</td><td>1.2e6</td><td>1095.4451</td><td>6.95152e-6</td><td>4.86298e-8</td><td>0.00761501</td><td>5.32713e-5</td><td>\(D_1\)</td></tr>
-  <tr><td>4</td><td>\(1/x\)</td><td>100</td><td>150</td><td>0.0066666667</td><td>3.12500e-2</td><td>1.28239e-4</td><td>2.08333e-4</td><td>8.54800e-7</td><td>\(D_1\)</td></tr>
-  <tr><td>5</td><td>\(x^{1/3}\)</td><td>1e9</td><td>1.1e9</td><td>1032.2801</td><td>2.71308e-7</td><td>2.62673e-10</td><td>0.000280031</td><td>2.71143e-7</td><td>\(D_1\)</td></tr>
-  <tr><td>6</td><td>\(x^{0.7}\)</td><td>1e8</td><td>1.3e8</td><td>478366</td><td>2.87929e-5</td><td>1.49456e-6</td><td>13.77353</td><td>0.7149449</td><td>\(D_1\)</td></tr>
-  <tr><td>7</td><td>\(\ln(\ln x)\)</td><td>10</td><td>1000</td><td>1.9326447</td><td>1.20388e+7</td><td>0</td><td>2.32667e+7</td><td>0</td><td>\(D_2\)</td></tr>
-</table>
-
-<div class="note">
-Across these examples, the hierarchical-scale expansion reaches much higher accuracy
-for the same truncation order, and may even be exact at low order when the transformed function becomes polynomial/linear.
-</div>
-</div>
-
-<footer>
-© Hierarchical Calculus — Chapter 12
-</footer>
-
+<footer>© Hierarchical Calculus — Chapter 12</footer>
 </div>
 </body>
 </html>
+>
