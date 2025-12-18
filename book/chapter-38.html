@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 38 — المزايا والقيود | كتاب الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],
+displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.35;}
+.wrap{max-width:2000px;margin:auto;padding:56px 18px 180px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:36px;margin-bottom:56px;}
+h1{margin:0;font-size:3.2rem;}
+.subtitle{margin-top:16px;color:#b8c4e6;font-size:1.15rem;}
+h2{margin-top:62px;font-size:2.3rem;border-right:4px solid #4cc9f0;padding-right:22px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:40px;padding:52px;margin:52px 0;}
+.note{border:1px dashed rgba(76,201,240,.7);background:rgba(76,201,240,.18);border-radius:30px;padding:30px;margin-top:30px;color:#e0e9ff;}
+table{width:100%;border-collapse:collapse;margin-top:30px;}
+th,td{border:1px solid rgba(255,255,255,.25);padding:18px;text-align:center;}
+th{background:rgba(76,201,240,.18);}
+footer{margin-top:130px;border-top:1px solid rgba(255,255,255,.15);padding-top:46px;color:#b8c4e6;text-align:center;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-right:44px;}
+li{margin:22px 0;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>الفصل 38 — المزايا والقيود</h1>
+<div class="subtitle">
+تقييم متوازن للحساب الهرمي بين القوة والحدود
+</div>
+</header>
+
+<div class="section">
+<h2>38.1 لماذا هذا الفصل ضروري؟</h2>
+<p>
+بعد عرض الأسس الرياضية والتطبيقات الواسعة،
+يصبح من الضروري تقديم تقييم صريح:
+ما الذي يقدّمه الحساب الهرمي فعليًا،
+وأين تنتهي قدرته؟
+</p>
+
+<div class="note">
+النظرية القوية هي التي تعرف حدودها
+قبل أن يفرضها الواقع.
+</div>
+</div>
+
+<div class="section">
+<h2>38.2 المزايا المفاهيمية</h2>
+<ul>
+<li>الانتقال من التغيّر المحلي إلى التغيّر البنيوي.</li>
+<li>فهم النمو عبر المقاييس لا عبر الزمن فقط.</li>
+<li>توحيد ظواهر متباعدة بلغة واحدة.</li>
+<li>تحويل الثوابت إلى كميات اشتقاقية ذات معنى.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>38.3 المزايا الرياضية</h2>
+<ul>
+<li>تبسيط اللاخطية الشديدة.</li>
+<li>تحويل المعادلات المعقّدة إلى ثوابت أو علاقات خطية.</li>
+<li>الاستقلال عن وحدات القياس في المستوى النسبي.</li>
+<li>إتاحة توصيف منتظم للنمو فوق الأسي.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>38.4 المزايا التطبيقية</h2>
+
+<table>
+<tr>
+<th>المجال</th><th>الفائدة الرئيسية</th>
+</tr>
+<tr>
+<td>الفيزياء</td><td>تحليل المقاييس والانتقالات</td>
+</tr>
+<tr>
+<td>الاقتصاد</td><td>فهم النمو والمرونة</td>
+</tr>
+<tr>
+<td>البيانات</td><td>تحليل التوزيعات الثقيلة الذيل</td>
+</tr>
+<tr>
+<td>الأنظمة المعقّدة</td><td>التنظيم الذاتي والاستقرار</td>
+</tr>
+</table>
+</div>
+
+<div class="section">
+<h2>38.5 القيود الرياضية</h2>
+<ul>
+<li>الاعتماد على المجالات الموجبة (بسبب اللوغاريتم).</li>
+<li>عدم ملاءمة بعض الدوال المتذبذبة بشدة.</li>
+<li>الحساسية للضجيج في البيانات الخام.</li>
+<li>صعوبة التعريف عند نقاط الانعدام أو الإشارة.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>38.6 القيود النمذجيّة</h2>
+<ul>
+<li>ليس كل نظام متعدد المقاييس فعليًا.</li>
+<li>اختيار مستوى هرمي غير مناسب قد يضلل التحليل.</li>
+<li>النماذج الفعّالة لا تعني التنبؤ الدقيق.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>38.7 مخاطر سوء الاستخدام</h2>
+<ul>
+<li>تفسير كل ظاهرة على أنها هرمية قسرًا.</li>
+<li>الخلط بين الوصف الرياضي والحكم القيمي.</li>
+<li>تجاهل البيانات بحجة البنية النظرية.</li>
+</ul>
+
+<div class="note">
+القوة التحليلية تتحوّل إلى ضعف
+عند فقدان التواضع العلمي.
+</div>
+</div>
+
+<div class="section">
+<h2>38.8 متى لا يكون الحساب الهرمي الخيار الأفضل؟</h2>
+<ul>
+<li>عند التحليل المحلي الدقيق قصير المدى.</li>
+<li>عند النظم الخطية البسيطة.</li>
+<li>عند الحاجة إلى حلول عددية مباشرة.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>38.9 التكامل مع المناهج الأخرى</h2>
+<ul>
+<li>التفاضل التقليدي: التحليل المحلي.</li>
+<li>الإحصاء: التعامل مع الضجيج.</li>
+<li>النمذجة العددية: الحلول العملية.</li>
+</ul>
+
+<div class="note">
+القيمة الحقيقية تظهر
+عند التكامل لا عند العزلة.
+</div>
+</div>
+
+<div class="section">
+<h2>38.10 الخلاصة</h2>
+<ul>
+<li>للحساب الهرمي مزايا حقيقية وعميقة.</li>
+<li>له قيود لا يجوز تجاهلها.</li>
+<li>قوته في حسن اختياره وحسن استخدامه.</li>
+</ul>
+
+<div class="note">
+بهذا الفصل يكتمل التقييم النقدي
+للإطار الهرمي.
+</div>
+</div>
+
+<footer>
+© كتاب الحساب الهرمي — الفصل 38  
+<br>نهاية التقييم.
+</footer>
+</div>
+</body>
+</html>
 
