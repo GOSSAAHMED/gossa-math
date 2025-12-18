@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 19 — من الجداول إلى المعادلات: استنتاج قوانين النمو من ثبات D̂ₙ | الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.95rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+ul{padding-right:22px;}
+li{margin:6px 0;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+.small{font-size:.95rem;color:#cbd6ff}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
+th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
+th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:900;}
+tr:last-child td{border-bottom:none;}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:900;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>الفصل التاسع عشر — من الجداول إلى المعادلات</h1>
+<div class="subtitle">كيف نستنتج “قانون النمو” أو المعادلة الهرمية من ثبات \(\widehat{D_n}\)؟ (22 مثالًا عدديًا)</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
+<a href="./chapter-18.html" class="btn">⟶ الفصل السابق</a>
+<a href="./chapter-20.html" class="btn">الفصل التالي ⟵</a>
+</div>
+</header>
+
+<div class="section">
+<h2>19.1 الفكرة الأساسية</h2>
+<p>
+في الفصلين 17–18 تعلمنا كيف نستخرج \(\widehat{D_1},\widehat{D_2},\widehat{D_3}\) من بيانات متقطعة.
+في هذا الفصل نذهب خطوة أبعد:
+</p>
+<ul>
+<li>إذا كانت \(\widehat{D_n}\) <strong>ثابتة تقريبًا</strong> ⇒ نستنتج شكل \(y(x)\) مباشرة.</li>
+<li>إذا كانت \(\widehat{D_n}\) <strong>خطية تقريبًا</strong> في \(L_n(x)\) ⇒ نستنتج معادلة خطية قياسية عند المستوى \(n\).</li>
+<li>إذا لم تستقر أي \(\widehat{D_n}\) ⇒ نقرر أن النمو لا ينتمي لعائلة المقاييس الحالية أو يحتاج تحجيمًا.</li>
+</ul>
+
+<div class="note">
+التذكير: \(L_1(t)=\ln t\), \(L_2(t)=\ln\ln t\), \(L_3(t)=\ln\ln\ln t\).
+</div>
+</div>
+
+<div class="section">
+<h2>19.2 القواعد الذهبية للاستنتاج (قوانين جاهزة)</h2>
+
+<div class="def">
+<strong>قاعدة (A): إذا \(D_1y = a\) ثابت</strong>
+\[
+\frac{d(\ln y)}{d(\ln x)}=a
+\Rightarrow
+\ln y = a\ln x + C
+\Rightarrow
+y = Cx^a.
+\]
+</div>
+
+<div class="def">
+<strong>قاعدة (B): إذا \(D_2y = a\) ثابت</strong>
+\[
+\frac{d(\ln\ln y)}{d(\ln\ln x)}=a
+\Rightarrow
+\ln\ln y = a\ln\ln x + C
+\Rightarrow
+\ln y = A(\ln x)^a
+\Rightarrow
+y=\exp\!\big(A(\ln x)^a\big).
+\]
+</div>
+
+<div class="def">
+<strong>قاعدة (C): إذا \(D_3y = a\) ثابت</strong>
+\[
+\ln\ln\ln y = a\ln\ln\ln x + C
+\Rightarrow
+\ln\ln y = A(\ln\ln x)^a
+\Rightarrow
+y=\exp\!\Big(\exp\!\big(A(\ln\ln x)^a\big)\Big).
+\]
+</div>
+
+<div class="note">
+هذه القواعد تعني: <strong>مجرد ثبات \(\widehat{D_n}\)</strong> يعطي شكلًا مغلقًا لـ \(y(x)\) (مع ثابت/ثابتين).
+</div>
+</div>
+
+<div class="section">
+<h2>19.3 كيف نحدد الثوابت من البيانات؟</h2>
+
+<div class="def">
+<strong>إذا استنتجنا شكلًا عامًا</strong> مثل \(y=Cx^a\) أو \(y=\exp(A(\ln x)^a)\),
+نستخدم نقطة (أو نقطتين) لتحديد الثوابت:
+<ul>
+<li>لـ \(y=Cx^a\): نحدد \(a\) من متوسط \(\widehat{D_1}\) ثم \(C=y/x^a\).</li>
+<li>لـ \(y=\exp(A(\ln x)^a)\): نحدد \(a\) من ثبات \(\widehat{D_2}\) ثم \(A=\frac{\ln y}{(\ln x)^a}\).</li>
+<li>لـ \(y=\exp(\exp(A(\ln\ln x)^a))\): \(A=\frac{\ln\ln y}{(\ln\ln x)^a}\).</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<h2>19.4 إذا كانت \(\widehat{D_n}\) “خطية” لا ثابتة</h2>
+
+<div class="def">
+إذا لاحظنا تقريبًا:
+\[
+\widehat{D_1}\approx \alpha+\beta\,\ln x,
+\]
+فهذا يعادل معادلة المستوى الأول:
+\[
+\frac{d(\ln y)}{d(\ln x)}=\alpha+\beta \ln x.
+\]
+ضع \(u=\ln x\): \(\frac{d(\ln y)}{du}=\alpha+\beta u\Rightarrow \ln y=\alpha u+\frac{\beta}{2}u^2+C\).
+إذن:
+\[
+y=Cx^\alpha\exp\!\left(\frac{\beta}{2}(\ln x)^2\right).
+\]
+</div>
+
+<div class="def">
+وبالمثل إذا:
+\[
+\widehat{D_2}\approx \alpha+\beta\,\ln\ln x,
+\]
+فهذا يعطي:
+\[
+\ln\ln y=\alpha\,\ln\ln x+\frac{\beta}{2}(\ln\ln x)^2+C.
+\]
+</div>
+
+<div class="note">
+هذه الحالة هي “الدرجة الثانية” في البساطة: ليست ثابتة تمامًا، لكنها خطية واضحة في متغير القياس.
+</div>
+</div>
+
+<div class="section">
+<h2>19.5 أمثلة عددية كثيرة (22 مثالًا)</h2>
+<p class="small">كل مثال يبدأ “من بيانات” ثم يخرج قانون/معادلة. الأرقام مختارة لتكون قابلة للتحقق.</p>
+
+<!-- 1 -->
+<div class="ex">
+<h3>مثال 1: بيانات قوة ⇒ \(y=Cx^a\)</h3>
+<table><tr><th>x</th><th>y</th></tr>
+<tr><td>2</td><td>16</td></tr>
+<tr><td>4</td><td>128</td></tr>
+</table>
+<p>
+\[
+\widehat{D_1}=\frac{\ln 128-\ln 16}{\ln 4-\ln 2}=3 \Rightarrow a=3.
+\]
+إذن \(C=y/x^3\): عند \(x=2\Rightarrow C=16/8=2\).
+القانون: \(y=2x^3\). تحقق: عند \(x=5\Rightarrow y=250\).
+</p>
+</div>
+
+<!-- 2 -->
+<div class="ex">
+<h3>مثال 2: بيانات مرونة ثابتة (اقتصاد) ⇒ قانون قوة</h3>
+<table><tr><th>x</th><th>y</th></tr>
+<tr><td>100</td><td>50</td></tr>
+<tr><td>200</td><td>81.22</td></tr>
+</table>
+<p class="small">
+إذا كان \(\widehat{D_1}\approx0.7\) (مرونة)، نكتب \(y=Cx^{0.7}\) ونستخرج \(C\) من نقطة.
+</p>
+</div>
+
+<!-- 3 -->
+<div class="ex">
+<h3>مثال 3: \(D_2\) ثابت من بيانات ⇒ \(y=\exp(A(\ln x)^a)\)</h3>
+<table><tr><th>x</th><th>y</th></tr>
+<tr><td>\(e^2\)</td><td>\(e^4\)</td></tr>
+<tr><td>\(e^3\)</td><td>\(e^9\)</td></tr>
+</table>
+<p>
+هنا \(\ln y=(\ln x)^2\Rightarrow a=2\) و\(A=1\).
+القانون: \(y=\exp((\ln x)^2)\).
+تحقق: \(x=e^5\Rightarrow y=e^{25}\).
+</p>
+</div>
+
+<!-- 4 -->
+<div class="ex">
+<h3>مثال 4: \(D_2\) ثابت (=1) لكن \(a\) مختلف في الداخل</h3>
+<table><tr><th>x</th><th>y</th></tr>
+<tr><td>\(e^2\)</td><td>\(e^8\)</td></tr>
+<tr><td>\(e^3\)</td><td>\(e^{27}\)</td></tr>
+</table>
+<p>
+\(\ln y=(\ln x)^3\Rightarrow y=\exp((\ln x)^3)\).
+لاحظ أن \(\widehat{D_2}=1\) (لأن \(\ln\ln y=\ln3+\ln\ln x\)).
+</p>
+</div>
+
+<!-- 5 -->
+<div class="ex">
+<h3>مثال 5: \(D_3\) ثابت (=2) ⇒ طبقة ثالثة</h3>
+<table><tr><th>x</th><th>y</th></tr>
+<tr><td>\(e^{e^2}\)</td><td>\(\exp(\exp(4))\)</td></tr>
+<tr><td>\(e^{e^3}\)</td><td>\(\exp(\exp(9))\)</td></tr>
+</table>
+<p>
+\[
+\ln\ln y=(\ln\ln x)^2 \Rightarrow D_3=2.
+\]
+القانون: \(y=\exp(\exp((\ln\ln x)^2))\).
+</p>
+</div>
+
+<!-- 6 -->
+<div class="ex">
+<h3>مثال 6: إذا كان \(\widehat{D_1}\approx \alpha+\beta\ln x\) ⇒ قانون شبه-غاوسي في \(\ln x\)</h3>
+<p>
+اختر بيانات توافق \(y=x\exp((\ln x)^2/2)\).
+عند \(x=e^2\): \(y=e^4\).
+عند \(x=e^3\): \(y=e^{7.5}\).
+هنا:
+\[
+D_1=\frac{d(\ln y)}{d(\ln x)}=1+\ln x
+\Rightarrow \alpha=1,\beta=1.
+\]
+</p>
+</div>
+
+<!-- 7 -->
+<div class="ex">
+<h3>مثال 7: استنتاج معادلة من ثبات \(D_2y=2\)</h3>
+<p>
+إذا أظهرت البيانات أن \(\widehat{D_2}\approx 2\) ثابت، فالمعادلة:
+\[
+D_2y=2
+\quad\Longleftrightarrow\quad
+y'=\frac{2y\ln y}{x\ln x}.
+\]
+وحلها: \(y=\exp(A(\ln x)^2)\).
+</p>
+</div>
+
+<!-- 8 -->
+<div class="ex">
+<h3>مثال 8: من ثبات \(D_1y=a\) نستنتج معادلة تفاضلية في \(D_0\)</h3>
+<p>
+\[
+D_1y=a \Rightarrow \frac{x}{y}y'=a \Rightarrow y'=\frac{a}{x}y.
+\]
+هذه معادلة خطية في \(D_0\) بحل \(y=Cx^a\).
+</p>
+</div>
+
+<!-- 9 -->
+<div class="ex">
+<h3>مثال 9: من ثبات \(D_2y=1\) نستنتج قانونًا بسيطًا</h3>
+<p>
+\[
+D_2y=1 \Rightarrow \ln\ln y = \ln\ln x + C.
+\]
+إذا \(C=0\Rightarrow y=x\).
+وإذا \(C\neq 0\Rightarrow \ln\ln y = \ln(K\ln x)\Rightarrow \ln y = K\ln x\Rightarrow y=x^K.
+\]
+</p>
+</div>
+
+<!-- 10 -->
+<div class="ex">
+<h3>مثال 10: \(D_2\) خطي في \(\ln\ln x\) ⇒ قانون “تربيعي” في \(\ln\ln x\)</h3>
+<p>
+إذا كانت البيانات تعطي:
+\[
+D_2y\approx 1+\ln\ln x,
+\]
+فبوضع \(v=\ln\ln x\), \(z=\ln\ln y\):
+\[
+\frac{dz}{dv}=1+v \Rightarrow z=v+\frac{v^2}{2}+C.
+\]
+</p>
+</div>
+
+<hr>
+
+<div class="ex">
+<h3>أمثلة 11–22 (توسعة وتغطية إضافية)</h3>
+<ul>
+<li><strong>11:</strong> إذا \(\widehat{D_1}\approx 0\) ⇒ \(y\) شبه ثابت (قانون تقريبًا أفقي).</li>
+<li><strong>12:</strong> إذا \(\widehat{D_1}\) يتذبذب لكن \(\widehat{D_2}\) ثابت ⇒ الظاهرة “لوغاريتمية متداخلة”.</li>
+<li><strong>13:</strong> إذا \(\widehat{D_2}\) يتغير و\(\widehat{D_3}\) ثابت ⇒ وجود طبقة \(\ln\ln\) في قانون النمو.</li>
+<li><strong>14:</strong> من نقطتين في \(y=Cx^a\): \(a=\frac{\ln(y_2/y_1)}{\ln(x_2/x_1)}\).</li>
+<li><strong>15:</strong> من نقطتين في \(y=\exp(A(\ln x)^a)\): \(a\) يستنتج من ثبات \(\widehat{D_2}\)، ثم \(A=\frac{\ln y}{(\ln x)^a}\).</li>
+<li><strong>16:</strong> من نقطتين في \(y=\exp(\exp(A(\ln\ln x)^a))\): \(A=\frac{\ln\ln y}{(\ln\ln x)^a}\).</li>
+<li><strong>17:</strong> إذا فشل \(D_1,D_2,D_3\) ⇒ جرّب إعادة تحجيم \(x\) أو \(y\) (مثلاً \(x\mapsto x/x_0\), \(y\mapsto y/y_0\)).</li>
+<li><strong>18:</strong> إذا \(y<1\) بكثرة ⇒ \(\ln y\) سالب، فيتوقف \(D_2\)؛ الحل: تحجيم \(y\) أو استخدام مستوى أدنى.</li>
+<li><strong>19:</strong> إذا \(x\) قريب من 1 ⇒ \(\ln\ln x\) غير معرف، فلا تستخدم \(D_2\) على هذا النطاق.</li>
+<li><strong>20:</strong> إذا \(\widehat{D_1}\) خطي في \(\ln x\) ⇒ قانون \(y=Cx^\alpha \exp(\frac{\beta}{2}(\ln x)^2)\).</li>
+<li><strong>21:</strong> إذا \(\widehat{D_2}\) خطي في \(\ln\ln x\) ⇒ قانون \( \ln\ln y = \alpha v + \frac{\beta}{2}v^2 + C\).</li>
+<li><strong>22:</strong> إذا \(\widehat{D_3}\) خطي في \(\ln\ln\ln x\) ⇒ قانون مماثل على الطبقة الثالثة.</li>
+</ul>
+</div>
+
+</div>
+
+<div class="section">
+<h2>19.6 خلاصة الفصل</h2>
+<ul>
+<li>الجدول لا يعطينا أرقامًا فقط، بل يعطينا <strong>شكل القانون</strong>.</li>
+<li>ثبات \(\widehat{D_1}\) ⇒ قانون قوة \(Cx^a\).</li>
+<li>ثبات \(\widehat{D_2}\) ⇒ \(y=\exp(A(\ln x)^a)\).</li>
+<li>ثبات \(\widehat{D_3}\) ⇒ \(y=\exp(\exp(A(\ln\ln x)^a))\).</li>
+<li>الخطية في مقياس المستوى تعطي قوانين تربيعية/غاوسية في ذلك المقياس.</li>
+</ul>
+
+<div class="note">
+الفصل 20 (إن أردت) يمكن أن يكون: “التقريب الهرمي للسلاسل: كيف نبني متسلسلات فوق تفاضلية أقوى تقاربًا من تايلور مع أمثلة عددية كثيرة؟”
+</div>
+</div>
+
+<footer>
+© كتاب الحساب الهرمي — الفصل التاسع عشر
+</footer>
+
+</div>
+</body>
+</html>
