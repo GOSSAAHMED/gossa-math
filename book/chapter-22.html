@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 22 — المعادلات التفاضلية التقليدية | كتاب الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.1;}
+.wrap{max-width:1500px;margin:auto;padding:36px 16px 96px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:18px;margin-bottom:28px;}
+h1{margin:0;font-size:2.2rem;}
+.subtitle{margin-top:10px;color:#b8c4e6;}
+h2{margin-top:36px;font-size:1.6rem;border-right:4px solid #4cc9f0;padding-right:12px;}
+h3{margin-top:22px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:28px;margin:26px 0;}
+.def{border:1px solid rgba(124,58,237,.55);background:rgba(124,58,237,.14);border-radius:18px;padding:18px;margin-top:16px;}
+.ex{background:rgba(255,255,255,.06);border-radius:18px;padding:18px;margin-top:16px;}
+.note{border:1px dashed rgba(76,201,240,.6);background:rgba(76,201,240,.14);border-radius:18px;padding:18px;margin-top:16px;color:#d6e2ff;}
+footer{margin-top:56px;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-right:30px;}
+li{margin:10px 0;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>الفصل 22 — المعادلات التفاضلية التقليدية</h1>
+<div class="subtitle">
+الصيغة الكلاسيكية للتغير: المعادلات المبنية على \(D_0=\dfrac{dy}{dx}\)
+</div>
+</header>
+
+<div class="section">
+<h2>22.1 تمهيد</h2>
+<p>
+المعادلات التفاضلية التقليدية هي العمود الفقري
+للنمذجة الرياضية الكلاسيكية في الفيزياء والهندسة.
+وهي تعتمد كليًا على المشتق التفاضلي
+\[
+D_0=\frac{dy}{dx}.
+\]
+</p>
+</div>
+
+<div class="section">
+<h2>22.2 التعريف العام</h2>
+
+<div class="def">
+المعادلة التفاضلية التقليدية هي علاقة من الشكل:
+\[
+F\!\left(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots\right)=0.
+\]
+</div>
+
+<div class="note">
+هذه المعادلات تصف <strong>التغير المطلق</strong>
+وليس التغير النسبي أو البنيوي.
+</div>
+</div>
+
+<div class="section">
+<h2>22.3 أمثلة أساسية من الرتبة الأولى</h2>
+
+<div class="ex">
+<h3>مثال 1: معادلة بسيطة</h3>
+\[
+\frac{dy}{dx}=2x
+\Rightarrow y=x^2+C
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 2: نمو أسي</h3>
+\[
+\frac{dy}{dx}=y
+\Rightarrow y=Ce^x
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 3: فصل المتغيرات</h3>
+\[
+\frac{dy}{dx}=x y
+\Rightarrow \frac{dy}{y}=x\,dx
+\Rightarrow y=C e^{x^2/2}
+\]
+</div>
+
+</div>
+
+<div class="section">
+<h2>22.4 معادلات من الرتبة الثانية</h2>
+
+<div class="ex">
+<h3>مثال 4: حركة توافقية بسيطة</h3>
+\[
+\frac{d^2y}{dx^2}+y=0
+\Rightarrow y=A\sin x + B\cos x
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 5: نظام خطي</h3>
+\[
+\frac{d^2y}{dx^2}-y=0
+\Rightarrow y=C_1 e^x + C_2 e^{-x}
+\]
+</div>
+
+</div>
+
+<div class="section">
+<h2>22.5 خصائص المعادلات التفاضلية التقليدية</h2>
+<ul>
+<li>تعتمد على الإحداثيات المطلقة.</li>
+<li>حساسة لاختيار الوحدات.</li>
+<li>غالبًا محلية الحل.</li>
+<li>تصبح معقدة جدًا مع اللاخطية.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>22.6 القيود الجوهرية</h2>
+<ul>
+<li>ضعف التعامل مع قوانين القوى المركبة.</li>
+<li>صعوبة نمذجة النمو النسبي.</li>
+<li>فشل في توصيف الأنظمة متعددة المقاييس.</li>
+</ul>
+
+<div class="note">
+هذه القيود هي ما يدفع إلى البحث
+عن صيغ أعمق مثل المعادلات الهرمية.
+</div>
+</div>
+
+<div class="section">
+<h2>22.7 دور هذا الفصل في الكتاب</h2>
+<ul>
+<li>مرجع كلاسيكي للمقارنة.</li>
+<li>تثبيت مفاهيم \(D_0\).</li>
+<li>تمهيد للانتقال إلى المعادلات الهرمية.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>22.8 خلاصة الفصل</h2>
+<ul>
+<li>المعادلات التفاضلية التقليدية قوية ولكن محدودة.</li>
+<li>تصف التغير المطلق فقط.</li>
+<li>الخطوة التالية هي تجاوز هذه القيود هرميًا.</li>
+</ul>
+</div>
+
+<footer>© كتاب الحساب الهرمي — الفصل 22</footer>
+</div>
+</body>
+</html>
 
