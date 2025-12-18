@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 15 — Hierarchical Stability and Convergence Metrics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1120px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.9rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+ul{padding-left:20px;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+.small{font-size:.95rem;color:#cbd6ff}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>Chapter 15 — Hierarchical Stability and Convergence Metrics</h1>
+<div class="subtitle">When to stop at \(D_1\), and when to climb to \(D_2\), \(D_3\), or \(D_4\) — with many numerical examples</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 Book Index</a>
+<a href="./chapter-14.html" class="btn">⟵ Previous</a>
+<a href="./chapter-16.html" class="btn">Next ⟶</a>
+</div>
+</header>
+
+<div class="section">
+<h2>15.1 What “Hierarchical Stability” Means</h2>
+<p>
+A function/system is said to be hierarchically stable at level \(n\) if
+the law becomes constant or nearly constant (or at least much slower-varying)
+when expressed at that scale.
+</p>
+</div>
+
+<div class="section">
+<h2>15.2 Two Practical Numerical Metrics</h2>
+
+<div class="def">
+<strong>(A) Distance-to-1 stability index:</strong>
+\[
+S_n(x)=|D_n y(x)-1|.
+\]
+Small \(S_n\) over a wide domain indicates strong stability at level \(n\).
+</div>
+
+<div class="def">
+<strong>(B) Variation across a domain:</strong>
+\[
+V_n(x_1,x_2)=|D_n y(x_2)-D_n y(x_1)|.
+\]
+Small \(V_n\) indicates that level \(n\) is more stable than lower levels.
+</div>
+</div>
+
+<div class="section">
+<h2>15.3 Decision Rule: When to Climb</h2>
+<div class="def">
+<ul>
+<li>Compute \(D_1\). If it varies fast or becomes huge, try \(D_2\).</li>
+<li>If \(D_2\) still varies clearly and the structure involves \(\ln\ln\), try \(D_3\).</li>
+<li>If \(\ln\ln\ln\) appears naturally, try \(D_4\).</li>
+<li>Stop at the first level where the law becomes constant/linear/directly integrable.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<h2>15.4 Typical Calibration Facts</h2>
+<ul>
+<li>If \(y=x^a\): \(D_1=a\) and \(D_n=1\) for all \(n\ge2\).</li>
+<li>If \(y=\exp((\ln x)^m)\): \(D_2=1\) identically.</li>
+<li>If \(y=\exp(\exp((\ln\ln x)^p))\): \(D_3\) becomes constant (often \(=1\) or \(=p\)).</li>
+<li>If \(y=\exp(\exp(\exp((\ln\ln\ln x)^p)))\): \(D_4=1\) identically.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>15.5 Fourteen Numerical Examples</h2>
+<p class="small">
+We choose points such as \(x=e^2,e^3,e^5,e^{e^2}\) so logs become clean.
+</p>
+
+<div class="ex">
+<h3>Group (A): Stability begins at \(D_2\)</h3>
+<p><strong>Ex.1</strong> \(y=x^7\): \(D_1=7\), \(D_2=D_3=1\).</p>
+<p><strong>Ex.2</strong> \(y=x^{1/2}\): \(D_1=1/2\), \(D_2=D_3=1\).</p>
+<p><strong>Ex.3</strong> \(y=\exp((\ln x)^3)\): \(D_1=3(\ln x)^2\) varies (12 at \(e^2\), 75 at \(e^5\)), but \(D_2=1\).</p>
+<p><strong>Ex.4</strong> \(y=\exp((\ln x)^{10})\): \(D_1=10(\ln x)^9\) is huge (5120 at \(e^2\), 196830 at \(e^3\)), but \(D_2=1\).</p>
+</div>
+
+<div class="ex">
+<h3>Group (B): \(D_3\) stabilizes nested-log structures</h3>
+<p><strong>Ex.5</strong> \(y=\exp(\exp((\ln\ln x)^2))\): \(D_3=2\) constant; at \(x=e^{e^2}\), \(D_3=2\).</p>
+<p><strong>Ex.6</strong> \(y=\exp(\exp((\ln\ln x)^5))\): \(D_3=1\) constant.</p>
+<p><strong>Ex.7</strong> \(y=\exp(\exp(\ln\ln x))\): stable behavior is most visible in \(z=\ln\ln y\); at \(x=e^{e^2}\), \(y=\exp(\exp(2))\approx 1618.177\).</p>
+<p><strong>Ex.8</strong> \(y=\exp(\exp((\ln\ln x)^2+\ln\ln x))\): \(D_2\) varies; deeper-scale linearity emerges more naturally at level \(D_3\).</p>
+</div>
+
+<div class="ex">
+<h3>Group (C): Need \(D_4\) for a third nested scale</h3>
+<p><strong>Ex.9</strong> \(y=\exp(\exp(\exp(\ln\ln\ln x)))\): \(D_4=1\) clearly.</p>
+<p><strong>Ex.10</strong> \(y=\exp(\exp(\exp((\ln\ln\ln x)^3)))\): \(D_4=1\).</p>
+<p><strong>Ex.11</strong> \(y=\exp(\exp(\exp((\ln\ln\ln x)^2)))\): \(D_3\) varies strongly but \(D_4=1\).</p>
+</div>
+
+<div class="ex">
+<h3>Group (D): Metrics \(S_n\) and \(V_n\)</h3>
+<p><strong>Ex.12</strong> \(y=\exp((\ln x)^3)\): between \(x_1=e^2\) and \(x_2=e^5\), \(V_1=|75-12|=63\) while \(V_2=0\).</p>
+<p><strong>Ex.13</strong> \(y=\exp(\exp((\ln\ln x)^2))\): between \(x_1=e^{e^2}\) and \(x_2=e^{e^3}\), \(D_3\) stays constant (=2) so \(V_3=0\).</p>
+<p><strong>Ex.14</strong> \(y=\exp(\exp(\exp((\ln\ln\ln x)^3)))\): \(D_4=1\Rightarrow S_4=0\) and \(V_4=0\) on the domain.</p>
+</div>
+
+<div class="note">
+Core pattern: the deeper the nested-log structure of the phenomenon,
+the higher the level at which stability becomes visible.
+</div>
+</div>
+
+<div class="section">
+<h2>15.6 The “Depth Rule”</h2>
+<div class="def">
+If the natural law contains an iterated logarithm \(\ln^{(k)}\),
+then choosing level \(D_{k+1}\) often yields the simplest (constant/linear) description.
+</div>
+</div>
+
+<footer>
+© Hierarchical Calculus — Chapter 15
+</footer>
+
+</div>
+</body>
+</html>
