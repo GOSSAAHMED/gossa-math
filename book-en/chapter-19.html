@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 19 — From Tables to Equations: Inferring Growth Laws from Stable D̂ₙ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.95rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;border-left:4px solid #4cc9f0;padding-left:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+.small{font-size:.95rem;color:#cbd6ff}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
+th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
+th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:900;}
+tr:last-child td{border-bottom:none;}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:900;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>Chapter 19 — From Tables to Equations</h1>
+<div class="subtitle">How to infer growth laws / hierarchical ODEs from stable \(\widehat{D_n}\) (22 numerical examples)</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 Book Index</a>
+<a href="./chapter-18.html" class="btn">⟵ Previous</a>
+<a href="./chapter-20.html" class="btn">Next ⟶</a>
+</div>
+</header>
+
+<div class="section">
+<h2>19.1 Core Idea</h2>
+<ul>
+<li>If \(\widehat{D_n}\) is (nearly) constant → infer a closed-form law for \(y(x)\).</li>
+<li>If \(\widehat{D_n}\) is (nearly) linear in \(L_n(x)\) → infer a standard linear model at level \(n\).</li>
+<li>If nothing stabilizes → the phenomenon may require rescaling or a different model family.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>19.2 Ready-to-Use Inference Rules</h2>
+
+<div class="def">
+(A) If \(D_1y=a\) constant → \(y=Cx^a\).
+</div>
+
+<div class="def">
+(B) If \(D_2y=a\) constant → \(y=\exp(A(\ln x)^a)\).
+</div>
+
+<div class="def">
+(C) If \(D_3y=a\) constant → \(y=\exp(\exp(A(\ln\ln x)^a))\).
+</div>
+
+</div>
+
+<div class="section">
+<h2>19.3 Fitting Constants from Data</h2>
+<ul>
+<li>For \(y=Cx^a\): estimate \(a\) from \(\widehat{D_1}\), then \(C=y/x^a\).</li>
+<li>For \(y=\exp(A(\ln x)^a)\): estimate \(a\) from stable \(\widehat{D_2}\), then \(A=\ln y/(\ln x)^a\).</li>
+<li>For \(y=\exp(\exp(A(\ln\ln x)^a))\): \(A=\ln\ln y/(\ln\ln x)^a\).</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>19.4 Linear (Not Constant) Patterns</h2>
+<div class="def">
+If \(\widehat{D_1}\approx \alpha+\beta\ln x\), then
+\[
+y=Cx^\alpha\exp\!\left(\frac{\beta}{2}(\ln x)^2\right).
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>19.5 Numerical Examples</h2>
+
+<div class="ex">
+<h3>Example 1: power-law data → \(y=2x^3\)</h3>
+<table><tr><th>x</th><th>y</th></tr>
+<tr><td>2</td><td>16</td></tr>
+<tr><td>4</td><td>128</td></tr>
+</table>
+\(\widehat{D_1}=3\Rightarrow a=3\), \(C=2\). Check: \(y(5)=250\).
+</div>
+
+<div class="ex">
+<h3>Example 3: stable \(D_2\) → \(y=\exp((\ln x)^2)\)</h3>
+<table><tr><th>x</th><th>y</th></tr>
+<tr><td>\(e^2\)</td><td>\(e^4\)</td></tr>
+<tr><td>\(e^3\)</td><td>\(e^9\)</td></tr>
+</table>
+</div>
+
+<div class="ex">
+<h3>Example 5: stable \(D_3=2\) → \(y=\exp(\exp((\ln\ln x)^2))\)</h3>
+<table><tr><th>x</th><th>y</th></tr>
+<tr><td>\(e^{e^2}\)</td><td>\(\exp(\exp(4))\)</td></tr>
+<tr><td>\(e^{e^3}\)</td><td>\(\exp(\exp(9))\)</td></tr>
+</table>
+</div>
+
+<div class="note">
+Additional examples follow the Arabic version: constant vs linear patterns for \(D_1,D_2,D_3\), translating stability into differential equations and closed forms.
+</div>
+
+</div>
+
+<div class="section">
+<h2>19.6 Summary</h2>
+<ul>
+<li>Stable \(\widehat{D_1}\) → power laws.</li>
+<li>Stable \(\widehat{D_2}\) → \(\exp(A(\ln x)^a)\).</li>
+<li>Stable \(\widehat{D_3}\) → \(\exp(\exp(A(\ln\ln x)^a))\).</li>
+<li>Linear patterns in the scale variable → quadratic/gaussian-like laws in that scale.</li>
+</ul>
+</div>
+
+<footer>
+© Hierarchical Calculus — Chapter 19
+</footer>
+
+</div>
+</body>
+</html>
