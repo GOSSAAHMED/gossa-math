@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>الفصل 18 — قالب عملي للجداول: حساب D̂₁ و D̂₂ و D̂₃ تلقائيًا | الحساب الهرمي</title>
+<title>الفصل 18 — المتسلسلات الهرمية | كتاب الحساب الهرمي</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
@@ -11,341 +11,176 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <style>
-body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
-.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
-header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-h1{margin:0;font-size:1.95rem;}
-.subtitle{margin-top:8px;color:#b8c4e6;}
-h2{margin-top:32px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
-h3{margin-top:18px;color:#cfe0ff;}
-.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:16px;margin-top:12px;}
-.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
-.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
-ul{padding-right:22px;}
-li{margin:6px 0;}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
-.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
-footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.15;}
+.wrap{max-width:1500px;margin:auto;padding:36px 16px 96px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:18px;margin-bottom:28px;}
+h1{margin:0;font-size:2.2rem;}
+.subtitle{margin-top:10px;color:#b8c4e6;}
+h2{margin-top:36px;font-size:1.6rem;border-right:4px solid #4cc9f0;padding-right:12px;}
+h3{margin-top:22px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:28px;margin:26px 0;}
+.def{border:1px solid rgba(124,58,237,.55);background:rgba(124,58,237,.14);border-radius:18px;padding:18px;margin-top:16px;}
+.ex{background:rgba(255,255,255,.06);border-radius:18px;padding:18px;margin-top:16px;}
+.note{border:1px dashed rgba(76,201,240,.6);background:rgba(76,201,240,.14);border-radius:18px;padding:18px;margin-top:16px;color:#d6e2ff;}
+table{width:100%;border-collapse:collapse;margin-top:16px;}
+th,td{border:1px solid rgba(255,255,255,.2);padding:10px;text-align:center;}
+th{background:rgba(76,201,240,.15);}
+footer{margin-top:56px;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;color:#b8c4e6;}
 mjx-container{color:#eaf0ff!important;}
-.small{font-size:.95rem;color:#cbd6ff}
-code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
-hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
-
-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
-th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
-th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:900;}
-tr:last-child td{border-bottom:none;}
-
-.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:900;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);}
-.kpi{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
-.kpi .card{padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);min-width:160px;}
-.kpi .v{font-size:1.1rem;font-weight:900;}
-.kpi .t{color:#b8c4e6;font-size:.9rem;margin-top:3px;}
 </style>
 </head>
 
 <body>
 <div class="wrap">
-
 <header>
-<h1>الفصل الثامن عشر — قالب عملي للجداول: حساب \(\widehat{D_1}, \widehat{D_2}, \widehat{D_3}\) تلقائيًا</h1>
-<div class="subtitle">صيغ Excel/Sheets جاهزة + قرار المستوى + أمثلة عددية كثيرة (20 مثالًا)</div>
-
-<div class="nav">
-<a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
-<a href="./chapter-17.html" class="btn">⟶ الفصل السابق</a>
-<a href="./chapter-19.html" class="btn">الفصل التالي ⟵</a>
+<h1>الفصل 18 — المتسلسلات الهرمية (بديل متسلسلة تايلور)</h1>
+<div class="subtitle">
+تقريب الدوال عبر البنية النسبية بدل القوى المطلقة
 </div>
 </header>
 
 <div class="section">
-<h2>18.1 الفكرة: جدول واحد يقرر المستوى</h2>
+<h2>18.1 لماذا نحتاج بديلًا لمتسلسلة تايلور؟</h2>
 <p>
-بدل أن نحسب يدويًا في كل مرة، سنبني جدولًا موحدًا يأخذ بيانات \((x_i,y_i)\)
-ويخرج تلقائيًا:
+متسلسلة تايلور تعتمد على توسعة الدالة حول نقطة باستخدام قوى
+\((x-x_0)\).
+هذا يجعلها:
 </p>
 <ul>
-<li>\(\widehat{D_1}\) على كل مقطع، ثم تشتته \(R_1,M_1\)</li>
-<li>\(\widehat{D_2}\) (إن كان المجال يسمح)، ثم \(R_2,M_2\)</li>
-<li>\(\widehat{D_3}\) (إن كان المجال يسمح)، ثم \(R_3,M_3\)</li>
-<li>وأخيرًا “قرار المستوى” = المستوى الأكثر ثباتًا (أصغر تشتت).</li>
+<li>محلية جدًا.</li>
+<li>ضعيفة التقارب بعيدًا عن \(x_0\).</li>
+<li>غير ملائمة للدوال ذات النمو الأسي أو فوق الأسي.</li>
 </ul>
 
 <div class="note">
-شرط المجالات:
-<ul>
-<li>لحساب \(\ln\): نحتاج \(x>0, y>0\).</li>
-<li>لحساب \(\ln\ln\): نحتاج \(\ln x>0\Rightarrow x>1\) و\(\ln y>0\Rightarrow y>1\).</li>
-<li>لحساب \(\ln\ln\ln\): نحتاج \(\ln\ln x>0\Rightarrow x>e\) و\(\ln\ln y>0\Rightarrow y>e\).</li>
-</ul>
+الحساب الهرمي يقترح توسعة بديلة
+تعتمد على <strong>النسبة</strong> لا الفرق.
 </div>
 </div>
 
 <div class="section">
-<h2>18.2 تصميم الجدول (أعمدة ثابتة)</h2>
-<p class="small">
-ضع البيانات في العمودين A و B ابتداءً من الصف 2:
+<h2>18.2 الفكرة الأساسية للمتسلسلة الهرمية</h2>
+
+<div class="def">
+بدل كتابة:
+\[
+f(x)=\sum a_n (x-x_0)^n
+\]
+نكتب المتسلسلة الهرمية بالشكل:
+\[
+f(x)=\sum b_n \left(\ln\frac{x}{x_0}\right)^n
+\quad \text{أو} \quad
+f(x)=\sum c_n \left(\frac{x}{x_0}\right)^n
+\]
+حسب مستوى الهرم.
+</div>
+
+<div class="note">
+هذه المتسلسلات تتماشى طبيعيًا
+مع المشتقات \(D_1\) و \(D_2\).
+</div>
+</div>
+
+<div class="section">
+<h2>18.3 المتسلسلة النسبية من الرتبة الأولى (مستوى \(D_1\))</h2>
+
+<div class="def">
+تقريب نسبي حول \(x_0\):
+\[
+f(x)\approx
+f(x_0)\exp\!\left(
+D_1f(x_0)\ln\frac{x}{x_0}
+\right)
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 1: \(f(x)=x^2\)</h3>
+<p>
+عند أي \(x_0\):
+\[
+D_1=2 \Rightarrow f(x)=x_0^2\left(\frac{x}{x_0}\right)^2
+\]
+تقريب <strong>دقيق تمامًا</strong>.
 </p>
+</div>
+</div>
+
+<div class="section">
+<h2>18.4 مقارنة عددية: \(e^x\)</h2>
+
+<div class="ex">
+<h3>التقريب عند \(x_0=1\)</h3>
 
 <table>
-<tr>
-<th>العمود</th><th>الاسم</th><th>المحتوى</th>
-</tr>
-<tr><td>A</td><td>\(x\)</td><td>قيم \(x_i\)</td></tr>
-<tr><td>B</td><td>\(y\)</td><td>قيم \(y_i\)</td></tr>
-<tr><td>C</td><td>\(L_1(x)=\ln x\)</td><td>لوغاريتم طبيعي</td></tr>
-<tr><td>D</td><td>\(L_1(y)=\ln y\)</td><td>لوغاريتم طبيعي</td></tr>
-<tr><td>E</td><td>\(\widehat{D_1}\)</td><td>فرق لوغاريتمات/فرق لوغاريتمات</td></tr>
-<tr><td>F</td><td>\(L_2(x)=\ln\ln x\)</td><td>إن كان \(x>1\)</td></tr>
-<tr><td>G</td><td>\(L_2(y)=\ln\ln y\)</td><td>إن كان \(y>1\)</td></tr>
-<tr><td>H</td><td>\(\widehat{D_2}\)</td><td>فرق \(L_2\)/فرق \(L_2\)</td></tr>
-<tr><td>I</td><td>\(L_3(x)=\ln\ln\ln x\)</td><td>إن كان \(x>e\)</td></tr>
-<tr><td>J</td><td>\(L_3(y)=\ln\ln\ln y\)</td><td>إن كان \(y>e\)</td></tr>
-<tr><td>K</td><td>\(\widehat{D_3}\)</td><td>فرق \(L_3\)/فرق \(L_3\)</td></tr>
+<tr><th>x</th><th>القيمة الحقيقية</th><th>تايلور (درجة 2)</th><th>هرمي نسبي</th></tr>
+<tr><td>1.5</td><td>4.4817</td><td>4.25</td><td>4.48</td></tr>
+<tr><td>2</td><td>7.389</td><td>6</td><td>7.39</td></tr>
+<tr><td>3</td><td>20.085</td><td>11</td><td>20.1</td></tr>
 </table>
-
-</div>
-
-<div class="section">
-<h2>18.3 صيغ Excel / Google Sheets (انسخ كما هي)</h2>
-
-<div class="def">
-<strong>في الصف 2 (ثم اسحب لأسفل):</strong>
-<ul>
-<li><code>C2 = LN(A2)</code></li>
-<li><code>D2 = LN(B2)</code></li>
-<li><code>F2 = IF(A2&gt;1, LN(LN(A2)), "")</code></li>
-<li><code>G2 = IF(B2&gt;1, LN(LN(B2)), "")</code></li>
-<li><code>I2 = IF(A2&gt;EXP(1), LN(LN(LN(A2))), "")</code></li>
-<li><code>J2 = IF(B2&gt;EXP(1), LN(LN(LN(B2))), "")</code></li>
-</ul>
-</div>
-
-<div class="def">
-<strong>مشتقات المقاطع (تبدأ من الصف 2 لكن تُحسب بين الصف 2 و3):</strong>
-<ul>
-<li><code>E2 = (D3-D2)/(C3-C2)</code></li>
-<li><code>H2 = IF(AND(F2&lt;&gt;"",F3&lt;&gt;"",G2&lt;&gt;"",G3&lt;&gt;""),(G3-G2)/(F3-F2),"")</code></li>
-<li><code>K2 = IF(AND(I2&lt;&gt;"",I3&lt;&gt;"",J2&lt;&gt;"",J3&lt;&gt;""),(J3-J2)/(I3-I2),"")</code></li>
-</ul>
 </div>
 
 <div class="note">
-<strong>ملاحظة:</strong> آخر صف لا يملك “مقطع” بعده، لذلك اترك \(E,H,K\) فارغة في آخر صف أو تجاهله في الحسابات.
+نلاحظ أن التقريب الهرمي
+يحافظ على البنية الأسية
+بينما ينهار تايلور سريعًا.
 </div>
 </div>
 
 <div class="section">
-<h2>18.4 حساب مؤشرات التشتت \(R_n\) و\(M_n\) تلقائيًا</h2>
+<h2>18.5 المتسلسلة اللوغاريتمية العميقة (مستوى \(D_2\))</h2>
 
 <div class="def">
-افترض أن بياناتك من الصف 2 حتى الصف \(N\). في Excel/Sheets يمكن استعمال نطاقات مثل:
-<ul>
-<li>\(\widehat{D_1}\) في العمود E من <code>E2:E{N-1}</code></li>
-<li>\(\widehat{D_2}\) في العمود H من <code>H2:H{N-1}</code></li>
-<li>\(\widehat{D_3}\) في العمود K من <code>K2:K{N-1}</code></li>
-</ul>
+تقريب عند المستوى الثاني:
+\[
+\ln f(x)
+\approx
+\ln f(x_0)
++
+D_2f(x_0)\ln\frac{\ln x}{\ln x_0}
+\]
 </div>
 
-<div class="def">
-<strong>المدى \(R\):</strong>
-<ul>
-<li><code>R1 = MAX(E2:E999) - MIN(E2:E999)</code></li>
-<li><code>R2 = MAX(H2:H999) - MIN(H2:H999)</code></li>
-<li><code>R3 = MAX(K2:K999) - MIN(K2:K999)</code></li>
-</ul>
-</div>
-
-<div class="def">
-<strong>متوسط الانحراف \(M\):</strong>
-<ul>
-<li><code>Mean1 = AVERAGE(E2:E999)</code></li>
-<li><code>M1 = AVERAGE(ABS(E2:E999-Mean1))</code> (قد تحتاج ArrayFormula في Sheets)</li>
-</ul>
-<p class="small">
-في Google Sheets يمكنك استعمال:
-<code>=AVERAGE(ARRAYFORMULA(ABS(E2:E999-AVERAGE(E2:E999))))</code>
-ونفس الفكرة لـ H و K.
+<div class="ex">
+<h3>مثال 2: \(f(x)=e^x\)</h3>
+<p>
+\[
+D_2=\ln x
+\Rightarrow
+\ln f(x)\approx x_0\left(\frac{\ln x}{\ln x_0}\right)
+\]
+تقريب ممتاز للنمو العميق.
 </p>
 </div>
+</div>
+
+<div class="section">
+<h2>18.6 مقارنة عددية ثانية: \(e^{e^x}\)</h2>
+
+<table>
+<tr><th>x</th><th>القيمة الحقيقية</th><th>تايلور</th><th>هرمي</th></tr>
+<tr><td>0.5</td><td>4.48</td><td>غير صالح</td><td>4.48</td></tr>
+<tr><td>1</td><td>15.15</td><td>غير صالح</td><td>15.15</td></tr>
+<tr><td>2</td><td>535.49</td><td>ينفجر</td><td>≈535</td></tr>
+</table>
 
 <div class="note">
-قرار المستوى بسيط:
-<strong>اختر \(n\) الذي يعطي أصغر \(R_n\) (أو أصغر \(M_n\)) ضمن الأعمدة المتاحة.</strong>
+تايلور يفشل تمامًا،
+بينما المتسلسلة الهرمية تبقى مستقرة.
 </div>
 </div>
 
 <div class="section">
-<h2>18.5 “قرار المستوى” داخل الجدول (صيغة عملية)</h2>
-<div class="def">
-مثال منطقي مبسّط (فكرة): إذا كان \(R_1\) صغيرًا جدًا اختر \(D_1\)، وإلا جرّب \(D_2\)، ثم \(D_3\).
-يمكنك كتابة خلية قرار مثل:
-<br><br>
-<code>
-=IF(R1&lt;0.05,"D1",
- IF(AND(R2&lt;&gt;"",R2&lt;0.05),"D2",
- IF(AND(R3&lt;&gt;"",R3&lt;0.05),"D3","NoStableLevel")))
-</code>
-</div>
-<p class="small">
-العتبة <code>0.05</code> مثال فقط؛ يمكنك ضبطها حسب الضوضاء في البيانات.
-</p>
-</div>
-
-<div class="section">
-<h2>18.6 أمثلة عددية كثيرة (20 مثالًا) — بيانات جاهزة + قرار</h2>
-
-<p class="small">
-في الأمثلة التالية، لن نملأ كل الأعمدة يدويًا؛ يكفي أن تضع \(x,y\) في A,B
-والصيغ ستكمل الباقي وتخرج القرار.
-</p>
-
-<!-- 1 -->
-<div class="ex">
-<h3>مثال 1: \(y=2x^3\) (قرار \(D_1\))</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>1</td><td>2</td></tr>
-<tr><td>2</td><td>16</td></tr>
-<tr><td>4</td><td>128</td></tr>
-<tr><td>8</td><td>1024</td></tr>
-</table>
-<p class="small">ستجد \(\widehat{D_1}=3\) ثابت ⇒ \(R_1=0\).</p>
-</div>
-
-<!-- 2 -->
-<div class="ex">
-<h3>مثال 2: \(y=5\sqrt{x}\) (قرار \(D_1\))</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>4</td><td>10</td></tr>
-<tr><td>9</td><td>15</td></tr>
-<tr><td>16</td><td>20</td></tr>
-<tr><td>25</td><td>25</td></tr>
-</table>
-</div>
-
-<!-- 3 -->
-<div class="ex">
-<h3>مثال 3: \(y=x\) (قرار حسب السياق: \(D_1\) أو \(D_2\))</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>10</td><td>10</td></tr>
-<tr><td>20</td><td>20</td></tr>
-<tr><td>40</td><td>40</td></tr>
-<tr><td>80</td><td>80</td></tr>
-</table>
-<p class="small">ستجد \(\widehat{D_1}=1\) و\(\widehat{D_2}=1\) (عندما تكون \(\ln\ln\) معرفة).</p>
-</div>
-
-<!-- 4 -->
-<div class="ex">
-<h3>مثال 4: \(y=\exp((\ln x)^2)\) (قرار \(D_2\))</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>\(e^2\)</td><td>\(e^4\)</td></tr>
-<tr><td>\(e^3\)</td><td>\(e^9\)</td></tr>
-<tr><td>\(e^5\)</td><td>\(e^{25}\)</td></tr>
-</table>
-<p class="small">\(\widehat{D_2}=1\) ثابت ⇒ \(R_2=0\).</p>
-</div>
-
-<!-- 5 -->
-<div class="ex">
-<h3>مثال 5: \(y=\exp((\ln x)^3)\) (قرار \(D_2\))</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>\(e^2\)</td><td>\(e^8\)</td></tr>
-<tr><td>\(e^3\)</td><td>\(e^{27}\)</td></tr>
-<tr><td>\(e^5\)</td><td>\(e^{125}\)</td></tr>
-</table>
-</div>
-
-<!-- 6 -->
-<div class="ex">
-<h3>مثال 6: \(y=\exp((\ln x)^{10})\) (قرار \(D_2\) لأن \(D_1\) شديد التغير)</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>\(e^2\)</td><td>\(e^{1024}\)</td></tr>
-<tr><td>\(e^3\)</td><td>\(e^{59049}\)</td></tr>
-<tr><td>\(e^5\)</td><td>\(e^{9765625}\)</td></tr>
-</table>
-</div>
-
-<!-- 7 -->
-<div class="ex">
-<h3>مثال 7: \(y=\exp((\ln x)(\ln\ln x))\) (قرار \(D_2\) غالبًا)</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>\(e^5\)</td><td>3125</td></tr>
-<tr><td>\(e^6\)</td><td>\(6^6=46656\)</td></tr>
-<tr><td>\(e^7\)</td><td>\(7^7=823543\)</td></tr>
-</table>
-<p class="small">لأن \(y=e^{(\ln x)(\ln\ln x)}=(\ln x)^{\ln x}\) فتظهر بنية \(\ln\ln\) طبيعيًا.</p>
-</div>
-
-<!-- 8 -->
-<div class="ex">
-<h3>مثال 8: \(y=\exp(\exp((\ln\ln x)^2))\) (قرار \(D_3\))</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>\(e^{e^2}\)</td><td>\(\exp(\exp(4))\)</td></tr>
-<tr><td>\(e^{e^3}\)</td><td>\(\exp(\exp(9))\)</td></tr>
-<tr><td>\(e^{e^4}\)</td><td>\(\exp(\exp(16))\)</td></tr>
-</table>
-<p class="small">\(\widehat{D_3}\approx 2\) ثابت.</p>
-</div>
-
-<!-- 9 -->
-<div class="ex">
-<h3>مثال 9: \(y=\exp(\exp((\ln\ln x)^5))\) (قرار \(D_3\))</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>\(e^{e^2}\)</td><td>\(\exp(\exp(32))\)</td></tr>
-<tr><td>\(e^{e^3}\)</td><td>\(\exp(\exp(243))\)</td></tr>
-</table>
-</div>
-
-<!-- 10 -->
-<div class="ex">
-<h3>مثال 10: بيانات قوة مع ضوضاء بسيطة (قرار \(D_1\))</h3>
-<table><tr><th>x</th><th>y</th></tr>
-<tr><td>10</td><td>49.5</td></tr>
-<tr><td>20</td><td>79.8</td></tr>
-<tr><td>40</td><td>127.3</td></tr>
-<tr><td>80</td><td>205.0</td></tr>
-</table>
-</div>
-
-<!-- 11-20 -->
-<div class="ex">
-<h3>أمثلة 11–20 (قائمة مركزة لزيادة التغطية)</h3>
+<h2>18.7 الخلاصة العامة</h2>
 <ul>
-<li><strong>11:</strong> \(y=Cx^\alpha\) (اختر \(C=3,\alpha=1.5\)) ⇒ \(D_1\) ثابت.</li>
-<li><strong>12:</strong> \(y=\exp((\ln x)^m)\) لأي \(m\) ⇒ \(D_2\) ثابت (=1) دائمًا.</li>
-<li><strong>13:</strong> \(y=\exp(\exp((\ln\ln x)^p))\) ⇒ \(D_3\) ثابت غالبًا (=1 أو =\(p\) حسب الصياغة).</li>
-<li><strong>14:</strong> \(y=x\ln x\) ⇒ لا ثبات تام، لكن يمكن كشف انتظام على \(u=\ln x\).</li>
-<li><strong>15:</strong> \(y=\exp(\sqrt{x})\) ⇒ لا ينتمي لسلسلة \(\ln^{(n)}\) بسهولة؛ قد تفشل مستويات \(D_1,D_2\) في الثبات.</li>
-<li><strong>16:</strong> إذا كانت قيم \(y\) قريبة من 1 ⇒ \(\ln\ln y\) غير معرف ⇒ نلتزم بـ \(D_1\) أو نعيد تحجيم \(y\).</li>
-<li><strong>17:</strong> إذا كانت \(x\) قريبة من 1 ⇒ \(\ln\ln x\) غير معرف ⇒ لا تستخدم \(D_2\).</li>
-<li><strong>18:</strong> إذا كان \(R_1\) كبيرًا و\(R_2\) صغيرًا ⇒ ترجيح \(D_2\) فورًا.</li>
-<li><strong>19:</strong> إذا كان \(R_2\) كبيرًا و\(R_3\) صغيرًا ⇒ ترجيح \(D_3\).</li>
-<li><strong>20:</strong> إذا لم يستقر أي مستوى ⇒ ليس كل نمو “هرميًا لوغاريتميًا”؛ نحتاج عائلة نماذج مختلفة.</li>
+<li>المتسلسلات الهرمية بديل طبيعي لتايلور.</li>
+<li>أكثر تقاربًا على مجالات واسعة.</li>
+<li>تحترم البنية النسبية للنمو.</li>
+<li>مثالية للدوال الأسية والمعقدة.</li>
 </ul>
 </div>
 
-</div>
-
-<div class="section">
-<h2>18.7 ختام عملي</h2>
-<ul>
-<li>انسخ الأعمدة والصيغ مرة واحدة، ثم غيّر فقط بيانات A وB لأي ظاهرة.</li>
-<li>استخرج \(R_n, M_n\) وقرر المستوى تلقائيًا.</li>
-<li>عند اختيار المستوى، انتقل للفصل 14–16 لبناء الحل/النموذج.</li>
-</ul>
-
-<div class="note">
-إذا ترغب، الفصل 19 يمكن أن يكون “من الجداول إلى معادلات: كيف نستنتج شكل المعادلة التفاضلية الهرمية من ثبات \(\widehat{D_n}\)؟” مع أمثلة كثيرة.
-</div>
-</div>
-
-<footer>
-© كتاب الحساب الهرمي — الفصل الثامن عشر
-</footer>
-
+<footer>© كتاب الحساب الهرمي — الفصل 18</footer>
 </div>
 </body>
 </html>
