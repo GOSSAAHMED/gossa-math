@@ -1,227 +1,302 @@
-
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Chapter 8 — The Relative Derivative D₁ | Hierarchical Calculus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Chapter 8 — The Relative Derivative D₁ | Hierarchical Calculus</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] }
-    };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <style>
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
-    .wrap{max-width:980px;margin:auto;padding:32px 16px 80px;}
-    header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-    h1{margin:0;font-size:1.9rem;}
-    .subtitle{margin-top:8px;color:#b8c4e6;}
-    h2{margin-top:32px;font-size:1.35rem;border-left:4px solid #4cc9f0;padding-left:10px;}
-    h3{margin-top:18px;font-size:1.1rem;color:#cfe0ff;}
-    .section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-    .note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;color:#cbd6ff;margin-top:12px;}
-    .def{border:1px solid rgba(124,58,237,.35);background:rgba(124,58,237,.08);border-radius:16px;padding:14px;color:#d7d1ff;margin-top:12px;}
-    .ex{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);border-radius:16px;padding:14px;margin-top:12px;}
-    .ex strong{color:#cfe0ff;}
-    .nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-    .btn{display:inline-block;padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);color:#eaf0ff;}
-    .btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
-    .btn:hover{opacity:.9;text-decoration:none;}
-    footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;font-size:.95rem;}
-    mjx-container{color:#eaf0ff!important;}
-    a{color:#4cc9f0;text-decoration:none;}
-    a:hover{text-decoration:underline;}
-  </style>
+<style>
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:22px;}
+h1{margin:0;font-size:1.95rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:30px;font-size:1.4rem;border-left:4px solid #4cc9f0;padding-left:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:18px;margin:16px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:14px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:44px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-left:22px;}
+li{margin:6px 0;}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.15);}
+th,td{padding:10px 10px;text-align:center;border-bottom:1px solid rgba(255,255,255,.10);}
+th{background:rgba(76,201,240,.10);color:#eaf0ff;font-weight:900;}
+tr:last-child td{border-bottom:none;}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-weight:900;}
+.small{font-size:.95rem;color:#cbd6ff}
+hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
+</style>
 </head>
 
 <body>
 <div class="wrap">
+<header>
+<h1>Chapter 8 — The Relative Derivative \(D_1\)</h1>
+<div class="subtitle">Formal definition, equivalent formulas, interpretation, and many numerical examples</div>
 
-  <header>
-    <h1>Chapter 8 — The Relative Derivative \(D_1\)</h1>
-    <div class="subtitle">Book: Hierarchical Calculus</div>
+<div class="nav">
+<a class="btn primary" href="./index.html">📘 Book Index</a>
+<a class="btn" href="./chapter-7.html">⟵ Previous</a>
+<a class="btn" href="./chapter-9.html">Next ⟶</a>
+</div>
+</header>
 
-    <div class="nav">
-      <a href="./index.html" class="btn primary">📘 Book Index</a>
-      <a href="./chapter-07.html" class="btn">⟵ Previous</a>
-      <a href="./chapter-09.html" class="btn">Next ⟶</a>
-    </div>
-  </header>
+<div class="section">
+<h2>8.1 Formal Definition of the Relative Derivative</h2>
 
-  <div class="section">
-    <h2>8.1 From \(D_0\) to \(D_1\): Why Relative Measurement?</h2>
-    <p>
-      The classical derivative \(D_0\) measures absolute change: how much \(y\) changes
-      when \(x\) changes. In many systems, absolute change is insufficient because the
-      meaning of variation depends on the magnitude of the quantity itself.
-    </p>
-    <p>
-      We therefore introduce a measure that captures <strong>relative</strong> change:
-      change in proportion, not just in amount.
-    </p>
+<div class="def">
+\[
+D_1 y \;=\; \frac{d(\ln y)}{d(\ln x)}.
+\]
+</div>
 
-    <div class="note">
-      Relative measurement is a natural language for growth, economics, data analysis,
-      and scale-sensitive systems.
-    </div>
-  </div>
+<div class="note">
+<strong>Domain conditions:</strong>  
+To ensure \(\ln x\) and \(\ln y\) are defined, we require:
+\[
+x>0,\qquad y>0.
+\]
+</div>
 
-  <div class="section">
-    <h2>8.2 Definition of the Relative Derivative \(D_1\) (No Logarithms)</h2>
+<div class="ex">
+<h3>What does this derivative measure?</h3>
+<p>
+The relative derivative measures the <strong>relative change of \(y\)</strong>
+with respect to the <strong>relative change of \(x\)</strong>.
+</p>
+</div>
+</div>
 
-    <div class="def">
-      <strong>Definition:</strong>
-      Let \(y=f(x)\) with \(x\neq 0\) and \(y\neq 0\). The relative derivative is defined by
-      \[
-        D_1 y \;=\; \frac{\dfrac{dy}{y}}{\dfrac{dx}{x}}
-        \;=\; \frac{x}{y}\,\frac{dy}{dx}.
-      \]
-    </div>
+<div class="section">
+<h2>8.2 Relation between \(D_1\) and the classical derivative \(D_0\)</h2>
 
-    <p>
-      Thus \(D_1\) measures the relative change of \(y\) with respect to the relative change of \(x\).
-      It can be interpreted as an elasticity-like measure: how many percent \(y\) changes when
-      \(x\) changes by one percent.
-    </p>
+<div class="def">
+If the classical derivative \(D_0y=\dfrac{dy}{dx}\) exists, then:
+\[
+D_1y
+=\frac{\dfrac{d(\ln y)}{dx}}{\dfrac{d(\ln x)}{dx}}
+=\frac{\dfrac{1}{y}\dfrac{dy}{dx}}{\dfrac{1}{x}}
+=\frac{x}{y}\,\frac{dy}{dx}.
+\]
+</div>
 
-    <div class="note">
-      The direct bridge between levels:
-      \[
-        D_1 y = \frac{x}{y}\,D_0 y.
-      \]
-      This is a first explicit example of a “transition relation” between hierarchy levels.
-    </div>
-  </div>
+<div class="note">
+Hence the fundamental identity:
+\[
+D_1y=\frac{x}{y}\,D_0y,
+\qquad
+D_0y=\frac{y}{x}\,D_1y.
+\]
+</div>
 
-  <div class="section">
-    <h2>8.3 Interpretation and Dimensionless Nature</h2>
-    <p>
-      While \(D_0 y\) typically carries physical units, \(D_1\) often becomes
-      <strong>dimensionless</strong> because it compares ratios. This makes it
-      especially useful in scaling laws and sensitivity analysis.
-    </p>
-  </div>
+<div class="ex">
+<h3>Numerical example</h3>
+<p>
+Let \(y=x^2\). At \(x=3\):  
+\(D_0y=6\), \(y=9\). Thus:
+\[
+D_1y=\frac{3}{9}\cdot 6=2,
+\]
+which coincides with the power exponent.
+</p>
+</div>
+</div>
 
-  <div class="section">
-    <h2>8.4 Core Properties of \(D_1\)</h2>
+<div class="section">
+<h2>8.3 Interpretation: Elasticity and Local Exponent</h2>
 
-    <h3>8.4.1 Invariance under multiplication by a constant</h3>
-    <p>If \(c\neq 0\) is constant, then</p>
-    \[
-      D_1(cy)=D_1(y).
-    \]
+<div class="def">
+For small variations:
+\[
+d(\ln y)\approx \frac{dy}{y},\qquad
+d(\ln x)\approx \frac{dx}{x}.
+\]
+Thus:
+\[
+D_1y\approx
+\frac{\dfrac{dy}{y}}{\dfrac{dx}{x}}.
+\]
+</div>
 
-    <h3>8.4.2 Product rule in relative form</h3>
-    <p>If \(y=uv\) with \(u\neq 0\) and \(v\neq 0\), then</p>
-    \[
-      D_1(uv)=D_1(u)+D_1(v).
-    \]
-    <p>
-      This is fundamental: at the relative level, multiplication becomes additive.
-    </p>
+<div class="note">
+If \(D_1y=1.2\) at a given point, a 1% increase in \(x\)
+produces approximately a 1.2% increase in \(y\) near that point.
+</div>
+</div>
 
-    <h3>8.4.3 Quotient rule</h3>
-    \[
-      D_1\left(\frac{u}{v}\right)=D_1(u)-D_1(v)\quad (v\neq 0).
-    \]
+<div class="section">
+<h2>8.4 Central Result: Power Laws Become Linear</h2>
 
-    <h3>8.4.4 Power rule</h3>
-    <p>If \(y=u^a\) with \(u\neq 0\), then</p>
-    \[
-      D_1(u^a)=a\,D_1(u).
-    \]
+<div class="def">
+If
+\[
+y=Cx^a,\quad C>0,
+\]
+then
+\[
+\ln y=\ln C+a\ln x
+\Rightarrow
+D_1y=a \quad (\text{constant}).
+\]
+</div>
 
-    <h3>8.4.5 Chain rule (relative form)</h3>
-    <p>If \(y=f(u)\) and \(u=g(x)\), then</p>
-    \[
-      D_1 y \;=\; \frac{u}{y}\frac{dy}{du}\;\cdot\;\frac{x}{u}\frac{du}{dx}.
-    \]
-  </div>
+<div class="ex">
+<h3>Example 1</h3>
+<p>
+\(y=5x^{1.5}\Rightarrow D_1y=1.5\) everywhere.
+</p>
+</div>
 
-  <div class="section">
-    <h2>8.5 Useful Special Cases</h2>
+<div class="ex">
+<h3>Example 2 (inverse power)</h3>
+<p>
+\(y=10x^{-2}\Rightarrow D_1y=-2\).
+The negative sign indicates a decreasing relative response.
+</p>
+</div>
+</div>
 
-    <div class="ex">
-      <strong>1) If \(y=x^a\) (with \(x\neq 0\)):</strong><br>
-      \[
-        D_1 y=a.
-      \]
-      <p>
-        A key fact: the relative derivative of a power law is the exponent itself.
-      </p>
-    </div>
+<div class="section">
+<h2>8.5 Discrete Approximation from Data</h2>
 
-    <div class="ex">
-      <strong>2) If \(y=Cx^a\) (with \(C\neq 0\)):</strong><br>
-      \[
-        D_1 y=a.
-      \]
-      <p>Constants cancel out under relative measurement.</p>
-    </div>
+<div class="def">
+Between two data points \((x_i,y_i)\) and \((x_{i+1},y_{i+1})\):
+\[
+\widehat{D_1}=
+\frac{\ln y_{i+1}-\ln y_i}{\ln x_{i+1}-\ln x_i}.
+\]
+</div>
 
-    <div class="ex">
-      <strong>3) If \(y=e^{kx}\):</strong><br>
-      \[
-        D_1 y=kx.
-      \]
-    </div>
-  </div>
+<div class="note">
+If \(\widehat{D_1}\) is nearly constant across segments,
+the data strongly suggests a power-law behavior.
+</div>
 
-  <div class="section">
-    <h2>8.6 Worked Examples</h2>
+<div class="ex">
+<h3>Example 3 (ideal power-law data)</h3>
+<table>
+<tr><th>x</th><th>y</th></tr>
+<tr><td>2</td><td>16</td></tr>
+<tr><td>4</td><td>128</td></tr>
+<tr><td>8</td><td>1024</td></tr>
+</table>
+<p>
+\[
+\widehat{D_1}=
+\frac{\ln 128-\ln 16}{\ln 4-\ln 2}
+=\frac{\ln 8}{\ln 2}=3,
+\]
+constant on all intervals.
+</p>
+</div>
+</div>
 
-    <div class="ex">
-      <strong>Example 1:</strong> Compute \(D_1(x^5)\).<br>
-      <strong>Solution:</strong>
-      \[
-        D_1(x^5)=5.
-      \]
-    </div>
+<div class="section">
+<h2>8.6 More Numerical Examples</h2>
 
-    <div class="ex">
-      <strong>Example 2:</strong> If \(y=3x^2\), compute \(D_1 y\).<br>
-      <strong>Solution:</strong>
-      \[
-        D_1(3x^2)=D_1(x^2)=2.
-      \]
-    </div>
+<div class="ex">
+<h3>Example 4: \(y=x^3+1\)</h3>
+<p>
+\[
+D_1y=\frac{3x^3}{x^3+1}.
+\]
+At \(x=1\): \(D_1=1.5\).  
+At \(x=10\): \(D_1\approx 2.997\).
+</p>
+</div>
 
-    <div class="ex">
-      <strong>Example 3:</strong> If \(y=x^2(1+x)\) (with \(x\neq 0\) and \(1+x\neq 0\)), compute \(D_1 y\).<br>
-      <strong>Solution:</strong>
-      \[
-        D_1(x^2(1+x))=D_1(x^2)+D_1(1+x)=2+\frac{x}{1+x}.
-      \]
-    </div>
-  </div>
+<div class="ex">
+<h3>Example 5: \(y=e^x\)</h3>
+<p>
+\(D_1y=x\).  
+The relative exponent grows with \(x\), so this is not a power law.
+</p>
+</div>
 
-  <div class="section">
-    <h2>8.7 Bridge to the Next Level \(D_2\)</h2>
-    <p>
-      If \(D_1\) measures relative change, the next question is natural:
-      what if <strong>relative change itself</strong> changes in a structured way?
-      This motivates the next level \(D_2\), introduced later as a deeper measurement layer.
-    </p>
+<div class="ex">
+<h3>Example 6: \(y=\ln x\) (for \(x>1\))</h3>
+<p>
+\[
+D_1y=\frac{1}{\ln x}.
+\]
+At \(x=e\): \(D_1=1\); at \(x=e^2\): \(D_1=0.5\).
+</p>
+</div>
 
-    <div class="note">
-      Summary: \(D_1\) is the first step beyond absolute measurement, and it anchors the hierarchy.
-    </div>
-  </div>
+<div class="ex">
+<h3>Example 7: \(y=\sqrt{x}\)</h3>
+<p>
+\(D_1y=\frac12\), a constant, confirming the power exponent.
+</p>
+</div>
 
-  <div class="nav" style="margin-top:18px;">
-    <a href="./index.html" class="btn primary">📘 Book Index</a>
-    <a href="./chapter-07.html" class="btn">⟵ Previous</a>
-    <a href="./chapter-09.html" class="btn">Next ⟶</a>
-  </div>
+<div class="ex">
+<h3>Example 8: Composite growth \(y=x^a(\ln x)^b\)</h3>
+<p>
+\[
+\ln y=a\ln x+b\ln\ln x
+\Rightarrow
+D_1y=a+\frac{b}{\ln x}.
+\]
+As \(x\to\infty\), \(D_1y\to a\).
+</p>
+</div>
+</div>
 
-  <footer>
-    © Hierarchical Calculus — Chapter 8
-  </footer>
+<div class="section">
+<h2>8.7 Estimating Parameters from Data</h2>
 
+<div class="def">
+Assuming \(y\approx Cx^a\), from two data points:
+\[
+a=\frac{\ln(y_2/y_1)}{\ln(x_2/x_1)},\qquad
+C=\frac{y_1}{x_1^a}.
+\]
+</div>
+
+<div class="ex">
+<h3>Example 9 (full computation)</h3>
+<p>
+Data: \((10,50)\), \((40,127.3)\).
+\[
+a=\frac{\ln(127.3/50)}{\ln(4)}\approx 0.674,
+\qquad
+C\approx 10.6.
+\]
+Thus \(y\approx 10.6\,x^{0.674}\).
+</p>
+</div>
+</div>
+
+<div class="section">
+<h2>8.8 Chapter Summary</h2>
+<ul>
+<li>\(D_1=\dfrac{d(\ln y)}{d(\ln x)}\) is the true relative derivative.</li>
+<li>\(D_1\) links directly to \(D_0\) via \(D_1=\dfrac{x}{y}y'\).</li>
+<li>Constant \(D_1\) ⇔ power-law behavior.</li>
+<li>Discrete \(\widehat{D_1}\) efficiently reveals power exponents from data.</li>
+</ul>
+
+<div class="note">
+Chapter 9 will present the operational rules:
+product, quotient, powers, composition, and how \(D_1\)-equations reduce to linear equations in \(D_0\).
+</div>
+</div>
+
+<footer>© Hierarchical Calculus — Chapter 8</footer>
 </div>
 </body>
 </html>
+
