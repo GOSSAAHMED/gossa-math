@@ -1,1 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 27 — Stability, Growth, and Blow-Up</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],
+displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2.2;}
+.wrap{max-width:1600px;margin:auto;padding:40px 16px 110px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:22px;margin-bottom:32px;}
+h1{margin:0;font-size:2.4rem;}
+.subtitle{margin-top:12px;color:#b8c4e6;}
+h2{margin-top:42px;font-size:1.85rem;border-left:4px solid #4cc9f0;padding-left:16px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:26px;padding:32px;margin:30px 0;}
+.def{border:1px solid rgba(124,58,237,.6);background:rgba(124,58,237,.18);border-radius:22px;padding:22px;margin-top:20px;}
+.ex{background:rgba(255,255,255,.08);border-radius:22px;padding:22px;margin-top:20px;}
+.note{border:1px dashed rgba(76,201,240,.7);background:rgba(76,201,240,.18);border-radius:22px;padding:22px;margin-top:20px;color:#e0e9ff;}
+table{width:100%;border-collapse:collapse;margin-top:18px;}
+th,td{border:1px solid rgba(255,255,255,.25);padding:12px;text-align:center;}
+th{background:rgba(76,201,240,.18);}
+footer{margin-top:64px;border-top:1px solid rgba(255,255,255,.15);padding-top:24px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>Chapter 27 — Stability, Growth, and Blow-Up</h1>
+<div class="subtitle">
+Hierarchical classification of dynamical behavior
+</div>
+</header>
+
+<div class="section">
+<h2>27.1 Conceptual Introduction</h2>
+<p>
+In hierarchical calculus, stability depends on
+the level of description.
+Explosive behavior at one level
+may become stable at a higher level.
+</p>
+</div>
+
+<div class="section">
+<h2>27.2 Hierarchical Definitions</h2>
+
+<div class="def">
+<ul>
+<li><strong>Stable</strong>: derivatives are constant or zero at some level.</li>
+<li><strong>Growth</strong>: bounded, non-constant behavior.</li>
+<li><strong>Blow-up</strong>: divergence at all levels.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<h2>27.3 Examples Across Levels</h2>
+
+<table>
+<tr>
+<th>Function</th><th>\(D_0\)</th><th>\(D_1\)</th><th>\(D_2\)</th><th>Classification</th>
+</tr>
+<tr>
+<td>\(e^x\)</td><td>Exponential</td><td>Constant</td><td>0</td><td>Stable at \(D_1\)</td>
+</tr>
+<tr>
+<td>\(x^n\)</td><td>Growth</td><td>Constant</td><td>0</td><td>Stable</td>
+</tr>
+<tr>
+<td>\(e^{e^x}\)</td><td>Explosive</td><td>\(e^x\)</td><td>1</td><td>Stable at \(D_2\)</td>
+</tr>
+</table>
+</div>
+
+<div class="section">
+<h2>27.4 True Blow-Up</h2>
+
+<div class="def">
+True blow-up occurs when
+\[
+D_ny \to \infty \quad \forall n.
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>27.5 Interpretation</h2>
+<ul>
+<li>Stability is scale-dependent.</li>
+<li>Growth is structural, not pathological.</li>
+<li>Blow-up signals model failure.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>27.6 Summary</h2>
+<ul>
+<li>Hierarchical calculus refines stability analysis.</li>
+<li>Many apparent blow-ups disappear at higher levels.</li>
+<li>This enables robust modeling of complex systems.</li>
+</ul>
+</div>
+
+<footer>© Hierarchical Calculus — Chapter 27</footer>
+</div>
+</body>
+</html>
 
