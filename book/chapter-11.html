@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل الحادي عشر — القوانين العامة للمشتقات الهرمية Dₙ | الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:980px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
+h1{margin:0;font-size:1.9rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:32px;font-size:1.4rem;border-right:4px solid #4cc9f0;padding-right:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
+.def{border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);border-radius:16px;padding:16px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;margin-top:12px;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+ul{padding-right:22px;}
+li{margin:6px 0;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+<h1>الفصل الحادي عشر — القوانين العامة للمشتقات الهرمية \(D_n\)</h1>
+<div class="subtitle">البنية، الخصائص، وعلاقات الانتقال</div>
+
+<div class="nav">
+<a href="./index.html" class="btn primary">📘 فهرس الكتاب</a>
+<a href="./chapter-10.html" class="btn">⟶ الفصل السابق</a>
+<a href="./chapter-12.html" class="btn">الفصل التالي ⟵</a>
+</div>
+</header>
+
+<div class="section">
+<h2>11.1 تمهيد</h2>
+<p>
+بعد تثبيت التعريف الرسمي للمشتقات الهرمية، يصبح من الضروري
+استخلاص القوانين العامة التي تحكم سلوكها،
+وإظهار أن هذه القوانين ناتجة مباشرة عن
+<strong>بنية القياس الهرمي</strong>، لا عن افتراضات إضافية.
+</p>
+</div>
+
+<div class="section">
+<h2>11.2 تذكير بالتعريف العام</h2>
+<div class="def">
+\[
+D_n y=\frac{d(L_n(y))}{d(L_n(x))},\qquad
+L_n(t)=\underbrace{\ln(\ln(\cdots\ln t))}_{n\ \text{مرات}}
+\]
+</div>
+<p>
+مع افتراض أن \(x,y\) ضمن المجال الذي يضمن تعريف جميع اللوغاريتمات.
+</p>
+</div>
+
+<div class="section">
+<h2>11.3 قانون الثبات تحت الضرب في ثابت</h2>
+
+<h3>النص</h3>
+<div class="def">
+إذا كان \(c>0\) ثابتًا، فإن:
+\[
+D_n(cy)=D_n(y)\quad \forall n\ge 1.
+\]
+</div>
+
+<h3>البرهان</h3>
+<p>
+بما أن:
+\[
+L_1(cy)=\ln c+\ln y,
+\]
+فإن جميع المستويات اللاحقة \(L_n(cy)\) تختلف عن \(L_n(y)\)
+بإضافة ثابت فقط، ومشتق الثابت يساوي صفرًا،
+ومن ثم لا يؤثر على النسبة.
+</p>
+</div>
+
+<div class="section">
+<h2>11.4 قانون الجداء الهرمي</h2>
+
+<h3>النص</h3>
+<div class="def">
+لـ \(n=1\):
+\[
+D_1(uv)=D_1(u)+D_1(v).
+\]
+أما لـ \(n\ge2\)، فلا يتحول الجداء إلى جمع،
+بل يظهر عبر بنية لوغاريتمية أعمق.
+</div>
+
+<h3>تفسير</h3>
+<p>
+هذا يبيّن أن خاصية “التحويل إلى جمع”
+هي خاصية خاصة بالمستوى النسبي \(D_1\)،
+ولا تعمّ المستويات الأعلى.
+</p>
+</div>
+
+<div class="section">
+<h2>11.5 علاقة الانتقال بين المستويات</h2>
+
+<div class="def">
+\[
+\boxed{
+D_{n+1}y=\frac{L_n(x)}{L_n(y)}\,D_n y
+}
+\]
+</div>
+
+<h3>البرهان</h3>
+<p>
+من التعريف:
+\[
+D_{n+1}y=\frac{d(L_{n+1}(y))}{d(L_{n+1}(x))}
+=\frac{\frac{1}{L_n(y)}\frac{dL_n(y)}{dx}}
+{\frac{1}{L_n(x)}\frac{dL_n(x)}{dx}}
+=\frac{L_n(x)}{L_n(y)}D_n y.
+\]
+</p>
+</div>
+
+<div class="section">
+<h2>11.6 السلوك النموذجي لقوانين القوى</h2>
+
+<div class="ex">
+إذا \(y=x^a\) و\(x>1\)، فإن:
+<ul>
+<li>\(D_1 y=a\)</li>
+<li>\(D_n y=1\) لكل \(n\ge2\)</li>
+</ul>
+</div>
+
+<div class="note">
+هذا يبيّن أن قوانين القوى مستقرة
+ابتداءً من المستوى الثاني.
+</div>
+</div>
+
+<div class="section">
+<h2>11.7 تصنيف أولي للدوال بحسب السلوك الهرمي</h2>
+<ul>
+<li><strong>قوى:</strong> استقرار هرمي سريع.</li>
+<li><strong>أسية:</strong> انتقال تدريجي في المستويات.</li>
+<li><strong>مركّبة:</strong> تكشف بنية متعددة المقاييس.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>11.8 خلاصة</h2>
+<ul>
+<li>قوانين \(D_n\) ناتجة عن بنية القياس.</li>
+<li>علاقة الانتقال هي العمود الفقري للحساب الهرمي.</li>
+<li>الفصول القادمة ستستثمر هذه القوانين في التقريب والمعادلات.</li>
+</ul>
+</div>
+
+<footer>
+© كتاب الحساب الهرمي — الفصل الحادي عشر
+</footer>
+
+</div>
+</body>
+</html>
