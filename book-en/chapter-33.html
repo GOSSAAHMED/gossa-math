@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 33 — Data, Ratios, and Logarithmic Scales</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],
+displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:system-ui;background:#0b1220;color:#eaf0ff;line-height:2.3;}
+.wrap{max-width:1850px;margin:auto;padding:48px 16px 150px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:30px;margin-bottom:46px;}
+h1{margin:0;font-size:2.9rem;}
+.subtitle{margin-top:14px;color:#b8c4e6;}
+h2{margin-top:54px;font-size:2.15rem;border-left:4px solid #4cc9f0;padding-left:20px;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:34px;padding:44px;margin:44px 0;}
+.def{border:1px solid rgba(124,58,237,.6);background:rgba(124,58,237,.18);border-radius:26px;padding:26px;margin-top:26px;}
+.ex{background:rgba(255,255,255,.08);border-radius:26px;padding:26px;margin-top:26px;}
+.note{border:1px dashed rgba(76,201,240,.7);background:rgba(76,201,240,.18);border-radius:26px;padding:26px;margin-top:26px;color:#e0e9ff;}
+footer{margin-top:100px;border-top:1px solid rgba(255,255,255,.15);padding-top:36px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>Chapter 33 — Data, Ratios, and Logarithmic Scales</h1>
+<div class="subtitle">
+From raw values to hierarchical information
+</div>
+</header>
+
+<div class="section">
+<h2>Why Data Is Relative</h2>
+<p>
+In data science, absolute values rarely matter.
+Ratios and logarithmic scales reveal structure.
+</p>
+</div>
+
+<div class="section">
+<h2>Relative Derivatives</h2>
+
+<div class="def">
+\[
+D_1y=\frac{d(\ln y)}{d(\ln x)}
+\]
+captures relative growth.
+</div>
+</div>
+
+<div class="section">
+<h2>Examples</h2>
+
+<div class="ex">Zipf: \(f(r)\sim r^{-1}\)</div>
+<div class="ex">Power law: \(P(x)\sim x^{-\gamma}\)</div>
+<div class="ex">Growth: \(y\sim x^{1.5}\)</div>
+<div class="ex">Log-loss: \(L\sim \ln(1+e)\)</div>
+
+</div>
+
+<div class="section">
+<h2>Summary</h2>
+<ul>
+<li>Data lives on logarithmic scales.</li>
+<li>Ratios reveal structure.</li>
+<li>Hierarchical calculus unifies data analysis.</li>
+</ul>
+</div>
+
+<footer>© Hierarchical Calculus — Chapter 33</footer>
+</div>
+</body>
+</html>
 
