@@ -1,1 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفصل 23 — إعادة الصياغة الهرمية للمعادلات | كتاب الحساب الهرمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2.15;}
+.wrap{max-width:1550px;margin:auto;padding:38px 16px 100px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:20px;margin-bottom:30px;}
+h1{margin:0;font-size:2.25rem;}
+.subtitle{margin-top:10px;color:#b8c4e6;font-size:1.05rem;}
+h2{margin-top:38px;font-size:1.65rem;border-right:4px solid #4cc9f0;padding-right:14px;}
+h3{margin-top:24px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:30px;margin:28px 0;}
+.def{border:1px solid rgba(124,58,237,.55);background:rgba(124,58,237,.15);border-radius:20px;padding:20px;margin-top:18px;}
+.ex{background:rgba(255,255,255,.07);border-radius:20px;padding:20px;margin-top:18px;}
+.note{border:1px dashed rgba(76,201,240,.65);background:rgba(76,201,240,.15);border-radius:20px;padding:20px;margin-top:18px;color:#d6e2ff;}
+footer{margin-top:60px;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-right:32px;}
+li{margin:12px 0;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<h1>الفصل 23 — إعادة الصياغة الهرمية للمعادلات التفاضلية</h1>
+<div class="subtitle">
+من التغير المطلق إلى البنية متعددة المقاييس
+</div>
+</header>
+
+<div class="section">
+<h2>23.1 المدخل المفاهيمي</h2>
+<p>
+المعادلات التفاضلية التقليدية تصاغ بدلالة
+\(
+D_0=\frac{dy}{dx}
+\)
+وتصف التغير المطلق.
+لكن كثيرًا من الأنظمة الطبيعية لا تحكمها الفروق المطلقة،
+بل <strong>قوانين نسبية ومتعددة المقاييس</strong>.
+</p>
+
+<div class="note">
+إعادة الصياغة الهرمية لا تغيّر النظام،
+بل تغيّر <strong>لغة وصفه</strong>.
+</div>
+</div>
+
+<div class="section">
+<h2>23.2 المبدأ الأساسي لإعادة الصياغة</h2>
+
+<div class="def">
+أي معادلة تفاضلية يمكن إعادة كتابتها
+بدلالة المشتقات الهرمية:
+\[
+D_0,\;D_1,\;D_2,\dots
+\]
+حسب مستوى التعقيد البنيوي للنظام.
+</div>
+
+<ul>
+<li>\(D_0\): تغير مطلق.</li>
+<li>\(D_1\): تغير نسبي (مرونة).</li>
+<li>\(D_2\): تغير المرونة.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>23.3 مثال 1 — معادلة النمو الأسي</h2>
+
+<div class="ex">
+المعادلة التقليدية:
+\[
+\frac{dy}{dx}=ky
+\]
+</div>
+
+<div class="ex">
+الصياغة الهرمية:
+\[
+D_1y = k
+\]
+</div>
+
+<div class="note">
+المعادلة تتحول من تفاضلية
+إلى <strong>ثابتة هرميًا</strong>.
+</div>
+</div>
+
+<div class="section">
+<h2>23.4 مثال 2 — معادلة قوة عامة</h2>
+
+<div class="ex">
+\[
+\frac{dy}{dx}=a\frac{y}{x}
+\Rightarrow
+D_1y=a
+\Rightarrow
+y=Cx^a
+\]
+</div>
+</div>
+
+<div class="section">
+<h2>23.5 مثال 3 — معادلة لاخطية معقدة</h2>
+
+<div class="ex">
+\[
+\frac{dy}{dx}=x^n y
+\]
+</div>
+
+<div class="ex">
+إعادة الصياغة:
+\[
+D_1y = x^{n+1}
+\]
+حل مباشر بالتكامل النسبي.
+</div>
+</div>
+
+<div class="section">
+<h2>23.6 مثال 4 — معادلة أسية مركبة</h2>
+
+<div class="ex">
+\[
+\frac{dy}{dx}=y\ln y
+\]
+</div>
+
+<div class="ex">
+هرميًا:
+\[
+D_1y = \ln y
+\Rightarrow
+D_2y = 1
+\]
+</div>
+
+<div class="note">
+المعادلة غير الخطية
+تصبح <strong>ثابتة عند مستوى أعلى</strong>.
+</div>
+</div>
+
+<div class="section">
+<h2>23.7 مثال 5 — معادلة مستحيلة تقليديًا</h2>
+
+<div class="ex">
+\[
+\frac{dy}{dx}=y\ln y\ln\ln y
+\]
+</div>
+
+<div class="ex">
+هرميًا:
+\[
+D_2y = \ln\ln y
+\Rightarrow
+D_3y = 1
+\]
+</div>
+
+<div class="note">
+الصعود في الهرم يحوّل التعقيد
+إلى خطية.
+</div>
+</div>
+
+<div class="section">
+<h2>23.8 أمثلة عددية مقارنة (6–10)</h2>
+
+<div class="ex">
+<h3>مثال 6</h3>
+\[
+\frac{dy}{dx}=y^2
+\Rightarrow
+D_1y = y
+\Rightarrow
+D_2y = 1
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 7</h3>
+\[
+\frac{dy}{dx}=y(\ln y)^2
+\Rightarrow
+D_2y = 2
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 8</h3>
+\[
+\frac{dy}{dx}=y e^x
+\Rightarrow
+D_1y = e^x
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 9</h3>
+\[
+\frac{dy}{dx}=x y\ln y
+\Rightarrow
+D_2y = x
+\]
+</div>
+
+<div class="ex">
+<h3>مثال 10</h3>
+\[
+\frac{dy}{dx}=y(\ln y)(\ln\ln y)
+\Rightarrow
+D_3y = 1
+\]
+</div>
+
+</div>
+
+<div class="section">
+<h2>23.9 التفسير البنيوي</h2>
+<ul>
+<li>كل صعود في الهرم يزيل طبقة من اللاخطية.</li>
+<li>الثوابت تظهر كقوانين عميقة.</li>
+<li>الهرم يكشف المستوى الطبيعي للوصف.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>23.10 خلاصة الفصل</h2>
+<ul>
+<li>إعادة الصياغة الهرمية تبسّط المعادلات جذريًا.</li>
+<li>معادلات مستحيلة تصبح خطية أو ثابتة.</li>
+<li>هذا يفتح الباب لنظرية جديدة كاملة.</li>
+</ul>
+
+<div class="note">
+الفصل القادم سيعرض
+المعادلات التفاضلية الهرمية بصيغتها العامة.
+</div>
+</div>
+
+<footer>© كتاب الحساب الهرمي — الفصل 23</footer>
+</div>
+</body>
+</html>
 
