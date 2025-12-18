@@ -1,248 +1,129 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Chapter 9 — Properties of the Relative Derivative D₁ | Hierarchical Calculus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Chapter 9 — Properties and Rules of the Relative Derivative D₁</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] }
-    };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <style>
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
-    .wrap{max-width:980px;margin:auto;padding:32px 16px 80px;}
-    header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:24px;}
-    h1{margin:0;font-size:1.9rem;}
-    .subtitle{margin-top:8px;color:#b8c4e6;}
-    h2{margin-top:32px;font-size:1.35rem;border-left:4px solid #4cc9f0;padding-left:10px;}
-    h3{margin-top:18px;font-size:1.1rem;color:#cfe0ff;}
-    .section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:20px;margin:20px 0;}
-    .note{border:1px dashed rgba(76,201,240,.45);background:rgba(76,201,240,.08);border-radius:16px;padding:14px;color:#cbd6ff;margin-top:12px;}
-    .def{border:1px solid rgba(124,58,237,.35);background:rgba(124,58,237,.08);border-radius:16px;padding:14px;color:#d7d1ff;margin-top:12px;}
-    .ex{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);border-radius:16px;padding:14px;margin-top:12px;}
-    .ex strong{color:#cfe0ff;}
-    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
-    .nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-    .btn{display:inline-block;padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);color:#eaf0ff;}
-    .btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
-    .btn:hover{opacity:.9;text-decoration:none;}
-    footer{margin-top:48px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;color:#b8c4e6;font-size:.95rem;}
-    mjx-container{color:#eaf0ff!important;}
-    a{color:#4cc9f0;text-decoration:none;}
-    a:hover{text-decoration:underline;}
-  </style>
+<style>
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:2;}
+.wrap{max-width:1250px;margin:auto;padding:32px 16px 80px;}
+header{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:22px;}
+h1{margin:0;font-size:1.95rem;}
+.subtitle{margin-top:8px;color:#b8c4e6;}
+h2{margin-top:30px;font-size:1.4rem;border-left:4px solid #4cc9f0;padding-left:10px;}
+h3{margin-top:18px;color:#cfe0ff;}
+.section{background:#0f1b2d;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:18px;margin:16px 0;}
+.def{border:1px solid rgba(124,58,237,.45);background:rgba(124,58,237,.09);border-radius:16px;padding:14px;margin-top:12px;}
+.ex{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-top:12px;}
+.note{border:1px dashed rgba(76,201,240,.55);background:rgba(76,201,240,.09);border-radius:16px;padding:14px;margin-top:12px;color:#cbd6ff;}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.btn{padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.15);color:#eaf0ff;}
+.btn.primary{background:linear-gradient(90deg,#4cc9f0,#7c3aed);border:none;}
+footer{margin-top:44px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;color:#b8c4e6;}
+mjx-container{color:#eaf0ff!important;}
+ul{padding-left:22px;}
+li{margin:6px 0;}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;}
+</style>
 </head>
 
 <body>
 <div class="wrap">
+<header>
+<h1>Chapter 9 — Properties and Rules of the Relative Derivative \(D_1\)</h1>
+<div class="subtitle">Operational rules, products, quotients, composition, and \(D_1\)-equations</div>
 
-  <header>
-    <h1>Chapter 9 — Properties of the Relative Derivative \(D_1\)</h1>
-    <div class="subtitle">Book: Hierarchical Calculus</div>
+<div class="nav">
+<a class="btn primary" href="./index.html">📘 Book Index</a>
+<a class="btn" href="./chapter-8.html">⟵ Previous</a>
+<a class="btn" href="./chapter-10.html">Next ⟶</a>
+</div>
+</header>
 
-    <div class="nav">
-      <a href="./index.html" class="btn primary">📘 Book Index</a>
-      <a href="./chapter-08.html" class="btn">⟵ Previous</a>
-      <a href="./chapter-10.html" class="btn">Next ⟶</a>
-    </div>
-  </header>
+<div class="section">
+<h2>9.1 Logarithmic Linearity</h2>
 
-  <div class="section">
-    <h2>9.1 Reminder: Definition and the Bridge to \(D_0\)</h2>
-    <p>
-      The relative derivative \(D_1\) measures the relative change of \(y\) against the
-      relative change of \(x\). By definition:
-    </p>
-    <div class="def">
-      \[
-        D_1 y \;=\; \frac{dy/y}{dx/x}
-        \;=\; \frac{x}{y}\,\frac{dy}{dx}
-        \;=\; \frac{x}{y}\,D_0 y.
-      \]
-    </div>
-    <p>
-      Most properties in this chapter follow directly from this relation.
-    </p>
-  </div>
+<div class="def">
+\[
+D_1(y_1y_2)=D_1y_1+D_1y_2,
+\qquad
+D_1\!\left(\frac{y_1}{y_2}\right)=D_1y_1-D_1y_2.
+\]
+</div>
+</div>
 
-  <div class="section">
-    <h2>9.2 Invariance under Multiplication by a Constant</h2>
-    <p>
-      Let \(c\neq 0\) and \(\tilde{y}=c\,y\). Then:
-    </p>
-    \[
-      D_1(\tilde{y})=\frac{x}{\tilde{y}}\frac{d\tilde{y}}{dx}
-      =\frac{x}{cy}\cdot c\frac{dy}{dx}
-      =\frac{x}{y}\frac{dy}{dx}=D_1(y).
-    \]
-    <div class="note">
-      Since \(D_1\) measures ratios, scaling \(y\) by a constant does not change \(D_1\).
-    </div>
-  </div>
+<div class="section">
+<h2>9.2 Constants</h2>
 
-  <div class="section">
-    <h2>9.3 Relative Product Rule: \(D_1(uv)=D_1(u)+D_1(v)\)</h2>
-    <p>
-      Let \(y=uv\) with \(u\neq 0\) and \(v\neq 0\). Then:
-    </p>
-    \[
-      D_1(uv)=\frac{x}{uv}\frac{d(uv)}{dx}
-      =\frac{x}{uv}\left(u\frac{dv}{dx}+v\frac{du}{dx}\right)
-      =\frac{x}{v}\frac{dv}{dx}+\frac{x}{u}\frac{du}{dx}.
-    \]
-    \[
-      D_1(uv)=D_1(v)+D_1(u)=D_1(u)+D_1(v).
-    \]
-    <div class="note">
-      This shows a central structural fact: at the relative level, multiplication becomes additive.
-    </div>
-  </div>
+<div class="def">
+For any constant \(C>0\):
+\[
+D_1(C)=0,\qquad D_1(Cy)=D_1y.
+\]
+</div>
+</div>
 
-  <div class="section">
-    <h2>9.4 Relative Quotient Rule</h2>
-    <div class="def">
-      \[
-        D_1\!\left(\frac{u}{v}\right)=D_1(u)-D_1(v)\quad (v\neq 0).
-      \]
-    </div>
-    <p>
-      This follows from the product rule by writing \(u/v=u\cdot v^{-1}\) and using the power rule below.
-    </p>
-  </div>
+<div class="section">
+<h2>9.3 Power Rule</h2>
 
-  <div class="section">
-    <h2>9.5 Relative Power Rule: \(D_1(u^a)=a\,D_1(u)\)</h2>
-    <p>
-      Let \(y=u^a\) with \(u\neq 0\) and constant \(a\). Then:
-    </p>
-    \[
-      D_1(u^a)=\frac{x}{u^a}\frac{d(u^a)}{dx}
-      =\frac{x}{u^a}\left(a\,u^{a-1}\frac{du}{dx}\right)
-      =a\,\frac{x}{u}\frac{du}{dx}
-      =a\,D_1(u).
-    \]
-    <div class="note">
-      In particular, if \(y=x^a\), then \(D_1 y=a\): the exponent is revealed directly.
-    </div>
-  </div>
+<div class="def">
+For any positive function \(y(x)\) and real \(a\):
+\[
+D_1(y^a)=a\,D_1y.
+\]
+</div>
+</div>
 
-  <div class="section">
-    <h2>9.6 Chain Rule in Relative Form</h2>
-    <p>
-      If \(y=f(u)\) and \(u=g(x)\), then:
-    </p>
-    \[
-      D_1 y=\frac{x}{y}\frac{dy}{dx}
-      =\frac{x}{y}\frac{dy}{du}\frac{du}{dx}
-      =\left(\frac{u}{y}\frac{dy}{du}\right)\left(\frac{x}{u}\frac{du}{dx}\right).
-    \]
-    <div class="def">
-      \[
-        D_1^{(x)}(y)=D_1^{(u)}(y)\cdot D_1^{(x)}(u).
-      \]
-    </div>
-  </div>
+<div class="section">
+<h2>9.4 Product and Quotient Rules</h2>
 
-  <div class="section">
-    <h2>9.7 Useful Conversion Formulas: \(D_0 \leftrightarrow D_1\)</h2>
-    <p>
-      From
-      \[
-        D_1 y=\frac{x}{y}D_0 y
-      \]
-      we obtain the inverse relation:
-    </p>
-    <div class="def">
-      \[
-        D_0 y=\frac{y}{x}\,D_1 y.
-      \]
-    </div>
-    <p>
-      These formulas are essential when rewriting equations across levels.
-    </p>
-  </div>
+<div class="def">
+If \(y=u\,v\), then \(D_1y=D_1u+D_1v\).  
+If \(y=u/v\), then \(D_1y=D_1u-D_1v\).
+\]
+</div>
+</div>
 
-  <div class="section">
-    <h2>9.8 Typical Interpretations: Elasticity and Growth</h2>
-    <p>
-      In applications, \(D_1 y\) often plays the role of elasticity:
-      how many percent \(y\) changes when \(x\) changes by one percent.
-    </p>
+<div class="section">
+<h2>9.5 Relative Chain Rule</h2>
 
-    <div class="ex">
-      <strong>Power law:</strong> If \(y=Cx^a\), then
-      \[
-        D_1 y=a,
-      \]
-      a constant elasticity independent of \(x\) and \(C\).
-    </div>
+<div class="def">
+If \(y=f(u)\) and \(u=u(x)\), then:
+\[
+D_1y=\frac{d(\ln y)}{d(\ln u)}\,D_1u.
+\]
+</div>
+</div>
 
-    <div class="ex">
-      <strong>Exponential growth:</strong> If \(y=e^{kx}\), then
-      \[
-        D_1 y=kx,
-      \]
-      meaning the relative response increases linearly with \(x\).
-    </div>
-  </div>
+<div class="section">
+<h2>9.6 From \(D_1\)-Equations to Classical ODEs</h2>
 
-  <div class="section">
-    <h2>9.9 Additional Worked Examples</h2>
+<div class="def">
+\[
+D_1y=F(x,y)
+\quad\Longleftrightarrow\quad
+\frac{dy}{dx}=\frac{y}{x}F(x,y).
+\]
+</div>
+</div>
 
-    <div class="ex">
-      <strong>Example 1:</strong> Compute \(D_1\!\left(\dfrac{x^3}{1+x}\right)\) with \(x\neq 0\), \(1+x\neq 0\).<br>
-      <strong>Solution:</strong>
-      \[
-        D_1\!\left(\frac{x^3}{1+x}\right)=D_1(x^3)-D_1(1+x)=3-\frac{x}{1+x}.
-      \]
-    </div>
+<div class="section">
+<h2>9.7 Summary</h2>
+<ul>
+<li>\(D_1\) is linear in logarithmic form.</li>
+<li>Products become sums; quotients become differences.</li>
+<li>Power laws are trivial under \(D_1\).</li>
+<li>\(D_1\)-equations reduce to linear classical equations.</li>
+</ul>
+</div>
 
-    <div class="ex">
-      <strong>Example 2:</strong> If \(y=\sqrt{x}\) (for \(x>0\)), compute \(D_1 y\).<br>
-      <strong>Solution:</strong> Since \(y=x^{1/2}\),
-      \[
-        D_1 y=\frac{1}{2}.
-      \]
-    </div>
-
-    <div class="ex">
-      <strong>Example 3:</strong> If \(y=(x^2+1)^5\) with \(x\neq 0\), compute \(D_1 y\).<br>
-      <strong>Solution:</strong>
-      \[
-        D_1 y = \frac{x}{y}\frac{dy}{dx}
-        = \frac{x}{(x^2+1)^5}\cdot 5(x^2+1)^4\cdot 2x
-        =\frac{10x^2}{x^2+1}.
-      \]
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>9.10 Bridge to \(D_2\)</h2>
-    <p>
-      Once \(D_1\) is established, a natural next step is to measure how
-      the relative structure itself evolves. This motivates a higher level,
-      commonly denoted \(D_2\), developed next.
-    </p>
-    <div class="note">
-      Chapter 10 begins the transition toward deeper (log-structured) measurement and multi-scale behavior.
-    </div>
-  </div>
-
-  <div class="nav" style="margin-top:18px;">
-    <a href="./index.html" class="btn primary">📘 Book Index</a>
-    <a href="./chapter-08.html" class="btn">⟵ Previous</a>
-    <a href="./chapter-10.html" class="btn">Next ⟶</a>
-  </div>
-
-  <footer>
-    © Hierarchical Calculus — Chapter 9
-  </footer>
-
+<footer>© Hierarchical Calculus — Chapter 9</footer>
 </div>
 </body>
 </html>
