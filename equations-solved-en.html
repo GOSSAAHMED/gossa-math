@@ -1,10 +1,113 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hierarchical Equations (Solved) | Hierarchical Calculus</title>
+  <title>Hierarchical Equations — Solved Examples</title>
+  <meta name="description" content="Solved examples of hierarchical equations with explicit rank and degree notation D_r^n." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/equations-solved-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/equations-solved.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/equations-solved-en.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted:rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff;
+      --card:rgba(255,255,255,.05); --border:rgba(255,255,255,.12);
+      --shadow:0 18px 48px rgba(0,0,0,.38); --radius:18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px; padding:20px 18px; border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow:var(--shadow); position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:28px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid var(--border); background:var(--card);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+    }
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+
+    .math{
+      margin-top:8px; padding:10px 12px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.18);
+      overflow:auto; direction:ltr; text-align:left;
+    }
+    .note{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35); background:rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:#ffcc66}
+    ol{margin:8px 0 0 0; padding-left:22px}
+    li{margin:10px 0}
+    footer{
+      margin-top:18px; padding-top:18px; border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
+    }
+  </style>
+
+  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
@@ -12,243 +115,182 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <style>
-    :root{--bg:#0b1220;--card:#101b2f;--text:#e9eef8;--muted:#b7c3da;--accent:#7dd3fc;--border:rgba(255,255,255,.10);}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.85}
-    header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
-    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
-    nav a:hover{border-color:rgba(125,211,252,.55)}
-    main{max-width:1100px;margin:0 auto;padding:0 18px 50px}
-    h1{font-size:30px;margin:14px 0 6px}
-    h2{font-size:22px;margin:26px 0 10px}
-    h3{font-size:18px;margin:18px 0 8px}
-    p{color:var(--muted);margin:8px 0}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin:14px 0}
-    .doi a{color:var(--accent);text-decoration:none}
-    .eq{overflow:auto}
-    .note{border-left:4px solid var(--accent);padding-left:12px}
-    .small{font-size:14px}
-    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
-  </style>
 </head>
 
 <body>
-<header>
-  <nav>
-    <a href="./index.html">Home</a>
-    <a href="./equations-solved.html">AR Solved</a>
-    <a href="./equations-solved-en.html" aria-current="page">EN Solved</a>
-    <a href="./rules-en.html">EN Rules</a>
-    <a href="./integrals-en.html">EN Integrals</a>
-    <a href="./series-en.html">EN Series</a>
-    <a href="./citation.html">Cite</a>
-  </nav>
-
-  <h1>Hierarchical Differential Equations — Fully Solved Examples</h1>
-  <p>Latest archived release of Hierarchical Calculus:
-<strong>v1.1.0</strong> —
-<a href="https://doi.org/10.5281/zenodo.17944425" target="_blank">Zenodo DOI</a>
-</p>
-
-  <p class="small note">
-    This is the <strong>English version</strong> of the original Arabic formulation authored by <strong>Gossa Ahmed (2025)</strong>.
-  </p>
-
-  <div class="card doi">
-  <strong>DOI & Priority</strong>
-
-  <div>
-    Concept DOI:
-    <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank">
-      10.5281/zenodo.17917302
-    </a>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Hierarchical Calculus</strong>
+          <span>Solved Equations — explicit \(D_r^n\)</span>
+        </div>
+      </div>
+      <nav>
+        <a href="./index-en.html">Home</a>
+        <a href="./theory.html">Theory</a>
+        <a href="./equations.html">Equations</a>
+        <a href="./numerics.html">Numerics</a>
+        <a href="./faq-en.html">FAQ</a>
+        <a href="./equations-solved.html">العربية</a>
+      </nav>
+    </div>
   </div>
 
-  <div>
-    Version DOI (v1.1.0):
-    <a href="https://doi.org/10.5281/zenodo.17944425" target="_blank">
-      10.5281/zenodo.17944425
-    </a>
+  <div class="wrap">
+    <header class="hero">
+      <h1>Solved Examples of Hierarchical Equations</h1>
+      <p class="muted">
+        This page presents worked examples of hierarchical equations.
+        <br><b>Notation rule:</b> every derivative is written with its <b>rank</b> and <b>degree</b>: \(\;D_r^n\).
+      </p>
+    </header>
+
+    <!-- Example 1 -->
+    <section class="card">
+      <h2>Example 1: Classical differential equation</h2>
+      <div class="math">
+        \[
+          D_{0}^{1}y(x)=3\,y(x)
+        \]
+      </div>
+      <div class="math">
+        \[
+          y(x)=C\,e^{3x}
+        \]
+      </div>
+    </section>
+
+    <!-- Example 2 -->
+    <section class="card">
+      <h2>Example 2: Relative (rank-1) equation</h2>
+      <div class="math">
+        \[
+          D_{1}^{1}y(x)=k
+        \]
+      </div>
+      <div class="math">
+        \[
+          \frac{d\ln y}{d\ln x}=k
+          \;\Longrightarrow\;
+          y(x)=C\,x^{k}.
+        \]
+      </div>
+    </section>
+
+    <!-- Example 3 -->
+    <section class="card">
+      <h2>Example 3: Logarithmic (rank-2) equation</h2>
+      <div class="math">
+        \[
+          D_{2}^{1}y(x)=A
+        \]
+      </div>
+      <div class="math">
+        \[
+          \frac{d\ln(\ln y)}{d\ln(\ln x)}=A
+          \;\Longrightarrow\;
+          y(x)=\exp\!\big(C\,(\ln x)^{A}\big),
+          \quad x>1.
+        \]
+      </div>
+    </section>
+
+    <!-- Example 4 -->
+    <section class="card">
+      <h2>Example 4: Successive degrees within rank 1</h2>
+      <div class="math">
+        \[
+          D_{1}^{1}y(x)=a
+        \]
+      </div>
+      <div class="math">
+        \[
+          D_{1}^{2}y(x)=D_{1}^{1}\!\big(D_{1}^{1}y\big)=0,
+          \qquad
+          D_{1}^{3}y(x)=0.
+        \]
+      </div>
+    </section>
+
+    <!-- Methodology -->
+    <section class="card">
+      <h2>Methodology for Solving Mixed-Rank Equations</h2>
+      <p class="muted">
+        When an equation mixes several ranks, the key idea is to rewrite it in a single
+        “derivative language”, solve it there, and then return to \(y(x)\).
+      </p>
+      <div class="math">
+        \[
+          D_{1}^{1}y=\frac{x}{y}D_{0}^{1}y
+          \quad\Longleftrightarrow\quad
+          D_{0}^{1}y=\frac{y}{x}D_{1}^{1}y.
+        \]
+      </div>
+      <ol class="muted small">
+        <li>Identify the ranks present.</li>
+        <li>Choose a working rank.</li>
+        <li>Convert the others using bridge relations.</li>
+        <li>Solve and check domains.</li>
+      </ol>
+      <div class="note">
+        <strong>Remark:</strong> power-law models are often simplest at rank 1; multi-scale
+        behavior may suggest rank 2.
+      </div>
+    </section>
+
+    <!-- Example 5A -->
+    <section class="card">
+      <h2>Example 5A: Mixing \(D_{0}^{1}\) and \(D_{1}^{1}\)</h2>
+      <div class="math">
+        \[
+          D_{1}^{1}y(x)+D_{0}^{1}y(x)=x
+        \]
+      </div>
+      <p class="muted small">
+        Converting to a single rank shows the equation is nonlinear without further assumptions.
+        This example illustrates the importance of choosing an appropriate representation.
+      </p>
+    </section>
+
+    <!-- Example 6 -->
+    <section class="card">
+      <h2>Example 6: Higher degree at rank 0</h2>
+      <div class="math">
+        \[
+          D_{0}^{2}y(x)=k^{2}y(x)
+        \]
+      </div>
+      <div class="math">
+        \[
+          y(x)=C_1e^{kx}+C_2e^{-kx}.
+        \]
+      </div>
+    </section>
+
+    <!-- Example 7A -->
+    <section class="card">
+      <h2>Example 7A: Linking rank 1 and rank 2</h2>
+      <div class="math">
+        \[
+          D_{1}^{1}y(x)-D_{2}^{1}y(x)=0
+        \]
+      </div>
+      <div class="math">
+        \[
+          u=\ln x,\; z=\ln y
+          \;\Rightarrow\;
+          \frac{dz}{du}-\frac{d\ln z}{d\ln u}=0
+          \;\Rightarrow\;
+          y(x)=\text{constant}\ \text{or}\ y(x)=x,\; x>1.
+        \]
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Solved Hierarchical Equations (explicit \(D_r^n\))
+    </footer>
   </div>
-
-  <div class="note">
-    Any reuse or extension should cite the Zenodo record and this official website.
-  </div>
-</div>
-
-  </div>
-</header>
-
-<main>
-  <section class="card">
-    <h2>1) The hierarchical lifting principle</h2>
-    <p>
-      Many “hard” classical ODEs become easier when expressed on the correct scale:
-      relative scale (\(D_1\)) or logarithmic scale (\(D_2\)).
-    </p>
-
-    <div class="eq">
-      \[
-      \boxed{
-      D_1 y=\frac{d\ln y}{d\ln x}=\frac{x}{y}\frac{dy}{dx}
-      }\qquad (x>0,\ y>0)
-      \]
-    </div>
-
-    <div class="eq">
-      \[
-      \boxed{
-      D_2 y=\frac{d\ln y}{d\ln\ln x}
-      =\frac{x\ln x}{y}\frac{dy}{dx}
-      }\qquad (x>1,\ y>0)
-      \]
-    </div>
-
-    <div class="note small">
-      <strong>Golden rule:</strong><br/>
-      If \(\displaystyle y'=\frac{y}{x}F(x,y)\), then \(\displaystyle D_1 y=F(x,y)\).<br/>
-      If \(\displaystyle y'=\frac{y}{x\ln x}G(x,y)\), then \(\displaystyle D_2 y=G(x,y)\).
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>2) Six fully solved examples</h2>
-
-    <h3>Example 1 (direct \(D_1\)): \(\;y'=\dfrac{a}{x}y\)</h3>
-    <div class="eq">
-      \[
-      \frac{dy}{dx}=\frac{a}{x}y
-      \Rightarrow
-      \frac{x}{y}\frac{dy}{dx}=a
-      \Rightarrow
-      \boxed{D_1 y=a}
-      \]
-    </div>
-    <div class="eq">
-      \[
-      \frac{d\ln y}{d\ln x}=a
-      \Rightarrow
-      \ln y=a\ln x + C
-      \Rightarrow
-      \boxed{y=C_\times x^a}
-      \]
-    </div>
-
-    <h3>Example 2 (simpler in \(D_1\)): \(\;y'=\dfrac{y}{x}\ln x\)</h3>
-    <div class="eq">\[
-      \frac{dy}{dx}=\frac{y}{x}\ln x \Rightarrow \boxed{D_1 y=\ln x}
-    \]</div>
-    <p class="small">Let \(t=\ln x\). Then \(\dfrac{d\ln y}{dt}=t\).</p>
-    <div class="eq">
-      \[
-      \ln y=\frac{t^2}{2}+C
-      \Rightarrow
-      \boxed{y=C_\times\exp\!\left(\frac{(\ln x)^2}{2}\right)}
-      \]
-    </div>
-
-    <h3>Example 3 (direct \(D_2\)): \(\;y'=\dfrac{a}{x\ln x}y\)</h3>
-    <div class="eq">
-      \[
-      \frac{dy}{dx}=\frac{a}{x\ln x}y
-      \Rightarrow
-      \frac{x\ln x}{y}\frac{dy}{dx}=a
-      \Rightarrow
-      \boxed{D_2 y=a}
-      \]
-    </div>
-    <div class="eq">
-      \[
-      \frac{d\ln y}{d\ln\ln x}=a
-      \Rightarrow
-      \ln y=a\ln\ln x + C
-      \Rightarrow
-      \boxed{y=C_\times(\ln x)^a}
-      \]
-    </div>
-
-    <h3>Example 4 (relative integration): \(\;y'=\dfrac{y}{x}(a+b\ln x)\)</h3>
-    <div class="eq">\[
-      \frac{dy}{dx}=\frac{y}{x}(a+b\ln x)\Rightarrow \boxed{D_1 y=a+b\ln x}
-    \]</div>
-    <p class="small">Let \(t=\ln x\). Then \(\dfrac{d\ln y}{dt}=a+bt\).</p>
-    <div class="eq">
-      \[
-      \ln y=at+\frac{b}{2}t^2 + C
-      \Rightarrow
-      \boxed{
-      y=C_\times\,x^a\,\exp\!\left(\frac{b}{2}(\ln x)^2\right)
-      }
-      \]
-    </div>
-
-    <h3>Example 5 (nonlinear, separable in scale): \(\;y'=\dfrac{1}{x}y^m\)</h3>
-    <div class="eq">
-      \[
-      \frac{dy}{dx}=\frac{1}{x}y^m
-      \Rightarrow
-      \frac{x}{y}\frac{dy}{dx}=y^{m-1}
-      \Rightarrow
-      \boxed{D_1 y=y^{m-1}}
-      \]
-    </div>
-    <p class="small">Using \(d\ln y=\frac{dy}{y}\):</p>
-    <div class="eq">
-      \[
-      \frac{d\ln y}{d\ln x}=y^{m-1}
-      \Rightarrow
-      \frac{dy}{y^m}=d\ln x
-      \Rightarrow
-      \int y^{-m}dy=\int d\ln x
-      \]
-    </div>
-    <div class="eq">
-      \[
-      \frac{y^{1-m}}{1-m}=\ln x + C
-      \Rightarrow
-      \boxed{
-      y(x)=\left((1-m)(\ln x + C)\right)^{\frac{1}{1-m}}
-      }\ (m\neq1,\ x>0)
-      \]
-    </div>
-
-    <h3>Example 6 (natural \(D_2\)): \(\;y'=\dfrac{y}{x\ln x}\ln\ln x\)</h3>
-    <div class="eq">\[
-      \frac{dy}{dx}=\frac{y}{x\ln x}\ln\ln x \Rightarrow \boxed{D_2 y=\ln\ln x}
-    \]</div>
-    <p class="small">Let \(u=\ln\ln x\). Then \(\dfrac{d\ln y}{du}=u\).</p>
-    <div class="eq">
-      \[
-      \ln y=\frac{u^2}{2}+C
-      \Rightarrow
-      \boxed{
-      y=C_\times\exp\!\left(\frac{(\ln\ln x)^2}{2}\right)
-      }
-      \]
-    </div>
-
-    <div class="note small">
-      <strong>Takeaway:</strong>
-      If an ODE is naturally written as \(\frac{y}{x}\times(\cdots)\), \(D_1\) is the correct scale.
-      If it is \(\frac{y}{x\ln x}\times(\cdots)\), \(D_2\) is the correct scale.
-      The “difficulty” is often a scale-choice artifact.
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>3) How to cite this page</h2>
-    <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
-      <code>
-        GOSSA AHMED. Hierarchical Calculus — Hierarchical Equations (Solved Examples D1 &amp; D2). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
-      </code>
-    </div>
-  </section>
-</main>
-
-<footer style="max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px">
-  © 2025 — Hierarchical Calculus | Gossa Ahmed — Archived via Zenodo (DOI).
-</footer>
 </body>
 </html>
