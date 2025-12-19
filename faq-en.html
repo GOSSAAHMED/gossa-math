@@ -1,326 +1,315 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>FAQ — Hierarchical Calculus</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FAQ — Hierarchical Calculus</title>
+  <meta name="description" content="Hierarchical Calculus FAQ. Concepts, ranks and degrees of derivatives (D_r^n), domains, limitations, and motivations." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<style>
-:root{
-  --bg1:#0b1220; --bg2:#0f1b2e;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(0,0,0,.22);
-  --b: rgba(255,255,255,.12);
-  --txt:#eaf2ff; --mut:#cfe3ff;
-  --accent:#61d2d2; --accent2:#7aa7ff;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, Arial;
-  background:
-    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--txt);
-}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
-.top{
-  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  padding:14px 16px;border-bottom:1px solid var(--b);
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
-}
-.brand{display:flex;gap:10px;align-items:center}
-.logo{
-  width:34px;height:34px;border-radius:10px;
-  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
-              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
-              rgba(255,255,255,.06);
-  border:1px solid var(--b);
-}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-nav a{
-  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
-  background:rgba(255,255,255,.03);
-}
-h1{margin:22px 0 8px;font-size:30px}
-.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.85}
-.card{
-  background:var(--card);border:1px solid var(--b);border-radius:18px;
-  padding:18px;margin:14px 0;
-}
-.small{font-size:14px;color:var(--mut);line-height:1.95}
-.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
-.tag{
-  display:inline-block;padding:2px 10px;border:1px solid var(--b);
-  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
-}
-.math{
-  background:var(--card2);border:1px solid var(--b);border-radius:14px;
-  padding:12px;margin-top:10px;overflow:auto
-}
-details{
-  border:1px solid var(--b);
-  background:rgba(0,0,0,.18);
-  border-radius:14px;
-  padding:10px 12px;
-  margin:10px 0;
-}
-summary{
-  cursor:pointer;
-  font-weight:900;
-  color:#bfe8ff;
-  list-style:none;
-}
-summary::-webkit-details-marker{display:none}
-.answer{padding-top:10px}
-.callout{
-  border-left:4px solid var(--accent);
-  padding:12px 14px;border-radius:14px;
-  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
-  margin-top:12px;
-}
-ul{margin:10px 0 0 0; padding-left:18px}
-li{margin:7px 0}
-</style>
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/faq-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/faq.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/faq-en.html" />
 
-<script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root{
+      --bg0:#0b1220;
+      --bg1:#0f1b2e;
+      --text:#eaf2ff;
+      --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3;
+      --accent2:#7aa7ff;
+      --warn:#ffcc66;
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+      line-height:1.9;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:28px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px;
+    }
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .math{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+      overflow:auto;
+      direction:ltr;
+      text-align:left;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+    ol{margin:8px 0 0 0; padding-left:22px}
+    li{margin:10px 0}
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-<div class="top">
-  <div class="brand">
-    <div class="logo" aria-hidden="true"></div>
-    <div>
-      <div style="font-weight:900">Hierarchical Calculus</div>
-      <div style="font-size:12px;color:var(--mut)">FAQ</div>
-    </div>
-  </div>
-
-  <nav aria-label="Navigation">
-    <a href="index-en.html">Home</a>
-    <a href="theory-en.html">Theory</a>
-    <a href="equations-en.html">Equations</a>
-    <a href="numerics-en.html">Numerics</a>
-    <a href="glossary-en.html">Glossary</a>
-    <a href="references-en.html">References</a>
-    <a href="faq.html">العربية</a>
-  </nav>
-</div>
-
-<div class="container">
-  <h1>Frequently Asked Questions (FAQ)</h1>
-  <p class="subtitle">
-    This page is for first-time readers: what is Hierarchical Calculus, what does it add, how is it used, and what are its limitations?
-  </p>
-
-  <div class="card">
-    <h2>The idea in two lines</h2>
-    <p class="small">
-      Hierarchical Calculus organizes “languages of change”:
-      <span class="tag">addition</span> (level 0) →
-      <span class="tag">division</span> (level 1) →
-      <span class="tag">log</span> (level 2) →
-      <span class="tag">tetration</span> (level 3) → …
-      so you can choose the level where the law becomes simplest.
-    </p>
-
-    <div class="math">
-      \[
-      D_0 f=\frac{df}{dx},\qquad
-      D_1 f=\frac{d\ln f}{d\ln x},\qquad
-      D_2 f=\frac{d\ln(\ln f)}{d\ln(\ln x)}
-      \]
-    </div>
-
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">Rule of thumb</div>
-      <div class="small">
-        Power-law behavior → level 1 (\(D_1\)) is often the natural coordinate system.  
-        Multi-scale behavior like \(\exp((\ln x)^k)\) → level 2 (\(D_2\)) often yields a much more stable representation.
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Q & A</h2>
-
-    <details open>
-      <summary>1) Is this a replacement for classical calculus?</summary>
-      <div class="answer small">
-        No. It is a <strong>general framework</strong> that includes classical differentiation (level 0) as a special case,
-        and adds higher levels that are sometimes more natural for ratio/log/log-log behaviors.
-      </div>
-    </details>
-
-    <details>
-      <summary>2) What is the difference between \(D_0\) and \(D_1\)?</summary>
-      <div class="answer small">
-        \(D_0\) measures additive change.  
-        \(D_1\) measures relative (scale-invariant) change:
-        <div class="math">
-          \[
-          D_1 f=\frac{d\ln f}{d\ln x}=\frac{x}{f}\frac{df}{dx}
-          \]
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Hierarchical Calculus</strong>
+          <span>FAQ — with explicit rank & degree \(D_r^n\)</span>
         </div>
-        For \(f(x)=x^k\), we get \(D_1 f=k\) constant, i.e., power laws become linear in log coordinates.
       </div>
-    </details>
-<details>
-  <summary>8) Are hierarchical derivatives genuinely new, or just coordinate changes?</summary>
-  <div class="answer small">
-    This is a fundamental question.
-    Formally, some hierarchical derivatives (such as \(D_1\) and \(D_2\))
-    can indeed be interpreted as classical derivatives after an appropriate
-    <strong>change of variables</strong> (e.g. \(u=\ln x\), \(v=\ln(\ln x)\)).
-    <br><br>
-    However, the contribution of Hierarchical Calculus is not the transformation itself, but:
-    <ul>
-      <li>The systematic organization of such transformations into a <strong>hierarchical structure</strong>.</li>
-      <li>The interpretation of each level as a <strong>natural language of change</strong> for a class of phenomena.</li>
-      <li>A practical criterion to select the appropriate level before solving or approximating.</li>
-    </ul>
-    In this sense, Hierarchical Calculus does not replace classical calculus,
-    but <strong>reorganizes its use</strong> to reveal hidden structures.
-  </div>
-</details>
-<details>
-  <summary>9) What is the rigorous definition of \(D_2\) and \(D_3\)? Are they mathematically consistent?</summary>
-  <div class="answer small">
-    Locally, the hierarchical derivative of order \(n\) is defined as:
-    <div class="math">
-      \[
-      D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
-      \]
+
+      <nav aria-label="Navigation">
+        <a href="./index-en.html">Home</a>
+        <a href="./theory.html">Theory</a>
+        <a href="./equations.html">Equations</a>
+        <a href="./numerics.html">Numerics</a>
+        <a href="./glossary.html">Glossary</a>
+        <a href="./references.html">References</a>
+        <a href="./faq.html">العربية</a>
+      </nav>
     </div>
-    where \(\ln^{(n)}\) denotes the \(n\)-fold iterated logarithm.
-    <br><br>
-    This definition:
-    <ul>
-      <li>Relies only on <strong>classical differentiation</strong> and the chain rule.</li>
-      <li>Is valid on explicitly stated domains (e.g. \(x>1\), \(f(x)>1\)).</li>
-      <li>Is fully compatible with real analysis when viewed as differentiation after variable transformation.</li>
-    </ul>
-    The novelty lies not in breaking existing theory, but in <strong>elevating these constructions into a unified framework</strong>
-    for equations and approximations across multiple scales.
-  </div>
-</details>
-<div class="card">
-  <h2>Scope and Limitations of the Theory</h2>
-
-  <p class="small">
-    This section clarifies what Hierarchical Calculus does — and explicitly does <strong>not</strong> — claim,
-    in order to avoid any scientific misunderstanding.
-  </p>
-
-  <div class="callout">
-    <div style="font-weight:900;margin-bottom:6px">What the theory does NOT claim</div>
-    <ul class="small">
-      <li>It does not claim to replace or invalidate classical calculus.</li>
-      <li>It does not introduce derivatives incompatible with standard real analysis.</li>
-      <li>It does not claim that every equation becomes simpler at higher levels.</li>
-      <li>It does not claim validity without explicitly stated domain assumptions.</li>
-    </ul>
   </div>
 
-  <div class="callout" style="margin-top:14px">
-    <div style="font-weight:900;margin-bottom:6px">What the theory claims precisely</div>
-    <ul class="small">
-      <li>Classical differentiation is a <strong>special case</strong> within a broader structure.</li>
-      <li>Some phenomena are more naturally expressed in relative or logarithmic coordinates.</li>
-      <li>Hierarchical lifting may improve <strong>numerical stability</strong> in approximations.</li>
-      <li>A unified framework helps select the most suitable “language of change”.</li>
-    </ul>
-  </div>
+  <div class="wrap">
+    <header class="hero">
+      <h1>Frequently Asked Questions (FAQ)</h1>
+      <p class="muted">
+        This page answers common questions about Hierarchical Calculus.
+        <br>
+        <b>Important:</b> in this website, every derivative is written with both
+        its <b>rank</b> and <b>degree</b>: \(\;D_r^n\).
+      </p>
+    </header>
 
-  <div class="math">
-    \[
-    \text{Hierarchical Calculus} \;\neq\; \text{a replacement for analysis}
-    \quad\text{but}\quad
-    \text{an organizing framework for change}
-    \]
-  </div>
+    <section class="card">
+      <h2>The core idea in two lines</h2>
+      <p class="muted small">
+        Hierarchical Calculus organizes different “languages of change”:
+        additive (differential) → relative → logarithmic → higher levels,
+        by choosing the rank that best matches the phenomenon.
+      </p>
 
-  <p class="small">
-    Hierarchical Calculus should therefore be viewed as a <strong>complementary</strong> conceptual and numerical tool,
-    not as a competing theory to classical analysis.
-  </p>
-</div>
-
-    <details>
-      <summary>3) Why can lifting improve numerical approximations?</summary>
-      <div class="answer small">
-        Because you approximate in a coordinate system where the function is closer to linear and often better conditioned.
-        Instead of approximating \(f\) directly, approximate \(\ln f\) or \(\ln(\ln f)\), then transform back.
-        <ul>
-          <li>See: <a href="numerics-en.html">Numerics</a>.</li>
-        </ul>
+      <div class="math">
+        \[
+          D_0^{1} f=\frac{df}{dx},
+          \qquad
+          D_1^{1} f=\frac{d\ln f}{d\ln x},
+          \qquad
+          D_2^{1} f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+        \]
       </div>
-    </details>
+    </section>
 
-    <details>
-      <summary>4) Are there real physics examples?</summary>
-      <div class="answer small">
-        Yes. Many physical laws are naturally relative.
-        For an ideal gas in an <strong>adiabatic</strong> process: \(P V^\gamma=\text{const}\), hence:
-        <div class="math">
-          \[
-          \frac{d\ln P}{d\ln V}=-\gamma
-          \]
-        </div>
-        which is exactly a level-1 equation.
+    <section class="card">
+      <h2>Questions & Answers</h2>
+
+      <ol>
+        <li>
+          <b>Is Hierarchical Calculus a replacement for classical calculus?</b><br>
+          <span class="muted small">
+            No. Classical calculus (rank \(D_0\)) is a special case.
+            Hierarchical Calculus extends it by adding higher ranks that are better suited
+            to relative or logarithmic scaling.
+          </span>
+        </li>
+
+        <li>
+          <b>What is the intuitive difference between \(D_0^{1}\) and \(D_1^{1}\)?</b><br>
+          <span class="muted small">
+            \(D_0^{1}\) measures additive change, while \(D_1^{1}\) measures relative change:
+          </span>
+          <div class="math">
+            \[
+              D_1^{1} f
+              =\frac{d\ln f}{d\ln x}
+              =\frac{x}{f}\frac{df}{dx}
+              =\frac{x}{f}\,D_0^{1}f.
+            \]
+          </div>
+        </li>
+
+        <li>
+          <b>Are hierarchical derivatives truly new derivatives?</b><br>
+          <span class="muted small">
+            Formally, many hierarchical derivatives can be interpreted
+            as classical derivatives after a suitable change of variables
+            (e.g. \(u=\ln x\), \(v=\ln(\ln x)\)).
+            The novelty lies in organizing these transformations into a unified,
+            rank–degree framework.
+          </span>
+        </li>
+
+        <li>
+          <b>What is the rigorous definition of higher ranks?</b><br>
+          <span class="muted small">
+            The rank-\(n\), degree-1 derivative is defined as:
+          </span>
+          <div class="math">
+            \[
+              D_n^{1} f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}.
+            \]
+          </div>
+        </li>
+
+        <li>
+          <b>Why can higher ranks improve numerical approximation?</b><br>
+          <span class="muted small">
+            Because approximation is performed in a space where the function
+            is closer to linear (e.g. approximating \(\ln f\) or \(\ln(\ln f)\)),
+            which often reduces error amplification for large or rapidly growing values.
+          </span>
+        </li>
+
+        <li>
+          <b>Are there real physical examples?</b><br>
+          <span class="muted small">
+            Yes. Many physical laws are naturally relative.
+            For instance, the adiabatic law \(PV^\gamma=\text{const}\) gives:
+          </span>
+          <div class="math">
+            \[
+              \frac{d\ln P}{d\ln V}=-\gamma
+              \quad\Longleftrightarrow\quad
+              D_1^{1}P(V)=-\gamma.
+            \]
+          </div>
+        </li>
+
+        <li>
+          <b>What are the domain constraints for higher ranks?</b><br>
+          <span class="muted small">
+            Rank \(D_1\) requires \(x>0\) and \(f>0\).
+            Rank \(D_2\) additionally requires \(x>1\) and \(f>1\)
+            so that \(\ln(\ln x)\) and \(\ln(\ln f)\) are defined.
+          </span>
+        </li>
+      </ol>
+
+      <div class="note">
+        <strong>Notation reminder:</strong>
+        If you encounter older texts using \(D_r\) without a degree,
+        it should always be read here as \(D_r^{1}\).
       </div>
-    </details>
+    </section>
 
-    <details>
-      <summary>5) What domain assumptions are needed for \(D_2\) and higher?</summary>
-      <div class="answer small">
-        For \(\ln(\ln x)\) you need \(\ln x>0\) i.e., \(x>1\).
-        For \(\ln(\ln f)\) you typically need \(f>1\) and \(\ln f>0\).
-        <ul>
-          <li>See: <a href="glossary-en.html#domain">Domain assumptions</a>.</li>
-        </ul>
-      </div>
-    </details>
+    <section class="card">
+      <h2>Contact & Citation</h2>
+      <p class="muted small">
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+          10.5281/zenodo.17917302
+        </a>
+        <br>
+        Email: <a href="mailto:ahmedgossa50@gmail.com">ahmedgossa50@gmail.com</a>
+      </p>
+    </section>
 
-    <details>
-      <summary>6) Is priority timestamped formally?</summary>
-      <div class="answer small">
-        Yes via Zenodo and DOI, providing a stable archive and timestamped releases.
-        <ul>
-          <li>See: <a href="references-en.html#cite">Official citation</a>.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>7) Where should a new reader start?</summary>
-      <div class="answer small">
-        Recommended path:
-        <ol style="margin:10px 0 0 0;">
-          <li><a href="theory-en.html">Theory</a></li>
-          <li><a href="equations-en.html">Hierarchical Equations</a></li>
-          <li><a href="numerics-en.html">Numerics</a></li>
-          <li><a href="glossary-en.html">Glossary</a> and <a href="references-en.html">References</a></li>
-        </ol>
-      </div>
-    </details>
-
+    <footer>
+      © 2025 — GOSSA AHMED · FAQ (explicit \(D_r^n\))
+    </footer>
   </div>
-
-  <div class="card">
-    <h2>Citation</h2>
-    <p class="small">
-      DOI (Concept): <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
-    </p>
-  </div>
-
-</div>
 </body>
 </html>
