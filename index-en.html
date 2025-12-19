@@ -1,11 +1,37 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
+  <head>
+  <meta charset="UTF-8">
+  <title>Hierarchical Calculus</title>
+<div class="author-profile">
+ <<div class="author-box">
+  <img src="assets/images/ahmed-gossa.jpg" class="author-photo" alt="Ahmed Gossa">
+  <div class="author-name"></div>
+</div>
+
+  </div>
+</div>
+
+<style>
+.author-photo{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid #4fa3ff;
+  display:block;
+  margin:0 auto 12px auto;
+}
+</style>
+
+</head>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
   <title>Hierarchical Calculus — Official Website (DOI)</title>
-  <meta name="description" content="Hierarchical Calculus: a mathematical framework for multi-layer derivatives and equations. Official DOI via Zenodo." />
+
+  <meta name="description" content="Hierarchical Calculus: a multi-level framework of derivatives and equations. Official DOI via Zenodo." />
   <meta name="author" content="GOSSA AHMED" />
 
   <style>
@@ -13,19 +39,16 @@
       --bg0:#0b1220;
       --bg1:#0f1b2e;
       --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.08);
       --border: rgba(255,255,255,.14);
       --text:#eaf2ff;
       --muted: rgba(234,242,255,.72);
       --accent:#39d3c3;
       --accent2:#7aa7ff;
-      --warn:#ffcc66;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Tahoma", sans-serif;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -37,10 +60,8 @@
         linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
     }
-
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-
     .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 60px}
 
     .topbar{
@@ -53,24 +74,17 @@
       max-width:1100px; margin:0 auto; padding:10px 18px;
       display:flex; align-items:center; gap:12px; justify-content:space-between;
     }
-
-    .brand{
-      display:flex; align-items:center; gap:10px; min-width:220px;
-    }
+    .brand{display:flex; align-items:center; gap:10px; min-width:220px}
     .logo{
       width:36px; height:36px; border-radius:10px;
       background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
       box-shadow: 0 12px 22px rgba(0,0,0,.28);
     }
-    .brand .title{
-      display:flex; flex-direction:column; line-height:1.15;
-    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px; letter-spacing:.2px}
     .brand .title span{font-size:12px; color:var(--muted)}
 
-    nav{
-      display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
-    }
+    nav{display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
     nav a{
       padding:8px 10px;
       border: 1px solid rgba(255,255,255,.10);
@@ -82,9 +96,7 @@
     }
     nav a:hover{background: rgba(255,255,255,.07)}
 
-    .actions{
-      display:flex; gap:10px; align-items:center; justify-content:flex-end; min-width:220px;
-    }
+    .actions{display:flex; gap:10px; align-items:center; justify-content:flex-end; min-width:220px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding:9px 12px;
@@ -120,50 +132,8 @@
       pointer-events:none;
     }
     header.hero > *{position:relative}
-
-    .hero-top{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-
-    .author-profile{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-top: 6px;
-    }
-    .author-photo{
-      width:84px;
-      height:84px;
-      object-fit:cover;
-      border-radius:50%;
-      border:3px solid #4db6ff;
-      box-shadow:0 10px 30px rgba(0,0,0,.45);
-      display:block;
-    }
-    .author-name{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-    .author-name strong{font-size:14px}
-    .author-name span{font-size:12px; color:var(--muted)}
-
-    .hero h1{
-      margin:0 0 8px 0;
-      font-size: 34px;
-      letter-spacing:.3px;
-    }
-    .hero p{
-      margin:8px 0 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.8;
-      max-width: 900px;
-    }
+    .hero h1{margin:0 0 8px 0; font-size: 34px; letter-spacing:.3px}
+    .hero p{margin:8px 0 0 0; color: var(--muted); font-size: 15px; line-height: 1.8; max-width: 900px}
 
     .grid{
       display:grid;
@@ -248,7 +218,6 @@
       border-radius: 12px;
       padding: 10px 12px;
       overflow:auto;
-      direction:ltr;
       text-align:left;
     }
 
@@ -261,7 +230,6 @@
       font-family: var(--mono);
       font-size: 12.5px;
       white-space: pre-wrap;
-      direction:ltr;
       text-align:left;
     }
 
@@ -310,30 +278,38 @@
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
           <strong>Hierarchical Calculus</strong>
-          <span>Official Website + DOI (Zenodo)</span>
+          <span>Official website + DOI (Zenodo)</span>
         </div>
       </div>
 
       <nav aria-label="Navigation">
-        <a href="#overview">Overview</a>
-        <a href="#core">Core Definitions</a>
-        <a href="#equations">Hierarchical Equations</a>
-        <a href="./series.html">Hierarchical Series</a>
-        <a href="./rules.html">Derivative Rules</a>
-        <a href="./integrals.html">Hierarchical Integrals</a>
-        <a href="./equations-solved.html">Solved Examples</a>
-        <a href="./hierarchical-derivatives-relations.html">Relations</a>
-        <a href="./foundations-2011-2012.html" class="book-btn">📄 Foundational Works (2011–2012)</a>
-        <a href="./book/" class="book-btn">📘 Book</a>
-        <a href="#cite">Cite</a>
-        <a href="faq.html">FAQ</a>
-        <a href="physics.html">Physics Applications</a>
-        <a href="paper/paper-ar.html">Paper (Arabic)</a>
-        <a href="#links">Reference Pages</a>
-      </nav>
+  <!-- === Overview & Core === -->
+  <a href="#overview">Overview</a>
+  <a href="#core">Core Definitions</a>
+
+  <!-- === Hierarchical Calculus: Core Pages (EN) === -->
+  <a href="series-en.html">Hierarchical Series</a>
+  <a href="rules-en.html">Derivation Rules (D1 → Dn)</a>
+  <a href="integrals-en.html">Hierarchical Integrals</a>
+  <a href="equations-solved-en.html">Solved Hierarchical Equations</a>
+<a href="./hierarchical-derivatives-relations-en.html">Derivatives Relationships</a>
+  <!-- === Existing Sections === -->
+  <a href="#equations">Hierarchical Equations</a>
+        <a href="./foundations-2011-2012.html">Foundations (2011–2012)</a>
+      <a href="./book-en/" class="book-btn">📘 Book (English)</a>  
+  <a href="#cite">Cite</a>
+  <a href="faq-en.html">FAQ</a>
+  <a href="physics-en.html">Physics</a>
+
+  <!-- === Papers & References === -->
+  <a href="paper/paper-ar.html">Arabic Paper</a>
+  <a href="#links">Reference Pages</a>
+  <a href="paper/paper.html">Paper</a>
+</nav>
+
 
       <div class="actions">
-        <a class="btn" href="index.html" title="Arabic version">العربية</a>
+        <a class="btn" href="index.html" title="النسخة العربية">العربية</a>
         <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
       </div>
     </div>
@@ -341,37 +317,22 @@
 
   <div class="wrap">
     <header class="hero" id="overview">
-      <div class="hero-top">
-        <div>
-          <h1>Hierarchical Calculus</h1>
-          <p>
-            A mathematical framework for multi-layer derivatives and equations:
-            from the differential layer <span class="muted">(layer 0)</span>
-            to the relative layer <span class="muted">(layer 1)</span>,
-            the logarithmic layer <span class="muted">(layer 2)</span>,
-            the tetrational layer <span class="muted">(layer 3)</span>,
-            and up to the general hierarchical derivative <span class="muted">(layer n)</span>.
-            This website serves as a technical reference for officially archived releases via Zenodo.
-          </p>
-        </div>
-
-        <div class="author-profile" aria-label="Author profile">
-          <img src="assets/images/ahmed-gossa.jpg" class="author-photo" alt="Ahmed Gossa">
-          <div class="author-name">
-            <strong>GOSSA AHMED</strong>
-            <span>Independent Researcher — Hierarchical Calculus</span>
-          </div>
-        </div>
-      </div>
+      <h1>Hierarchical Calculus</h1>
+      <p>
+        A mathematical framework introducing multi-level derivatives and equations:
+        differential (level 0), relative (level 1), logarithmic (level 2), tetrational (level 3),
+        and the general hierarchical derivative (level n). This website serves as a technical
+        reference for the officially archived releases on Zenodo.
+      </p>
 
       <div class="doi-box">
-        <div><strong>DOI (Concept — main reference):</strong>
+        <div><strong>Concept DOI (main reference):</strong>
           <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
             https://doi.org/10.5281/zenodo.17917302
           </a>
         </div>
         <div class="small">
-          <strong>DOI (v1.0.0):</strong>
+          <strong>Version DOI (v1.0.0):</strong>
           <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
           <span class="muted">— website release v1.0.0</span>
         </div>
@@ -390,113 +351,88 @@
     </header>
 
     <div class="grid">
-      <!-- Core definitions (updated) -->
       <section class="card" id="core">
         <h2><span class="bar"></span>Core Definitions</h2>
-
         <p class="muted small">
-          We denote by \(D_0\) the differential derivative (layer 0), and by \(D_1\) the relative derivative (layer 1).
-          The generalization to layer \(n\) is written using iterated logarithms.
+          We denote \(D_0\) as the level-0 (differential) derivative and \(D_1\) as the level-1 (relative) derivative.
+          The hierarchy is expressed with iterated logarithms.
         </p>
 
         <div class="block">
-          <div class="label">Order and Degree <span class="tag">Notation</span></div>
-
+          <div class="label">Definition <span class="tag">General</span></div>
           <p class="muted small" style="margin:0">
-            The hierarchical derivative is written with two independent indices:
+            The level-\(n\) hierarchical derivative (domain conditions apply):
           </p>
-
           <div class="math-box">
             \[
-              D_n^{(k)} f(x)
+              D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
             \]
           </div>
-
           <p class="muted small" style="margin:8px 0 0 0">
-            Here, \(n\) is the <strong>order</strong> (the measurement layer), and \(k\) is the <strong>degree</strong>
-            (the analysis level within the hierarchy), with \(k=1,2,3,\dots\).
+            where \(\ln^{(n)}\) denotes the iterated logarithm (e.g., \(\ln^{(3)}(x)=\ln(\ln(\ln x))\)).
           </p>
         </div>
 
         <div class="block">
-          <div class="label">Definition <span class="tag">Definition</span></div>
-          <p class="muted small" style="margin:0">
-            The hierarchical derivative of order \(n\) at the direct degree \(k=1\) is defined (under domain conditions) by:
-          </p>
+          <div class="label">Special Levels <span class="tag">D₀–D₃</span></div>
 
           <div class="math-box">
             \[
-              D_n^{(1)} f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
-            \]
-          </div>
-
-          <p class="muted small" style="margin:8px 0 0 0">
-            where \(\ln^{(n)}\) denotes the \(n\)-times iterated logarithm
-            (e.g., \(\ln^{(3)}(x)=\ln(\ln(\ln x))\)).
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="label">Special Layers <span class="tag">Levels</span></div>
-
-          <div class="math-box">
-            \[
-              D_0^{(1)} f(x)=\frac{df(x)}{dx}
+              D_0 f(x)=\frac{df(x)}{dx}
             \]
           </div>
 
           <div class="math-box">
             \[
-              D_1^{(1)} f(x)=\frac{d\ln f(x)}{d\ln x}
-              =\frac{x}{f(x)}\,\frac{df(x)}{dx}
+              D_1 f(x)=\frac{d\ln f(x)}{d\ln x}
             \]
           </div>
 
           <div class="math-box">
             \[
-              D_2^{(1)} f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+              D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
             \]
           </div>
 
           <div class="math-box">
             \[
-              D_3^{(1)} f(x)=\frac{d\ln^{(3)} f(x)}{d\ln^{(3)} x}
+              D_3 f(x)=\frac{d\ln^{(3)} f(x)}{d\ln^{(3)} x}
             \]
           </div>
         </div>
       </section>
 
-      <!-- Quick links -->
       <aside class="card">
         <h2><span class="bar"></span>Quick Links</h2>
+
         <div class="quicklinks">
           <div class="linkcard">
             <strong>Zenodo Record</strong>
-            <span>Archived source for release v1.0.0 and its files.</span><br>
+            <span>Archived record for v1.0.0 and files.</span><br>
             <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">Open record</a>
           </div>
           <div class="linkcard">
             <strong>GitHub Releases</strong>
-            <span>Releases and future updates.</span><br>
+            <span>All versions and future updates.</span><br>
             <a href="https://github.com/GOSSAAHMED/gossa-math/releases" target="_blank" rel="noopener">Open releases</a>
           </div>
           <div class="linkcard">
             <strong>Downloads</strong>
-            <span>ZIP / PDF (later) + citation links.</span><br>
+            <span>ZIP / PDF (later) + citation.</span><br>
             <a href="#links">Go to reference pages</a>
           </div>
           <div class="linkcard">
             <strong>Contact</strong>
-            <span>For scientific collaboration or questions.</span><br>
-            <a href="mailto:ahmedgossa50@gmail.com">Send email</a>
+            <span>Scientific collaboration & questions.</span><br>
+            <a href="mailto:ahmedgossa50@gmail.com">Email</a>
           </div>
         </div>
 
         <div class="block" style="margin-top:12px">
-          <div class="label">Academic Note <span class="tag">Note</span></div>
+          <div class="label">Academic Note <span class="tag">DOI</span></div>
           <p class="muted small" style="margin:0; line-height:1.8">
-            For general citation of the project, use the <strong>Concept DOI</strong>.
-            For results tied to the current release, cite the <strong>Version DOI</strong>.
+            For general citation, use the <strong>Concept DOI</strong>.
+            For a specific release (e.g., v1.0.0), cite the <strong>Version DOI</strong>.
           </p>
         </div>
       </aside>
@@ -505,7 +441,7 @@
     <section class="card" id="equations" style="margin-top:16px">
       <h2><span class="bar"></span>Hierarchical Equations</h2>
       <p class="muted small">
-        Hierarchical equations generalize differential equations using derivatives from different layers. The general form:
+        Hierarchical equations generalize differential equations by using derivatives of level \(n\). General form:
       </p>
 
       <div class="math-box">
@@ -515,9 +451,9 @@
       </div>
 
       <div class="block">
-        <div class="label">Example <span class="tag">Example</span></div>
+        <div class="label">Example <span class="tag">Sketch</span></div>
         <p class="muted small" style="margin:0">
-          An illustrative transformation example:
+          A guiding example of a blow-up type equation:
         </p>
         <div class="math-box">
           \[
@@ -525,20 +461,19 @@
           \]
         </div>
         <p class="muted small" style="margin:8px 0 0 0">
-          Using a suitable hierarchical transform, it may be written in a simpler form at a higher layer
-          (details are shown on the equations page).
+          With an appropriate hierarchical transformation, one may obtain a simpler expression in a higher level (details in the equations page).
         </p>
       </div>
     </section>
 
     <section class="card" id="cite" style="margin-top:16px">
-      <h2><span class="bar"></span>How to Cite</h2>
+      <h2><span class="bar"></span>Citation</h2>
       <p class="muted small">
-        Copy-ready citation text for papers, theses, and articles.
+        Copy/paste-ready references for papers and reports.
       </p>
 
       <div class="block">
-        <div class="label">Text <span class="tag">Text</span></div>
+        <div class="label">Text Citation <span class="tag">Text</span></div>
         <div class="cite-block">GOSSA AHMED. Hierarchical Calculus — Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).</div>
       </div>
 
@@ -557,34 +492,34 @@
     <section class="card" id="links" style="margin-top:16px">
       <h2><span class="bar"></span>Reference Pages (to be added)</h2>
       <p class="muted small">
-        These links are prepared to split the content into a full academic reference. You can create these pages later using the same template.
+        These links are prepared to split the content into a complete academic reference.
       </p>
 
       <div class="quicklinks">
         <div class="linkcard">
           <strong>Theory</strong>
           <span>Definitions, axioms, theorems, properties.</span><br>
-          <a href="theory.html">theory.html</a>
+          <a href="theory-en.html">theory-en.html</a>
         </div>
         <div class="linkcard">
           <strong>Equations</strong>
-          <span>Hierarchical equations + transforms + solutions.</span><br>
-          <a href="equations.html">equations.html</a>
+          <span>Hierarchical equations + transformations + solutions.</span><br>
+          <a href="equations-en.html">equations-en.html</a>
         </div>
         <div class="linkcard">
           <strong>Numerics</strong>
-          <span>Numerical methods + error comparisons.</span><br>
-          <a href="numerics.html">numerics.html</a>
+          <span>Numerical examples + error comparisons.</span><br>
+          <a href="numerics-en.html">numerics-en.html</a>
         </div>
         <div class="linkcard">
           <strong>References</strong>
-          <span>Bibliography + documentation + citations.</span><br>
-          <a href="references.html">references.html</a>
+          <span>Bibliography + citation formats.</span><br>
+          <a href="references-en.html">references-en.html</a>
         </div>
         <div class="linkcard">
           <strong>Downloads</strong>
-          <span>PDF/ZIP + releases + DOI.</span><br>
-          <a href="download.html">download.html</a>
+          <span>PDF/ZIP + versions + DOI.</span><br>
+          <a href="download-en.html">download-en.html</a>
         </div>
         <div class="linkcard">
           <strong>Arabic Pages</strong>
@@ -595,12 +530,10 @@
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Concept DOI:
-      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      © 2025 — GOSSA AHMED · Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
     </footer>
   </div>
 </body>
 </html>
-
 
 
