@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main pages -->
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/index-en.html</loc>
+  </url>
+
+  <!-- Core content (Arabic) -->
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/series.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/rules.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/integrals.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/equations.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/equations-solved.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/foundations-2011-2012.html</loc>
+  </url>
+
+  <!-- English landing / planned pages -->
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/foundations-2011-2012-en.html</loc>
+  </url>
+
+  <!-- Support & reference -->
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/faq.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/physics.html</loc>
+  </url>
+
+  <!-- Papers -->
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/paper/paper-ar.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/paper/paper-en.html</loc>
+  </url>
+
+</urlset>
