@@ -364,6 +364,105 @@
           هذه الشبكة تساعد في كتابة أي قانون اشتقاق أو متسلسلة بدقة: نثبت الرتبة ونرفع الدرجة عند التتالي.
         </p>
       </div>
+<div class="block">
+  <div class="label">2.5 علاقات بين الدرجات داخل نفس الرتبة (رفع الدرجة كعملية تكرار)</div>
+
+  <p class="muted small" style="margin:0">
+    داخل نفس الرتبة، رفع الدرجة يعني تكرار الاشتقاق بالنسبة للمتغير الهرمي الموافق لتلك الرتبة.
+    عمليًا نستعمل مؤثرات تفاضلية مساعدة تجعل الصيغ قابلة للتطبيق مباشرة.
+  </p>
+
+  <div class="math">
+    \[
+      \text{للرتبة } D_1:\quad \delta_1:=\frac{d}{d\ln x}=x\frac{d}{dx}.
+      \qquad
+      \text{للرتبة } D_2:\quad \delta_2:=\frac{d}{d\ln(\ln x)}=x\ln(x)\frac{d}{dx}.
+    \]
+  </div>
+
+  <p class="muted small" style="margin:10px 0 0 0">
+    نميّز بين سلسلتين (وهذا مهم لأن صفحات المتسلسلات استعملت السلسلة الثانية):
+  </p>
+
+  <ul class="muted small">
+    <li>
+      <b>(أ) درجات على \(f\) نفسه:</b>  \(D_r^n f = D_r^1(D_r^{n-1}f)\)  (تعريف تتالي مباشر).
+    </li>
+    <li>
+      <b>(ب) درجات على \(\ln^{(r)}(f)\):</b> وهي الأكثر عملية في بناء المتسلسلات الضَّربية/الأسّية:
+      \(\;A_n^{(r)} := (D_r^n\,\ln^{(r)} f)\).
+    </li>
+  </ul>
+
+  <div class="math">
+    \[
+      \boxed{
+        A_{1}^{(1)}(x)=\big(D_{1}^{1}\ln f\big)(x)=\delta_1(\ln f)
+        =\frac{x}{f(x)}\,\frac{df}{dx}
+      }
+    \]
+  </div>
+
+  <div class="math">
+    \[
+      \boxed{
+        A_{n+1}^{(1)}(x)=\big(D_{1}^{n+1}\ln f\big)(x)=\delta_1\!\left(A_{n}^{(1)}(x)\right)
+        =x\frac{d}{dx}A_{n}^{(1)}(x)
+      }
+    \]
+  </div>
+
+  <p class="muted small" style="margin:10px 0 0 0">
+    أمثلة صريحة لأول الدرجات داخل الرتبة \(D_1\):
+  </p>
+
+  <div class="math">
+    \[
+      \boxed{
+        \big(D_{1}^{2}\ln f\big)(x)
+        =x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)
+      }
+    \]
+  </div>
+
+  <div class="math">
+    \[
+      \boxed{
+        \big(D_{1}^{3}\ln f\big)(x)
+        =x\frac{d}{dx}\!\left[x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)\right]
+      }
+    \]
+  </div>
+
+  <hr style="border:0;border-top:1px solid rgba(255,255,255,.10); margin:14px 0">
+
+  <p class="muted small" style="margin:0">
+    وبالمثل للرتبة \(D_2\) (حيث \(\ln^{(2)}f=\ln(\ln f)\)):
+  </p>
+
+  <div class="math">
+    \[
+      \boxed{
+        A_{1}^{(2)}(x)=\big(D_{2}^{1}\ln^{(2)} f\big)(x)=\delta_2\!\big(\ln(\ln f)\big)
+      }
+    \]
+  </div>
+
+  <div class="math">
+    \[
+      \boxed{
+        A_{n+1}^{(2)}(x)=\big(D_{2}^{n+1}\ln^{(2)} f\big)(x)=\delta_2\!\left(A_{n}^{(2)}(x)\right)
+        =x\ln(x)\frac{d}{dx}A_{n}^{(2)}(x)
+      }
+    \]
+  </div>
+
+  <div class="note">
+    <strong>لماذا هذه الصيغ مهمة؟</strong>
+    لأنها تعطي طريقة حسابية مباشرة لرفع الدرجة داخل نفس الرتبة (خصوصًا \(D_1\) و\(D_2\))،
+    وهي بالضبط المعاملات التي تظهر في المتسلسلات الضَّربية/الأسّية في صفحة المتسلسلات.
+  </div>
+</div>
 
       <div class="note">
         <strong>إشارة تطبيقية:</strong>
