@@ -364,6 +364,105 @@
           This grid ensures every formula is written precisely: fix the rank, then increase the degree for successive derivatives.
         </p>
       </div>
+<div class="block">
+  <div class="label">2.5 Degree-to-degree relations within the same rank (raising degree by repetition)</div>
+
+  <p class="muted small" style="margin:0">
+    Within a fixed rank, increasing the degree means repeating differentiation with respect to the corresponding hierarchical variable.
+    In practice, we use auxiliary differential operators to get explicit, computable formulas.
+  </p>
+
+  <div class="math">
+    \[
+      \text{Rank } D_1:\quad \delta_1:=\frac{d}{d\ln x}=x\frac{d}{dx}.
+      \qquad
+      \text{Rank } D_2:\quad \delta_2:=\frac{d}{d\ln(\ln x)}=x\ln(x)\frac{d}{dx}.
+    \]
+  </div>
+
+  <p class="muted small" style="margin:10px 0 0 0">
+    It is important to distinguish two sequences (the Series page uses the second one):
+  </p>
+
+  <ul class="muted small">
+    <li>
+      <b>(A) Degrees applied to \(f\) itself:</b> \(D_r^n f = D_r^1(D_r^{n-1}f)\) (direct successive definition).
+    </li>
+    <li>
+      <b>(B) Degrees applied to \(\ln^{(r)}(f)\):</b> the most practical for multiplicative/exponential series:
+      \(\;A_n^{(r)} := (D_r^n\,\ln^{(r)} f)\).
+    </li>
+  </ul>
+
+  <div class="math">
+    \[
+      \boxed{
+        A_{1}^{(1)}(x)=\big(D_{1}^{1}\ln f\big)(x)=\delta_1(\ln f)
+        =\frac{x}{f(x)}\,\frac{df}{dx}
+      }
+    \]
+  </div>
+
+  <div class="math">
+    \[
+      \boxed{
+        A_{n+1}^{(1)}(x)=\big(D_{1}^{n+1}\ln f\big)(x)=\delta_1\!\left(A_{n}^{(1)}(x)\right)
+        =x\frac{d}{dx}A_{n}^{(1)}(x)
+      }
+    \]
+  </div>
+
+  <p class="muted small" style="margin:10px 0 0 0">
+    Explicit early degrees within rank \(D_1\):
+  </p>
+
+  <div class="math">
+    \[
+      \boxed{
+        \big(D_{1}^{2}\ln f\big)(x)
+        =x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)
+      }
+    \]
+  </div>
+
+  <div class="math">
+    \[
+      \boxed{
+        \big(D_{1}^{3}\ln f\big)(x)
+        =x\frac{d}{dx}\!\left[x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)\right]
+      }
+    \]
+  </div>
+
+  <hr style="border:0;border-top:1px solid rgba(255,255,255,.10); margin:14px 0">
+
+  <p class="muted small" style="margin:0">
+    Similarly for rank \(D_2\) (where \(\ln^{(2)}f=\ln(\ln f)\)):
+  </p>
+
+  <div class="math">
+    \[
+      \boxed{
+        A_{1}^{(2)}(x)=\big(D_{2}^{1}\ln^{(2)} f\big)(x)=\delta_2\!\big(\ln(\ln f)\big)
+      }
+    \]
+  </div>
+
+  <div class="math">
+    \[
+      \boxed{
+        A_{n+1}^{(2)}(x)=\big(D_{2}^{n+1}\ln^{(2)} f\big)(x)=\delta_2\!\left(A_{n}^{(2)}(x)\right)
+        =x\ln(x)\frac{d}{dx}A_{n}^{(2)}(x)
+      }
+    \]
+  </div>
+
+  <div class="note">
+    <strong>Why this matters:</strong>
+    it gives a direct computational recipe for raising the degree inside the same rank (especially \(D_1\) and \(D_2\)),
+    which are exactly the coefficients used in the multiplicative/exponential series on the Series page.
+  </div>
+</div>
 
       <div class="note">
         <strong>Practical remark:</strong>
