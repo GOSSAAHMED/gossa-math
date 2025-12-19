@@ -1,11 +1,192 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hierarchical Series | Hierarchical Calculus</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Series — Differential, Relative, and Logarithmic | Hierarchical Calculus</title>
+  <meta name="description" content="A unified reference page: Differential Taylor series (D0), Relative multiplicative series (D1), and Rank-2 logarithmic exponential series (D2), with approximation use-cases and examples." />
+  <meta name="author" content="GOSSA AHMED" />
 
-  <!-- MathJax (LaTeX) -->
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/series-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/series.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/series-en.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220;
+      --bg1:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text:#eaf2ff;
+      --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3;
+      --accent2:#7aa7ff;
+      --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 60px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1100px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:9px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 13px;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.12);
+    }
+
+    header.hero{
+      margin-top:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:30px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+    }
+    .card h2{
+      margin:0 0 10px 0;
+      font-size: 18px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .bar{
+      width:4px; height:18px; border-radius:99px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      display:inline-block;
+    }
+    .block{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .label{font-weight:800; margin-bottom:8px}
+    .math{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+      overflow:auto;
+      direction:ltr;
+      text-align:left;
+    }
+    code{
+      font-family: var(--mono);
+      background: rgba(0,0,0,.22);
+      padding:2px 6px;
+      border-radius:10px;
+      direction:ltr;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+      line-height:1.9;
+    }
+    .note strong{color:var(--warn)}
+    ul{margin:8px 0 0 0; padding-left:18px}
+    li{margin:6px 0}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px;
+      color: var(--muted);
+      margin: 6px 6px 0 0;
+    }
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
@@ -13,246 +194,290 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <style>
-    :root{
-      --bg:#0b1220; --card:#101b2f; --text:#e9eef8; --muted:#b7c3da;
-      --accent:#7dd3fc; --border:rgba(255,255,255,.10);
-    }
-    body{margin:0;background:var(--bg);color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.85}
-    header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
-    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
-    nav a:hover{border-color:rgba(125,211,252,.55)}
-    main{max-width:1100px;margin:0 auto;padding:0 18px 50px}
-    h1{font-size:30px;margin:14px 0 6px}
-    h2{font-size:22px;margin:26px 0 10px}
-    p{color:var(--muted);margin:8px 0}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 16px;margin:14px 0}
-    .doi{display:flex;flex-direction:column;gap:6px}
-    .doi a{color:var(--accent);text-decoration:none}
-    .eq{overflow:auto}
-    .note{border-left:4px solid var(--accent);padding-left:12px}
-    .small{font-size:14px}
-    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
-    table{width:100%;border-collapse:collapse;margin-top:10px;overflow:hidden;border-radius:14px}
-    th,td{border:1px solid var(--border);padding:10px 10px;text-align:left}
-    th{background:rgba(255,255,255,.05);color:var(--text);font-weight:700}
-    td{color:var(--muted)}
-    .kpi{color:var(--text);font-weight:700}
-    .good{color:#a7f3d0;font-weight:700}
-    .bad{color:#fecaca;font-weight:700}
-  </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="./index.html">Home</a>
-      <a href="./theory.html">Definitions</a>
-      <a href="./series.html">AR Series</a>
-      <a href="./series-en.html" aria-current="page">EN Series</a>
-      <a href="./rules.html">AR Rules</a>
-      <a href="./rules-en.html">EN Rules</a>
-      <a href="./integrals.html">AR Integrals</a>
-      <a href="./integrals-en.html">EN Integrals</a>
-      <a href="./equations-solved.html">AR Solved Equations</a>
-      <a href="./equations-solved-en.html">EN Solved Equations</a>
-      <a href="./citation.html">Cite</a>
-    </nav>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Series (Reference)</strong>
+          <span>D₀ Differential · D₁ Relative (Multiplicative) · D₂ Logarithmic (Exponential)</span>
+        </div>
+      </div>
 
-    <h1>Hierarchical Series</h1>
-    <p>Latest archived release of Hierarchical Calculus:
-<strong>v1.1.0</strong> —
-<a href="https://doi.org/10.5281/zenodo.17944425" target="_blank">Zenodo DOI</a>
-</p>
-
-    <p class="small note">
-      This is the <strong>English version</strong> of the original Arabic formulation authored by <strong>Gossa Ahmed (2025)</strong>.
-    </p>
-
-    <div class="card doi">
-  <strong>DOI & Priority</strong>
-
-  <div>
-    Concept DOI:
-    <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank">
-      10.5281/zenodo.17917302
-    </a>
+      <div class="actions">
+        <a class="btn" href="./index-en.html">Home</a>
+        <a class="btn" href="./series.html">العربية</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
   </div>
 
-  <div>
-    Version DOI (v1.1.0):
-    <a href="https://doi.org/10.5281/zenodo.17944425" target="_blank">
-      10.5281/zenodo.17944425
-    </a>
-  </div>
+  <div class="wrap">
+    <header class="hero">
+      <h1>Series: Differential, Relative, and Logarithmic</h1>
+      <p class="muted" style="margin:0; line-height:1.9">
+        This page unifies three approximation families around a reference point \(x_0\):
+        (1) the classical differential Taylor series (rank \(D_0\)),
+        (2) a relative multiplicative (“product”) Taylor series (rank \(D_1\)),
+        (3) a rank-2 logarithmic exponential series (rank \(D_2\)).
+        We always write derivatives with both <b>rank</b> and <b>degree</b>.
+      </p>
+      <div style="margin-top:10px">
+        <span class="pill">D₀: differential</span>
+        <span class="pill">D₁: relative (product)</span>
+        <span class="pill">D₂: log-rank (exponential)</span>
+        <span class="pill">Function approximation</span>
+      </div>
+    </header>
 
-  <div class="note">
-    Any reuse or extension should cite the Zenodo record and this official website.
-  </div>
-</div>
+    <section class="card" style="margin-top:16px">
+      <h2><span class="bar"></span>Core Concepts</h2>
 
-  </header>
-
-  <main>
-    <section class="card">
-      <h2>1) Additive Taylor Series (order \(n\))</h2>
-      <p>We use the classical differential derivative \(D_0=\dfrac{d}{dx}\).</p>
-
-      <div class="eq">
-        \[
-        \boxed{
-        f(x)\approx\sum_{k=0}^{n}\frac{D_0^{\,k}f(x_0)}{k!}\,(x-x_0)^k
-        }
-        \]
+      <div class="block">
+        <div class="label">Expansion point</div>
+        <p class="muted small" style="margin:0">
+          Choose \(x_0\) inside the domain. Approximation quality depends on the notion of “closeness”:
+          <br>— For \(D_0\): additive closeness via \(x-x_0\).
+          <br>— For \(D_1\): relative closeness via \(x/x_0\).
+          <br>— For \(D_2\): logarithmic closeness via \(\ln x/\ln x_0\) (equivalently \(\ln(\ln x)\)).
+        </p>
       </div>
 
       <div class="note">
-        <strong>Proof idea:</strong>
-        This is the standard Taylor expansion about \(x_0\) using the additive notion of closeness \((x-x_0)\).
+        <strong>Domain note:</strong>
+        The \(D_2\) series typically requires \(x>1\) and \(x_0>1\) so that \(\ln(\ln x)\) is defined.
+        It also uses \(\ln(\ln f)\), hence we usually consider ranges where \(f(x)>1\).
       </div>
     </section>
 
-    <section class="card">
-      <h2>2) Serbi Relative Series (order \(n\)) — powers of \(\frac{x}{x_0}\) only</h2>
-      <p>
-        Define the relative ratio \(r=\frac{x}{x_0}\). The Serbi series is written using
-        <strong>only powers of \(r\)</strong> (no \(\ln\), no \(-1\)).
+    <div class="grid">
+      <!-- D0 -->
+      <section class="card">
+        <h2><span class="bar"></span>1) Differential series — rank \(D_0\)</h2>
+        <p class="muted small">
+          The classical Taylor series built from the standard differential operator. We write rank+degree as \(D_0^n\).
+        </p>
+
+        <div class="block">
+          <div class="label">Formula (Taylor)</div>
+          <div class="math">
+            \[
+              f(x)=\sum_{n=0}^{\infty}\frac{(D_{0}^{n}f)(x_0)}{n!}\,(x-x_0)^{n}.
+            \]
+          </div>
+          <p class="muted small" style="margin:10px 0 0 0">
+            Here \(D_{0}^{0}f=f\), \(D_{0}^{1}f=df/dx\), \(D_{0}^{2}f=d^2f/dx^2\), etc.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="label">When is it strongest?</div>
+          <ul class="muted small">
+            <li>When \(x\) is very close to \(x_0\) in the additive sense (\(x-x_0\)).</li>
+            <li>Excellent local approximations for analytic functions (sin, cos, exp, …).</li>
+            <li>Limited by nearby poles/singularities.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- D1 -->
+      <section class="card">
+        <h2><span class="bar"></span>2) Relative multiplicative series — rank \(D_1\)</h2>
+        <p class="muted small">
+          A “product Taylor”: sum → product and minus → division. Built from successive relative derivatives of degree \(n\) at rank 1: \(D_1^n\).
+        </p>
+
+        <div class="block">
+          <div class="label">Definitions</div>
+          <div class="math">
+            \[
+              t=\frac{x}{x_0},\qquad \Delta=\ln\!\left(\frac{x}{x_0}\right)=\ln t.
+            \]
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Formula (agreed “Form 2”)</div>
+          <div class="math">
+            \[
+              \frac{f(x)}{f(x_0)}
+              =
+              \prod_{n=1}^{\infty}
+              \left(\frac{x}{x_0}\right)^{
+                \frac{\left(D_{1}^{n}\ln f\right)(x_0)}{n!}\;\Delta^{\,n-1}
+              }.
+            \]
+          </div>
+          <p class="muted small" style="margin:10px 0 0 0">
+            where
+            \[
+              \left(D_{1}^{n}\ln f\right)(x_0)
+              =
+              \left.\left(\frac{d}{d\ln x}\right)^{n}\ln f(x)\right|_{x=x_0}.
+            \]
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="label">Why multiplicative?</div>
+          <p class="muted small" style="margin:0">
+            We expand \(\ln f\) with respect to \(\ln x\) (additive), then map back to \(f\) (multiplicative).
+            A negative exponent means division:
+            \[
+              \left(\frac{x}{x_0}\right)^{-a}=\frac{1}{\left(\frac{x}{x_0}\right)^{a}}.
+            \]
+          </p>
+        </div>
+      </section>
+
+      <!-- D2 -->
+      <section class="card">
+        <h2><span class="bar"></span>3) Rank-2 logarithmic exponential series — rank \(D_2\) (Option A)</h2>
+        <p class="muted small">
+          In rank \(D_2\), the effective variable is \(\ln(\ln x)\). We adopt Option A: approximating \(\ln f(x)/\ln f(x_0)\).
+        </p>
+
+        <div class="block">
+          <div class="label">Definitions</div>
+          <div class="math">
+            \[
+              \Delta_2=\ln(\ln x)-\ln(\ln x_0)=\ln\!\left(\frac{\ln x}{\ln x_0}\right),
+              \qquad
+              t_2=\frac{\ln x}{\ln x_0}.
+            \]
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Formula (Option A)</div>
+          <div class="math">
+            \[
+              \frac{\ln f(x)}{\ln f(x_0)}
+              =
+              \prod_{n=1}^{\infty}
+              \left(\frac{\ln x}{\ln x_0}\right)^{
+                \frac{\left(D_{2}^{n}\ln^{(2)} f\right)(x_0)}{n!}\;\Delta_2^{\,n-1}
+              }.
+            \]
+          </div>
+          <p class="muted small" style="margin:10px 0 0 0">
+            where \(\ln^{(2)}f=\ln(\ln f)\), and
+            \[
+              \left(D_{2}^{n}\ln^{(2)} f\right)(x_0)
+              =
+              \left.\left(\frac{d}{d\,\ln(\ln x)}\right)^{n}\ln(\ln f(x))\right|_{x=x_0}.
+            \]
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="label">Interpretation</div>
+          <p class="muted small" style="margin:0">
+            Rank \(D_2\) measures closeness through \(\ln(\ln x)\), hence \(\ln x/\ln x_0\) appears naturally.
+            Negative exponents again correspond to division.
+          </p>
+        </div>
+      </section>
+
+      <!-- Approximation practice -->
+      <section class="card">
+        <h2><span class="bar"></span>How to use these series for approximation</h2>
+
+        <div class="block">
+          <div class="label">Practical recipe</div>
+          <ul class="muted small">
+            <li>Choose \(x_0\) inside your region of interest.</li>
+            <li>Select the closeness scale: additive (\(D_0\)), relative (\(D_1\)), or log-scale (\(D_2\)).</li>
+            <li>Pick a truncation degree \(N\) (e.g., 3 or 4) and use the truncated formula.</li>
+            <li>Reminder: \(D_0^n\) are ordinary derivatives, while \(D_1^n\) and \(D_2^n\) here are successive derivatives of \(\ln f\) and \(\ln(\ln f)\) as defined above.</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          <strong>Quick conclusion rule:</strong>
+          <br>— Power-law behavior (\(x^p\), \(\sqrt{x}\)) → \(D_1\) is typically strongest.
+          <br>— Oscillations (sin/cos) → \(D_0\) is typically strongest locally.
+          <br>— Log-scale behavior → \(D_2\) is typically strongest.
+        </div>
+      </section>
+    </div>
+
+    <!-- 7 examples -->
+    <section class="card" style="margin-top:16px">
+      <h2><span class="bar"></span>Seven familiar functions: which approximation is strongest?</h2>
+      <p class="muted small">
+        The goal is structural reasoning (which series captures the function shape more efficiently).
+        Assume \(x_0>1\) (e.g., \(x_0=10\)) and compare near \(x_0\).
       </p>
 
-      <div class="eq">
-        \[
-        \boxed{
-        \frac{f(x)}{f(x_0)}
-        \approx
-        \sum_{k=0}^{n}\frac{A_k(x_0)}{k!}\left(\frac{x}{x_0}\right)^k
-        }
-        \]
+      <div class="block">
+        <div class="label">1) \(f(x)=x^p\) (power law)</div>
+        <p class="muted small" style="margin:0">
+          <b>Strongest:</b> \(D_1\) (relative multiplicative). Since \(\ln f=p\ln x\), the scale structure is captured very efficiently (often with very few terms).
+          <br><b>When \(D_0\) wins:</b> only for extremely small additive neighborhoods.
+        </p>
       </div>
 
-      <p class="small">Coefficients are normalized to ensure the zeroth term equals \(1\):</p>
+      <div class="block">
+        <div class="label">2) \(f(x)=\sqrt{x}\)</div>
+        <p class="muted small" style="margin:0">
+          <b>Strongest:</b> \(D_1\) — a special case of power law with \(p=\tfrac12\).
+        </p>
+      </div>
 
-      <div class="eq">
-        \[
-        \boxed{
-        A_k(x_0)=\frac{D_1^{\,k}f(x_0)}{f(x_0)}
-        \qquad\text{and}\qquad
-        D_1^{\,0}f=f
-        }
-        \]
+      <div class="block">
+        <div class="label">3) \(f(x)=e^x\)</div>
+        <p class="muted small" style="margin:0">
+          <b>Typically strongest:</b> \(D_1\) for relative changes (e.g., \(x=1.1x_0\)) because growth is well-described via \(\ln f\).
+          <br><b>\(D_0\):</b> excellent in very small additive neighborhoods.
+          <br><b>\(D_2\):</b> may help across broader scales if \(\ln(\ln f)\) is well-defined.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">4) \(f(x)=\ln x\) (for \(x>1\))</div>
+        <p class="muted small" style="margin:0">
+          <b>Strongest:</b> \(D_2\) (Option A), since \(\ln x\) naturally aligns with the \(\ln(\ln x)\) scale.
+          <br><b>Locally:</b> \(D_0\) also works well if \(x-x_0\) is small.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">5) \(f(x)=\dfrac{1}{1-\alpha x}\) (away from the pole)</div>
+        <p class="muted small" style="margin:0">
+          <b>Strongest:</b> \(D_0\) (Taylor), provided \(x_0\) is safely away from the pole \(x=1/\alpha\).
+          Singularities typically control convergence radii in additive expansions.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">6) \(f(x)=\sin x + 2\)</div>
+        <p class="muted small" style="margin:0">
+          <b>Strongest:</b> \(D_0\) locally, since oscillations are best captured additively.
+          <br>\(D_1\) is usually less economical for non-scale-invariant oscillations.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">7) \(f(x)=1+\dfrac{1}{x}\)</div>
+        <p class="muted small" style="margin:0">
+          <b>Often strongest:</b> \(D_1\) for relative changes because the variation is scale-driven and slow.
+          <br>\(D_0\) is also good locally, but may require higher degree for the same accuracy over larger relative changes.
+        </p>
       </div>
 
       <div class="note">
-        <strong>Proof idea:</strong>
-        The series is built on the relative variable \(r=\frac{x}{x_0}\). The normalization by \(f(x_0)\) makes the expansion directly represent the ratio \(\frac{f(x)}{f(x_0)}\) with leading term \(1\).
+        <strong>Final takeaway:</strong>
+        There is no universally best series. The best choice depends on the function type (power / oscillatory / logarithmic) and the notion of closeness (difference / ratio / log-log scale).
       </div>
     </section>
 
-    <section class="card">
-      <h2>3) When to use additive vs relative series?</h2>
-      <ul class="small" style="color:var(--muted);margin:0 0 0 18px">
-        <li><strong>Additive Taylor</strong> is suitable when \(|x-x_0|\) is naturally small.</li>
-        <li><strong>Relative Serbi</strong> is suitable when scaling is natural and \(\frac{x}{x_0}\) is the meaningful measure of change.</li>
-      </ul>
-      <p class="small note" style="margin-top:12px">
-        In the numerical examples below we choose large additive gaps but moderate ratios (e.g., \(r=5\) or \(r=3\)) to emphasize the role of scale.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>4) Five numerical examples (order \(n=4\))</h2>
-      <p class="small">
-        We compare the true ratio \(\frac{f(x)}{f(x_0)}\) with:
-        <strong>Taylor ratio</strong> \(T_4(x)/f(x_0)\) and
-        <strong>Serbi ratio</strong> \(S_4(x)\).
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Function</th>
-            <th>\(x_0\)</th>
-            <th>\(x\)</th>
-            <th class="kpi">True \(\frac{f(x)}{f(x_0)}\)</th>
-            <th>Taylor (ratio)</th>
-            <th>Serbi (ratio)</th>
-            <th>Rel. error (Taylor)</th>
-            <th>Rel. error (Serbi)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>\(f(x)=e^x\)</td>
-            <td>2</td>
-            <td>10</td>
-            <td class="kpi">2980.957987</td>
-            <td>297.000000</td>
-            <td class="good">2992.250000</td>
-            <td class="bad">90.0368%</td>
-            <td class="good">0.3788%</td>
-          </tr>
-          <tr>
-            <td>\(f(x)=\sinh(x)\)</td>
-            <td>2</td>
-            <td>10</td>
-            <td class="kpi">3036.574788</td>
-            <td>300.482707</td>
-            <td class="good">3049.916791</td>
-            <td class="bad">90.1046%</td>
-            <td class="good">0.4394%</td>
-          </tr>
-          <tr>
-            <td>\(f(x)=\cosh(x)\)</td>
-            <td>2</td>
-            <td>10</td>
-            <td class="kpi">2927.341857</td>
-            <td>293.642574</td>
-            <td class="good">2936.657623</td>
-            <td class="bad">89.9689%</td>
-            <td class="good">0.3182%</td>
-          </tr>
-          <tr>
-            <td>\(f(x)=1+e^x\)</td>
-            <td>2</td>
-            <td>10</td>
-            <td class="kpi">2625.738287</td>
-            <td>261.715935</td>
-            <td class="good">2635.684260</td>
-            <td class="bad">90.0327%</td>
-            <td class="good">0.3788%</td>
-          </tr>
-          <tr>
-            <td>\(f(x)=\exp((\ln x)^2)\)</td>
-            <td>50</td>
-            <td>150</td>
-            <td class="kpi">18079.646024</td>
-            <td>1921.288313</td>
-            <td class="good">17842.567439</td>
-            <td class="bad">89.3732%</td>
-            <td class="good">1.3113%</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="note small" style="margin-top:12px">
-        These examples illustrate that when scaling is the natural structure, the relative approach can remain accurate even when additive distance \((x-x_0)\) is large.
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>5) How to cite this page</h2>
-      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
-        <code>
-          GOSSA AHMED. Hierarchical Calculus — Series (Additive D0 &amp; Serbi Relative D1). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
-        </code>
-      </div>
-    </section>
-  </main>
-
-  <footer style="max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px">
-    © 2025 — Hierarchical Calculus | Gossa Ahmed — Archived via Zenodo (DOI).
-  </footer>
+    <footer>
+      © 2025 — GOSSA AHMED · Series in Hierarchical Calculus (D₀, D₁, D₂)
+    </footer>
+  </div>
 </body>
 </html>
