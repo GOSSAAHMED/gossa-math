@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>رتبة ودرجة المشتق الهرمي | الحساب الهرمي</title>
+  <meta name="description" content="صفحة مرجعية: لكل مشتق رتبة (Rank) ودرجة (Degree). تعريف الترميز D_rank^deg، وعلاقات تربط المشتقات عبر الرتب والدرجات." />
+  <meta name="author" content="GOSSA AHMED" />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: var(--sans); color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 60px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1100px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:9px 12px; border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text); font-size: 13px;
+      white-space:nowrap;
+    }
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{border-color: rgba(57,211,195,.35); background: rgba(57,211,195,.12)}
+
+    header.hero{
+      margin-top:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:30px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+    }
+    .card h2{margin:0 0 10px 0; font-size:18px; display:flex; align-items:center; gap:10px}
+    .bar{width:4px; height:18px; border-radius:99px; background: linear-gradient(180deg, var(--accent), var(--accent2)); display:inline-block}
+    .block{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .label{font-weight:800; margin-bottom:8px}
+    .math{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+      line-height:1.9;
+    }
+    .note strong{color:var(--warn)}
+    ul{margin:8px 0 0 0; padding:0 18px 0 0}
+    li{margin:6px 0}
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>الرتبة والدرجة</strong>
+          <span>ترميز موحّد للمشتقات الهرمية: \(D_{\text{rank}}^{\text{deg}}\)</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="./index.html">الرئيسية</a>
+        <a class="btn" href="./derivative-rank-degree-en.html">English</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <h1>لكل مشتق رتبة ودرجة</h1>
+      <p class="muted" style="margin:0; line-height:1.9">
+        في الحساب الهرمي لا نكتب أي مشتق دون تحديد <b>رتبته</b> (نوع المشتق/الطبقة) و<b>درجته</b> (عدد مرات التتالي).
+        نستخدم الترميز القياسي:
+      </p>
+      <div class="math" style="margin-top:12px">
+        \[
+          \boxed{D_{r}^{n}}
+        \]
+      </div>
+      <p class="muted small" style="margin:10px 0 0 0">
+        حيث \(r\) هو الرتبة (0: تفاضلي، 1: نسبي، 2: لوغاريتمي، …) و\(n\) هو الدرجة (0,1,2,3,…).
+      </p>
+    </header>
+
+    <section class="card">
+      <h2><span class="bar"></span>1) التعاريف الأساسية</h2>
+
+      <div class="block">
+        <div class="label">الرتبة (Rank)</div>
+        <p class="muted small" style="margin:0">
+          الرتبة \(r\) تحدد “المتغير الهرمي” الذي نشتق بالنسبة إليه:
+        </p>
+        <div class="math">
+          \[
+          u_0(x)=x,\quad u_1(x)=\ln x,\quad u_2(x)=\ln(\ln x),\;\dots,\; u_r(x)=\ln^{(r)}(x)
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          وبالمثل للدالة:
+          \[
+          v_r(f)=\ln^{(r)}(f)
+          \]
+          مع مراعاة شروط المجال (إيجابية اللوغاريتمات المتكررة).
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">المشتق الهرمي الأساسي (درجة 1)</div>
+        <p class="muted small" style="margin:0">
+          المشتق من الرتبة \(r\) والدرجة 1 يُعطى بصيغة عامة:
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{r}^{1} f(x)=\frac{d\,\ln^{(r)}(f(x))}{d\,\ln^{(r)}(x)}
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          حالات خاصة:
+        </p>
+        <div class="math">
+          \[
+            D_{0}^{1}f=\frac{df}{dx},
+            \qquad
+            D_{1}^{1}f=\frac{d\ln f}{d\ln x},
+            \qquad
+            D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+          \]
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="label">الدرجة (Degree) = التتالي</div>
+        <p class="muted small" style="margin:0">
+          الدرجة \(n\) تعني تطبيق مشتق الرتبة نفسها \(n\) مرّات على نفس الكائن (مع تثبيت الرتبة):
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{r}^{n}(\cdot)=\underbrace{D_{r}^{1}\circ D_{r}^{1}\circ\cdots\circ D_{r}^{1}}_{n\ \text{مرات}}(\cdot)
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          وبالخصوص \(D_{r}^{0}\) هو “هوية” (عدم اشتقاق):
+          \[
+            D_{r}^{0}f=f.
+          \]
+        </p>
+      </div>
+
+      <div class="note">
+        <strong>تنبيه:</strong>
+        عند الرتب \(r\ge 1\) تظهر لوغاريتمات متكررة، لذلك يجب الانتباه لشروط المجال مثل \(x>0\) و\(f>0\) (وأحيانًا \(x>1\) و\(f>1\) للرتبة 2).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="bar"></span>2) علاقات تربط الرتب والدرجات</h2>
+
+      <div class="block">
+        <div class="label">2.1 علاقة التحويل بين \(D_0\) و\(D_1\) (رتبتان مختلفتان)</div>
+        <p class="muted small" style="margin:0">
+          المشتق النسبي من الدرجة 1 يربط مباشرة بالمشتق التفاضلي:
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{1}^{1}f(x)=\frac{d\ln f}{d\ln x}=\frac{x}{f(x)}\,\frac{df(x)}{dx}
+              =\frac{x}{f(x)}\,D_{0}^{1}f(x)
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          ومنه:
+          \[
+            \boxed{
+              D_{0}^{1}f(x)=\frac{f(x)}{x}\,D_{1}^{1}f(x)
+            }
+          \]
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">2.2 عامل تفاضلي مقياسي (مفيد لرفع الدرجة في \(D_1\))</div>
+        <p class="muted small" style="margin:0">
+          عرف المؤثر المقياسي:
+          \[
+            \delta_1 := \frac{d}{d\ln x}=x\frac{d}{dx}.
+          \]
+          عندها:
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{1}^{1}f=\delta_1(\ln f)
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          والمشتقات ذات الدرجة الأعلى تُكتب:
+          \[
+            \boxed{
+              \big(D_{1}^{n}\ln f\big)=\delta_1^{\,n}(\ln f)
+            }
+          \]
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">2.3 عامل الرتبة الثانية \(D_2\) (رفع الدرجة في \(D_2\))</div>
+        <p class="muted small" style="margin:0">
+          عرف:
+          \[
+            \delta_2 := \frac{d}{d\ln(\ln x)}.
+          \]
+          عندها:
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{2}^{1}f=\delta_2(\ln(\ln f))
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          والمشتقات ذات الدرجة الأعلى تُكتب:
+          \[
+            \boxed{
+              \big(D_{2}^{n}\ln^{(2)} f\big)=\delta_2^{\,n}\big(\ln(\ln f)\big)
+            }
+          \]
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">2.4 فكرة عامة للربط بين رتبتين متتاليتين</div>
+        <p class="muted small" style="margin:0">
+          الانتقال من رتبة \(r\) إلى \(r+1\) يعني “تمرير” المتغير عبر لوغاريتم إضافي:
+          \[
+            \ln^{(r+1)}(x)=\ln(\ln^{(r)}(x)).
+          \]
+          لذلك فإن رتبًا أعلى تُلائم نماذج يكون فيها التغير الطبيعي على مقاييس لوغاريتمية متداخلة.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="bar"></span>3) العلاقات كأداة تنظيم (شبكة الرتب والدرجات)</h2>
+      <div class="block">
+        <div class="label">جدول رمزي مختصر</div>
+        <div class="math">
+          \[
+          \begin{array}{c|ccc}
+          \text{الرتبة } r & \text{درجة 1} & \text{درجة 2} & \text{درجة 3}\\
+          \hline
+          0 & D_0^{1}f & D_0^{2}f & D_0^{3}f\\
+          1 & D_1^{1}f & D_1^{2}f & D_1^{3}f\\
+          2 & D_2^{1}f & D_2^{2}f & D_2^{3}f\\
+          \vdots & \vdots & \vdots & \vdots
+          \end{array}
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          هذه الشبكة تساعد في كتابة أي قانون اشتقاق أو متسلسلة بدقة: نثبت الرتبة ونرفع الدرجة عند التتالي.
+        </p>
+      </div>
+
+      <div class="note">
+        <strong>إشارة تطبيقية:</strong>
+        تم استعمال هذه العلاقات مباشرة لبناء “متسلسلة تايلور التفاضلية” (رتبة 0)، و“تايلور ضربي نسبي” (رتبة 1)، و“متسلسلة أسّية لوغاريتمية” (رتبة 2) في صفحة المتسلسلات.
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · رتبة ودرجة المشتق الهرمي
+    </footer>
+  </div>
+</body>
+</html>
