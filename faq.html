@@ -1,329 +1,386 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>أسئلة شائعة — الحساب الهرمي</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>أسئلة شائعة — الحساب الهرمي</title>
+  <meta name="description" content="FAQ الحساب الهرمي: الفكرة، الفروق بين D0 وD1 وD2، شروط المجال، والحدود. كل المشتقات تُكتب بالرتبة والدرجة D_r^n." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<style>
-:root{
-  --bg1:#0b1220; --bg2:#0f1b2e;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(0,0,0,.22);
-  --b: rgba(255,255,255,.12);
-  --txt:#eaf2ff; --mut:#cfe3ff;
-  --accent:#61d2d2; --accent2:#7aa7ff;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, Arial, "Noto Sans Arabic";
-  background:
-    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--txt);
-}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
-.top{
-  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  padding:14px 16px;border-bottom:1px solid var(--b);
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
-}
-.brand{display:flex;gap:10px;align-items:center}
-.logo{
-  width:34px;height:34px;border-radius:10px;
-  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
-              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
-              rgba(255,255,255,.06);
-  border:1px solid var(--b);
-}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-nav a{
-  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
-  background:rgba(255,255,255,.03);
-}
-h1{margin:22px 0 8px;font-size:30px}
-.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.85}
-.card{
-  background:var(--card);border:1px solid var(--b);border-radius:18px;
-  padding:18px;margin:14px 0;
-}
-.small{font-size:14px;color:var(--mut);line-height:1.95}
-.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
-.tag{
-  display:inline-block;padding:2px 10px;border:1px solid var(--b);
-  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
-}
-.math{
-  background:var(--card2);border:1px solid var(--b);border-radius:14px;
-  padding:12px;margin-top:10px;overflow:auto
-}
-details{
-  border:1px solid var(--b);
-  background:rgba(0,0,0,.18);
-  border-radius:14px;
-  padding:10px 12px;
-  margin:10px 0;
-}
-summary{
-  cursor:pointer;
-  font-weight:900;
-  color:#bfe8ff;
-  list-style:none;
-}
-summary::-webkit-details-marker{display:none}
-.answer{padding-top:10px}
-.callout{
-  border-right:4px solid var(--accent);
-  padding:12px 14px;border-radius:14px;
-  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
-  margin-top:12px;
-}
-ul{margin:10px 0 0 0;padding:0 18px}
-li{margin:7px 0}
-</style>
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/faq.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/faq-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/faq.html" />
 
-<script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root{
+      --bg0:#0b1220;
+      --bg1:#0f1b2e;
+      --text:#eaf2ff;
+      --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3;
+      --accent2:#7aa7ff;
+      --warn:#ffcc66;
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+      line-height:1.9;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:28px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px;
+    }
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .math{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+      overflow:auto;
+      direction:ltr;
+      text-align:left;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+    ol{margin:8px 0 0 0; padding:0 22px 0 0}
+    li{margin:10px 0}
+    code{
+      font-family: var(--mono);
+      background: rgba(0,0,0,.22);
+      padding:2px 6px;
+      border-radius:10px;
+      direction:ltr;
+    }
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-<div class="top">
-  <div class="brand">
-    <div class="logo" aria-hidden="true"></div>
-    <div>
-      <div style="font-weight:900">الحساب الهرمي</div>
-      <div style="font-size:12px;color:var(--mut)">FAQ — أسئلة شائعة</div>
-    </div>
-  </div>
-
-  <nav aria-label="التنقل">
-    <a href="index.html">الرئيسية</a>
-    <a href="theory.html">النظرية</a>
-    <a href="equations.html">المعادلات</a>
-    <a href="numerics.html">العددي</a>
-    <a href="glossary.html">المصطلحات</a>
-    <a href="references.html">المراجع</a>
-    <a href="faq-en.html">English</a>
-  </nav>
-</div>
-
-<div class="container">
-  <h1>أسئلة شائعة (FAQ)</h1>
-  <p class="subtitle">
-    هذه الصفحة موجهة للقارئ الذي يرى “الحساب الهرمي” لأول مرة: ما هو؟ ماذا يضيف؟ كيف يُستعمل؟ وما حدوده؟
-  </p>
-
-  <div class="card">
-    <h2>الفكرة العامة في سطرين</h2>
-    <p class="small">
-      الحساب الهرمي هو طريقة لتنظيم “لغات التغيّر”:
-      <span class="tag">جمع</span> (تفاضلي) ⟶
-      <span class="tag">قسمة</span> (نسبي) ⟶
-      <span class="tag">لوغاريتم</span> ⟶
-      <span class="tag">تتريش</span> ⟶ …
-      بحيث نختار المستوى الذي يجعل القانون أبسط.
-    </p>
-
-    <div class="math">
-      \[
-      D_0 f=\frac{df}{dx},\qquad
-      D_1 f=\frac{d\ln f}{d\ln x},\qquad
-      D_2 f=\frac{d\ln(\ln f)}{d\ln(\ln x)}
-      \]
-    </div>
-
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">قاعدة ذهبية</div>
-      <div class="small">
-        إذا كانت الظاهرة “قانون قدرة” فغالبًا المستوى النسبي \(D_1\) هو الأنسب.  
-        وإذا كانت الظاهرة “متعددة المقاييس” مثل \(\exp((\ln x)^k)\) فغالبًا المستوى \(D_2\) يعطي تمثيلًا أدق.
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>أسئلة وأجوبة</h2>
-
-    <details open>
-      <summary>1) هل الحساب الهرمي بديل عن التفاضل والتكامل؟</summary>
-      <div class="answer small">
-        لا. هو <strong>إطار عام</strong> يضم التفاضل (مستوى 0) كحالة خاصة، ويضيف مستويات أخرى مناسبة لظواهر
-        يكون فيها القياس النسبي أو اللوغاريتمي هو اللغة الطبيعية (مثل قوانين القدرة والعمليات متعددة المقاييس).
-      </div>
-    </details>
-
-    <details>
-      <summary>2) ما الفرق بين \(D_0\) و \(D_1\) بشكل بسيط؟</summary>
-      <div class="answer small">
-        \(D_0\) يقيس تغيرًا “جمعيًا” (فرق).  
-        \(D_1\) يقيس تغيرًا “نسبيًا” (نسبة):
-        <div class="math">
-          \[
-          D_1 f=\frac{d\ln f}{d\ln x}=\frac{x}{f}\frac{df}{dx}
-          \]
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>الحساب الهرمي</strong>
+          <span>FAQ — مع ترميز الرتبة والدرجة \(D_r^n\)</span>
         </div>
-        مثال: في قانون القدرة \(f(x)=x^k\) يكون \(D_1 f = k\) ثابتًا، وهذا يجعل قوانين القدرة خطية في فضاء اللوغاريتمات.
       </div>
-    </details>
-<details>
-  <summary>8) هل المشتقات الهرمية مشتقات جديدة فعلًا أم مجرد تغيير إحداثيات؟</summary>
-  <div class="answer small">
-    هذا سؤال جوهري.  
-    من الناحية الصورية، يمكن تفسير بعض المشتقات الهرمية (مثل \(D_1\) و\(D_2\))
-    على أنها مشتقات تقليدية بعد <strong>تحويل إحداثيات مناسب</strong>
-    (مثل \(u=\ln x\) أو \(v=\ln(\ln x)\)).
-    <br><br>
-    لكن القيمة المضافة للحساب الهرمي ليست في التحويل وحده، بل في:
-    <ul>
-      <li>تنظيم هذه التحويلات في <strong>بنية هرمية موحَّدة</strong>.</li>
-      <li>اعتبار كل مستوى <strong>لغة طبيعية للتغيّر</strong> لنوع معيّن من الظواهر.</li>
-      <li>إعطاء معيار عملي لاختيار المستوى الأنسب قبل الحل أو التقريب العددي.</li>
-    </ul>
-    بمعنى آخر: الحساب الهرمي لا يدّعي استبدال التفاضل،
-    بل <strong>يعيد ترتيب استعماله</strong> بطريقة منهجية تكشف بنى كانت مخفية في الصياغة التقليدية.
-  </div>
-</details>
-<details>
-  <summary>9) ما التعريف الصارم لـ \(D_2\) و\(D_3\)؟ وهل هما متوافقان مع التحليل الرياضي؟</summary>
-  <div class="answer small">
-    يُعرَّف المشتق الهرمي من الرتبة \(n\) محليًا على الشكل:
-    <div class="math">
-      \[
-      D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
-      \]
+
+      <nav aria-label="التنقل">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./theory.html">النظرية</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="./numerics.html">العددي</a>
+        <a href="./glossary.html">المصطلحات</a>
+        <a href="./references.html">المراجع</a>
+        <a href="./faq-en.html">English</a>
+      </nav>
     </div>
-    حيث \(\ln^{(n)}\) تمثل اللوغاريتم المكرر \(n\) مرات.
-    <br><br>
-    هذا التعريف:
-    <ul>
-      <li>يعتمد فقط على <strong>الاشتقاق الكلاسيكي</strong> وقاعدة السلسلة.</li>
-      <li>صالح على مجالات محددة تُصرَّح صراحة (مثل \(x>1\)، \(f(x)>1\)).</li>
-      <li>متوافق مع التحليل الحقيقي ما دام يُنظر إليه كمشتق بعد تحويل متغيّرات.</li>
-    </ul>
-    الجديد هنا ليس خرق التحليل الرياضي، بل <strong>رفع هذا التعريف إلى إطار منهجي</strong>
-    يسمح بدراسة المعادلات والتقريبات عبر طبقات متعددة من البنية.
-  </div>
-</details>
-<div class="card">
-  <h2>حدود النظرية وما لا تدّعيه</h2>
-
-  <p class="small">
-    هذا القسم يوضّح بوضوح ما يقدّمه الحساب الهرمي، وما <strong>لا يدّعيه</strong>،
-    وذلك لتفادي أي سوء فهم علمي.
-  </p>
-
-  <div class="callout">
-    <div style="font-weight:900;margin-bottom:6px">ما لا تدّعيه النظرية</div>
-    <ul class="small">
-      <li>لا تدّعي استبدال التفاضل والتكامل الكلاسيكي أو إلغاؤه.</li>
-      <li>لا تدّعي تقديم مشتقات «غير قابلة للتفسير» داخل التحليل الرياضي المعروف.</li>
-      <li>لا تدّعي أن كل معادلة تصبح أبسط بالضرورة عند الصعود الهرمي.</li>
-      <li>لا تدّعي صلاحية غير مشروطة دون تحديد مجال المتغيرات.</li>
-    </ul>
   </div>
 
-  <div class="callout" style="margin-top:14px">
-    <div style="font-weight:900;margin-bottom:6px">ما الذي تدّعيه بدقة</div>
-    <ul class="small">
-      <li>أن التفاضل الكلاسيكي هو <strong>حالة خاصة</strong> من بنية أوسع.</li>
-      <li>أن بعض الظواهر تصبح أبسط عند التعبير عنها بلغة نسبية أو لوغاريتمية.</li>
-      <li>أن الصعود الهرمي قد يحسّن <strong>الاستقرار العددي</strong> في التقريب.</li>
-      <li>أن تنظيم هذه المستويات في إطار واحد يسهّل اختيار التمثيل الأنسب.</li>
-    </ul>
-  </div>
+  <div class="wrap">
+    <header class="hero">
+      <h1>أسئلة شائعة (FAQ)</h1>
+      <p class="muted" style="margin:0">
+        هذه الصفحة موجهة للقارئ الذي يرى “الحساب الهرمي” لأول مرة: ما هو؟ ماذا يضيف؟ كيف يُستعمل؟ وما حدوده؟
+        <br>
+        <b>مهم:</b> في هذا الموقع نكتب دائمًا أي مشتق بصيغة تُظهر <b>رتبته</b> و<b>درجته</b>:
+        \(\;D_r^n\).
+      </p>
+    </header>
 
-  <div class="math">
-    \[
-    \text{الحساب الهرمي} \;\neq\; \text{بديل عن التحليل}
-    \quad\text{بل}\quad
-    \text{إطار تنظيمي لاختيار لغة التغيّر}
-    \]
-  </div>
+    <section class="card">
+      <h2>الفكرة العامة في سطرين</h2>
+      <p class="muted small" style="margin:0">
+        الحساب الهرمي هو طريقة لتنظيم “لغات التغيّر”:
+        جمع (تفاضلي) ⟶ قسمة (نسبي) ⟶ لوغاريتم ⟶ تتريش ⟶ …
+        بحيث نختار الرتبة التي تجعل القانون أبسط.
+      </p>
 
-  <p class="small">
-    لذلك يُقترح النظر إلى الحساب الهرمي كأداة مفاهيمية وعددية
-    <strong>مكمِّلة</strong> للتحليل التقليدي،
-    لا كنظرية تنافسه أو تنقضه.
-  </p>
-</div>
-
-    <details>
-      <summary>3) لماذا يمكن أن تكون التقريبات العددية أفضل عند الصعود في الهرم؟</summary>
-      <div class="answer small">
-        لأنك تقرّب في فضاء تكون فيه الدالة “أقل حساسية” أو “أقرب للخطية”.  
-        بدل تقريب \(f\) مباشرة، تقرّب \(\ln f\) أو \(\ln(\ln f)\)، ثم ترجع.  
-        هذا يقلّل عادة تضخيم الخطأ خصوصًا عند القيم الكبيرة أو النمو السريع.
-        <ul>
-          <li>شاهد صفحة <a href="numerics.html">الجزء العددي</a> لمقارنة الأخطاء.</li>
-        </ul>
+      <div class="math">
+        \[
+          D_0^{1} f=\frac{df}{dx},
+          \qquad
+          D_1^{1} f=\frac{d\ln f}{d\ln x},
+          \qquad
+          D_2^{1} f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+        \]
       </div>
-    </details>
 
-    <details>
-      <summary>4) هل توجد أمثلة فيزيائية حقيقية؟</summary>
-      <div class="answer small">
-        نعم. كثير من قوانين الفيزياء تُكتب طبيعيًا بشكل نسبي.  
-        مثال أديباتي (غاز مثالي): \(P V^\gamma=\text{ثابت}\) ويعطي:
-        <div class="math">
-          \[
-          \frac{d\ln P}{d\ln V}=-\gamma
-          \]
-        </div>
-        وهذا بالضبط معادلة على مستوى \(D_1\).
+      <div class="note">
+        <strong>قاعدة ذهبية:</strong>
+        إذا كانت الظاهرة “قانون قدرة” فغالبًا الرتبة النسبية \((D_1^{1})\) هي الأنسب.
+        وإذا كانت الظاهرة “متعددة المقاييس” مثل \(\exp((\ln x)^k)\) فغالبًا الرتبة الثانية \((D_2^{1})\) تعطي تمثيلًا أدق (مع احترام شروط المجال).
       </div>
-    </details>
+    </section>
 
-    <details>
-      <summary>5) ما شروط المجال عند استعمال \(D_2\) أو مستويات أعلى؟</summary>
-      <div class="answer small">
-        عند استعمال \(\ln(\ln x)\) يجب أن يكون \(\ln x>0\) أي \(x>1\).  
-        وعند استعمال \(\ln(\ln f)\) يجب أن يكون \(f>1\) و\(\ln f>0\).
-        <ul>
-          <li>راجع: <a href="glossary.html#domain">شروط المجال</a>.</li>
-        </ul>
+    <section class="card">
+      <h2>أسئلة وأجوبة</h2>
+
+      <ol>
+        <li>
+          <b>هل الحساب الهرمي بديل عن التفاضل والتكامل؟</b><br>
+          <span class="muted small">
+            لا. هو إطار عام يضم التفاضل (رتبة 0) كحالة خاصة، ويضيف رتبًا أخرى مناسبة لظواهر يكون فيها القياس النسبي أو اللوغاريتمي هو اللغة الطبيعية (مثل قوانين القدرة والعمليات متعددة المقاييس).
+          </span>
+        </li>
+
+        <li>
+          <b>ما الفرق بين \(D_0^{1}\) و \(D_1^{1}\) بشكل بسيط؟</b><br>
+          <span class="muted small">
+            \(D_0^{1}\) يقيس تغيرًا “جمعيًا” (فرق). \(D_1^{1}\) يقيس تغيرًا “نسبيًا” (نسبة):
+          </span>
+
+          <div class="math">
+            \[
+              D_1^{1} f
+              =\frac{d\ln f}{d\ln x}
+              =\frac{x}{f}\frac{df}{dx}
+              =\frac{x}{f}\,D_0^{1}f.
+            \]
+          </div>
+
+          <span class="muted small">
+            مثال: في قانون القدرة \(f(x)=x^k\) يكون \(D_1^{1} f = k\) ثابتًا، وهذا يجعل قوانين القدرة خطية في فضاء اللوغاريتمات.
+          </span>
+        </li>
+
+        <li>
+          <b>هل المشتقات الهرمية مشتقات جديدة فعلًا أم مجرد تغيير إحداثيات؟</b><br>
+          <span class="muted small">
+            من الناحية الصورية، يمكن تفسير بعض المشتقات الهرمية (مثل \(D_1^{1}\) و\(D_2^{1}\)) على أنها مشتقات تقليدية بعد تحويل متغيرات مناسب
+            (مثل \(u=\ln x\) أو \(v=\ln(\ln x)\)).
+            لكن القيمة المضافة ليست في التحويل وحده، بل في تنظيم التحويلات في بنية هرمية موحّدة، وإعطاء معيار عملي لاختيار الرتبة الأنسب قبل الحل أو التقريب العددي.
+          </span>
+        </li>
+
+        <li>
+          <b>ما التعريف الصارم لـ \(D_2^{1}\) و\(D_3^{1}\)؟ وهل هما متوافقان مع التحليل الرياضي؟</b><br>
+          <span class="muted small">
+            يُعرَّف المشتق الهرمي من الرتبة \(n\) والدرجة 1 محليًا على الشكل:
+          </span>
+
+          <div class="math">
+            \[
+              \boxed{
+                D_n^{1} f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
+              }
+            \]
+          </div>
+
+          <span class="muted small">
+            حيث \(\ln^{(n)}\) تمثل اللوغاريتم المكرر \(n\) مرات.
+            هذا التعريف يعتمد فقط على الاشتقاق الكلاسيكي وقاعدة السلسلة، وهو متوافق مع التحليل الحقيقي ما دام يُنظر إليه كمشتق بعد تحويل متغيرات، مع التصريح بشروط المجال (مثل \(x>1\)، \(f(x)>1\) للرتبة 2).
+          </span>
+        </li>
+
+        <li>
+          <b>لماذا يمكن أن تكون التقريبات العددية أفضل عند الصعود في الهرم؟</b><br>
+          <span class="muted small">
+            لأنك تقرّب في فضاء تكون فيه الدالة “أقل حساسية” أو “أقرب للخطية”.
+            بدل تقريب \(f\) مباشرة، تقرّب \(\ln f\) أو \(\ln(\ln f)\)، ثم ترجع.
+            هذا يقلّل عادة تضخيم الخطأ خصوصًا عند القيم الكبيرة أو النمو السريع.
+          </span>
+        </li>
+
+        <li>
+          <b>هل توجد أمثلة فيزيائية حقيقية؟</b><br>
+          <span class="muted small">
+            نعم. كثير من قوانين الفيزياء تُكتب طبيعيًا بشكل نسبي.
+            مثال أديباتي (غاز مثالي): \(P V^\gamma=\text{ثابت}\) ويعطي:
+          </span>
+
+          <div class="math">
+            \[
+              \frac{d\ln P}{d\ln V}=-\gamma
+              \quad\Longleftrightarrow\quad
+              D_1^{1}P(V)=-\gamma.
+            \]
+          </div>
+
+          <span class="muted small">
+            وهذا بالضبط معادلة على رتبة \(1\) ودرجة \(1\).
+          </span>
+        </li>
+
+        <li>
+          <b>ما شروط المجال عند استعمال \(D_2^{1}\) أو مستويات أعلى؟</b><br>
+          <span class="muted small">
+            عند استعمال \(\ln(\ln x)\) يجب أن يكون \(\ln x>0\) أي \(x>1\).
+            وعند استعمال \(\ln(\ln f)\) يجب أن يكون \(f>1\) و\(\ln f>0\).
+          </span>
+        </li>
+
+        <li>
+          <b>هل هذا العمل “مُثبت” بأسبقية رسمية؟</b><br>
+          <span class="muted small">
+            نعم من ناحية الأرشفة عبر Zenodo و DOI. هذا يعطي تاريخًا ثابتًا وإسنادًا رسميًا للمشروع وإصداراته.
+          </span>
+        </li>
+
+        <li>
+          <b>أين أبدأ إذا كنت قارئًا جديدًا؟</b><br>
+          <span class="muted small">
+            ننصح بهذا الترتيب:
+            (1) النظرية، (2) المعادلات الهرمية، (3) الجزء العددي، (4) المصطلحات ثم المراجع.
+          </span>
+        </li>
+      </ol>
+
+      <div class="note">
+        <strong>تذكير ترميزي:</strong>
+        إذا رأيت \(D_r\) في أي نص قديم، فاقرأه دائمًا هنا على أنه \(D_r^{1}\) (الدرجة 1)،
+        لأن الدرجة لا تُترك ضمنية في هذا الموقع.
       </div>
-    </details>
+    </section>
 
-    <details>
-      <summary>6) هل هذا العمل “مُثبت” بأسبقية رسمية؟</summary>
-      <div class="answer small">
-        نعم من ناحية الأرشفة: عبر Zenodo و DOI.  
-        هذا يعطي تاريخًا ثابتًا وإسنادًا رسميًا للمشروع وإصداراته.
-        <ul>
-          <li>راجع: <a href="references.html#cite">الاستشهاد الرسمي</a>.</li>
-        </ul>
+    <section class="card">
+      <h2>حدود النظرية وما لا تدّعيه</h2>
+      <p class="muted small" style="margin:0">
+        هذا القسم يوضّح بوضوح ما يقدّمه الحساب الهرمي، وما لا يدّعيه، وذلك لتفادي أي سوء فهم علمي.
+      </p>
+
+      <h3>ما لا تدّعيه النظرية</h3>
+      <ul class="muted small">
+        <li>لا تدّعي استبدال التفاضل والتكامل الكلاسيكي أو إلغاؤه.</li>
+        <li>لا تدّعي تقديم مشتقات «غير قابلة للتفسير» داخل التحليل الرياضي المعروف.</li>
+        <li>لا تدّعي أن كل معادلة تصبح أبسط بالضرورة عند الصعود الهرمي.</li>
+        <li>لا تدّعي صلاحية غير مشروطة دون تحديد مجال المتغيرات.</li>
+      </ul>
+
+      <h3>ما الذي تدّعيه بدقة</h3>
+      <ul class="muted small">
+        <li>أن التفاضل الكلاسيكي هو حالة خاصة من بنية أوسع.</li>
+        <li>أن بعض الظواهر تصبح أبسط عند التعبير عنها بلغة نسبية أو لوغاريتمية.</li>
+        <li>أن الصعود الهرمي قد يحسّن الاستقرار العددي في التقريب.</li>
+        <li>أن تنظيم هذه المستويات في إطار واحد يسهّل اختيار التمثيل الأنسب.</li>
+      </ul>
+
+      <div class="math">
+        \[
+          \text{الحساب الهرمي} \;\neq\; \text{بديل عن التحليل}
+          \quad\text{بل}\quad
+          \text{إطار تنظيمي لاختيار لغة التغيّر}.
+        \]
       </div>
-    </details>
+    </section>
 
-    <details>
-      <summary>7) أين أبدأ إذا كنت قارئًا جديدًا؟</summary>
-      <div class="answer small">
-        ننصح بهذا الترتيب:
-        <ol style="margin:10px 0 0 0;">
-          <li><a href="theory.html">النظرية</a> (الفكرة العامة والعمليات)</li>
-          <li><a href="equations.html">المعادلات الهرمية</a> (التعريفات والأمثلة)</li>
-          <li><a href="numerics.html">الجزء العددي</a> (الأرقام ومقارنة الأخطاء)</li>
-          <li><a href="glossary.html">المصطلحات</a> ثم <a href="references.html">المراجع</a></li>
-        </ol>
-      </div>
-    </details>
+    <section class="card">
+      <h2>للمراسلات والاستشهاد</h2>
+      <p class="muted small" style="margin:0">
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+        <br>
+        البريد: <a href="mailto:ahmedgossa50@gmail.com">ahmedgossa50@gmail.com</a>
+      </p>
+    </section>
 
+    <footer>
+      © 2025 — GOSSA AHMED · FAQ (مع ترميز \(D_r^n\))
+    </footer>
   </div>
-
-  <div class="card">
-    <h2>للمراسلات والاستشهاد</h2>
-    <p class="small">
-      DOI (Concept): <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
-    </p>
-  </div>
-
-</div>
 </body>
 </html>
