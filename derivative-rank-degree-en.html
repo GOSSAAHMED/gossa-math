@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Derivative Rank & Degree | Hierarchical Calculus</title>
+  <meta name="description" content="Reference page: every hierarchical derivative has a rank and a degree. Unified notation D_r^n and key relations connecting ranks and degrees." />
+  <meta name="author" content="GOSSA AHMED" />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: var(--sans); color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 60px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1100px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:9px 12px; border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text); font-size: 13px;
+      white-space:nowrap;
+    }
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{border-color: rgba(57,211,195,.35); background: rgba(57,211,195,.12)}
+
+    header.hero{
+      margin-top:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:30px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+    }
+    .card h2{margin:0 0 10px 0; font-size:18px; display:flex; align-items:center; gap:10px}
+    .bar{width:4px; height:18px; border-radius:99px; background: linear-gradient(180deg, var(--accent), var(--accent2)); display:inline-block}
+    .block{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .label{font-weight:800; margin-bottom:8px}
+    .math{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+      line-height:1.9;
+    }
+    .note strong{color:var(--warn)}
+    ul{margin:8px 0 0 0; padding-left:18px}
+    li{margin:6px 0}
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Rank & Degree</strong>
+          <span>Unified hierarchical derivative notation: \(D_{\text{rank}}^{\text{deg}}\)</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="./index-en.html">Home</a>
+        <a class="btn" href="./derivative-rank-degree.html">العربية</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <h1>Every derivative has a rank and a degree</h1>
+      <p class="muted" style="margin:0; line-height:1.9">
+        In Hierarchical Calculus, no derivative is written without specifying its <b>rank</b> (type/layer) and <b>degree</b> (how many successive applications).
+        We use the standard notation:
+      </p>
+      <div class="math" style="margin-top:12px">
+        \[
+          \boxed{D_{r}^{n}}
+        \]
+      </div>
+      <p class="muted small" style="margin:10px 0 0 0">
+        where \(r\) is the rank (0: differential, 1: relative, 2: logarithmic, …) and \(n\) is the degree (0,1,2,3,…).
+      </p>
+    </header>
+
+    <section class="card">
+      <h2><span class="bar"></span>1) Core definitions</h2>
+
+      <div class="block">
+        <div class="label">Rank</div>
+        <p class="muted small" style="margin:0">
+          Rank \(r\) selects the “hierarchical variable” with iterated logs:
+        </p>
+        <div class="math">
+          \[
+          u_0(x)=x,\quad u_1(x)=\ln x,\quad u_2(x)=\ln(\ln x),\;\dots,\; u_r(x)=\ln^{(r)}(x)
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          Similarly for the function side:
+          \[
+          v_r(f)=\ln^{(r)}(f)
+          \]
+          with appropriate domain constraints.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">Base hierarchical derivative (degree 1)</div>
+        <p class="muted small" style="margin:0">
+          The rank-\(r\), degree-1 derivative is:
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{r}^{1} f(x)=\frac{d\,\ln^{(r)}(f(x))}{d\,\ln^{(r)}(x)}
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          Special cases:
+        </p>
+        <div class="math">
+          \[
+            D_{0}^{1}f=\frac{df}{dx},
+            \qquad
+            D_{1}^{1}f=\frac{d\ln f}{d\ln x},
+            \qquad
+            D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+          \]
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="label">Degree = successive application</div>
+        <p class="muted small" style="margin:0">
+          Degree \(n\) means applying the same rank derivative \(n\) times:
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{r}^{n}(\cdot)=\underbrace{D_{r}^{1}\circ D_{r}^{1}\circ\cdots\circ D_{r}^{1}}_{n\ \text{times}}(\cdot)
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          In particular, \(D_{r}^{0}\) is the identity operator:
+          \[
+            D_{r}^{0}f=f.
+          \]
+        </p>
+      </div>
+
+      <div class="note">
+        <strong>Domain note:</strong>
+        For ranks \(r\ge 1\), iterated logarithms appear, so domain constraints such as \(x>0\), \(f>0\) (and sometimes \(x>1\), \(f>1\) for rank 2) must be respected.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="bar"></span>2) Relations connecting ranks and degrees</h2>
+
+      <div class="block">
+        <div class="label">2.1 Linking \(D_0\) and \(D_1\) (different ranks)</div>
+        <p class="muted small" style="margin:0">
+          The rank-1 relative derivative connects directly to the standard derivative:
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{1}^{1}f(x)=\frac{d\ln f}{d\ln x}=\frac{x}{f(x)}\,\frac{df(x)}{dx}
+              =\frac{x}{f(x)}\,D_{0}^{1}f(x)
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          Hence:
+          \[
+            \boxed{
+              D_{0}^{1}f(x)=\frac{f(x)}{x}\,D_{1}^{1}f(x)
+            }
+          \]
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">2.2 A scale differential operator (useful for raising degree in \(D_1\))</div>
+        <p class="muted small" style="margin:0">
+          Define:
+          \[
+            \delta_1 := \frac{d}{d\ln x}=x\frac{d}{dx}.
+          \]
+          Then:
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{1}^{1}f=\delta_1(\ln f)
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          Higher degrees are:
+          \[
+            \boxed{
+              \big(D_{1}^{n}\ln f\big)=\delta_1^{\,n}(\ln f)
+            }
+          \]
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">2.3 The rank-2 operator \(D_2\) (raising degree in \(D_2\))</div>
+        <p class="muted small" style="margin:0">
+          Define:
+          \[
+            \delta_2 := \frac{d}{d\ln(\ln x)}.
+          \]
+          Then:
+        </p>
+        <div class="math">
+          \[
+            \boxed{
+              D_{2}^{1}f=\delta_2(\ln(\ln f))
+            }
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          Higher degrees:
+          \[
+            \boxed{
+              \big(D_{2}^{n}\ln^{(2)} f\big)=\delta_2^{\,n}\big(\ln(\ln f)\big)
+            }
+          \]
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">2.4 General idea: moving from rank \(r\) to \(r+1\)</div>
+        <p class="muted small" style="margin:0">
+          Increasing rank introduces one more logarithm:
+          \[
+            \ln^{(r+1)}(x)=\ln(\ln^{(r)}(x)).
+          \]
+          Higher ranks therefore match phenomena whose natural scaling happens over nested logarithmic scales.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="bar"></span>3) The rank–degree grid (organizational view)</h2>
+      <div class="block">
+        <div class="label">A compact symbolic table</div>
+        <div class="math">
+          \[
+          \begin{array}{c|ccc}
+          \text{Rank } r & \text{Degree 1} & \text{Degree 2} & \text{Degree 3}\\
+          \hline
+          0 & D_0^{1}f & D_0^{2}f & D_0^{3}f\\
+          1 & D_1^{1}f & D_1^{2}f & D_1^{3}f\\
+          2 & D_2^{1}f & D_2^{2}f & D_2^{3}f\\
+          \vdots & \vdots & \vdots & \vdots
+          \end{array}
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          This grid ensures every formula is written precisely: fix the rank, then increase the degree for successive derivatives.
+        </p>
+      </div>
+
+      <div class="note">
+        <strong>Practical remark:</strong>
+        These relations are exactly what was used to build the differential Taylor series (rank 0), the relative multiplicative Taylor series (rank 1), and the rank-2 logarithmic exponential series (rank 2) on the Series page.
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Derivative Rank & Degree
+    </footer>
+  </div>
+</body>
+</html>
