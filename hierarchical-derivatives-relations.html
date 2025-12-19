@@ -1,11 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>العلاقة بين المشتقات الهرمية</title>
+  <title>العلاقة بين المشتقات الهرمية (بالرتبة والدرجة)</title>
+  <meta name="description" content="علاقات تربط المشتقات الهرمية عبر الرتب مع إظهار الدرجة صراحة: D_r^n. صيغ تربط D_n^1 بـ D_0^1 وبالمستويات المتتالية." />
+  <meta name="author" content="GOSSA AHMED" />
 
-  <!-- ✅ MathJax -->
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:28px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px;
+    }
+    h2{margin:0 0 10px 0; font-size:18px}
+    .math{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+    ul{margin:8px 0 0 0; padding:0 18px 0 0}
+    li{margin:8px 0}
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
@@ -13,426 +139,180 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <!-- ✅ Colored Theme (self-contained) -->
-  <style>
-    :root{
-      --bg0:#070A12;
-      --bg1:#0B1220;
-      --card:#0F1B2D;
-      --card2:#0D1A2B;
-      --text:#EAF0FF;
-      --muted:#B8C4E6;
-      --line:rgba(255,255,255,.12);
-      --accent:#4CC9F0;
-      --accent2:#7C3AED;
-      --good:#22C55E;
-      --warn:#F59E0B;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius:18px;
-      --maxw: 1040px;
-    }
-
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 500px at 15% 5%, rgba(124,58,237,.35), transparent 60%),
-        radial-gradient(900px 500px at 85% 10%, rgba(76,201,240,.25), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      line-height:1.9;
-    }
-
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
-    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 16px; }
-
-    header.hero{
-      padding:34px 0 18px;
-      border-bottom:1px solid var(--line);
-      backdrop-filter: blur(6px);
-    }
-
-    .brand{
-      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
-      justify-content:space-between;
-    }
-
-    .titleBlock h1{
-      margin:0;
-      font-size:1.75rem;
-      letter-spacing:.2px;
-    }
-    .titleBlock p{
-      margin:6px 0 0;
-      color:var(--muted);
-    }
-
-    .pillbar{ display:flex; gap:8px; flex-wrap:wrap; }
-    .pill{
-      padding:7px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:.92rem;
-      white-space:nowrap;
-    }
-
-    nav.topnav{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    nav.topnav a{
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--text);
-    }
-    nav.topnav a:hover{
-      background:rgba(76,201,240,.10);
-      border-color:rgba(76,201,240,.35);
-      text-decoration:none;
-    }
-
-    main{ padding:22px 0 64px; }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
-
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    .card .hd{
-      padding:14px 16px;
-      background:
-        linear-gradient(90deg, rgba(76,201,240,.18), rgba(124,58,237,.14));
-      border-bottom:1px solid var(--line);
-      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
-    }
-    .card .hd h2{
-      margin:0;
-      font-size:1.18rem;
-    }
-    .tag{
-      font-size:.9rem;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.15);
-      color:var(--muted);
-    }
-
-    .card .bd{ padding:14px 16px 16px; }
-
-    .callout{
-      border:1px dashed rgba(76,201,240,.45);
-      background:rgba(76,201,240,.08);
-      border-radius:14px;
-      padding:12px 12px;
-      color:var(--muted);
-    }
-
-    .formula{
-      margin:14px 0;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(124,58,237,.35);
-      background:rgba(124,58,237,.10);
-    }
-
-    .mini{
-      color:var(--muted);
-      margin-top:8px;
-      font-size: .98rem;
-    }
-
-    ul{ margin:10px 0 0; padding:0 18px 0 0; }
-    li{ margin:6px 0; }
-
-    footer{
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      padding:18px 0;
-      font-size:.95rem;
-    }
-
-    /* ✅ Make MathJax look great on dark bg */
-    mjx-container[jax="CHTML"]{
-      color: var(--text) !important;
-    }
-    mjx-container[jax="CHTML"] mjx-math{
-      color: var(--text) !important;
-    }
-
-    /* Responsive: two columns on wide screens */
-    @media (min-width: 920px){
-      .grid{ grid-template-columns: 1fr 1fr; }
-      .span2{ grid-column: 1 / -1; }
-    }
-  </style>
 </head>
 
 <body>
-  <header class="hero">
-    <div class="wrap">
+  <div class="topbar">
+    <div class="inner">
       <div class="brand">
-        <div class="titleBlock">
-          <h1>العلاقة بين المشتقات الهرمية</h1>
-          <p dir="ltr">Hierarchical Derivatives Relationships</p>
-        </div>
-        <div class="pillbar">
-          <span class="pill">D0: مشتق تفاضلي تقليدي</span>
-          <span class="pill">D1: مشتق نسبي</span>
-          <span class="pill">MathJax</span>
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>العلاقة بين المشتقات الهرمية</strong>
+          <span>ترميز صريح للرتبة والدرجة: \(D_r^n\)</span>
         </div>
       </div>
-
-      <!-- ✅ اختياري: عدّل الروابط حسب صفحات موقعك -->
-      <nav class="topnav">
+      <nav>
         <a href="./index.html">الرئيسية</a>
-        <a href="./derivatives.html">المشتقات</a>
+        <a href="./rules.html">قوانين الاشتقاق</a>
         <a href="./series.html">المتسلسلات</a>
-        <a href="./integrals.html">التكاملات</a>
+        <a href="./integrals.html">التكامل</a>
+        <a href="./hierarchical-derivatives-relations-en.html">English</a>
       </nav>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <div class="wrap">
-      <div class="grid">
+  <div class="wrap">
+    <header class="hero">
+      <h1>العلاقة بين المشتقات الهرمية</h1>
+      <p class="muted">
+        في الحساب الهرمي لا تُعامل المشتقات كعمليات منفصلة، بل كمستويات مترابطة ضمن هرم واحد.
+        <br>
+        <b>قاعدة الترميز:</b> سنكتب دائمًا المشتق بصيغة <b>الرتبة</b> و<b>الدرجة</b>:
+        \(\;D_r^n\). وفي هذه الصفحة أغلب العلاقات تخص <b>الدرجة 1</b> لذا نكتبها صراحة:
+        \(\;D_0^{1}, D_1^{1}, D_2^{1}, \dots, D_n^{1}\).
+      </p>
+    </header>
 
-        <section class="card span2">
-          <div class="hd">
-            <h2>🧭 مقدمة</h2>
-            <span class="tag">فكرة الصفحة</span>
-          </div>
-          <div class="bd">
-            <p>
-              في الحساب الهرمي، لا تُعامل المشتقات \(D_0, D_1, D_2, \dots\) كعمليات منفصلة،
-              بل كمستويات مترابطة ضمن هرم اشتقاقي واحد.
-              هذه الصفحة تجمع الصيغ التي تربط المستويات ببعضها مباشرةً انطلاقًا من تعريفاتها.
-            </p>
-            <div class="callout">
-              <strong>ملاحظة:</strong>
-              سنستعمل \(D_0\) للمشتق التفاضلي التقليدي، و\(D_1\) للمشتق النسبي.
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="hd">
-            <h2>1️⃣ تعريف عام للمشتق الهرمي</h2>
-            <span class="tag">تعريف</span>
-          </div>
-          <div class="bd">
-            <p>لدالة \(y=y(x)\) نكتب الصيغة العامة للمستوى \(n\) بالشكل:</p>
-
-            <div class="formula">
-              \[
-              D_n y
-              =
-              \frac{dy}{dx}\;\frac{x\,\phi_n(x)}{y\,\phi_n(y)}.
-              \]
-            </div>
-
-            <p class="mini">حيث دوال القياس الهرمية (كمثال أولي):</p>
-            <div class="formula">
-              \[
-              \phi_1(t)=1,\quad
-              \phi_2(t)=\ln t,\quad
-              \phi_3(t)=\ln\ln t,\;\dots
-              \]
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="hd">
-            <h2>2️⃣ المستويات الأولى</h2>
-            <span class="tag">أمثلة</span>
-          </div>
-          <div class="bd">
-            <p>من التعريف تظهر المستويات الأولى مباشرة:</p>
-
-            <div class="formula">
-              \[
-              D_0 y=\frac{dy}{dx},\qquad
-              D_1 y=\frac{dy\cdot x}{dx\cdot y},\qquad
-              D_2 y=\frac{dy\cdot x\ln x}{dx\cdot y\ln y}.
-              \]
-            </div>
-          </div>
-        </section>
-
-        <section class="card span2">
-          <div class="hd">
-            <h2>3️⃣ العلاقة الجامعة بين أي مستوى و \(D_0\)</h2>
-            <span class="tag">الصيغة الأم</span>
-          </div>
-          <div class="bd">
-            <p>من التعريف العام نحصل على الصيغة الجامعة:</p>
-
-            <div class="formula">
-              \[
-              \boxed{
-              D_n y
-              =
-              D_0 y
-              \;\frac{x\,\phi_n(x)}{y\,\phi_n(y)}
-              }
-              \]
-            </div>
-
-            <p class="mini">
-              هذه الصيغة تُظهر أن كل مستوى هرمي هو إعادة وزن نسبي للمشتق التقليدي \(D_0\)
-              عبر دوال القياس \(\phi_n\).
-            </p>
-          </div>
-        </section>
-
-        <section class="card span2">
-          <div class="hd">
-            <h2>4️⃣ العلاقة بين مستويين متتاليين \(D_n \leftrightarrow D_{n+1}\)</h2>
-            <span class="tag">انتقال هرمي</span>
-          </div>
-          <div class="bd">
-            <p>بمقارنة تعريف \(D_{n+1}\) مع تعريف \(D_n\) نحصل على:</p>
-
-            <div class="formula">
-              \[
-              \boxed{
-              D_{n+1} y
-              =
-              D_n y
-              \;\frac{\phi_{n+1}(x)}{\phi_n(x)}
-              \;\frac{\phi_n(y)}{\phi_{n+1}(y)}
-              }
-              \]
-            </div>
-
-            <p class="mini">
-              أي أن الانتقال من مستوى إلى الأعلى يتم بعامل قياس نسبي يعتمد على
-              \(\phi_n\) و\(\phi_{n+1}\) لكل من \(x\) و\(y\).
-            </p>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="hd">
-            <h2>5️⃣ علاقات المستويات الأولى</h2>
-            <span class="tag">نتائج مباشرة</span>
-          </div>
-          <div class="bd">
-            <p><strong>من \(D_0\) إلى \(D_1\)</strong></p>
-            <div class="formula">
-              \[
-              \boxed{
-              D_1 y
-              =
-              D_0 y\;\frac{x}{y}
-              }
-              \]
-            </div>
-
-            <p><strong>من \(D_1\) إلى \(D_2\)</strong></p>
-            <div class="formula">
-              \[
-              \boxed{
-              D_2 y
-              =
-              D_1 y\;\frac{\ln x}{\ln y}
-              }
-              \]
-            </div>
-
-            <p><strong>من \(D_2\) إلى \(D_3\)</strong></p>
-            <div class="formula">
-              \[
-              \boxed{
-              D_3 y
-              =
-              D_2 y\;\frac{\ln\ln x}{\ln\ln y}
-              }
-              \]
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="hd">
-            <h2>6️⃣ الصيغة المضغوطة (سُلّم المشتقات)</h2>
-            <span class="tag">تلخيص</span>
-          </div>
-          <div class="bd">
-            <p>يمكن تلخيص الهرم كاملًا بصيغة ضرب تراكمي:</p>
-
-            <div class="formula">
-              \[
-              \boxed{
-              D_n y
-              =
-              D_1 y
-              \prod_{k=2}^{n}
-              \frac{\phi_k(x)}{\phi_k(y)}
-              }
-              \]
-            </div>
-
-            <p class="mini">أو انطلاقًا من \(D_0\):</p>
-
-            <div class="formula">
-              \[
-              \boxed{
-              D_n y
-              =
-              D_0 y
-              \;\frac{x}{y}
-              \prod_{k=2}^{n}
-              \frac{\phi_k(x)}{\phi_k(y)}
-              }
-              \]
-            </div>
-          </div>
-        </section>
-
-        <section class="card span2">
-          <div class="hd">
-            <h2>✅ خلاصة</h2>
-            <span class="tag">النقاط الأساسية</span>
-          </div>
-          <div class="bd">
-            <ul>
-              <li>المشتقات الهرمية بنية مترابطة وليست مشتقات منفصلة.</li>
-              <li>كل انتقال \(D_n \to D_{n+1}\) يتم بعامل قياس نسبي محدد.</li>
-              <li>الصيغة الجامعة تربط أي مستوى مباشرةً بـ \(D_0\) و/أو بـ \(D_1\).</li>
-            </ul>
-          </div>
-        </section>
-
+    <section class="card">
+      <h2>1) تعريف عام للمشتق الهرمي (درجة 1)</h2>
+      <p class="muted small" style="margin:0">
+        لدالة \(y=y(x)\) نكتب الصيغة العامة للرتبة \(n\) عند الدرجة \(1\) بالشكل:
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n}^{1} y
+            = \frac{dy}{dx}\;\frac{x\,\phi_n(x)}{y\,\phi_n(y)}
+          }
+        \]
       </div>
-    </div>
-  </main>
+      <p class="muted small" style="margin:10px 0 0 0">
+        حيث دوال القياس الهرمية (مثال أولي):
+      </p>
+      <div class="math">
+        \[
+          \phi_1(t)=1,\quad \phi_2(t)=\ln t,\quad \phi_3(t)=\ln(\ln t),\;\dots
+        \]
+      </div>
+    </section>
 
-  <footer>
-    <div class="wrap">
-      <div>© الحساب الهرمي — صفحة: العلاقة بين المشتقات الهرمية</div>
-    </div>
-  </footer>
+    <section class="card">
+      <h2>2) الرتب الأولى (درجة 1)</h2>
+      <p class="muted small" style="margin:0">
+        من التعريف تظهر الرتب الأولى عند الدرجة \(1\):
+      </p>
+      <div class="math">
+        \[
+          D_{0}^{1}y=\frac{dy}{dx},
+          \qquad
+          D_{1}^{1}y=\frac{dy\cdot x}{dx\cdot y},
+          \qquad
+          D_{2}^{1}y=\frac{dy\cdot x\ln x}{dx\cdot y\ln y}.
+        \]
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) العلاقة الجامعة بين أي رتبة و \(D_{0}^{1}\)</h2>
+      <p class="muted small" style="margin:0">
+        من التعريف العام نحصل على الصيغة الجامعة:
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n}^{1}y = D_{0}^{1}y \;\frac{x\,\phi_n(x)}{y\,\phi_n(y)}
+          }
+        \]
+      </div>
+      <p class="muted small" style="margin:10px 0 0 0">
+        أي أن أي رتبة عند الدرجة 1 هي إعادة وزن نسبي للمشتق التفاضلي \(D_0^{1}\) عبر \(\phi_n\).
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>4) العلاقة بين رتبتين متتاليتين \(D_{n}^{1} \leftrightarrow D_{n+1}^{1}\)</h2>
+      <p class="muted small" style="margin:0">
+        بمقارنة تعريف \(D_{n+1}^{1}\) مع تعريف \(D_{n}^{1}\) نحصل على:
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n+1}^{1} y
+            = D_{n}^{1} y \;\frac{\phi_{n+1}(x)}{\phi_n(x)} \;\frac{\phi_n(y)}{\phi_{n+1}(y)}
+          }
+        \]
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) علاقات الرتب الأولى (درجة 1)</h2>
+      <ul class="muted small">
+        <li>
+          من \(D_{0}^{1}\) إلى \(D_{1}^{1}\):
+          <div class="math">
+            \[
+              \boxed{
+                D_{1}^{1}y = D_{0}^{1}y\;\frac{x}{y}
+              }
+            \]
+          </div>
+        </li>
+        <li>
+          من \(D_{1}^{1}\) إلى \(D_{2}^{1}\):
+          <div class="math">
+            \[
+              \boxed{
+                D_{2}^{1}y = D_{1}^{1}y\;\frac{\ln x}{\ln y}
+              }
+            \]
+          </div>
+        </li>
+        <li>
+          من \(D_{2}^{1}\) إلى \(D_{3}^{1}\):
+          <div class="math">
+            \[
+              \boxed{
+                D_{3}^{1}y = D_{2}^{1}y\;\frac{\ln(\ln x)}{\ln(\ln y)}
+              }
+            \]
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>6) الصيغة المضغوطة (سُلّم الرتب عند الدرجة 1)</h2>
+      <p class="muted small" style="margin:0">
+        يمكن تلخيص الهرم كاملًا بصيغة ضرب تراكمي (درجة 1):
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n}^{1}y = D_{1}^{1}y \prod_{k=2}^{n} \frac{\phi_k(x)}{\phi_k(y)}
+          }
+        \]
+      </div>
+      <p class="muted small" style="margin:10px 0 0 0">
+        أو انطلاقًا من \(D_{0}^{1}\):
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n}^{1}y = D_{0}^{1}y \;\frac{x}{y} \prod_{k=2}^{n} \frac{\phi_k(x)}{\phi_k(y)}
+          }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>ملاحظة:</strong> إذا أردت إدخال <b>الدرجات</b> (مثل \(D_1^{2}\), \(D_1^{3}\) …)
+        فهذا يتم بتتالي الاشتقاق داخل نفس الرتبة كما في صفحة “الرتبة والدرجة”.
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · العلاقة بين المشتقات الهرمية (مع \(D_r^n\))
+    </footer>
+  </div>
 </body>
 </html>
 
