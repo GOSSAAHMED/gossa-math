@@ -1,11 +1,134 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hierarchical Derivatives Relationships</title>
+  <title>Hierarchical Derivatives Relationships (Rank & Degree)</title>
+  <meta name="description" content="Relationships between hierarchical derivatives with explicit rank and degree notation D_r^n. Closed-form links between D_n^1 and D_0^1 and between consecutive ranks." />
+  <meta name="author" content="GOSSA AHMED" />
 
-  <!-- ✅ MathJax -->
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations-en.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:28px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px;
+    }
+    h2{margin:0 0 10px 0; font-size:18px}
+    .math{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+    ul{margin:8px 0 0 0; padding-left:18px}
+    li{margin:8px 0}
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
@@ -13,291 +136,162 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <!-- ✅ Colored Theme (self-contained) -->
-  <style>
-    :root{
-      --bg0:#070A12;
-      --bg1:#0B1220;
-      --card:#0F1B2D;
-      --text:#EAF0FF;
-      --muted:#B8C4E6;
-      --line:rgba(255,255,255,.12);
-      --accent:#4CC9F0;
-      --accent2:#7C3AED;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius:18px;
-      --maxw: 1040px;
-    }
-
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 500px at 15% 5%, rgba(124,58,237,.35), transparent 60%),
-        radial-gradient(900px 500px at 85% 10%, rgba(76,201,240,.25), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      line-height:1.85;
-    }
-
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
-    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 16px; }
-
-    header.hero{
-      padding:34px 0 18px;
-      border-bottom:1px solid var(--line);
-      backdrop-filter: blur(6px);
-    }
-
-    .titleBlock h1{
-      margin:0;
-      font-size:1.75rem;
-    }
-    .titleBlock p{
-      margin:6px 0 0;
-      color:var(--muted);
-    }
-
-    nav.topnav{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    nav.topnav a{
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--text);
-    }
-
-    main{ padding:22px 0 64px; }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
-
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    .card .hd{
-      padding:14px 16px;
-      background:
-        linear-gradient(90deg, rgba(76,201,240,.18), rgba(124,58,237,.14));
-      border-bottom:1px solid var(--line);
-    }
-    .card .hd h2{
-      margin:0;
-      font-size:1.18rem;
-    }
-
-    .card .bd{ padding:14px 16px 16px; }
-
-    .formula{
-      margin:14px 0;
-      padding:12px;
-      border-radius:14px;
-      border:1px solid rgba(124,58,237,.35);
-      background:rgba(124,58,237,.10);
-    }
-
-    ul{ margin:10px 0 0; padding-left:18px; }
-    li{ margin:6px 0; }
-
-    footer{
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      padding:18px 0;
-      font-size:.95rem;
-    }
-
-    mjx-container{ color: var(--text) !important; }
-
-    @media (min-width: 920px){
-      .grid{ grid-template-columns: 1fr 1fr; }
-      .span2{ grid-column: 1 / -1; }
-    }
-  </style>
 </head>
 
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="titleBlock">
-        <h1>Hierarchical Derivatives Relationships</h1>
-        <p>Connections between levels in the derivative hierarchy</p>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Hierarchical Derivatives Relationships</strong>
+          <span>Explicit rank & degree notation: \(D_r^n\)</span>
+        </div>
       </div>
-
-      <!-- Optional navigation -->
-      <nav class="topnav">
-        <a href="./index.html">Home</a>
-        <a href="./derivatives.html">Derivatives</a>
-        <a href="./series.html">Series</a>
-        <a href="./integrals.html">Integrals</a>
+      <nav>
+        <a href="./index-en.html">Home</a>
+        <a href="./rules.html">Rules</a>
+        <a href="./series-en.html">Series</a>
+        <a href="./integrals-en.html">Integrals</a>
+        <a href="./hierarchical-derivatives-relations.html">العربية</a>
       </nav>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <div class="wrap">
-      <div class="grid">
+  <div class="wrap">
+    <header class="hero">
+      <h1>Relationships between hierarchical derivatives</h1>
+      <p class="muted">
+        Hierarchical derivatives are not independent operators; they form linked levels of a single derivative pyramid.
+        <br>
+        <b>Notation rule:</b> every derivative is written with both <b>rank</b> and <b>degree</b>: \(\;D_r^n\).
+        In this page, most formulas concern <b>degree 1</b>, so we write it explicitly:
+        \(\;D_0^{1}, D_1^{1}, D_2^{1}, \dots, D_n^{1}\).
+      </p>
+    </header>
 
-        <section class="card span2">
-          <div class="hd"><h2>Introduction</h2></div>
-          <div class="bd">
-            <p>
-              In Hierarchical Calculus, the derivatives
-              \(D_0, D_1, D_2, \dots\) are not independent operators.
-              They represent <strong>interconnected levels</strong>
-              within a single derivative hierarchy.
-            </p>
-            <p>
-              This page presents the explicit mathematical formulas
-              that relate these hierarchical derivatives directly from
-              their definitions.
-            </p>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="hd"><h2>General Definition</h2></div>
-          <div class="bd">
-            <p>For a function \(y=y(x)\), the hierarchical derivative of order \(n\) is:</p>
-            <div class="formula">
-              \[
-              D_n y
-              =
-              \frac{dy}{dx}\;
-              \frac{x\,\phi_n(x)}{y\,\phi_n(y)}.
-              \]
-            </div>
-            <p>Hierarchical scaling functions:</p>
-            <div class="formula">
-              \[
-              \phi_1(t)=1,\quad
-              \phi_2(t)=\ln t,\quad
-              \phi_3(t)=\ln\ln t,\;\dots
-              \]
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="hd"><h2>First Levels</h2></div>
-          <div class="bd">
-            <div class="formula">
-              \[
-              D_0 y=\frac{dy}{dx},\qquad
-              D_1 y=\frac{dy\cdot x}{dx\cdot y},\qquad
-              D_2 y=\frac{dy\cdot x\ln x}{dx\cdot y\ln y}.
-              \]
-            </div>
-          </div>
-        </section>
-
-        <section class="card span2">
-          <div class="hd"><h2>Relation with the Classical Derivative</h2></div>
-          <div class="bd">
-            <div class="formula">
-              \[
-              \boxed{
-              D_n y
-              =
-              D_0 y
-              \;\frac{x\,\phi_n(x)}{y\,\phi_n(y)}
-              }
-              \]
-            </div>
-          </div>
-        </section>
-
-        <section class="card span2">
-          <div class="hd"><h2>Relation Between Consecutive Levels</h2></div>
-          <div class="bd">
-            <div class="formula">
-              \[
-              \boxed{
-              D_{n+1} y
-              =
-              D_n y
-              \;\frac{\phi_{n+1}(x)}{\phi_n(x)}
-              \;\frac{\phi_n(y)}{\phi_{n+1}(y)}
-              }
-              \]
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="hd"><h2>Low-Level Examples</h2></div>
-          <div class="bd">
-            <div class="formula">
-              \[
-              D_1 y = D_0 y\;\frac{x}{y}
-              \]
-            </div>
-            <div class="formula">
-              \[
-              D_2 y = D_1 y\;\frac{\ln x}{\ln y}
-              \]
-            </div>
-            <div class="formula">
-              \[
-              D_3 y = D_2 y\;\frac{\ln\ln x}{\ln\ln y}
-              \]
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="hd"><h2>Compact Hierarchical Form</h2></div>
-          <div class="bd">
-            <div class="formula">
-              \[
-              \boxed{
-              D_n y
-              =
-              D_1 y
-              \prod_{k=2}^{n}
-              \frac{\phi_k(x)}{\phi_k(y)}
-              }
-              \]
-            </div>
-            <div class="formula">
-              \[
-              \boxed{
-              D_n y
-              =
-              D_0 y
-              \;\frac{x}{y}
-              \prod_{k=2}^{n}
-              \frac{\phi_k(x)}{\phi_k(y)}
-              }
-              \]
-            </div>
-          </div>
-        </section>
-
+    <section class="card">
+      <h2>1) General definition (degree 1)</h2>
+      <p class="muted small" style="margin:0">
+        For \(y=y(x)\), the rank-\(n\), degree-1 derivative can be written as:
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n}^{1} y
+            = \frac{dy}{dx}\;\frac{x\,\phi_n(x)}{y\,\phi_n(y)}
+          }
+        \]
       </div>
-    </div>
-  </main>
+      <p class="muted small" style="margin:10px 0 0 0">
+        Example scaling functions:
+      </p>
+      <div class="math">
+        \[
+          \phi_1(t)=1,\quad \phi_2(t)=\ln t,\quad \phi_3(t)=\ln(\ln t),\;\dots
+        \]
+      </div>
+    </section>
 
-  <footer>
-    <div class="wrap">
-      © Hierarchical Calculus — Hierarchical Derivatives Relationships
-    </div>
-  </footer>
+    <section class="card">
+      <h2>2) First ranks (degree 1)</h2>
+      <div class="math">
+        \[
+          D_{0}^{1}y=\frac{dy}{dx},
+          \qquad
+          D_{1}^{1}y=\frac{dy\cdot x}{dx\cdot y},
+          \qquad
+          D_{2}^{1}y=\frac{dy\cdot x\ln x}{dx\cdot y\ln y}.
+        \]
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) Master link to \(D_{0}^{1}\)</h2>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n}^{1}y = D_{0}^{1}y \;\frac{x\,\phi_n(x)}{y\,\phi_n(y)}
+          }
+        \]
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) Consecutive ranks: \(D_{n}^{1} \leftrightarrow D_{n+1}^{1}\)</h2>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n+1}^{1} y
+            = D_{n}^{1} y \;\frac{\phi_{n+1}(x)}{\phi_n(x)} \;\frac{\phi_n(y)}{\phi_{n+1}(y)}
+          }
+        \]
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) Direct relations (degree 1)</h2>
+      <ul class="muted small">
+        <li>
+          From \(D_{0}^{1}\) to \(D_{1}^{1}\):
+          <div class="math">
+            \[
+              \boxed{
+                D_{1}^{1}y = D_{0}^{1}y\;\frac{x}{y}
+              }
+            \]
+          </div>
+        </li>
+        <li>
+          From \(D_{1}^{1}\) to \(D_{2}^{1}\):
+          <div class="math">
+            \[
+              \boxed{
+                D_{2}^{1}y = D_{1}^{1}y\;\frac{\ln x}{\ln y}
+              }
+            \]
+          </div>
+        </li>
+        <li>
+          From \(D_{2}^{1}\) to \(D_{3}^{1}\):
+          <div class="math">
+            \[
+              \boxed{
+                D_{3}^{1}y = D_{2}^{1}y\;\frac{\ln(\ln x)}{\ln(\ln y)}
+              }
+            \]
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>6) Compact rank ladder (degree 1)</h2>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n}^{1}y = D_{1}^{1}y \prod_{k=2}^{n} \frac{\phi_k(x)}{\phi_k(y)}
+          }
+        \]
+      </div>
+      <div class="math">
+        \[
+          \boxed{
+            D_{n}^{1}y = D_{0}^{1}y \;\frac{x}{y} \prod_{k=2}^{n} \frac{\phi_k(x)}{\phi_k(y)}
+          }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Note:</strong>
+        Higher degrees (e.g. \(D_1^{2}\), \(D_1^{3}\), …) are obtained by successive application within the same rank,
+        as defined on the “Rank & Degree” page.
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Hierarchical Derivatives Relationships (with \(D_r^n\))
+    </footer>
+  </div>
 </body>
 </html>
