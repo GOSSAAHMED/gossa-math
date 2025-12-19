@@ -1,429 +1,243 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Paper — Hierarchical Calculus</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<style>
-:root{
-  --bg1:#0b1220; --bg2:#0f1b2e;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(0,0,0,.22);
-  --b: rgba(255,255,255,.12);
-  --txt:#eaf2ff; --mut:#cfe3ff;
-  --accent:#61d2d2; --accent2:#7aa7ff;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, Arial;
-  background:
-    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--txt);
-}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:auto;padding:34px 16px 70px}
-.top{
-  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  padding:14px 16px;border-bottom:1px solid var(--b);
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
-}
-.brand{display:flex;gap:10px;align-items:center}
-.logo{
-  width:34px;height:34px;border-radius:10px;
-  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
-              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
-              rgba(255,255,255,.06);
-  border:1px solid var(--b);
-}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-nav a{
-  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
-  background:rgba(255,255,255,.03);
-}
-h1{margin:22px 0 10px;font-size:34px}
-h2{margin:0 0 10px}
-h3{margin:0 0 8px}
-.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.85}
-.card{
-  background:var(--card);border:1px solid var(--b);border-radius:18px;
-  padding:18px;margin:14px 0;
-}
-.small{font-size:14px;color:var(--mut);line-height:1.95}
-.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
-.tag{
-  display:inline-block;padding:2px 10px;border:1px solid var(--b);
-  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
-}
-.math{
-  background:var(--card2);border:1px solid var(--b);border-radius:14px;
-  padding:12px;margin-top:10px;overflow:auto
-}
-.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.btn{
-  display:inline-block;padding:9px 12px;border-radius:999px;
-  border:1px solid var(--b);background:rgba(255,255,255,.04);
-}
-.btn.primary{border-color:rgba(97,210,210,.45);background:rgba(97,210,210,.12)}
-.toc a{display:block;padding:8px 10px;border:1px solid var(--b);border-radius:12px;background:rgba(0,0,0,.16);margin:8px 0}
-.callout{
-  border-left:4px solid var(--accent);
-  padding:12px 14px;border-radius:14px;
-  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
-  margin-top:12px;
-}
-code{background:rgba(0,0,0,.25);padding:2px 6px;border-radius:8px;border:1px solid rgba(255,255,255,.12)}
-ul{margin:10px 0 0 0; padding-left:18px}
-li{margin:7px 0}
-.note{opacity:.95}
-</style>
+  <title>Scientific Paper (Under Review) — General Overview | Hierarchical Calculus</title>
+  <meta name="description" content="A general, non-technical overview of the Hierarchical Calculus paper currently under peer review. The full manuscript is not published here." />
+  <meta name="author" content="GOSSA AHMED" />
+  <meta name="robots" content="index,follow" />
 
-<script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/paper/paper-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/paper/paper-ar.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/paper/paper-en.html" />
+
+  <!-- Scholar-safe metadata (project-level, not published article) -->
+  <meta name="citation_title" content="Hierarchical Calculus (Under Review) — General Overview" />
+  <meta name="citation_author" content="Gossa Ahmed" />
+  <meta name="citation_publication_date" content="2025" />
+  <meta name="citation_language" content="en" />
+  <meta name="citation_doi" content="10.5281/zenodo.17917302" />
+  <meta name="citation_fulltext_html_url" content="https://gossaahmed.github.io/gossa-math/paper/paper-en.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220;
+      --bg1:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text:#eaf2ff;
+      --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3;
+      --accent2:#7aa7ff;
+      --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 54px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; gap:10px; justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.2}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:9px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 13px;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.12);
+    }
+
+    .hero{
+      margin-top:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+      position:relative;
+    }
+    h1{margin:0 0 6px 0; font-size:28px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .alert{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 12px;
+      line-height: 1.9;
+    }
+    .alert strong{color:var(--warn)}
+
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin-top:16px;
+    }
+    .block{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .label{
+      font-weight: 800;
+      margin-bottom: 8px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .bar{
+      width:4px; height:18px; border-radius:99px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      display:inline-block;
+    }
+    ul{margin:8px 0 0 0; padding-left:18px}
+    li{margin:6px 0}
+
+    footer{
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
 </head>
 
 <body>
-<div class="top">
-  <div class="brand">
-    <div class="logo" aria-hidden="true"></div>
-    <div>
-      <div style="font-weight:900">Hierarchical Calculus</div>
-      <div style="font-size:12px;color:var(--mut)">Paper Version</div>
-    </div>
-  </div>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <div class="title">
+          <strong>Hierarchical Calculus</strong>
+          <span>Scientific Paper — General Overview (Under Review)</span>
+        </div>
+      </div>
 
-  <nav aria-label="Navigation">
-    <a href="../index-en.html">Home</a>
-    <a href="../theory-en.html">Theory</a>
-    <a href="../equations-en.html">Equations</a>
-    <a href="../physics-en.html">Physics</a>
-    <a href="../numerics-en.html">Numerics</a>
-    <a href="../faq-en.html">FAQ</a>
-    <a href="../index.html">العربية</a>
-  </nav>
-</div>
-
-<div class="container">
-
-  <h1>Hierarchical Calculus: A Unified Framework for Differential, Relative, and Logarithmic Derivatives</h1>
-  <p class="subtitle">
-    Author’s paper version (preprint). This page mirrors the website content in a single academic structure
-    suitable for peer review and archiving.
-  </p>
-
-  <div class="card">
-    <div class="small">
-      <div><strong>Author:</strong> GOSSA AHMED</div>
-      <div><strong>Website:</strong> <span class="tag">gossa-math</span></div>
-      <div><strong>DOI (Concept):</strong> <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></div>
-    </div>
-
-    <div class="btns">
-      <a class="btn primary" href="paper.pdf">Download PDF (paper.pdf)</a>
-      <a class="btn" href="#abstract">Read Abstract</a>
-      <a class="btn" href="#toc">Table of Contents</a>
-    </div>
-
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">Note</div>
-      <div class="small note">
-        If <code>paper.pdf</code> is not yet uploaded, the download link will show 404. Upload the PDF later to <code>/paper/paper.pdf</code>.
+      <div class="actions">
+        <a class="btn" href="../index-en.html">Home</a>
+        <a class="btn" href="./paper-ar.html">العربية</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">Concept DOI</a>
       </div>
     </div>
   </div>
 
-  <div id="toc" class="card toc">
-    <h2>Table of Contents</h2>
-    <a href="#abstract">Abstract</a>
-    <a href="#keywords">Keywords</a>
-    <a href="#introduction">1. Introduction</a>
-    <a href="#definitions">2. Formal Definitions of Hierarchical Derivatives</a>
-    <a href="#golden-theorem">3. The Golden Theorem</a>
-    <a href="#hierarchical-equations">4. Hierarchical Equations</a>
-    <a href="#physics-application">5. Physical Application: Adiabatic Process</a>
-    <a href="#numerical-validation">6. Numerical Validation</a>
-    <a href="#scope-limitations">7. Scope and Limitations</a>
-    <a href="#conclusion">8. Conclusion and Perspectives</a>
-  </div>
+  <div class="wrap">
+    <header class="hero">
+      <h1>Scientific Paper (Under Review)</h1>
+      <p class="muted" style="margin:0; line-height:1.9">
+        This page provides a <strong>general, non-technical overview</strong> of the research work.
+        The full manuscript, proofs, and results are not published here in order to preserve the integrity of the peer-review process.
+      </p>
 
-  <!-- ABSTRACT -->
-  <div id="abstract" class="card">
-    <h2>Abstract</h2>
-    <p class="small">
-      In this work, we introduce Hierarchical Calculus, a unified framework that organizes different notions of
-      variation—additive, relative, logarithmic, and higher-order—into a structured hierarchy. Classical differentiation
-      appears as the lowest level of this hierarchy, while higher levels correspond to relative and iterated logarithmic
-      derivatives. A general relation linking all hierarchical derivatives is derived, showing that each level can be
-      obtained from the previous one through a systematic rescaling. This framework provides a natural language for laws
-      exhibiting scale invariance or multi-scale behavior. As an illustration, an adiabatic process in thermodynamics is
-      reformulated using the relative derivative, leading to a remarkably simple representation. Numerical experiments
-      confirm the robustness of the hierarchical formulation with respect to approximation errors. The proposed approach
-      does not replace classical analysis but complements it by offering an organized method to select the most
-      appropriate level of description.
-    </p>
-  </div>
-
-  <div id="keywords" class="card">
-    <h2>Keywords</h2>
-    <p class="small">
-      Hierarchical calculus; relative derivative; logarithmic derivative; scale invariance; adiabatic process; numerical stability
-    </p>
-  </div>
-
-  <!-- INTRODUCTION -->
-  <div id="introduction" class="card">
-    <h2>1. Introduction</h2>
-    <p class="small">
-      The concept of differentiation is one of the central pillars of mathematical analysis and its applications in physics,
-      engineering, and the natural sciences. Classically, differentiation measures additive variations of quantities with respect
-      to one another and has proven extremely successful in modeling continuous phenomena.
-    </p>
-    <p class="small">
-      However, many laws encountered in physics, biology, economics, and other applied fields are not naturally expressed in terms
-      of additive changes. Instead, they involve relative variations, ratios, or scale-invariant relations. Typical examples include
-      power laws, exponential growth, thermodynamic relations, and multi-scale processes. In such cases, reformulating the problem
-      in logarithmic or relative coordinates often leads to simpler and more transparent expressions.
-    </p>
-    <p class="small">
-      Several approaches exploiting logarithmic derivatives or scale-invariant formulations already exist in the literature.
-      Nevertheless, these tools are usually introduced in an ad hoc manner, without a unifying framework that clarifies their mutual
-      relations or guides the choice of the most appropriate formulation.
-    </p>
-    <p class="small">
-      The aim of this work is to propose a systematic organization of different notions of variation into a single coherent structure,
-      referred to as <em>Hierarchical Calculus</em>. In this framework, classical differentiation appears as the lowest level of a hierarchy.
-      Higher levels correspond to relative derivatives and iterated logarithmic derivatives, each representing a change of measurement
-      language rather than a fundamentally new operation.
-    </p>
-    <p class="small">
-      A central result of this work is the derivation of a general relation linking all hierarchical derivatives. This relation shows
-      that moving from one level to the next amounts to a well-defined rescaling governed by the natural scale of the variables involved.
-      As a consequence, equations that are nonlinear or cumbersome at the differential level may reduce to remarkably simple forms at higher
-      hierarchical levels.
-    </p>
-  </div>
-
-  <!-- DEFINITIONS -->
-  <div id="definitions" class="card">
-    <h2>2. Formal Definitions of Hierarchical Derivatives</h2>
-    <p class="small">
-      We provide rigorous definitions. Logarithms are defined only where their arguments are positive and nonzero.
-    </p>
-
-    <div class="math">
-      \[
-      D_0 f(x) := \frac{df}{dx}(x).
-      \]
-      \[
-      D_1 f(x) := \frac{d\ln f(x)}{d\ln x}
-               = \frac{x}{f(x)}\,\frac{df}{dx}(x).
-      \]
-      \[
-      D_2 f(x) := \frac{d\ln(\ln f(x))}{d\ln(\ln x)}.
-      \]
-      \[
-      D_n f(x) := \frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}\quad (n\ge 1),
-      \qquad \ln^{(n)}=\underbrace{\ln\circ\cdots\circ\ln}_{n\ \text{times}}.
-      \]
-    </div>
-
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">Domain conditions</div>
-      <div class="small">
-        Each level requires that all iterated logarithms \(\ln^{(k)}(x)\) and \(\ln^{(k)}(f(x))\) are well defined and nonzero.
-        Higher levels impose stricter domains (e.g. \(x>1\), \(f(x)>1\) for log–log constructions).
+      <div class="alert">
+        <strong>Important:</strong>
+        The complete scientific manuscript and its PDF are <strong>not publicly available</strong> at this time, as the paper is currently under peer review in an open-access journal.
       </div>
-    </div>
-  </div>
+    </header>
 
-  <!-- GOLDEN THEOREM -->
-  <div id="golden-theorem" class="card">
-    <h2>3. The Golden Theorem</h2>
-
-    <p class="small">
-      The following identity is the structural core of Hierarchical Calculus.
-    </p>
-
-    <div class="math">
-      \[
-      \boxed{
-      D_{n+1} f(x)
-      =
-      D_n f(x)\,
-      \frac{\ln^{(n)}(x)}{\ln^{(n)}(f(x))}
-      }
-      \]
-    </div>
-
-    <p class="small">
-      <strong>Proof (sketch):</strong> By definition
-      \(D_{n+1} f = \dfrac{d\ln(\ln^{(n)} f)}{d\ln(\ln^{(n)} x)}\).
-      Apply the chain rule to numerator and denominator and rearrange terms to obtain the formula.
-      (Full proof is identical to the website theorem proof and follows directly from the chain rule.)
-    </p>
-
-    <div class="math">
-      \[
-      D_n f(x)
-      =
-      D_{n+1} f(x)\,
-      \frac{\ln^{(n)}(f(x))}{\ln^{(n)}(x)}.
-      \]
-    </div>
-  </div>
-
-  <!-- HIERARCHICAL EQUATIONS -->
-  <div id="hierarchical-equations" class="card">
-    <h2>4. Hierarchical Equations</h2>
-
-    <p class="small">
-      A hierarchical equation of level \(n\) is any relation involving \(x\), \(f(x)\), and one or more derivatives
-      \(D_k f(x)\) with \(0\le k\le n\). It may be written:
-    </p>
-
-    <div class="math">
-      \[
-      \mathcal{F}\bigl(x,f(x),D_0 f(x),D_1 f(x),\dots,D_n f(x)\bigr)=0.
-      \]
-    </div>
-
-    <p class="small">
-      Example (power-law equation):
-    </p>
-
-    <div class="math">
-      \[
-      \frac{df}{dx} = k\,\frac{f(x)}{x}
-      \quad\Longleftrightarrow\quad
-      D_1 f(x)=k
-      \quad\Longrightarrow\quad
-      f(x)=C\,x^k.
-      \]
-    </div>
-  </div>
-
-  <!-- PHYSICS APPLICATION -->
-  <div id="physics-application" class="card">
-    <h2>5. Physical Application: Adiabatic Process (Ideal Gas)</h2>
-
-    <p class="small">
-      For an ideal gas undergoing an adiabatic process:
-    </p>
-
-    <div class="math">
-      \[
-      P\,V^{\gamma}=\text{constant}, \qquad \gamma=\frac{C_p}{C_v}>1.
-      \]
-    </div>
-
-    <p class="small">
-      Classical (level 0) form:
-    </p>
-
-    <div class="math">
-      \[
-      \frac{dP}{dV}=-\gamma\frac{P}{V}.
-      \]
-    </div>
-
-    <p class="small">
-      Hierarchical (level 1) form:
-    </p>
-
-    <div class="math">
-      \[
-      D_1 P(V)=\frac{d\ln P}{d\ln V}
-      \quad\Rightarrow\quad
-      \boxed{D_1P=-\gamma.}
-      \]
-    </div>
-
-    <p class="small">
-      Solution:
-    </p>
-
-    <div class="math">
-      \[
-      P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}.
-      \]
-    </div>
-  </div>
-
-  <!-- NUMERICAL VALIDATION -->
-  <div id="numerical-validation" class="card">
-    <h2>6. Numerical Validation</h2>
-
-    <p class="small">
-      We take \(\gamma=1.4\), \(V_0=1.00\) L, \(P_0=100.00\) kPa. Then \(K=P_0V_0^\gamma=100.00\).
-      For \(P(V)=P_0(V/V_0)^{-\gamma}\), we compute \(K_i=P_iV_i^\gamma\) using pressures rounded to 2 decimals.
-    </p>
-
-    <div class="math">
-      \[
-      D_1P \approx \frac{\ln(P_2/P_1)}{\ln(V_2/V_1)}.
-      \]
-    </div>
-
-    <p class="small">
-      (Detailed numerical table is provided on the website page <a href="../physics-en.html">Physics</a> and may be mirrored here in later revisions.)
-    </p>
-
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">Takeaway</div>
-      <div class="small">
-        Ratio/log-based verification tends to be robust under rounding, consistent with the scale-invariant structure of the law.
+    <section class="card">
+      <div class="block">
+        <div class="label"><span class="bar"></span>General Description</div>
+        <p class="muted small">
+          The work introduces a conceptual and methodological framework for organizing multi-layer derivatives within what is referred to as Hierarchical Calculus.
+          This overview focuses on motivations and scope, without presenting formal definitions or finalized results.
+        </p>
       </div>
-    </div>
+
+      <div class="block">
+        <div class="label"><span class="bar"></span>Motivation</div>
+        <ul class="muted small">
+          <li>Provide a unified perspective across derivative layers.</li>
+          <li>Facilitate cross-scale modeling and interpretation.</li>
+          <li>Clarify distinctions between differential, relative, and higher-layer operators.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="label"><span class="bar"></span>What This Page Does Not Contain</div>
+        <ul class="muted small">
+          <li>No formal definitions, propositions, or proofs.</li>
+          <li>No numerical results or full applications.</li>
+          <li>No tables, figures, or downloadable PDF.</li>
+          <li>No text identical to the submitted manuscript.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="label"><span class="bar"></span>Project Links (Safe)</div>
+        <p class="muted small">
+          Project website: <a href="../index.html">Arabic</a> · <a href="../index-en.html">English</a><br>
+          Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a><br>
+          GitHub repository: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GOSSAAHMED/gossa-math</a>
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label"><span class="bar"></span>Full Text Availability</div>
+        <p class="muted small">
+          After peer-review and official acceptance (or according to the journal policy),
+          this page will be updated with:
+          (1) the official journal link,
+          (2) the permitted PDF version,
+          and (3) finalized citation metadata.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Safe general overview page for a paper under review
+    </footer>
   </div>
-
-  <!-- SCOPE & LIMITATIONS -->
-  <div id="scope-limitations" class="card">
-    <h2>7. Scope and Limitations</h2>
-
-    <p class="small">
-      Hierarchical Calculus organizes existing notions of variation into a structured hierarchy and helps select an appropriate
-      language of change for scale-dependent phenomena. It does not replace classical analysis, nor does it guarantee simplification
-      for arbitrary equations.
-    </p>
-
-    <ul class="small">
-      <li><strong>Scope:</strong> scale invariance, power laws, multi-scale behavior, robust ratio-based numerics.</li>
-      <li><strong>Not claimed:</strong> new physical laws, universal simplification, domain-free applicability.</li>
-      <li><strong>Domain restrictions:</strong> iterated logarithms must be well-defined and nonzero at the chosen level.</li>
-      <li><strong>Higher levels:</strong> represent iterated logarithmic scaling; avoid confusion with classical tetration as iterated exponentials.</li>
-    </ul>
-  </div>
-
-  <!-- CONCLUSION -->
-  <div id="conclusion" class="card">
-    <h2>8. Conclusion and Perspectives</h2>
-
-    <p class="small">
-      We introduced Hierarchical Calculus as a coherent framework linking differential, relative, and iterated-logarithmic derivatives.
-      The Golden Relation provides the structural identity connecting levels and is grounded in classical differentiation and the chain rule.
-      Applications to hierarchical equations and an adiabatic thermodynamics example illustrate how scale-invariant laws can become
-      constant relations at the appropriate level. Numerical checks suggest robustness of ratio/log-based formulations.
-    </p>
-
-    <p class="small">
-      Future directions include extensions to PDEs, systematic numerical schemes at higher levels, and broader applications to
-      multi-scale modeling across physics, biology, and economics.
-    </p>
-
-    <div class="btns">
-      <a class="btn primary" href="paper.pdf">Download PDF</a>
-      <a class="btn" href="../references-en.html">References</a>
-      <a class="btn" href="../faq-en.html">FAQ</a>
-    </div>
-  </div>
-
-</div>
 </body>
 </html>
