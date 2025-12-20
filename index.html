@@ -394,10 +394,10 @@
       <section class="card" id="core">
         <h2><span class="bar"></span>التعريفات الأساسية</h2>
 
-        <p class="muted small">
-          نرمز بـ \(D_0\) للمشتق التفاضلي (الطبقة صفر)، وبـ \(D_1\) للمشتق النسبي (الطبقة 1).
-          تعميم الطبقات يُكتب بصيغة موحّدة باستعمال اللوغاريتمات المتكررة.
-        </p>
+       <p class="muted small">
+  نرمز بـ \(D_0^{(1)}\) للمشتق التفاضلي (الطبقة 0)، وبـ \(D_1^{(1)}\) للمشتق النسبي (الطبقة 1).
+  ونرمز عمومًا بـ \(D_n^{(1)}\) للمشتق الهرمي من الرتبة \(n\) عند الدرجة \(1\).
+</p>
 
         <div class="block">
           <div class="label">الرتبة والدرجة <span class="tag">Order &amp; Degree</span></div>
@@ -509,21 +509,22 @@
       </p>
 
       <div class="math-box">
-        \[
-          D_n y = F(x,y)
-        \]
-      </div>
+  \[
+    D_n y = F(x,y)
+  \]
+</div>
 
       <div class="block">
         <div class="label">مثال <span class="tag">Example</span></div>
         <p class="muted small" style="margin:0">
           مثال إرشادي على تحويل معادلة انفجارية:
         </p>
-        <div class="math-box">
-          \[
-            \frac{dy}{dx}=y\ln y
-          \]
-        </div>
+       <div class="math-box">
+  \[
+    D_n^{(k)}\,y = F(x,y),\qquad k=1,2,3,\dots
+  \]
+</div>
+
         <p class="muted small" style="margin:8px 0 0 0">
           باستعمال التحويل الهرمي المناسب قد تُكتب بصيغة أبسط في طبقة أعلى (يعرض التفصيل في صفحة المعادلات).
         </p>
@@ -600,6 +601,7 @@
   </div>
 </body>
 </html>
+
 
 
 
