@@ -2,10 +2,155 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>قوانين الاشتقاق الهرمي | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>قوانين الاشتقاق الهرمي — (بالرتبة والدرجة)</title>
+  <meta name="description" content="قوانين الاشتقاق الهرمي: القواعد الأساسية للمشتق النسبي ثم التعميم إلى الرتب الأعلى، مع كتابة كل مشتق بصيغة الرتبة والدرجة D_r^n (مثل D_1^1 و D_n^1)." />
+  <meta name="author" content="GOSSA AHMED" />
 
-  <!-- MathJax (LaTeX) -->
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/rules.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/rules-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/rules.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1050px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .math{
+      margin-top:8px; padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius:12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:var(--warn)}
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
+    }
+    thead th{
+      text-align:right;
+      font-size:13px;
+      padding:10px 10px;
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+    }
+    tbody td{
+      padding:10px 10px;
+      font-size:13px;
+      color:rgba(234,242,255,.88);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+    }
+    tbody tr:last-child td{border-bottom:none}
+    .ltr{direction:ltr; text-align:left}
+    code{
+      font-family:var(--mono);
+      background:rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      padding:2px 6px;
+      border-radius:8px;
+    }
+
+    footer{
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
+    }
+  </style>
+
+  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
@@ -13,168 +158,139 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <style>
-    :root{
-      --bg:#0b1220; --card:#101b2f; --text:#e9eef8; --muted:#b7c3da;
-      --accent:#7dd3fc; --border:rgba(255,255,255,.10);
-    }
-    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic","Noto Sans Arabic",Arial,sans-serif;line-height:1.85}
-    header{max-width:1100px;margin:0 auto;padding:22px 18px 10px}
-    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:14px}
-    nav a:hover{border-color:rgba(125,211,252,.55)}
-    main{max-width:1100px;margin:0 auto;padding:0 18px 50px}
-    h1{font-size:30px;margin:14px 0 6px}
-    h2{font-size:22px;margin:26px 0 10px}
-    h3{font-size:18px;margin:18px 0 8px}
-    p{color:var(--muted);margin:8px 0}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 16px;margin:14px 0}
-    .doi{display:flex;flex-direction:column;gap:6px}
-    .doi a{color:var(--accent);text-decoration:none}
-    .eq{overflow:auto}
-    .note{border-right:4px solid var(--accent);padding-right:12px}
-    .small{font-size:14px}
-    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
-    table{width:100%;border-collapse:collapse;margin-top:10px;overflow:hidden;border-radius:14px}
-    th,td{border:1px solid var(--border);padding:10px 10px;text-align:right}
-    th{background:rgba(255,255,255,.05);color:var(--text);font-weight:700}
-    td{color:var(--muted)}
-    .kpi{color:var(--text);font-weight:700}
-  </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="./index.html">نظرة عامة</a>
-      <a href="./theory.html">التعريفات الأساسية</a>
-      <a href="./series.html">المتسلسلات الهرمية</a>
-      <a href="./rules.html" aria-current="page">قوانين الاشتقاق الهرمي</a>
-      <a href="./integrals.html">التكامل الهرمي</a>
-      <a href="./equations.html">المعادلات الهرمية</a>
-      <a href="./citation.html">كيفية الاستشهاد</a>
-    </nav>
-
-    <h1>قوانين الاشتقاق الهرمي</h1>
-    <p>آخر إصدار مؤرشف للحساب الهرمي:
-<strong>v1.1.0</strong> —
-<a href="https://doi.org/10.5281/zenodo.17944425" target="_blank">Zenodo DOI</a>
-</p>
-
-    <p class="small">
-      في هذه الصفحة نعرض القواعد الأساسية للاشتقاق الهرمي. نبدأ بالمشتق النسبي \(D_1\)، ثم نُعمِّم إلى \(D_n\).
-    </p>
-
-    <p>
-<strong>الإصدار المؤرشف الحالي:</strong> v1.1.0 —
-<a href="https://doi.org/10.5281/zenodo.17944425" target="_blank">
-DOI: 10.5281/zenodo.17944425
-</a>
-</p>
-
-      <div class="note small">
-        هذه القوانين جزء من الإطار التأسيسي للحساب الهرمي. أي استعمال أو توسعة يجب أن تُرفق بالاستشهاد بـ Zenodo وبالموقع الرسمي.
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>قوانين الاشتقاق الهرمي</strong>
+          <span>ترميز صريح: \(D_r^n\) (الرتبة + الدرجة)</span>
+        </div>
       </div>
-    </div>
-  </header>
 
-  <main>
+      <nav aria-label="التنقل">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./series.html">المتسلسلات</a>
+        <a href="./integrals.html">التكامل</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="./hierarchical-derivatives-relations.html">العلاقات</a>
+        <a href="./rules-en.html">English</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <h1>قوانين الاشتقاق الهرمي</h1>
+      <p class="muted">
+        في هذه الصفحة نعرض القواعد الأساسية للاشتقاق الهرمي. نبدأ بالمشتق النسبي ثم نُعمِّم إلى الرتبة \(n\).
+        <br>
+        <b>قاعدة الترميز:</b> نكتب أي مشتق بصيغة <b>الرتبة والدرجة</b>:
+        \(\;D_r^n\). وفي هذه الصفحة نستعمل الدرجة \(1\) صراحة:
+        \(\;D_{1}^{1}\) و \(\;D_{n}^{1}\).
+      </p>
+      <p class="muted small" style="margin:10px 0 0 0">
+        Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+        <br>
+        Version DOI (v1.0.0): <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
+      </p>
+    </header>
 
     <section class="card">
-      <h2>1) تعريف سريع للمشتق النسبي \(D_1\)</h2>
-      <p>
+      <h2>1) تعريف سريع للمشتق النسبي (رتبة 1، درجة 1)</h2>
+      <p class="muted small" style="margin:0">
         نعتبر دالة موجبة \(f(x)>0\) على مجال \(x>0\). المشتق النسبي يقيس التغير بالنسبة لمقياس نسبي.
       </p>
-
-      <div class="eq">
+      <div class="math">
         \[
-        \boxed{
-        D_1 f(x)=\frac{d}{d\ln x}\big(\ln f(x)\big)=\frac{d\ln f(x)}{d\ln x}
-        }
+          \boxed{
+            D_{1}^{1} f(x)
+            =\frac{d}{d\ln x}\big(\ln f(x)\big)
+            =\frac{d\ln f(x)}{d\ln x}
+          }
         \]
       </div>
 
       <div class="note">
         <strong>فكرة:</strong>
-        إذا كانت \(D_1 f\) ثابتًا، فهذا يعني أن \(f\) تتصرف كقوة \(x^\alpha\) (قانون تحجيم).
+        إذا كان \(D_{1}^{1} f\) ثابتًا، فهذا يعني أن \(f\) تتصرف كقوة \(x^\alpha\) (قانون تحجيم).
       </div>
     </section>
 
     <section class="card">
-      <h2>2) القواعد الأساسية لـ \(D_1\)</h2>
+      <h2>2) القواعد الأساسية لـ \(D_{1}^{1}\)</h2>
 
       <h3>2.1) ثابت مضروب</h3>
-      <div class="eq">
+      <div class="math">
         \[
-        \boxed{
-        D_1(C\,f)=D_1 f
-        \qquad (C>0\ \text{ثابت})
-        }
+          \boxed{
+            D_{1}^{1}(C\,f)=D_{1}^{1} f
+            \qquad (C>0\ \text{ثابت})
+          }
         \]
       </div>
-      <p class="small">لأن \(\ln(Cf)=\ln C+\ln f\) واشتقاق \(\ln C\) يساوي صفرًا.</p>
+      <p class="muted small" style="margin:0">
+        لأن \(\ln(Cf)=\ln C+\ln f\) واشتقاق \(\ln C\) بالنسبة لـ \(\ln x\) يساوي صفرًا.
+      </p>
 
       <h3>2.2) قاعدة الضرب (التراكب النسبي)</h3>
-      <div class="eq">
+      <div class="math">
         \[
-        \boxed{
-        D_1(fg)=D_1 f + D_1 g
-        }
+          \boxed{
+            D_{1}^{1}(fg)=D_{1}^{1} f + D_{1}^{1} g
+          }
         \]
       </div>
-      <p class="small">برهان مختصر: \(\ln(fg)=\ln f+\ln g\) ثم الاشتقاق بالنسبة لـ \(\ln x\).</p>
 
       <h3>2.3) قاعدة القسمة</h3>
-      <div class="eq">
+      <div class="math">
         \[
-        \boxed{
-        D_1\!\left(\frac{f}{g}\right)=D_1 f - D_1 g
-        }
+          \boxed{
+            D_{1}^{1}\!\left(\frac{f}{g}\right)=D_{1}^{1} f - D_{1}^{1} g
+          }
         \]
       </div>
-      <p class="small">لأن \(\ln(f/g)=\ln f-\ln g\).</p>
 
       <h3>2.4) ثابت أُسّي (رفع لقوة ثابتة)</h3>
-      <div class="eq">
+      <div class="math">
         \[
-        \boxed{
-        D_1\!\left(f^a\right)=a\,D_1 f
-        \qquad (a\ \text{ثابت})
-        }
+          \boxed{
+            D_{1}^{1}\!\left(f^a\right)=a\,D_{1}^{1} f
+            \qquad (a\ \text{ثابت})
+          }
         \]
       </div>
-      <p class="small">لأن \(\ln(f^a)=a\ln f\).</p>
 
       <h3>2.5) دالة قوة: \(x^\alpha\)</h3>
-      <div class="eq">
+      <div class="math">
         \[
-        \boxed{
-        D_1(x^\alpha)=\alpha
-        }
+          \boxed{
+            D_{1}^{1}(x^\alpha)=\alpha
+          }
         \]
       </div>
-      <p class="small">لأن \(\ln(x^\alpha)=\alpha\ln x\) واشتقاقها بالنسبة لـ \(\ln x\) يساوي \(\alpha\).</p>
 
-      <h3>2.6) قاعدة السلسلة (Chain Rule) — النسخة النسبية</h3>
-      <p class="small">
+      <h3>2.6) قاعدة السلسلة — النسخة النسبية</h3>
+      <p class="muted small" style="margin:0">
         لتكن \(u=u(x)\) موجبة و\(f=f(u)\) موجبة. عندئذٍ:
       </p>
-      <div class="eq">
+      <div class="math">
         \[
-        \boxed{
-        D_1\big(f(u(x))\big)=\Big(D_1 f\Big)(u)\;\cdot\;D_1 u(x)
-        }
+          \boxed{
+            D_{1}^{1}\big(f(u(x))\big)=\Big(D_{1}^{1} f\Big)(u)\;\cdot\;D_{1}^{1}u(x)
+          }
         \]
       </div>
-      <div class="note small">
-        <strong>المعنى:</strong>
-        “معدل التغير النسبي للمركب” يساوي حاصل ضرب المعدلين النسبيين.
-      </div>
+      <p class="muted small" style="margin:0">
+        المعنى: “معدل التغير النسبي للمركب” يساوي حاصل ضرب المعدلين النسبيين.
+      </p>
     </section>
 
     <section class="card">
-      <h2>3) أمثلة تحقق سريعة لـ \(D_1\)</h2>
+      <h2>3) أمثلة تحقق سريعة لـ \(D_{1}^{1}\)</h2>
 
       <table>
         <thead>
@@ -186,78 +302,77 @@ DOI: 10.5281/zenodo.17944425
         </thead>
         <tbody>
           <tr>
-            <td>\(f(x)=x^3\)</td>
-            <td class="kpi">\(D_1 f=3\)</td>
+            <td class="ltr">\(f(x)=x^3\)</td>
+            <td class="ltr">\(D_{1}^{1} f=3\)</td>
             <td>تجانس نسبي صريح</td>
           </tr>
           <tr>
-            <td>\(f(x)=\sqrt{x}=x^{1/2}\)</td>
-            <td class="kpi">\(D_1 f=\tfrac{1}{2}\)</td>
+            <td class="ltr">\(f(x)=\sqrt{x}=x^{1/2}\)</td>
+            <td class="ltr">\(D_{1}^{1} f=\tfrac{1}{2}\)</td>
             <td>قانون قوة</td>
           </tr>
           <tr>
-            <td>\(f(x)=e^x\)</td>
-            <td class="kpi">\(D_1 f=x\)</td>
+            <td class="ltr">\(f(x)=e^x\)</td>
+            <td class="ltr">\(D_{1}^{1} f=x\)</td>
             <td>\(\ln f=x\) ثم الاشتقاق بالنسبة لـ \(\ln x\)</td>
           </tr>
           <tr>
-            <td>\(f(x)=\ln x\)</td>
-            <td class="kpi">\(D_1 f=\frac{1}{\ln x}\)</td>
-            <td>لأن \(\ln(\ln x)\) مشتقتها بالنسبة لـ \(\ln x\) هي \(1/\ln x\)</td>
+            <td class="ltr">\(f(x)=\ln x\)</td>
+            <td class="ltr">\(D_{1}^{1} f=\dfrac{1}{\ln x}\)</td>
+            <td>\(\ln(\ln x)\) مشتقتها بالنسبة لـ \(\ln x\) هي \(1/\ln x\)</td>
           </tr>
         </tbody>
       </table>
     </section>
 
     <section class="card">
-      <h2>4) التعميم إلى \(D_n\)</h2>
-      <p>
-        المبدأ الهرمي العام: عند الانتقال من رتبة إلى رتبة أعلى نستبدل مقياس التغير.
+      <h2>4) التعميم إلى الرتبة \(n\): \(D_{n}^{1}\)</h2>
+      <p class="muted small" style="margin:0">
+        المبدأ الهرمي العام: عند الانتقال من رتبة إلى رتبة أعلى نستبدل “مقياس التغير”.
       </p>
 
-      <div class="eq">
+      <div class="math">
         \[
-        \boxed{
-        D_n f(x)=\frac{d}{d\ln^{(n)}x}\big(\ln f(x)\big)
-        }
+          \boxed{
+            D_{n}^{1} f(x)=\frac{d}{d\ln^{(n)}x}\big(\ln f(x)\big)
+          }
         \]
       </div>
 
-      <p class="small">
-        ومع هذا التعريف، تتكرر القواعد البنيوية نفسها على كل رتبة (مع نفس الفكرة):
-        \(\ln\) يحوّل عمليات “الرتبة” إلى جمع، ثم الاشتقاق يعيدها إلى قانون بسيط.
+      <p class="muted small" style="margin:10px 0 0 0">
+        ومع هذا التعريف، تتكرر القواعد البنيوية نفسها على كل رتبة (بنفس الفكرة):
+        اللوغاريتم يحوّل “عملية الرتبة” إلى جمع، ثم الاشتقاق يعيدها إلى قانون بسيط.
       </p>
 
-      <div class="eq">
+      <div class="math">
         \[
-        \boxed{
-        D_n(fg)=D_n f + D_n g,\qquad
-        D_n\!\left(\frac{f}{g}\right)=D_n f - D_n g,\qquad
-        D_n(f^a)=a\,D_n f
-        }
+          \boxed{
+            D_{n}^{1}(fg)=D_{n}^{1} f + D_{n}^{1} g,\qquad
+            D_{n}^{1}\!\left(\frac{f}{g}\right)=D_{n}^{1} f - D_{n}^{1} g,\qquad
+            D_{n}^{1}(f^a)=a\,D_{n}^{1} f
+          }
         \]
       </div>
 
-      <div class="note small">
-        <strong>تراكب هرمي (فكرة أساسية):</strong>
+      <div class="note">
+        <strong>تفسير هرمي مختصر:</strong>
         في الرتبة 0 التراكب جمعي، في الرتبة 1 التراكب ضربي، وفي الرتب الأعلى يصبح التراكب هرميًا وفق مقياس الرتبة.
       </div>
     </section>
 
     <section class="card">
       <h2>5) الاستشهاد بهذه الصفحة</h2>
-      <p class="small">صيغة استشهاد مقترحة:</p>
-      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">
-        <code>
-          GOSSA AHMED. Hierarchical Calculus — Derivation Rules (D1 then Dn). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).
-        </code>
+      <p class="muted small" style="margin:0">صيغة استشهاد مقترحة (جاهزة للنسخ):</p>
+      <div class="math">
+        \[
+          \texttt{GOSSA AHMED. Hierarchical Calculus — Derivation Rules (D\_1 then D\_n, with explicit rank & degree). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
+        \]
       </div>
     </section>
 
-  </main>
-
-  <footer style="max-width:1100px;margin:0 auto;padding:18px;color:var(--muted);font-size:14px">
-    © 2025 — الحساب الهرمي | Gossa Ahmed — مؤرشف عبر Zenodo (DOI).
-  </footer>
+    <footer>
+      © 2025 — الحساب الهرمي | Gossa Ahmed — مؤرشف عبر Zenodo (DOI)
+    </footer>
+  </div>
 </body>
 </html>
