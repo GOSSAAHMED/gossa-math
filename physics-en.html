@@ -1,357 +1,388 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Physics Application — Adiabatic Process (Hierarchical Calculus)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Physics Applications — Adiabatic Process (Rank & Degree)</title>
+  <meta name="description" content="Thermodynamic application: the adiabatic process (ideal gas). All derivatives are written with explicit rank and degree D_r^n (e.g., D_0^1 and D_1^1)." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<style>
-:root{
-  --bg1:#0b1220; --bg2:#0f1b2e;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(0,0,0,.22);
-  --b: rgba(255,255,255,.12);
-  --txt:#eaf2ff; --mut:#cfe3ff;
-  --accent:#61d2d2; --accent2:#7aa7ff;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, Arial;
-  background:
-    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--txt);
-}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
-.top{
-  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  padding:14px 16px;border-bottom:1px solid var(--b);
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
-}
-.brand{display:flex;gap:10px;align-items:center}
-.logo{
-  width:34px;height:34px;border-radius:10px;
-  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
-              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
-              rgba(255,255,255,.06);
-  border:1px solid var(--b);
-}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-nav a{
-  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
-  background:rgba(255,255,255,.03);
-}
-h1{margin:22px 0 8px;font-size:30px}
-.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.85}
-.card{
-  background:var(--card);border:1px solid var(--b);border-radius:18px;
-  padding:18px;margin:14px 0;
-}
-.small{font-size:14px;color:var(--mut);line-height:1.95}
-.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
-.tag{
-  display:inline-block;padding:2px 10px;border:1px solid var(--b);
-  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
-}
-.math{
-  background:var(--card2);border:1px solid var(--b);border-radius:14px;
-  padding:12px;margin-top:10px;overflow:auto
-}
-.callout{
-  border-left:4px solid var(--accent);
-  padding:12px 14px;border-radius:14px;
-  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
-  margin-top:12px;
-}
-table{
-  width:100%;
-  border-collapse:separate;
-  border-spacing:0;
-  overflow:hidden;
-  border:1px solid var(--b);
-  border-radius:14px;
-  background:rgba(0,0,0,.18);
-}
-th,td{
-  padding:10px 10px;
-  border-bottom:1px solid rgba(255,255,255,.10);
-  font-size:14px;
-  text-align:center;
-  white-space:nowrap;
-}
-th{color:#bfe8ff;background:rgba(255,255,255,.04);font-weight:900}
-tr:last-child td{border-bottom:none}
-.ok{color:#7dffb0}
-</style>
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/physics.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
 
-<script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px;
+    }
+    .math{
+      margin-top: 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
+    }
+    thead th{
+      text-align:left;
+      font-size:13px;
+      padding:10px 10px;
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    tbody td{
+      padding:10px 10px;
+      font-size:13px;
+      color:rgba(234,242,255,.88);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    tbody tr:last-child td{border-bottom:none}
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-<div class="top">
-  <div class="brand">
-    <div class="logo" aria-hidden="true"></div>
-    <div>
-      <div style="font-weight:900">Hierarchical Calculus</div>
-      <div style="font-size:12px;color:var(--mut)">Physics Application</div>
-    </div>
-  </div>
-
-  <nav aria-label="Navigation">
-    <a href="index-en.html">Home</a>
-    <a href="theory-en.html">Theory</a>
-    <a href="equations-en.html">Equations</a>
-    <a href="numerics-en.html">Numerics</a>
-    <a href="glossary-en.html">Glossary</a>
-    <a href="references-en.html">References</a>
-    <a href="physics.html">العربية</a>
-  </nav>
-</div>
-
-<div class="container">
-  <h1>🧪 Thermodynamics Application: Adiabatic Process (Ideal Gas)</h1>
-  <p class="subtitle">
-    This example shows why the <span class="tag">Level 1</span> (relative) language is often the natural one in physics:
-    many laws relate ratios, not differences.
-  </p>
-
-  <div class="card">
-    <h2>1) Physical law</h2>
-    <p class="small">
-      For an ideal gas undergoing an adiabatic process:
-    </p>
-    <div class="math">
-      \[
-      P\,V^{\gamma}=\text{constant},
-      \qquad
-      \gamma=\frac{C_p}{C_v}
-      \]
-    </div>
-    <p class="small">
-      where \(P\) is pressure, \(V\) is volume, and \(\gamma\) is the heat-capacity ratio.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>2) Classical differential form (Level 0 / D0)</h2>
-    <p class="small">
-      Taking logarithms and differentiating:
-    </p>
-    <div class="math">
-      \[
-      \ln P + \gamma \ln V = \text{constant}
-      \]
-      \[
-      \frac{dP}{P}+\gamma\frac{dV}{V}=0
-      \quad\Rightarrow\quad
-      \frac{dP}{dV}=-\gamma\frac{P}{V}
-      \]
-    </div>
-    <p class="small">
-      This is an ODE in \(P(V)\). It is simple, but it is not “linear” in the original variables.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>3) Hierarchical (relative) form (Level 1 / D1)</h2>
-    <p class="small">
-      Define the relative derivative:
-    </p>
-    <div class="math">
-      \[
-      D_1 P(V)=\frac{d\ln P}{d\ln V}
-      \]
-    </div>
-    <p class="small">
-      From \(\ln P = -\gamma \ln V + \text{constant}\), we immediately get:
-    </p>
-    <div class="math">
-      \[
-      \boxed{D_1 P = -\gamma}
-      \]
-    </div>
-
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">Key observation</div>
-      <div class="small">
-        The hierarchical (Level 1) equation collapses to a <strong>constant</strong>.
-        This reflects that the law is naturally expressed in ratios (log coordinates).
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Hierarchical Calculus</strong>
+          <span>Physics Applications — \(D_r^n\) notation</span>
+        </div>
       </div>
+
+      <nav aria-label="Navigation">
+        <a href="./index-en.html">Home</a>
+        <a href="./theory.html">Theory</a>
+        <a href="./equations.html">Equations</a>
+        <a href="./numerics.html">Numerics</a>
+        <a href="./glossary.html">Glossary</a>
+        <a href="./references.html">References</a>
+        <a href="./physics.html">العربية</a>
+      </nav>
     </div>
   </div>
 
-  <div class="card">
-    <h2>4) Reconstructing the solution</h2>
-    <p class="small">
-      If \(D_1 P=-\gamma\) is constant, then:
-    </p>
-    <div class="math">
-      \[
-      P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}
-      \]
-    </div>
-    <p class="small">
-      which is the standard physical solution.
-    </p>
+  <div class="wrap">
+    <header class="hero">
+      <h1>Thermodynamic Application: Adiabatic Process (Ideal Gas)</h1>
+      <p class="muted">
+        This example shows why <b>rank 1 (relative)</b> language is often the natural form of many physical laws:
+        laws frequently link <b>ratios</b> rather than differences.
+        <br>
+        <b>Notation rule:</b> every derivative is written with explicit <b>rank and degree</b> \(\;D_r^n\).
+        In this page we use only <b>degree 1</b>: \(\;D_0^{1}, D_1^{1}\).
+      </p>
+    </header>
+
+    <section class="card">
+      <h2>1) The physical law</h2>
+      <div class="math">
+        \[
+          P\,V^{\gamma}=\text{constant}, \qquad \gamma=\frac{C_p}{C_v}
+        \]
+      </div>
+      <p class="muted small" style="margin:0">
+        where \(P\) is pressure, \(V\) is volume, and \(\gamma\) is the heat-capacity ratio.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>2) Classical differential form (rank 0 — \(D_0^{1}\))</h2>
+      <p class="muted small" style="margin:0">Take the logarithm and differentiate:</p>
+
+      <div class="math">
+        \[
+          \ln P + \gamma \ln V = \text{constant}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          \frac{dP}{P}+\gamma\frac{dV}{V}=0
+          \quad\Rightarrow\quad
+          \frac{dP}{dV}=-\gamma\frac{P}{V}.
+        \]
+      </div>
+
+      <p class="muted small" style="margin:0">
+        This is a differential equation in \(P(V)\). It is standard but not “linear” in the original variables.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>3) Hierarchical relative form (rank 1 — \(D_1^{1}\))</h2>
+
+      <p class="muted small" style="margin:0">
+        Define the relative derivative (rank 1, degree 1):
+      </p>
+
+      <div class="math">
+        \[
+          \boxed{
+            D_{1}^{1} P(V)=\frac{d\ln P}{d\ln V}
+          }
+        \]
+      </div>
+
+      <p class="muted small" style="margin:0">
+        From \(\ln P = -\gamma \ln V + \text{constant}\), we immediately get:
+      </p>
+
+      <div class="math">
+        \[
+          \boxed{
+            D_{1}^{1} P = -\gamma
+          }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Main point:</strong>
+        In rank-1 (relative) space, the law becomes a constant. This reflects that the adiabatic law is “linear” in log-space.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) Recovering the solution</h2>
+      <div class="math">
+        \[
+          P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}
+        \]
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) Quick comparison</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Approach</th>
+            <th>Equation</th>
+            <th>Nature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Classical (rank 0)</td>
+            <td>\(\dfrac{dP}{dV}=-\gamma\dfrac{P}{V}\)</td>
+            <td>Differential equation in \(P(V)\)</td>
+          </tr>
+          <tr>
+            <td>Hierarchical (rank 1)</td>
+            <td>\(D_{1}^{1}P=-\gamma\)</td>
+            <td>Constant (linear in log-space)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>5-b) Quick numerical check: validation + relative error</h2>
+
+      <p class="muted small" style="margin:0">
+        Choose \(\gamma=1.4\) (air-like). Reference point:
+        \(V_0=1.00\,\text{L}\), \(P_0=100.00\,\text{kPa}\).
+        Then:
+      </p>
+
+      <div class="math">
+        \[
+          K = P_0\,V_0^{\gamma} = 100.00 \; (\text{kPa}\cdot \text{L}^{\gamma})
+        \]
+      </div>
+
+      <p class="muted small" style="margin:0">
+        Compute \(P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}\), then check
+        \(K_i=P_iV_i^\gamma\). To illustrate an “approximation error”, use \(P_i\) rounded to 2 decimals.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>\(V\) (L)</th>
+            <th>\(P\) exact (kPa)</th>
+            <th>\(P\) rounded</th>
+            <th>\(K_i=P_iV^\gamma\)</th>
+            <th>relative error %</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.20</td>
+            <td>\(\approx 77.4723\)</td>
+            <td>77.47</td>
+            <td>\(\approx 99.9971\)</td>
+            <td>\(\approx 0.0029\%\)</td>
+          </tr>
+          <tr>
+            <td>1.50</td>
+            <td>\(\approx 56.6855\)</td>
+            <td>56.69</td>
+            <td>\(\approx 100.0079\)</td>
+            <td>\(\approx 0.0079\%\)</td>
+          </tr>
+          <tr>
+            <td>2.00</td>
+            <td>\(\approx 37.8929\)</td>
+            <td>37.89</td>
+            <td>\(\approx 99.9923\)</td>
+            <td>\(\approx 0.0077\%\)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>Result:</strong>
+        \(K_i\) stays extremely close to \(K=100\) even after rounding, with relative error below \(0.01\%\).
+      </div>
+
+      <h3>Extra check: constant relative derivative \(D_1^{1}P\)</h3>
+
+      <div class="math">
+        \[
+          D_{1}^{1}P \approx \frac{\ln(P_2/P_1)}{\ln(V_2/V_1)}
+        \]
+      </div>
+
+      <ul class="muted small">
+        <li>Between \(V=1.20\) and \(V=1.50\): \(D_1^{1}P \approx -1.3995\) (very close to \(-1.4\)).</li>
+        <li>Between \(V=1.50\) and \(V=2.00\): \(D_1^{1}P \approx -1.4005\) (very close to \(-1.4\)).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>6) Interpretation</h2>
+      <p class="muted small" style="margin:0">
+        Hierarchical Calculus does not change physics; it selects the most appropriate “language of change”.
+        For adiabatic processes, the change is naturally relative: pressure follows volume on a logarithmic scale.
+      </p>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Physics (Adiabatic Process) — \(D_r^n\) Notation
+    </footer>
   </div>
-
-  <div class="card">
-    <h2>5) Comparison (review-friendly)</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Approach</th>
-          <th>Equation</th>
-          <th>Nature</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Classical (D0)</td>
-          <td>\(\dfrac{dP}{dV}=-\gamma\dfrac{P}{V}\)</td>
-          <td>Differential equation in \(P(V)\)</td>
-        </tr>
-        <tr>
-          <td class="ok">Hierarchical (D1)</td>
-          <td class="ok">\(D_1 P=-\gamma\)</td>
-          <td class="ok">Constant (linear in log coordinates)</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-<div class="card">
-  <h2>🧮 5-b) Small Numerical Experiment: Verification & Approximate Error</h2>
-
-  <p class="small">
-    We choose a realistic numerical example for an ideal gas close to air:
-    \(\gamma = 1.4\).
-    Let the reference state be:
-    \(V_0 = 1.00\,\text{L}\),
-    \(P_0 = 100.00\,\text{kPa}\).
-    The adiabatic constant is therefore:
-  </p>
-
-  <div class="math">
-    \[
-    K = P_0\,V_0^{\gamma} = 100.00 \; (\text{kPa}\cdot \text{L}^{\gamma})
-    \]
-  </div>
-
-  <p class="small">
-    We compute the theoretical pressure for different volumes:
-    \[
-    P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}
-    \]
-    and verify the constancy of \(K_i=P_iV_i^\gamma\).
-    To illustrate an <em>approximation error</em>, pressures are rounded to two decimals.
-  </p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>\(V\) (L)</th>
-        <th>Theoretical \(P\) (kPa)</th>
-        <th>Rounded \(P\)</th>
-        <th>\(K_i=P_iV^\gamma\)</th>
-        <th>Relative error %</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1.20</td>
-        <td>\(\approx 77.4723\)</td>
-        <td>77.47</td>
-        <td>\(\approx 99.9971\)</td>
-        <td>\(\approx 0.0029\%\)</td>
-      </tr>
-      <tr>
-        <td>1.50</td>
-        <td>\(\approx 56.6855\)</td>
-        <td>56.69</td>
-        <td>\(\approx 100.0079\)</td>
-        <td>\(\approx 0.0079\%\)</td>
-      </tr>
-      <tr>
-        <td>2.00</td>
-        <td>\(\approx 37.8929\)</td>
-        <td>37.89</td>
-        <td>\(\approx 99.9923\)</td>
-        <td>\(\approx 0.0077\%\)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="callout">
-    <div style="font-weight:900;margin-bottom:6px">Result</div>
-    <div class="small">
-      Even after rounding the pressure values, \(K_i\) remains extremely close to
-      \(K=100\), with relative errors below \(0.01\%\).
-      This illustrates why relative/logarithmic formulations are numerically robust.
-    </div>
-  </div>
-
-  <div class="hr"></div>
-
-  <h3 style="margin:0 0 8px">Additional check: constancy of the relative derivative \(D_1P\)</h3>
-  <p class="small">
-    The theory predicts:
-    \(\;D_1P=\dfrac{d\ln P}{d\ln V}=-\gamma\).
-    Numerically, between two points, we approximate:
-  </p>
-
-  <div class="math">
-    \[
-    D_1P \approx \frac{\ln(P_2/P_1)}{\ln(V_2/V_1)}
-    \]
-  </div>
-
-  <p class="small">
-    Using the <strong>rounded</strong> values above:
-    <ul class="small">
-      <li>
-        Between \(V=1.20\) and \(V=1.50\):
-        \(\;D_1P \approx -1.3995\) (very close to \(-1.4\)).
-      </li>
-      <li>
-        Between \(V=1.50\) and \(V=2.00\):
-        \(\;D_1P \approx -1.4005\) (very close to \(-1.4\)).
-      </li>
-    </ul>
-  </p>
-
-  <div class="callout">
-    <div style="font-weight:900;margin-bottom:6px">Hierarchical insight</div>
-    <div class="small">
-      At Level 1, the adiabatic law reads as a constant \(-\gamma\).
-      Numerical verification is therefore naturally performed using ratios and logarithms,
-      rather than finite differences.
-    </div>
-  </div>
-</div>
-
-  <div class="card">
-    <h2>6) Interpretation</h2>
-    <p class="small">
-      Hierarchical Calculus does not change physics; it selects the coordinate system (language of change)
-      that matches the structure of the law. For adiabatic processes, the natural structure is relative:
-      pressure changes proportionally to volume on a logarithmic scale.
-    </p>
-    <p class="small">
-      Next recommended reading:
-      <a href="equations-en.html">Hierarchical Equations</a> ·
-      <a href="numerics-en.html">Numerics & Error Comparison</a> ·
-      <a href="glossary-en.html">Glossary</a>
-    </p>
-  </div>
-</div>
-
 </body>
 </html>
+
