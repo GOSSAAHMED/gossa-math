@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosmic Expansion | Hierarchical Calculus</title>
+
+  <!-- Site CSS (adjust path if needed) -->
+  <link rel="stylesheet" href="assets/site.css" />
+
+  <!-- Basic SEO -->
+  <meta name="description" content="An illustrative application of Hierarchical Calculus (D0, D1, Dn) to cosmic expansion via the scale factor a(t) and relative differentiation." />
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    /* Small page-local styling (keeps it readable even if CSS changes) */
+    main { max-width: 980px; margin: 0 auto; padding: 18px 14px; line-height: 1.7; }
+    h1 { margin: 10px 0 6px; }
+    .meta { opacity: 0.8; margin-bottom: 16px; }
+    .box { border: 1px solid rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; margin: 14px 0; }
+    .note { border-left: 4px solid rgba(0,0,0,0.35); padding-left: 12px; opacity: 0.95; }
+    code, pre { background: rgba(0,0,0,0.04); padding: 2px 6px; border-radius: 6px; }
+    .toc a { text-decoration: none; }
+    .toc ul { margin: 6px 0 0 18px; }
+    .btnrow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .btn {
+      display: inline-block; padding: 8px 12px; border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.18); text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Optional: Paste your existing site header/nav here by copying from another page -->
+  <!-- Example minimal header (replace with your real one if you have) -->
+  <header style="border-bottom:1px solid rgba(0,0,0,0.12);">
+    <div style="max-width:980px;margin:0 auto;padding:12px 14px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+      <strong>Hierarchical Calculus</strong>
+      <nav style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="index-en.html">Home</a>
+        <a href="book-en/">Book</a>
+        <a href="equations-en.html">Equations</a>
+        <a href="paper/paper-en.html">Paper</a>
+        <a href="cosmic-expansion.html"><b>Cosmic Expansion</b></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Application: Cosmic Expansion</h1>
+    <div class="meta">
+      An illustrative application of the relative derivative \(D_1\) and hierarchical operators \(D_n\) to the cosmic scale factor \(a(t)\).
+    </div>
+
+    <div class="box toc">
+      <b>On this page</b>
+      <ul>
+        <li><a href="#motivation">Motivation</a></li>
+        <li><a href="#setup">Cosmological setup and notation</a></li>
+        <li><a href="#relative">Relative derivative and scale-aware growth</a></li>
+        <li><a href="#model1">Model I: First-level hierarchical law</a></li>
+        <li><a href="#model2">Model II: Second-level hierarchical law</a></li>
+        <li><a href="#series">Hierarchical series around \(t_0\)</a></li>
+        <li><a href="#notes">Notes and scope</a></li>
+      </ul>
+    </div>
+
+    <h2 id="motivation">1. Motivation</h2>
+    <p>
+      In cosmology, the large-scale evolution of the universe is captured by the
+      <em>scale factor</em> \(a(t)\). Many cosmological behaviors are naturally expressed through
+      <em>ratios</em> (e.g., \(a(t)/a(t_0)\)) and <em>relative change</em>, rather than absolute increments.
+      Hierarchical calculus emphasizes this multiplicative viewpoint.
+    </p>
+
+    <div class="box note">
+      <b>Important:</b> This page is an <em>analytical illustration</em>. It does not propose a new physical theory
+      and does not replace standard General Relativity or the Friedmann equations. It shows how hierarchical calculus
+      can represent scale-dependent dynamics in a clean, local, and ratio-based form.
+    </div>
+
+    <h2 id="setup">2. Cosmological setup and notation</h2>
+    <p>
+      Let \(t>0\) denote cosmic time and let \(a(t)\) be the cosmic scale factor.
+      Choose a reference time \(t_0>0\) and define \(a_0=a(t_0)\).
+      We use:
+    </p>
+    <ul>
+      <li>Classical derivative: \(D_0 a(t)=\dfrac{da}{dt}\)</li>
+      <li>Relative derivative: \(D_1 a(t)=t\,\dfrac{da}{dt}\)</li>
+      <li>Hierarchical level: \(D_n = \underbrace{D_1\circ\cdots\circ D_1}_{n\ \text{times}}\)</li>
+    </ul>
+
+    <h2 id="relative">3. Relative derivative and scale-aware growth</h2>
+    <p>
+      The operator \(D_1\) measures change relative to the scale of the independent variable \(t\):
+    </p>
+    <div class="box">
+      \[
+        D_1 a(t)=t\,\frac{da}{dt}.
+      \]
+    </div>
+    <p>
+      This is useful in settings where the evolution is naturally described by
+      scaling laws and power behavior.
+    </p>
+
+    <h2 id="model1">4. Model I: First-level hierarchical law</h2>
+    <p>
+      Consider the first-level hierarchical differential equation:
+    </p>
+    <div class="box">
+      \[
+        D_1 a(t)=\lambda\,a(t),
+      \]
+      where \(\lambda\in\mathbb{R}\) is dimensionless.
+    </div>
+    <p>
+      Using \(D_1 a=t a'(t)\), we obtain:
+    </p>
+    <div class="box">
+      \[
+        t\,\frac{da}{dt}=\lambda a(t)
+        \quad\Longrightarrow\quad
+        \frac{1}{a(t)}\frac{da}{dt}=\frac{\lambda}{t}.
+      \]
+    </div>
+    <p>
+      Integrating gives a power-law expansion:
+    </p>
+    <div class="box">
+      \[
+        a(t)=a_0\left(\frac{t}{t_0}\right)^{\lambda}.
+      \]
+    </div>
+    <p>
+      This highlights a key feature of hierarchical dynamics:
+      <b>power-law behavior appears as a natural eigen-structure of \(D_1\)</b>.
+    </p>
+
+    <h2 id="model2">5. Model II: Second-level hierarchical law</h2>
+    <p>
+      A second-level illustrative model uses \(D_2=D_1\circ D_1\):
+    </p>
+    <div class="box">
+      \[
+        D_2 a(t)=\mu\,a(t),
+      \]
+      where \(\mu\in\mathbb{R}\).
+    </div>
+    <p>
+      For trial functions \(a(t)=t^p\), hierarchical calculus yields:
+    </p>
+    <div class="box">
+      \[
+        D_1(t^p)=p\,t^p,\qquad
+        D_2(t^p)=p^2\,t^p.
+      \]
+    </div>
+    <p>
+      Hence the characteristic relation becomes:
+    </p>
+    <div class="box">
+      \[
+        p^2=\mu.
+      \]
+    </div>
+    <p>
+      When \(\mu>0\), representative solutions can be written as:
+    </p>
+    <div class="box">
+      \[
+        a(t)=C_1\,t^{\sqrt{\mu}}+C_2\,t^{-\sqrt{\mu}}.
+      \]
+    </div>
+    <p>
+      This illustrates how higher hierarchical levels produce algebraic spectra (powers) rather than exponential spectra.
+    </p>
+
+    <h2 id="series">6. Hierarchical series around \(t_0\)</h2>
+    <p>
+      Using the hierarchical series concept (ratio-based representation), one may formally expand \(a(t)\) around a reference time \(t_0\):
+    </p>
+    <div class="box">
+      \[
+        a(t)
+        =
+        \sum_{k=0}^{\infty}
+        \frac{D_k a(t_0)}{k!}
+        \left(\frac{t}{t_0}\right)^k.
+      \]
+    </div>
+    <p>
+      This representation uses only the dimensionless ratio \(t/t_0\), aligning with the multiplicative nature of cosmological scaling.
+      (A rigorous convergence study can be developed separately.)
+    </p>
+
+    <h2 id="notes">7. Notes and scope</h2>
+    <ul>
+      <li>
+        This page is intended as a clean analytical illustration showing how hierarchical operators can encode scale-aware dynamics.
+      </li>
+      <li>
+        To connect directly with observational cosmology, one would compare hierarchical laws with standard models (e.g., matter/radiation/\(\Lambda\))
+        and study parameter identification using data. This is a natural future direction.
+      </li>
+      <li>
+        You can extend this page by adding: (i) Hubble-like quantities, (ii) redshift relations, (iii) multi-era piecewise models.
+      </li>
+    </ul>
+
+    <div class="btnrow">
+      <a class="btn" href="index-en.html">← Back to Home</a>
+      <a class="btn" href="equations-en.html">Equations</a>
+      <a class="btn" href="book-en/">Book</a>
+    </div>
+
+  </main>
+
+  <footer style="border-top:1px solid rgba(0,0,0,0.12); margin-top:18px;">
+    <div style="max-width:980px;margin:0 auto;padding:12px 14px;opacity:0.85;">
+      © <span id="y"></span> Hierarchical Calculus — Ahmed Gossa
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
