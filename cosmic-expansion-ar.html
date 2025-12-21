@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>توسّع الكون | الحساب الهرمي</title>
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="assets/site.css" />
+
+  <!-- SEO -->
+  <meta name="description" content="تطبيق توضيحي للحساب الهرمي والمشتق النسبي D1 في نمذجة توسّع الكون باستخدام عامل القياس الكوني a(t)." />
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    main { max-width: 980px; margin: 0 auto; padding: 18px 14px; line-height: 1.9; }
+    h1, h2 { margin-top: 22px; }
+    .meta { opacity: 0.85; margin-bottom: 18px; }
+    .box {
+      border: 1px solid rgba(0,0,0,0.18);
+      border-radius: 12px;
+      padding: 14px;
+      margin: 14px 0;
+      background: rgba(0,0,0,0.02);
+    }
+    .note {
+      border-right: 4px solid rgba(0,0,0,0.35);
+      padding-right: 12px;
+      background: rgba(0,0,0,0.03);
+    }
+    .toc ul { margin-right: 18px; }
+    .toc a { text-decoration: none; }
+    .btnrow {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.2);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header style="border-bottom:1px solid rgba(0,0,0,0.15);">
+  <div style="max-width:980px;margin:0 auto;padding:12px 14px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+    <strong>الحساب الهرمي</strong>
+    <nav style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="index.html">الرئيسية</a>
+      <a href="book/">الكتاب</a>
+      <a href="equations.html">المعادلات</a>
+      <a href="paper/paper.html">الورقة</a>
+      <a href="cosmic-expansion-ar.html"><b>توسّع الكون</b></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <h1>تطبيق الحساب الهرمي في توسّع الكون</h1>
+  <div class="meta">
+    تطبيق تحليلي توضيحي للمشتق النسبي \(D_1\) والمشتقات الهرمية \(D_n\) على عامل القياس الكوني \(a(t)\).
+  </div>
+
+  <div class="box toc">
+    <b>محتويات الصفحة</b>
+    <ul>
+      <li><a href="#motivation">الدافع الكوسمولوجي</a></li>
+      <li><a href="#setup">الإعداد الكوني والترميز</a></li>
+      <li><a href="#relative">المشتق النسبي والنمو القياسي</a></li>
+      <li><a href="#model1">النموذج الأول: قانون هرمي من الرتبة الأولى</a></li>
+      <li><a href="#model2">النموذج الثاني: قانون هرمي من الرتبة الثانية</a></li>
+      <li><a href="#series">المتسلسلة الهرمية حول زمن مرجعي</a></li>
+      <li><a href="#notes">ملاحظات ونطاق التطبيق</a></li>
+    </ul>
+  </div>
+
+  <h2 id="motivation">1. الدافع الكوسمولوجي</h2>
+  <p>
+    في علم الكونيات، يُوصَف التطور واسع النطاق للكون بواسطة
+    <b>عامل القياس الكوني</b> \(a(t)\).
+    كثير من الظواهر الكونية تُعبَّر عنها بشكل طبيعي بواسطة
+    <b>نِسَب قياسية</b> مثل \(a(t)/a(t_0)\)،
+    وليس بواسطة فروق إضافية من الشكل \(a(t)-a(t_0)\).
+  </p>
+
+  <div class="box note">
+    <b>تنبيه مهم:</b>
+    هذا التطبيق <b>تحليلي-مفاهيمي</b> فقط، ولا يقدّم نموذجًا فيزيائيًا جديدًا،
+    ولا يستبدل النسبية العامة أو معادلات فريدمان.
+    الغرض هو إظهار كيف ينسجم الحساب الهرمي مع البنية القياسية لتوسّع الكون.
+  </div>
+
+  <h2 id="setup">2. الإعداد الكوني والترميز</h2>
+  <p>
+    ليكن \(t&gt;0\) هو الزمن الكوني، و\(a(t)\) عامل القياس.
+    نختار زمنًا مرجعيًا \(t_0&gt;0\) ونضع \(a_0=a(t_0)\).
+    نستخدم:
+  </p>
+  <ul>
+    <li>المشتق التفاضلي التقليدي: \(D_0 a(t)=\dfrac{da}{dt}\)</li>
+    <li>المشتق النسبي: \(D_1 a(t)=t\,\dfrac{da}{dt}\)</li>
+    <li>المشتق الهرمي: \(D_n = \underbrace{D_1\circ\cdots\circ D_1}_{n \text{ مرات}}\)</li>
+  </ul>
+
+  <h2 id="relative">3. المشتق النسبي والنمو القياسي</h2>
+  <p>
+    المشتق النسبي يقيس التغير بالنسبة إلى مقياس الزمن نفسه:
+  </p>
+  <div class="box">
+    \[
+      D_1 a(t)=t\,\frac{da}{dt}.
+    \]
+  </div>
+  <p>
+    هذا النوع من الاشتقاق مناسب بطبيعته للظواهر التي يحكمها
+    <b>السلوك القياسي وقوانين القوى</b>.
+  </p>
+
+  <h2 id="model1">4. النموذج الأول: قانون هرمي من الرتبة الأولى</h2>
+  <p>
+    ندرس المعادلة الهرمية:
+  </p>
+  <div class="box">
+    \[
+      D_1 a(t)=\lambda\,a(t),
+    \]
+    حيث \(\lambda\) ثابت عديم الأبعاد.
+  </div>
+  <p>
+    باستخدام \(D_1 a=t a'(t)\) نحصل على:
+  </p>
+  <div class="box">
+    \[
+      t\,\frac{da}{dt}=\lambda a(t)
+      \quad\Longrightarrow\quad
+      a(t)=a_0\left(\frac{t}{t_0}\right)^{\lambda}.
+    \]
+  </div>
+  <p>
+    أي أن توسّع الكون يظهر هنا بشكل طبيعي على هيئة
+    <b>قانون قوى</b>، وهو سلوك جوهري في الحساب الهرمي.
+  </p>
+
+  <h2 id="model2">5. النموذج الثاني: قانون هرمي من الرتبة الثانية</h2>
+  <p>
+    ننتقل إلى المشتق الهرمي من الرتبة الثانية:
+  </p>
+  <div class="box">
+    \[
+      D_2 a(t)=\mu\,a(t).
+    \]
+  </div>
+  <p>
+    بافتراض حلول من الشكل \(a(t)=t^p\):
+  </p>
+  <div class="box">
+    \[
+      D_1(t^p)=p\,t^p,\qquad
+      D_2(t^p)=p^2\,t^p.
+    \]
+  </div>
+  <p>
+    فنحصل على المعادلة المميزة:
+  </p>
+  <div class="box">
+    \[
+      p^2=\mu.
+    \]
+  </div>
+  <p>
+    والحلول النموذجية:
+  </p>
+  <div class="box">
+    \[
+      a(t)=C_1\,t^{\sqrt{\mu}}+C_2\,t^{-\sqrt{\mu}}.
+    \]
+  </div>
+
+  <h2 id="series">6. المتسلسلة الهرمية حول زمن مرجعي</h2>
+  <p>
+    يمكن تمثيل عامل القياس تمثيلًا هرميًا حول \(t_0\):
+  </p>
+  <div class="box">
+    \[
+      a(t)=
+      \sum_{k=0}^{\infty}
+      \frac{D_k a(t_0)}{k!}
+      \left(\frac{t}{t_0}\right)^k.
+    \]
+  </div>
+  <p>
+    هذا التمثيل يعتمد فقط على النسبة \(t/t_0\)،
+    وهو ما ينسجم مع الطبيعة القياسية للتوسّع الكوني.
+  </p>
+
+  <h2 id="notes">7. ملاحظات ونطاق التطبيق</h2>
+  <ul>
+    <li>هذا المثال يوضّح كيف ينسجم الحساب الهرمي مع الظواهر القياسية.</li>
+    <li>الربط المباشر مع الرصد الكوني يتطلب دراسة إضافية.</li>
+    <li>يمكن توسيع الصفحة لإدخال الانزياح الأحمر أو نماذج متعددة المراحل.</li>
+  </ul>
+
+  <div class="btnrow">
+    <a class="btn" href="index.html">← العودة للرئيسية</a>
+    <a class="btn" href="equations.html">المعادلات</a>
+    <a class="btn" href="book/">الكتاب</a>
+  </div>
+
+</main>
+
+<footer style="border-top:1px solid rgba(0,0,0,0.15);margin-top:20px;">
+  <div style="max-width:980px;margin:0 auto;padding:12px 14px;opacity:0.85;">
+    © <span id="y"></span> الحساب الهرمي — أحمد جوسة
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
