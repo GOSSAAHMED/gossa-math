@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>توسّع الكون | الحساب الهرمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS الموقع -->
+  <link rel="stylesheet" href="assets/site.css">
+
+  <!-- MathJax (إذا كان موجودًا أصلًا في القالب اتركه كما هو) -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<!-- ========= الهيدر (انسخه من صفحة موجودة إن أردت) ========= -->
+<header class="top-header">
+  <nav class="nav-bar">
+    <a href="index.html">الرئيسية</a>
+    <a href="derivative-rank-degree.html">قوانين الاشتقاق</a>
+    <a href="hierarchical-derivatives-relations.html">العلاقات الهرمية</a>
+    <a href="book/">الكتاب</a>
+    <a href="cosmic-expansion-ar.html" class="active">توسّع الكون</a>
+  </nav>
+</header>
+
+<!-- ========= محتوى الصفحة ========= -->
+<main class="page-container">
+
+  <!-- بطاقة العنوان -->
+  <section class="card card-gradient">
+    <h1>تطبيق الحساب الهرمي في توسّع الكون</h1>
+    <p class="subtitle">
+      دراسة تحليلية توضيحية لاستعمال المشتق النسبي \(D_1\) والمشتقات الهرمية
+      في نمذجة عامل القياس الكوني \(a(t)\).
+    </p>
+  </section>
+
+  <!-- بطاقة تمهيدية -->
+  <section class="card">
+    <h2>1. الدافع الكوسمولوجي</h2>
+    <p>
+      في علم الكونيات، لا يُقاس تطوّر الكون بالفروق الإضافية،
+      بل بعلاقات نسبية من قبيل
+      \( \frac{a(t)}{a(t_0)} \).
+      لذلك فإن الحساب الهرمي، القائم على البنية القياسية،
+      يوفّر إطارًا تحليليًا منسجمًا مع توسّع الكون.
+    </p>
+  </section>
+
+  <!-- بطاقة تعريف -->
+  <section class="card">
+    <h2>2. الإعداد الرياضي</h2>
+    <ul>
+      <li>المشتق التفاضلي: \( D_0 a(t)=\dfrac{da}{dt} \)</li>
+      <li>المشتق النسبي: \( D_1 a(t)=t\dfrac{da}{dt} \)</li>
+      <li>المشتق الهرمي: \( D_n = D_1^{\,n} \)</li>
+    </ul>
+  </section>
+
+  <!-- بطاقة معادلة -->
+  <section class="card equation-card">
+    <h2>3. قانون التوسّع الهرمي (الدرجة الأولى)</h2>
+    <p>نعتبر المعادلة:</p>
+    \[
+      D_1 a(t)=\lambda\,a(t)
+    \]
+    <p>
+      بحلها نحصل على:
+    </p>
+    \[
+      a(t)=a_0\left(\frac{t}{t_0}\right)^{\lambda}
+    \]
+  </section>
+
+  <!-- بطاقة درجة ثانية -->
+  <section class="card equation-card">
+    <h2>4. نموذج هرمي من الدرجة الثانية</h2>
+    \[
+      D_2 a(t)=\mu\,a(t)
+    \]
+    <p>
+      بافتراض \(a(t)=t^p\) نحصل على:
+    </p>
+    \[
+      p^2=\mu
+    \]
+    <p>
+      وهو طيف جبري نقي، يميّز الحساب الهرمي.
+    </p>
+  </section>
+
+  <!-- بطاقة متسلسلة -->
+  <section class="card">
+    <h2>5. المتسلسلة الهرمية لعامل القياس</h2>
+    \[
+      a(t)=\sum_{k=0}^{\infty}
+      \frac{D_k a(t_0)}{k!}
+      \left(\frac{t}{t_0}\right)^k
+    \]
+    <p>
+      هذه الصيغة تعتمد على النسبة \(t/t_0\) فقط،
+      دون فروق إضافية أو لوغاريتمات.
+    </p>
+  </section>
+
+  <!-- بطاقة ملاحظات -->
+  <section class="card note-card">
+    <h2>ملاحظات</h2>
+    <ul>
+      <li>هذا تطبيق تحليلي لا يغيّر الفيزياء القياسية.</li>
+      <li>يوضح الانسجام البنيوي بين الحساب الهرمي والتوسّع الكوني.</li>
+      <li>يمكن توسيعه لاحقًا لربط الانزياح الأحمر والطيف الكوني.</li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- ========= الفوتر ========= -->
+<footer class="footer">
+  <p>© <span id="y"></span> الحساب الهرمي — أحمد جوسة</p>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
