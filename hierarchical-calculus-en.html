@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hierarchical Calculus: From Differential to Relative and Logarithmic Derivatives</title>
+  <meta name="description" content="A clear introduction to Hierarchical Calculus linking the differential derivative to the relative and logarithmic derivatives with geometric and engineering interpretation.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)']],
+        displayMath: [['\\[','\\]']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <!-- Page style (can be unified later into a shared CSS file) -->
+  <style>
+    body{
+      margin:0;
+      background:#0b1220;
+      color:#e6e6e6;
+      font-family:"Segoe UI", Tahoma, Arial, sans-serif;
+      line-height:1.85;
+    }
+    main{
+      max-width:900px;
+      margin:auto;
+      padding:40px 20px 24px;
+    }
+    h1,h2,h3{ color:#66d9ef; }
+    h1{ font-size:2.15em; margin:0 0 18px; }
+    .subtitle{ color:#b7c4d6; margin:0 0 28px; font-size:1.02em; }
+    h2{ margin-top:42px; font-size:1.55em; }
+    p{ margin:14px 0; }
+    ul{ margin:14px 26px; }
+
+    .math{
+      background:#0f1a2c;
+      border:1px solid #22314f;
+      border-left:4px solid #66d9ef;
+      padding:14px 16px;
+      margin:20px 0;
+      overflow-x:auto;
+      border-radius:10px;
+    }
+
+    .callout{
+      background:#0f1a2c;
+      border:1px solid #22314f;
+      padding:14px 16px;
+      border-radius:10px;
+      margin:18px 0;
+      color:#d9e3f0;
+    }
+
+    .navbtns{
+      display:flex;
+      gap:12px;
+      justify-content:space-between;
+      margin-top:34px;
+      padding-top:18px;
+      border-top:1px solid #22314f;
+    }
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid #2a3a5e;
+      background:#0f1a2c;
+      color:#e6e6e6;
+      text-decoration:none;
+      transition:transform .08s ease, border-color .12s ease;
+      max-width:48%;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      border-color:#66d9ef;
+    }
+    .btn.primary{
+      border-color:#66d9ef;
+    }
+
+    .lang{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      margin-bottom:12px;
+    }
+    .lang a{
+      color:#7dd3fc;
+      text-decoration:none;
+      border:1px solid #2a3a5e;
+      background:#0f1a2c;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:.95em;
+    }
+    .lang a:hover{ border-color:#66d9ef; }
+
+    footer{
+      margin-top:22px;
+      color:#9fb0c7;
+      font-size:.92em;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+  <!-- Language switch -->
+  <div class="lang">
+    <a href="./hierarchical-calculus.html" title="Arabic version">Arabic</a>
+    <a href="./hierarchical-calculus-en.html" title="English version">English</a>
+  </div>
+
+  <h1>Hierarchical Calculus</h1>
+  <p class="subtitle">From differential derivatives to relative and logarithmic derivatives — a rank/order framework with a geometric & engineering interpretation.</p>
+
+  <h2>1. Introduction</h2>
+  <p>
+    Differential calculus is fundamental in science and engineering, yet many modern problems are inherently multi-scale.
+    In such settings, measuring <em>absolute change</em> is not always enough; we often need measurements that remain meaningful under scaling.
+  </p>
+  <p>
+    <strong>Hierarchical Calculus</strong> organizes derivatives into a pyramid-like structure: differential (base), then relative, then logarithmic, and higher ranks.
+    Moving upward increases specialization and typically shrinks the domain of definition.
+  </p>
+
+  <h2>2. Differential derivative: absolute change</h2>
+  <p>The classical derivative measures absolute change:</p>
+  <div class="math">
+    \[
+      \frac{dy}{dx}
+    \]
+  </div>
+
+  <h2>3. Relative derivative: scale-aware change (Rank 1)</h2>
+  <p>
+    In your framework, the <strong>relative derivative</strong> (rank \(1\)) is defined so that the core relation holds:
+  </p>
+
+  <div class="math">
+    \[
+      D^{1}_{1}y=\frac{x}{y}\,\frac{dy}{dx}
+    \]
+  </div>
+
+  <div class="math">
+    \[
+      x\,\frac{dy}{dx}=y\,D^{1}_{1}y
+    \]
+  </div>
+
+  <div class="callout">
+    Interpretation: \(D^{1}_{1}y\) measures how \(y\) changes <em>relative to its own level</em> when \(x\) changes relative to its scale.
+    This is naturally tied to self-similarity, growth rates, and power-law behaviors.
+  </div>
+
+  <h2>4. Logarithmic derivative: change of the ratio itself (Rank 2)</h2>
+  <p>
+    When relative change is not stable across scales, we move to rank \(2\) (logarithmic level):
+  </p>
+
+  <div class="math">
+    \[
+      D^{1}_{2}y=\frac{d(\ln\ln y)}{d(\ln\ln x)}
+    \]
+  </div>
+
+  <p>It relates directly to the relative derivative:</p>
+  <div class="math">
+    \[
+      D^{1}_{2}y=\frac{\ln x}{\ln y}\,D^{1}_{1}y
+    \]
+  </div>
+
+  <div class="callout">
+    Interpretation: rank \(2\) tracks shifts in the <em>growth mechanism</em> itself (transitions, saturation, regime changes),
+    which is common in nonlinear engineering and physical phenomena.
+  </div>
+
+  <h2>5. Rank and Order</h2>
+  <p>
+    Hierarchical calculus has two independent dimensions:
+  </p>
+  <ul>
+    <li><strong>Rank</strong> (vertical): the type of measurement (differential, relative, logarithmic, ...)</li>
+    <li><strong>Order</strong> (horizontal): repeated differentiation within the same rank</li>
+  </ul>
+
+  <div class="math">
+    \[
+      D^{n}_{r}
+    \]
+  </div>
+
+  <h2>6. Shrinking domain of definition</h2>
+  <p>
+    A key structural property is domain contraction when increasing rank:
+  </p>
+  <div class="math">
+    \[
+      \Omega_{r+1}\subset\Omega_r
+    \]
+  </div>
+  <p>
+    This mirrors a geometric pyramid: a broad base (rank 0) and a narrow apex (higher ranks).
+  </p>
+
+  <h2>7. Geometric & engineering intuition</h2>
+  <ul>
+    <li><strong>Differential (rank 0)</strong>: slope / absolute rate of change</li>
+    <li><strong>Relative (rank 1)</strong>: scale-aware change (unit-independent)</li>
+    <li><strong>Logarithmic (rank 2)</strong>: changes in the relative-change regime</li>
+  </ul>
+
+  <footer>© Hierarchical Calculus — English page</footer>
+
+  <!-- Prev / Next navigation -->
+  <div class="navbtns">
+    <!-- PREV: choose a relevant previous page -->
+    <a class="btn" href="./derivative-rank-degree.html">← Previous: Rank &amp; Order</a>
+
+    <!-- NEXT: choose a relevant next page -->
+    <a class="btn primary" href="./hierarchical-derivatives-relations.html">Next: Relations between derivatives →</a>
+  </div>
+
+</main>
+</body>
+</html>
