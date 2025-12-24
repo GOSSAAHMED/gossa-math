@@ -1,75 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Why Classical Calculus Fails — and How Hierarchical Calculus Solves the Impossible</title>
 
   <meta name="description"
-        content="A rigorous explanation of why classical differential calculus fails to solve certain differential equations, and how Hierarchical Calculus resolves them through relative and logarithmic lifting.">
+        content="An academic explanation of why certain differential equations become unnatural or unstable at the classical differential level D^1_0, and how hierarchical lifting to the relative level D^1_1 and logarithmic level D^1_2 restores a natural solvable structure.">
 
   <meta name="keywords"
-        content="Classical Calculus, Differential Equations, Hierarchical Calculus, Relative Derivative, Logarithmic Derivative, Unsolvable Equations">
+        content="Hierarchical Calculus, Relative Derivative D1, Logarithmic Derivative D2, Unsolvable Differential Equations, Hierarchical Lifting, Rank and Degree, D0, D1, D2">
 
-  <meta name="author" content="Gossa Ahmed">
+  <meta name="author" content="GOSSA AHMED">
 
   <link rel="canonical"
         href="https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus.html">
 
+  <!-- MathJax (SVG output for crisp formulas) -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
   <style>
-    body {
-      background:#0b1220;
-      color:#e6e6e6;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height:1.75;
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a2c;
+      --panel2:#111a2e;
+      --border:#22314f;
+      --accent:#66d9ef;
+      --text:#e6e6e6;
+      --muted:#b3b3b3;
+    }
+
+    body{
+      background: radial-gradient(1200px 800px at 70% -10%, #14264a 0%, var(--bg) 55%);
+      color:var(--text);
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      line-height:1.95;
       margin:0;
-      padding:0;
     }
-    main {
-      max-width:900px;
-      margin:auto;
-      padding:40px 20px;
+
+    main{
+      max-width: 920px;
+      margin: auto;
+      padding: 46px 18px 70px;
     }
-    h1, h2, h3 {
-      color:#66d9ef;
+
+    h1,h2,h3{
+      color:var(--accent);
+      margin: 0 0 14px;
     }
-    h1 {
-      font-size:2.2em;
-      margin-bottom:10px;
+
+    h1{
+      font-size: 2.05em;
+      line-height:1.35;
+      margin-bottom: 10px;
     }
-    .subtitle {
-      color:#b3b3b3;
-      margin-bottom:30px;
-      font-size:1.1em;
+
+    .subtitle{
+      color:var(--muted);
+      margin:0 0 28px;
+      font-size: 1.08em;
     }
-    .math {
-      background:#111a2e;
-      border-left:4px solid #66d9ef;
-      padding:14px 18px;
-      margin:20px 0;
-      font-family: "Courier New", monospace;
-      color:#eaeaea;
-      overflow-x:auto;
+
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 22px 0 30px;
     }
-    .highlight {
-      background:#0f1a2c;
-      border:1px solid #22314f;
-      border-radius:10px;
-      padding:18px;
-      margin:30px 0;
+
+    .note{
+      background: var(--panel);
+      border:1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 18px 0 26px;
+      color: var(--text);
     }
-    a {
-      color:#66d9ef;
-      text-decoration:none;
+    .note strong{ color: var(--accent); }
+
+    /* Beautiful math blocks */
+    .math-block{
+      background: linear-gradient(135deg, var(--bg), var(--panel2));
+      border-left:4px solid var(--accent);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 18px 0 22px;
+      overflow-x: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
-    a:hover {
-      text-decoration:underline;
+
+    .math-block mjx-container[display="true"]{
+      margin: 0 auto !important;
+      font-size: 118%;
     }
-    footer {
-      margin-top:60px;
-      font-size:0.9em;
-      color:#999;
-      border-top:1px solid #22314f;
-      padding-top:20px;
+
+    mjx-container{
+      font-size: 105%;
+    }
+
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    li{
+      margin: 6px 0;
+    }
+
+    a{
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover{ text-decoration: underline; }
+
+    .highlight{
+      background: var(--panel);
+      border:1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 28px 0;
+    }
+
+    .kpi{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top: 10px;
+    }
+
+    .kpi .item{
+      background: rgba(17,26,46,.55);
+      border:1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .kpi .item b{ color: var(--accent); }
+
+    .lang-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 14px;
+    }
+    .btn{
+      display:inline-block;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border:1px solid var(--border);
+      background: rgba(17,26,46,.55);
+    }
+    .btn.primary{
+      border-color: rgba(102,217,239,.55);
+      box-shadow: 0 8px 20px rgba(102,217,239,.08);
+    }
+
+    footer{
+      margin-top: 56px;
+      font-size: .95em;
+      color:#9aa4b2;
+      border-top:1px solid var(--border);
+      padding-top: 18px;
     }
   </style>
 </head>
@@ -78,132 +179,150 @@
 <main>
 
   <h1>Why Classical Calculus Fails — and How Hierarchical Calculus Solves the Impossible</h1>
-
   <p class="subtitle">
-    A hierarchical approach to differential equations beyond the differential level
+    Strict hierarchical notation: rank below, degree above. We move from \(D^{1}_{0}\) to \(D^{1}_{1}\) then \(D^{1}_{2}\).
   </p>
 
-  <h2>1. The Hidden Limitation of Classical Calculus</h2>
+  <div class="note">
+    <strong>Core idea:</strong>
+    The “failure” is not in the equation’s complexity, but in using a level that does not match the nature of change.
+    When change is relative or logarithmic, hierarchical lifting becomes the natural tool.
+  </div>
 
+  <div class="divider"></div>
+
+  <h2>1. The hidden limitation of classical differential calculus</h2>
   <p>
-    Classical differential calculus is built to measure <em>absolute change</em>.
-    It assumes that variables evolve smoothly within a fixed scale.
-    However, many physical, biological, and economic systems do not evolve absolutely,
-    but <strong>relatively</strong> or <strong>logarithmically</strong>.
+    Classical calculus measures absolute change in a fixed scale.
+    However, many systems exhibit change where the <em>scale itself</em> participates in the dynamics.
+    In such cases, the classical derivative \(D^{1}_{0}y=\frac{dy}{dx}\) can become unstable or conceptually unnatural.
   </p>
 
-  <p>
-    When scale itself becomes dynamic, the classical derivative
-    <code>dy/dx</code> loses its descriptive power.
-  </p>
+  <div class="divider"></div>
 
-  <h2>2. A Differential Equation That Classical Calculus Cannot Solve</h2>
+  <h2>2. A differential equation that becomes unnatural at the differential level</h2>
+  <p>Consider the following equation at the differential level (rank 0, degree 1):</p>
 
-  <p>
-    Consider the following equation:
-  </p>
-
-  <div class="math">
-    dy/dx = y / (x · ln x)
+  <div class="math-block">
+    $$
+    \boxed{
+    D^{1}_{0}y=\frac{dy}{dx}=\frac{y}{x\,\ln x}
+    }
+    $$
   </div>
 
   <p>
-    This equation appears simple, yet it exhibits singular behavior
-    and scale-dependence that make its interpretation unstable
-    under classical differential calculus.
+    Although it looks simple, the presence of \(\ln x\) in the denominator creates a sensitive behavior near \(x=1\),
+    revealing that the underlying dynamics are not purely absolute.
   </p>
 
-  <h3>Why D0 Fails</h3>
-
+  <h3>Why does the differential level \(D^{1}_{0}\) fail here?</h3>
   <ul>
-    <li>The equation depends on the ratio between growth and scale.</li>
-    <li>The domain collapses near <code>x = 1</code>.</li>
-    <li>Classical integration requires artificial transformations.</li>
+    <li>The equation ties change to the scale \(x\) and a logarithmic term \(\ln x\).</li>
+    <li>Stability and interpretability shrink near \(x=1\) due to logarithmic sensitivity.</li>
+    <li>The classical approach becomes less “natural” structurally, suggesting a mismatch of level.</li>
   </ul>
 
-  <h2>3. Lifting to the Relative Level (D1)</h2>
+  <div class="divider"></div>
 
+  <h2>3. Lifting to the relative level \(D^{1}_{1}\)</h2>
   <p>
-    Hierarchical Calculus introduces the <strong>relative derivative</strong>:
+    At the relative level (rank 1, degree 1), the derivative measures <strong>relative change</strong>:
   </p>
 
-  <div class="math">
-    D¹y = (x / y) · (dy/dx)
+  <div class="math-block">
+    $$
+    \boxed{
+    D^{1}_{1}y=\frac{x}{y}\,\frac{dy}{dx}
+    }
+    $$
   </div>
 
-  <p>
-    Applying D¹ to the equation yields:
-  </p>
+  <p>Applying this definition to the equation yields an immediate structural simplification:</p>
 
-  <div class="math">
-    D¹y = 1 / ln x
+  <div class="math-block">
+    $$
+    \boxed{
+    D^{1}_{1}y=\frac{1}{\ln x}
+    }
+    $$
   </div>
-
-  <p>
-    The equation is now <strong>scale-aware</strong> and structurally simpler,
-    yet still exhibits logarithmic instability.
-  </p>
-
-  <h2>4. Logarithmic Lifting (D2): The Equation Becomes Trivial</h2>
-
-  <p>
-    At the logarithmic hierarchical level, we define:
-  </p>
-
-  <div class="math">
-    D²y = d(ln ln y) / d(ln ln x)
-  </div>
-
-  <p>
-    The equation reduces to:
-  </p>
-
-  <div class="math">
-    D²y = 1
-  </div>
-
-  <p>
-    This is the simplest possible form.
-    What was unsolvable at the differential level
-    becomes trivial at the logarithmic level.
-  </p>
-
-  <h2>5. Interpretation</h2>
 
   <div class="highlight">
     <p>
-      Classical calculus fails not because the equation is complex,
-      but because it operates at the wrong hierarchical level.
-    </p>
-    <p>
-      Hierarchical Calculus solves the problem by
-      <strong>lifting the equation to its natural scale</strong>.
+      <strong>Result:</strong>
+      The equation collapses into a clean relative-change statement.
+      Yet the logarithmic signature remains through \(\ln x\), indicating that the natural next level is the logarithmic one.
     </p>
   </div>
 
-  <h2>6. Conclusion</h2>
+  <div class="divider"></div>
 
+  <h2>4. Lifting to the logarithmic level \(D^{1}_{2}\): the problem becomes a triviality</h2>
   <p>
-    Differential calculus (D0) is only the base layer of a larger analytical structure.
-    Relative (D1) and logarithmic (D2) derivatives form higher layers
-    where many “unsolvable” equations become transparent.
+    At the logarithmic level (rank 2), we measure change in a higher logarithmic scale:
+  </p>
+
+  <div class="math-block">
+    $$
+    \boxed{
+    D^{1}_{2}y=\frac{d(\ln\ln y)}{d(\ln\ln x)}
+    }
+    $$
+  </div>
+
+  <p>At this level the structure becomes transparent and reduces to the simplest possible form:</p>
+
+  <div class="math-block">
+    $$
+    \boxed{
+    D^{1}_{2}y=1
+    }
+    $$
+  </div>
+
+  <div class="note">
+    <strong>Notation note:</strong>
+    In Hierarchical Calculus, writing “\(D2\)” alone is not sufficient.
+    The correct symbol here is \(D^{1}_{2}\) because <em>rank is below</em> and <em>degree is above</em>.
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>5. Short structural interpretation</h2>
+  <div class="kpi">
+    <div class="item"><b>Key point:</b> We did not “complicate” mathematics; we moved the equation to its natural level.</div>
+    <div class="item"><b>Hierarchy effect:</b> What is unstable or unnatural in \(D^{1}_{0}\) can become clear in \(D^{1}_{1}\), and trivial in \(D^{1}_{2}\).</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>6. Conclusion</h2>
+  <p>
+    Classical calculus \(D^{1}_{0}\) is the base layer, but not the final one.
+    When scale participates in change, hierarchical lifting provides a principled way to restore natural structure:
+    \(D^{1}_{0}\rightarrow D^{1}_{1}\rightarrow D^{1}_{2}\).
   </p>
 
   <section class="highlight">
     <h3>📌 Citation (DOI)</h3>
     <p>
-      Ahmed, G. (2025).
-      <em>Hierarchical Calculus: Solving Unsolvable Differential Equations</em>
-      (Version 3.0.1). Zenodo.
-      <br>
+      GOSSA AHMED (2025). <em>Hierarchical Calculus: Solving Unsolvable Differential Equations</em>. Zenodo. DOI:
       <a href="https://doi.org/10.5281/zenodo.18048626" target="_blank" rel="noopener">
-        https://doi.org/10.5281/zenodo.18048626
+        10.5281/zenodo.18048626
       </a>
     </p>
+
+    <div class="lang-links">
+      <a class="btn primary" href="./why-differential-calculus-fails-hierarchical-calculus-ar.html">
+        Read the Arabic version
+      </a>
+      <a class="btn" href="./index-en.html">Back to Home (EN)</a>
+    </div>
   </section>
 
   <footer>
-    © 2025 — Hierarchical Calculus Project · Gossa Ahmed
+    © 2025 — Hierarchical Calculus Project · GOSSA AHMED
   </footer>
 
 </main>
