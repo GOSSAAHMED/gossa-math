@@ -1,37 +1,77 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en">
+<head>
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="refresh" content="0; url=index-en.html">
-<link rel="canonical" href="https://gossaahmed.github.io/gossa-math/index-en.html">
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>الحساب الهرمي — الموقع الرسمي (DOI)</title>
-  <meta name="description" content="الحساب الهرمي: إطار رياضي للمشتقات والمعادلات متعددة الطبقات. DOI رسمي عبر Zenodo." />
+  <title>Hierarchical Calculus — Official Website (DOI)</title>
+
+  <meta name="description" content="Hierarchical Calculus is a mathematical framework that removes absolute constants and units, transforming classical calculus into relative and logarithmic hierarchical levels. Official website with DOI (Zenodo)." />
+
   <meta name="author" content="GOSSA AHMED" />
-<link rel="canonical" href="https://gossaahmed.github.io/gossa-math/index-en.html" />
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/index.html" />
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/index-en.html" />
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/index-en.html" />
+
+  <!-- Canonical & Language -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/index-en.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/index-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/index.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/index-en.html" />
+
+  <!-- Styles (اترك CSS كما هو أو الصقه بعد هذا السطر) -->
+
+</head>
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hierarchical Calculus — Official Website (DOI)</title>
+
+  <meta name="description" content="Hierarchical Calculus: a multi-level framework of derivatives and equations. Official DOI via Zenodo." />
+  <meta name="author" content="GOSSA AHMED" />
 
   <style>
+    /* ===== Author Card (EN Homepage) ===== */
+.author-card{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin:20px auto;
+  max-width:600px;
+}
+
+.author-photo{
+  width:72px !important;
+  height:72px !important;
+  max-width:72px !important;
+  max-height:72px !important;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #4db6ff;
+  box-shadow:0 6px 18px rgba(0,0,0,.45);
+}
+
+.author-info{
+  text-align:left;
+  font-size:14px;
+  line-height:1.4;
+  opacity:.95;
+}
+
     :root{
       --bg0:#0b1220;
       --bg1:#0f1b2e;
       --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.08);
       --border: rgba(255,255,255,.14);
       --text:#eaf2ff;
       --muted: rgba(234,242,255,.72);
       --accent:#39d3c3;
       --accent2:#7aa7ff;
-      --warn:#ffcc66;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -43,10 +83,8 @@
         linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
     }
-
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-
     .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 60px}
 
     .topbar{
@@ -59,24 +97,17 @@
       max-width:1100px; margin:0 auto; padding:10px 18px;
       display:flex; align-items:center; gap:12px; justify-content:space-between;
     }
-
-    .brand{
-      display:flex; align-items:center; gap:10px; min-width:220px;
-    }
+    .brand{display:flex; align-items:center; gap:10px; min-width:220px}
     .logo{
       width:36px; height:36px; border-radius:10px;
       background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
       box-shadow: 0 12px 22px rgba(0,0,0,.28);
     }
-    .brand .title{
-      display:flex; flex-direction:column; line-height:1.15;
-    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px; letter-spacing:.2px}
     .brand .title span{font-size:12px; color:var(--muted)}
 
-    nav{
-      display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
-    }
+    nav{display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
     nav a{
       padding:8px 10px;
       border: 1px solid rgba(255,255,255,.10);
@@ -88,9 +119,7 @@
     }
     nav a:hover{background: rgba(255,255,255,.07)}
 
-    .actions{
-      display:flex; gap:10px; align-items:center; justify-content:flex-end; min-width:220px;
-    }
+    .actions{display:flex; gap:10px; align-items:center; justify-content:flex-end; min-width:220px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding:9px 12px;
@@ -126,50 +155,8 @@
       pointer-events:none;
     }
     header.hero > *{position:relative}
-
-    .hero-top{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-
-    .author-profile{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-top: 6px;
-    }
-    .author-photo{
-      width:110px;
-      height:110px;
-      object-fit:cover;
-      border-radius:50%;
-      border:3px solid #4db6ff;
-      box-shadow:0 10px 30px rgba(0,0,0,.45);
-      display:block;
-    }
-    .author-name{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-    .author-name strong{font-size:14px}
-    .author-name span{font-size:12px; color:var(--muted)}
-
-    .hero h1{
-      margin:0 0 8px 0;
-      font-size: 34px;
-      letter-spacing:.3px;
-    }
-    .hero p{
-      margin:8px 0 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.8;
-      max-width: 900px;
-    }
+    .hero h1{margin:0 0 8px 0; font-size: 34px; letter-spacing:.3px}
+    .hero p{margin:8px 0 0 0; color: var(--muted); font-size: 15px; line-height: 1.8; max-width: 900px}
 
     .grid{
       display:grid;
@@ -254,7 +241,6 @@
       border-radius: 12px;
       padding: 10px 12px;
       overflow:auto;
-      direction:ltr;
       text-align:left;
     }
 
@@ -267,7 +253,6 @@
       font-family: var(--mono);
       font-size: 12.5px;
       white-space: pre-wrap;
-      direction:ltr;
       text-align:left;
     }
 
@@ -311,7 +296,6 @@
 }
 
   </style>
-  
 
   <!-- MathJax -->
   <script>
@@ -334,40 +318,47 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
-          <strong>الحساب الهرمي</strong>
-          <span>الموقع الرسمي + DOI (Zenodo)</span>
+          <strong>Hierarchical Calculus</strong>
+          <span>Official website + DOI (Zenodo)</span>
         </div>
       </div>
 
-      <nav aria-label="التنقل">
-        <a href="#overview">نظرة عامة</a>
-        <a href="./hierarchical-calculus.html">الحساب الهرمي</a>
-        <a href="#core">التعريفات الأساسية</a>
-        <a href="#equations">المعادلات الهرمية</a>
-<a href="./unsolvable-differential-equations-hierarchical.html">
-  حلّ المعادلات التفاضلية المستحيلة
-</a> 
-        <a href="./why-differential-calculus-fails-hierarchical-calculus-ar.html">
-  لماذا يفشل الحساب التفاضلي — وكيف يحل الحساب الهرمي ما يستحيل حله
+      <nav aria-label="Navigation">
+  <a href="#overview">Overview</a>
+
+  <!-- 🔹 New main page -->
+  <a href="./hierarchical-calculus-en.html">Hierarchical Calculus</a>
+        
+  <a href="#core">Core Definitions</a>
+  <!-- === Hierarchical Calculus: Core Pages (EN) === -->
+  <a href="series-en.html">Hierarchical Series</a>
+  <a href="rules-en.html">Derivation Rules (D1 → Dn)</a>
+  <a href="integrals-en.html">Hierarchical Integrals</a>
+  <a href="equations-solved-en.html">Solved Hierarchical Equations</a>
+        <a href="./unsolvable-differential-equations-hierarchical-en.html">
+  Unsolvable Differential Equations
+</a>
+        <a href="./why-classical-calculus-fails-hierarchical-calculus.html">
+  Why Classical Calculus Fails — and How Hierarchical Calculus Solves the Impossible
 </a>
 
-        <a href="./series.html">المتسلسلات الهرمية</a>
-        <a href="./rules.html">قوانين الاشتقاق الهرمي</a>
-        <a href="./integrals.html">التكامل الهرمي</a>
-        <a href="./equations-solved.html">المعادلات الهرمية (أمثلة محلولة)</a>
-        <a href="cosmic-expansion-ar.html">توسّع الكون</a>
-        <a href="./hierarchical-derivatives-relations.html">العلاقة بين المشتقات الهرمية</a>
-        <a href="./foundations-2011-2012.html" class="book-btn">📄 الأعمال التأسيسية (2011–2012)</a>
-        <a href="./derivative-rank-degree.html">الرتبة والدرجة</a>
-        <a href="#cite">الاستشهاد</a>
-        <a href="faq.html">أسئلة شائعة</a>
-        <a href="physics.html">تطبيقات فيزيائية</a>
-        <a href="paper/paper-ar.html">الورقة العلمية (عربي)</a>
-        <a href="#links">صفحات المرجع</a>
-      </nav>
+<a href="./hierarchical-derivatives-relations-en.html">Derivatives Relationships</a>
+        <a href="cosmic-expansion.html">Cosmic Expansion</a>
+        <a href="./derivative-rank-degree-en.html">Rank & Degree</a>
+  <!-- === Existing Sections === -->
+  <a href="#equations">Hierarchical Equations</a>
+        <a href="./foundations-2011-2012.html">Foundations (2011–2012)</a>
+  <a href="#cite">Cite</a>
+  <a href="faq-en.html">FAQ</a>
+  <a href="physics-en.html">Physics</a>
+
+  <!-- === Papers & References === -->
+  <a href="#links">Reference Pages</a>
+</nav>
+
 
       <div class="actions">
-        <a class="btn" href="index-en.html" title="English version">English</a>
+        <a class="btn" href="index.html" title="النسخة العربية">العربية</a>
         <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
       </div>
     </div>
@@ -375,40 +366,35 @@
 
   <div class="wrap">
     <header class="hero" id="overview">
-      <div class="hero-top">
-        <div>
-          <h1>الحساب الهرمي</h1>
-          <p>
-            إطار رياضي يقدّم طبقات مشتقات ومعادلات متعددة المستويات: من التفاضلي <span class="muted">(الطبقة 0)</span>
-            إلى النسبي <span class="muted">(الطبقة 1)</span> واللوغاريتمي <span class="muted">(الطبقة 2)</span>
-            والتتريشي <span class="muted">(الطبقة 3)</span> وصولًا إلى المشتق الهرمي العام <span class="muted">(الطبقة n)</span>.
-            هذا الموقع هو مرجع تعريفي/تقني للإصدارات المؤرشفة رسميًا عبر Zenodo.
-          </p>
-        </div>
-
-        <div class="author-profile" aria-label="الملف التعريفي">
-          <img src="assets/images/ahmed-gossa.jpg" class="author-photo" alt="Ahmed Gossa">
-          <div class="author-name">
-            <strong>GOSSA AHMED</strong>
-            <span>Independent Researcher — Hierarchical Calculus</span>
-          </div>
-        </div>
-      </div>
+      <h1>Hierarchical Calculus</h1>
+      <div class="author-card">
+  <img src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa" class="author-photo">
+  <div class="author-info">
+    <strong>Ahmed Gossa</strong><br>
+    <span>Independent Researcher — Hierarchical Calculus</span>
+  </div>
+</div>
+      <p>
+        A mathematical framework introducing multi-level derivatives and equations:
+        differential (level 0), relative (level 1), logarithmic (level 2), tetrational (level 3),
+        and the general hierarchical derivative (level n). This website serves as a technical
+        reference for the officially archived releases on Zenodo.
+      </p>
 
       <div class="doi-box">
-        <div><strong>DOI (Concept — المرجع الأساسي):</strong>
+        <div><strong>Concept DOI (main reference):</strong>
           <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
             https://doi.org/10.5281/zenodo.17917302
           </a>
         </div>
         <div class="small">
-          <strong>DOI (v1.0.0):</strong>
+          <strong>Version DOI (v1.0.0):</strong>
           <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
-          <span class="muted">— إصدار الموقع v1.0.0</span>
+          <span class="muted">— website release v1.0.0</span>
         </div>
         <div class="small muted">
           GitHub: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GOSSAAHMED/gossa-math</a>
-          · تواصل: <a href="mailto:ahmedgossa50@gmail.com">ahmedgossa50@gmail.com</a>
+          · Contact: <a href="mailto:ahmedgossa50@gmail.com">ahmedgossa50@gmail.com</a>
         </div>
       </div>
 
@@ -421,155 +407,136 @@
     </header>
 
     <div class="grid">
-      <!-- التعريفات الأساسية (محدّثة) -->
       <section class="card" id="core">
-        <h2><span class="bar"></span>التعريفات الأساسية</h2>
+        <h2><span class="bar"></span>Core Definitions</h2>
+        <p class="muted small">
+          We denote \(D_0^{(1)}\) as the rank-0 (differential) derivative and \(D_1^{(1)}\) as the rank-1 (relative) derivative.
+In general, we write hierarchical derivatives with explicit rank and degree as \(D_n^{(k)}\), with \(k=1,2,3,\dots\).
 
-       <p class="muted small">
-  نرمز بـ \(D_0^{(1)}\) للمشتق التفاضلي (الطبقة 0)، وبـ \(D_1^{(1)}\) للمشتق النسبي (الطبقة 1).
-  ونرمز عمومًا بـ \(D_n^{(1)}\) للمشتق الهرمي من الرتبة \(n\) عند الدرجة \(1\).
-</p>
+          The hierarchy is expressed with iterated logarithms.
+        </p>
 
         <div class="block">
-          <div class="label">الرتبة والدرجة <span class="tag">Order &amp; Degree</span></div>
-
+          <div class="label">Definition <span class="tag">General</span></div>
           <p class="muted small" style="margin:0">
-            نكتب المشتق الهرمي بصيغة ثنائية المؤشر:
+            The level-\(n\) hierarchical derivative (domain conditions apply):
           </p>
-
           <div class="math-box">
             \[
-              D_n^{(k)} f(x)
-            \]
-          </div>
+  D_n^{(1)} f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
+\]
 
+          </div>
           <p class="muted small" style="margin:8px 0 0 0">
-            حيث \(n\) هي <strong>الرتبة</strong> (طبقة القياس: تفاضلي/نسبي/لوغاريتمي/…)،
-            و\(k\) هي <strong>الدرجة</strong> (مستوى التحليل داخل الهرم)، وتُؤخذ \(k=1,2,3,\dots\).
+            where \(\ln^{(n)}\) denotes the iterated logarithm (e.g., \(\ln^{(3)}(x)=\ln(\ln(\ln x))\)).
           </p>
         </div>
 
         <div class="block">
-          <div class="label">تعريف <span class="tag">Definition</span></div>
-          <p class="muted small" style="margin:0">
-            المشتق الهرمي من الرتبة \(n\) عند الدرجة المباشرة \(k=1\) يُعرَّف (تحت شروط المجال) كما يلي:
-          </p>
+          <div class="label">Special Levels <span class="tag">D₀–D₃</span></div>
 
           <div class="math-box">
             \[
-              D_n^{(1)} f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
-            \]
-          </div>
+  D_0^{(1)} f(x)=\frac{df(x)}{dx}
+\]
 
-          <p class="muted small" style="margin:8px 0 0 0">
-            حيث \(\ln^{(n)}\) هو اللوغاريتم المتكرر \(n\) مرات
-            (مثال: \(\ln^{(3)}(x)=\ln(\ln(\ln x))\)).
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="label">طبقات خاصة <span class="tag">Levels</span></div>
-
-          <div class="math-box">
-            \[
-              D_0^{(1)} f(x)=\frac{df(x)}{dx}
-            \]
           </div>
 
           <div class="math-box">
             \[
-              D_1^{(1)} f(x)=\frac{d\ln f(x)}{d\ln x}
-              =\frac{x}{f(x)}\,\frac{df(x)}{dx}
-            \]
+  D_1^{(1)} f(x)=\frac{d\ln f(x)}{d\ln x}
+\]
+
+          </div>
+
+          <div class="math-box">
+           \[
+  D_2^{(1)} f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+\]
+
           </div>
 
           <div class="math-box">
             \[
-              D_2^{(1)} f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
-            \]
-          </div>
+  D_3^{(1)} f(x)=\frac{d\ln^{(3)} f(x)}{d\ln^{(3)} x}
+\]
 
-          <div class="math-box">
-            \[
-              D_3^{(1)} f(x)=\frac{d\ln^{(3)} f(x)}{d\ln^{(3)} x}
-            \]
           </div>
         </div>
       </section>
 
-      <!-- روابط سريعة -->
       <aside class="card">
-        <h2><span class="bar"></span>روابط سريعة</h2>
+        <h2><span class="bar"></span>Quick Links</h2>
+
         <div class="quicklinks">
           <div class="linkcard">
-            <strong>سجل Zenodo</strong>
-            <span>المصدر المؤرشف للإصدار v1.0.0 وملفاته.</span><br>
-            <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">فتح السجل</a>
+            <strong>Zenodo Record</strong>
+            <span>Archived record for v1.0.0 and files.</span><br>
+            <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">Open record</a>
           </div>
           <div class="linkcard">
             <strong>GitHub Releases</strong>
-            <span>قائمة الإصدارات والتحديثات المستقبلية.</span><br>
-            <a href="https://github.com/GOSSAAHMED/gossa-math/releases" target="_blank" rel="noopener">فتح الإصدارات</a>
+            <span>All versions and future updates.</span><br>
+            <a href="https://github.com/GOSSAAHMED/gossa-math/releases" target="_blank" rel="noopener">Open releases</a>
           </div>
           <div class="linkcard">
-            <strong>تحميل</strong>
-            <span>ZIP / PDF (لاحقًا) + روابط الاستشهاد.</span><br>
-            <a href="#links">انتقل لصفحات المرجع</a>
+            <strong>Downloads</strong>
+            <span>ZIP / PDF (later) + citation.</span><br>
+            <a href="#links">Go to reference pages</a>
           </div>
           <div class="linkcard">
-            <strong>التواصل</strong>
-            <span>للتعاون العلمي أو الاستفسار.</span><br>
-            <a href="mailto:ahmedgossa50@gmail.com">إرسال بريد</a>
+            <strong>Contact</strong>
+            <span>Scientific collaboration & questions.</span><br>
+            <a href="mailto:ahmedgossa50@gmail.com">Email</a>
           </div>
         </div>
 
         <div class="block" style="margin-top:12px">
-          <div class="label">ملاحظة أكاديمية <span class="tag">Note</span></div>
+          <div class="label">Academic Note <span class="tag">DOI</span></div>
           <p class="muted small" style="margin:0; line-height:1.8">
-            للاستشهاد العلمي العام بالمشروع استخدم <strong>Concept DOI</strong>.
-            أمّا عند الإشارة إلى نتائج مرتبطة بالإصدار الحالي فاستعمل <strong>Version DOI</strong>.
+            For general citation, use the <strong>Concept DOI</strong>.
+            For a specific release (e.g., v1.0.0), cite the <strong>Version DOI</strong>.
           </p>
         </div>
       </aside>
     </div>
 
     <section class="card" id="equations" style="margin-top:16px">
-      <h2><span class="bar"></span>المعادلات الهرمية</h2>
+      <h2><span class="bar"></span>Hierarchical Equations</h2>
       <p class="muted small">
-        المعادلات الهرمية تعمّم المعادلات التفاضلية باستخدام مشتقات من طبقات مختلفة. الصيغة العامة:
+        Hierarchical equations generalize differential equations by using derivatives of level \(n\). General form:
       </p>
 
       <div class="math-box">
-  \[
-    D_n y = F(x,y)
-  \]
-</div>
+        \[
+          D_n y = F(x,y)
+        \]
+      </div>
 
       <div class="block">
-        <div class="label">مثال <span class="tag">Example</span></div>
+        <div class="label">Example <span class="tag">Sketch</span></div>
         <p class="muted small" style="margin:0">
-          مثال إرشادي على تحويل معادلة انفجارية:
+          A guiding example of a blow-up type equation:
         </p>
-       <div class="math-box">
-  \[
-    D_n^{(k)}\,y = F(x,y),\qquad k=1,2,3,\dots
-  \]
-</div>
-
+        <div class="math-box">
+          \[
+            \frac{dy}{dx}=y\ln y
+          \]
+        </div>
         <p class="muted small" style="margin:8px 0 0 0">
-          باستعمال التحويل الهرمي المناسب قد تُكتب بصيغة أبسط في طبقة أعلى (يعرض التفصيل في صفحة المعادلات).
+          With an appropriate hierarchical transformation, one may obtain a simpler expression in a higher level (details in the equations page).
         </p>
       </div>
     </section>
 
     <section class="card" id="cite" style="margin-top:16px">
-      <h2><span class="bar"></span>كيفية الاستشهاد</h2>
+      <h2><span class="bar"></span>Citation</h2>
       <p class="muted small">
-        هذا القسم جاهز للنسخ في أي بحث أو رسالة أو مقال.
+        Copy/paste-ready references for papers and reports.
       </p>
 
       <div class="block">
-        <div class="label">استشهاد نصي <span class="tag">Text</span></div>
+        <div class="label">Text Citation <span class="tag">Text</span></div>
         <div class="cite-block">GOSSA AHMED. Hierarchical Calculus — Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).</div>
       </div>
 
@@ -586,52 +553,53 @@
     </section>
 
     <section class="card" id="links" style="margin-top:16px">
-      <h2><span class="bar"></span>صفحات المرجع (قيد الإضافة)</h2>
+      <h2><span class="bar"></span>Reference Pages (to be added)</h2>
       <p class="muted small">
-        هذه الروابط مُعدّة لتقسيم المحتوى إلى مرجع أكاديمي كامل. يمكنك إنشاء هذه الملفات لاحقًا بنفس القالب.
+        These links are prepared to split the content into a complete academic reference.
       </p>
 
       <div class="quicklinks">
         <div class="linkcard">
-          <strong>النظرية</strong>
-          <span>تعريفات، بديهيات، مبرهنات، خواص.</span><br>
-          <a href="theory.html">theory.html</a>
+          <strong>Theory</strong>
+          <span>Definitions, axioms, theorems, properties.</span><br>
+          <a href="theory-en.html">theory-en.html</a>
         </div>
         <div class="linkcard">
-          <strong>المعادلات</strong>
-          <span>معادلات هرميّة + تحويلات + حلول.</span><br>
-          <a href="equations.html">equations.html</a>
+          <strong>Equations</strong>
+          <span>Hierarchical equations + transformations + solutions.</span><br>
+          <a href="equations-en.html">equations-en.html</a>
         </div>
         <div class="linkcard">
-          <strong>الحساب العددي</strong>
-          <span>Calcul numérique + مقارنة أخطاء.</span><br>
-          <a href="numerics.html">numerics.html</a>
+          <strong>Numerics</strong>
+          <span>Numerical examples + error comparisons.</span><br>
+          <a href="numerics-en.html">numerics-en.html</a>
         </div>
         <div class="linkcard">
-          <strong>المراجع</strong>
-          <span>قائمة مراجع + توثيق + استشهادات.</span><br>
-          <a href="references.html">references.html</a>
+          <strong>References</strong>
+          <span>Bibliography + citation formats.</span><br>
+          <a href="references-en.html">references-en.html</a>
         </div>
         <div class="linkcard">
-          <strong>تنزيلات</strong>
-          <span>PDF/ZIP + إصدارات + DOI.</span><br>
-          <a href="download.html">download.html</a>
+          <strong>Downloads</strong>
+          <span>PDF/ZIP + versions + DOI.</span><br>
+          <a href="download-en.html">download-en.html</a>
         </div>
         <div class="linkcard">
-          <strong>English Pages</strong>
-          <span>نفس البنية بالإنجليزية.</span><br>
-          <a href="index-en.html">index-en.html</a>
+          <strong>Arabic Pages</strong>
+          <span>Same structure in Arabic.</span><br>
+          <a href="index.html">index.html</a>
         </div>
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Concept DOI:
-      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      © 2025 — GOSSA AHMED · Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
     </footer>
   </div>
 </body>
 </html>
+
+
 
 
 
