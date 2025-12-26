@@ -1,21 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Main (English canonical) -->
-  <url>
-    <loc>https://gossaahmed.github.io/gossa-math/index-en.html</loc>
-  </url>
-
+  <!-- ===== Main (English canonical) ===== -->
   <url>
     <loc>https://gossaahmed.github.io/gossa-math/</loc>
   </url>
 
-  <!-- Core content (English preferred when available) -->
+  <!-- ===== Core content (English – canonical) ===== -->
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/series-en.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/rules-en.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/integrals-en.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/equations-en.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/equations-solved-en.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations-en.html</loc>
+  </url>
+
   <url>
     <loc>https://gossaahmed.github.io/gossa-math/foundations-2011-2012-en.html</loc>
   </url>
 
-  <!-- Core content (Arabic) -->
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/faq-en.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/physics-en.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus.html</loc>
+  </url>
+
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html</loc>
+  </url>
+
+  <!-- ===== Core content (Arabic – alternate) ===== -->
   <url>
     <loc>https://gossaahmed.github.io/gossa-math/series.html</loc>
   </url>
@@ -44,7 +80,6 @@
     <loc>https://gossaahmed.github.io/gossa-math/foundations-2011-2012.html</loc>
   </url>
 
-  <!-- Support -->
   <url>
     <loc>https://gossaahmed.github.io/gossa-math/faq.html</loc>
   </url>
@@ -53,7 +88,11 @@
     <loc>https://gossaahmed.github.io/gossa-math/physics.html</loc>
   </url>
 
-  <!-- Papers -->
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html</loc>
+  </url>
+
+  <!-- ===== Papers ===== -->
   <url>
     <loc>https://gossaahmed.github.io/gossa-math/paper/paper-en.html</loc>
   </url>
