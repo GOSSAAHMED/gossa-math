@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Main pages -->
+  <!-- Main (English canonical) -->
+  <url>
+    <loc>https://gossaahmed.github.io/gossa-math/index-en.html</loc>
+  </url>
+
   <url>
     <loc>https://gossaahmed.github.io/gossa-math/</loc>
   </url>
 
+  <!-- Core content (English preferred when available) -->
   <url>
-    <loc>https://gossaahmed.github.io/gossa-math/index-en.html</loc>
+    <loc>https://gossaahmed.github.io/gossa-math/foundations-2011-2012-en.html</loc>
   </url>
 
   <!-- Core content (Arabic) -->
@@ -39,12 +44,7 @@
     <loc>https://gossaahmed.github.io/gossa-math/foundations-2011-2012.html</loc>
   </url>
 
-  <!-- English landing / planned pages -->
-  <url>
-    <loc>https://gossaahmed.github.io/gossa-math/foundations-2011-2012-en.html</loc>
-  </url>
-
-  <!-- Support & reference -->
+  <!-- Support -->
   <url>
     <loc>https://gossaahmed.github.io/gossa-math/faq.html</loc>
   </url>
@@ -55,11 +55,11 @@
 
   <!-- Papers -->
   <url>
-    <loc>https://gossaahmed.github.io/gossa-math/paper/paper-ar.html</loc>
+    <loc>https://gossaahmed.github.io/gossa-math/paper/paper-en.html</loc>
   </url>
 
   <url>
-    <loc>https://gossaahmed.github.io/gossa-math/paper/paper-en.html</loc>
+    <loc>https://gossaahmed.github.io/gossa-math/paper/paper-ar.html</loc>
   </url>
 
 </urlset>
