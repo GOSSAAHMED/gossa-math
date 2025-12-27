@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مقارنة الحساب الهرمي مع الحسابات الرياضية الحالية</title>
+  <meta name="description" content="مقارنة منهجية بين الحساب الهرمي والحساب التفاضلي والحساب الكسري والحسابات النسبية واللوغاريتمية، مع توضيح مفهوم الرتبة والدرجة في المشتقات الهرمية.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)']],
+        displayMath: [['\\[','\\]']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <!-- Same dark theme -->
+  <style>
+    body{
+      margin:0;
+      background:#0b1220;
+      color:#e6e6e6;
+      font-family:"Segoe UI", Tahoma, Arial, sans-serif;
+      line-height:1.9;
+    }
+    main{
+      max-width:900px;
+      margin:auto;
+      padding:40px 20px 24px;
+    }
+    h1,h2,h3{ color:#66d9ef; }
+    h1{ font-size:2.1em; margin:0 0 18px; }
+    .subtitle{ color:#b7c4d6; margin:0 0 28px; font-size:1.02em; }
+    h2{ margin-top:42px; font-size:1.55em; }
+    p{ margin:14px 0; }
+    ul{ margin:14px 26px; }
+
+    .math{
+      background:#0f1a2c;
+      border:1px solid #22314f;
+      border-right:4px solid #66d9ef;
+      padding:14px 16px;
+      margin:20px 0;
+      overflow-x:auto;
+      border-radius:10px;
+    }
+
+    .callout{
+      background:#0f1a2c;
+      border:1px solid #22314f;
+      padding:14px 16px;
+      border-radius:10px;
+      margin:18px 0;
+      color:#d9e3f0;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:18px 0;
+      background:#0f1a2c;
+      border:1px solid #22314f;
+      border-radius:10px;
+      overflow:hidden;
+    }
+    th, td{
+      border:1px solid #22314f;
+      padding:10px 12px;
+      vertical-align:top;
+      text-align:right;
+    }
+    th{
+      color:#66d9ef;
+      background:#0c1526;
+    }
+
+    .navbtns{
+      display:flex;
+      gap:12px;
+      justify-content:space-between;
+      margin-top:34px;
+      padding-top:18px;
+      border-top:1px solid #22314f;
+    }
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid #2a3a5e;
+      background:#0f1a2c;
+      color:#e6e6e6;
+      text-decoration:none;
+      transition:transform .08s ease, border-color .12s ease;
+      max-width:48%;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      border-color:#66d9ef;
+    }
+    .btn.primary{
+      border-color:#66d9ef;
+    }
+
+    .lang{
+      display:flex;
+      justify-content:flex-start;
+      gap:10px;
+      margin-bottom:12px;
+    }
+    .lang a{
+      color:#7dd3fc;
+      text-decoration:none;
+      border:1px solid #2a3a5e;
+      background:#0f1a2c;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:.95em;
+    }
+    .lang a:hover{ border-color:#66d9ef; }
+
+    footer{
+      margin-top:22px;
+      color:#9fb0c7;
+      font-size:.92em;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+  <!-- Language switch -->
+  <div class="lang">
+    <a href="comparison-hierarchical-calculus-en.html">EN</a>
+    <a href="comparison-hierarchical-calculus-ar.html">AR</a>
+  </div>
+
+  <h1>مقارنة الحساب الهرمي مع الحسابات الرياضية الحالية</h1>
+  <p class="subtitle">
+    مقارنة بنيوية تعتمد على مفهومي الرتبة والدرجة في المشتقات الهرمية
+  </p>
+
+  <h2>1. مقدمة</h2>
+  <p>
+    شهد الحساب التفاضلي التقليدي عدة توسعات عبر التاريخ لمعالجة بعض القيود المرتبطة
+    بالنمذجة الرياضية للظواهر المعقدة. من بين هذه التوسعات نجد الحساب الكسري،
+    والمشتقات اللوغاريتمية، والحسابات النسبية.
+  </p>
+  <p>
+    يُقترح <strong>الحساب الهرمي</strong> كإطار رياضي موحّد تُنظم فيه المشتقات
+    ضمن بنية هرمية واضحة، بحيث يظهر الحساب التفاضلي التقليدي
+    كحالة خاصة من هذا البناء العام.
+  </p>
+
+  <h2>2. الرتبة والدرجة في المشتقات الهرمية</h2>
+  <p>
+    في الحساب الهرمي، لا يُعتبر أي مشتق معرفًا تعريفًا كاملاً
+    إلا إذا حُدد بواسطة <strong>رقمين متميزين</strong>:
+    <strong>الرتبة</strong> و<strong>الدرجة</strong>.
+  </p>
+
+  <div class="callout">
+    <p><strong>الرتبة (الرقم السفلي)</strong> تعبّر عن طبيعة الاشتقاق:</p>
+    <ul>
+      <li><strong>0</strong> — مشتق تفاضلي</li>
+      <li><strong>1</strong> — مشتق نسبي</li>
+      <li><strong>2</strong> — مشتق لوغاريتمي</li>
+    </ul>
+
+    <p>
+      <strong>الدرجة (الرقم العلوي)</strong> تعبّر عن عدد المشتقات المتتالية،
+      من الدرجة الأولى إلى الدرجة \(n\).
+    </p>
+  </div>
+
+  <div class="math">
+    <strong>الترميز العام:</strong>
+    \[
+      D_{r}^{\,n}
+    \]
+    حيث \(r\) تمثل الرتبة و\(n\) تمثل الدرجة.
+  </div>
+
+  <p>
+    على سبيل المثال، فإن \(D_{0}^{\,n}\) يمثل المشتق التفاضلي
+    التقليدي من الدرجة \(n\)، بينما يمثل \(D_{2}^{\,1}\)
+    المشتق اللوغاريتمي من الدرجة الأولى.
+  </p>
+
+  <h2>3. مقارنة مع الحساب التفاضلي التقليدي</h2>
+  <p>
+    يعتمد الحساب التفاضلي التقليدي على مفهوم واحد فقط،
+    هو درجة الاشتقاق، دون التمييز بين أنواع مختلفة من المشتقات.
+  </p>
+  <p>
+    أما في الحساب الهرمي، فيُضاف مفهوم الرتبة، مما يسمح
+    بوجود عدة أنواع من الاشتقاق ضمن إطار رياضي واحد.
+  </p>
+
+  <div class="math">
+    الحساب التفاضلي هو حالة خاصة من الحساب الهرمي عندما:
+    \[
+      r = 0
+    \]
+  </div>
+
+  <h2>4. مقارنة مع الحساب الكسري</h2>
+  <p>
+    يقوم الحساب الكسري بتعميم درجة الاشتقاق لتصبح عددًا غير صحيح،
+    وغالبًا ما يؤدي ذلك إلى مشتقات غير محلية تعتمد على تكاملات.
+  </p>
+  <p>
+    في المقابل، لا يغيّر الحساب الهرمي طبيعة الدرجة،
+    بل يعمّم <strong>الرتبة</strong> مع الإبقاء على الدرجة عددًا طبيعيًا.
+  </p>
+
+  <div class="callout">
+    <strong>الفرق الجوهري:</strong>
+    الحساب الكسري يعمّم الدرجة، بينما الحساب الهرمي يعمّم الرتبة.
+  </div>
+
+  <h2>5. مقارنة مع الحسابات اللوغاريتمية والنسبية</h2>
+  <p>
+    غالبًا ما تُقدَّم المشتقات اللوغاريتمية أو النسبية
+    كنظريات مستقلة ذات استعمالات خاصة.
+  </p>
+  <p>
+    في الحساب الهرمي، تمثل هذه المشتقات رتبًا محددة
+    ضمن البنية الهرمية، ولا تُعامل كنظم منفصلة.
+  </p>
+
+  <h2>6. مقارنة مع حساب المقاييس الزمنية (Time-Scale Calculus)</h2>
+  <p>
+    يركّز حساب المقاييس الزمنية على توحيد المجالات المتصلة والمتقطعة
+    من خلال تعميم المتغير المستقل.
+  </p>
+  <p>
+    أما الحساب الهرمي فيركّز على تعميم بنية الاشتقاق نفسها،
+    بغض النظر عن طبيعة المجال.
+  </p>
+
+  <h2>7. جدول المقارنة</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>الخاصية</th>
+        <th>التفاضلي</th>
+        <th>الكسري</th>
+        <th>اللوغاريتمي / النسبي</th>
+        <th>الهرمي</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>تعريف المشتق</td>
+        <td>درجة فقط</td>
+        <td>درجة كسرية</td>
+        <td>تعريف خاص</td>
+        <td>رتبة + درجة</td>
+      </tr>
+      <tr>
+        <td>المحلية</td>
+        <td>محلي</td>
+        <td>غالبًا غير محلي</td>
+        <td>محلي</td>
+        <td>محلي لكل رتبة</td>
+      </tr>
+      <tr>
+        <td>إطار موحّد</td>
+        <td>لا</td>
+        <td>جزئي</td>
+        <td>لا</td>
+        <td>نعم</td>
+      </tr>
+      <tr>
+        <td>التفاضلي كحالة خاصة</td>
+        <td>—</td>
+        <td>لا</td>
+        <td>لا</td>
+        <td>نعم (عند r = 0)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>8. الخلاصة</h2>
+  <p>
+    يقدّم الحساب الهرمي بنية رياضية ثنائية المعلمة
+    تعتمد على الرتبة والدرجة، مما يسمح بتوسيع الحساب التفاضلي
+    دون فقدان بساطته الأساسية.
+  </p>
+  <p>
+    وبهذا، يشكّل الحساب الهرمي إطارًا موحّدًا
+    يمكن من خلاله فهم مختلف أنواع المشتقات
+    ضمن نظرية واحدة متماسكة.
+  </p>
+
+  <div class="navbtns">
+    <a class="btn" href="index.html">الصفحة الرئيسية</a>
+    <a class="btn primary" href="hierarchical-calculus-ar.html">الحساب الهرمي</a>
+  </div>
+
+  <footer>
+    اسم الملف المقترح:
+    <code>comparison-hierarchical-calculus-ar.html</code>
+  </footer>
+
+</main>
+</body>
+</html>
