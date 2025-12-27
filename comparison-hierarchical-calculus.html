@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparison Between Hierarchical Calculus and Existing Calculi</title>
+
+  <style>
+    :root {
+      --maxw: 980px;
+      --fg: #111;
+      --muted: #444;
+      --border: #ddd;
+      --bg: #ffffff;
+      --soft: #f6f6f6;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+    }
+
+    header {
+      background: var(--soft);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 22px 18px;
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 1.9rem;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    main h2 {
+      margin-top: 30px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 1.35rem;
+    }
+
+    main h3 {
+      margin-top: 16px;
+      font-size: 1.1rem;
+    }
+
+    p, li {
+      font-size: 1rem;
+    }
+
+    ul {
+      margin-left: 22px;
+    }
+
+    .note {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      border-radius: 10px;
+      margin: 14px 0;
+    }
+
+    code {
+      background: var(--soft);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+      text-align: left;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Comparison Between Hierarchical Calculus and Existing Calculi</h1>
+    <p class="subtitle">
+      A rank–degree based comparison of hierarchical differentiation frameworks
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h2>1. Introduction</h2>
+
+  <p>
+    Classical differential calculus relies on a single notion of differentiation order
+    and has been extended in various directions in order to model more complex phenomena.
+    Examples include fractional calculus, logarithmic derivatives, and other specialized
+    frameworks.
+  </p>
+
+  <p>
+    <strong>Hierarchical Calculus</strong> is proposed as a unified framework in which
+    differentiation is organized according to a well-defined hierarchy. In this setting,
+    classical differential calculus appears naturally as a special case of a more general
+    structure.
+  </p>
+
+  <p>
+    This page presents a structural comparison between Hierarchical Calculus and several
+    existing calculi, emphasizing the defining role of <em>rank</em> and <em>degree</em>.
+  </p>
+
+  <h2>2. Rank and Degree in Hierarchical Derivatives</h2>
+
+  <p>
+    In Hierarchical Calculus, every derivative is uniquely characterized by
+    <strong>two numerical indices</strong>: a <strong>rank</strong> and a
+    <strong>degree</strong>.
+  </p>
+
+  <p>
+    The <strong>subscript</strong> represents the <strong>rank</strong> of the derivative
+    and determines its mathematical nature:
+  </p>
+
+  <ul>
+    <li><strong>0</strong> — Differential derivative</li>
+    <li><strong>1</strong> — Relative derivative</li>
+    <li><strong>2</strong> — Logarithmic derivative</li>
+  </ul>
+
+  <p>
+    The <strong>superscript</strong> represents the <strong>degree</strong> of the derivative
+    and indicates the number of successive differentiations, ranging from
+    <em>1</em> to <em>n</em>.
+  </p>
+
+  <div class="note">
+    <strong>Notation.</strong>
+    A hierarchical derivative is denoted by
+    <code>D<sub>r</sub><sup>n</sup></code>,
+    where <code>r</code> is the rank and <code>n</code> is the degree.
+  </div>
+
+  <p>
+    For example,
+    <code>D<sub>0</sub><sup>n</sup></code> denotes the classical differential derivative
+    of degree <em>n</em>, while
+    <code>D<sub>2</sub><sup>1</sup></code> denotes the first-degree logarithmic derivative.
+  </p>
+
+  <h2>3. Comparison with Classical Differential Calculus</h2>
+
+  <p>
+    Classical calculus involves only one parameter: the degree of differentiation.
+    It does not distinguish between different types or ranks of derivatives.
+  </p>
+
+  <p>
+    In contrast, Hierarchical Calculus extends this structure by introducing a rank
+    parameter, allowing multiple derivative types to coexist within a single framework.
+  </p>
+
+  <div class="note">
+    Classical differential calculus is recovered exactly when
+    <code>r = 0</code>.
+  </div>
+
+  <h2>4. Comparison with Fractional Calculus</h2>
+
+  <p>
+    Fractional calculus generalizes differentiation by allowing non-integer degrees.
+    Such derivatives are often non-local and rely on integral representations.
+  </p>
+
+  <p>
+    Hierarchical Calculus does not modify the degree into fractional values. Instead,
+    it introduces distinct ranks while keeping the degree as a natural number.
+  </p>
+
+  <div class="note">
+    <strong>Essential difference:</strong>
+    Fractional calculus generalizes the degree, whereas Hierarchical Calculus
+    generalizes the rank.
+  </div>
+
+  <h2>5. Comparison with Logarithmic and Relative Calculi</h2>
+
+  <p>
+    Logarithmic and relative derivatives are typically introduced as independent
+    constructions for specific applications.
+  </p>
+
+  <p>
+    Within Hierarchical Calculus, such derivatives correspond to specific ranks and
+    are integrated into the general hierarchical structure rather than treated as
+    separate calculi.
+  </p>
+
+  <h2>6. Comparison with Time-Scale Calculus</h2>
+
+  <p>
+    Time-scale calculus focuses on unifying continuous and discrete domains by
+    modifying the independent variable.
+  </p>
+
+  <p>
+    Hierarchical Calculus instead focuses on the structure of differentiation itself,
+    independently of the underlying domain.
+  </p>
+
+  <h2>7. Summary Table</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Classical</th>
+        <th>Fractional</th>
+        <th>Logarithmic / Relative</th>
+        <th>Hierarchical</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Derivative indices</td>
+        <td>Degree only</td>
+        <td>Fractional degree</td>
+        <td>Special definition</td>
+        <td>Rank (subscript) + Degree (superscript)</td>
+      </tr>
+      <tr>
+        <td>Locality</td>
+        <td>Local</td>
+        <td>Mostly non-local</td>
+        <td>Local</td>
+        <td>Local at each rank</td>
+      </tr>
+      <tr>
+        <td>Unified framework</td>
+        <td>No</td>
+        <td>Partial</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Classical calculus as special case</td>
+        <td>—</td>
+        <td>No</td>
+        <td>No</td>
+        <td>Yes (r = 0)</td>
+      </tr>
+      <tr>
+        <td>Extensibility</td>
+        <td>Limited</td>
+        <td>Complex</td>
+        <td>Limited</td>
+        <td>High</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>8. Conclusion</h2>
+
+  <p>
+    Hierarchical Calculus introduces a dual-index structure based on rank and degree,
+    providing a clear and systematic generalization of classical differentiation.
+  </p>
+
+  <p>
+    By embedding classical calculus as the rank-zero case, the theory preserves
+    established methods while enabling coherent extensions to new derivative types.
+  </p>
+
+  <footer class="wrap">
+    <p>
+      Suggested filename:
+      <code>comparison-hierarchical-calculus.html</code>
+      &nbsp;|&nbsp;
+      Menu location:
+      <code>Theory → Comparison</code>
+    </p>
+  </footer>
+
+</main>
+
+</body>
+</html>
