@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Ahmed Gossa — Author | Hierarchical Calculus</title>
+  <meta name="description" content="Ahmed Gossa is the author and developer of the Hierarchical Calculus framework, including the Differential derivative (D0) and the Relative derivative (D1). Official author page with publications and core pages." />
+  <meta name="author" content="Ahmed Gossa" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/author.html" />
+
+  <!-- hreflang (Author page in English; you can add an Arabic version later if you want) -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/author.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/author.html" />
+
+  <!-- Structured Data: Person (Author) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ahmed Gossa",
+    "url": "https://gossaahmed.github.io/gossa-math/",
+    "sameAs": [
+      "https://github.com/GOSSAAHMED"
+    ],
+    "jobTitle": "Researcher",
+    "knowsAbout": [
+      "Hierarchical Calculus",
+      "Differential Calculus",
+      "Relative Derivative (D1)",
+      "Differential Derivative (D0)",
+      "Differential Equations",
+      "Mathematical Analysis"
+    ],
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
+    }
+  }
+  </script>
+
+  <!-- Simple clean styling -->
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#0f1b2e;
+      --card:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.12);
+      --text:#eaf2ff;
+      --muted:rgba(234,242,255,.72);
+      --accent:#39d3c3;
+      --accent2:#7aa7ff;
+      --warn:#ffcc66;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+      background: radial-gradient(1000px 500px at 20% -10%, rgba(57,211,195,.18), transparent 60%),
+                  radial-gradient(800px 400px at 80% 0%, rgba(122,167,255,.16), transparent 60%),
+                  linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
+      line-height:1.7;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:28px 18px 60px}
+    .topbar{
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      padding:14px 16px; background:rgba(255,255,255,.04);
+      border:1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+    }
+    .logo{
+      width:42px; height:42px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(57,211,195,.9), rgba(122,167,255,.9));
+      box-shadow: 0 8px 24px rgba(57,211,195,.18);
+    }
+    .titleblock{display:flex; flex-direction:column}
+    .titleblock strong{font-size:16px}
+    .titleblock span{font-size:12px; color:var(--muted)}
+    .nav{
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .btn{
+      display:inline-block;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-size:13px;
+    }
+    .btn:hover{border-color: rgba(122,167,255,.55)}
+    header{
+      margin-top:18px;
+      padding:22px 18px;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      box-shadow: var(--shadow);
+    }
+    h1{margin:0 0 8px; font-size:28px}
+    .subtitle{margin:0; color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+    .card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding:16px 16px;
+      box-shadow: var(--shadow);
+    }
+    .card h2{margin:0 0 10px; font-size:18px}
+    .muted{color:var(--muted)}
+    ul{margin:8px 0 0; padding-left:18px}
+    .kpi{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    .pill{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:10px 12px;
+      background: rgba(255,255,255,.04);
+    }
+    .pill strong{display:block; font-size:13px}
+    .pill span{display:block; font-size:12px; color:var(--muted)}
+    .footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+    .tag{
+      display:inline-block;
+      padding:4px 8px;
+      border:1px solid rgba(57,211,195,.35);
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(57,211,195,.08);
+      font-size:12px;
+      margin: 4px 6px 0 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="titleblock">
+          <strong>Hierarchical Calculus</strong>
+          <span>Official Author Page</span>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a class="btn" href="./index.html">Home</a>
+        <a class="btn" href="./series-en.html">Series</a>
+        <a class="btn" href="./rules-en.html">Rules</a>
+        <a class="btn" href="./integrals-en.html">Integrals</a>
+        <a class="btn" href="./equations-en.html">Equations</a>
+        <a class="btn" href="./equations-solved-en.html">Solved Equations</a>
+        <a class="btn" href="./faq-en.html">FAQ</a>
+      </nav>
+    </div>
+
+    <header>
+      <h1>Ahmed Gossa</h1>
+      <p class="subtitle">
+        Author & developer of the <strong>Hierarchical Calculus</strong> framework.
+        This page consolidates the main scientific pages and establishes consistent author identity signals for search engines.
+      </p>
+      <div style="margin-top:10px">
+        <span class="tag">Hierarchical Calculus</span>
+        <span class="tag">D0</span>
+        <span class="tag">D1</span>
+        <span class="tag">Differential Equations</span>
+        <span class="tag">Mathematical Analysis</span>
+      </div>
+    </header>
+
+    <section class="grid">
+
+      <div class="card">
+        <h2>About the Author</h2>
+        <p class="muted">
+          Ahmed Gossa develops a mathematical framework called <strong>Hierarchical Calculus</strong>.
+          The framework includes the classical differential derivative <strong>(D0)</strong> and the relative derivative <strong>(D1)</strong>,
+          and supports a structured approach to series, integrals, and differential equations.
+        </p>
+
+        <h2 style="margin-top:14px">Core Pages</h2>
+        <ul>
+          <li><a href="./index.html">Official Website (Home)</a></li>
+          <li><a href="./series-en.html">Series (Reference)</a></li>
+          <li><a href="./rules-en.html">Rules & Definitions</a></li>
+          <li><a href="./integrals-en.html">Integrals</a></li>
+          <li><a href="./equations-en.html">Equations</a></li>
+          <li><a href="./equations-solved-en.html"><strong>Solved Equations</strong> (high SEO value)</a></li>
+          <li><a href="./faq-en.html">FAQ</a></li>
+          <li><a href="./why-classical-calculus-fails-hierarchical-calculus.html">Why Classical Calculus Fails</a></li>
+          <li><a href="./unsolvable-differential-equations-hierarchical-en.html">Unsolvable Differential Equations (EN)</a></li>
+          <li><a href="./unsolvable-differential-equations-hierarchical.html">Unsolvable Differential Equations (AR)</a></li>
+        </ul>
+
+        <h2 style="margin-top:14px">Author Links</h2>
+        <ul>
+          <li>GitHub: <a href="https://github.com/GOSSAAHMED" target="_blank" rel="noopener">github.com/GOSSAAHMED</a></li>
+          <li>Main site: <a href="https://gossaahmed.github.io/gossa-math/" target="_blank" rel="noopener">gossaahmed.github.io/gossa-math/</a></li>
+        </ul>
+      </div>
+
+      <aside class="card">
+        <h2>Identity Signals (for SEO)</h2>
+        <p class="muted">
+          These elements help Google connect the pages to a single real author entity:
+        </p>
+        <div class="kpi">
+          <div class="pill">
+            <strong>Canonical URL</strong>
+            <span>author.html fixed</span>
+          </div>
+          <div class="pill">
+            <strong>Structured Data</strong>
+            <span>Person (JSON-LD)</span>
+          </div>
+          <div class="pill">
+            <strong>Consistent Name</strong>
+            <span>Ahmed Gossa everywhere</span>
+          </div>
+          <div class="pill">
+            <strong>Internal Links</strong>
+            <span>pages → author.html</span>
+          </div>
+        </div>
+
+        <h2 style="margin-top:14px">Next Step</h2>
+        <p class="muted">
+          After publishing this page, we will add a small author box/link inside each major page (Series/Rules/Integrals/Equations/Solved).
+          That is the strongest internal author signal.
+        </p>
+      </aside>
+
+    </section>
+
+    <div class="footer">
+      © <span id="y"></span> Ahmed Gossa — Hierarchical Calculus
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
