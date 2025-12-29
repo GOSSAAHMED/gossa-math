@@ -1,118 +1,294 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>المراجع — الحساب الهرمي</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>المراجع والاستشهاد — الحساب الهرمي</title>
+  <meta name="description" content="الاستشهاد الرسمي (DOI + BibTeX) وقائمة مراجع قياسية داعمة للتحليل الرياضي، المعادلات التفاضلية، التحليل العددي، والأمثلة الفيزيائية ضمن الحساب الهرمي. الترميز يعتمد الرتبة والدرجة D_r^n." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<style>
-:root{
-  --bg1:#0b1220; --bg2:#0f1b2e;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(0,0,0,.22);
-  --b: rgba(255,255,255,.12);
-  --txt:#eaf2ff; --mut:#cfe3ff;
-  --accent:#61d2d2; --accent2:#7aa7ff;
+  <!-- canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/references.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/references.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/references-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/references-en.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic","Tahoma", sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px;
+    }
+
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+
+    .chip{
+      display:inline-block;
+      padding:2px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      color: rgba(234,242,255,.88);
+      font-size:12px;
+      margin-left:6px;
+      margin-top:6px;
+    }
+
+    .codebox{
+      margin-top:10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 14px;
+      overflow:hidden;
+    }
+    .codebox .bar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 12px;
+      background: rgba(255,255,255,.04);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      gap:10px; flex-wrap:wrap;
+    }
+    .codebox .bar b{font-size:13px}
+    .codebox pre{
+      margin:0;
+      padding:12px;
+      font-family: var(--mono);
+      font-size:12.5px;
+      line-height:1.75;
+      white-space:pre;
+      overflow:auto;
+      direction:ltr;
+      text-align:left;
+      color: rgba(234,242,255,.92);
+    }
+
+    .toc{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:10px;
+    }
+    .toc a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      white-space:nowrap;
+    }
+
+    ul{margin:8px 0 0 0; padding:0 18px}
+    li{margin:8px 0}
+
+    .ltr{direction:ltr; text-align:left}
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "المراجع والاستشهاد — الحساب الهرمي",
+  "alternativeHeadline": "DOI و BibTeX ومراجع قياسية للتحليل والعدد والفيزياء ضمن الحساب الهرمي",
+  "author": {
+    "@type": "Person",
+    "name": "Ahmed Gossa",
+    "url": "https://gossaahmed.github.io/gossa-math/"
+  },
+  "about": [
+    "Hierarchical Calculus",
+    "Relative Derivative",
+    "Logarithmic Derivative",
+    "Numerical Analysis",
+    "Differential Equations",
+    "Thermodynamics"
+  ],
+  "inLanguage": "ar",
+  "url": "https://gossaahmed.github.io/gossa-math/references.html",
+  "publisher": { "@type": "Organization", "name": "الحساب الهرمي" }
 }
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, Arial, "Noto Sans Arabic";
-  background:
-    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--txt);
-}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
-.top{
-  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  padding:14px 16px;border-bottom:1px solid var(--b);
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
-}
-.brand{display:flex;gap:10px;align-items:center}
-.logo{
-  width:34px;height:34px;border-radius:10px;
-  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
-              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
-              rgba(255,255,255,.06);
-  border:1px solid var(--b);
-}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-nav a{
-  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
-  background:rgba(255,255,255,.03);
-}
-h1{margin:22px 0 8px;font-size:30px}
-.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.8}
-.card{
-  background:var(--card);border:1px solid var(--b);border-radius:18px;
-  padding:18px;margin:14px 0;
-}
-.small{font-size:14px;color:var(--mut);line-height:1.95}
-.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
-.tag{
-  display:inline-block;padding:2px 10px;border:1px solid var(--b);
-  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
-}
-.math{
-  background:var(--card2);border:1px solid var(--b);border-radius:14px;
-  padding:12px;margin-top:10px;overflow:auto
-}
-.callout{
-  border-right:4px solid var(--accent);
-  padding:12px 14px;border-radius:14px;
-  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
-}
-ul{margin:10px 0 0 0;padding:0 18px}
-li{margin:7px 0}
-pre{white-space:pre-wrap; direction:ltr; margin:0}
-</style>
+</script>
 </head>
 
 <body>
-<div class="top">
-  <div class="brand">
-    <div class="logo" aria-hidden="true"></div>
-    <div>
-      <div style="font-weight:900">الحساب الهرمي</div>
-      <div style="font-size:12px;color:var(--mut)">المراجع والاستشهاد</div>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>الحساب الهرمي</strong>
+          <span>المراجع والاستشهاد — ترميز \(D_r^n\)</span>
+        </div>
+      </div>
+
+      <nav aria-label="التنقل">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./theory.html">النظرية</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="./numerics.html">العددي</a>
+        <a href="./glossary.html">المصطلحات</a>
+        <a href="./references-en.html">English</a>
+      </nav>
     </div>
   </div>
 
-  <nav aria-label="التنقل">
-    <a href="index.html">الرئيسية</a>
-    <a href="theory.html">النظرية</a>
-    <a href="equations.html">المعادلات الهرمية</a>
-    <a href="numerics.html">الجزء العددي</a>
-    <a href="#cite">الاستشهاد</a>
-    <a href="#mathrefs">مراجع رياضية</a>
-    <a href="#numrefs">مراجع عددية</a>
-    <a href="#physrefs">مراجع فيزياء</a>
-    <a href="references-en.html">English</a>
-  </nav>
-</div>
+  <div class="wrap">
+    <header class="hero">
+      <h1>المراجع</h1>
+      <p class="muted" style="margin:0">
+        هذه الصفحة تجمع <b>طريقة الاستشهاد الرسمية</b> + <b>مراجع قياسية</b>
+        داعمة للأدوات المستخدمة (تحليل، تفاضل، معادلات تفاضلية، تحليل عددي، أمثلة فيزيائية…).
+        <br>
+        <b>قاعدة الترميز:</b> المشتقات تُكتب دائمًا بالرتبة والدرجة: \(\;D_r^n\).
+      </p>
 
-<div class="container">
-  <h1>المراجع</h1>
-  <p class="subtitle">
-    هذه الصفحة تجمع <strong>طريقة الاستشهاد الرسمية</strong> + <strong>مراجع قياسية</strong>
-    داعمة للأدوات المستخدمة (تفاضل، تحليل، معادلات تفاضلية، تحليل عددي، ترموديناميك…).
-  </p>
+      <div class="toc" aria-label="فهرس الصفحة">
+        <a href="#cite">الاستشهاد</a>
+        <a href="#mathrefs">مراجع رياضية</a>
+        <a href="#numrefs">مراجع عددية</a>
+        <a href="#physrefs">مراجع فيزياء</a>
+        <a href="#domain">شروط المجال</a>
+        <a href="#links">روابط</a>
+      </div>
 
-  <div class="card" id="cite">
-    <h2>1) الاستشهاد الرسمي (DOI + BibTeX)</h2>
-    <p class="small">
-      المرجع الرسمي عبر Zenodo (Concept DOI):
-      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
-        10.5281/zenodo.17917302
-      </a>
-    </p>
+      <p class="muted small" style="margin:12px 0 0 0">
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+        <br>
+        Version DOI (v1.0.0):
+        <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
+      </p>
+    </header>
 
-    <div class="math">
+    <section class="card" id="cite">
+      <h2>1) الاستشهاد الرسمي (DOI + BibTeX)</h2>
+
+      <p class="muted small" style="margin:0">
+        استعمل <b>DOI الخاص بالإصدار</b> عند الاستشهاد بنتائج مرتبطة بإصدار معيّن،
+        واستعمل <b>Concept DOI</b> عند الاستشهاد بالمشروع ككل.
+      </p>
+
+      <div class="note">
+        <strong>ملاحظة تحكيمية:</strong>
+        إذا كنت تستشهد بنتيجة/جدول/شكل من نسخة معيّنة (v1.0.0، v1.0.1 …) فالأفضل ذكر Version DOI.
+        وإذا كنت تستشهد بالإطار النظري العام فاستعمل Concept DOI.
+      </div>
+
+      <div class="codebox" aria-label="BibTeX citation">
+        <div class="bar">
+          <b>BibTeX (Concept DOI)</b>
+          <span class="muted small">نسخ/لصق</span>
+        </div>
 <pre>@software{gossa_hierarchical_calculus_2025,
   author = {Gossa Ahmed},
   title  = {Hierarchical Calculus},
@@ -120,90 +296,109 @@ pre{white-space:pre-wrap; direction:ltr; margin:0}
   doi    = {10.5281/zenodo.17917302},
   url    = {https://github.com/GOSSAAHMED/gossa-math}
 }</pre>
-    </div>
-
-    <div class="callout" style="margin-top:14px">
-      <div style="font-weight:900;margin-bottom:6px">ملاحظة تحكيمية</div>
-      <div class="small">
-        عند نشر نسخة جديدة على Zenodo (v1.0.1، v1.1.0 …)، استعمل DOI الخاص بالإصدار عند الاستشهاد بنتائج
-        مرتبطة بذلك الإصدار، واستعمل Concept DOI عند الاستشهاد بالمشروع ككل.
       </div>
-    </div>
-  </div>
 
-  <div class="card" id="mathrefs">
-    <h2>2) مراجع رياضية قياسية</h2>
-    <p class="small">
-      هذه مراجع معروفة لتثبيت الخلفية: التفاضل والتكامل، التحليل الحقيقي، الدوال الخاصة، اللوغاريتمات، والمعادلات التفاضلية.
-    </p>
-    <ul class="small">
-      <li><span class="tag">تحليل</span> Walter Rudin — <em>Principles of Mathematical Analysis</em>.</li>
-      <li><span class="tag">تحليل حقيقي</span> Terence Tao — <em>Analysis I / II</em> (للمفاهيم الأساسية والصرامة).</li>
-      <li><span class="tag">تفاضل/تكامل</span> Tom M. Apostol — <em>Calculus, Vol. 1 & 2</em>.</li>
-      <li><span class="tag">معادلات تفاضلية</span> William E. Boyce & Richard C. DiPrima — <em>Elementary Differential Equations and Boundary Value Problems</em>.</li>
-      <li><span class="tag">معادلات تفاضلية</span> Coddington & Levinson — <em>Theory of Ordinary Differential Equations</em> (أكثر صرامة).</li>
-      <li><span class="tag">دوال خاصة</span> NIST — <em>Digital Library of Mathematical Functions (DLMF)</em> (مرجع للدوال القياسية واللوغاريتمية).</li>
-    </ul>
-  </div>
-
-  <div class="card" id="numrefs">
-    <h2>3) مراجع التحليل العددي والتقريب</h2>
-    <p class="small">
-      الهدف هنا دعم “مقارنة الأخطاء” والتحليل العددي (الاستقرار، التقريب، propagation of errors).
-    </p>
-    <ul class="small">
-      <li><span class="tag">تحليل عددي</span> Richard L. Burden & J. Douglas Faires — <em>Numerical Analysis</em>.</li>
-      <li><span class="tag">تحليل عددي</span> Sauer — <em>Numerical Analysis</em>.</li>
-      <li><span class="tag">الاستقرار</span> Higham — <em>Accuracy and Stability of Numerical Algorithms</em>.</li>
-      <li><span class="tag">تقريب</span> Trefethen — <em>Approximation Theory and Approximation Practice</em>.</li>
-    </ul>
-
-    <div class="callout" style="margin-top:14px">
-      <div style="font-weight:900;margin-bottom:6px">كيف نربط هذا بالحساب الهرمي؟</div>
-      <div class="small">
-        “الصعود الهرمي” يمكن فهمه عددياً كاختيار تمثيل تقل فيه حساسية الدالة للاضطرابات (conditioning)،
-        ثم العودة بتحويل عكسي (exponentiation iterated). هذا يستدعي دائمًا دراسة الاستقرار ونطاق المجال.
+      <div class="codebox" aria-label="Plain text citation" style="margin-top:12px">
+        <div class="bar">
+          <b>صيغة نصية مقترحة</b>
+          <span class="muted small">استشهاد</span>
+        </div>
+<pre>GOSSA AHMED. Hierarchical Calculus — Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).</pre>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="card" id="physrefs">
-    <h2>4) مراجع فيزيائية (للأمثلة التطبيقية)</h2>
-    <p class="small">
-      هذه مراجع قياسية لربط الصيغ بمثال ميكانيك/ترموديناميك بشكل مقبول أكاديميًا.
-    </p>
-    <ul class="small">
-      <li><span class="tag">ترموديناميك</span> Zemansky & Dittman — <em>Heat and Thermodynamics</em>.</li>
-      <li><span class="tag">ترموديناميك</span> Callen — <em>Thermodynamics and an Introduction to Thermostatistics</em>.</li>
-      <li><span class="tag">ميكانيك</span> Goldstein — <em>Classical Mechanics</em>.</li>
-      <li><span class="tag">فيزياء عامة</span> Halliday, Resnick & Walker — <em>Fundamentals of Physics</em>.</li>
-    </ul>
-  </div>
+    <section class="card" id="mathrefs">
+      <h2>2) مراجع رياضية قياسية</h2>
 
-  <div class="card" id="domain">
-    <h2>5) شروط المجال (مهم للمراجعة والتحكيم)</h2>
-    <p class="small">
-      عند استعمال مشتقات تعتمد على \(\ln\) أو \(\ln\ln\)، يجب التصريح دائمًا بشروط المجال:
-    </p>
-    <div class="math">
-      <pre>
-- للمستوى 1:  يلزم  x>0  و  f(x)>0  عند استعمال  ln f  و  ln x
-- للمستوى 2:  يلزم  x>1  و  ln(x)>0  و  f(x)>1  و  ln(f)>0
-- للمستوى 3+: يلزم شروط إضافية على تكرار اللوغاريتمات وتفادي نقاط التفرد
-      </pre>
-    </div>
-  </div>
+      <div>
+        <span class="chip">تحليل</span>
+        <span class="chip">تفاضل/تكامل</span>
+        <span class="chip">معادلات تفاضلية</span>
+        <span class="chip">دوال خاصة</span>
+      </div>
 
-  <div class="card" id="links">
-    <h2>6) روابط المشروع</h2>
-    <ul class="small">
-      <li>الموقع: <a href="index.html">gossa-math (Arabic)</a></li>
-      <li>English: <a href="index-en.html">gossa-math (EN)</a></li>
-      <li>GitHub: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">Repository</a></li>
-      <li>Zenodo (Concept DOI): <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></li>
-    </ul>
-  </div>
+      <ul class="muted small">
+        <li><b>Walter Rudin</b> — <em>Principles of Mathematical Analysis</em>.</li>
+        <li><b>Terence Tao</b> — <em>Analysis I / II</em>.</li>
+        <li><b>Tom M. Apostol</b> — <em>Calculus, Vol. 1 & 2</em>.</li>
+        <li><b>Boyce & DiPrima</b> — <em>Elementary Differential Equations and Boundary Value Problems</em>.</li>
+        <li><b>Coddington & Levinson</b> — <em>Theory of Ordinary Differential Equations</em>.</li>
+        <li><b>NIST</b> — <em>Digital Library of Mathematical Functions (DLMF)</em>.</li>
+      </ul>
+    </section>
 
-</div>
+    <section class="card" id="numrefs">
+      <h2>3) مراجع التحليل العددي والتقريب</h2>
+
+      <div>
+        <span class="chip">تحليل عددي</span>
+        <span class="chip">استقرار</span>
+        <span class="chip">تقريب</span>
+      </div>
+
+      <ul class="muted small">
+        <li><b>Burden & Faires</b> — <em>Numerical Analysis</em>.</li>
+        <li><b>Sauer</b> — <em>Numerical Analysis</em>.</li>
+        <li><b>Nicholas J. Higham</b> — <em>Accuracy and Stability of Numerical Algorithms</em>.</li>
+        <li><b>Trefethen</b> — <em>Approximation Theory and Approximation Practice</em>.</li>
+      </ul>
+
+      <div class="note">
+        <strong>كيف يرتبط هذا بالحساب الهرمي؟</strong>
+        “الصعود الهرمي” يمكن فهمه عددياً كاختيار تمثيل تقل فيه حساسية المشكلة (conditioning)،
+        ثم العودة بتحويل عكسي (وغالبًا يتضمن أسس/لوغاريتمات). لذلك يلزم دائمًا التصريح بشروط المجال.
+      </div>
+    </section>
+
+    <section class="card" id="physrefs">
+      <h2>4) مراجع فيزيائية (للأمثلة التطبيقية)</h2>
+
+      <div>
+        <span class="chip">ترموديناميك</span>
+        <span class="chip">ميكانيك</span>
+        <span class="chip">فيزياء عامة</span>
+      </div>
+
+      <ul class="muted small">
+        <li><b>Zemansky & Dittman</b> — <em>Heat and Thermodynamics</em>.</li>
+        <li><b>Callen</b> — <em>Thermodynamics and an Introduction to Thermostatistics</em>.</li>
+        <li><b>Goldstein</b> — <em>Classical Mechanics</em>.</li>
+        <li><b>Halliday, Resnick & Walker</b> — <em>Fundamentals of Physics</em>.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="domain">
+      <h2>5) شروط المجال (مهم للتحكيم)</h2>
+
+      <p class="muted small" style="margin:0">
+        عند استعمال مشتقات تعتمد على \(\ln\) أو \(\ln\ln\)، يجب التصريح دائمًا بشروط المجال:
+      </p>
+
+      <div class="codebox" aria-label="Domain assumptions">
+        <div class="bar">
+          <b>ملخص شروط المجال</b>
+          <span class="muted small">شروط شائعة</span>
+        </div>
+<pre>- المستوى 0: لا شروط خاصة غير قابلية الاشتقاق المعتادة.
+- المستوى 1: غالبًا نحتاج x&gt;0 و f(x)&gt;0 عند استعمال ln x و ln f.
+- المستوى 2: نحتاج x&gt;1 بحيث ln(x)&gt;0 و f(x)&gt;1 بحيث ln(f)&gt;0.
+- المستوى 3+: تزداد الشروط بسبب تكرار اللوغاريتمات وتجنّب نقاط التفرد.</pre>
+      </div>
+    </section>
+
+    <section class="card" id="links">
+      <h2>6) روابط المشروع</h2>
+      <ul class="muted small">
+        <li>الموقع (AR): <a href="./index.html">Arabic</a></li>
+        <li>الموقع (EN): <a href="./index-en.html">English</a></li>
+        <li>GitHub: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">Repository</a></li>
+        <li>Zenodo (concept): <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · المراجع — ترميز \(D_r^n\)
+    </footer>
+  </div>
 </body>
 </html>
