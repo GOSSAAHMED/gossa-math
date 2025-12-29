@@ -1,185 +1,359 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Theory — Hierarchical Calculus</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Theory — Hierarchical Calculus</title>
+  <meta name="description" content="Foundational theory of Hierarchical Calculus: the hierarchical principle, the general definition of D_r^n, special cases D_0^1, D_1^1, D_2^1, and the golden relations connecting ranks." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<style>
-body{
-  margin:0;
-  font-family: system-ui, Arial;
-  background: radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-              linear-gradient(180deg,#0b1220,#0f1b2e);
-  color:#eaf2ff;
-}
-a{color:#7aa7ff;text-decoration:none}
-.container{max-width:1000px;margin:auto;padding:40px 18px}
-h1,h2,h3{margin-top:28px}
-.card{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:18px;
-  padding:18px;
-  margin:16px 0;
-}
-.label{
-  font-weight:800;
-  margin-bottom:8px;
-  color:#bfe8ff;
-}
-.math{
-  background:rgba(0,0,0,.25);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:12px;
-  padding:12px;
-  margin-top:8px;
-}
-.note{color:#cfe3ff;font-size:14px}
-</style>
+  <!-- hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/theory-en.html">
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/theory-en.html">
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/theory.html">
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/theory-en.html">
 
-<script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]}};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(0,0,0,.22);
+      --b: rgba(255,255,255,.12);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1050px;margin:0 auto;padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1050px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:999px; font-size:13px; color:var(--text); white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:30px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .label{font-weight:900; color:rgba(191,232,255,.95); margin-bottom:6px}
+    .math{
+      margin-top:8px; padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius:12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:var(--warn)}
+    code{
+      font-family:var(--mono);
+      background:rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      padding:2px 6px; border-radius:8px;
+    }
+    ul{margin:8px 0 0 0; padding-left:18px}
+    li{margin:6px 0}
+    footer{
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Theory — Hierarchical Calculus",
+    "alternativeHeadline": "Foundational principles and definitions of hierarchical derivatives D_r^n",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Classical derivative D0",
+      "Relative derivative D1",
+      "Hierarchical derivatives",
+      "Logarithmic rank"
+    ],
+    "url": "https://gossaahmed.github.io/gossa-math/theory-en.html",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
+    }
+  }
+  </script>
 </head>
 
 <body>
-<div class="container">
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Theory — Hierarchical Calculus</strong>
+          <span>Explicit notation: \(D_r^n\) (rank + degree)</span>
+        </div>
+      </div>
 
-<h1>Foundational Theory of Hierarchical Calculus</h1>
-
-<div class="card">
-<p>
-Hierarchical Calculus is a mathematical framework designed to
-<strong>unify the description of change</strong>
-through ascending operational levels: addition, division,
-logarithm, tetration, and beyond.
-</p>
-</div>
-
-<h2>1. Hierarchical Principle</h2>
-<div class="card">
-<div class="label">Fundamental Principle</div>
-<p>
-Each level of the hierarchy measures variation using a more abstract
-operation than the previous one.
-</p>
-<div class="math">
-\[
-\text{Change operator}:
-\begin{cases}
-\text{Addition} &\Rightarrow \text{Differential} \ (D_0)\\
-\text{Division} &\Rightarrow \text{Relative} \ (D_1)\\
-\text{Logarithm} &\Rightarrow \text{Logarithmic} \ (D_2)\\
-\text{Tetration} &\Rightarrow \text{Tetrational} \ (D_3)\\
-\vdots &\Rightarrow D_n
-\end{cases}
-\]
-</div>
-</div>
-
-<h2>2. General Definition</h2>
-<div class="card">
-<div class="label">Definition</div>
-<p>
-Let \(f(x)\) be a positive function on a suitable domain.
-The level-\(n\) hierarchical derivative is defined as:
-</p>
-<div class="math">
-\[
-D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
-\]
-</div>
-</div>
-
-<h2>3. Special Cases</h2>
-<div class="card">
-<div class="label">Lower Levels</div>
-
-<div class="math">\[
-D_0 f(x)=\frac{df(x)}{dx}
-\]</div>
-
-<div class="math">\[
-D_1 f(x)=\frac{d\ln f(x)}{d\ln x}
-\]</div>
-
-<div class="math">\[
-D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
-\]</div>
-
-<div class="math">\[
-D_3 f(x)=\frac{d\ln^{(3)}f(x)}{d\ln^{(3)}x}
-\]</div>
-</div>
-
-<h2>4. Hierarchical Consistency</h2>
-<div class="card">
-<div class="label">Theorem</div>
-<p>
-If a function admits a hierarchical derivative of order \(n\),
-then it admits all lower-order derivatives:
-</p>
-<div class="math">
-\[
-D_n f(x)\Rightarrow D_{n-1} f(x)\Rightarrow \dots \Rightarrow D_0 f(x)
-\]
-</div>
-</div>
-<div class="card">
-  <h2>✨ Golden Relations of Hierarchical Derivatives</h2>
-
-  <div class="math">
-  \[
-  D_0 f=\frac{df}{dx}
-  \]
-  \[
-  D_1 f=\frac{x}{f}D_0 f
-  \]
-  \[
-  D_2 f=D_1 f\frac{\ln x}{\ln f}
-  \]
-  \[
-  D_3 f=D_2 f\frac{\ln(\ln x)}{\ln(\ln f)}
-  \]
+      <nav aria-label="Navigation">
+        <a href="./index-en.html">Home</a>
+        <a href="./rules-en.html">Rules</a>
+        <a href="./series-en.html">Series</a>
+        <a href="./integrals-en.html">Integrals</a>
+        <a href="./equations.html">Equations</a>
+        <a href="./theory.html">العربية</a>
+      </nav>
+    </div>
   </div>
 
-  <div class="math">
-  \[
-  \boxed{
-  D_{n+1} f
-  =
-  D_n f\frac{\ln^{(n)}(x)}{\ln^{(n)}(f)}
-  }
-  \]
+  <div class="wrap">
+    <header class="hero">
+      <h1>Foundational Theory</h1>
+      <p class="muted" style="margin:0">
+        Hierarchical Calculus is a framework designed to <b>unify descriptions of change</b>
+        by moving across measurement scales. Each step in rank changes the “reference operation”
+        used to measure variation.
+      </p>
+      <p class="muted small" style="margin:10px 0 0 0">
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </p>
+    </header>
+
+    <section class="card">
+      <h2>1) The hierarchical principle</h2>
+      <div class="label">Core idea</div>
+      <p class="muted small" style="margin:0">
+        Rank increases when we measure variation using a more abstract operation (from additive to relative, then to log-relative, etc.).
+      </p>
+      <div class="math">
+        \[
+        \text{Reference operation}:
+        \begin{cases}
+        \text{Addition} &\Rightarrow \text{rank }0 \ (\;D_0^1\;)\\
+        \text{Division (relative)} &\Rightarrow \text{rank }1 \ (\;D_1^1\;)\\
+        \text{Logarithm of logarithms} &\Rightarrow \text{rank }2 \ (\;D_2^1\;)\\
+        \text{Iterated logs (rank }3\text{ and above)} &\Rightarrow D_r^1,\ r\ge 3
+        \end{cases}
+        \]
+      </div>
+      <div class="note">
+        <strong>Notation rule:</strong>
+        rank is \(r\), degree is \(n\). In this theory page we focus mainly on <b>degree 1</b> (first-degree derivatives): \(D_r^1\).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) General definition (rank \(r\), degree 1)</h2>
+      <p class="muted small" style="margin:0">
+        Let \(f(x)>0\) on a suitable domain. Define \(\ln^{(r)}\) as the \(r\)-fold iterated logarithm:
+        \(\ln^{(0)}(x)=x\), \(\ln^{(1)}(x)=\ln x\), \(\ln^{(2)}(x)=\ln(\ln x)\), etc.
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+          D_{r}^{1} f(x)
+          =
+          \frac{d\,\ln^{(r)}\!\big(f(x)\big)}{d\,\ln^{(r)}(x)}
+          }
+        \]
+      </div>
+      <p class="muted small" style="margin:10px 0 0 0">
+        This definition makes rank a <b>change of measurement scale</b>: we take the classical derivative after transforming both
+        input and output by the same iterated logarithm level.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>3) Special cases (degree 1)</h2>
+      <div class="label">Rank 0, 1, 2, 3</div>
+
+      <div class="math">
+        \[
+          D_0^{1} f(x)=\frac{df(x)}{dx}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          D_1^{1} f(x)=\frac{d\ln f(x)}{d\ln x}
+          \quad\text{(relative derivative)}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          D_2^{1} f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          D_3^{1} f(x)=\frac{d\ln^{(3)}(f(x))}{d\ln^{(3)}(x)}
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Domain reminder:</strong>
+        when rank \(\ge 1\), you must ensure the corresponding iterated logarithms are defined
+        (e.g., for rank 2 typically \(x>1\) and \(f(x)>1\)).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) Hierarchical consistency</h2>
+      <div class="label">Principle</div>
+      <p class="muted small" style="margin:0">
+        If a function admits a rank-\(r\) derivative on a domain where the required iterated logarithms are valid,
+        then the lower ranks are also valid on the same domain (or a superset).
+      </p>
+      <div class="math">
+        \[
+          D_{r}^{1} f(x)\ \Rightarrow\ D_{r-1}^{1} f(x)\ \Rightarrow\ \cdots\ \Rightarrow\ D_{0}^{1} f(x)
+        \]
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) Golden relations (rank-to-rank links)</h2>
+      <p class="muted small" style="margin:0">
+        These identities connect the ranks by explicit rescaling factors. For degree 1:
+      </p>
+
+      <div class="math">
+        \[
+          D_{0}^{1} f=\frac{df}{dx}
+        \]
+        \[
+          D_{1}^{1} f=\frac{x}{f}\,D_{0}^{1} f
+        \]
+        \[
+          D_{2}^{1} f=D_{1}^{1} f\;\frac{\ln x}{\ln f}
+        \]
+        \[
+          D_{3}^{1} f=D_{2}^{1} f\;\frac{\ln(\ln x)}{\ln(\ln f)}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          \boxed{
+          D_{r+1}^{1} f
+          =
+          D_{r}^{1} f\;\frac{\ln^{(r)}(x)}{\ln^{(r)}(f)}
+          }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Interpretation:</strong>
+        moving from rank \(r\) to rank \(r+1\) is a controlled rescaling governed by the ratio of the rank-\(r\) logarithmic coordinates.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>6) Interpretation of ranks</h2>
+      <ul class="muted small">
+        <li><b>Rank 0:</b> absolute (additive) change in \(x\).</li>
+        <li><b>Rank 1:</b> relative change (scale-invariant viewpoint).</li>
+        <li><b>Rank 2:</b> log-relative structural change (log-of-log scale).</li>
+        <li><b>Rank \(\ge 3\):</b> higher-order hierarchical scales via iterated logarithms.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>7) Citation</h2>
+      <div class="math">
+        \[
+          \texttt{GOSSA AHMED. Hierarchical Calculus — Theory (definition of D\_r^n and golden relations). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
+        \]
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Theory — Hierarchical Calculus · explicit \(D_r^n\)
+    </footer>
   </div>
-
-  <p class="small">
-    These identities form the structural core of Hierarchical Calculus,
-    showing that each derivative level is a rescaled version of classical differentiation.
-  </p>
-</div>
-
-<h2>5. Interpretation</h2>
-<div class="card">
-<ul>
-<li>Level 0: absolute change</li>
-<li>Level 1: relative (self-scaled) change</li>
-<li>Level 2: logarithmic structural change</li>
-<li>Level ≥3: hierarchical accelerated change</li>
-</ul>
-</div>
-
-<div class="card">
-<p class="note">
-Official reference DOI:
-<a href="https://doi.org/10.5281/zenodo.17917302" target="_blank">
-10.5281/zenodo.17917302
-</a>
-</p>
-</div>
-
-</div>
 </body>
 </html>
+
