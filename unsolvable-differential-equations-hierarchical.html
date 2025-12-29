@@ -2,22 +2,24 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>حلّ المعادلات التفاضلية المستحيلة عبر الحساب الهرمي</title>
-  <meta name="description" content="صفحة أكاديمية توضّح لماذا تفشل بعض المعادلات التفاضلية في المستوى التفاضلي، وكيف تُحلّ بسهولة عبر الرفع إلى المستويات الهرمية، وصولًا إلى المستوى اللوغاريتمي.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="canonical" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html">
 
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html">
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html">
+  <title>حلّ المعادلات التفاضلية المستحيلة عبر الحساب الهرمي</title>
+  <meta name="description" content="صفحة أكاديمية توضّح لماذا تفشل بعض المعادلات التفاضلية في المستوى التفاضلي D0 أو النسبي D1، وكيف تُحلّ بسهولة عبر الرفع إلى المستوى اللوغاريتمي D2 ضمن الحساب الهرمي.">
+  <meta name="author" content="GOSSA AHMED">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html">
+
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html">
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html">
 
   <!-- MathJax -->
   <script>
     window.MathJax = {
-      tex: {
-        inlineMath: [['\\(','\\)']],
-        displayMath: [['\\[','\\]']]
-      }
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -27,7 +29,7 @@
       margin:0;
       background:#0b1220;
       color:#e6e6e6;
-      font-family:"Segoe UI", Tahoma, Arial, sans-serif;
+      font-family: system-ui, "Segoe UI", Tahoma, Arial, "Noto Sans Arabic", sans-serif;
       line-height:1.9;
     }
     main{
@@ -35,23 +37,14 @@
       margin:auto;
       padding:40px 20px;
     }
-    h1,h2,h3{
-      color:#66d9ef;
-    }
-    h1{
-      font-size:2.2em;
-      margin-bottom:25px;
-    }
-    h2{
-      margin-top:45px;
-      font-size:1.6em;
-    }
-    p{
-      margin:14px 0;
-    }
-    ul{
-      margin:15px 30px;
-    }
+    h1,h2,h3{ color:#66d9ef; }
+    h1{ font-size:2.2em; margin-bottom:25px; }
+    h2{ margin-top:45px; font-size:1.6em; }
+    p{ margin:14px 0; }
+    ul{ margin:15px 30px; }
+    a{ color:#7aa7ff; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
     .math{
       background:#0f1a2c;
       border:1px solid #22314f;
@@ -60,6 +53,8 @@
       margin:22px 0;
       overflow-x:auto;
       border-radius:10px;
+      direction:ltr;
+      text-align:left;
     }
     .axiom{
       background:#111f36;
@@ -68,20 +63,62 @@
       border-radius:12px;
       margin:30px 0;
     }
+    .note{
+      background: rgba(255,204,102,.10);
+      border: 1px solid rgba(255,204,102,.35);
+      padding:14px 16px;
+      border-radius:12px;
+      margin:22px 0;
+    }
+    .note strong{ color:#ffcc66; }
     footer{
       margin-top:60px;
       padding-top:20px;
       border-top:1px solid #22314f;
       color:#aaa;
-      font-size:0.9em;
+      font-size:0.95em;
     }
   </style>
+
+  <!-- Schema.org (اختياري لكن مفيد) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "حلّ المعادلات التفاضلية المستحيلة عبر الحساب الهرمي",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
+    },
+    "inLanguage": "ar",
+    "datePublished": "2025-12-01",
+    "dateModified": "2025-12-27",
+    "about": [
+      "Hierarchical Calculus",
+      "Unsolvable Differential Equations",
+      "Relative Derivative D1",
+      "Logarithmic Rank D2"
+    ],
+    "url": "https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html"
+  }
+  </script>
 </head>
 
 <body>
 <main>
 
 <h1>حلّ المعادلات التفاضلية المستحيلة عبر الحساب الهرمي</h1>
+
+<p>
+<a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">Concept DOI: 10.5281/zenodo.17917302</a>
+&nbsp;·&nbsp;
+<a href="./unsolvable-differential-equations-hierarchical-en.html">English version</a>
+</p>
 
 <h2>1. مقدمة</h2>
 <p>
@@ -91,15 +128,18 @@
 </p>
 <p>
 في هذه الصفحة نبيّن أن <strong>الاستحالة ليست رياضية</strong>، بل ناتجة عن
-<strong>اختيار مستوى قياس غير مناسب</strong>.  
+<strong>اختيار مستوى قياس غير مناسب</strong>.
 ويظهر <strong>الحساب الهرمي</strong> كإطار عام يعيد تنظيم المشتقات
 وفق مستويات (رتب) متصاعدة، من التفاضلي إلى النسبي ثم اللوغاريتمي.
 </p>
 
+<div class="note">
+  <strong>تنبيه مجال (مهم للتحكيم):</strong>
+  وجود \(\ln(\ln y)\) يفرض عادةً \(y>1\). واستخدام \(\ln(\ln x)\) في \(D_{2}^{1}\) يفرض \(x>1\).
+</div>
+
 <h2>2. فشل المستوى التفاضلي</h2>
-<p>
-لنأخذ المعادلة التفاضلية التالية:
-</p>
+<p>لنأخذ المعادلة التفاضلية التالية:</p>
 
 <div class="math">
 \[
@@ -107,9 +147,7 @@
 \]
 </div>
 
-<p>
-هذه المعادلة:
-</p>
+<p>هذه المعادلة:</p>
 <ul>
   <li>غير خطية</li>
   <li>غير قابلة للفصل</li>
@@ -117,83 +155,63 @@
   <li>لا تقبل تحويلًا تفاضليًا قياسيًا</li>
 </ul>
 
-<p>
-في الحساب التفاضلي التقليدي، لا يوجد حل تحليلي مغلق لها.
-</p>
+<p>في الحساب التفاضلي التقليدي، لا يوجد حل تحليلي مغلق لها بصيغة “طبيعية” توافق بنيتها.</p>
 
-<h2>3. محاولة الرفع إلى المستوى النسبي (D1)</h2>
-<p>
-نستعمل تعريف المشتق النسبي (الرتبة الأولى):
-</p>
+<h2>3. محاولة الرفع إلى المستوى النسبي \((D_{1}^{1})\)</h2>
+<p>نستعمل تعريف <strong>المشتق النسبي</strong> (رتبة 1، درجة 1):</p>
 
 <div class="math">
 \[
-D^{1}_{1}y = \frac{x}{y}\,\frac{dy}{dx}
+D_{1}^{1}y = \frac{d\ln y}{d\ln x} = \frac{x}{y}\,\frac{dy}{dx}
 \]
 </div>
 
-<p>
-بالتعويض نحصل على:
-</p>
+<p>بالتعويض نحصل على:</p>
 
 <div class="math">
 \[
-D^{1}_{1}y = \ln(\ln y)
+D_{1}^{1}y = \ln(\ln y)
 \]
 </div>
 
-<p>
-رغم أن الصيغة أصبحت أبسط، إلا أن:
-</p>
+<p>رغم أن الصيغة أصبحت أبسط، إلا أن:</p>
 <ul>
-  <li>الطرف الأيمن ما زال يعتمد على لوغاريتم لوغاريتمي</li>
-  <li>المستوى النسبي يقيس نسبة التغير فقط</li>
+  <li>الطرف الأيمن ما زال يعتمد على بنية لوغاريتم-لوغاريتم</li>
+  <li>المستوى النسبي يقيس نسبة التغير</li>
   <li>بينما المعادلة تصف <strong>تغيّر آلية التغيّر نفسها</strong></li>
 </ul>
 
-<p>
-إذًا حتى المستوى النسبي <strong>غير كافٍ</strong>.
-</p>
+<p>إذًا حتى المستوى النسبي <strong>غير كافٍ</strong>.</p>
 
-<h2>4. الرفع الحاسم: المستوى اللوغاريتمي (D2)</h2>
-<p>
-ننتقل إلى الرتبة الثانية من الحساب الهرمي، ونستعمل المشتق اللوغاريتمي:
-</p>
+<h2>4. الرفع الحاسم: المستوى اللوغاريتمي \((D_{2}^{1})\)</h2>
+<p>ننتقل إلى الرتبة الثانية من الحساب الهرمي، ونستعمل المشتق اللوغاريتمي:</p>
 
 <div class="math">
 \[
-D^{1}_{2}y = \frac{d(\ln\ln y)}{d(\ln\ln x)}
+D_{2}^{1}y = \frac{d(\ln\ln y)}{d(\ln\ln x)}
 \]
 </div>
 
-<p>
-باشتقاق المعادلة الأصلية وفق هذا التعريف، نحصل مباشرة على:
-</p>
+<p>عند الصياغة على هذا المستوى نحصل مباشرة على:</p>
 
 <div class="math">
 \[
-D^{1}_{2}y = 1
+D_{2}^{1}y = 1
 \]
 </div>
 
-<p>
-وهذه أبسط معادلة ممكنة في هذا المستوى.
-</p>
+<p>وهذه أبسط معادلة ممكنة في هذا المستوى.</p>
 
 <h2>5. الحل في المستوى اللوغاريتمي</h2>
-<p>
-نحل:
-</p>
+<p>نحل:</p>
 
 <div class="math">
 \[
-D^{1}_{2}y = 1
+D_{2}^{1}y = 1
 \]
 </div>
 
-<p>
-فنحصل على:
-</p>
+<p>فنحصل على:</p>
 
 <div class="math">
 \[
@@ -201,9 +219,7 @@ D^{1}_{2}y = 1
 \]
 </div>
 
-<p>
-أي:
-</p>
+<p>أي:</p>
 
 <div class="math">
 \[
@@ -211,9 +227,7 @@ D^{1}_{2}y = 1
 \]
 </div>
 
-<p>
-وأخيرًا:
-</p>
+<p>وأخيرًا:</p>
 
 <div class="math">
 \[
@@ -221,9 +235,7 @@ y = x^{A}
 \]
 </div>
 
-<p>
-ظهر الحل التحليلي بسهولة تامة بمجرد اختيار المستوى الهرمي الصحيح.
-</p>
+<p>ظهر الحل التحليلي بسهولة تامة بمجرد اختيار المستوى الهرمي الصحيح.</p>
 
 <h2>6. مسلّمة الرفع الهرمي</h2>
 
@@ -241,7 +253,7 @@ y = x^{A}
 \[
 \text{إذا فشل } \frac{dy}{dx}
 \;\Rightarrow\;
-D^{n}_{r}y \text{ هو الوصف الصحيح}
+D_{r}^{n}y \text{ هو الوصف الصحيح}
 \]
 </div>
 </div>
@@ -271,7 +283,7 @@ D^{n}_{r}y \text{ هو الوصف الصحيح}
 </p>
 
 <footer>
-<p>© موقع الحساب الهرمي – جميع الحقوق محفوظة</p>
+  <p>© موقع الحساب الهرمي – جميع الحقوق محفوظة</p>
 </footer>
 
 </main>
