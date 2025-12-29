@@ -6,24 +6,29 @@
 
   <title>لماذا يفشل الحساب التفاضلي — وكيف يحل الحساب الهرمي المعادلات المستحيلة</title>
 
-  <meta name="description" content="لماذا تفشل بعض المعادلات التفاضلية في المستوى التفاضلي D0، وكيف تصبح قابلة للحل عند رفعها إلى المستويات الهرمية: النسبي D1 ثم اللوغاريتمي D2.">
-  <meta name="keywords" content="الحساب الهرمي, المشتق النسبي D1, المشتق اللوغاريتمي D2, معادلات تفاضلية مستحيلة, رفع هرمي, رتبة ودرجة, D0">
+  <meta name="description" content="لماذا تفشل بعض المعادلات التفاضلية في المستوى التفاضلي D^1_0، وكيف تصبح قابلة للحل عند رفعها إلى المستويات الهرمية: النسبي D^1_1 ثم اللوغاريتمي D^1_2.">
+  <meta name="keywords" content="الحساب الهرمي, المشتق النسبي D1, المشتق اللوغاريتمي D2, معادلات تفاضلية مستحيلة, رفع هرمي, رتبة ودرجة, D0, D1, D2">
   <meta name="author" content="GOSSA AHMED">
 
   <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/why-differential-calculus-fails-hierarchical-calculus-ar.html">
 
-  <!-- MathJax -->
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/why-differential-calculus-fails-hierarchical-calculus-ar.html">
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus.html">
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus.html">
+
+  <!-- MathJax (SVG output for crisp formulas) -->
   <script>
     MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         processEscapes: true
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
   <style>
     :root{
@@ -39,7 +44,7 @@
     body{
       background: radial-gradient(1200px 800px at 70% -10%, #14264a 0%, var(--bg) 55%);
       color:var(--text);
-      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      font-family: "Segoe UI", Tahoma, Arial, "Noto Sans Arabic", sans-serif;
       line-height:1.95;
       margin:0;
     }
@@ -66,7 +71,7 @@
       border:1px solid var(--border);
       border-radius: 12px;
       padding: 14px 16px;
-      margin: 18px 0 26px;
+      margin: 18px 0 18px;
       color: var(--text);
     }
     .note strong{ color: var(--accent); }
@@ -80,6 +85,8 @@
       margin: 18px 0 22px;
       overflow-x: auto;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      direction:ltr;           /* مهم لعرض المعادلات داخل RTL */
+      text-align:left;         /* مهم لعرض المعادلات داخل RTL */
     }
     .math-block mjx-container[display="true"]{
       margin: 0 auto !important;
@@ -127,18 +134,57 @@
       padding-top: 18px;
     }
   </style>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "لماذا يفشل الحساب التفاضلي — وكيف يحل الحساب الهرمي المعادلات المستحيلة",
+  "alternativeHeadline": "الرفع الهرمي من D^1_0 إلى D^1_1 ثم D^1_2",
+  "author": {
+    "@type": "Person",
+    "name": "Ahmed Gossa",
+    "url": "https://gossaahmed.github.io/gossa-math/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hierarchical Calculus"
+  },
+  "datePublished": "2025-12-01",
+  "dateModified": "2025-12-27",
+  "inLanguage": "ar",
+  "about": [
+    "الحساب الهرمي",
+    "فشل الحساب التفاضلي",
+    "المشتق النسبي D1",
+    "المشتق اللوغاريتمي D2",
+    "معادلات تفاضلية مستحيلة"
+  ],
+  "abstract": "توضح هذه المقالة حدود الحساب التفاضلي الكلاسيكي عندما يكون المقياس جزءًا من الديناميكيات، وتعرض كيف يحل الحساب الهرمي المشكلة عبر الرفع إلى المستويين النسبي واللوغاريتمي.",
+  "url": "https://gossaahmed.github.io/gossa-math/why-differential-calculus-fails-hierarchical-calculus-ar.html"
+}
+</script>
+
 </head>
 
 <body>
 <main>
 
   <h1>لماذا يفشل الحساب التفاضلي — وكيف يحل الحساب الهرمي المعادلات المستحيلة</h1>
-  <p class="subtitle">ترميز هرمي صارم: الرتبة تحت، والدرجة فوق. الانتقال من \(D^{1}_{0}\) إلى \(D^{1}_{1}\) ثم \(D^{1}_{2}\).</p>
+  <p class="subtitle">
+    ترميز هرمي صارم: الرتبة تحت، والدرجة فوق. الانتقال من \(D^{1}_{0}\) إلى \(D^{1}_{1}\) ثم \(D^{1}_{2}\).
+  </p>
 
   <div class="note">
     <strong>الفكرة الأساسية:</strong>
     الفشل ليس في “تعقيد المعادلة”، بل في أن الحساب التفاضلي يعمل داخل مستوى لا يطابق طبيعة التغير.
     عندما يكون التغير نسبيًا أو لوغاريتميًا، يصبح الرفع الهرمي هو الأداة الطبيعية للحل.
+  </div>
+
+  <div class="note">
+    <strong>ملاحظة مجال:</strong>
+    في هذا المقال نفترض \(x&gt;1\) حتى يكون \(\ln x&gt;0\) و\(\ln\ln x\) معرفًا.
   </div>
 
   <div class="divider"></div>
@@ -179,13 +225,13 @@
 
   <h2>3. الرفع إلى المستوى النسبي \(D^{1}_{1}\)</h2>
   <p>
-    نعرّف المشتق النسبي (رتبة 1، درجة 1) كما يلي:
+    نعرّف المشتق النسبي (رتبة 1، درجة 1) بصيغة مكافئة أكثر وضوحًا:
   </p>
 
   <div class="math-block">
     $$
     \boxed{
-    D^{1}_{1}y=\frac{x}{y}\,\frac{dy}{dx}
+    D^{1}_{1}y=\frac{d\ln y}{d\ln x}=\frac{x}{y}\,\frac{dy}{dx}
     }
     $$
   </div>
@@ -211,24 +257,29 @@
   <div class="divider"></div>
 
   <h2>4. الرفع إلى المستوى اللوغاريتمي \(D^{1}_{2}\): تتحول المسألة إلى بديهة</h2>
+
   <p>
-    في المستوى اللوغاريتمي (رتبة 2) نستخدم مقياسًا لوغاريتميًا أعلى:
+    من
+    \(
+      D^{1}_{1}y=\dfrac{d\ln y}{d\ln x}=\dfrac{1}{\ln x}
+    \)
+    نستنتج مباشرة:
+  </p>
+
+  <div class="math-block">
+    $$
+    d(\ln y)=\frac{d(\ln x)}{\ln x}=d(\ln\ln x).
+    $$
+  </div>
+
+  <p>
+    إذًا الصياغة الطبيعية في الرتبة الثانية هي:
   </p>
 
   <div class="math-block">
     $$
     \boxed{
-    D^{1}_{2}y=\frac{d(\ln\ln y)}{d(\ln\ln x)}
-    }
-    $$
-  </div>
-
-  <p>وعند هذا المستوى تصبح بنية المعادلة شفافة وتؤول إلى أبسط شكل:</p>
-
-  <div class="math-block">
-    $$
-    \boxed{
-    D^{1}_{2}y=1
+    D^{1}_{2}y:=\frac{d(\ln y)}{d(\ln\ln x)}=1
     }
     $$
   </div>
