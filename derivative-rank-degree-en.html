@@ -3,14 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Derivative Rank & Degree | Hierarchical Calculus</title>
-  <meta name="description" content="Reference page: every hierarchical derivative has a rank and a degree. Unified notation D_r^n and key relations connecting ranks and degrees." />
-  <meta name="author" content="GOSSA AHMED" />
+
+  <title>Derivative Rank & Degree | Hierarchical Calculus (D0, D1, Dₙ¹)</title>
+  <meta name="description" content="Reference + tutorial: every hierarchical derivative is defined by a rank (type/layer) and a degree (successive application). Unified notation D_r^n, the single adopted definition of D_r^1 via iterated logarithms, domain conditions, computable operators δ_r, and worked examples." />
+  <meta name="author" content="Ahmed Gossa" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
 
   <!-- hreflang -->
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Derivative Rank & Degree | Hierarchical Calculus (D0, D1, Dₙ¹)" />
+  <meta property="og:description" content="Unified notation D_r^n + single adopted definition of D_r^1 + domain conditions + δ_r operators + examples." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Derivative Rank and Degree in Hierarchical Calculus",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Hierarchical Derivative D_n^1",
+      "Differential Derivative D0",
+      "Relative Derivative D1",
+      "Iterated logarithms",
+      "Rank and degree notation"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -18,7 +57,7 @@
       --card: rgba(255,255,255,.06);
       --border: rgba(255,255,255,.14);
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
-      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -32,6 +71,7 @@
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
+      line-height:1.9;
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
@@ -84,6 +124,8 @@
     }
     header.hero > *{position:relative}
     h1{margin:0 0 8px 0; font-size:30px}
+    h2{margin:0 0 10px 0; font-size:18px; display:flex; align-items:center; gap:10px}
+    h3{margin:18px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
@@ -95,8 +137,8 @@
       box-shadow: var(--shadow);
       padding: 18px 18px;
     }
-    .card h2{margin:0 0 10px 0; font-size:18px; display:flex; align-items:center; gap:10px}
     .bar{width:4px; height:18px; border-radius:99px; background: linear-gradient(180deg, var(--accent), var(--accent2)); display:inline-block}
+
     .block{
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
@@ -105,6 +147,7 @@
       margin: 12px 0;
     }
     .label{font-weight:800; margin-bottom:8px}
+
     .math{
       margin-top: 8px;
       border:1px solid rgba(255,255,255,.10);
@@ -114,6 +157,7 @@
       overflow:auto;
       direction:ltr; text-align:left;
     }
+
     .note{
       border:1px solid rgba(255,204,102,.35);
       background: rgba(255,204,102,.10);
@@ -123,8 +167,22 @@
       line-height:1.9;
     }
     .note strong{color:var(--warn)}
+
+    .ok{
+      border:1px solid rgba(134,239,172,.35);
+      background: rgba(134,239,172,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+      line-height:1.9;
+    }
+    .ok strong{color:var(--ok)}
+
+    .toc a{display:block; margin:7px 0}
     ul{margin:8px 0 0 0; padding-left:18px}
     li{margin:6px 0}
+    hr.sep{border:0; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
+
     footer{
       margin-top: 18px;
       color: var(--muted);
@@ -151,13 +209,14 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
-          <strong>Rank & Degree</strong>
-          <span>Unified hierarchical derivative notation: \(D_{\text{rank}}^{\text{deg}}\)</span>
+          <strong>Derivative Rank & Degree</strong>
+          <span>Unified notation: \(D_r^n\) — with the adopted definition of \(D_r^1\)</span>
         </div>
       </div>
       <div class="actions">
-        <a class="btn" href="./index-en.html">Home</a>
+        <a class="btn" href="./index.html">Home</a>
         <a class="btn" href="./derivative-rank-degree.html">العربية</a>
+        <a class="btn" href="./rules-en.html">Rules</a>
         <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
       </div>
     </div>
@@ -166,9 +225,9 @@
   <div class="wrap">
     <header class="hero">
       <h1>Every derivative has a rank and a degree</h1>
-      <p class="muted" style="margin:0; line-height:1.9">
-        In Hierarchical Calculus, no derivative is written without specifying its <b>rank</b> (type/layer) and <b>degree</b> (how many successive applications).
-        We use the standard notation:
+      <p class="muted" style="margin:0">
+        In Hierarchical Calculus, a derivative is never written without specifying its <b>rank</b> (type / transformation layer)
+        and its <b>degree</b> (how many successive applications). The compact notation is:
       </p>
       <div class="math" style="margin-top:12px">
         \[
@@ -176,47 +235,104 @@
         \]
       </div>
       <p class="muted small" style="margin:10px 0 0 0">
-        where \(r\) is the rank (0: differential, 1: relative, 2: logarithmic, …) and \(n\) is the degree (0,1,2,3,…).
+        where \(r \in \{0,1,2,\dots\}\) is the rank (0: differential, 1: relative, 2: logarithmic, …)
+        and \(n \in \{0,1,2,\dots\}\) is the degree.
       </p>
+
+      <div class="ok">
+        <strong>Single-source-of-truth rule</strong>
+        <div class="muted small" style="margin-top:6px">
+          Throughout this site, the rank-\(r\) derivative is defined by applying the <em>same</em> iterated-log transform
+          to both sides (to \(x\) and to \(f(x)\)). This prevents contradictions between pages.
+        </div>
+      </div>
     </header>
 
     <section class="card">
+      <h2><span class="bar"></span>Quick Table of Contents</h2>
+      <div class="block toc muted small">
+        <a href="#defs">1) Core definitions (rank, degree, iterated logs)</a>
+        <a href="#def-dr1">2) The adopted definition of \(D_r^1\) (degree 1)</a>
+        <a href="#degree">3) Degree as successive application</a>
+        <a href="#domain">4) Domain conditions (what must be positive)</a>
+        <a href="#relations">5) Relations: connecting ranks and computable operators \(\delta_r\)</a>
+        <a href="#examples">6) Worked examples (D0 and D1)</a>
+        <a href="#grid">7) The rank–degree grid (organizational view)</a>
+        <a href="#series">8) Why this page matters for Series expansions</a>
+      </div>
+    </section>
+
+    <section class="card" id="defs">
       <h2><span class="bar"></span>1) Core definitions</h2>
 
       <div class="block">
-        <div class="label">Rank</div>
+        <div class="label">1.1 Iterated logarithms (the hierarchy variables)</div>
         <p class="muted small" style="margin:0">
-          Rank \(r\) selects the “hierarchical variable” with iterated logs:
+          Define the iterated logarithm \(\ln^{(r)}\) recursively:
         </p>
         <div class="math">
           \[
-          u_0(x)=x,\quad u_1(x)=\ln x,\quad u_2(x)=\ln(\ln x),\;\dots,\; u_r(x)=\ln^{(r)}(x)
+            \ln^{(0)}(x)=x,\qquad
+            \ln^{(1)}(x)=\ln(x),\qquad
+            \ln^{(r+1)}(x)=\ln\!\big(\ln^{(r)}(x)\big).
           \]
         </div>
         <p class="muted small" style="margin:10px 0 0 0">
-          Similarly for the function side:
+          We may use the shorthand hierarchical variable:
           \[
-          v_r(f)=\ln^{(r)}(f)
+            u_r(x) := \ln^{(r)}(x).
           \]
-          with appropriate domain constraints.
+          Similarly on the function side:
+          \[
+            v_r(f(x)) := \ln^{(r)}(f(x)).
+          \]
         </p>
       </div>
 
       <div class="block">
-        <div class="label">Base hierarchical derivative (degree 1)</div>
+        <div class="label">1.2 What is “rank”?</div>
         <p class="muted small" style="margin:0">
-          The rank-\(r\), degree-1 derivative is:
+          Rank \(r\) selects the transformation layer. Intuitively, rank changes the scale on which you measure variation:
+        </p>
+        <ul class="muted small">
+          <li><b>Rank 0 (D0):</b> variation with respect to \(x\) itself (classical differential calculus).</li>
+          <li><b>Rank 1 (D1):</b> variation with respect to \(\ln(x)\) (relative / multiplicative scale).</li>
+          <li><b>Rank 2:</b> variation with respect to \(\ln(\ln(x))\) (nested log scale).</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="label">1.3 What is “degree”?</div>
+        <p class="muted small" style="margin:0">
+          Degree \(n\) counts successive applications within the same rank. Degree does <em>not</em> change the rank.
+          You first choose the rank, then you raise the degree by repetition.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="def-dr1">
+      <h2><span class="bar"></span>2) The adopted definition of \(D_r^1\) (degree 1)</h2>
+
+      <div class="block">
+        <div class="label">2.1 Unified definition (this is the only definition used on the site)</div>
+        <p class="muted small" style="margin:0">
+          The rank-\(r\), degree-1 hierarchical derivative is defined by:
         </p>
         <div class="math">
           \[
             \boxed{
-              D_{r}^{1} f(x)=\frac{d\,\ln^{(r)}(f(x))}{d\,\ln^{(r)}(x)}
+              D_{r}^{1} f(x)=\frac{d\,\ln^{(r)}\!\big(f(x)\big)}{d\,\ln^{(r)}\!(x)}
             }
           \]
         </div>
-        <p class="muted small" style="margin:10px 0 0 0">
-          Special cases:
-        </p>
+        <div class="note">
+          <strong>Consistency note:</strong>
+          We do not use mixed forms such as \(\frac{d(\ln f)}{d\ln^{(r)}x}\). The adopted definition applies \(\ln^{(r)}\) to both sides.
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="label">2.2 Special cases (D0 and D1)</div>
         <div class="math">
           \[
             D_{0}^{1}f=\frac{df}{dx},
@@ -226,10 +342,17 @@
             D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
           \]
         </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          This makes classical calculus appear explicitly as the rank-zero case.
+        </p>
       </div>
+    </section>
+
+    <section class="card" id="degree">
+      <h2><span class="bar"></span>3) Degree as successive application</h2>
 
       <div class="block">
-        <div class="label">Degree = successive application</div>
+        <div class="label">3.1 Operator definition of degree</div>
         <p class="muted small" style="margin:0">
           Degree \(n\) means applying the same rank derivative \(n\) times:
         </p>
@@ -248,46 +371,84 @@
         </p>
       </div>
 
-      <div class="note">
-        <strong>Domain note:</strong>
-        For ranks \(r\ge 1\), iterated logarithms appear, so domain constraints such as \(x>0\), \(f>0\) (and sometimes \(x>1\), \(f>1\) for rank 2) must be respected.
+      <div class="block">
+        <div class="label">3.2 Two useful degree sequences (don’t confuse them)</div>
+        <p class="muted small" style="margin:0">
+          In computations (especially for series expansions), it is often useful to distinguish:
+        </p>
+        <ul class="muted small">
+          <li><b>(A) Degrees applied to \(f\) itself:</b> \(D_r^n f = D_r^1(D_r^{n-1}f)\).</li>
+          <li><b>(B) Degrees applied to the transformed quantity:</b> \(A_n^{(r)} := \big(D_r^n\,\ln^{(r)} f\big)\).
+            This is the practical sequence that naturally appears in multiplicative/exponential series.</li>
+        </ul>
       </div>
     </section>
 
-    <section class="card">
-      <h2><span class="bar"></span>2) Relations connecting ranks and degrees</h2>
+    <section class="card" id="domain">
+      <h2><span class="bar"></span>4) Domain conditions (what must be positive)</h2>
+      <div class="block">
+        <div class="label">4.1 Why domains matter</div>
+        <p class="muted small" style="margin:0">
+          Because \(\ln^{(r)}\) appears explicitly, you must respect positivity constraints.
+          Typical examples:
+        </p>
+        <div class="math">
+          \[
+            r=1:\ x>0,\ f(x)>0.
+            \qquad
+            r=2:\ x>1,\ f(x)>1 \ \ (\text{often, to make }\ln(\ln(\cdot))\text{ defined}).
+          \]
+        </div>
+        <div class="note">
+          <strong>Domain note:</strong>
+          The exact domain depends on the rank and the function. The safe rule is: the entire chain entering \(\ln^{(r)}\) must remain in its valid domain.
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="relations">
+      <h2><span class="bar"></span>5) Relations: connecting ranks and computable operators \(\delta_r\)</h2>
 
       <div class="block">
-        <div class="label">2.1 Linking \(D_0\) and \(D_1\) (different ranks)</div>
+        <div class="label">5.1 Linking \(D_0\) and \(D_1\)</div>
         <p class="muted small" style="margin:0">
           The rank-1 relative derivative connects directly to the standard derivative:
         </p>
         <div class="math">
           \[
             \boxed{
-              D_{1}^{1}f(x)=\frac{d\ln f}{d\ln x}=\frac{x}{f(x)}\,\frac{df(x)}{dx}
+              D_{1}^{1}f(x)=\frac{d\ln f}{d\ln x}
+              =\frac{x}{f(x)}\,\frac{df(x)}{dx}
               =\frac{x}{f(x)}\,D_{0}^{1}f(x)
             }
           \]
         </div>
         <p class="muted small" style="margin:10px 0 0 0">
           Hence:
+        </p>
+        <div class="math">
           \[
             \boxed{
               D_{0}^{1}f(x)=\frac{f(x)}{x}\,D_{1}^{1}f(x)
             }
           \]
-        </p>
+        </div>
       </div>
 
       <div class="block">
-        <div class="label">2.2 A scale differential operator (useful for raising degree in \(D_1\))</div>
+        <div class="label">5.2 The computable “rank operator” \(\delta_1\)</div>
         <p class="muted small" style="margin:0">
-          Define:
+          Define the scale operator:
+        </p>
+        <div class="math">
           \[
-            \delta_1 := \frac{d}{d\ln x}=x\frac{d}{dx}.
+            \boxed{
+              \delta_1 := \frac{d}{d\ln x}=x\frac{d}{dx}
+            }
           \]
-          Then:
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          Then the relative derivative can be written compactly as:
         </p>
         <div class="math">
           \[
@@ -296,23 +457,21 @@
             }
           \]
         </div>
-        <p class="muted small" style="margin:10px 0 0 0">
-          Higher degrees are:
-          \[
-            \boxed{
-              \big(D_{1}^{n}\ln f\big)=\delta_1^{\,n}(\ln f)
-            }
-          \]
-        </p>
       </div>
 
       <div class="block">
-        <div class="label">2.3 The rank-2 operator \(D_2\) (raising degree in \(D_2\))</div>
+        <div class="label">5.3 The rank-2 operator \(\delta_2\)</div>
         <p class="muted small" style="margin:0">
-          Define:
+          For rank 2:
+        </p>
+        <div class="math">
           \[
-            \delta_2 := \frac{d}{d\ln(\ln x)}.
+            \boxed{
+              \delta_2 := \frac{d}{d\ln(\ln x)} = x\ln(x)\frac{d}{dx}
+            }
           \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
           Then:
         </p>
         <div class="math">
@@ -322,30 +481,59 @@
             }
           \]
         </div>
-        <p class="muted small" style="margin:10px 0 0 0">
-          Higher degrees:
-          \[
-            \boxed{
-              \big(D_{2}^{n}\ln^{(2)} f\big)=\delta_2^{\,n}\big(\ln(\ln f)\big)
-            }
-          \]
-        </p>
       </div>
 
       <div class="block">
-        <div class="label">2.4 General idea: moving from rank \(r\) to \(r+1\)</div>
+        <div class="label">5.4 General pattern for \(\delta_r\)</div>
         <p class="muted small" style="margin:0">
-          Increasing rank introduces one more logarithm:
-          \[
-            \ln^{(r+1)}(x)=\ln(\ln^{(r)}(x)).
-          \]
-          Higher ranks therefore match phenomena whose natural scaling happens over nested logarithmic scales.
+          The general idea is: \(\delta_r\) differentiates with respect to \(\ln^{(r)}(x)\).
+          For practical ranks (0,1,2) we already have explicit forms; higher ranks follow the same principle.
         </p>
       </div>
     </section>
 
-    <section class="card">
-      <h2><span class="bar"></span>3) The rank–degree grid (organizational view)</h2>
+    <section class="card" id="examples">
+      <h2><span class="bar"></span>6) Worked examples (D0 and D1)</h2>
+
+      <div class="block">
+        <div class="label">Example A: \(f(x)=x^a\) (with \(x>0\))</div>
+        <div class="math">
+          \[
+            D_0^1(x^a)=a x^{a-1},
+            \qquad
+            D_1^1(x^a)=\frac{d\ln(x^a)}{d\ln(x)}=a.
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          Rank changes the meaning: \(D_0\) measures classical differential change, while \(D_1\) measures relative (log-scale) change.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">Example B: \(f(x)=e^x\) (with \(x>0\) for rank 1)</div>
+        <div class="math">
+          \[
+            D_0^1(e^x)=e^x,
+            \qquad
+            D_1^1(e^x)=\frac{d\ln(e^x)}{d\ln(x)}=\frac{d(x)}{d(\ln x)}=x.
+          \]
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="label">Example C: Constant \(f(x)=c>0\)</div>
+        <div class="math">
+          \[
+            D_0^1(c)=0,
+            \qquad
+            D_1^1(c)=\frac{d\ln(c)}{d\ln(x)}=0.
+          \]
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="grid">
+      <h2><span class="bar"></span>7) The rank–degree grid (organizational view)</h2>
       <div class="block">
         <div class="label">A compact symbolic table</div>
         <div class="math">
@@ -361,118 +549,124 @@
           \]
         </div>
         <p class="muted small" style="margin:10px 0 0 0">
-          This grid ensures every formula is written precisely: fix the rank, then increase the degree for successive derivatives.
+          This grid enforces precision: first fix the rank, then raise the degree by repetition.
         </p>
       </div>
-<div class="block">
-  <div class="label">2.5 Degree-to-degree relations within the same rank (raising degree by repetition)</div>
+    </section>
 
-  <p class="muted small" style="margin:0">
-    Within a fixed rank, increasing the degree means repeating differentiation with respect to the corresponding hierarchical variable.
-    In practice, we use auxiliary differential operators to get explicit, computable formulas.
-  </p>
+    <section class="card" id="series">
+      <h2><span class="bar"></span>8) Why this page matters for Series expansions</h2>
 
-  <div class="math">
-    \[
-      \text{Rank } D_1:\quad \delta_1:=\frac{d}{d\ln x}=x\frac{d}{dx}.
-      \qquad
-      \text{Rank } D_2:\quad \delta_2:=\frac{d}{d\ln(\ln x)}=x\ln(x)\frac{d}{dx}.
-    \]
-  </div>
+      <div class="block">
+        <div class="label">8.1 Practical degree raising (the coefficients used in Series pages)</div>
 
-  <p class="muted small" style="margin:10px 0 0 0">
-    It is important to distinguish two sequences (the Series page uses the second one):
-  </p>
+        <p class="muted small" style="margin:0">
+          Within a fixed rank, raising the degree becomes computable through \(\delta_r\).
+          Define:
+        </p>
 
-  <ul class="muted small">
-    <li>
-      <b>(A) Degrees applied to \(f\) itself:</b> \(D_r^n f = D_r^1(D_r^{n-1}f)\) (direct successive definition).
-    </li>
-    <li>
-      <b>(B) Degrees applied to \(\ln^{(r)}(f)\):</b> the most practical for multiplicative/exponential series:
-      \(\;A_n^{(r)} := (D_r^n\,\ln^{(r)} f)\).
-    </li>
-  </ul>
+        <div class="math">
+          \[
+            \delta_1:=\frac{d}{d\ln x}=x\frac{d}{dx},
+            \qquad
+            \delta_2:=\frac{d}{d\ln(\ln x)}=x\ln(x)\frac{d}{dx}.
+          \]
+        </div>
 
-  <div class="math">
-    \[
-      \boxed{
-        A_{1}^{(1)}(x)=\big(D_{1}^{1}\ln f\big)(x)=\delta_1(\ln f)
-        =\frac{x}{f(x)}\,\frac{df}{dx}
-      }
-    \]
-  </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          For rank \(1\), a practical coefficient sequence is:
+          \[
+            A_n^{(1)}(x) := \big(D_1^n\,\ln f\big)(x).
+          \]
+          Then:
+        </p>
 
-  <div class="math">
-    \[
-      \boxed{
-        A_{n+1}^{(1)}(x)=\big(D_{1}^{n+1}\ln f\big)(x)=\delta_1\!\left(A_{n}^{(1)}(x)\right)
-        =x\frac{d}{dx}A_{n}^{(1)}(x)
-      }
-    \]
-  </div>
+        <div class="math">
+          \[
+            \boxed{
+              A_{1}^{(1)}(x)=\delta_1(\ln f)=\frac{x}{f(x)}\,\frac{df}{dx}
+            }
+          \]
+        </div>
 
-  <p class="muted small" style="margin:10px 0 0 0">
-    Explicit early degrees within rank \(D_1\):
-  </p>
+        <div class="math">
+          \[
+            \boxed{
+              A_{n+1}^{(1)}(x)=\delta_1\!\left(A_{n}^{(1)}(x)\right)
+              =x\frac{d}{dx}A_{n}^{(1)}(x)
+            }
+          \]
+        </div>
 
-  <div class="math">
-    \[
-      \boxed{
-        \big(D_{1}^{2}\ln f\big)(x)
-        =x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)
-      }
-    \]
-  </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          Early degrees (rank \(1\)):
+        </p>
 
-  <div class="math">
-    \[
-      \boxed{
-        \big(D_{1}^{3}\ln f\big)(x)
-        =x\frac{d}{dx}\!\left[x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)\right]
-      }
-    \]
-  </div>
+        <div class="math">
+          \[
+            \boxed{
+              \big(D_{1}^{2}\ln f\big)(x)
+              =x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)
+            }
+          \]
+        </div>
 
-  <hr style="border:0;border-top:1px solid rgba(255,255,255,.10); margin:14px 0">
+        <div class="math">
+          \[
+            \boxed{
+              \big(D_{1}^{3}\ln f\big)(x)
+              =x\frac{d}{dx}\!\left[x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)\right]
+            }
+          \]
+        </div>
 
-  <p class="muted small" style="margin:0">
-    Similarly for rank \(D_2\) (where \(\ln^{(2)}f=\ln(\ln f)\)):
-  </p>
+        <hr class="sep">
 
-  <div class="math">
-    \[
-      \boxed{
-        A_{1}^{(2)}(x)=\big(D_{2}^{1}\ln^{(2)} f\big)(x)=\delta_2\!\big(\ln(\ln f)\big)
-      }
-    \]
-  </div>
+        <p class="muted small" style="margin:0">
+          Similarly for rank \(2\), define \(A_n^{(2)}(x):=\big(D_2^n\,\ln^{(2)}f\big)(x)\) with \(\ln^{(2)}f=\ln(\ln f)\).
+          Then:
+        </p>
 
-  <div class="math">
-    \[
-      \boxed{
-        A_{n+1}^{(2)}(x)=\big(D_{2}^{n+1}\ln^{(2)} f\big)(x)=\delta_2\!\left(A_{n}^{(2)}(x)\right)
-        =x\ln(x)\frac{d}{dx}A_{n}^{(2)}(x)
-      }
-    \]
-  </div>
+        <div class="math">
+          \[
+            \boxed{
+              A_{1}^{(2)}(x)=\delta_2\!\big(\ln(\ln f)\big)
+            }
+          \]
+        </div>
 
-  <div class="note">
-    <strong>Why this matters:</strong>
-    it gives a direct computational recipe for raising the degree inside the same rank (especially \(D_1\) and \(D_2\)),
-    which are exactly the coefficients used in the multiplicative/exponential series on the Series page.
-  </div>
-</div>
+        <div class="math">
+          \[
+            \boxed{
+              A_{n+1}^{(2)}(x)=\delta_2\!\left(A_{n}^{(2)}(x)\right)
+              =x\ln(x)\frac{d}{dx}A_{n}^{(2)}(x)
+            }
+          \]
+        </div>
+
+        <div class="ok">
+          <strong>Why this matters</strong>
+          <div class="muted small" style="margin-top:6px">
+            These relations give a direct computational recipe for raising the degree inside the same rank (especially \(D_1\) and \(D_2\)).
+            This is exactly the kind of sequence used for multiplicative/exponential series on the Series pages.
+          </div>
+        </div>
+      </div>
 
       <div class="note">
         <strong>Practical remark:</strong>
-        These relations are exactly what was used to build the differential Taylor series (rank 0), the relative multiplicative Taylor series (rank 1), and the rank-2 logarithmic exponential series (rank 2) on the Series page.
+        This page is the “glue” that prevents notation drift: it defines rank/degree precisely and provides the computational operators that make the series formulas explicit.
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Derivative Rank & Degree
+      © <span id="y"></span> Ahmed Gossa · Derivative Rank & Degree
     </footer>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
