@@ -1,87 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>Unsolvable Differential Equations Solved via Hierarchical Calculus</title>
-  <meta name="description" content="An academic page explaining why certain differential equations are unsolvable at the differential and relative levels, and how they are solved naturally by lifting to the logarithmic level of hierarchical calculus.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="canonical" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>معادلات تفاضلية “غير قابلة للحل” تُحل بالحساب الهرمي</title>
+  <meta name="description" content="صفحة أكاديمية تشرح لماذا تفشل بعض المعادلات التفاضلية على المستوى التفاضلي D0 أو النسبي D1، وكيف تُحل طبيعيًا بالرفع إلى المستوى اللوغاريتمي D2 ضمن الحساب الهرمي." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html">
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html">
+  <!-- hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html" />
 
   <!-- MathJax -->
   <script>
     window.MathJax = {
-      tex: {
-        inlineMath: [['\\(','\\)']],
-        displayMath: [['\\[','\\]']]
-      }
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --card: rgba(255,255,255,.06);
+      --b: rgba(255,255,255,.12);
+      --accent:#66d9ef; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+    }
+    *{box-sizing:border-box}
     body{
-      margin:0;
-      background:#0b1220;
-      color:#e6e6e6;
-      font-family:"Segoe UI", Tahoma, Arial, sans-serif;
-      line-height:1.85;
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.95;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(102,217,239,.16), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
     }
-    main{
-      max-width:950px;
-      margin:auto;
-      padding:40px 20px;
+    a{color:var(--accent2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px;margin:0 auto;padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    h1,h2,h3{
-      color:#66d9ef;
+    .topbar .inner{
+      max-width:980px;margin:0 auto;padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
-    h1{
-      font-size:2.2em;
-      margin-bottom:25px;
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px;height:34px;border-radius:10px;
+      background: linear-gradient(135deg, rgba(102,217,239,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
     }
-    h2{
-      margin-top:45px;
-      font-size:1.6em;
+    .brand .title{display:flex;flex-direction:column;line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px;color:var(--muted)}
+
+    nav{display:flex;gap:8px;flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:999px; font-size:13px; color:var(--text); white-space:nowrap;
     }
-    p{
-      margin:14px 0;
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
     }
-    ul{
-      margin:15px 30px;
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(102,217,239,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0;font-size:28px}
+    h2{margin:0 0 10px 0;font-size:18px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
     .math{
-      background:#0f1a2c;
-      border:1px solid #22314f;
-      border-left:4px solid #66d9ef;
-      padding:16px 18px;
-      margin:22px 0;
-      overflow-x:auto;
-      border-radius:10px;
-    }
-    .axiom{
-      background:#111f36;
-      border:2px solid #66d9ef;
-      padding:18px;
+      margin:12px 0;
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.10);
+      border-right:4px solid rgba(102,217,239,.95);
       border-radius:12px;
-      margin:30px 0;
+      padding:12px 14px;
+      overflow:auto;
+      direction:ltr; text-align:left;
     }
+    ul{margin:10px 0 0 0; padding:0 18px 0 0}
+    li{margin:6px 0}
+    .axiom{
+      margin-top:14px;
+      border:2px solid rgba(102,217,239,.75);
+      background: rgba(17,31,54,.55);
+      border-radius:14px;
+      padding:16px;
+    }
+    .axiom strong{color:rgba(102,217,239,.95)}
+    .note{
+      margin-top:12px;
+      padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:var(--warn)}
     footer{
-      margin-top:60px;
-      padding-top:20px;
-      border-top:1px solid #22314f;
-      color:#aaa;
-      font-size:0.9em;
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
     }
   </style>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": "Unsolvable Differential Equations via Hierarchical Calculus",
-  "alternativeHeadline": "Why Certain Differential Equations Are Unsolvable in Classical Calculus",
+  "headline": "معادلات تفاضلية “غير قابلة للحل” تُحل بالحساب الهرمي",
+  "alternativeHeadline": "لماذا تفشل بعض المعادلات في التفاضل الكلاسيكي وكيف يحلها الرفع الهرمي",
   "author": {
     "@type": "Person",
     "name": "Ahmed Gossa",
@@ -93,218 +156,243 @@
   },
   "datePublished": "2025-12-01",
   "dateModified": "2025-12-27",
-  "inLanguage": "en",
+  "inLanguage": "ar",
   "about": [
     "Hierarchical Calculus",
     "Unsolvable Differential Equations",
     "Relative Derivative D1",
-    "Failure of Classical Calculus",
-    "Hierarchical Differential Equations"
+    "Hierarchical Differential Equations",
+    "Logarithmic Rank D2"
   ],
-  "abstract": "This article explains why certain differential equations are fundamentally unsolvable within classical differential calculus and demonstrates how Hierarchical Calculus provides a consistent resolution without logarithms or artificial substitutions.",
-  "url": "https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html"
+  "abstract": "تشرح هذه المقالة لماذا تفشل بعض المعادلات التفاضلية جوهريًا ضمن التفاضل الكلاسيكي أو حتى على مستوى المشتق النسبي D1، وكيف يوفر الحساب الهرمي حلًا مباشرًا برفع الرتبة إلى D2 حيث يصبح التمثيل طبيعيًا.",
+  "url": "https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html"
 }
 </script>
-
 </head>
 
 <body>
-<main>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>معادلات “غير قابلة للحل” — الحساب الهرمي</strong>
+          <span>الفكرة: الفشل غالبًا هرمي (اختيار رتبة غير مناسبة)</span>
+        </div>
+      </div>
 
-<h1>Unsolvable Differential Equations Solved via Hierarchical Calculus</h1>
+      <nav aria-label="التنقل">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./theory.html">النظرية</a>
+        <a href="./rules.html">القوانين</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="./unsolvable-differential-equations-hierarchical-en.html">English</a>
+      </nav>
+    </div>
+  </div>
 
-<h2>1. Introduction</h2>
-<p>
-In the theory of differential equations, there exists a broad class of equations
-that admit no closed-form solution within the classical differential framework.
-This failure is often attributed to algebraic or analytical complexity.
-</p>
-<p>
-In this page, we show that the true reason is deeper:
-<strong>the failure is not mathematical, but hierarchical</strong>.
-The equation is analyzed at a level lower than the natural level of the phenomenon.
-</p>
-<p>
-<strong>Hierarchical calculus</strong> reorganizes derivatives into ascending levels:
-the differential level, the relative level, and the logarithmic level.
-</p>
+  <main class="wrap">
+    <header class="hero">
+      <h1>معادلات تفاضلية “غير قابلة للحل” تُحل بالحساب الهرمي</h1>
+      <p class="muted" style="margin:0">
+        في نظرية المعادلات التفاضلية توجد فئة واسعة من المعادلات التي لا يظهر لها حل مغلق ضمن الإطار التفاضلي التقليدي.
+        عادةً يُعزى ذلك إلى “تعقيد جبري/تحليلي”، لكن الفكرة هنا أعمق:
+        <b>الفشل ليس رياضيًا بقدر ما هو هرمي</b>—أي أن المعادلة صيغت/قورنت على رتبة أدنى من الرتبة الطبيعية للظاهرة.
+      </p>
+      <p class="muted small" style="margin:10px 0 0 0">
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </p>
+    </header>
 
-<h2>2. Failure at the Differential Level</h2>
-<p>
-Consider the differential equation:
-</p>
+    <section class="card">
+      <h2>1) مقدمة</h2>
+      <p class="muted small" style="margin:0">
+        يعيد الحساب الهرمي تنظيم المشتقات عبر رتب متصاعدة:
+        <b>المستوى التفاضلي</b> (\(D_0\))،
+        ثم <b>المستوى النسبي</b> (\(D_1\))،
+        ثم <b>المستوى اللوغاريتمي</b> (\(D_2\))،
+        وهكذا.
+        الفكرة العملية: عندما تكون بنية المعادلة “لوغاريتم-لوغاريتم”، فمحاولة حلها على \(D_0\) أو \(D_1\) تكون غالبًا وصفًا ناقصًا.
+      </p>
+      <div class="note">
+        <strong>ترميز:</strong>
+        نستخدم الرتبة والدرجة \(D_r^n\). في هذه الصفحة نركز على الدرجة 1: \(D_r^1\).
+      </div>
+    </section>
 
-<div class="math">
-\[
-\frac{dy}{dx} = \frac{y}{x}\,\ln(\ln y)
-\]
-</div>
+    <section class="card">
+      <h2>2) الفشل على المستوى التفاضلي \(D_0\)</h2>
+      <p class="muted small" style="margin:0">
+        اعتبر المعادلة التفاضلية:
+      </p>
 
-<p>
-This equation is:
-</p>
-<ul>
-  <li>Nonlinear</li>
-  <li>Not separable</li>
-  <li>Not of Bernoulli type</li>
-  <li>Not reducible by standard substitutions</li>
-</ul>
+      <div class="math">
+        \[
+          \frac{dy}{dx}=\frac{y}{x}\,\ln(\ln y)
+        \]
+      </div>
 
-<p>
-Within classical differential calculus, no closed-form analytical solution exists.
-</p>
+      <p class="muted small" style="margin:0">
+        هذه المعادلة توصف عادةً بأنها:
+      </p>
+      <ul class="muted small">
+        <li>غير خطية</li>
+        <li>غير قابلة للفصل بسهولة ضمن الصيغ القياسية</li>
+        <li>ليست من نمط برنولي بالصياغات المدرسية المعتادة</li>
+        <li>ولا تُختزل بسهولة بتعويضات “قياسية” دون تغيير جوهر الرتبة</li>
+      </ul>
 
-<h2>3. Attempt at the Relative Level (D1)</h2>
-<p>
-We introduce the relative derivative (rank 1):
-</p>
+      <p class="muted small" style="margin:10px 0 0 0">
+        ضمن التفاضل التقليدي وحده، غالبًا لا يظهر حل تحليلي مغلق بصيغة بسيطة “طبيعية” لهيكل المعادلة.
+      </p>
+    </section>
 
-<div class="math">
-\[
-D^{1}_{1}y = \frac{x}{y}\,\frac{dy}{dx}
-\]
-</div>
+    <section class="card">
+      <h2>3) محاولة على المستوى النسبي \(D_1\)</h2>
+      <p class="muted small" style="margin:0">
+        نُعرّف المشتق النسبي (رتبة 1، درجة 1):
+      </p>
 
-<p>
-Substituting into the equation gives:
-</p>
+      <div class="math">
+        \[
+          D_{1}^{1}y=\frac{d\ln y}{d\ln x}=\frac{x}{y}\,\frac{dy}{dx}
+        \]
+      </div>
 
-<div class="math">
-\[
-D^{1}_{1}y = \ln(\ln y)
-\]
-</div>
+      <p class="muted small" style="margin:0">
+        بالتعويض في المعادلة نحصل على:
+      </p>
 
-<p>
-Although the form is simplified, the problem remains unsolved because:
-</p>
-<ul>
-  <li>The right-hand side depends on a logarithmic–logarithmic structure</li>
-  <li>The relative level measures rates, not the evolution of the rate itself</li>
-</ul>
+      <div class="math">
+        \[
+          D_{1}^{1}y=\ln(\ln y)
+        \]
+      </div>
 
-<p>
-Thus, the relative level is still insufficient.
-</p>
+      <p class="muted small" style="margin:0">
+        صحيح أن الصيغة صارت “أنظف”، لكن جوهر المشكلة بقي لأن الطرف الأيمن يحمل بنية <b>لوغاريتم-لوغاريتم</b>.
+        المستوى النسبي يقيس “معدل تغير نسبي”، لكنه لا يطابق هنا مقياس تغير آلية التغير نفسها.
+      </p>
+    </section>
 
-<h2>4. The Decisive Lift: The Logarithmic Level (D2)</h2>
-<p>
-We now move to the second rank of hierarchical calculus
-and introduce the logarithmic derivative:
-</p>
+    <section class="card">
+      <h2>4) الرفع الحاسم: المستوى اللوغاريتمي \(D_2\)</h2>
+      <p class="muted small" style="margin:0">
+        ننتقل الآن إلى الرتبة الثانية ونعرّف المشتق اللوغاريتمي (رتبة 2، درجة 1):
+      </p>
 
-<div class="math">
-\[
-D^{1}_{2}y = \frac{d(\ln\ln y)}{d(\ln\ln x)}
-\]
-</div>
+      <div class="math">
+        \[
+          D_{2}^{1}y=\frac{d(\ln\ln y)}{d(\ln\ln x)}
+        \]
+      </div>
 
-<p>
-Applying this definition to the original equation yields immediately:
-</p>
+      <p class="muted small" style="margin:0">
+        عند صياغة المشكلة على هذه الرتبة، يظهر فورًا أن المعادلة تعادل ببساطة:
+      </p>
 
-<div class="math">
-\[
-D^{1}_{2}y = 1
-\]
-</div>
+      <div class="math">
+        \[
+          D_{2}^{1}y=1
+        \]
+      </div>
 
-<p>
-The complexity disappears entirely.
-</p>
+      <p class="muted small" style="margin:0">
+        هنا تختفي “التعقيدات” لأننا اخترنا المقياس الطبيعي لبنية المعادلة.
+      </p>
+    </section>
 
-<h2>5. Solution at the Logarithmic Level</h2>
-<p>
-Solving:
-</p>
+    <section class="card">
+      <h2>5) الحل على رتبة \(D_2\)</h2>
+      <p class="muted small" style="margin:0">
+        بحل:
+      </p>
 
-<div class="math">
-\[
-D^{1}_{2}y = 1
-\]
-</div>
+      <div class="math">
+        \[
+          D_{2}^{1}y=1
+        \]
+      </div>
 
-<p>
-gives:
-</p>
+      <p class="muted small" style="margin:0">
+        نحصل على:
+      </p>
 
-<div class="math">
-\[
-\ln\ln y = \ln\ln x + C
-\]
-</div>
+      <div class="math">
+        \[
+          \ln\ln y=\ln\ln x + C
+        \]
+      </div>
 
-<p>
-which implies:
-</p>
+      <p class="muted small" style="margin:0">
+        أي:
+      </p>
 
-<div class="math">
-\[
-\ln y = A\,\ln x
-\]
-</div>
+      <div class="math">
+        \[
+          \ln y = A\,\ln x
+        \]
+      </div>
 
-<p>
-and finally:
-</p>
+      <p class="muted small" style="margin:0">
+        وأخيرًا:
+      </p>
 
-<div class="math">
-\[
-y = x^{A}
-\]
-</div>
+      <div class="math">
+        \[
+          y=x^{A}
+        \]
+      </div>
 
-<p>
-The solution emerges naturally once the correct hierarchical level is chosen.
-</p>
+      <div class="note">
+        <strong>خلاصة:</strong>
+        الحل يظهر طبيعيًا بمجرد اختيار الرتبة المناسبة (الرفع من \(D_0\) أو \(D_1\) إلى \(D_2\)).
+      </div>
+    </section>
 
-<h2>6. The Hierarchical Lifting Axiom</h2>
+    <section class="card">
+      <h2>6) مسلّمة الرفع الهرمي</h2>
+      <div class="axiom">
+        <p class="muted small" style="margin:0">
+          <strong>مسلّمة الرفع الهرمي:</strong><br>
+          أي معادلة تفاضلية تفشل على المستوى التفاضلي أو النسبي بسبب اعتماد مقياسي/بنيوي
+          (scale dependence) أو بسبب تطور “آلية النمو” نفسها، يمكن إعادة صياغتها على رتبة أعلى
+          بحيث تصبح قابلة للحل مباشرة باستبدال المشتق التقليدي بالمشتق الهرمي المناسب.
+        </p>
+        <div class="math">
+          \[
+            \text{إذا فشل }\frac{dy}{dx}\text{ (أو }D_{1}^{1}y\text{)، فغالبًا }D_{r}^{1}y\text{ هو الواصف الصحيح.}
+          \]
+        </div>
+      </div>
+    </section>
 
-<div class="axiom">
-<p><strong>Hierarchical Lifting Axiom:</strong></p>
-<p>
-Any differential equation that fails at the differential or relative level
-due to scale dependence or evolving growth mechanisms
-can be reformulated at a higher hierarchical level,
-where it becomes directly solvable by replacing the classical derivative
-with an appropriate hierarchical derivative.
-</p>
+    <section class="card">
+      <h2>7) تفسير هرمي مختصر</h2>
+      <ul class="muted small">
+        <li><strong>\(D_0\):</strong> يقيس الميل (تغير مطلق).</li>
+        <li><strong>\(D_1\):</strong> يقيس التغير النسبي.</li>
+        <li><strong>\(D_2\):</strong> يقيس تغير “آلية التغير” عندما يكون السلوك لوغاريتميًا-لوغاريتميًا.</li>
+      </ul>
+      <p class="muted small" style="margin:10px 0 0 0">
+        عندما تكون الظاهرة نفسها ذات طبيعة لوغاريتمية (أو تتطلب \(\ln\ln\))، فإن أي وصف على رتبة أدنى
+        يكون عرضة للفشل أو ينتج “تعويضات” غير طبيعية مقارنة بالصياغة الهرمية المباشرة.
+      </p>
+    </section>
 
-<div class="math">
-\[
-\text{If } \frac{dy}{dx} \text{ fails, then } D^{n}_{r}y \text{ is the correct descriptor}
-\]
-</div>
-</div>
+    <section class="card">
+      <h2>8) خاتمة</h2>
+      <p class="muted small" style="margin:0">
+        المثال يوضح أن ما يُسمّى “معادلات غير قابلة للحل” ليس بالضرورة غير قابل للحل جوهريًا؛
+        بل غالبًا هو <b>تحليل على رتبة غير مناسبة</b>.
+        الحساب الهرمي لا يزيد التعقيد—بل يعيد المشكلة إلى مقياسها الطبيعي.
+      </p>
+    </section>
 
-<h2>7. Hierarchical Interpretation</h2>
-<ul>
-  <li><strong>Differential level:</strong> measures slope</li>
-  <li><strong>Relative level:</strong> measures relative change</li>
-  <li><strong>Logarithmic level:</strong> measures the change of the change mechanism</li>
-</ul>
-
-<p>
-When the phenomenon itself evolves logarithmically,
-any lower-level description is bound to fail.
-</p>
-
-<h2>8. Conclusion</h2>
-<p>
-This example demonstrates that so-called
-“unsolvable differential equations”
-are not inherently unsolvable.
-They are merely analyzed at an inappropriate hierarchical level.
-</p>
-<p>
-Hierarchical calculus does not complicate analysis;
-it restores the natural level of description of the phenomenon.
-</p>
-
-<footer>
-<p>© Hierarchical Calculus Website – All rights reserved</p>
-</footer>
-
-</main>
+    <footer>
+      © 2025 — الحساب الهرمي | GOSSA AHMED — معادلات تفاضلية “غير قابلة للحل” عبر الرفع الهرمي
+    </footer>
+  </main>
 </body>
 </html>
