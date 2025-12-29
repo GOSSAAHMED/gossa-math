@@ -3,68 +3,55 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>تطبيقات فيزيائية — العملية الأديباتية (بالرتبة والدرجة)</title>
-  <meta name="description" content="تطبيق ترموديناميكي: العملية الأديباتية لغاز مثالي. جميع المشتقات مكتوبة بالرتبة والدرجة D_r^n (مثل D_0^1 و D_1^1)." />
+  <title>تطبيقات فيزيائية — العملية الأديباتية | الحساب الهرمي</title>
+  <meta name="description" content="تطبيق ترموديناميكي: العملية الأديباتية لغاز مثالي. القانون يصبح أبسط في لغة الرتبة 1 (النسبي). كل المشتقات مكتوبة بالرتبة والدرجة D_r^n (مثل D_0^1 و D_1^1)." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- hreflang -->
- <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/physics-en.html">
-
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/physics.html">
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/physics-en.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/physics-en.html">
-
+  <!-- canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/physics.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/physics.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
 
   <style>
     :root{
-      --bg0:#0b1220;
-      --bg1:#0f1b2e;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.08);
-      --border: rgba(255,255,255,.14);
-      --text:#eaf2ff;
-      --muted: rgba(234,242,255,.72);
-      --accent:#39d3c3;
-      --accent2:#7aa7ff;
-      --warn:#ffcc66;
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.05); --border: rgba(255,255,255,.12);
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family: var(--sans);
-      color:var(--text);
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
       background:
         radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
-      line-height:1.9;
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-
     .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
 
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
       background: rgba(11,18,32,.55);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
       max-width:980px; margin:0 auto; padding:10px 16px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px; flex-wrap:wrap;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
     .logo{
       width:34px; height:34px; border-radius:10px;
       background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
-      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
@@ -72,83 +59,81 @@
 
     nav{display:flex; gap:8px; flex-wrap:wrap}
     nav a{
-      padding:7px 10px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      border-radius: 999px;
-      font-size: 13px;
-      color: var(--text);
-      white-space:nowrap;
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04); border-radius:999px;
+      font-size:13px; color:var(--text); white-space:nowrap;
     }
-    nav a:hover{background: rgba(255,255,255,.07)}
+    nav a:hover{background:rgba(255,255,255,.07)}
 
     header.hero{
-      margin-top:16px;
+      margin-top:16px; padding:20px 18px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 20px 18px;
-      position:relative;
-      overflow:hidden;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
     }
     header.hero:before{
-      content:"";
-      position:absolute; inset:-2px;
+      content:""; position:absolute; inset:-2px;
       background:
         radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
         radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
       pointer-events:none;
     }
     header.hero > *{position:relative}
+
     h1{margin:0 0 8px 0; font-size:28px}
     h2{margin:0 0 10px 0; font-size:18px}
     h3{margin:14px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
+    code{font-family:var(--mono)}
 
     .card{
-      margin-top:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      margin-top:14px; padding:16px 16px;
+      border:1px solid var(--border);
+      background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 16px 16px;
     }
     .math{
-      margin-top: 8px;
+      margin-top:8px; padding:10px 12px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
-      border-radius: 12px;
-      padding: 10px 12px;
+      border-radius:12px;
       overflow:auto;
-      direction:ltr;
-      text-align:left;
+      direction:ltr; text-align:left;
     }
     .note{
+      margin-top:12px; padding:12px 12px;
       border:1px solid rgba(255,204,102,.35);
       background: rgba(255,204,102,.10);
-      border-radius: 14px;
-      padding: 12px 12px;
-      margin-top:12px;
+      border-radius:14px;
     }
     .note strong{color:var(--warn)}
 
+    /* responsive table */
+    .tablewrap{
+      overflow:auto;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      margin-top:10px;
+      background: rgba(0,0,0,.18);
+    }
     table{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
-      overflow:hidden;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      margin-top:10px;
+      min-width: 760px;
+      direction:ltr;
     }
     thead th{
-      text-align:right;
+      text-align:left;
       font-size:13px;
       padding:10px 10px;
       background: rgba(255,255,255,.06);
       border-bottom:1px solid rgba(255,255,255,.10);
+      position:sticky; top:0;
     }
     tbody td{
       padding:10px 10px;
@@ -157,15 +142,15 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     tbody tr:last-child td{border-bottom:none}
+
+    .rtl-table table{direction:rtl}
+    .rtl-table thead th, .rtl-table tbody td{direction:rtl; text-align:right}
     .ltr{direction:ltr; text-align:left}
 
     footer{
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align:center;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,.10);
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
     }
   </style>
 
@@ -177,6 +162,31 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "تطبيقات فيزيائية — العملية الأديباتية | الحساب الهرمي",
+  "alternativeHeadline": "قانون أديباتي كمشتق نسبي ثابت (رتبة 1)",
+  "author": {
+    "@type": "Person",
+    "name": "Ahmed Gossa",
+    "url": "https://gossaahmed.github.io/gossa-math/"
+  },
+  "about": [
+    "الحساب الهرمي",
+    "المشتق النسبي",
+    "الترموديناميك",
+    "العملية الأديباتية",
+    "غاز مثالي"
+  ],
+  "inLanguage": "ar",
+  "url": "https://gossaahmed.github.io/gossa-math/physics.html",
+  "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
+}
+</script>
 </head>
 
 <body>
@@ -186,7 +196,7 @@
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
           <strong>الحساب الهرمي</strong>
-          <span>تطبيقات فيزيائية — ترميز \(D_r^n\)</span>
+          <span>تطبيقات فيزيائية — ترميز صريح \(D_r^n\)</span>
         </div>
       </div>
 
@@ -206,11 +216,15 @@
     <header class="hero">
       <h1>تطبيق ترموديناميكي: العملية الأديباتية (غاز مثالي)</h1>
       <p class="muted">
-        هذا المثال يوضح لماذا تكون لغة <b>الرتبة 1 (النسبي)</b> مناسبة جدًا في كثير من قوانين الفيزياء:
-        القوانين غالبًا تربط <b>النِّسب</b> أكثر من الفروق.
+        هذا المثال يوضح لماذا تكون لغة <b>الرتبة 1 (النسبي)</b> طبيعية في كثير من قوانين الفيزياء:
+        القوانين كثيرًا ما تربط <b>النِّسب</b> لا الفروق.
         <br>
-        <b>قاعدة الترميز:</b> أي مشتق يُكتب هنا دائمًا بالرتبة والدرجة: \(\;D_r^n\).
-        وفي هذه الصفحة كل المشتقات المستخدمة هي <b>درجة 1</b>: \(\;D_0^{1}, D_1^{1}\).
+        <b>قاعدة الترميز:</b> أي مشتق يُكتب دائمًا بالرتبة والدرجة \(\;D_r^n\).
+        في هذه الصفحة نستعمل الدرجة \(1\): \(\;D_0^{1}, D_1^{1}\).
+      </p>
+      <p class="muted small" style="margin:10px 0 0 0">
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
       </p>
     </header>
 
@@ -221,7 +235,7 @@
       </p>
       <div class="math">
         \[
-          P\,V^{\gamma}=\text{ثابت}, \qquad \gamma=\frac{C_p}{C_v}
+          P\,V^{\gamma}=\text{ثابت}, \qquad \gamma=\frac{C_p}{C_v}.
         \]
       </div>
       <p class="muted small" style="margin:0">
@@ -231,13 +245,11 @@
 
     <section class="card">
       <h2>2) الصيغة التفاضلية التقليدية (رتبة 0 — \(D_0^{1}\))</h2>
-      <p class="muted small" style="margin:0">
-        نأخذ اللوغاريتم ثم نشتق:
-      </p>
+      <p class="muted small" style="margin:0">نأخذ اللوغاريتم ثم نشتق بالنسبة إلى \(V\):</p>
 
       <div class="math">
         \[
-          \ln P + \gamma \ln V = \text{ثابت}
+          \ln P + \gamma \ln V = \text{ثابت}.
         \]
       </div>
 
@@ -249,9 +261,10 @@
         \]
       </div>
 
-      <p class="muted small" style="margin:0">
-        هذه معادلة تفاضلية في \(P(V)\). هي معروفة، لكنها ليست “خطية” في المتغيرات الأصلية.
-      </p>
+      <div class="note">
+        <strong>ملاحظة:</strong>
+        هذه صيغة معيارية صحيحة، لكنها تُخفي بنية “النِّسب” داخل الكسور \(\frac{dP}{P}\) و\(\frac{dV}{V}\).
+      </div>
     </section>
 
     <section class="card">
@@ -264,159 +277,159 @@
       <div class="math">
         \[
           \boxed{
-            D_{1}^{1} P(V)=\frac{d\ln P}{d\ln V}
+            D_{1}^{1} P(V)=\frac{d\ln P}{d\ln V}.
           }
         \]
       </div>
 
       <p class="muted small" style="margin:0">
-        من \(\ln P = -\gamma \ln V + \text{ثابت}\) نحصل فورًا على:
+        من \(\ln P = -\gamma \ln V + \text{ثابت}\) نحصل مباشرة على:
       </p>
 
       <div class="math">
         \[
           \boxed{
-            D_{1}^{1} P = -\gamma
+            D_{1}^{1} P = -\gamma.
           }
         \]
       </div>
 
       <div class="note">
-        <strong>الملاحظة الأساسية:</strong>
-        في الرتبة النسبية، يتحول القانون إلى ثابت. وهذا يعكس أن العلاقة “طبيعية” في فضاء اللوغاريتمات (لغة النِّسب).
+        <strong>المغزى:</strong>
+        في فضاء الرتبة 1 (النسبي)، يتحول القانون إلى ثابت، أي “خطّي” في فضاء اللوغاريتمات.
       </div>
     </section>
 
     <section class="card">
       <h2>4) استرجاع الحل</h2>
       <p class="muted small" style="margin:0">
-        إذا كان \(D_1^{1} P=-\gamma\) ثابتًا، فإن:
+        حلُّ \(D_{1}^{1}P=-\gamma\) يعطي قانون قدرة:
       </p>
       <div class="math">
         \[
-          P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}
+          P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}.
         \]
       </div>
       <p class="muted small" style="margin:0">
-        وهذا هو الحل الفيزيائي القياسي.
+        وهو مكافئ تمامًا لـ \(P\,V^\gamma=\text{ثابت}\).
       </p>
     </section>
 
     <section class="card">
-      <h2>5) مقارنة مختصرة (مناسبة للتحكيم)</h2>
+      <h2>5) مقارنة مختصرة</h2>
 
-      <table>
-        <thead>
-          <tr>
-            <th>المقاربة</th>
-            <th>المعادلة</th>
-            <th>الطبيعة</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>تقليدية (رتبة 0)</td>
-            <td class="ltr">\(\dfrac{dP}{dV}=-\gamma\dfrac{P}{V}\)</td>
-            <td>معادلة تفاضلية في \(P(V)\)</td>
-          </tr>
-          <tr>
-            <td>هرمية (رتبة 1)</td>
-            <td class="ltr">\(D_{1}^{1}P=-\gamma\)</td>
-            <td>ثابت (خطية في فضاء اللوغاريتم)</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="tablewrap rtl-table" aria-label="جدول مقارنة">
+        <table>
+          <thead>
+            <tr>
+              <th>المقاربة</th>
+              <th>المعادلة</th>
+              <th>الطبيعة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>تقليدية (رتبة 0)</td>
+              <td class="ltr">\(\dfrac{dP}{dV}=-\gamma\dfrac{P}{V}\)</td>
+              <td>معادلة تفاضلية في \(P(V)\)</td>
+            </tr>
+            <tr>
+              <td>هرمية (رتبة 1)</td>
+              <td class="ltr">\(D_{1}^{1}P=-\gamma\)</td>
+              <td>ثابت (خطّي في فضاء اللوغاريتم)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="card">
-      <h2>5-b) تجربة عددية سريعة: تحقق + خطأ نسبي</h2>
+      <h2>6) تحقق عددي سريع (تحقق + خطأ نسبي)</h2>
 
       <p class="muted small" style="margin:0">
-        نختار مثالًا عدديًا واقعيًا قريبًا من الهواء: \(\gamma=1.4\).
-        نقطة مرجعية: \(V_0=1.00\,\text{L}\), \(P_0=100.00\,\text{kPa}\).
-        إذًا ثابت الأديباتي:
+        نختار \(\gamma=1.4\) (قيمة قريبة من الهواء). نقطة مرجعية:
+        \(V_0=1.00\,\mathrm{L}\), \(P_0=100.00\,\mathrm{kPa}\).
+        ونعرّف:
       </p>
 
       <div class="math">
         \[
-          K = P_0\,V_0^{\gamma} = 100.00 \; (\text{kPa}\cdot \text{L}^{\gamma})
+          K = P_0\,V_0^{\gamma} = 100.00\;(\mathrm{kPa}\cdot \mathrm{L}^{\gamma}).
         \]
       </div>
 
       <p class="muted small" style="margin:0">
-        نحسب \(P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}\)، ثم نتحقق من ثبات
-        \(K_i=P_iV_i^\gamma\). ولإظهار “خطأ تقريبي”، نستعمل \(P_i\) بعد تدويره إلى منزلتين عشريتين.
+        نحسب \(P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}\) ثم نتحقق من ثبات
+        \(K_i=P_iV_i^\gamma\).
+        ولإظهار خطأ عددي صغير، ندوّر \(P_i\) إلى منزلتين عشريتين (كخطأ قياس/تقريب).
       </p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>\(V\) (L)</th>
-            <th>\(P\) النظري (kPa)</th>
-            <th>\(P\) بعد التدوير</th>
-            <th>\(K_i=P_iV^\gamma\)</th>
-            <th>الخطأ النسبي %</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="ltr">1.20</td>
-            <td class="ltr">\(\approx 77.4723\)</td>
-            <td class="ltr">77.47</td>
-            <td class="ltr">\(\approx 99.9971\)</td>
-            <td class="ltr">\(\approx 0.0029\%\)</td>
-          </tr>
-          <tr>
-            <td class="ltr">1.50</td>
-            <td class="ltr">\(\approx 56.6855\)</td>
-            <td class="ltr">56.69</td>
-            <td class="ltr">\(\approx 100.0079\)</td>
-            <td class="ltr">\(\approx 0.0079\%\)</td>
-          </tr>
-          <tr>
-            <td class="ltr">2.00</td>
-            <td class="ltr">\(\approx 37.8929\)</td>
-            <td class="ltr">37.89</td>
-            <td class="ltr">\(\approx 99.9923\)</td>
-            <td class="ltr">\(\approx 0.0077\%\)</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="tablewrap rtl-table" aria-label="جدول تحقق عددي">
+        <table>
+          <thead>
+            <tr>
+              <th>\(V\) (L)</th>
+              <th>\(P\) النظري (kPa)</th>
+              <th>\(P\) بعد التدوير</th>
+              <th>\(K_i=P_iV^\gamma\)</th>
+              <th>الخطأ النسبي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ltr">1.20</td>
+              <td class="ltr">\(\approx 77.4723\)</td>
+              <td class="ltr">77.47</td>
+              <td class="ltr">\(\approx 99.9971\)</td>
+              <td class="ltr">\(\approx 0.0029\%\)</td>
+            </tr>
+            <tr>
+              <td class="ltr">1.50</td>
+              <td class="ltr">\(\approx 56.6855\)</td>
+              <td class="ltr">56.69</td>
+              <td class="ltr">\(\approx 100.0079\)</td>
+              <td class="ltr">\(\approx 0.0079\%\)</td>
+            </tr>
+            <tr>
+              <td class="ltr">2.00</td>
+              <td class="ltr">\(\approx 37.8929\)</td>
+              <td class="ltr">37.89</td>
+              <td class="ltr">\(\approx 99.9923\)</td>
+              <td class="ltr">\(\approx 0.0077\%\)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="note">
         <strong>النتيجة:</strong>
-        يبقى \(K_i\) قريبًا جدًا من \(K=100\) رغم التدوير، والخطأ النسبي يبقى أقل من \(0.01\%\).
-        هذا يوضح أن التحقق النسبي/اللوغاريتمي مناسب جدًا عدديًا.
+        يبقى \(K_i\) قريبًا جدًا من \(K=100\) بعد التدوير، والخطأ النسبي أقل من \(0.01\%\).
       </div>
 
-      <h3>تحقق إضافي: ثبات المشتق النسبي \(D_1^{1}P\)</h3>
+      <h3>تحقق إضافي: ثبات \(D_1^{1}P\)</h3>
+
       <p class="muted small" style="margin:0">
         من النظرية: \(\;D_1^{1}P=\dfrac{d\ln P}{d\ln V}=-\gamma\).
-        عدديًا يمكن تقريب \(D_1^{1}P\) بين نقطتين باستعمال فروق منتهية لوغاريتمية:
+        عدديًا يمكن تقدير \(D_1^{1}P\) بين نقطتين:
       </p>
 
       <div class="math">
         \[
-          D_{1}^{1}P \approx \frac{\ln(P_2/P_1)}{\ln(V_2/V_1)}
+          D_{1}^{1}P \approx \frac{\ln(P_2/P_1)}{\ln(V_2/V_1)}.
         \]
       </div>
 
-      <ul class="muted small">
-        <li>بين \(V=1.20\) و \(V=1.50\): \(\;D_1^{1}P \approx -1.3995\) (قريب جدًا من \(-1.4\)).</li>
-        <li>بين \(V=1.50\) و \(V=2.00\): \(\;D_1^{1}P \approx -1.4005\) (قريب جدًا من \(-1.4\)).</li>
+      <ul class="muted small" style="margin:10px 0 0 0">
+        <li>بين \(V=1.20\) و\(V=1.50\): \(\;D_{1}^{1}P \approx -1.3995\) (قريب من \(-1.4\)).</li>
+        <li>بين \(V=1.50\) و\(V=2.00\): \(\;D_{1}^{1}P \approx -1.4005\) (قريب من \(-1.4\)).</li>
       </ul>
-
-      <div class="note">
-        <strong>مغزى هرمي:</strong>
-        على رتبة \(D_1^{1}\)، القانون الأديباتي يُقرأ كـ “ثابت” \(-\gamma\)، لذلك التحقق العددي يصبح طبيعيًا عبر النِّسب واللوغاريتمات بدل الفروق.
-      </div>
     </section>
 
     <section class="card">
-      <h2>6) تفسير</h2>
+      <h2>7) تفسير</h2>
       <p class="muted small" style="margin:0">
-        الحساب الهرمي لا يغيّر الفيزياء، بل يختار “لغة التغيّر” الملائمة لبنية القانون.
-        في الأديباتي، التغيّر نسبي: الضغط يتبع الحجم على مقياس لوغاريتمي.
+        الحساب الهرمي لا يغيّر الفيزياء؛ إنما يختار لغة التغيّر الأنسب لبنية القانون.
+        في العملية الأديباتية، التغيّر طبيعيًا “نسبي”: الضغط يتبع الحجم على مقياس لوغاريتمي.
       </p>
     </section>
 
