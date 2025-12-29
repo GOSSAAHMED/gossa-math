@@ -1,118 +1,290 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>References — Hierarchical Calculus</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>References & Citation — Hierarchical Calculus</title>
+  <meta name="description" content="Official citation (DOI + BibTeX) and curated references supporting the analysis, ODEs, numerical methods, and applied examples used in Hierarchical Calculus. Notation uses explicit rank/degree D_r^n." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<style>
-:root{
-  --bg1:#0b1220; --bg2:#0f1b2e;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(0,0,0,.22);
-  --b: rgba(255,255,255,.12);
-  --txt:#eaf2ff; --mut:#cfe3ff;
-  --accent:#61d2d2; --accent2:#7aa7ff;
+  <!-- canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/references-en.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/references-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/references.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/references-en.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px;
+    }
+
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+
+    .chip{
+      display:inline-block;
+      padding:2px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      color: rgba(234,242,255,.88);
+      font-size:12px;
+      margin-right:6px;
+      margin-top:6px;
+    }
+
+    .codebox{
+      margin-top:10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 14px;
+      overflow:hidden;
+    }
+    .codebox .bar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 12px;
+      background: rgba(255,255,255,.04);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      gap:10px; flex-wrap:wrap;
+    }
+    .codebox .bar b{font-size:13px}
+    .codebox pre{
+      margin:0;
+      padding:12px;
+      font-family: var(--mono);
+      font-size:12.5px;
+      line-height:1.75;
+      white-space:pre;
+      overflow:auto;
+      color: rgba(234,242,255,.92);
+    }
+
+    .toc{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:10px;
+    }
+    .toc a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      white-space:nowrap;
+    }
+
+    ul{margin:8px 0 0 18px}
+    li{margin:8px 0}
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax (safe default used across your pages) -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "References & Citation — Hierarchical Calculus",
+  "alternativeHeadline": "DOI, BibTeX, and standard references for analysis, numerics, and physics examples",
+  "author": {
+    "@type": "Person",
+    "name": "Ahmed Gossa",
+    "url": "https://gossaahmed.github.io/gossa-math/"
+  },
+  "about": [
+    "Hierarchical Calculus",
+    "Relative Derivative",
+    "Logarithmic Derivative",
+    "Numerical Analysis",
+    "Differential Equations",
+    "Thermodynamics"
+  ],
+  "inLanguage": "en",
+  "url": "https://gossaahmed.github.io/gossa-math/references-en.html",
+  "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
 }
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, Arial;
-  background:
-    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--txt);
-}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
-.top{
-  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  padding:14px 16px;border-bottom:1px solid var(--b);
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
-}
-.brand{display:flex;gap:10px;align-items:center}
-.logo{
-  width:34px;height:34px;border-radius:10px;
-  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
-              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
-              rgba(255,255,255,.06);
-  border:1px solid var(--b);
-}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-nav a{
-  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
-  background:rgba(255,255,255,.03);
-}
-h1{margin:22px 0 8px;font-size:30px}
-.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.8}
-.card{
-  background:var(--card);border:1px solid var(--b);border-radius:18px;
-  padding:18px;margin:14px 0;
-}
-.small{font-size:14px;color:var(--mut);line-height:1.95}
-.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
-.tag{
-  display:inline-block;padding:2px 10px;border:1px solid var(--b);
-  border-radius:999px;background:rgba(255,255,255,.03);color:#bfe8ff;font-size:12px
-}
-.math{
-  background:var(--card2);border:1px solid var(--b);border-radius:14px;
-  padding:12px;margin-top:10px;overflow:auto
-}
-.callout{
-  border-left:4px solid var(--accent);
-  padding:12px 14px;border-radius:14px;
-  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
-}
-ul{margin:10px 0 0 0; padding-left:18px}
-li{margin:7px 0}
-pre{white-space:pre-wrap; margin:0}
-</style>
+</script>
 </head>
 
 <body>
-<div class="top">
-  <div class="brand">
-    <div class="logo" aria-hidden="true"></div>
-    <div>
-      <div style="font-weight:900">Hierarchical Calculus</div>
-      <div style="font-size:12px;color:var(--mut)">References & Citation</div>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Hierarchical Calculus</strong>
+          <span>References & Citation — explicit \(D_r^n\)</span>
+        </div>
+      </div>
+
+      <nav aria-label="Navigation">
+        <a href="./index-en.html">Home</a>
+        <a href="./theory-en.html">Theory</a>
+        <a href="./equations-en.html">Equations</a>
+        <a href="./numerics-en.html">Numerics</a>
+        <a href="./glossary-en.html">Glossary</a>
+        <a href="./references.html">العربية</a>
+      </nav>
     </div>
   </div>
 
-  <nav aria-label="Navigation">
-    <a href="index-en.html">Home</a>
-    <a href="theory-en.html">Theory</a>
-    <a href="equations-en.html">Equations</a>
-    <a href="numerics-en.html">Numerics</a>
-    <a href="#cite">Citation</a>
-    <a href="#mathrefs">Math</a>
-    <a href="#numrefs">Numerics</a>
-    <a href="#physrefs">Physics</a>
-    <a href="references.html">العربية</a>
-  </nav>
-</div>
+  <div class="wrap">
+    <header class="hero">
+      <h1>References</h1>
+      <p class="muted" style="margin:0">
+        This page provides the <b>official citation</b> for the project and a curated list of
+        <b>standard references</b> supporting the analysis, ODEs, numerical methods, and applied examples
+        used across the website.
+        <br>
+        <b>Notation rule:</b> derivatives are written explicitly by <b>rank</b> and <b>degree</b>: \(\;D_r^n\).
+      </p>
 
-<div class="container">
-  <h1>References</h1>
-  <p class="subtitle">
-    This page provides the <strong>official citation</strong> for the project and a curated list of
-    <strong>standard references</strong> supporting the mathematical and numerical tools used in the website.
-  </p>
+      <div class="toc" aria-label="On-page sections">
+        <a href="#cite">Citation</a>
+        <a href="#mathrefs">Math</a>
+        <a href="#numrefs">Numerics</a>
+        <a href="#physrefs">Physics</a>
+        <a href="#domain">Domain</a>
+        <a href="#links">Links</a>
+      </div>
 
-  <div class="card" id="cite">
-    <h2>1) Official Citation (DOI + BibTeX)</h2>
-    <p class="small">
-      Zenodo Concept DOI:
-      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
-        10.5281/zenodo.17917302
-      </a>
-    </p>
+      <p class="muted small" style="margin:12px 0 0 0">
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+        <br>
+        Version DOI (v1.0.0):
+        <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
+      </p>
+    </header>
 
-    <div class="math">
+    <section class="card" id="cite">
+      <h2>1) Official citation (DOI + BibTeX)</h2>
+
+      <p class="muted small" style="margin:0">
+        Use the <b>version DOI</b> when citing results tied to a specific release, and the <b>concept DOI</b> when citing the project as a whole.
+      </p>
+
+      <div class="note">
+        <strong>Reviewer note:</strong>
+        If you reference a figure/table/result from this website, prefer a version DOI (v1.0.0, v1.0.1, …).
+        If you reference the framework itself, use the concept DOI.
+      </div>
+
+      <div class="codebox" aria-label="BibTeX citation">
+        <div class="bar">
+          <b>BibTeX (concept DOI)</b>
+          <span class="muted small">Copy/paste</span>
+        </div>
 <pre>@software{gossa_hierarchical_calculus_2025,
   author = {Gossa Ahmed},
   title  = {Hierarchical Calculus},
@@ -120,76 +292,109 @@ pre{white-space:pre-wrap; margin:0}
   doi    = {10.5281/zenodo.17917302},
   url    = {https://github.com/GOSSAAHMED/gossa-math}
 }</pre>
-    </div>
-
-    <div class="callout" style="margin-top:14px">
-      <div style="font-weight:900;margin-bottom:6px">Reviewer note</div>
-      <div class="small">
-        Use the version DOI when citing results tied to a specific release (v1.0.0, v1.0.1, ...),
-        and the concept DOI when citing the project as a whole.
       </div>
-    </div>
-  </div>
 
-  <div class="card" id="mathrefs">
-    <h2>2) Standard Mathematical References</h2>
-    <ul class="small">
-      <li><span class="tag">Analysis</span> Walter Rudin — <em>Principles of Mathematical Analysis</em>.</li>
-      <li><span class="tag">Analysis</span> Terence Tao — <em>Analysis I / II</em>.</li>
-      <li><span class="tag">Calculus</span> Tom M. Apostol — <em>Calculus, Vol. 1 & 2</em>.</li>
-      <li><span class="tag">ODE</span> Boyce & DiPrima — <em>Elementary Differential Equations and Boundary Value Problems</em>.</li>
-      <li><span class="tag">ODE</span> Coddington & Levinson — <em>Theory of Ordinary Differential Equations</em>.</li>
-      <li><span class="tag">Special functions</span> NIST — <em>Digital Library of Mathematical Functions (DLMF)</em>.</li>
-    </ul>
-  </div>
+      <div class="codebox" aria-label="Plain text citation" style="margin-top:12px">
+        <div class="bar">
+          <b>Plain text</b>
+          <span class="muted small">Suggested citation</span>
+        </div>
+<pre>GOSSA AHMED. Hierarchical Calculus — Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).</pre>
+      </div>
+    </section>
 
-  <div class="card" id="numrefs">
-    <h2>3) Numerical Analysis & Approximation</h2>
-    <ul class="small">
-      <li><span class="tag">Numerics</span> Burden & Faires — <em>Numerical Analysis</em>.</li>
-      <li><span class="tag">Numerics</span> Sauer — <em>Numerical Analysis</em>.</li>
-      <li><span class="tag">Stability</span> Higham — <em>Accuracy and Stability of Numerical Algorithms</em>.</li>
-      <li><span class="tag">Approximation</span> Trefethen — <em>Approximation Theory and Approximation Practice</em>.</li>
-    </ul>
+    <section class="card" id="mathrefs">
+      <h2>2) Standard mathematical references</h2>
 
-    <div class="callout" style="margin-top:14px">
-      <div style="font-weight:900;margin-bottom:6px">How this connects</div>
-      <div class="small">
+      <div>
+        <span class="chip">Analysis</span>
+        <span class="chip">Calculus</span>
+        <span class="chip">ODE</span>
+        <span class="chip">Special functions</span>
+      </div>
+
+      <ul class="muted small">
+        <li><b>Walter Rudin</b> — <em>Principles of Mathematical Analysis</em>.</li>
+        <li><b>Terence Tao</b> — <em>Analysis I / II</em>.</li>
+        <li><b>Tom M. Apostol</b> — <em>Calculus, Vol. 1 & 2</em>.</li>
+        <li><b>Boyce & DiPrima</b> — <em>Elementary Differential Equations and Boundary Value Problems</em>.</li>
+        <li><b>Coddington & Levinson</b> — <em>Theory of Ordinary Differential Equations</em>.</li>
+        <li><b>NIST</b> — <em>Digital Library of Mathematical Functions (DLMF)</em>.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="numrefs">
+      <h2>3) Numerical analysis & approximation</h2>
+
+      <div>
+        <span class="chip">Numerics</span>
+        <span class="chip">Stability</span>
+        <span class="chip">Approximation</span>
+      </div>
+
+      <ul class="muted small">
+        <li><b>Burden & Faires</b> — <em>Numerical Analysis</em>.</li>
+        <li><b>Sauer</b> — <em>Numerical Analysis</em>.</li>
+        <li><b>Nicholas J. Higham</b> — <em>Accuracy and Stability of Numerical Algorithms</em>.</li>
+        <li><b>Lloyd N. Trefethen</b> — <em>Approximation Theory and Approximation Practice</em>.</li>
+      </ul>
+
+      <div class="note">
+        <strong>How this connects:</strong>
         Hierarchical lifting can be interpreted as choosing a coordinate system where the problem is better conditioned,
-        then transforming back (often via iterated exponentiation).
+        then transforming back (often involving exponentials/logarithms).
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="card" id="physrefs">
-    <h2>4) Physics References (for applied examples)</h2>
-    <ul class="small">
-      <li><span class="tag">Thermodynamics</span> Zemansky & Dittman — <em>Heat and Thermodynamics</em>.</li>
-      <li><span class="tag">Thermodynamics</span> Callen — <em>Thermodynamics and an Introduction to Thermostatistics</em>.</li>
-      <li><span class="tag">Mechanics</span> Goldstein — <em>Classical Mechanics</em>.</li>
-      <li><span class="tag">General physics</span> Halliday, Resnick & Walker — <em>Fundamentals of Physics</em>.</li>
-    </ul>
-  </div>
+    <section class="card" id="physrefs">
+      <h2>4) Physics references (for applied examples)</h2>
 
-  <div class="card" id="domain">
-    <h2>5) Domain Assumptions (important for rigor)</h2>
-    <div class="math">
-<pre>- Level 1: typically requires x>0 and f(x)>0 when using ln x and ln f.
-- Level 2: requires x>1 with ln(x)>0 and f(x)>1 with ln(f)>0.
-- Level 3+: adds further conditions for iterated logarithms and avoids singularities.</pre>
-    </div>
-  </div>
+      <div>
+        <span class="chip">Thermodynamics</span>
+        <span class="chip">Mechanics</span>
+        <span class="chip">General physics</span>
+      </div>
 
-  <div class="card" id="links">
-    <h2>6) Project Links</h2>
-    <ul class="small">
-      <li>Website (AR): <a href="index.html">gossa-math Arabic</a></li>
-      <li>Website (EN): <a href="index-en.html">gossa-math English</a></li>
-      <li>GitHub: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">Repository</a></li>
-      <li>Zenodo: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></li>
-    </ul>
-  </div>
+      <ul class="muted small">
+        <li><b>Zemansky & Dittman</b> — <em>Heat and Thermodynamics</em>.</li>
+        <li><b>H. B. Callen</b> — <em>Thermodynamics and an Introduction to Thermostatistics</em>.</li>
+        <li><b>Goldstein</b> — <em>Classical Mechanics</em>.</li>
+        <li><b>Halliday, Resnick & Walker</b> — <em>Fundamentals of Physics</em>.</li>
+      </ul>
+    </section>
 
-</div>
+    <section class="card" id="domain">
+      <h2>5) Domain assumptions (important for rigor)</h2>
+
+      <p class="muted small" style="margin:0">
+        Increasing rank may shrink the domain due to iterated logarithms. A compact summary:
+      </p>
+
+      <div class="codebox" aria-label="Domain assumptions">
+        <div class="bar">
+          <b>Domain summary</b>
+          <span class="muted small">Typical assumptions</span>
+        </div>
+<pre>- Rank 0: no special domain constraints beyond classical differentiability.
+- Rank 1: typically requires x>0 and f(x)>0 when using ln x and ln f.
+- Rank 2: requires x>1 with ln(x)>0 and f(x)>1 with ln(f)>0.
+- Rank 3+: adds further conditions for iterated logarithms and avoids singularities.</pre>
+      </div>
+    </section>
+
+    <section class="card" id="links">
+      <h2>6) Project links</h2>
+      <ul class="muted small">
+        <li>Website (AR): <a href="./index.html">Arabic</a></li>
+        <li>Website (EN): <a href="./index-en.html">English</a></li>
+        <li>GitHub: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">Repository</a></li>
+        <li>Zenodo (concept): <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · References — explicit \(D_r^n\)
+    </footer>
+  </div>
 </body>
 </html>
