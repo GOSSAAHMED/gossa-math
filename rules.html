@@ -4,15 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>قوانين الاشتقاق الهرمي — (بالرتبة والدرجة)</title>
-  <meta name="description" content="قوانين الاشتقاق الهرمي: القواعد الأساسية للمشتق النسبي ثم التعميم إلى الرتب الأعلى، مع كتابة كل مشتق بصيغة الرتبة والدرجة D_r^n (مثل D_1^1 و D_n^1)." />
+  <meta name="description" content="قوانين الاشتقاق الهرمي: القواعد الأساسية للمشتق النسبي ثم التعميم إلى الرتب الأعلى، مع كتابة كل مشتق بصيغة الرتبة والدرجة D_r^n (مثل D_0^1 و D_1^1 و D_n^1)." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- hreflang -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/rules-en.html">
-
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/rules.html">
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/rules-en.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/rules-en.html">
+  <!-- canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/rules.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/rules.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/rules-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/rules-en.html" />
 
   <style>
     :root{
@@ -160,6 +159,32 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- JSON-LD (AR) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "قوانين الاشتقاق الهرمي (بالرتبة والدرجة) — الحساب الهرمي",
+  "alternativeHeadline": "قواعد تشغيلية لـ D_1^1 وتمديدها إلى D_n^1",
+  "author": {
+    "@type": "Person",
+    "name": "Ahmed Gossa",
+    "url": "https://gossaahmed.github.io/gossa-math/"
+  },
+  "about": [
+    "الحساب الهرمي",
+    "المشتق النسبي D1",
+    "المشتق التقليدي D0",
+    "قوانين الاشتقاق",
+    "المشتقات الهرمية"
+  ],
+  "abstract": "صفحة مرجعية تلخص القواعد الأساسية للمشتق النسبي (D_1^1) والتعميم إلى الرتبة n (D_n^1) مع ترميز الرتبة والدرجة.",
+  "url": "https://gossaahmed.github.io/gossa-math/rules.html",
+  "inLanguage": "ar",
+  "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
+}
+</script>
 </head>
 
 <body>
@@ -192,8 +217,15 @@
         <br>
         <b>قاعدة الترميز:</b> نكتب أي مشتق بصيغة <b>الرتبة والدرجة</b>:
         \(\;D_r^n\). وفي هذه الصفحة نستعمل الدرجة \(1\) صراحة:
-        \(\;D_{1}^{1}\) و \(\;D_{n}^{1}\).
+        \(\;D_{0}^{1}, D_{1}^{1}, D_{n}^{1}\).
       </p>
+
+      <div class="note">
+        <strong>ملاحظة مجال (مهمة للتحكيم):</strong>
+        في الرتبة 1 غالبًا نحتاج \(x>0\) و \(f(x)>0\) لأن \(\ln x\) و \(\ln f\) يظهران.
+        في الرتبة 2 غالبًا نحتاج \(x>1\) و \(f(x)>1\) لأن \(\ln\ln x\) و \(\ln\ln f\) يظهران.
+      </div>
+
       <p class="muted small" style="margin:10px 0 0 0">
         Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
         <br>
@@ -204,21 +236,34 @@
     <section class="card">
       <h2>1) تعريف سريع للمشتق النسبي (رتبة 1، درجة 1)</h2>
       <p class="muted small" style="margin:0">
-        نعتبر دالة موجبة \(f(x)>0\) على مجال \(x>0\). المشتق النسبي يقيس التغير بالنسبة لمقياس نسبي.
+        نعتبر \(x>0\) ودالة موجبة \(f(x)>0\). المشتق النسبي يقيس التغير على مقياس نسبي (بالنِّسب):
       </p>
       <div class="math">
         \[
           \boxed{
             D_{1}^{1} f(x)
-            =\frac{d}{d\ln x}\big(\ln f(x)\big)
             =\frac{d\ln f(x)}{d\ln x}
+          }
+        \]
+      </div>
+
+      <h3>1.1) الربط مع المشتق التفاضلي التقليدي (رتبة 0، درجة 1)</h3>
+      <p class="muted small" style="margin:0">
+        المشتق التقليدي هو \(D_0^{1}f=\dfrac{df}{dx}\). ويمكن كتابة المشتق النسبي بصيغة عملية:
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+            D_{1}^{1} f(x)
+            = \frac{x}{f(x)}\,\frac{df}{dx}
+            = \frac{x\,D_0^{1}f(x)}{f(x)}
           }
         \]
       </div>
 
       <div class="note">
         <strong>فكرة:</strong>
-        إذا كان \(D_{1}^{1} f\) ثابتًا، فهذا يعني أن \(f\) تتصرف كقوة \(x^\alpha\) (قانون تحجيم).
+        إذا كان \(D_{1}^{1} f\) ثابتًا، فهذا يعني أن \(f\) تتصرف كقانون قوة \(x^\alpha\) (قانون تحجيم).
       </div>
     </section>
 
@@ -234,9 +279,6 @@
           }
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        لأن \(\ln(Cf)=\ln C+\ln f\) واشتقاق \(\ln C\) بالنسبة لـ \(\ln x\) يساوي صفرًا.
-      </p>
 
       <h3>2.2) قاعدة الضرب (التراكب النسبي)</h3>
       <div class="math">
@@ -256,7 +298,7 @@
         \]
       </div>
 
-      <h3>2.4) ثابت أُسّي (رفع لقوة ثابتة)</h3>
+      <h3>2.4) رفع لقوة ثابتة</h3>
       <div class="math">
         \[
           \boxed{
@@ -275,19 +317,22 @@
         \]
       </div>
 
-      <h3>2.6) قاعدة السلسلة — النسخة النسبية</h3>
+      <h3>2.6) قاعدة السلسلة — الصيغة النسبية</h3>
       <p class="muted small" style="margin:0">
-        لتكن \(u=u(x)\) موجبة و\(f=f(u)\) موجبة. عندئذٍ:
+        لتكن \(u=u(x)>0\) و\(f=f(u)>0\). عندئذٍ:
       </p>
       <div class="math">
         \[
           \boxed{
-            D_{1}^{1}\big(f(u(x))\big)=\Big(D_{1}^{1} f\Big)(u)\;\cdot\;D_{1}^{1}u(x)
+            D_{1}^{1}\big(f(u(x))\big)
+            =\left(\frac{d\ln f}{d\ln u}\right)\Bigg|_{u=u(x)}
+            \cdot
+            \frac{d\ln u}{d\ln x}
           }
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        المعنى: “معدل التغير النسبي للمركب” يساوي حاصل ضرب المعدلين النسبيين.
+      <p class="muted small" style="margin:10px 0 0 0">
+        وبالترميز المختصر: \(\;D_{1}^{1}(f\circ u)=(D_{1}^{1}f)(u)\cdot D_{1}^{1}u\).
       </p>
     </section>
 
@@ -306,7 +351,7 @@
           <tr>
             <td class="ltr">\(f(x)=x^3\)</td>
             <td class="ltr">\(D_{1}^{1} f=3\)</td>
-            <td>تجانس نسبي صريح</td>
+            <td>قانون قوة</td>
           </tr>
           <tr>
             <td class="ltr">\(f(x)=\sqrt{x}=x^{1/2}\)</td>
@@ -321,7 +366,7 @@
           <tr>
             <td class="ltr">\(f(x)=\ln x\)</td>
             <td class="ltr">\(D_{1}^{1} f=\dfrac{1}{\ln x}\)</td>
-            <td>\(\ln(\ln x)\) مشتقتها بالنسبة لـ \(\ln x\) هي \(1/\ln x\)</td>
+            <td>\(\ln(\ln x)\) مشتقتها بالنسبة لـ \(\ln x\)</td>
           </tr>
         </tbody>
       </table>
@@ -330,21 +375,32 @@
     <section class="card">
       <h2>4) التعميم إلى الرتبة \(n\): \(D_{n}^{1}\)</h2>
       <p class="muted small" style="margin:0">
-        المبدأ الهرمي العام: عند الانتقال من رتبة إلى رتبة أعلى نستبدل “مقياس التغير”.
+        المبدأ الهرمي العام: عند الانتقال إلى رتبة أعلى نستبدل “مقياس التغير” بمقياس أعمق (لوغاريتم متكرر).
       </p>
 
       <div class="math">
         \[
           \boxed{
-            D_{n}^{1} f(x)=\frac{d}{d\ln^{(n)}x}\big(\ln f(x)\big)
+            D_{n}^{1} f(x)
+            =\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
           }
         \]
       </div>
 
       <p class="muted small" style="margin:10px 0 0 0">
-        ومع هذا التعريف، تتكرر القواعد البنيوية نفسها على كل رتبة (بنفس الفكرة):
-        اللوغاريتم يحوّل “عملية الرتبة” إلى جمع، ثم الاشتقاق يعيدها إلى قانون بسيط.
+        حيث \(\ln^{(n)}\) تعني اللوغاريتم المتكرر \(n\) مرات:
+        \(\ln^{(1)}x=\ln x\)، \(\ln^{(2)}x=\ln(\ln x)\)، وهكذا.
+        وهذا يجعل الرتبة 2 مطابقة تمامًا للتعريف المستخدم في الصفحات التطبيقية:
+        \[
+          D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+        \]
       </p>
+
+      <div class="note">
+        <strong>تكرار بنيوي:</strong>
+        لأن اللوغاريتم يحول الضرب إلى جمع، فإن قواعد “الضرب/القسمة/رفع لقوة ثابتة”
+        تبقى بنفس الشكل في كل رتبة (متى كانت التعابير معرفة على المجال).
+      </div>
 
       <div class="math">
         \[
@@ -355,11 +411,6 @@
           }
         \]
       </div>
-
-      <div class="note">
-        <strong>تفسير هرمي مختصر:</strong>
-        في الرتبة 0 التراكب جمعي، في الرتبة 1 التراكب ضربي، وفي الرتب الأعلى يصبح التراكب هرميًا وفق مقياس الرتبة.
-      </div>
     </section>
 
     <section class="card">
@@ -367,7 +418,7 @@
       <p class="muted small" style="margin:0">صيغة استشهاد مقترحة (جاهزة للنسخ):</p>
       <div class="math">
         \[
-          \texttt{GOSSA AHMED. Hierarchical Calculus — Derivation Rules (D\_1 then D\_n, with explicit rank & degree). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
+          \texttt{GOSSA AHMED. Hierarchical Calculus — Derivation Rules (D\_1 then D\_n, explicit rank \& degree). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
         \]
       </div>
     </section>
@@ -378,3 +429,4 @@
   </div>
 </body>
 </html>
+
