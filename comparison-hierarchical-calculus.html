@@ -2,79 +2,152 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Comparison Between Hierarchical Calculus and Existing Calculi</title>
-  <meta name="description" content="A structured academic comparison between Hierarchical Calculus and existing calculi, emphasizing rank and degree in hierarchical derivatives.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Comparison: Hierarchical Calculus vs Existing Calculi | Rank–Degree & Dₙ¹</title>
+  <meta name="description" content="A structured, academic comparison between Hierarchical Calculus and existing calculi (classical, fractional, relative/logarithmic, and time-scale calculus). Explains rank–degree notation, provides the unified definition of the hierarchical derivative Dₙ¹, includes domain conditions, worked examples, and a comprehensive summary table." />
+  <meta name="author" content="Ahmed Gossa" />
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-en.html" />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-ar.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-en.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Comparison: Hierarchical Calculus vs Existing Calculi | Rank–Degree & Dₙ¹" />
+  <meta property="og:description" content="Unified definition of Dₙ¹ + domain conditions + worked examples + summary table." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-en.html" />
+  <meta name="twitter:card" content="summary" />
 
   <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['\\(','\\)']],
+        inlineMath: [['\\(','\\)'], ['$', '$']],
         displayMath: [['\\[','\\]']]
-      }
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-  <!-- Same theme style as hierarchical-calculus-en.html -->
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Comparison Between Hierarchical Calculus and Existing Calculi",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-en.html"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Hierarchical Derivative D_n^1",
+      "Differential Derivative D0",
+      "Relative Derivative D1",
+      "Fractional Calculus",
+      "Time-Scale Calculus"
+    ]
+  }
+  </script>
+
+  <!-- Dark theme (consistent) -->
   <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a2c;
+      --panel2:#0c1526;
+      --border:#22314f;
+      --text:#e6e6e6;
+      --muted:#b7c4d6;
+      --accent:#66d9ef;
+      --accent2:#7dd3fc;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 12px;
+    }
     body{
       margin:0;
-      background:#0b1220;
-      color:#e6e6e6;
+      background: linear-gradient(180deg, var(--bg), #0a1020);
+      color:var(--text);
       font-family:"Segoe UI", Tahoma, Arial, sans-serif;
-      line-height:1.85;
+      line-height:1.9;
     }
     main{
-      max-width:900px;
+      max-width:980px;
       margin:auto;
-      padding:40px 20px 24px;
+      padding:40px 20px 28px;
     }
-    h1,h2,h3{ color:#66d9ef; }
-    h1{ font-size:2.15em; margin:0 0 18px; }
-    .subtitle{ color:#b7c4d6; margin:0 0 28px; font-size:1.02em; }
-    h2{ margin-top:42px; font-size:1.55em; }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    h1,h2,h3{ color:var(--accent); }
+    h1{ font-size:2.1em; margin:0 0 10px; }
+    .subtitle{ color:var(--muted); margin:0 0 18px; font-size:1.03em; }
+    .meta{ color:var(--muted); font-size:.96em; margin:0 0 26px; }
+    h2{ margin-top:44px; font-size:1.58em; }
+    h3{ margin-top:22px; font-size:1.22em; }
     p{ margin:14px 0; }
     ul{ margin:14px 26px; }
+    code{color:#eaf2ff}
 
-    .math{
-      background:#0f1a2c;
-      border:1px solid #22314f;
-      border-left:4px solid #66d9ef;
+    .box{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-left:4px solid var(--accent);
       padding:14px 16px;
       margin:20px 0;
       overflow-x:auto;
-      border-radius:10px;
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
     }
-
     .callout{
-      background:#0f1a2c;
-      border:1px solid #22314f;
+      background:var(--panel);
+      border:1px solid var(--border);
       padding:14px 16px;
-      border-radius:10px;
+      border-radius:var(--radius);
       margin:18px 0;
       color:#d9e3f0;
+      box-shadow: var(--shadow);
     }
+    .callout strong{ color:#eaf2ff; }
+    .toc{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:14px 16px;
+      margin:18px 0 26px;
+      box-shadow: var(--shadow);
+    }
+    .toc a{display:block; margin:7px 0}
 
     table{
       width:100%;
       border-collapse:collapse;
       margin:18px 0;
-      background:#0f1a2c;
-      border:1px solid #22314f;
-      border-radius:10px;
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
       overflow:hidden;
+      box-shadow: var(--shadow);
     }
     th, td{
-      border:1px solid #22314f;
+      border:1px solid var(--border);
       padding:10px 12px;
       vertical-align:top;
+      text-align:left;
     }
     th{
-      color:#66d9ef;
-      text-align:left;
-      background:#0c1526;
+      color:var(--accent);
+      background:var(--panel2);
     }
 
     .navbtns{
@@ -83,15 +156,15 @@
       justify-content:space-between;
       margin-top:34px;
       padding-top:18px;
-      border-top:1px solid #22314f;
+      border-top:1px solid var(--border);
     }
     .btn{
       display:inline-block;
       padding:10px 14px;
       border-radius:10px;
       border:1px solid #2a3a5e;
-      background:#0f1a2c;
-      color:#e6e6e6;
+      background:var(--panel);
+      color:var(--text);
       text-decoration:none;
       transition:transform .08s ease, border-color .12s ease;
       max-width:48%;
@@ -99,30 +172,26 @@
       overflow:hidden;
       text-overflow:ellipsis;
     }
-    .btn:hover{
-      transform:translateY(-1px);
-      border-color:#66d9ef;
-    }
-    .btn.primary{
-      border-color:#66d9ef;
-    }
+    .btn:hover{ transform:translateY(-1px); border-color:var(--accent); }
+    .btn.primary{ border-color:var(--accent); }
 
     .lang{
       display:flex;
       justify-content:flex-end;
       gap:10px;
       margin-bottom:12px;
+      flex-wrap:wrap;
     }
     .lang a{
-      color:#7dd3fc;
+      color:var(--accent2);
       text-decoration:none;
       border:1px solid #2a3a5e;
-      background:#0f1a2c;
+      background:var(--panel);
       padding:7px 10px;
       border-radius:999px;
       font-size:.95em;
     }
-    .lang a:hover{ border-color:#66d9ef; }
+    .lang a:hover{ border-color:var(--accent); }
 
     footer{
       margin-top:22px;
@@ -135,54 +204,77 @@
 <body>
 <main>
 
-  <!-- Language buttons (optional) -->
+  <!-- Language buttons -->
   <div class="lang">
-    <a href="comparison-hierarchical-calculus.html">EN</a>
-    <!-- إذا ستعمل نسخة عربية لاحقًا ضع رابطها هنا -->
-    <!-- <a href="comparison-hierarchical-calculus-ar.html">AR</a> -->
+    <a href="comparison-hierarchical-calculus-en.html" aria-current="page">EN</a>
+    <a href="comparison-hierarchical-calculus-ar.html">AR</a>
   </div>
 
   <h1>Comparison Between Hierarchical Calculus and Existing Calculi</h1>
   <p class="subtitle">
-    A rank–degree based comparison emphasizing the two-index notation of Hierarchical Derivatives.
+    A rank–degree comparison explaining the two-index notation and the unified definition of the hierarchical derivative \(D_n^1\).
+  </p>
+  <p class="meta">
+    This page is designed as both a reference and an educational overview: it positions Hierarchical Calculus relative to classical,
+    fractional, relative/logarithmic, and time-scale calculi, and highlights what is structurally new (rank + degree + a unified definition).
   </p>
 
-  <h2>1. Introduction</h2>
-  <p>
-    Classical differential calculus has been extended in multiple directions to address limitations
-    related to scale dependence, structural rigidity, or modeling requirements. Examples include
-    fractional calculus, logarithmic derivatives, and other specialized frameworks.
-  </p>
-  <p>
-    <strong>Hierarchical Calculus</strong> is proposed as a unified framework in which differentiation
-    is organized according to a well-defined hierarchy. In this setting, classical differential
-    calculus appears naturally as a special case of a more general structure.
-  </p>
-  <p>
-    This page presents a structural comparison between Hierarchical Calculus and several existing
-    calculi, emphasizing the defining role of <em>rank</em> and <em>degree</em>.
-  </p>
+  <div class="toc">
+    <strong>Quick Table of Contents</strong>
+    <a href="#intro">1) Introduction</a>
+    <a href="#rank-degree">2) Rank and Degree in Hierarchical Derivatives</a>
+    <a href="#definition">3) Unified definition of the hierarchical derivative \(D_n^1\)</a>
+    <a href="#classical">4) Comparison with Classical Differential Calculus</a>
+    <a href="#fractional">5) Comparison with Fractional Calculus</a>
+    <a href="#log-relative">6) Comparison with Logarithmic and Relative Calculi</a>
+    <a href="#timescale">7) Comparison with Time-Scale Calculus</a>
+    <a href="#table">8) Summary Table</a>
+    <a href="#takeaways">9) Practical takeaways + extra examples</a>
+  </div>
 
-  <h2>2. Rank and Degree in Hierarchical Derivatives</h2>
+  <h2 id="intro">1. Introduction</h2>
   <p>
-    In Hierarchical Calculus, every derivative is uniquely characterized by
-    <strong>two numerical indices</strong>: a <strong>rank</strong> and a <strong>degree</strong>.
+    Classical differential calculus has been extended in multiple directions to address limitations related to scale dependence,
+    structural rigidity, or specific modeling requirements. Examples include <strong>fractional calculus</strong>, various forms of
+    <strong>logarithmic derivatives</strong>, and other specialized constructions.
+  </p>
+  <p>
+    <strong>Hierarchical Calculus</strong> is proposed as a framework in which differentiation is organized according to a well-defined
+    hierarchy. In this setting, classical differential calculus appears naturally as a special case of a more general structure,
+    and relative/logarithmic behaviors are integrated as specific hierarchical levels rather than separate ad-hoc systems.
   </p>
 
   <div class="callout">
-    <p><strong>Rank (subscript)</strong> determines the nature of the derivative:</p>
-    <ul>
-      <li><strong>0</strong> — Differential derivative</li>
-      <li><strong>1</strong> — Relative derivative</li>
-      <li><strong>2</strong> — Logarithmic derivative</li>
-    </ul>
-
-    <p><strong>Degree (superscript)</strong> indicates the number of successive differentiations,
-      from \(1\) to \(n\).</p>
+    <strong>Key idea of this comparison</strong>
+    <p class="meta" style="margin:8px 0 0">
+      The goal is not to claim that existing calculi are “wrong”, but to show that many frameworks are introduced as separate islands.
+      Hierarchical Calculus aims to provide a single organizing language: <strong>rank + degree + a unified definition</strong>, from which rules are derived.
+    </p>
   </div>
 
-  <div class="math">
-    <strong>Notation (Two-index form):</strong>
+  <h2 id="rank-degree">2. Rank and Degree in Hierarchical Derivatives</h2>
+  <p>
+    In Hierarchical Calculus, every derivative is uniquely characterized by <strong>two numerical indices</strong>:
+    a <strong>rank</strong> and a <strong>degree</strong>. This resolves a common conceptual issue: multiple “types” of derivatives exist in the literature,
+    but there is no universal labeling system telling you what type you are using and how many times it is iterated.
+  </p>
+
+  <div class="callout">
+    <p><strong>Rank (subscript)</strong> determines the nature of the derivative (the transformation layer):</p>
+    <ul>
+      <li><strong>0</strong> — classical differential derivative (D0)</li>
+      <li><strong>1</strong> — relative derivative (D1)</li>
+      <li><strong>2</strong> — logarithmic derivative (higher layer)</li>
+      <li><strong>…</strong> — higher ranks can be defined within the same language</li>
+    </ul>
+
+    <p>
+      <strong>Degree (superscript)</strong> indicates the number of successive differentiations within the same rank, from \(1\) to \(n\).
+    </p>
+  </div>
+
+  <div class="box">
+    <strong>Notation (two-index form):</strong>
     \[
       D_{r}^{\,n}
     \]
@@ -190,64 +282,128 @@
   </div>
 
   <p>
-    For example, \(D_{0}^{\,n}\) denotes the classical differential derivative of degree \(n\),
-    while \(D_{2}^{\,1}\) denotes the first-degree logarithmic derivative.
+    For example, \(D_{0}^{\,n}\) denotes the classical differential derivative of degree \(n\), while \(D_{1}^{\,1}\) denotes
+    the first-degree relative derivative, and \(D_{2}^{\,1}\) denotes a first-degree logarithmic derivative within the hierarchy.
   </p>
 
-  <h2>3. Comparison with Classical Differential Calculus</h2>
+  <h2 id="definition">3. Unified definition of the hierarchical derivative \(D_n^1\)</h2>
   <p>
-    Classical calculus involves a single parameter: the degree of differentiation, and it does not
-    distinguish between different derivative types.
-  </p>
-  <p>
-    Hierarchical Calculus extends this structure by introducing a rank parameter, enabling several
-    derivative types to coexist within a unified framework.
+    To eliminate contradictions across pages, the site adopts <strong>one unified definition</strong> for the hierarchical derivative of order \(n\) and degree \(1\):
   </p>
 
-  <div class="math">
-    <strong>Special case:</strong> Classical differential calculus is recovered exactly when \(r=0\).
+  <div class="box">
     \[
-      D_{0}^{\,n} \;\;\text{is the classical differential derivative of degree } n.
+      \boxed{
+      D_n^{1} f(x)
+      =
+      \frac{d\,\ln^{(n)}\!\big(f(x)\big)}
+           {d\,\ln^{(n)}\!(x)}
+      }
     \]
   </div>
 
-  <h2>4. Comparison with Fractional Calculus</h2>
+  <div class="callout">
+    <strong>Consistency rule (very important)</strong>
+    <p class="meta" style="margin:8px 0 0">
+      This site does <em>not</em> use mixed forms such as \(\frac{d(\ln f)}{d\ln^{(n)}x}\).
+      The adopted definition applies \(\ln^{(n)}\) on both sides: to \(x\) and to \(f(x)\).
+    </p>
+  </div>
+
+  <h3>3.1 Domain conditions (when the definition is well-posed)</h3>
   <p>
-    Fractional calculus generalizes differentiation by allowing non-integer degrees. These operators
-    are frequently non-local and often require integral representations.
+    Because \(\ln^{(n)}\) appears explicitly, basic conditions typically include:
+    \[
+      x>0 \quad \text{and} \quad f(x)>0
+    \]
+    and higher ranks may impose stronger positivity constraints depending on how many iterated logarithms are applied.
+  </p>
+
+  <h2 id="classical">4. Comparison with Classical Differential Calculus</h2>
+  <p>
+    Classical calculus involves a single parameter: the degree of differentiation. It does not explicitly classify different derivative types.
+    In practice, the type is fixed (d/dx) and assumed.
   </p>
   <p>
-    Hierarchical Calculus does not generalize the degree into fractional values; instead, it
-    generalizes the <em>rank</em> while maintaining the degree as a natural number \(n\).
+    Hierarchical Calculus extends the structure by introducing the rank parameter, allowing multiple derivative types to coexist
+    in one framework while keeping degrees as natural numbers.
+  </p>
+
+  <div class="box">
+    <strong>Special case:</strong> classical differential calculus is recovered when
+    \[
+      r=0.
+    \]
+  </div>
+
+  <h3>Example (power function)</h3>
+  <p>
+    Let \(f(x)=x^a\) with \(x>0\). Then:
+  </p>
+  <div class="box">
+    \[
+      D_0^1(x^a)=a x^{a-1}
+      \qquad\text{whereas}\qquad
+      D_1^1(x^a)=\frac{d\ln(x^a)}{d\ln(x)}=a.
+    \]
+  </div>
+  <p>
+    This illustrates the structural role of rank: \(D_0\) measures classical differential change, while \(D_1\) measures relative (log-scale) change.
+  </p>
+
+  <h2 id="fractional">5. Comparison with Fractional Calculus</h2>
+  <p>
+    Fractional calculus generalizes differentiation by allowing non-integer degrees. These operators are frequently non-local and often require
+    integral representations or memory effects (depending on the chosen definition).
+  </p>
+  <p>
+    Hierarchical Calculus does not fractionalize the degree; instead, it generalizes the <strong>rank</strong> (the structural type of derivative),
+    while degrees remain natural numbers within each rank.
   </p>
 
   <div class="callout">
-    <strong>Essential difference:</strong>
-    Fractional calculus generalizes the <em>degree</em> (possibly to non-integers),
-    whereas Hierarchical Calculus generalizes the <em>rank</em> (type of derivative).
+    <strong>Essential difference</strong>
+    <p class="meta" style="margin:8px 0 0">
+      Fractional calculus generalizes the <em>degree</em> (possibly to non-integers), whereas Hierarchical Calculus generalizes the <em>rank</em>
+      (type of derivative / transformation level). They target different structural questions.
+    </p>
   </div>
 
-  <h2>5. Comparison with Logarithmic and Relative Calculi</h2>
+  <h2 id="log-relative">6. Comparison with Logarithmic and Relative Calculi</h2>
   <p>
-    Logarithmic and relative derivatives are often introduced as separate constructions designed for
-    specific applications.
+    Relative and logarithmic derivatives are often introduced as separate constructions designed for particular applications
+    (for example, scale-invariant modeling).
   </p>
   <p>
-    In Hierarchical Calculus, such derivatives correspond to specific ranks (e.g., \(r=1\) or \(r=2\))
-    and are integrated into the hierarchical structure rather than treated as independent calculi.
-  </p>
-
-  <h2>6. Comparison with Time-Scale Calculus</h2>
-  <p>
-    Time-scale calculus focuses on unifying continuous and discrete domains by generalizing the
-    underlying domain of the independent variable.
-  </p>
-  <p>
-    Hierarchical Calculus focuses instead on the structure of differentiation itself, independently
-    of the underlying domain.
+    In Hierarchical Calculus, these derivatives correspond to specific ranks (e.g., \(r=1\) for relative behavior, and higher ranks for deeper log layers),
+    and are integrated into the hierarchy rather than treated as independent calculi.
   </p>
 
-  <h2>7. Summary Table</h2>
+  <h3>Extra example (exponential function)</h3>
+  <p>
+    Let \(f(x)=e^x\). At rank \(1\), we obtain:
+  </p>
+  <div class="box">
+    \[
+      D_1^1(e^x)=\frac{d\ln(e^x)}{d\ln(x)}=\frac{d(x)}{d(\ln x)}=x.
+    \]
+  </div>
+  <p>
+    The example is simple but revealing: the relative derivative transforms the behavior into a quantity tied directly to the scale of \(x\).
+  </p>
+
+  <h2 id="timescale">7. Comparison with Time-Scale Calculus</h2>
+  <p>
+    Time-scale calculus aims to unify continuous and discrete analysis by generalizing the underlying domain of the independent variable.
+    In other words, it generalizes the <strong>domain</strong>.
+  </p>
+  <p>
+    Hierarchical Calculus generalizes the <strong>structure of differentiation</strong> itself (how differentiation is defined at multiple ranks),
+    independently of whether the domain is continuous, discrete, or mixed. These can be viewed as complementary directions:
+    one generalizes the domain, the other generalizes the derivative structure.
+  </p>
+
+  <h2 id="table">8. Summary Table</h2>
   <table>
     <thead>
       <tr>
@@ -264,48 +420,71 @@
         <td>Degree only</td>
         <td>Fractional degree</td>
         <td>Special definition</td>
-        <td>Rank (subscript) + Degree (superscript)</td>
+        <td>Rank (subscript) + Degree (superscript) + unified definition</td>
       </tr>
       <tr>
         <td>Locality</td>
         <td>Local</td>
         <td>Mostly non-local</td>
         <td>Local</td>
-        <td>Local at each rank</td>
+        <td>Local within each rank (under the adopted transform)</td>
       </tr>
       <tr>
         <td>Unified framework</td>
         <td>No</td>
-        <td>Partial</td>
+        <td>Partial (depends on definition)</td>
         <td>No</td>
-        <td>Yes</td>
+        <td>Yes (classification + definition + rules)</td>
       </tr>
       <tr>
-        <td>Classical calculus as special case</td>
+        <td>Classical calculus as a special case</td>
         <td>—</td>
         <td>No</td>
         <td>No</td>
         <td>Yes (when \(r=0\))</td>
       </tr>
       <tr>
-        <td>Extensibility</td>
-        <td>Limited</td>
-        <td>Complex</td>
-        <td>Limited</td>
-        <td>High</td>
+        <td>Main problem addressed</td>
+        <td>Standard differential modeling</td>
+        <td>Memory / nonlocality</td>
+        <td>Scale-sensitive modeling</td>
+        <td>Structural organization of derivative types</td>
       </tr>
     </tbody>
   </table>
 
-  <h2>8. Conclusion</h2>
+  <h2 id="takeaways">9. Conclusion + extra examples</h2>
   <p>
-    Hierarchical Calculus introduces a dual-index structure based on rank and degree, providing a clear
-    and systematic generalization of classical differentiation.
+    Hierarchical Calculus introduces a dual-index structure (rank + degree) and a unified definition based on iterated logarithmic transforms.
+    This provides a systematic way to embed classical differentiation while organizing relative/logarithmic behaviors within one coherent language.
   </p>
+
+  <h3>Extra sanity-check examples (strengthening understanding)</h3>
   <p>
-    By embedding classical calculus as the rank-zero case, the theory preserves established methods
-    while enabling coherent extensions to additional derivative types.
+    (a) If \(f(x)=x\) with \(x>0\), then:
   </p>
+  <div class="box">
+    \[
+      D_1^1(x)=\frac{d\ln(x)}{d\ln(x)}=1.
+    \]
+  </div>
+
+  <p>
+    (b) If \(f(x)=c\) is a positive constant, then:
+  </p>
+  <div class="box">
+    \[
+      D_1^1(c)=\frac{d\ln(c)}{d\ln(x)}=0.
+    \]
+  </div>
+
+  <div class="callout">
+    <strong>SEO / navigation tip</strong>
+    <p class="meta" style="margin:8px 0 0">
+      To turn this page into a strong hub, link it to <a href="rules-en.html">Rules</a>, <a href="equations-en.html">Equations</a>,
+      and <a href="equations-solved-en.html">Solved Equations</a>. This improves internal linking and increases time-on-site.
+    </p>
+  </div>
 
   <div class="navbtns">
     <a class="btn" href="index.html">← Home</a>
@@ -313,7 +492,7 @@
   </div>
 
   <footer>
-    Suggested filename: <code>comparison-hierarchical-calculus.html</code>
+    Filename: <code>comparison-hierarchical-calculus-en.html</code>
   </footer>
 
 </main>
