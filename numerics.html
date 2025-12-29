@@ -1,305 +1,402 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>الحساب العددي — مقارنة الأخطاء (الحساب الهرمي)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الجزء العددي | الحساب الهرمي</title>
+  <meta name="description" content="الجزء العددي في الحساب الهرمي: تقريبات محلية في الرتبة 0 (D0)، الرتبة 1 (D1 نسبي)، والرتبة 2 (D2 لوغاريتمي)، مع مقارنة الأخطاء على نموذج متعدد المقاييس وقانون قدرة." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<style>
-:root{
-  --bg1:#0b1220; --bg2:#0f1b2e;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(0,0,0,.22);
-  --b: rgba(255,255,255,.12);
-  --txt:#eaf2ff; --mut:#cfe3ff;
-  --accent:#61d2d2; --accent2:#7aa7ff;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, Arial, "Noto Sans Arabic";
-  background:
-    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--txt);
-}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:auto;padding:34px 16px 60px}
-.top{
-  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  padding:14px 16px;border-bottom:1px solid var(--b);
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
-}
-.brand{display:flex;gap:10px;align-items:center}
-.logo{
-  width:34px;height:34px;border-radius:10px;
-  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
-              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
-              rgba(255,255,255,.06);
-  border:1px solid var(--b);
-}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-nav a{
-  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
-  background:rgba(255,255,255,.03);
-}
-h1{margin:22px 0 8px;font-size:30px}
-.subtitle{color:var(--mut);margin:0 0 16px;line-height:1.8}
-.card{
-  background:var(--card);border:1px solid var(--b);border-radius:18px;
-  padding:18px;margin:14px 0;
-}
-.small{font-size:14px;color:var(--mut);line-height:1.9}
-.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
-.math{
-  background:var(--card2);border:1px solid var(--b);border-radius:14px;
-  padding:12px;margin-top:10px;overflow:auto
-}
-.callout{
-  border-right:4px solid var(--accent);
-  padding:12px 14px;border-radius:14px;
-  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
-}
-table{
-  width:100%;
-  border-collapse:separate;
-  border-spacing:0;
-  overflow:hidden;
-  border:1px solid var(--b);
-  border-radius:14px;
-  background:rgba(0,0,0,.18);
-}
-th,td{
-  padding:10px 10px;
-  border-bottom:1px solid rgba(255,255,255,.10);
-  font-size:14px;
-  text-align:center;
-  white-space:nowrap;
-}
-th{
-  color:#bfe8ff;
-  background:rgba(255,255,255,.04);
-  font-weight:800;
-}
-tr:last-child td{border-bottom:none}
-.badge{
-  display:inline-block;
-  padding:2px 10px;
-  border:1px solid var(--b);
-  border-radius:999px;
-  background:rgba(255,255,255,.03);
-  color:#bfe8ff;
-  font-size:12px;
-}
-.ok{color:#7dffb0}
-.warn{color:#ffd27d}
-.footer{
-  margin-top:22px;padding:14px 16px;border:1px solid var(--b);border-radius:16px;
-  background:rgba(255,255,255,.04)
-}
-</style>
+  <!-- canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/numerics.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/numerics.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/numerics-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/numerics-en.html" />
 
-<script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.05); --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 48px rgba(0,0,0,.38); --radius: 18px;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
+
+    /* topbar (unified) */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1050px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .math{
+      margin-top:8px; padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius:12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:var(--warn)}
+    .callout{
+      margin-top:12px; padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background: rgba(57,211,195,.10);
+      border-radius:14px;
+      border-right:4px solid var(--accent);
+    }
+
+    /* table */
+    .tablewrap{overflow:auto; border-radius:14px; margin-top:10px; border:1px solid rgba(255,255,255,.10)}
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width: 860px;
+      background: rgba(0,0,0,.18);
+      direction:ltr;
+    }
+    th,td{
+      padding:10px 10px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      font-size:13px;
+      text-align:center;
+      white-space:nowrap;
+    }
+    th{
+      color:#bfe8ff;
+      background:rgba(255,255,255,.06);
+      font-weight:800;
+      position:sticky; top:0;
+    }
+    tr:last-child td{border-bottom:none}
+    .ok{color:#7dffb0; font-weight:700}
+    .badge{
+      display:inline-block;
+      padding:2px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:#bfe8ff;
+      font-size:12px;
+    }
+    code{font-family:var(--mono)}
+    .rtl{direction:rtl; text-align:right}
+    footer{
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "الجزء العددي | الحساب الهرمي",
+  "alternativeHeadline": "مقارنة الأخطاء بين D0 وD1 (نسبي) وD2 (لوغاريتمي)",
+  "author": {
+    "@type": "Person",
+    "name": "Ahmed Gossa",
+    "url": "https://gossaahmed.github.io/gossa-math/"
+  },
+  "about": [
+    "الحساب الهرمي",
+    "تقريبات عددية",
+    "المشتق النسبي D1",
+    "المشتق اللوغاريتمي D2",
+    "تحليل الخطأ"
+  ],
+  "inLanguage": "ar",
+  "url": "https://gossaahmed.github.io/gossa-math/numerics.html",
+  "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
+}
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-<div class="top">
-  <div class="brand">
-    <div class="logo" aria-hidden="true"></div>
-    <div>
-      <div style="font-weight:900">الحساب الهرمي</div>
-      <div style="font-size:12px;color:var(--mut)">الجزء العددي — مقارنة أخطاء</div>
-    </div>
-  </div>
-
-  <nav aria-label="التنقل">
-    <a href="index.html">الرئيسية</a>
-    <a href="theory.html">النظرية</a>
-    <a href="equations.html">المعادلات الهرمية</a>
-    <a href="#methods">الطرق</a>
-    <a href="#exp1">تجربة 1</a>
-    <a href="#exp2">تجربة 2</a>
-    <a href="#conclusion">الخلاصة</a>
-    <a href="numerics-en.html">English</a>
-  </nav>
-</div>
-
-<div class="container">
-
-  <h1>الحساب العددي ومقارنة الأخطاء</h1>
-  <p class="subtitle">
-    الهدف هنا إظهار فكرة جوهرية: <strong>بدل تقريب الدالة مباشرة (مستوى 0)،</strong>
-    يمكن تقريبها في فضاء نسبي (مستوى 1) أو لوغاريتمي أعلى (مستوى 2) ثم الرجوع،
-    وغالبًا يكون ذلك <strong>أكثر استقرارًا عدديًا</strong>.
-  </p>
-
-  <div class="card" id="methods">
-    <h2>1) طرق التقريب (حول نقطة مرجعية \(x_0\))</h2>
-    <p class="small">
-      سنستخدم ثلاث تقريبات محلية مبنية على “ثبات” مشتق مناسب حول \(x_0\).
-    </p>
-
-    <div class="hr"></div>
-
-    <p class="small"><span class="badge">المستوى 0 (تفاضلي: D0)</span> تقريب تايلور من الدرجة الأولى:</p>
-    <div class="math">
-      \[
-      f(x)\approx f(x_0)+f'(x_0)(x-x_0)
-      \]
-    </div>
-
-    <p class="small"><span class="badge">المستوى 1 (نسبي: D1)</span> نفترض \(D_1 f\) ثابتًا محليًا:</p>
-    <div class="math">
-      \[
-      D_1 f(x)=\frac{d\ln f}{d\ln x}
-      \quad\Rightarrow\quad
-      f(x)\approx f(x_0)\left(\frac{x}{x_0}\right)^{D_1 f(x_0)}
-      \]
-    </div>
-
-    <p class="small"><span class="badge">المستوى 2 (لوغاريتمي: D2)</span> نفترض \(D_2 f\) ثابتًا محليًا:</p>
-    <div class="math">
-      \[
-      D_2 f(x)=\frac{d\ln(\ln f)}{d\ln(\ln x)}
-      \]
-      \[
-      \ln(\ln f(x))\approx \ln(\ln f(x_0)) + D_2 f(x_0)\big(\ln(\ln x)-\ln(\ln x_0)\big)
-      \]
-    </div>
-
-    <div class="callout" style="margin-top:14px">
-      <div style="font-weight:900;margin-bottom:6px">ملاحظة تحكيمية (مهمة)</div>
-      <div class="small">
-        استخدام المستوى 2 يتطلب شروط المجال: \(x>1\) و\(f(x)>1\) (وعمليًا نحتاج \(\ln x>0\) و\(\ln f>0\)).
-        لذلك نختار أمثلة ضمن هذا المجال.
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>الحساب الهرمي</strong>
+          <span>الجزء العددي — مقارنة الأخطاء (ترميز \(D_r^n\))</span>
+        </div>
       </div>
+
+      <nav aria-label="التنقل">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./theory.html">النظرية</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="#methods">الطرق</a>
+        <a href="#exp1">تجربة 1</a>
+        <a href="#exp2">تجربة 2</a>
+        <a href="#conclusion">الخلاصة</a>
+        <a href="./numerics-en.html">English</a>
+      </nav>
     </div>
   </div>
 
-  <div class="card" id="exp1">
-    <h2>2) تجربة 1: نموذج متعدد المقاييس حيث المستوى 2 شبه “مثالي”</h2>
-    <p class="small">
-      اختر الدالة:
-      \[
-      f(x)=\exp\big((\ln x)^2\big)\qquad (x>1)
-      \]
-      اختر نقطة مرجعية \(x_0=10\). نقارن القيم عند \(x=\{8,9,10,11,12,15\}\).
-    </p>
+  <div class="wrap">
+    <header class="hero">
+      <h1>الحساب العددي ومقارنة الأخطاء</h1>
+      <p class="muted">
+        الفكرة الأساسية: بدل تقريب \(f(x)\) مباشرة (رتبة 0)، يمكن تقريبها في فضاء
+        <b>نسبي</b> (رتبة 1) أو فضاء <b>لوغاريتمي أعلى (لوغ–لوغ)</b> (رتبة 2) ثم الرجوع،
+        وغالبًا يكون ذلك أكثر استقرارًا عدديًا.
+        <br>
+        <b>قاعدة الترميز:</b> نكتب كل مشتق بالرتبة والدرجة:
+        \(\;D_r^n\). وفي هذه الصفحة نستعمل غالبًا الدرجة \(1\):
+        \(\;D_0^1, D_1^1, D_2^1\).
+      </p>
+      <p class="muted small" style="margin:10px 0 0 0">
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </p>
+    </header>
 
-    <div class="hr"></div>
+    <section class="card" id="methods">
+      <h2>1) طرق التقريب المحلية (حول نقطة \(x_0\))</h2>
+      <p class="muted small" style="margin:0">
+        نقارن ثلاث نماذج محلية من الدرجة الأولى عبر تثبيت مشتق مناسب (عند الدرجة \(1\)) محليًا حول \(x_0\).
+      </p>
 
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">سبب الاختيار</div>
-      <div class="small">
-        لهذه الدالة: \(\ln(\ln f)=\ln((\ln x)^2)=2\ln(\ln x)\) وبالتالي يكون \(D_2 f=2\) ثابتًا.
-        لذا تقريب المستوى 2 يصبح دقيقًا جدًا (ويصل للصفر عدديًا تقريبًا).
+      <h3 style="margin-top:14px"><span class="badge">الرتبة 0 (D0)</span> تايلور 1 (جمعي)</h3>
+      <div class="math">
+        \[
+          f(x)\approx f(x_0)+\left(D_{0}^{1}f\right)(x_0)\,(x-x_0).
+        \]
       </div>
-    </div>
 
-    <div class="hr"></div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>x</th>
-          <th>القيمة الحقيقية</th>
-          <th>تقريب D0 (Taylor1)</th>
-          <th>تقريب D1</th>
-          <th>تقريب D2</th>
-          <th>الخطأ النسبي D0</th>
-          <th>الخطأ النسبي D1</th>
-          <th>الخطأ النسبي D2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>8</td><td>75.496</td><td>15.850</td><td>71.829</td><td class="ok">75.496</td><td>0.790</td><td>0.0486</td><td class="ok">≈0</td></tr>
-        <tr><td>9</td><td>124.935</td><td>108.284</td><td>123.556</td><td class="ok">124.935</td><td>0.133</td><td>0.0110</td><td class="ok">≈0</td></tr>
-        <tr><td>10</td><td>200.717</td><td>200.717</td><td>200.717</td><td class="ok">200.717</td><td>0</td><td>0</td><td class="ok">0</td></tr>
-        <tr><td>11</td><td>314.160</td><td>293.151</td><td>311.319</td><td class="ok">314.160</td><td>0.0669</td><td>0.00904</td><td class="ok">≈0</td></tr>
-        <tr><td>12</td><td>480.468</td><td>385.585</td><td>464.759</td><td class="ok">480.468</td><td>0.197</td><td>0.0327</td><td class="ok">≈0</td></tr>
-        <tr><td>15</td><td>1530.785</td><td>662.886</td><td>1298.719</td><td class="ok">1530.785</td><td>0.567</td><td>0.152</td><td class="ok">≈0</td></tr>
-      </tbody>
-    </table>
-
-    <p class="small" style="margin-top:12px">
-      الملاحظة الواضحة: عند هذا النموذج متعدد المقاييس، تقريب <strong>D2</strong> يتفوق بقوة لأنه يعمل في فضاء “لوغاريتم-لوغاريتم”
-      حيث تصبح البنية خطية تقريبًا.
-    </p>
-  </div>
-
-  <div class="card" id="exp2">
-    <h2>3) تجربة 2: قانون قدرة حيث المستوى 1 “مثالي”</h2>
-    <p class="small">
-      اختر الدالة:
-      \[
-      g(x)=x^{3.5}\qquad (x>0)
-      \]
-      ونقطة \(x_0=10\). نقارن نفس القيم \(x=\{8,9,10,11,12,15\}\).
-    </p>
-
-    <div class="hr"></div>
-
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">سبب الاختيار</div>
-      <div class="small">
-        لقانون القدرة يكون \(D_1 g = 3.5\) ثابتًا تمامًا، لذا تقريب المستوى 1 يعطي القيمة الحقيقية (عدديًا).
+      <h3><span class="badge">الرتبة 1 (D1)</span> النموذج النسبي (ضربي)</h3>
+      <div class="math">
+        \[
+          D_{1}^{1}f=\frac{d\ln f}{d\ln x}
+          \quad\Rightarrow\quad
+          f(x)\approx f(x_0)\left(\frac{x}{x_0}\right)^{\left(D_{1}^{1}f\right)(x_0)}.
+        \]
       </div>
-    </div>
 
-    <div class="hr"></div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>x</th>
-          <th>القيمة الحقيقية</th>
-          <th>تقريب D0 (Taylor1)</th>
-          <th>تقريب D1</th>
-          <th>الخطأ النسبي D0</th>
-          <th>الخطأ النسبي D1</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>8</td><td>1448.155</td><td>948.683</td><td class="ok">1448.155</td><td>0.345</td><td class="ok">≈0</td></tr>
-        <tr><td>9</td><td>2187.000</td><td>2055.480</td><td class="ok">2187.000</td><td>0.0601</td><td class="ok">≈0</td></tr>
-        <tr><td>10</td><td>3162.278</td><td>3162.278</td><td class="ok">3162.278</td><td>0</td><td class="ok">0</td></tr>
-        <tr><td>11</td><td>4414.428</td><td>4269.075</td><td class="ok">4414.428</td><td>0.0329</td><td class="ok">≈0</td></tr>
-        <tr><td>12</td><td>5985.968</td><td>5375.872</td><td class="ok">5985.968</td><td>0.1019</td><td class="ok">≈0</td></tr>
-        <tr><td>15</td><td>13071.319</td><td>8696.264</td><td class="ok">13071.319</td><td>0.335</td><td class="ok">≈0</td></tr>
-      </tbody>
-    </table>
-
-    <p class="small" style="margin-top:12px">
-      هنا نرى أن “اللغة الطبيعية” لقوانين القدرة هي المستوى النسبي <strong>D1</strong>.
-    </p>
-  </div>
-
-  <div class="card" id="conclusion">
-    <h2>4) الخلاصة</h2>
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">القاعدة العملية</div>
-      <div class="small">
-        إذا كانت بنية النمو/التغير “قانون قدرة” ⟶ المستوى 1 (D1) عادة يعطي أفضل تمثيل. <br>
-        إذا كانت بنية النمو “متعددة المقاييس” مثل \(\exp((\ln x)^k)\) ⟶ المستوى 2 (D2) يكون أكثر استقرارًا وقد يصبح شبه دقيق.
+      <h3><span class="badge">الرتبة 2 (D2)</span> النموذج اللوغ–لوغ (بنيوي)</h3>
+      <div class="math">
+        \[
+          D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+        \]
+        \[
+          \ln(\ln f(x))\approx \ln(\ln f(x_0)) +
+          \left(D_{2}^{1}f\right)(x_0)\left(\ln(\ln x)-\ln(\ln x_0)\right).
+        \]
+        \[
+          \Rightarrow\quad
+          f(x)\approx \exp\!\Big(\exp\!\big(\ln(\ln f(x_0)) + (D_{2}^{1}f)(x_0)\big(\ln(\ln x)-\ln(\ln x_0)\big)\big)\Big).
+        \]
       </div>
-    </div>
 
-    <div class="footer small">
-      للمتابعة:
-      <ul>
-        <li><a href="equations.html">صفحة المعادلات الهرمية</a></li>
-        <li><a href="theory.html">صفحة النظرية</a></li>
-        <li>DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></li>
-      </ul>
-    </div>
+      <div class="note">
+        <strong>ملاحظة مجال:</strong>
+        الرتبة الثانية تتطلب \(x>1\) (حتى \(\ln x>0\)) وغالبًا \(f(x)>1\) (حتى \(\ln f>0\)).
+      </div>
+    </section>
+
+    <section class="card" id="exp1">
+      <h2>2) تجربة 1: نموذج متعدد المقاييس حيث الرتبة 2 تصبح دقيقة</h2>
+
+      <div class="math">
+        \[
+          f(x)=\exp\big((\ln x)^2\big),\quad x>1,\qquad x_0=10.
+        \]
+      </div>
+      <p class="muted small" style="margin:0">
+        نقارن عند \(x\in\{8,9,10,11,12,15\}\).
+      </p>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">سبب الاختيار</div>
+        <div class="muted small">
+          هنا \(\ln(\ln f)=\ln((\ln x)^2)=2\ln(\ln x)\)، لذا \(D_{2}^{1}f=2\) ثابت.
+          إذن تقريب الرتبة 2 يكون “دقيقًا نظريًا”، وأي \(\approx 0\) في الجدول سببه التقريب/التدوير في العرض فقط.
+        </div>
+      </div>
+
+      <div class="tablewrap" aria-label="جدول التجربة 1">
+        <table>
+          <thead>
+            <tr>
+              <th>x</th>
+              <th>True</th>
+              <th>Rank 0</th>
+              <th>Rank 1</th>
+              <th>Rank 2</th>
+              <th>Rel.err R0</th>
+              <th>Rel.err R1</th>
+              <th>Rel.err R2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>8</td><td>75.496</td><td>15.850</td><td>71.829</td><td class="ok">75.496</td><td>0.790</td><td>0.0486</td><td class="ok">≈0</td></tr>
+            <tr><td>9</td><td>124.935</td><td>108.284</td><td>123.556</td><td class="ok">124.935</td><td>0.133</td><td>0.0110</td><td class="ok">≈0</td></tr>
+            <tr><td>10</td><td>200.717</td><td>200.717</td><td>200.717</td><td class="ok">200.717</td><td>0</td><td>0</td><td class="ok">0</td></tr>
+            <tr><td>11</td><td>314.160</td><td>293.151</td><td>311.319</td><td class="ok">314.160</td><td>0.0669</td><td>0.00904</td><td class="ok">≈0</td></tr>
+            <tr><td>12</td><td>480.468</td><td>385.585</td><td>464.759</td><td class="ok">480.468</td><td>0.197</td><td>0.0327</td><td class="ok">≈0</td></tr>
+            <tr><td>15</td><td>1530.785</td><td>662.886</td><td>1298.719</td><td class="ok">1530.785</td><td>0.567</td><td>0.152</td><td class="ok">≈0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <strong>ملاحظة:</strong>
+        إذا حسبت الجدول ببرنامج واحتفظت بعدد أكبر من الأرقام، ستظهر أخطاء الرتبة 2 قريبة من دقة الآلة (Machine precision).
+      </div>
+    </section>
+
+    <section class="card" id="exp2">
+      <h2>3) تجربة 2: قانون قدرة حيث الرتبة 1 تصبح دقيقة</h2>
+
+      <div class="math">
+        \[
+          g(x)=x^{3.5},\quad x>0,\qquad x_0=10.
+        \]
+      </div>
+      <p class="muted small" style="margin:0">
+        نقارن عند \(x\in\{8,9,10,11,12,15\}\).
+      </p>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">سبب الاختيار</div>
+        <div class="muted small">
+          لقوانين القدرة يكون \(D_{1}^{1}g=3.5\) ثابتًا، لذلك النموذج النسبي (الرتبة 1) يطابق القيمة الحقيقية (حتى التدوير).
+        </div>
+      </div>
+
+      <div class="tablewrap" aria-label="جدول التجربة 2">
+        <table>
+          <thead>
+            <tr>
+              <th>x</th>
+              <th>True</th>
+              <th>Rank 0</th>
+              <th>Rank 1</th>
+              <th>Rel.err R0</th>
+              <th>Rel.err R1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>8</td><td>1448.155</td><td>948.683</td><td class="ok">1448.155</td><td>0.345</td><td class="ok">≈0</td></tr>
+            <tr><td>9</td><td>2187.000</td><td>2055.480</td><td class="ok">2187.000</td><td>0.0601</td><td class="ok">≈0</td></tr>
+            <tr><td>10</td><td>3162.278</td><td>3162.278</td><td class="ok">3162.278</td><td>0</td><td class="ok">0</td></tr>
+            <tr><td>11</td><td>4414.428</td><td>4269.075</td><td class="ok">4414.428</td><td>0.0329</td><td class="ok">≈0</td></tr>
+            <tr><td>12</td><td>5985.968</td><td>5375.872</td><td class="ok">5985.968</td><td>0.1019</td><td class="ok">≈0</td></tr>
+            <tr><td>15</td><td>13071.319</td><td>8696.264</td><td class="ok">13071.319</td><td>0.335</td><td class="ok">≈0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="conclusion">
+      <h2>4) الخلاصة</h2>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">قاعدة عملية</div>
+        <div class="muted small">
+          إذا كان السلوك “قانون قدرة” ⟶ الرتبة 1 (المشتق النسبي \(D_{1}^{1}\)) غالبًا هي الإحداثيات الأنسب.<br>
+          إذا كان السلوك متعدد المقاييس مثل \(\exp((\ln x)^k)\) ⟶ الرتبة 2 (\(D_{2}^{1}\)) تصبح أكثر استقرارًا وقد تكون دقيقة لبعض النماذج.
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>التالي:</strong>
+        <a href="./equations.html">المعادلات الهرمية</a> ·
+        <a href="./integrals.html">التكامل الهرمي</a> ·
+        <a href="./theory.html">النظرية</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · الجزء العددي (ترميز \(D_r^n\))
+    </footer>
   </div>
-
-</div>
 </body>
 </html>
