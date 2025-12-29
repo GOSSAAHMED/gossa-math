@@ -3,16 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hierarchical Integrals — Rank & Degree</title>
-  <meta name="description" content="Hierarchical integrals as inverses of hierarchical derivatives. All derivatives use explicit rank and degree notation D_r^n (e.g., D_1^1, D_2^1)." />
+  <title>Hierarchical Integrals | Hierarchical Calculus</title>
+  <meta name="description" content="Hierarchical integrals as inverses of hierarchical derivatives. Explicit rank & degree notation D_r^n, with practical formulas and verified examples for ranks 1 and 2." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- hreflang -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/integrals-en.html">
-
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/integrals-en.html">
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/integrals.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/integrals-en.html">
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/integrals-en.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/integrals-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/integrals.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/integrals-en.html" />
 
   <style>
     :root{
@@ -83,6 +82,7 @@
 
     h1{margin:0 0 8px 0; font-size:28px}
     h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
@@ -150,12 +150,13 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
   "headline": "Hierarchical Integrals | Hierarchical Calculus",
-  "alternativeHeadline": "Hierarchical Integrals and Methods in Hierarchical Calculus",
+  "alternativeHeadline": "Hierarchical Integrals as Inverses of Hierarchical Derivatives",
   "author": {
     "@type": "Person",
     "name": "Ahmed Gossa",
@@ -169,7 +170,7 @@
     "Hierarchical Derivatives",
     "Differential Equations"
   ],
-  "abstract": "A reference page presenting hierarchical integrals, their definitions, rules, and examples within Hierarchical Calculus.",
+  "abstract": "A reference page presenting hierarchical integrals, their definitions, inverse relations, and verified examples within Hierarchical Calculus.",
   "inLanguage": "en",
   "url": "https://gossaahmed.github.io/gossa-math/integrals-en.html",
   "publisher": {
@@ -178,7 +179,6 @@
   }
 }
 </script>
-
 </head>
 
 <body>
@@ -194,10 +194,10 @@
 
       <nav aria-label="Navigation">
         <a href="./index-en.html">Home</a>
+        <a href="./theory-en.html">Theory</a>
         <a href="./series-en.html">Series</a>
-        <a href="./rules.html">Rules</a>
-        <a href="./integrals-en.html">Integrals</a>
-        <a href="./equations.html">Equations</a>
+        <a href="./rules-en.html">Rules</a>
+        <a href="./equations-en.html">Equations</a>
         <a href="./integrals.html">العربية</a>
       </nav>
     </div>
@@ -207,12 +207,12 @@
     <header class="hero">
       <h1>Hierarchical Integrals</h1>
       <p class="muted">
-        Hierarchical integrals are the natural inverses of hierarchical derivatives.
-        At rank 0 the accumulation is additive, at rank 1 it becomes relative (multiplicative),
-        and at rank 2 it becomes logarithmic (structurally exponential).
+        Hierarchical integrals are inverse operators for hierarchical derivatives (mainly degree \(1\)).
+        Rank 0 accumulates additively, rank 1 accumulates multiplicatively (relative scale),
+        and rank 2 accumulates in the \(\ln\!\ln\) space (structural / double-exponential form).
         <br>
         <b>Notation rule:</b> every derivative is written with explicit <b>rank and degree</b>:
-        \(\;D_r^n\). Here, most formulas are for <b>degree 1</b>, e.g. \(\;D_n^{1}\).
+        \(\;D_r^n\). Here we focus on \(\;D_n^{1}\).
       </p>
       <p class="muted small" style="margin:10px 0 0 0">
         Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a><br>
@@ -223,8 +223,8 @@
     <section class="card">
       <h2>1) Definition: the hierarchical integral \(\mathcal{I}_n\)</h2>
       <p class="muted small" style="margin:0">
-        The rank-\(n\) hierarchical integral operator \(\mathcal{I}_n\) is the inverse of the
-        hierarchical derivative at <b>degree 1</b>, i.e. \(D_n^{1}\), on a suitable domain (with a hierarchical integration constant).
+        The rank-\(n\) hierarchical integral \(\mathcal{I}_n\) is defined as an inverse of the
+        rank-\(n\), degree-1 derivative \(D_n^{1}\) on a suitable domain:
       </p>
       <div class="math">
         \[
@@ -233,17 +233,20 @@
           }
         \]
       </div>
+
       <div class="note">
-        <strong>Note:</strong>
-        Just as the integration constant is additive at rank 0, it becomes multiplicative at rank 1,
-        and structurally exponential at rank 2, etc.
+        <strong>Constant rule (important):</strong>
+        “Constants” live in the natural accumulation space.
+        Rank 0: \(F \mapsto F + C\).
+        Rank 1: \(\ln F \mapsto \ln F + C\) (equivalently \(F \mapsto C_\times\,F\)).
+        Rank 2: \(\ln\!\ln F \mapsto \ln\!\ln F + C\) (equivalently a structural constant inside the double-exponential form).
       </div>
     </section>
 
     <section class="card">
-      <h2>2) Fundamental theorem (hierarchical)</h2>
+      <h2>2) Fundamental inverse relations</h2>
 
-      <h2 style="margin-top:14px">2.1) First inverse relation</h2>
+      <h3>2.1) First inverse relation</h3>
       <div class="math">
         \[
           \boxed{
@@ -252,55 +255,50 @@
         \]
       </div>
 
-      <h2 style="margin-top:14px">2.2) Second inverse relation (up to a hierarchical constant)</h2>
+      <h3>2.2) Second inverse relation (up to a hierarchical constant)</h3>
       <p class="muted small" style="margin:0">
-        If \(F\) satisfies \(D_n^{1}F=f\), then:
+        If \(F\) satisfies \(D_n^{1}F=f\), then \(\mathcal{I}_n[f]\) reproduces \(F\) up to a rank-\(n\) constant:
       </p>
-      <div class="math">
-        \[
-          \boxed{
-            \mathcal{I}_n\!\left[D_{n}^{1}F\right]=F\;\odot\;C_n
-          }
-        \]
-      </div>
 
       <table>
         <thead>
           <tr>
             <th>Rank</th>
-            <th>Constant form</th>
-            <th>Operation \(\odot\)</th>
+            <th>“Constant” lives in</th>
+            <th>Equivalent form for \(F\)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>0</td>
-            <td>\(C\) (additive)</td>
-            <td>\(+\)</td>
+            <td>\(F\)</td>
+            <td>\(F + C\)</td>
           </tr>
           <tr>
             <td>1</td>
-            <td>\(C_\times>0\) (multiplicative)</td>
-            <td>\(\times\)</td>
+            <td>\(\ln F\)</td>
+            <td>\(F\cdot C_\times\) where \(C_\times=e^C>0\)</td>
           </tr>
           <tr>
             <td>2</td>
-            <td>\(C_{\exp}>1\) (structural/exponential)</td>
-            <td>exponential composition</td>
+            <td>\(\ln(\ln F)\)</td>
+            <td>\(\exp(\exp(\,\cdot\, + C))\) (structural constant)</td>
           </tr>
         </tbody>
       </table>
 
       <div class="note">
         <strong>Idea:</strong>
-        At each rank, the “constant” follows the accumulation structure: sum → product → exponent → ...
+        Sum → Product → Structural (double exponential) → higher ranks.
       </div>
     </section>
 
     <section class="card">
-      <h2>3) Relative integral \(\mathcal{I}_1\) (rank 1) — 5 examples</h2>
+      <h2>3) Relative integral \(\mathcal{I}_1\) (rank 1) — verified examples</h2>
 
-      <p class="muted small" style="margin:0">Practical formula:</p>
+      <p class="muted small" style="margin:0">
+        Since \(D_{1}^{1}y=\dfrac{d\ln y}{d\ln x}\), solving \(D_1^{1}y=f(x)\) gives:
+      </p>
       <div class="math">
         \[
           \boxed{
@@ -312,50 +310,55 @@
       <table>
         <thead>
           <tr>
-            <th>Function \(f(x)\)</th>
-            <th>Relative integral \(\mathcal{I}_1[f](x)\)</th>
-            <th>Quick check (explicit \(D_r^n\))</th>
+            <th>\(f(x)\)</th>
+            <th>\(\mathcal{I}_1[f](x)\)</th>
+            <th>Quick check</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>\(f(x)=1\)</td>
-            <td>\(\mathcal{I}_1[1]=x\)</td>
+            <td>\(1\)</td>
+            <td>\(x\)</td>
             <td>\(D_{1}^{1}(x)=1\)</td>
           </tr>
           <tr>
-            <td>\(f(x)=a\) (constant)</td>
-            <td>\(\mathcal{I}_1[a]=x^a\)</td>
+            <td>\(a\) (constant)</td>
+            <td>\(x^a\)</td>
             <td>\(D_{1}^{1}(x^a)=a\)</td>
           </tr>
           <tr>
-            <td>\(f(x)=\ln x\)</td>
-            <td>\(\mathcal{I}_1[\ln x]=e^{(\ln x)^2/2}\)</td>
+            <td>\(\ln x\)</td>
+            <td>\(\exp\!\big((\ln x)^2/2\big)\)</td>
             <td>\(D_{1}^{1}(\cdot)=\ln x\)</td>
           </tr>
           <tr>
-            <td>\(f(x)=x^k\)</td>
-            <td>\(\mathcal{I}_1[x^k]=e^{x^k/k}\ (k\neq0)\)</td>
+            <td>\(x^k\)</td>
+            <td>\(\exp\!\big(x^k/k\big)\ \ (k\neq0)\)</td>
             <td>\(D_{1}^{1}(\cdot)=x^k\)</td>
           </tr>
           <tr>
-            <td>\(f(x)=\dfrac{1}{\ln x}\)</td>
-            <td>\(\mathcal{I}_1\!\left[\frac{1}{\ln x}\right]=\ln x\)</td>
-            <td>\(D_{1}^{1}(\ln x)=\frac{1}{\ln x}\)</td>
+            <td>\(\dfrac{1}{\ln x}\)</td>
+            <td>\(\ln x\)</td>
+            <td>\(D_{1}^{1}(\ln x)=\dfrac{1}{\ln x}\)</td>
           </tr>
         </tbody>
       </table>
 
       <p class="muted small" style="margin:10px 0 0 0">
-        These examples show how rank-1 integration naturally produces controlled relative growth (products and exponentials appear naturally).
+        Rank-1 integration naturally produces controlled relative growth: products and exponentials appear automatically.
       </p>
     </section>
 
     <section class="card">
-      <h2>4) Logarithmic integral \(\mathcal{I}_2\) (rank 2) — 5 examples</h2>
+      <h2>4) Logarithmic integral \(\mathcal{I}_2\) (rank 2) — verified examples</h2>
+
+      <div class="note">
+        <strong>Domain:</strong> rank 2 uses \(\ln(\ln x)\), so we assume \(x>1\) (hence \(\ln x>0\)).
+        Also, outputs satisfy \(y>1\) so \(\ln(\ln y)\) is defined.
+      </div>
 
       <p class="muted small" style="margin:0">
-        On the domain \(x>1\) (so that \(\ln x>0\)), we use:
+        Since \(D_{2}^{1}y=\dfrac{d\ln(\ln y)}{d\ln(\ln x)}\), solving \(D_2^{1}y=f(x)\) gives:
       </p>
 
       <div class="math">
@@ -369,50 +372,51 @@
       <table>
         <thead>
           <tr>
-            <th>Function \(f(x)\)</th>
-            <th>Logarithmic integral \(\mathcal{I}_2[f](x)\)</th>
-            <th>Quick check (explicit \(D_r^n\))</th>
+            <th>\(f(x)\)</th>
+            <th>\(\mathcal{I}_2[f](x)\)</th>
+            <th>Quick check</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>\(f(x)=1\)</td>
-            <td>\(\mathcal{I}_2[1]=x\)</td>
+            <td>\(1\)</td>
+            <td>\(x\)</td>
             <td>\(D_{2}^{1}(x)=1\)</td>
           </tr>
           <tr>
-            <td>\(f(x)=a\) (constant)</td>
-            <td>\(\mathcal{I}_2[a]=e^{(\ln x)^a}\)</td>
-            <td>\(D_{2}^{1}(\cdot)=a\)</td>
+            <td>\(a\) (constant)</td>
+            <td>\(\exp\!\big(C(\ln x)^a\big)\)</td>
+            <td>\(D_{2}^{1}(\cdot)=a\) (for suitable \(C>0\))</td>
           </tr>
           <tr>
-            <td>\(f(x)=\ln\ln x\)</td>
-            <td>\(\mathcal{I}_2[\ln\ln x]=\exp(\exp((\ln\ln x)^2/2))\)</td>
+            <td>\(\ln\ln x\)</td>
+            <td>\(\exp\!\big(\exp((\ln\ln x)^2/2)\big)\)</td>
             <td>\(D_{2}^{1}(\cdot)=\ln\ln x\)</td>
           </tr>
           <tr>
-            <td>\(f(x)=\ln x\)</td>
-            <td>\(\mathcal{I}_2[\ln x]=e^{x}\)</td>
+            <td>\(\ln x\)</td>
+            <td>\(\exp(x)\)</td>
             <td>\(D_{2}^{1}(e^x)=\ln x\)</td>
           </tr>
           <tr>
-            <td>\(f(x)=(\ln\ln x)^n\)</td>
-            <td>\(\mathcal{I}_2[(\ln\ln x)^n]=\exp(\exp((\ln\ln x)^{n+1}/(n+1)))\)</td>
+            <td>\((\ln\ln x)^n\)</td>
+            <td>\(\exp\!\Big(\exp\big((\ln\ln x)^{n+1}/(n+1)\big)\Big)\)</td>
             <td>\(D_{2}^{1}(\cdot)=(\ln\ln x)^n\)</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="muted small" style="margin:10px 0 0 0">
-        Rank-2 integration builds a “structural accumulation”: the double exponential appears naturally because the measuring scale is \(\ln\ln x\).
-      </p>
+      <div class="note">
+        <strong>Remark:</strong>
+        The row \(f(x)=a\) is written with a free constant \(C\) to reflect the rank-2 integration constant naturally living in \(\ln\!\ln\) space.
+      </div>
     </section>
 
     <section class="card">
       <h2>5) Citation</h2>
       <div class="math">
         \[
-          \texttt{GOSSA AHMED. Hierarchical Calculus — Hierarchical Integrals (Fundamental Theorem + Examples). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
+          \texttt{GOSSA AHMED. Hierarchical Calculus — Hierarchical Integrals. Official Website. Zenodo DOI: 10.5281/zenodo.17917302 (2025).}
         \]
       </div>
     </section>
@@ -423,4 +427,3 @@
   </div>
 </body>
 </html>
->
