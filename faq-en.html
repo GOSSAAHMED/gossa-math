@@ -7,13 +7,19 @@
   <meta name="description" content="Hierarchical Calculus FAQ. Concepts, ranks and degrees of derivatives (D_r^n), domains, limitations, and motivations." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- hreflang -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/faq-en.html">
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/faq-en.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/faq-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/faq.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/faq-en.html" />
 
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/faq-en.html" />
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/faq.html" />
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/faq-en.html" />
-
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="FAQ — Hierarchical Calculus" />
+  <meta property="og:description" content="Concepts, derivative ranks & degrees (D_r^n), domains, limitations, and motivations." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/faq-en.html" />
+  <meta name="twitter:card" content="summary" />
 
   <style>
     :root{
@@ -151,6 +157,48 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Hierarchical Calculus a replacement for classical calculus?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Classical calculus (rank D0) is a special case. Hierarchical Calculus extends it by adding higher ranks that model relative and logarithmic scaling within one rank–degree framework."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the intuitive difference between D0^1 and D1^1?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "D0^1 measures additive change (df/dx), while D1^1 measures relative change: D1^1 f = d ln f / d ln x = (x/f) df/dx."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the definition of higher ranks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The rank-n, degree-1 derivative is defined by D_n^1 f(x) = d ln^(n)(f(x)) / d ln^(n)(x), with appropriate domain constraints."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the domain constraints for higher ranks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rank D1 typically requires x>0 and f>0. Rank D2 often requires x>1 and f>1 so that ln ln x and ln ln f are defined."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -164,13 +212,15 @@
         </div>
       </div>
 
+      <!-- FIXED: use EN pages in EN navbar -->
       <nav aria-label="Navigation">
         <a href="./index-en.html">Home</a>
-        <a href="./theory.html">Theory</a>
-        <a href="./equations.html">Equations</a>
-        <a href="./numerics.html">Numerics</a>
-        <a href="./glossary.html">Glossary</a>
-        <a href="./references.html">References</a>
+        <a href="./theory-en.html">Theory</a>
+        <a href="./equations-en.html">Equations</a>
+        <a href="./equations-solved-en.html">Solved Equations</a>
+        <a href="./numerics-en.html">Numerics</a>
+        <a href="./glossary-en.html">Glossary</a>
+        <a href="./references-en.html">References</a>
         <a href="./faq.html">العربية</a>
       </nav>
     </div>
@@ -284,8 +334,8 @@
         <li>
           <b>What are the domain constraints for higher ranks?</b><br>
           <span class="muted small">
-            Rank \(D_1\) requires \(x>0\) and \(f>0\).
-            Rank \(D_2\) additionally requires \(x>1\) and \(f>1\)
+            Rank \(D_1\) typically requires \(x>0\) and \(f>0\).
+            Rank \(D_2\) often requires \(x>1\) and \(f>1\)
             so that \(\ln(\ln x)\) and \(\ln(\ln f)\) are defined.
           </span>
         </li>
@@ -311,8 +361,12 @@
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · FAQ (explicit \(D_r^n\))
+      © <span id="y"></span> — GOSSA AHMED · FAQ (explicit \(D_r^n\))
     </footer>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
