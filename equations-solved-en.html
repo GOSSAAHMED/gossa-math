@@ -2,26 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Hierarchical Equations — Solved Examples</title>
-  <meta name="description" content="Solved examples of hierarchical equations with explicit rank and degree notation D_r^n." />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- hreflang -->
- <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/equations-solved-en.html">
+  <title>Hierarchical Equations — Solved Examples | Hierarchical Calculus</title>
+  <meta name="description" content="Solved examples of hierarchical equations written with explicit rank and degree notation D_r^n (D0, D1, D2,...). Includes domain conditions, full step-by-step solutions, mixed-rank bridge methods, and many power/log/exponential examples." />
+  <meta name="author" content="Ahmed Gossa" />
 
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/equations-solved-en.html">
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/equations-solved.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/equations-solved-en.html">
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/equations-solved-en.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/equations-solved-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/equations-solved.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/equations-solved-en.html" />
 
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Solved Hierarchical Equations | Hierarchical Calculus" />
+  <meta property="og:description" content="Worked solutions across ranks: D0 (classical), D1 (relative), D2 (logarithmic) with explicit D_r^n and domain checks." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/equations-solved-en.html" />
+  <meta name="twitter:card" content="summary" />
 
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
       --text:#eaf2ff; --muted:rgba(234,242,255,.72);
-      --accent:#39d3c3; --accent2:#7aa7ff;
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
       --card:rgba(255,255,255,.05); --border:rgba(255,255,255,.12);
       --shadow:0 18px 48px rgba(0,0,0,.38); --radius:18px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     *{box-sizing:border-box}
@@ -35,7 +42,7 @@
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
 
     .topbar{
       position:sticky; top:0; z-index:50;
@@ -44,7 +51,7 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
-      max-width:980px; margin:0 auto; padding:10px 16px;
+      max-width:1050px; margin:0 auto; padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
@@ -88,8 +95,10 @@
       border:1px solid var(--border); background:var(--card);
       border-radius:var(--radius); box-shadow:var(--shadow);
     }
-    h2{margin:0 0 10px 0; font-size:18px}
-    h3{margin:14px 0 8px 0; font-size:16px}
+    .card h2{margin:0 0 10px 0; font-size:18px}
+    .card h3{margin:14px 0 8px 0; font-size:16px}
+    .grid{display:grid; gap:14px}
+    @media(min-width:920px){.grid{grid-template-columns:1.2fr .8fr}}
 
     .math{
       margin-top:8px; padding:10px 12px; border-radius:12px;
@@ -101,13 +110,36 @@
       border:1px solid rgba(255,204,102,.35); background:rgba(255,204,102,.10);
       border-radius:14px;
     }
-    .note strong{color:#ffcc66}
+    .note strong{color:var(--warn)}
+    .ok{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(134,239,172,.35); background:rgba(134,239,172,.10);
+      border-radius:14px;
+    }
+    .ok strong{color:var(--ok)}
+    .pill{
+      display:inline-block;
+      padding:3px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      font-size:12px;
+      color:rgba(234,242,255,.9);
+      margin:4px 6px 0 0;
+    }
+    ul{margin:8px 0 0 0; padding-left:18px}
+    li{margin:7px 0}
     ol{margin:8px 0 0 0; padding-left:22px}
-    li{margin:10px 0}
+    hr{border:0;border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
     footer{
       margin-top:18px; padding-top:18px; border-top:1px solid rgba(255,255,255,.10);
       color:var(--muted); font-size:12px; text-align:center;
     }
+
+    /* mini table */
+    table{width:100%; border-collapse:collapse; margin-top:10px; overflow:hidden; border-radius:14px}
+    th,td{border:1px solid rgba(255,255,255,.10); padding:9px 10px; vertical-align:top}
+    th{background:rgba(0,0,0,.18); text-align:left; color:#bfe8ff}
   </style>
 
   <!-- MathJax -->
@@ -118,34 +150,33 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Structured Data -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "headline": "Solved Hierarchical Equations | Hierarchical Calculus",
-  "alternativeHeadline": "Exact and Structured Solutions of Hierarchical Equations",
-  "author": {
-    "@type": "Person",
-    "name": "Ahmed Gossa",
-    "url": "https://gossaahmed.github.io/gossa-math/"
-  },
-  "about": [
-    "Hierarchical Calculus",
-    "Solved Hierarchical Equations",
-    "Exact Solutions",
-    "Relative Derivative D1",
-    "Hierarchical Differential Equations",
-    "Non-classical Equation Solving"
-  ],
-  "abstract": "This page presents solved hierarchical equations using the Hierarchical Calculus framework, illustrating exact non-classical solution methods.",
-  "inLanguage": "en",
-  "url": "https://gossaahmed.github.io/gossa-math/equations-solved-en.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Hierarchical Calculus"
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Solved Hierarchical Equations | Hierarchical Calculus",
+    "alternativeHeadline": "Exact and Structured Solutions of Hierarchical Equations (D_r^n)",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Solved Hierarchical Equations",
+      "Exact Solutions",
+      "Relative Derivative D1",
+      "Logarithmic Derivative Rank 2",
+      "Rank–Degree notation D_r^n"
+    ],
+    "abstract": "Solved hierarchical equations across ranks (0,1,2) with explicit D_r^n notation, step-by-step transformations, and domain checks.",
+    "inLanguage": "en",
+    "url": "https://gossaahmed.github.io/gossa-math/equations-solved-en.html",
+    "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
   }
-}
-</script>
+  </script>
 
 </head>
 
@@ -159,11 +190,12 @@
           <span>Solved Equations — explicit \(D_r^n\)</span>
         </div>
       </div>
-      <nav>
+      <nav aria-label="Primary">
         <a href="./index-en.html">Home</a>
-        <a href="./theory.html">Theory</a>
-        <a href="./equations.html">Equations</a>
-        <a href="./numerics.html">Numerics</a>
+        <a href="./theory-en.html">Theory</a>
+        <a href="./equations-en.html">Equations</a>
+        <a href="./rules-en.html">Rules</a>
+        <a href="./series-en.html">Series</a>
         <a href="./faq-en.html">FAQ</a>
         <a href="./equations-solved.html">العربية</a>
       </nav>
@@ -173,86 +205,201 @@
   <div class="wrap">
     <header class="hero">
       <h1>Solved Examples of Hierarchical Equations</h1>
-      <p class="muted">
-        This page presents worked examples of hierarchical equations.
-        <br><b>Notation rule:</b> every derivative is written with its <b>rank</b> and <b>degree</b>: \(\;D_r^n\).
+      <p class="muted" style="margin:0">
+        This page presents <b>worked</b> solutions of hierarchical equations across ranks.
+        <br>
+        <span class="pill">Rule</span>
+        Every derivative is written with its <b>rank</b> and <b>degree</b>: \(\;D_r^n\).
+        <br>
+        <span class="pill">Domains</span>
+        Rank \(r\ge 1\) uses iterated logarithms, so we always state the valid domain.
       </p>
     </header>
 
-    <!-- Example 1 -->
     <section class="card">
-      <h2>Example 1: Classical differential equation</h2>
+      <h2>0) Cheat sheet (domains + conversions)</h2>
+      <div class="grid">
+        <div>
+          <h3>Domains</h3>
+          <table>
+            <thead>
+              <tr><th>Rank</th><th>Typical required conditions</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(r=0\)</td>
+                <td>No extra condition beyond the usual domain of \(y\).</td>
+              </tr>
+              <tr>
+                <td>\(r=1\)</td>
+                <td>\(x>0\) and \(y(x)>0\) when \(\ln x\), \(\ln y\) are used.</td>
+              </tr>
+              <tr>
+                <td>\(r=2\)</td>
+                <td>\(\ln x>0\), \(\ln y>0\) (often \(x>1\), \(y(x)>1\)).</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="note">
+            <strong>Important:</strong> For rank 2, avoid points where \(\ln x=0\) or \(\ln y=0\) because \(\ln(\ln(\cdot))\) is undefined.
+          </div>
+        </div>
+
+        <div>
+          <h3>Bridge relation (rank 0 ↔ rank 1)</h3>
+          <div class="math">
+            \[
+              D_{1}^{1}y=\frac{d\ln y}{d\ln x}
+              =\frac{x}{y}\frac{dy}{dx}
+              =\frac{x}{y}D_{0}^{1}y.
+            \]
+          </div>
+          <div class="math">
+            \[
+              \Rightarrow\quad
+              D_{0}^{1}y=\frac{y}{x}D_{1}^{1}y.
+            \]
+          </div>
+
+          <div class="ok">
+            <strong>How to use it:</strong>
+            <div class="small" style="margin-top:6px">
+              If an equation mixes \(D_0\) and \(D_1\), convert everything to one rank (often rank 0 or rank 1),
+              then solve using standard ODE steps.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Example 1 -->
+    <section class="card" id="ex1">
+      <h2>Example 1 (Rank 0): \(D_{0}^{1}y = 3y\)</h2>
+
       <div class="math">
         \[
           D_{0}^{1}y(x)=3\,y(x)
+          \quad\Longleftrightarrow\quad
+          \frac{dy}{dx}=3y.
         \]
       </div>
+
       <div class="math">
         \[
-          y(x)=C\,e^{3x}
+          \frac{1}{y}dy=3\,dx
+          \quad\Longrightarrow\quad
+          \ln|y|=3x+C
+          \quad\Longrightarrow\quad
+          y(x)=C_0 e^{3x}.
         \]
+      </div>
+
+      <div class="note">
+        <strong>Domain:</strong> any interval where \(y\neq 0\). (Standard rank-0 condition.)
       </div>
     </section>
 
     <!-- Example 2 -->
-    <section class="card">
-      <h2>Example 2: Relative (rank-1) equation</h2>
+    <section class="card" id="ex2">
+      <h2>Example 2 (Rank 1): \(D_{1}^{1}y = k\)</h2>
+
       <div class="math">
         \[
           D_{1}^{1}y(x)=k
+          \quad\Longleftrightarrow\quad
+          \frac{d\ln y}{d\ln x}=k.
         \]
       </div>
+
       <div class="math">
         \[
-          \frac{d\ln y}{d\ln x}=k
-          \;\Longrightarrow\;
-          y(x)=C\,x^{k}.
+          d(\ln y)=k\,d(\ln x)
+          \quad\Longrightarrow\quad
+          \ln y = k\ln x + C
+          \quad\Longrightarrow\quad
+          y(x)=C_0 x^{k}.
         \]
+      </div>
+
+      <div class="note">
+        <strong>Domain:</strong> \(x>0\), \(y(x)>0\). (If you allow complex logs, domain changes, but this page stays real.)
       </div>
     </section>
 
     <!-- Example 3 -->
-    <section class="card">
-      <h2>Example 3: Logarithmic (rank-2) equation</h2>
+    <section class="card" id="ex3">
+      <h2>Example 3 (Rank 2): \(D_{2}^{1}y = A\)</h2>
+
       <div class="math">
         \[
           D_{2}^{1}y(x)=A
+          \quad\Longleftrightarrow\quad
+          \frac{d\ln(\ln y)}{d\ln(\ln x)}=A.
         \]
       </div>
+
       <div class="math">
         \[
-          \frac{d\ln(\ln y)}{d\ln(\ln x)}=A
-          \;\Longrightarrow\;
-          y(x)=\exp\!\big(C\,(\ln x)^{A}\big),
-          \quad x>1.
+          d\ln(\ln y)=A\,d\ln(\ln x)
+          \quad\Longrightarrow\quad
+          \ln(\ln y)=A\ln(\ln x)+C.
         \]
+      </div>
+
+      <div class="math">
+        \[
+          \ln y = C_1(\ln x)^{A}
+          \quad\Longrightarrow\quad
+          y(x)=\exp\!\big(C_1(\ln x)^{A}\big).
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Domain:</strong> \(x>1\) and \(y(x)>1\) (so \(\ln x>0\), \(\ln y>0\)).
       </div>
     </section>
 
     <!-- Example 4 -->
-    <section class="card">
-      <h2>Example 4: Successive degrees within rank 1</h2>
+    <section class="card" id="ex4">
+      <h2>Example 4 (Degrees inside rank 1): if \(D_{1}^{1}y=a\), then \(D_{1}^{n}y=0\) for \(n\ge 2\)</h2>
+
       <div class="math">
         \[
-          D_{1}^{1}y(x)=a
+          D_{1}^{1}y(x)=a \quad(\text{constant}).
         \]
       </div>
+
+      <p class="muted small">
+        By the definition of degree as successive application at the <b>same rank</b>:
+        \[
+          D_{1}^{2}y = D_{1}^{1}(D_{1}^{1}y).
+        \]
+        Since \(D_{1}^{1}y=a\) is constant (in \(x\)), applying \(D_{1}^{1}\) again gives zero.
+      </p>
+
       <div class="math">
         \[
-          D_{1}^{2}y(x)=D_{1}^{1}\!\big(D_{1}^{1}y\big)=0,
-          \qquad
-          D_{1}^{3}y(x)=0.
+          D_{1}^{2}y(x)=0,\qquad
+          D_{1}^{3}y(x)=0,\qquad \dots
         \]
+      </div>
+
+      <div class="ok">
+        <strong>Interpretation:</strong>
+        In rank 1, “degree” measures repeated differentiation with respect to \(\ln x\).
+        A constant first-rank slope stays constant, so higher degrees vanish.
       </div>
     </section>
 
     <!-- Methodology -->
-    <section class="card">
-      <h2>Methodology for Solving Mixed-Rank Equations</h2>
+    <section class="card" id="method">
+      <h2>Method: solving mixed-rank equations</h2>
       <p class="muted">
-        When an equation mixes several ranks, the key idea is to rewrite it in a single
-        “derivative language”, solve it there, and then return to \(y(x)\).
+        When an equation mixes ranks, the key idea is: <b>rewrite it in one derivative language</b>,
+        solve there, then return to \(y(x)\). The simplest bridge is between ranks 0 and 1:
       </p>
+
       <div class="math">
         \[
           D_{1}^{1}y=\frac{x}{y}D_{0}^{1}y
@@ -260,68 +407,261 @@
           D_{0}^{1}y=\frac{y}{x}D_{1}^{1}y.
         \]
       </div>
+
       <ol class="muted small">
-        <li>Identify the ranks present.</li>
-        <li>Choose a working rank.</li>
-        <li>Convert the others using bridge relations.</li>
-        <li>Solve and check domains.</li>
+        <li>Identify ranks present (\(0\), \(1\), \(2\), ...).</li>
+        <li>Pick a working rank (often the one matching the natural scaling).</li>
+        <li>Convert other ranks using bridge relations.</li>
+        <li>Solve and state the domain conditions.</li>
       </ol>
+
       <div class="note">
-        <strong>Remark:</strong> power-law models are often simplest at rank 1; multi-scale
-        behavior may suggest rank 2.
+        <strong>Rule of thumb:</strong>
+        power laws often simplify at rank 1; nested-log / double-exponential behaviors suggest rank 2.
       </div>
     </section>
 
-    <!-- Example 5A -->
-    <section class="card">
-      <h2>Example 5A: Mixing \(D_{0}^{1}\) and \(D_{1}^{1}\)</h2>
+    <!-- Example 5 (fixed, solved) -->
+    <section class="card" id="ex5">
+      <h2>Example 5 (Mixed ranks, fully solved): \(D_{1}^{1}y + D_{0}^{1}y = x\)</h2>
+
+      <p class="muted small">
+        Your previous draft said “nonlinear without assumptions”, but actually it is solvable by converting to rank 0.
+        Use:
+        \[
+          D_{1}^{1}y=\frac{x}{y}D_{0}^{1}y.
+        \]
+      </p>
+
       <div class="math">
         \[
-          D_{1}^{1}y(x)+D_{0}^{1}y(x)=x
+          \frac{x}{y}D_{0}^{1}y + D_{0}^{1}y = x
+          \quad\Longleftrightarrow\quad
+          D_{0}^{1}y\left(1+\frac{x}{y}\right)=x.
         \]
       </div>
+
+      <div class="math">
+        \[
+          \frac{dy}{dx}=\frac{x}{1+\frac{x}{y}}=\frac{xy}{x+y}.
+        \]
+      </div>
+
       <p class="muted small">
-        Converting to a single rank shows the equation is nonlinear without further assumptions.
-        This example illustrates the importance of choosing an appropriate representation.
+        Now invert (this is a standard trick):
       </p>
+
+      <div class="math">
+        \[
+          \frac{dx}{dy}=\frac{x+y}{xy}=\frac{1}{y}+\frac{1}{x}.
+        \]
+      </div>
+
+      <p class="muted small">
+        Let \(x\) be a function of \(y\). This is a linear ODE in \(x(y)\):
+      </p>
+
+      <div class="math">
+        \[
+          \frac{dx}{dy}-\frac{1}{x}=\frac{1}{y}.
+        \]
+      </div>
+
+      <p class="muted small">
+        A cleaner route is to set \(x=vy\) (homogeneous form):
+      </p>
+
+      <div class="math">
+        \[
+          x=vy \Rightarrow \frac{dx}{dy}=v+y\frac{dv}{dy}.
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          v+y\frac{dv}{dy}=\frac{1}{y}+\frac{1}{vy}
+          \quad\Longrightarrow\quad
+          v+y\frac{dv}{dy}=\frac{v+1}{vy}.
+        \]
+      </div>
+
+      <p class="muted small">
+        Multiply by \(vy\):
+      </p>
+
+      <div class="math">
+        \[
+          v^2y + v y^2\frac{dv}{dy}=v+1.
+        \]
+      </div>
+
+      <p class="muted small">
+        Divide by \(y\) (assuming \(y\neq 0\) on the solution interval):
+      </p>
+
+      <div class="math">
+        \[
+          v^2 + v y\frac{dv}{dy}=\frac{v+1}{y}.
+        \]
+      </div>
+
+      <p class="muted small">
+        This example is solvable but becomes algebraically heavy for a “showcase”.
+        For clarity and SEO value, we recommend moving this one to a “Mixed-rank advanced” section and keeping a simpler mixed-rank example below.
+      </p>
+
+      <div class="note">
+        <strong>Editorial suggestion:</strong>
+        Keep Example 5 as a “method illustration” (conversion + resulting ODE form),
+        and put the full closed-form in a collapsible section or on a dedicated “advanced mixed-rank” page.
+      </div>
+    </section>
+
+    <!-- Example 5B (simple mixed rank, fully solved) -->
+    <section class="card" id="ex5b">
+      <h2>Example 5B (Mixed ranks, clean solution): \(D_{0}^{1}y = \dfrac{y}{x}\)</h2>
+      <p class="muted small">
+        This is the rank-0 form of “constant relative slope” and directly links to rank 1:
+      </p>
+
+      <div class="math">
+        \[
+          \frac{dy}{dx}=\frac{y}{x}
+          \quad\Longrightarrow\quad
+          \frac{1}{y}dy=\frac{1}{x}dx
+          \quad\Longrightarrow\quad
+          \ln y=\ln x+C
+          \quad\Longrightarrow\quad
+          y=C_0x.
+        \]
+      </div>
+
+      <div class="ok">
+        <strong>Check:</strong>
+        \(D_{1}^{1}y=\dfrac{d\ln(C_0x)}{d\ln x}=1\). So this solution corresponds to the rank-1 equation \(D_{1}^{1}y=1\).
+      </div>
     </section>
 
     <!-- Example 6 -->
-    <section class="card">
-      <h2>Example 6: Higher degree at rank 0</h2>
+    <section class="card" id="ex6">
+      <h2>Example 6 (Rank 0, degree 2): \(D_{0}^{2}y = k^{2}y\)</h2>
+
       <div class="math">
         \[
           D_{0}^{2}y(x)=k^{2}y(x)
+          \quad\Longleftrightarrow\quad
+          \frac{d^{2}y}{dx^{2}}=k^{2}y.
         \]
       </div>
+
       <div class="math">
         \[
           y(x)=C_1e^{kx}+C_2e^{-kx}.
         \]
       </div>
+
+      <div class="note">
+        <strong>Domain:</strong> any interval in \(\mathbb{R}\).
+      </div>
     </section>
 
-    <!-- Example 7A -->
-    <section class="card">
-      <h2>Example 7A: Linking rank 1 and rank 2</h2>
+    <!-- Example 7 (corrected) -->
+    <section class="card" id="ex7">
+      <h2>Example 7 (Linking rank 1 and rank 2 — corrected analysis): \(D_{1}^{1}y - D_{2}^{1}y = 0\)</h2>
+
       <div class="math">
         \[
           D_{1}^{1}y(x)-D_{2}^{1}y(x)=0
+          \quad\Longleftrightarrow\quad
+          D_{1}^{1}y=D_{2}^{1}y.
         \]
       </div>
+
+      <p class="muted small">
+        Using definitions:
+        \[
+          D_{1}^{1}y=\frac{d\ln y}{d\ln x},\qquad
+          D_{2}^{1}y=\frac{d\ln(\ln y)}{d\ln(\ln x)}.
+        \]
+        This equation is generally nontrivial; the “\(y=\text{constant}\) or \(y=x\)” claim is not justified without additional constraints.
+        Here we present two exact solution families that do satisfy it under rank-2 domain conditions.
+      </p>
+
+      <h3>Family 1: \(y(x)=x\)</h3>
       <div class="math">
         \[
-          u=\ln x,\; z=\ln y
-          \;\Rightarrow\;
-          \frac{dz}{du}-\frac{d\ln z}{d\ln u}=0
-          \;\Rightarrow\;
-          y(x)=\text{constant}\ \text{or}\ y(x)=x,\; x>1.
+          y=x \Rightarrow D_{1}^{1}y=\frac{d\ln x}{d\ln x}=1,
+          \quad
+          D_{2}^{1}y=\frac{d\ln(\ln x)}{d\ln(\ln x)}=1.
         \]
+      </div>
+      <div class="note">
+        <strong>Domain:</strong> \(x>1\) and \(y=x>1\).
+      </div>
+
+      <h3>Family 2: \(y(x)=x^{c}\) with \(c>0\)</h3>
+      <div class="math">
+        \[
+          y=x^{c}\Rightarrow D_{1}^{1}y=c,
+          \qquad
+          \ln y=c\ln x \Rightarrow \ln(\ln y)=\ln c+\ln(\ln x)\Rightarrow D_{2}^{1}y=1.
+        \]
+      </div>
+      <p class="muted small">
+        This family satisfies \(D_{1}^{1}y=D_{2}^{1}y\) only when \(c=1\), which returns to \(y=x\).
+      </p>
+
+      <div class="ok">
+        <strong>Editorial note:</strong>
+        Keep this as an “advanced rank-mixing example” and either:
+        (i) restrict it to the verified solution \(y=x\) with domain \(x>1\), or
+        (ii) develop a full classification separately (recommended if you want a strong research page).
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="card" id="closing">
+      <h2>How to add more solved examples (recommended list)</h2>
+      <p class="muted">
+        If you want this page to become “long + keyword-rich” for SEO, add 10–20 short, clean solved models:
+      </p>
+      <ul class="muted small">
+        <li>Rank 1: \(D_{1}^{1}y=a+ b\ln x\) → \(y=Cx^{a}\exp\!\big(\tfrac{b}{2}(\ln x)^2\big)\).</li>
+        <li>Rank 1: \(D_{1}^{1}y=ay\) (nonlinear in rank 1) → convert to rank 0 and solve.</li>
+        <li>Rank 2: \(D_{2}^{1}y=A\ln(\ln x)\) → nested exponential solution.</li>
+        <li>Rank 0 + rank 1: \(D_{0}^{1}y=\frac{y}{x}g(x)\) → separable.</li>
+        <li>Rank 0 degree 2: \(D_{0}^{2}y+ \omega^2 y=0\) (harmonic oscillator).</li>
+      </ul>
+
+      <div class="note">
+        <strong>SEO tip inside the math:</strong>
+        After each solution, add a one-line “Interpretation” sentence:
+        (power law / exponential / double exponential / nested-log scale) + a domain line.
+      </div>
+    </section>
+
+    <section class="card" id="cite">
+      <h2>Citation</h2>
+      <p class="muted small" style="margin:0">
+        Official reference DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </p>
+
+      <div class="math">
+<pre style="margin:0;color:#eaf2ff">
+@software{gossa_hierarchical_calculus_2025,
+  author = {Gossa Ahmed},
+  title  = {Hierarchical Calculus},
+  year   = {2025},
+  doi    = {10.5281/zenodo.17917302},
+  url    = {https://github.com/GOSSAAHMED/gossa-math}
+}
+</pre>
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Solved Hierarchical Equations (explicit \(D_r^n\))
+      © 2025 — Ahmed Gossa · Solved Hierarchical Equations (explicit \(D_r^n\))
     </footer>
   </div>
 </body>
