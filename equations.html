@@ -1,328 +1,510 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>المعادلات الهرمية — الحساب الهرمي</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<style>
-:root{
-  --bg1:#0b1220; --bg2:#0f1b2e;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(0,0,0,.22);
-  --b: rgba(255,255,255,.12);
-  --txt:#eaf2ff; --mut:#cfe3ff;
-  --accent:#61d2d2; --accent2:#7aa7ff;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, Arial, "Noto Sans Arabic";
-  background:
-    radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-    radial-gradient(900px 700px at 75% 15%, #7aa7ff22, transparent 60%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--txt);
-}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1050px;margin:auto;padding:34px 16px 60px}
-.top{
-  display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  padding:14px 16px;border-bottom:1px solid var(--b);
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
-}
-.brand{display:flex;gap:10px;align-items:center}
-.logo{
-  width:34px;height:34px;border-radius:10px;
-  background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
-              radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
-              rgba(255,255,255,.06);
-  border:1px solid var(--b);
-}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-nav a{
-  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
-  background:rgba(255,255,255,.03);
-}
-h1{margin:22px 0 8px;font-size:30px}
-.subtitle{color:var(--mut);margin:0 0 16px}
-.card{
-  background:var(--card);border:1px solid var(--b);border-radius:18px;
-  padding:18px;margin:14px 0;
-}
-.grid{display:grid;grid-template-columns:1fr;gap:14px}
-@media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}
-.kpi{
-  background:rgba(0,0,0,.20);border:1px solid var(--b);border-radius:16px;
-  padding:14px;
-}
-.kpi h3{margin:0 0 8px;font-size:16px;color:#bfe8ff}
-.small{font-size:14px;color:var(--mut);line-height:1.8}
-.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
-.tag{
-  display:inline-block;padding:3px 10px;border-radius:999px;
-  border:1px solid var(--b);background:rgba(255,255,255,.03);
-  font-size:12px;color:#bfe8ff
-}
-.math{
-  background:var(--card2);border:1px solid var(--b);border-radius:14px;
-  padding:12px;margin-top:10px;overflow:auto
-}
-.callout{
-  border-right:4px solid var(--accent);
-  padding:12px 14px;border-radius:14px;
-  background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
-}
-ul{margin:10px 0 0 0; padding:0 18px}
-li{margin:6px 0}
-.footer{
-  margin-top:22px;padding:14px 16px;border:1px solid var(--b);border-radius:16px;
-  background:rgba(255,255,255,.04)
-}
-</style>
+  <title>المعادلات الهرمية | الحساب الهرمي</title>
+  <meta name="description" content="صفحة مرجعية تشرح المعادلات الهرمية في الحساب الهرمي، مع تعريفات واضحة للرتب D0 (تفاضلي) وD1 (نسبي) وD2 (لوغاريتمي) وD3 (تتريشي)، وأمثلة معيارية، وشروط المجال، ومبدأ الصعود (Lifting)، وروابط للاستشهاد العلمي (DOI)." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/equations.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/equations.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:title" content="المعادلات الهرمية | الحساب الهرمي" />
+  <meta property="og:description" content="تعريف المعادلات الهرمية، أمثلة معيارية، شروط المجال، ومبدأ الصعود الهرمي (Lifting) مع الاستشهاد العلمي." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/equations.html" />
+  <meta name="twitter:card" content="summary" />
+
+  <style>
+    :root{
+      --bg1:#0b1220; --bg2:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(0,0,0,.22);
+      --b: rgba(255,255,255,.12);
+      --txt:#eaf2ff; --mut: rgba(234,242,255,.72);
+      --accent:#61d2d2; --accent2:#7aa7ff;
+      --warn:#ffcc66; --ok:#86efac;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius:18px;
+      --sans: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, "Noto Sans Arabic", "Noto Sans", sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(26,167,161,.20), transparent 55%),
+        radial-gradient(900px 700px at 75% 15%, rgba(122,167,255,.14), transparent 60%),
+        linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--txt);
+      line-height:1.95;
+      min-height:100vh;
+    }
+    a{color:var(--accent2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1050px;margin:auto;padding:34px 16px 70px}
+
+    .top{
+      display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+      padding:14px 16px;border-bottom:1px solid var(--b);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
+    }
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{
+      width:34px;height:34px;border-radius:10px;
+      background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
+                  radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
+                  rgba(255,255,255,.06);
+      border:1px solid var(--b);
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    nav a{
+      padding:8px 10px;border:1px solid var(--b);border-radius:999px;
+      background:rgba(255,255,255,.03);
+      white-space:nowrap;
+      font-size:13px;
+      color:var(--txt);
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+    h1{margin:22px 0 8px;font-size:30px}
+    h2{margin:0 0 10px;font-size:20px}
+    h3{margin:14px 0 8px;font-size:16px;color:#bfe8ff}
+    .subtitle{color:var(--mut);margin:0 0 16px}
+    .card{
+      background:var(--card);border:1px solid var(--b);border-radius:var(--radius);
+      padding:18px;margin:14px 0;
+      box-shadow: var(--shadow);
+    }
+    .grid{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}
+    .kpi{
+      background:rgba(0,0,0,.20);border:1px solid var(--b);border-radius:16px;
+      padding:14px; margin-top:10px;
+    }
+    .kpi h3{margin:0 0 8px;font-size:15px;color:#bfe8ff}
+    .small{font-size:14px;color:var(--mut);line-height:1.9}
+    .hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+    .tag{
+      display:inline-block;padding:3px 10px;border-radius:999px;
+      border:1px solid var(--b);background:rgba(255,255,255,.03);
+      font-size:12px;color:#bfe8ff;
+      margin:4px 6px 0 0;
+    }
+    .math{
+      background:var(--card2);border:1px solid var(--b);border-radius:14px;
+      padding:12px;margin-top:10px;overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .callout{
+      border-right:4px solid var(--accent);
+      padding:12px 14px;border-radius:14px;
+      background:rgba(97,210,210,.10);border:1px solid rgba(97,210,210,.25);
+      margin-top:14px;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+    .ok{
+      border:1px solid rgba(134,239,172,.35);
+      background: rgba(134,239,172,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .ok strong{color:var(--ok)}
+    ul{margin:10px 0 0 0; padding:0 18px}
+    li{margin:8px 0}
+    code{background:rgba(255,255,255,.06); padding:2px 6px; border-radius:8px}
+    pre{white-space:pre-wrap; margin:0}
+    .footer{
+      margin-top:22px;padding:14px 16px;border:1px solid var(--b);border-radius:16px;
+      background:rgba(255,255,255,.04)
+    }
+    footer{
+      margin-top:18px;
+      color:var(--mut);
+      font-size:12px;
+      text-align:center;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax={
+      tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},
+      options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "المعادلات الهرمية | الحساب الهرمي",
+    "alternativeHeadline": "تعريف المعادلات الهرمية ومبدأ الصعود الهرمي (Lifting)",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "الحساب الهرمي",
+      "المعادلات الهرمية",
+      "المعادلات التفاضلية",
+      "D0",
+      "D1",
+      "D2",
+      "Hierarchical Lifting"
+    ],
+    "abstract": "صفحة مرجعية تشرح تعريف المعادلات الهرمية، وتصنيفها عبر الرتب، وكيفية تبسيطها عبر مبدأ الصعود (Lifting)، مع أمثلة معيارية وشروط المجال.",
+    "inLanguage": "ar",
+    "url": "https://gossaahmed.github.io/gossa-math/equations.html",
+    "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
+  }
+  </script>
 </head>
 
 <body>
 
-<div class="top">
-  <div class="brand">
-    <div class="logo" aria-hidden="true"></div>
-    <div>
-      <div style="font-weight:900">الحساب الهرمي</div>
-      <div style="font-size:12px;color:var(--mut)">صفحة المعادلات الهرمية</div>
+  <div class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <div style="font-weight:900">الحساب الهرمي</div>
+        <div style="font-size:12px;color:var(--mut)">صفحة المعادلات الهرمية</div>
+      </div>
     </div>
+
+    <nav aria-label="التنقل">
+      <a href="index.html">الرئيسية</a>
+      <a href="theory.html">النظرية</a>
+      <a href="#definitions">تعريفات</a>
+      <a href="#domains">شروط المجال</a>
+      <a href="#examples">أمثلة</a>
+      <a href="#method">مبدأ الصعود</a>
+      <a href="#faq">أسئلة سريعة</a>
+      <a href="#cite">الاستشهاد</a>
+      <a href="equations-en.html">English</a>
+    </nav>
   </div>
 
-  <nav aria-label="التنقل">
-    <a href="index.html">الرئيسية</a>
-    <a href="theory.html">النظرية</a>
-    <a href="#definitions">تعريفات</a>
-    <a href="#examples">أمثلة</a>
-    <a href="#method">مبدأ الصعود</a>
-    <a href="#cite">الاستشهاد</a>
-    <a href="index-en.html">English</a>
-  </nav>
-</div>
+  <div class="container">
 
-<div class="container">
+    <h1>المعادلات الهرمية</h1>
+    <p class="subtitle">
+      تعميم للمعادلات التفاضلية نحو طبقات أعلى (نسبي/لوغاريتمي/تتريشي...) بهدف تبسيط البنية عند “الصعود في الهرم”.
+    </p>
 
-  <h1>المعادلات الهرمية</h1>
-  <p class="subtitle">
-    تعميم للمعادلات التفاضلية نحو طبقات أعلى (نسبي/لوغاريتمي/تتريشي...) بهدف تبسيط البنية عند “الصعود في الهرم”.
-  </p>
+    <div class="grid">
 
-  <div class="grid">
-    <div class="card">
-      <h2 id="definitions">1) التعريف العام</h2>
+      <div class="card">
+        <h2 id="definitions">1) التعريف العام</h2>
+        <p class="small">
+          نسمّي <strong>معادلة هرمية من المستوى \(n\)</strong> كل علاقة تربط الدالة \(f\) ومشتقاتها الهرمية حتى المستوى \(n\).
+          الصيغة العامة:
+        </p>
+
+        <div class="math">
+          \[
+            \mathcal{E}_n\big(x,\; f,\; D_0 f,\; D_1 f,\; \dots,\; D_n f\big)=0
+          \]
+        </div>
+
+        <div class="hr"></div>
+
+        <p class="small">
+          نستخدم ترميزك المعتمد:
+          <span class="tag">D0 للتفاضلي</span>
+          <span class="tag">D1 للنسبي</span>
+          ويمكن تعريف رتب أعلى مثل D2 وD3 عبر لوغاريتمات متكررة.
+        </p>
+
+        <div class="math">
+          \[
+          D_0 f(x)=\frac{df}{dx},
+          \qquad
+          D_1 f(x)=\frac{d\ln f(x)}{d\ln x}=\frac{x}{f(x)}\,\frac{df}{dx}
+          \]
+        </div>
+
+        <div class="math">
+          \[
+          D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)},
+          \qquad
+          D_3 f(x)=\frac{d\ln^{(3)}(f(x))}{d\ln^{(3)}(x)}
+          \]
+        </div>
+
+        <div class="callout">
+          <div style="font-weight:900;margin-bottom:6px">الفكرة المحورية</div>
+          <div class="small">
+            كثير من المعادلات “غير الخطية” في مستوى معيّن تصبح “أبسط بنيويًا” عند الانتقال إلى مستوى أعلى مناسب (Lift)،
+            لأننا نختار لغة اشتقاق تلائم نمط النمو (قدرة/أس/طبقات لوغاريتمية...).
+          </div>
+        </div>
+
+        <div class="ok">
+          <strong>قاعدة عملية:</strong>
+          إذا كانت الظاهرة “قدرة” فالمستوى 1 غالبًا مناسب، وإذا كانت “أسّية داخل لوغاريتم” فالمستوى 2 قد يكون أنسب.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>2) تصنيف سريع</h2>
+
+        <div class="kpi">
+          <h3>تفاضلية (مستوى 0)</h3>
+          <div class="math">\[
+            F\big(x,f,D_0 f,\dots\big)=0
+          \]</div>
+          <div class="small">البنية الأساسية: تغير جمعي (additive change).</div>
+        </div>
+
+        <div class="kpi">
+          <h3>نسبية (مستوى 1)</h3>
+          <div class="math">\[
+            F\big(x,f,D_1 f,\dots\big)=0
+          \]</div>
+          <div class="small">البنية الأساسية: نسب/تغير ذاتي (self-scaling).</div>
+        </div>
+
+        <div class="kpi">
+          <h3>لوغاريتمية (مستوى 2)</h3>
+          <div class="math">\[
+            F\big(x,f,D_2 f,\dots\big)=0
+          \]</div>
+          <div class="small">البنية الأساسية: طبقات لوغاريتمية متكررة.</div>
+        </div>
+
+        <div class="kpi">
+          <h3>تتريشية (مستوى 3)</h3>
+          <div class="math">\[
+            F\big(x,f,D_3 f,\dots\big)=0
+          \]</div>
+          <div class="small">البنية الأساسية: طبقات أعلى (نمو فائق الطبقات).</div>
+        </div>
+
+        <div class="note">
+          <strong>تنبيه:</strong>
+          الرتب الأعلى تتطلب شروط مجال أقوى بسبب \(\ln^{(r)}\).
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card" id="domains">
+      <h2>3) شروط المجال (Domain conditions)</h2>
       <p class="small">
-        نسمّي <strong>معادلة هرمية من الرتبة \(n\)</strong> كل علاقة تربط الدالة \(f\) ومشتقاتها الهرمية حتى المستوى \(n\).
-        الصيغة العامة:
+        في التطبيقات، أهم مصدر للتناقض هو نسيان شروط المجال عند استعمال لوغاريتمات متكررة.
+        لذا نثبت هنا شروطًا عملية تُذكر دائمًا بجوار كل مثال.
+      </p>
+
+      <ul class="small">
+        <li><span class="tag">الرتبة 0 (D0)</span> لا تتطلب شروطًا إضافية سوى شروط الدالة المعتادة.</li>
+        <li><span class="tag">الرتبة 1 (D1)</span> تتطلب عادة \(x>0\) و \(f(x)>0\) لأن \(\ln x\) و\(\ln f\).</li>
+        <li><span class="tag">الرتبة 2 (D2)</span> تتطلب \(\ln x>0\) و \(\ln f(x)>0\) وغالبًا نأخذ \(x>1\) و \(f(x)>1\).</li>
+        <li><span class="tag">الرتبة 3 (D3)</span> تتطلب \(\ln(\ln x)>0\) و\(\ln(\ln f)>0\) (شروط أقوى).</li>
+      </ul>
+
+      <div class="note">
+        <strong>ملاحظة مهمة:</strong>
+        نقاط مثل \(x=1\) تجعل \(\ln x=0\) وبالتالي \(\ln(\ln x)\) غير معرّف. لذلك تُذكر القيود صراحة.
+      </div>
+
+      <div class="ok">
+        <strong>نصيحة أسلوبية:</strong>
+        تحت كل مثال ضع سطرًا ثابتًا بعنوان “شروط المجال” — هذا وحده يزيل معظم الاعتراضات.
+      </div>
+    </div>
+
+    <div class="card" id="examples">
+      <h2>4) أمثلة معيارية (Forme canonique)</h2>
+      <p class="small">
+        الأمثلة التالية تُظهر كيف نكتب المعادلات في مستويات مختلفة، وكيف نحصل على حلول نمطية شائعة.
+      </p>
+
+      <div class="hr"></div>
+
+      <h3>مثال A — معادلة مستوى 0 (تفاضلية)</h3>
+      <div class="math">
+        \[
+          D_0 f(x)=g(x)
+          \quad \Longleftrightarrow \quad
+          \frac{df}{dx}=g(x)
+        \]
+      </div>
+      <p class="small">
+        الحل بالتكامل:
       </p>
       <div class="math">
         \[
-          \mathcal{E}_n\big(x,\; f,\; D_0 f,\; D_1 f,\; \dots,\; D_n f\big)=0
+          f(x)=\int g(x)\,dx + C.
         \]
       </div>
 
       <div class="hr"></div>
 
+      <h3>مثال B — معادلة مستوى 1 (نسبية)</h3>
+      <div class="math">
+        \[
+          D_1 f(x)=g(x)
+          \quad \Longleftrightarrow \quad
+          \frac{d\ln f}{d\ln x}=g(x)
+        \]
+      </div>
       <p class="small">
-        حيث نستخدم ترميزك المعتمد:
-        <span class="tag">D0 للتفاضلي</span> و <span class="tag">D1 للنسبي</span>.
-        وبشكل نموذجي:
+        باستخدام \(d\ln x=\frac{dx}{x}\):
+      </p>
+      <div class="math">
+        \[
+          d(\ln f)=g(x)\,d(\ln x)
+          \quad\Longrightarrow\quad
+          \ln f(x)=\int \frac{g(x)}{x}\,dx + C
+          \quad\Longrightarrow\quad
+          f(x)=\exp\!\left(\int \frac{g(x)}{x}\,dx + C\right).
+        \]
+      </div>
+
+      <div class="note">
+        <strong>شروط المجال:</strong> \(x>0\) و \(f(x)>0\).
+      </div>
+
+      <div class="hr"></div>
+
+      <h3>مثال C — معادلة مستوى 2 (لوغاريتمية)</h3>
+      <div class="math">
+        \[
+          D_2 f(x)=g(x)
+          \quad \Longleftrightarrow \quad
+          \frac{d\ln(\ln f)}{d\ln(\ln x)}=g(x)
+        \]
+      </div>
+
+      <p class="small">
+        نكتب:
+        \(\;d\ln(\ln x)=\dfrac{d(\ln x)}{\ln x}=\dfrac{dx}{x\ln x}\) (حيث \(x>1\)).
+        عندها:
       </p>
 
       <div class="math">
         \[
-        D_0 f(x)=\frac{df}{dx},
-        \qquad
-        D_1 f(x)=\frac{d\ln f(x)}{d\ln x}=\frac{x}{f(x)}\,\frac{df}{dx}
+          d\ln(\ln f)=g(x)\,d\ln(\ln x)
+          \quad\Longrightarrow\quad
+          \ln(\ln f)=\int g(x)\,d\ln(\ln x) + C.
         \]
       </div>
+
+      <div class="note">
+        <strong>شروط المجال:</strong> غالبًا \(x>1\) و \(f(x)>1\).
+      </div>
+
+      <div class="hr"></div>
+
+      <h3>مثال D — حل نمطي مهم: ثابت في D1 يعطي قانون قدرة</h3>
+      <div class="math">
+        \[
+          D_1 f(x)=k
+          \quad\Longrightarrow\quad
+          f(x)=C\,x^{k}.
+        \]
+      </div>
+
+      <h3>مثال E — حل نمطي مهم: ثابت في D2 يعطي حلًا أُسّيًا من \((\ln x)^A\)</h3>
+      <div class="math">
+        \[
+          D_2 f(x)=A
+          \quad\Longrightarrow\quad
+          f(x)=\exp\!\big(C\,(\ln x)^A\big),\quad x>1.
+        \]
+      </div>
+
+      <div class="ok">
+        <strong>لماذا هذه النماذج مهمة؟</strong>
+        لأنها “قوالب” تُستعمل كثيرًا في صفحات الحلول والأمثلة، وتُظهر الفرق بين مستويات النمو بوضوح.
+      </div>
+    </div>
+
+    <div class="card" id="method">
+      <h2>5) مبدأ الصعود الهرمي (Hierarchical Lifting)</h2>
+      <p class="small">
+        جوهر الحساب الهرمي في حل المعادلات هو: اختيار تمثيل مناسب للتغير.
+        أحيانًا معادلة تبدو شديدة التعقيد في \(f\) تصبح أبسط إذا عرّفنا:
+        \(u=\ln f\) (صعود إلى مستوى 1) أو \(v=\ln(\ln f)\) (صعود إلى مستوى 2).
+      </p>
 
       <div class="math">
         \[
-        D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)},
-        \qquad
-        D_3 f(x)=\frac{d\ln^{(3)}(f(x))}{d\ln^{(3)}(x)}
+          \mathcal{E}_k\big(x,f,D_0 f,\dots,D_k f\big)=0
+          \quad \xrightarrow{\;\text{Lift}\;}
+          \widetilde{\mathcal{E}}_{k+1}\big(x,\,\ln^{(k+1)}f,\, D_{k+1}f\big)=0
         \]
       </div>
 
-      <div class="callout" style="margin-top:14px">
-        <div style="font-weight:900;margin-bottom:6px">الفكرة المحورية</div>
-        <div class="small">
-          كثير من المعادلات “غير الخطية” في مستوى معيّن تصبح “أقرب إلى الخطية” أو أبسط بنيويًا عند
-          الانتقال إلى مستوى أعلى مناسب (Lift).
-        </div>
+      <div class="hr"></div>
+
+      <h3>قالب عملي للحلول</h3>
+      <ul class="small">
+        <li>حدّد نوع النمو/التغير (قدرة؟ أس؟ متعدد المقاييس؟).</li>
+        <li>اختر المستوى \(k\) المناسب (0 أو 1 أو 2 ...).</li>
+        <li>عرّف \(u=\ln^{(k)} f\) واجعل المعادلة بدلالة \(u\).</li>
+        <li>حل في \(u\)، ثم ارجع بعكس التحويل (أسّ/أسّ متكرر...).</li>
+        <li>تحقق من شروط المجال بعد الرجوع.</li>
+      </ul>
+
+      <div class="note">
+        <strong>تنبيه:</strong>
+        الصعود ليس “حيلة شكلية” فقط؛ هو اختيار لغة اشتقاق تتوافق مع فيزياء/بنية النمو.
       </div>
     </div>
 
-    <div class="card">
-      <h2>2) تصنيف سريع</h2>
+    <div class="card" id="faq">
+      <h2>6) أسئلة سريعة (لإزالة اللبس)</h2>
 
-      <div class="kpi">
-        <h3>تفاضلية (مستوى 0)</h3>
-        <div class="math">\[
-          F\big(x,f,D_0 f,\dots\big)=0
-        \]</div>
-        <div class="small">البنية الأساسية: فروق/جمع.</div>
-      </div>
+      <h3>هل المعادلة الهرمية تُلغي المعادلة التفاضلية؟</h3>
+      <p class="small">
+        لا. المستوى 0 (D0) جزء من البنية الهرمية، والهدف هو إضافة مستويات تمثيل وليس استبدال القديم.
+      </p>
 
-      <div class="kpi">
-        <h3>نسبية (مستوى 1)</h3>
-        <div class="math">\[
-          F\big(x,f,D_1 f,\dots\big)=0
-        \]</div>
-        <div class="small">البنية الأساسية: نسب/قسمة (تغير ذاتي).</div>
-      </div>
+      <h3>متى أستخدم D1 بدل D0؟</h3>
+      <p class="small">
+        عندما يكون “التغير النسبي” أو “قانون القدرة” هو النموذج الطبيعي: مثل \(y=Cx^k\).
+      </p>
 
-      <div class="kpi">
-        <h3>لوغاريتمية (مستوى 2)</h3>
-        <div class="math">\[
-          F\big(x,f,D_2 f,\dots\big)=0
-        \]</div>
-        <div class="small">البنية الأساسية: لوغاريتمات متكررة.</div>
-      </div>
-
-      <div class="kpi">
-        <h3>تتريشية (مستوى 3)</h3>
-        <div class="math">\[
-          F\big(x,f,D_3 f,\dots\big)=0
-        \]</div>
-        <div class="small">البنية الأساسية: تتريش/طبقات عليا.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card" id="examples">
-    <h2>3) أمثلة معيارية (Forme canonique)</h2>
-    <p class="small">
-      الأمثلة التالية تُظهر كيف نكتب المعادلات في مستويات مختلفة، وكيف يمكن أحيانًا تحويل مسألة صعبة في مستوى
-      إلى مسألة أبسط في مستوى أعلى.
-    </p>
-
-    <div class="hr"></div>
-
-    <h3>مثال A — معادلة مستوى 0 (تفاضلية)</h3>
-    <div class="math">
-      \[
-        D_0 f(x)=g(x)
-        \quad \Longleftrightarrow \quad
-        \frac{df}{dx}=g(x)
-      \]
-    </div>
-    <p class="small">حلها معروف بالتكامل التفاضلي التقليدي.</p>
-
-    <div class="hr"></div>
-
-    <h3>مثال B — معادلة مستوى 1 (نسبية)</h3>
-    <div class="math">
-      \[
-        D_1 f(x)=g(x)
-        \quad \Longleftrightarrow \quad
-        \frac{d\ln f}{d\ln x}=g(x)
-      \]
-    </div>
-    <p class="small">
-      وهي مكافئة (عند توفّر الشروط) إلى:
-    </p>
-    <div class="math">
-      \[
-        \frac{d\ln f}{dx}= \frac{g(x)}{x}
-        \quad \Longrightarrow \quad
-        \ln f(x)=\int \frac{g(x)}{x}\,dx + C
-      \]
+      <h3>لماذا شروط المجال مهمة جدًا؟</h3>
+      <p class="small">
+        لأن D1 وD2 يعتمدون على \(\ln\) و\(\ln\ln\). أي نسيان لهذه الشروط يولد تناقضات مباشرة.
+      </p>
     </div>
 
-    <div class="hr"></div>
+    <div class="card" id="cite">
+      <h2>7) الاستشهاد العلمي (Citation)</h2>
+      <p class="small">
+        للاستشهاد بمرجع الموقع/النظرية استخدم DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+          10.5281/zenodo.17917302
+        </a>
+      </p>
 
-    <h3>مثال C — معادلة مستوى 2 (لوغاريتمية)</h3>
-    <div class="math">
-      \[
-        D_2 f(x)=g(x)
-        \quad \Longleftrightarrow \quad
-        \frac{d\ln(\ln f)}{d\ln(\ln x)}=g(x)
-      \]
-    </div>
-    <p class="small">
-      هذه الصيغة تُفيد عندما تكون الدالة والنمو يتضمنان “طبقة لوغاريتمية ثانية” (مثل ظواهر متعددة المقاييس).
-    </p>
-
-    <div class="hr"></div>
-
-    <h3>مثال D — مثال “رفع هرمي” (Lift)</h3>
-    <p class="small">
-      لنفرض أن المعادلة في مستوى 0 تظهر بشكل غير خطي معقّد في \(f\)، بينما تصبح أبسط إذا عرّفنا متغيّرًا جديدًا
-      على شكل \(\,u=\ln f\) أو \(\,u=\ln(\ln f)\) (أي الانتقال لمستوى أعلى).
-    </p>
-    <div class="math">
-      \[
-        \text{ضع } u=\ln f \;\; \Longrightarrow \;\; D_1 f = \frac{d u}{d\ln x}
-      \]
-    </div>
-    <div class="math">
-      \[
-        \text{ضع } v=\ln(\ln f) \;\; \Longrightarrow \;\; D_2 f = \frac{d v}{d\ln(\ln x)}
-      \]
-    </div>
-
-    <div class="callout" style="margin-top:14px">
-      <div style="font-weight:900;margin-bottom:6px">ملاحظة تحكيمية</div>
-      <div class="small">
-        في النسخة العلمية الصارمة، نوضح دائمًا شروط المجال: موجبية \(x\)، وموجبية \(f\) عند الحاجة، وتفادي نقاط
-        \(\ln x=0\) أو \(\ln f=0\) عندما نستخدم \(\ln(\ln(\cdot))\).
-      </div>
-    </div>
-  </div>
-
-  <div class="card" id="method">
-    <h2>4) مبدأ الصعود الهرمي (Hierarchical Lifting)</h2>
-    <p class="small">
-      جوهر الحساب الهرمي في حل المعادلات هو: اختيار تمثيل مناسب للتغير.  
-      في كثير من الحالات، إعادة كتابة المعادلة عبر \(\ln\) أو \(\ln\ln\) (أو طبقات أعلى) تقلّل التعقيد البنيوي.
-    </p>
-
-    <div class="math">
-      \[
-        \mathcal{E}_k\big(x,f,D_0 f,\dots,D_k f\big)=0
-        \quad \xrightarrow{\;\text{Lift}\;}
-        \widetilde{\mathcal{E}}_{k+1}\big(x,\,\ln^{(k+1)}f,\, D_{k+1}f\big)=0
-      \]
-    </div>
-
-    <p class="small">
-      الهدف من “Lift” ليس إلغاء التفاضل، بل نقل المعادلة إلى مستوى تصبح فيه البنية أقرب إلى الخطية أو قابلة للفصل.
-    </p>
-
-    <div class="hr"></div>
-
-    <h3>قالب عملي للحلول</h3>
-    <ul class="small">
-      <li>حدّد نوع النمو/التغير (أسّي؟ قدرة؟ متعدد المقاييس؟)</li>
-      <li>اختر المستوى \(k\) المناسب (0 أو 1 أو 2 أو 3 ...)</li>
-      <li>حوّل المعادلة إلى متغيّر: \(u=\ln^{(k)} f\)</li>
-      <li>حل في متغيّر \(u\) ثم ارجع بعكس التحويل (exponentiation iterated)</li>
-    </ul>
-  </div>
-
-  <div class="card" id="cite">
-    <h2>5) الاستشهاد العلمي (Citation)</h2>
-    <p class="small">
-      للاستشهاد بمرجع الموقع/النظرية استخدم DOI:
-      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
-        10.5281/zenodo.17917302
-      </a>
-    </p>
-
-    <div class="math">
-<pre style="margin:0;direction:ltr;color:#eaf2ff">
+      <div class="math">
+<pre style="direction:ltr;color:#eaf2ff">
 @software{gossa_hierarchical_calculus_2025,
   author = {Gossa Ahmed},
   title  = {Hierarchical Calculus},
@@ -331,19 +513,28 @@ window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\
   url    = {https://github.com/GOSSAAHMED/gossa-math}
 }
 </pre>
+      </div>
+
+      <div class="footer small">
+        روابط مفيدة:
+        <ul>
+          <li><a href="index.html">الصفحة الرئيسية</a></li>
+          <li><a href="theory.html">النظرية</a></li>
+          <li><a href="equations-solved.html">أمثلة محلولة</a></li>
+          <li><a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">DOI الإصدار v1.0.0</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="footer small">
-      روابط مفيدة:
-      <ul>
-        <li><a href="index.html">الصفحة الرئيسية</a></li>
-        <li><a href="theory.html">النظرية</a></li>
-        <li><a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">DOI الإصدار v1.0.0</a></li>
-      </ul>
-    </div>
+    <footer>
+      © <span id="y"></span> — GOSSA AHMED · صفحة المعادلات الهرمية
+    </footer>
   </div>
 
-</div>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+ml>
