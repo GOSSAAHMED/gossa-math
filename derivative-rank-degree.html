@@ -3,14 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>رتبة ودرجة المشتق الهرمي | الحساب الهرمي</title>
-  <meta name="description" content="صفحة مرجعية: لكل مشتق رتبة (Rank) ودرجة (Degree). تعريف الترميز D_rank^deg، وعلاقات تربط المشتقات عبر الرتب والدرجات." />
-  <meta name="author" content="GOSSA AHMED" />
+
+  <title>رتبة ودرجة المشتق الهرمي | الحساب الهرمي (D0 و D1 و Dₙ¹)</title>
+  <meta name="description" content="صفحة مرجعية وتعليمية: لكل مشتق هرمي رتبة (نوع/طبقة) ودرجة (تتالي). ترميز موحّد D_r^n، والتعريف المعتمد للمشتق D_r^1 باللوغاريتمات المتكررة، وشروط المجال، ومؤثرات δ_r للحساب المباشر، مع أمثلة وجداول تنظيمية." />
+  <meta name="author" content="Ahmed Gossa" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html" />
 
   <!-- hreflang -->
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
-  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:title" content="رتبة ودرجة المشتق الهرمي | الحساب الهرمي (D0 و D1 و Dₙ¹)" />
+  <meta property="og:description" content="ترميز D_r^n + التعريف المعتمد لـ D_r^1 + شروط المجال + مؤثرات δ_r + أمثلة." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "رتبة ودرجة المشتق الهرمي في الحساب الهرمي",
+    "inLanguage": "ar",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html"
+    },
+    "about": [
+      "الحساب الهرمي",
+      "المشتق الهرمي D_n^1",
+      "المشتق التفاضلي التقليدي D0",
+      "المشتق النسبي D1",
+      "اللوغاريتم المتكرر",
+      "ترميز الرتبة والدرجة"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -18,7 +57,7 @@
       --card: rgba(255,255,255,.06);
       --border: rgba(255,255,255,.14);
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
-      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -32,6 +71,7 @@
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
+      line-height:1.9;
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
@@ -84,6 +124,8 @@
     }
     header.hero > *{position:relative}
     h1{margin:0 0 8px 0; font-size:30px}
+    h2{margin:0 0 10px 0; font-size:18px; display:flex; align-items:center; gap:10px}
+    h3{margin:18px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
@@ -95,8 +137,8 @@
       box-shadow: var(--shadow);
       padding: 18px 18px;
     }
-    .card h2{margin:0 0 10px 0; font-size:18px; display:flex; align-items:center; gap:10px}
     .bar{width:4px; height:18px; border-radius:99px; background: linear-gradient(180deg, var(--accent), var(--accent2)); display:inline-block}
+
     .block{
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
@@ -105,6 +147,7 @@
       margin: 12px 0;
     }
     .label{font-weight:800; margin-bottom:8px}
+
     .math{
       margin-top: 8px;
       border:1px solid rgba(255,255,255,.10);
@@ -114,6 +157,7 @@
       overflow:auto;
       direction:ltr; text-align:left;
     }
+
     .note{
       border:1px solid rgba(255,204,102,.35);
       background: rgba(255,204,102,.10);
@@ -123,8 +167,23 @@
       line-height:1.9;
     }
     .note strong{color:var(--warn)}
+
+    .ok{
+      border:1px solid rgba(134,239,172,.35);
+      background: rgba(134,239,172,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+      line-height:1.9;
+    }
+    .ok strong{color:var(--ok)}
+
+    .toc a{display:block; margin:7px 0}
+
     ul{margin:8px 0 0 0; padding:0 18px 0 0}
     li{margin:6px 0}
+    hr.sep{border:0; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
+
     footer{
       margin-top: 18px;
       color: var(--muted);
@@ -151,13 +210,14 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
-          <strong>الرتبة والدرجة</strong>
-          <span>ترميز موحّد للمشتقات الهرمية: \(D_{\text{rank}}^{\text{deg}}\)</span>
+          <strong>رتبة ودرجة المشتق</strong>
+          <span>ترميز موحّد: \(D_r^n\) — مع التعريف المعتمد لـ \(D_r^1\)</span>
         </div>
       </div>
       <div class="actions">
-        <a class="btn" href="./index.html">الرئيسية</a>
+        <a class="btn" href="./index-ar.html">الرئيسية</a>
         <a class="btn" href="./derivative-rank-degree-en.html">English</a>
+        <a class="btn" href="./rules.html">القواعد</a>
         <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
       </div>
     </div>
@@ -166,9 +226,9 @@
   <div class="wrap">
     <header class="hero">
       <h1>لكل مشتق رتبة ودرجة</h1>
-      <p class="muted" style="margin:0; line-height:1.9">
-        في الحساب الهرمي لا نكتب أي مشتق دون تحديد <b>رتبته</b> (نوع المشتق/الطبقة) و<b>درجته</b> (عدد مرات التتالي).
-        نستخدم الترميز القياسي:
+      <p class="muted" style="margin:0">
+        في الحساب الهرمي لا نكتب أي مشتق دون تحديد <b>رتبته</b> (نوع/طبقة التحويل) و<b>درجته</b> (عدد مرات التتالي).
+        الترميز القياسي هو:
       </p>
       <div class="math" style="margin-top:12px">
         \[
@@ -176,47 +236,103 @@
         \]
       </div>
       <p class="muted small" style="margin:10px 0 0 0">
-        حيث \(r\) هو الرتبة (0: تفاضلي، 1: نسبي، 2: لوغاريتمي، …) و\(n\) هو الدرجة (0,1,2,3,…).
+        حيث \(r\in\{0,1,2,\dots\}\) هي الرتبة (0: تفاضلي D0، 1: نسبي D1، 2: لوغاريتمي، …)
+        و\(n\in\{0,1,2,\dots\}\) هي الدرجة.
       </p>
+
+      <div class="ok">
+        <strong>قاعدة الاتساق</strong>
+        <div class="muted small" style="margin-top:6px">
+          في جميع صفحات الموقع: تعريف \(D_r^1\) يعتمد تطبيق \(\ln^{(r)}\) على الطرفين (على \(x\) وعلى \(f(x)\)) دون صيغ مختلطة.
+          هذا يمنع أي تناقض اصطلاحي بين الصفحات.
+        </div>
+      </div>
     </header>
 
     <section class="card">
+      <h2><span class="bar"></span>فهرس سريع</h2>
+      <div class="block toc muted small">
+        <a href="#defs">1) التعاريف الأساسية (اللوغاريتم المتكرر، الرتبة، الدرجة)</a>
+        <a href="#def-dr1">2) التعريف المعتمد لـ \(D_r^1\) (درجة 1)</a>
+        <a href="#degree">3) معنى الدرجة كتتالي</a>
+        <a href="#domain">4) شروط المجال (ما الذي يجب أن يكون موجبًا)</a>
+        <a href="#relations">5) علاقات ربط الرتب + المؤثرات الحسابية \(\delta_r\)</a>
+        <a href="#examples">6) أمثلة محلولة (D0 و D1)</a>
+        <a href="#grid">7) شبكة الرتب والدرجات (رؤية تنظيمية)</a>
+        <a href="#series">8) لماذا هذه الصفحة مهمة للمتسلسلات</a>
+      </div>
+    </section>
+
+    <section class="card" id="defs">
       <h2><span class="bar"></span>1) التعاريف الأساسية</h2>
 
       <div class="block">
-        <div class="label">الرتبة (Rank)</div>
+        <div class="label">1.1 اللوغاريتمات المتكررة \(\ln^{(r)}\)</div>
         <p class="muted small" style="margin:0">
-          الرتبة \(r\) تحدد “المتغير الهرمي” الذي نشتق بالنسبة إليه:
+          نعرّف اللوغاريتم المتكرر بشكل عودي:
         </p>
         <div class="math">
           \[
-          u_0(x)=x,\quad u_1(x)=\ln x,\quad u_2(x)=\ln(\ln x),\;\dots,\; u_r(x)=\ln^{(r)}(x)
+            \ln^{(0)}(x)=x,\qquad
+            \ln^{(1)}(x)=\ln(x),\qquad
+            \ln^{(r+1)}(x)=\ln\!\big(\ln^{(r)}(x)\big).
           \]
         </div>
         <p class="muted small" style="margin:10px 0 0 0">
-          وبالمثل للدالة:
+          ونستخدم اختصار المتغير الهرمي:
           \[
-          v_r(f)=\ln^{(r)}(f)
+            u_r(x) := \ln^{(r)}(x).
           \]
-          مع مراعاة شروط المجال (إيجابية اللوغاريتمات المتكررة).
+          وبالمثل على جهة الدالة:
+          \[
+            v_r(f(x)) := \ln^{(r)}(f(x)).
+          \]
         </p>
       </div>
 
       <div class="block">
-        <div class="label">المشتق الهرمي الأساسي (درجة 1)</div>
+        <div class="label">1.2 ما معنى الرتبة؟</div>
         <p class="muted small" style="margin:0">
-          المشتق من الرتبة \(r\) والدرجة 1 يُعطى بصيغة عامة:
+          الرتبة \(r\) تحدد “طبقة القياس” للتغير:
+        </p>
+        <ul class="muted small">
+          <li><b>رتبة 0 (D0):</b> تغيّر بالنسبة لـ \(x\) مباشرة (الحساب التفاضلي التقليدي).</li>
+          <li><b>رتبة 1 (D1):</b> تغيّر بالنسبة لـ \(\ln(x)\) (قياس نسبي/ضربي).</li>
+          <li><b>رتبة 2:</b> تغيّر بالنسبة لـ \(\ln(\ln(x))\) (قياس لوغاريتمي متداخل).</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="label">1.3 ما معنى الدرجة؟</div>
+        <p class="muted small" style="margin:0">
+          الدرجة \(n\) هي عدد مرات التتالي داخل نفس الرتبة. أي: نثبت الرتبة أولًا ثم نرفع الدرجة بالتكرار.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="def-dr1">
+      <h2><span class="bar"></span>2) التعريف المعتمد لـ \(D_r^1\) (درجة 1)</h2>
+
+      <div class="block">
+        <div class="label">2.1 تعريف موحّد (هذا هو التعريف الوحيد المعتمد في الموقع)</div>
+        <p class="muted small" style="margin:0">
+          المشتق الهرمي من الرتبة \(r\) والدرجة 1 يُعرّف بـ:
         </p>
         <div class="math">
           \[
             \boxed{
-              D_{r}^{1} f(x)=\frac{d\,\ln^{(r)}(f(x))}{d\,\ln^{(r)}(x)}
+              D_{r}^{1} f(x)=\frac{d\,\ln^{(r)}\!\big(f(x)\big)}{d\,\ln^{(r)}\!(x)}
             }
           \]
         </div>
-        <p class="muted small" style="margin:10px 0 0 0">
-          حالات خاصة:
-        </p>
+        <div class="note">
+          <strong>ملاحظة اتساق:</strong>
+          لا نستخدم صيغًا مختلطة مثل \(\frac{d(\ln f)}{d\ln^{(r)}x}\). التعريف المعتمد يطبق \(\ln^{(r)}\) على الطرفين.
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="label">2.2 حالات خاصة (D0 و D1)</div>
         <div class="math">
           \[
             D_{0}^{1}f=\frac{df}{dx},
@@ -226,12 +342,19 @@
             D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
           \]
         </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          بهذا يظهر التفاضل التقليدي كحالة رتبة-صفر بشكل صريح.
+        </p>
       </div>
+    </section>
+
+    <section class="card" id="degree">
+      <h2><span class="bar"></span>3) معنى الدرجة كتتالي</h2>
 
       <div class="block">
-        <div class="label">الدرجة (Degree) = التتالي</div>
+        <div class="label">3.1 تعريف الدرجة كمؤثر</div>
         <p class="muted small" style="margin:0">
-          الدرجة \(n\) تعني تطبيق مشتق الرتبة نفسها \(n\) مرّات على نفس الكائن (مع تثبيت الرتبة):
+          الدرجة \(n\) تعني تطبيق مشتق الرتبة نفسها \(n\) مرة:
         </p>
         <div class="math">
           \[
@@ -241,53 +364,90 @@
           \]
         </div>
         <p class="muted small" style="margin:10px 0 0 0">
-          وبالخصوص \(D_{r}^{0}\) هو “هوية” (عدم اشتقاق):
+          وبالخصوص:
           \[
             D_{r}^{0}f=f.
           \]
         </p>
       </div>
 
-      <div class="note">
-        <strong>تنبيه:</strong>
-        عند الرتب \(r\ge 1\) تظهر لوغاريتمات متكررة، لذلك يجب الانتباه لشروط المجال مثل \(x>0\) و\(f>0\) (وأحيانًا \(x>1\) و\(f>1\) للرتبة 2).
+      <div class="block">
+        <div class="label">3.2 سلسلتان مفيدتان (لا تخلط بينهما)</div>
+        <p class="muted small" style="margin:0">
+          في التطبيقات (خصوصًا المتسلسلات) من المفيد التمييز بين:
+        </p>
+        <ul class="muted small">
+          <li><b>(أ) درجات على \(f\) نفسه:</b> \(D_r^n f = D_r^1(D_r^{n-1}f)\).</li>
+          <li><b>(ب) درجات على الكمية المحوّلة:</b> \(A_n^{(r)} := \big(D_r^n\,\ln^{(r)} f\big)\).
+            وهذه هي الأكثر عملية في المتسلسلات الضَّربية/الأسّية.</li>
+        </ul>
       </div>
     </section>
 
-    <section class="card">
-      <h2><span class="bar"></span>2) علاقات تربط الرتب والدرجات</h2>
+    <section class="card" id="domain">
+      <h2><span class="bar"></span>4) شروط المجال (ما الذي يجب أن يكون موجبًا)</h2>
+      <div class="block">
+        <div class="label">4.1 لماذا المجال مهم؟</div>
+        <p class="muted small" style="margin:0">
+          لأن \(\ln^{(r)}\) يظهر صراحة، يجب احترام شروط الإيجابية. مثلًا:
+        </p>
+        <div class="math">
+          \[
+            r=1:\ x>0,\ f(x)>0.
+            \qquad
+            r=2:\ x>1,\ f(x)>1 \ \ (\text{غالبًا لضمان تعريف }\ln(\ln(\cdot))).
+          \]
+        </div>
+        <div class="note">
+          <strong>قاعدة آمنة:</strong>
+          يجب أن تكون كل السلسلة الداخلة إلى \(\ln^{(r)}\) في مجال تعريفها.
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="relations">
+      <h2><span class="bar"></span>5) علاقات ربط الرتب + مؤثرات حسابية \(\delta_r\)</h2>
 
       <div class="block">
-        <div class="label">2.1 علاقة التحويل بين \(D_0\) و\(D_1\) (رتبتان مختلفتان)</div>
+        <div class="label">5.1 علاقة الربط بين \(D_0\) و\(D_1\)</div>
         <p class="muted small" style="margin:0">
           المشتق النسبي من الدرجة 1 يربط مباشرة بالمشتق التفاضلي:
         </p>
         <div class="math">
           \[
             \boxed{
-              D_{1}^{1}f(x)=\frac{d\ln f}{d\ln x}=\frac{x}{f(x)}\,\frac{df(x)}{dx}
+              D_{1}^{1}f(x)=\frac{d\ln f}{d\ln x}
+              =\frac{x}{f(x)}\,\frac{df(x)}{dx}
               =\frac{x}{f(x)}\,D_{0}^{1}f(x)
             }
           \]
         </div>
         <p class="muted small" style="margin:10px 0 0 0">
           ومنه:
+        </p>
+        <div class="math">
           \[
             \boxed{
               D_{0}^{1}f(x)=\frac{f(x)}{x}\,D_{1}^{1}f(x)
             }
           \]
-        </p>
+        </div>
       </div>
 
       <div class="block">
-        <div class="label">2.2 عامل تفاضلي مقياسي (مفيد لرفع الدرجة في \(D_1\))</div>
+        <div class="label">5.2 مؤثر الرتبة الأولى \(\delta_1\)</div>
         <p class="muted small" style="margin:0">
-          عرف المؤثر المقياسي:
+          نعرّف المؤثر المقياسي:
+        </p>
+        <div class="math">
           \[
-            \delta_1 := \frac{d}{d\ln x}=x\frac{d}{dx}.
+            \boxed{
+              \delta_1 := \frac{d}{d\ln x}=x\frac{d}{dx}
+            }
           \]
-          عندها:
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          عندها يمكن كتابة:
         </p>
         <div class="math">
           \[
@@ -296,24 +456,22 @@
             }
           \]
         </div>
-        <p class="muted small" style="margin:10px 0 0 0">
-          والمشتقات ذات الدرجة الأعلى تُكتب:
-          \[
-            \boxed{
-              \big(D_{1}^{n}\ln f\big)=\delta_1^{\,n}(\ln f)
-            }
-          \]
-        </p>
       </div>
 
       <div class="block">
-        <div class="label">2.3 عامل الرتبة الثانية \(D_2\) (رفع الدرجة في \(D_2\))</div>
+        <div class="label">5.3 مؤثر الرتبة الثانية \(\delta_2\)</div>
         <p class="muted small" style="margin:0">
-          عرف:
+          للرتبة الثانية:
+        </p>
+        <div class="math">
           \[
-            \delta_2 := \frac{d}{d\ln(\ln x)}.
+            \boxed{
+              \delta_2 := \frac{d}{d\ln(\ln x)} = x\ln(x)\frac{d}{dx}
+            }
           \]
-          عندها:
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          وعندها:
         </p>
         <div class="math">
           \[
@@ -322,30 +480,59 @@
             }
           \]
         </div>
-        <p class="muted small" style="margin:10px 0 0 0">
-          والمشتقات ذات الدرجة الأعلى تُكتب:
-          \[
-            \boxed{
-              \big(D_{2}^{n}\ln^{(2)} f\big)=\delta_2^{\,n}\big(\ln(\ln f)\big)
-            }
-          \]
-        </p>
       </div>
 
       <div class="block">
-        <div class="label">2.4 فكرة عامة للربط بين رتبتين متتاليتين</div>
+        <div class="label">5.4 فكرة عامة لـ \(\delta_r\)</div>
         <p class="muted small" style="margin:0">
-          الانتقال من رتبة \(r\) إلى \(r+1\) يعني “تمرير” المتغير عبر لوغاريتم إضافي:
-          \[
-            \ln^{(r+1)}(x)=\ln(\ln^{(r)}(x)).
-          \]
-          لذلك فإن رتبًا أعلى تُلائم نماذج يكون فيها التغير الطبيعي على مقاييس لوغاريتمية متداخلة.
+          الفكرة العامة: \(\delta_r\) هو اشتقاق بالنسبة لـ \(\ln^{(r)}(x)\).
+          للرتب (0,1,2) أعطينا صيغًا صريحة، والرتب الأعلى تُبنى بنفس المبدأ.
         </p>
       </div>
     </section>
 
-    <section class="card">
-      <h2><span class="bar"></span>3) العلاقات كأداة تنظيم (شبكة الرتب والدرجات)</h2>
+    <section class="card" id="examples">
+      <h2><span class="bar"></span>6) أمثلة محلولة (D0 و D1)</h2>
+
+      <div class="block">
+        <div class="label">مثال (أ): \(f(x)=x^a\) (مع \(x>0\))</div>
+        <div class="math">
+          \[
+            D_0^1(x^a)=a x^{a-1},
+            \qquad
+            D_1^1(x^a)=\frac{d\ln(x^a)}{d\ln(x)}=a.
+          \]
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          اختلاف الرتبة يغيّر معنى القياس: \(D_0\) تفاضلي مباشر، و\(D_1\) نسبي على مقياس لوغاريتمي.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">مثال (ب): \(f(x)=e^x\) (مع \(x>0\) للرتبة 1)</div>
+        <div class="math">
+          \[
+            D_0^1(e^x)=e^x,
+            \qquad
+            D_1^1(e^x)=\frac{d\ln(e^x)}{d\ln(x)}=\frac{d(x)}{d(\ln x)}=x.
+          \]
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="label">مثال (ج): ثابت \(f(x)=c>0\)</div>
+        <div class="math">
+          \[
+            D_0^1(c)=0,
+            \qquad
+            D_1^1(c)=\frac{d\ln(c)}{d\ln(x)}=0.
+          \]
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="grid">
+      <h2><span class="bar"></span>7) شبكة الرتب والدرجات (رؤية تنظيمية)</h2>
       <div class="block">
         <div class="label">جدول رمزي مختصر</div>
         <div class="math">
@@ -361,118 +548,126 @@
           \]
         </div>
         <p class="muted small" style="margin:10px 0 0 0">
-          هذه الشبكة تساعد في كتابة أي قانون اشتقاق أو متسلسلة بدقة: نثبت الرتبة ونرفع الدرجة عند التتالي.
+          هذه الشبكة تمنع الغموض: نثبت الرتبة ثم نرفع الدرجة بالتتالي.
         </p>
       </div>
-<div class="block">
-  <div class="label">2.5 علاقات بين الدرجات داخل نفس الرتبة (رفع الدرجة كعملية تكرار)</div>
+    </section>
 
-  <p class="muted small" style="margin:0">
-    داخل نفس الرتبة، رفع الدرجة يعني تكرار الاشتقاق بالنسبة للمتغير الهرمي الموافق لتلك الرتبة.
-    عمليًا نستعمل مؤثرات تفاضلية مساعدة تجعل الصيغ قابلة للتطبيق مباشرة.
-  </p>
+    <section class="card" id="series">
+      <h2><span class="bar"></span>8) لماذا هذه الصفحة مهمة للمتسلسلات</h2>
 
-  <div class="math">
-    \[
-      \text{للرتبة } D_1:\quad \delta_1:=\frac{d}{d\ln x}=x\frac{d}{dx}.
-      \qquad
-      \text{للرتبة } D_2:\quad \delta_2:=\frac{d}{d\ln(\ln x)}=x\ln(x)\frac{d}{dx}.
-    \]
-  </div>
+      <div class="block">
+        <div class="label">8.1 رفع الدرجة بطريقة حسابية (المعاملات التي تظهر في المتسلسلات)</div>
 
-  <p class="muted small" style="margin:10px 0 0 0">
-    نميّز بين سلسلتين (وهذا مهم لأن صفحات المتسلسلات استعملت السلسلة الثانية):
-  </p>
+        <p class="muted small" style="margin:0">
+          داخل نفس الرتبة، رفع الدرجة يصبح قابلًا للحساب عبر \(\delta_r\). للرتبتين (1,2):
+        </p>
 
-  <ul class="muted small">
-    <li>
-      <b>(أ) درجات على \(f\) نفسه:</b>  \(D_r^n f = D_r^1(D_r^{n-1}f)\)  (تعريف تتالي مباشر).
-    </li>
-    <li>
-      <b>(ب) درجات على \(\ln^{(r)}(f)\):</b> وهي الأكثر عملية في بناء المتسلسلات الضَّربية/الأسّية:
-      \(\;A_n^{(r)} := (D_r^n\,\ln^{(r)} f)\).
-    </li>
-  </ul>
+        <div class="math">
+          \[
+            \delta_1:=\frac{d}{d\ln x}=x\frac{d}{dx},
+            \qquad
+            \delta_2:=\frac{d}{d\ln(\ln x)}=x\ln(x)\frac{d}{dx}.
+          \]
+        </div>
 
-  <div class="math">
-    \[
-      \boxed{
-        A_{1}^{(1)}(x)=\big(D_{1}^{1}\ln f\big)(x)=\delta_1(\ln f)
-        =\frac{x}{f(x)}\,\frac{df}{dx}
-      }
-    \]
-  </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          نعرّف (للرتبة 1) سلسلة معاملات عملية:
+          \[
+            A_n^{(1)}(x) := \big(D_1^n\,\ln f\big)(x).
+          \]
+          عندها:
+        </p>
 
-  <div class="math">
-    \[
-      \boxed{
-        A_{n+1}^{(1)}(x)=\big(D_{1}^{n+1}\ln f\big)(x)=\delta_1\!\left(A_{n}^{(1)}(x)\right)
-        =x\frac{d}{dx}A_{n}^{(1)}(x)
-      }
-    \]
-  </div>
+        <div class="math">
+          \[
+            \boxed{
+              A_{1}^{(1)}(x)=\delta_1(\ln f)=\frac{x}{f(x)}\,\frac{df}{dx}
+            }
+          \]
+        </div>
 
-  <p class="muted small" style="margin:10px 0 0 0">
-    أمثلة صريحة لأول الدرجات داخل الرتبة \(D_1\):
-  </p>
+        <div class="math">
+          \[
+            \boxed{
+              A_{n+1}^{(1)}(x)=\delta_1\!\left(A_{n}^{(1)}(x)\right)
+              =x\frac{d}{dx}A_{n}^{(1)}(x)
+            }
+          \]
+        </div>
 
-  <div class="math">
-    \[
-      \boxed{
-        \big(D_{1}^{2}\ln f\big)(x)
-        =x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)
-      }
-    \]
-  </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          أمثلة للدرجات الأولى:
+        </p>
 
-  <div class="math">
-    \[
-      \boxed{
-        \big(D_{1}^{3}\ln f\big)(x)
-        =x\frac{d}{dx}\!\left[x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)\right]
-      }
-    \]
-  </div>
+        <div class="math">
+          \[
+            \boxed{
+              \big(D_{1}^{2}\ln f\big)(x)
+              =x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)
+            }
+          \]
+        </div>
 
-  <hr style="border:0;border-top:1px solid rgba(255,255,255,.10); margin:14px 0">
+        <div class="math">
+          \[
+            \boxed{
+              \big(D_{1}^{3}\ln f\big)(x)
+              =x\frac{d}{dx}\!\left[x\frac{d}{dx}\!\left(\frac{x f'(x)}{f(x)}\right)\right]
+            }
+          \]
+        </div>
 
-  <p class="muted small" style="margin:0">
-    وبالمثل للرتبة \(D_2\) (حيث \(\ln^{(2)}f=\ln(\ln f)\)):
-  </p>
+        <hr class="sep">
 
-  <div class="math">
-    \[
-      \boxed{
-        A_{1}^{(2)}(x)=\big(D_{2}^{1}\ln^{(2)} f\big)(x)=\delta_2\!\big(\ln(\ln f)\big)
-      }
-    \]
-  </div>
+        <p class="muted small" style="margin:0">
+          وبالمثل للرتبة 2 نعرّف:
+          \[
+            A_n^{(2)}(x):=\big(D_2^n\,\ln^{(2)}f\big)(x),\quad \ln^{(2)}f=\ln(\ln f).
+          \]
+          فنحصل على:
+        </p>
 
-  <div class="math">
-    \[
-      \boxed{
-        A_{n+1}^{(2)}(x)=\big(D_{2}^{n+1}\ln^{(2)} f\big)(x)=\delta_2\!\left(A_{n}^{(2)}(x)\right)
-        =x\ln(x)\frac{d}{dx}A_{n}^{(2)}(x)
-      }
-    \]
-  </div>
+        <div class="math">
+          \[
+            \boxed{
+              A_{1}^{(2)}(x)=\delta_2\!\big(\ln(\ln f)\big)
+            }
+          \]
+        </div>
 
-  <div class="note">
-    <strong>لماذا هذه الصيغ مهمة؟</strong>
-    لأنها تعطي طريقة حسابية مباشرة لرفع الدرجة داخل نفس الرتبة (خصوصًا \(D_1\) و\(D_2\))،
-    وهي بالضبط المعاملات التي تظهر في المتسلسلات الضَّربية/الأسّية في صفحة المتسلسلات.
-  </div>
-</div>
+        <div class="math">
+          \[
+            \boxed{
+              A_{n+1}^{(2)}(x)=\delta_2\!\left(A_{n}^{(2)}(x)\right)
+              =x\ln(x)\frac{d}{dx}A_{n}^{(2)}(x)
+            }
+          \]
+        </div>
+
+        <div class="ok">
+          <strong>لماذا هذا مهم؟</strong>
+          <div class="muted small" style="margin-top:6px">
+            هذه العلاقات تعطي “وصفة حسابية” لرفع الدرجة داخل نفس الرتبة (خصوصًا \(D_1\) و\(D_2\))،
+            وهي بالضبط ما تحتاجه لبناء معاملات المتسلسلات الضَّربية/الأسّية في صفحة المتسلسلات.
+          </div>
+        </div>
+      </div>
 
       <div class="note">
         <strong>إشارة تطبيقية:</strong>
-        تم استعمال هذه العلاقات مباشرة لبناء “متسلسلة تايلور التفاضلية” (رتبة 0)، و“تايلور ضربي نسبي” (رتبة 1)، و“متسلسلة أسّية لوغاريتمية” (رتبة 2) في صفحة المتسلسلات.
+        هذه الصفحة هي “صمام الأمان” ضد الانزلاق الاصطلاحي: فهي تثبّت معنى الرتبة والدرجة وتعرض المؤثرات التي تجعل الحساب عمليًا وقابلًا للتطبيق.
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · رتبة ودرجة المشتق الهرمي
+      © <span id="y"></span> Ahmed Gossa · رتبة ودرجة المشتق الهرمي
     </footer>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
