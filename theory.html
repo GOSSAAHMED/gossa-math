@@ -1,202 +1,335 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>النظرية — الحساب الهرمي</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>النظرية — الحساب الهرمي</title>
+  <meta name="description" content="الأساس النظري للحساب الهرمي: المبدأ الهرمي، تعريف المشتق الهرمي بصيغة الرتبة والدرجة D_r^n، الحالات الخاصة D_0^1 و D_1^1 و D_2^1، والعلاقات الذهبية التي تربط الرتب." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<style>
-body{
-  margin:0;
-  font-family: system-ui, Arial, "Noto Sans Arabic";
-  background: radial-gradient(1200px 800px at 20% 10%, #1aa7a133, transparent 55%),
-              linear-gradient(180deg,#0b1220,#0f1b2e);
-  color:#eaf2ff;
-}
-a{color:#7aa7ff;text-decoration:none}
-.container{max-width:1000px;margin:auto;padding:40px 18px}
-h1,h2,h3{margin-top:28px}
-.card{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:18px;
-  padding:18px;
-  margin:16px 0;
-}
-.label{
-  font-weight:800;
-  margin-bottom:8px;
-  color:#bfe8ff;
-}
-.math{
-  background:rgba(0,0,0,.25);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:12px;
-  padding:12px;
-  margin-top:8px;
-  direction:ltr;
-}
-.note{color:#cfe3ff;font-size:14px}
-</style>
+  <!-- hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/theory.html">
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/theory.html">
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/theory-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/theory-en.html">
 
-<script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]}};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(0,0,0,.22);
+      --b: rgba(255,255,255,.12);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.95;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1050px;margin:0 auto;padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1050px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:999px; font-size:13px; color:var(--text); white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0; font-size:30px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .label{font-weight:900; color:rgba(191,232,255,.95); margin-bottom:6px}
+    .math{
+      margin-top:8px; padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius:12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:var(--warn)}
+    code{
+      font-family:var(--mono);
+      background:rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      padding:2px 6px; border-radius:8px;
+      direction:ltr;
+    }
+    ul{margin:8px 0 0 0; padding:0 18px 0 0}
+    li{margin:6px 0}
+    footer{
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-<div class="container">
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>النظرية — الحساب الهرمي</strong>
+          <span>ترميز صريح: \(D_r^n\) (الرتبة + الدرجة)</span>
+        </div>
+      </div>
 
-<h1>النظرية الأساسية للحساب الهرمي</h1>
-
-<div class="card">
-<p>
-الحساب الهرمي هو إطار رياضي يهدف إلى <strong>توحيد توصيف التغير</strong>
-عبر طبقات متصاعدة من العمليات: الجمع، القسمة، اللوغاريتم، التتريش،
-وما بعدها.  
-يمثل هذا الإطار تعميمًا منظمًا للتفاضل الكلاسيكي.
-</p>
-</div>
-
-<h2>1. مبدأ الهرمية</h2>
-<div class="card">
-<div class="label">مبدأ أساسي</div>
-<p>
-كل مستوى من مستويات الحساب الهرمي يعبّر عن التغير باستخدام عملية
-أكثر تجريدًا من المستوى السابق.
-</p>
-<div class="math">
-\[
-\text{عملية التغير}:
-\quad
-\begin{cases}
-\text{الجمع} &\Rightarrow \text{تفاضلي} \ (D_0)\\
-\text{القسمة} &\Rightarrow \text{نسبي} \ (D_1)\\
-\text{اللوغاريتم} &\Rightarrow \text{لوغاريتمي} \ (D_2)\\
-\text{التتريش} &\Rightarrow \text{تتريشي} \ (D_3)\\
-\vdots &\Rightarrow D_n
-\end{cases}
-\]
-</div>
-</div>
-
-<h2>2. تعريف المشتق الهرمي العام</h2>
-<div class="card">
-<div class="label">تعريف (Definition)</div>
-<p>
-لتكن \(f(x)\) دالة موجبة معرفة على مجال مناسب.  
-نعرّف المشتق الهرمي من الرتبة \(n\) بالعلاقة:
-</p>
-<div class="math">
-\[
-D_n f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
-\]
-</div>
-<p class="note">
-حيث \(\ln^{(n)}\) تمثل اللوغاريتم المتكرر \(n\) مرات.
-</p>
-</div>
-
-<h2>3. الحالات الخاصة</h2>
-<div class="card">
-<div class="label">الطبقات الأولى</div>
-
-<div class="math">
-\[
-D_0 f(x)=\frac{df(x)}{dx}
-\]
-</div>
-
-<div class="math">
-\[
-D_1 f(x)=\frac{d\ln f(x)}{d\ln x}
-\]
-</div>
-
-<div class="math">
-\[
-D_2 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
-\]
-</div>
-
-<div class="math">
-\[
-D_3 f(x)=\frac{d\ln^{(3)}f(x)}{d\ln^{(3)}x}
-\]
-</div>
-</div>
-
-<h2>4. خاصية التدرج الهرمي</h2>
-<div class="card">
-<div class="label">مبرهنة (Theorem)</div>
-<p>
-إذا كانت \(f(x)\) قابلة للاشتقاق هرميًا من الرتبة \(n\)،
-فإنها قابلة للاشتقاق من جميع الرتب الأدنى:
-</p>
-<div class="math">
-\[
-D_n f(x) \;\Rightarrow\; D_{n-1} f(x) \;\Rightarrow\; \dots \;\Rightarrow\; D_0 f(x)
-\]
-</div>
-</div>
-
-<h2>5. المعنى الفيزيائي</h2>
-<div class="card">
-<p>
-يمثل كل مستوى من المشتقات الهرمية <strong>طريقة مختلفة لقياس التغير</strong>:
-</p>
-<ul>
-<li>المستوى 0: تغير مطلق</li>
-<li>المستوى 1: تغير نسبي (قياس ذاتي)</li>
-<li>المستوى 2: تغير بنيوي لوغاريتمي</li>
-<li>المستوى 3+: تغير هرمي متسارع</li>
-</ul>
-</div>
-<div class="card">
-  <h2>✨ الصيغ الذهبية للمشتقات الهرمية</h2>
-
-  <div class="math">
-  \[
-  D_0 f=\frac{df}{dx}
-  \]
-  \[
-  D_1 f=\frac{x}{f}D_0 f
-  \]
-  \[
-  D_2 f=D_1 f\frac{\ln x}{\ln f}
-  \]
-  \[
-  D_3 f=D_2 f\frac{\ln(\ln x)}{\ln(\ln f)}
-  \]
+      <nav aria-label="التنقل">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./rules.html">القوانين</a>
+        <a href="./series.html">المتسلسلات</a>
+        <a href="./integrals.html">التكامل</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="./theory-en.html">English</a>
+      </nav>
+    </div>
   </div>
 
-  <div class="math">
-  \[
-  \boxed{
-  D_{n+1} f
-  =
-  D_n f\frac{\ln^{(n)}(x)}{\ln^{(n)}(f)}
-  }
-  \]
+  <div class="wrap">
+    <header class="hero">
+      <h1>النظرية الأساسية</h1>
+      <p class="muted" style="margin:0">
+        الحساب الهرمي إطار رياضي يهدف إلى <b>توحيد توصيف التغير</b> عبر الانتقال بين مقاييس قياس مختلفة.
+        الفكرة: كل رتبة تغيّر “مقياس القياس” الذي نرصد به تغير \(f\) بالنسبة لـ \(x\).
+      </p>
+      <p class="muted small" style="margin:10px 0 0 0">
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </p>
+    </header>
+
+    <section class="card">
+      <h2>1) مبدأ الهرمية</h2>
+      <div class="label">الفكرة المحورية</div>
+      <p class="muted small" style="margin:0">
+        كل مستوى من مستويات الهرمية يعبّر عن التغير باستخدام عملية أشد تجريدًا من السابقة
+        (من الإضافة إلى النسبة، ثم إلى اللوغاريتم-لوغاريتم، ثم إلى تكرار اللوغاريتمات…).
+      </p>
+      <div class="math">
+        \[
+        \text{عملية القياس المرجعية}:
+        \begin{cases}
+        \text{الجمع} &\Rightarrow \text{رتبة }0 \ (\;D_0^1\;)\\
+        \text{القسمة (القياس النسبي)} &\Rightarrow \text{رتبة }1 \ (\;D_1^1\;)\\
+        \text{لوغاريتم اللوغاريتم} &\Rightarrow \text{رتبة }2 \ (\;D_2^1\;)\\
+        \text{لوغاريتمات متكررة (رتبة }3\text{ فما فوق)} &\Rightarrow D_r^1,\ r\ge 3
+        \end{cases}
+        \]
+      </div>
+      <div class="note">
+        <strong>قاعدة الترميز:</strong>
+        الرتبة \(r\) والدرجة \(n\). في هذه الصفحة نركّز غالبًا على <b>الدرجة 1</b>: \(D_r^1\).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) التعريف العام (رتبة \(r\)، درجة 1)</h2>
+      <p class="muted small" style="margin:0">
+        لتكن \(f(x)>0\) على مجال مناسب. نعرّف \(\ln^{(r)}\) باعتباره اللوغاريتم المتكرر \(r\) مرات:
+        \(\ln^{(0)}(x)=x\)، \(\ln^{(1)}(x)=\ln x\)، \(\ln^{(2)}(x)=\ln(\ln x)\)، وهكذا.
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+          D_{r}^{1} f(x)
+          =
+          \frac{d\,\ln^{(r)}\!\big(f(x)\big)}{d\,\ln^{(r)}(x)}
+          }
+        \]
+      </div>
+      <p class="muted small" style="margin:10px 0 0 0">
+        المعنى: نُحوِّل كلًا من \(x\) و\(f(x)\) إلى إحداثيات لوغاريتمية من الرتبة \(r\)،
+        ثم نطبّق الاشتقاق التفاضلي على هذه الإحداثيات.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>3) حالات خاصة (الدرجة 1)</h2>
+      <div class="label">الرتب الأولى</div>
+
+      <div class="math">
+        \[
+          D_0^{1} f(x)=\frac{df(x)}{dx}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          D_1^{1} f(x)=\frac{d\ln f(x)}{d\ln x}
+          \quad\text{(المشتق النسبي)}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          D_2^{1} f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          D_3^{1} f(x)=\frac{d\ln^{(3)}(f(x))}{d\ln^{(3)}(x)}
+        \]
+      </div>
+
+      <div class="note">
+        <strong>تنبيه المجال:</strong>
+        عند الرتبة \(\ge 1\) يجب ضمان تعريف اللوغاريتمات المتكررة
+        (مثلًا في الرتبة 2 غالبًا نحتاج \(x>1\) و\(f(x)>1\)).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) خاصية التدرّج الهرمي</h2>
+      <div class="label">مبدأ</div>
+      <p class="muted small" style="margin:0">
+        إذا كانت \(f\) قابلة للاشتقاق هرميًا من الرتبة \(r\) على مجال تتحقق فيه شروط التعريف،
+        فإن الرتب الأدنى تكون متاحة كذلك على نفس المجال (أو مجال أوسع).
+      </p>
+      <div class="math">
+        \[
+          D_{r}^{1} f(x)\ \Rightarrow\ D_{r-1}^{1} f(x)\ \Rightarrow\ \cdots\ \Rightarrow\ D_{0}^{1} f(x)
+        \]
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) الصيغ الذهبية (روابط بين الرتب)</h2>
+      <p class="muted small" style="margin:0">
+        هذه العلاقات تربط الرتب بعوامل تحجيم واضحة. للدرجة 1:
+      </p>
+
+      <div class="math">
+        \[
+          D_{0}^{1} f=\frac{df}{dx}
+        \]
+        \[
+          D_{1}^{1} f=\frac{x}{f}\,D_{0}^{1} f
+        \]
+        \[
+          D_{2}^{1} f=D_{1}^{1} f\;\frac{\ln x}{\ln f}
+        \]
+        \[
+          D_{3}^{1} f=D_{2}^{1} f\;\frac{\ln(\ln x)}{\ln(\ln f)}
+        \]
+      </div>
+
+      <div class="math">
+        \[
+          \boxed{
+          D_{r+1}^{1} f
+          =
+          D_{r}^{1} f\;\frac{\ln^{(r)}(x)}{\ln^{(r)}(f)}
+          }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>تفسير:</strong>
+        الانتقال من رتبة \(r\) إلى رتبة \(r+1\) هو إعادة تحجيم محكومة بنسبة إحداثيات الرتبة \(r\)
+        (على محور \(x\) ومحور \(f\)).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>6) المعنى (قراءة سريعة للرتب)</h2>
+      <ul class="muted small">
+        <li><b>رتبة 0:</b> تغير مطلق (إضافي) في \(x\).</li>
+        <li><b>رتبة 1:</b> تغير نسبي (قياس مقياسي/Scale-invariant).</li>
+        <li><b>رتبة 2:</b> تغير بنيوي لوغاريتمي (لوغاريتم-لوغاريتم).</li>
+        <li><b>رتبة \(\ge 3\):</b> مقاييس أعلى عبر اللوغاريتمات المتكررة.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>7) الاستشهاد بهذه الصفحة</h2>
+      <p class="muted small" style="margin:0">صيغة استشهاد مقترحة (جاهزة للنسخ):</p>
+      <div class="math">
+        \[
+          \texttt{GOSSA AHMED. Hierarchical Calculus — Theory (definition of D\_r^n and golden relations). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
+        \]
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — الحساب الهرمي | GOSSA AHMED — نظرية الحساب الهرمي · ترميز \(D_r^n\)
+    </footer>
   </div>
-
-  <p class="small">
-    هذه العلاقة تمثل البنية الجوهرية للحساب الهرمي،
-    وتبيّن أن كل مشتق هو إعادة صياغة للتغيّر على مقياس أعلى.
-  </p>
-</div>
-
-<div class="card">
-<p class="note">
-هذه الصفحة تشكّل الأساس النظري الرسمي للحساب الهرمي.
-للاستشهاد استخدم DOI:
-<a href="https://doi.org/10.5281/zenodo.17917302" target="_blank">
-10.5281/zenodo.17917302
-</a>
-</p>
-</div>
-
-</div>
 </body>
 </html>
