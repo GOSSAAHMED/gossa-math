@@ -17,6 +17,11 @@
   <link rel="canonical"
         href="https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus.html">
 
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus.html">
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus-ar.html">
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus.html">
+
   <!-- MathJax (SVG output for crisp formulas) -->
   <script>
     MathJax = {
@@ -28,7 +33,7 @@
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
   <style>
     :root{
@@ -105,9 +110,7 @@
       font-size: 118%;
     }
 
-    mjx-container{
-      font-size: 105%;
-    }
+    mjx-container{ font-size: 105%; }
 
     ul{
       margin: 10px 0 0;
@@ -173,6 +176,7 @@
       padding-top: 18px;
     }
   </style>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -196,11 +200,10 @@
     "Failure of Classical Calculus",
     "Relative Derivative D1",
     "Hierarchical Derivatives",
-    "Unsolvable Differential Equations",
-    "Hierarchical Integrals"
+    "Unsolvable Differential Equations"
   ],
   "abstract": "This article explains the structural limits of classical differential calculus when absolute constants and units dominate transformations. It introduces Hierarchical Calculus as a consistent framework that replaces unstable classical assumptions and enables the resolution of problems that are unsolvable at the classical level.",
-  "url": "https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus-en.html"
+  "url": "https://gossaahmed.github.io/gossa-math/why-classical-calculus-fails-hierarchical-calculus.html"
 }
 </script>
 
@@ -218,6 +221,11 @@
     <strong>Core idea:</strong>
     The “failure” is not in the equation’s complexity, but in using a level that does not match the nature of change.
     When change is relative or logarithmic, hierarchical lifting becomes the natural tool.
+  </div>
+
+  <div class="note">
+    <strong>Domain note:</strong>
+    In this page we assume \(x>1\) so that \(\ln x>0\) and \(\ln\ln x\) is defined.
   </div>
 
   <div class="divider"></div>
@@ -264,7 +272,7 @@
   <div class="math-block">
     $$
     \boxed{
-    D^{1}_{1}y=\frac{x}{y}\,\frac{dy}{dx}
+    D^{1}_{1}y=\frac{d\ln y}{d\ln x}=\frac{x}{y}\,\frac{dy}{dx}
     }
     $$
   </div>
@@ -283,7 +291,7 @@
     <p>
       <strong>Result:</strong>
       The equation collapses into a clean relative-change statement.
-      Yet the logarithmic signature remains through \(\ln x\), indicating that the natural next level is the logarithmic one.
+      Yet the logarithmic signature remains through \(\ln x\), indicating that the natural next scale is \(\ln\ln x\).
     </p>
   </div>
 
@@ -291,23 +299,23 @@
 
   <h2>4. Lifting to the logarithmic level \(D^{1}_{2}\): the problem becomes a triviality</h2>
   <p>
-    At the logarithmic level (rank 2), we measure change in a higher logarithmic scale:
+    Since \(D^{1}_{1}y=\dfrac{d\ln y}{d\ln x}=\dfrac{1}{\ln x}\), we have:
+  </p>
+
+  <div class="math-block">
+    $$
+    d(\ln y)=\frac{d(\ln x)}{\ln x}=d(\ln\ln x)
+    $$
+  </div>
+
+  <p>
+    Therefore the natural logarithmic-level statement is:
   </p>
 
   <div class="math-block">
     $$
     \boxed{
-    D^{1}_{2}y=\frac{d(\ln\ln y)}{d(\ln\ln x)}
-    }
-    $$
-  </div>
-
-  <p>At this level the structure becomes transparent and reduces to the simplest possible form:</p>
-
-  <div class="math-block">
-    $$
-    \boxed{
-    D^{1}_{2}y=1
+    D^{1}_{2}y:=\frac{d(\ln y)}{d(\ln\ln x)}=1
     }
     $$
   </div>
@@ -345,7 +353,7 @@
     </p>
 
     <div class="lang-links">
-      <a class="btn primary" href="./why-differential-calculus-fails-hierarchical-calculus-ar.html">
+      <a class="btn primary" href="./why-classical-calculus-fails-hierarchical-calculus-ar.html">
         Read the Arabic version
       </a>
       <a class="btn" href="./index-en.html">Back to Home (EN)</a>
