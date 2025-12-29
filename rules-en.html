@@ -4,15 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hierarchical Derivation Rules — (Rank & Degree)</title>
-  <meta name="description" content="Hierarchical derivation rules: start from the relative derivative then generalize to rank n. All derivatives are written with explicit rank and degree D_r^n (e.g., D_1^1 and D_n^1)." />
+  <meta name="description" content="Hierarchical derivation rules: start from the relative derivative (rank 1) then generalize to rank n. All derivatives use explicit rank and degree notation D_r^n (e.g., D_0^1, D_1^1, D_n^1)." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- hreflang -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/rules-en.html">
-
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/rules-en.html">
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/rules.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/rules-en.html">
+  <!-- canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/rules-en.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/rules-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/rules.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/rules-en.html" />
 
   <style>
     :root{
@@ -136,6 +135,7 @@
       vertical-align:top;
     }
     tbody tr:last-child td{border-bottom:none}
+
     code{
       font-family:var(--mono);
       background:rgba(0,0,0,.25);
@@ -159,12 +159,14 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- JSON-LD -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": "Derivation Rules (D1 → Dn) — Hierarchical Calculus",
-  "alternativeHeadline": "Operational rules for the relative derivative D1 and higher hierarchical derivatives",
+  "headline": "Derivation Rules (Rank & Degree) — Hierarchical Calculus",
+  "alternativeHeadline": "Operational rules for D_1^1 and the extension to D_n^1",
   "author": {
     "@type": "Person",
     "name": "Ahmed Gossa",
@@ -175,19 +177,14 @@
     "Relative Derivative D1",
     "Classical Derivative D0",
     "Derivation Rules",
-    "Hierarchical Derivatives",
-    "Differential Equations"
+    "Hierarchical Derivatives"
   ],
-  "abstract": "A reference page describing the core derivation rules for the relative derivative (D1) and the extension to higher hierarchical derivatives. It summarizes operational identities and transformation rules used across Hierarchical Calculus and its applications.",
+  "abstract": "A reference page describing the core derivation rules for the relative derivative (D_1^1) and the extension to higher hierarchical derivatives (D_n^1).",
   "url": "https://gossaahmed.github.io/gossa-math/rules-en.html",
   "inLanguage": "en",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Hierarchical Calculus"
-  }
+  "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
 }
 </script>
-
 </head>
 
 <body>
@@ -205,7 +202,7 @@
         <a href="./index-en.html">Home</a>
         <a href="./series-en.html">Series</a>
         <a href="./integrals-en.html">Integrals</a>
-        <a href="./equations.html">Equations</a>
+        <a href="./equations-en.html">Equations</a>
         <a href="./hierarchical-derivatives-relations-en.html">Relations</a>
         <a href="./rules.html">العربية</a>
       </nav>
@@ -216,12 +213,18 @@
     <header class="hero">
       <h1>Hierarchical Derivation Rules</h1>
       <p class="muted">
-        This page presents the core rules of hierarchical differentiation. We begin with the relative derivative and then generalize to rank \(n\).
+        This page summarizes the operational rules of hierarchical differentiation.
+        We begin with the <b>relative derivative</b> (rank 1) then generalize to rank \(n\).
         <br>
         <b>Notation rule:</b> every derivative is written with explicit <b>rank and degree</b>:
-        \(\;D_r^n\). In this page we explicitly use <b>degree 1</b>:
-        \(\;D_{1}^{1}\) and \(\;D_{n}^{1}\).
+        \(\;D_r^n\). In this page we use <b>degree 1</b> only:
+        \(\;D_{0}^{1}, D_{1}^{1}, D_{n}^{1}\).
       </p>
+      <div class="note">
+        <strong>Domain note (degree 1):</strong>
+        For rank 1 we typically require \(x>0\) and \(f(x)>0\) (because \(\ln x\) and \(\ln f\) appear).
+        For rank 2 we typically require \(x>1\) and \(f(x)>1\) (because \(\ln\ln x\) and \(\ln\ln f\) appear).
+      </div>
       <p class="muted small" style="margin:10px 0 0 0">
         Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
         <br>
@@ -232,21 +235,34 @@
     <section class="card">
       <h2>1) Quick definition: the relative derivative (rank 1, degree 1)</h2>
       <p class="muted small" style="margin:0">
-        Assume \(f(x)>0\) on a domain \(x>0\). The relative derivative measures change on a relative scale.
+        Assume \(x>0\) and \(f(x)>0\). The relative derivative measures change on a relative (ratio) scale:
       </p>
       <div class="math">
         \[
           \boxed{
             D_{1}^{1} f(x)
-            =\frac{d}{d\ln x}\big(\ln f(x)\big)
             =\frac{d\ln f(x)}{d\ln x}
+          }
+        \]
+      </div>
+
+      <h3>1.1) Link with the classical derivative (rank 0, degree 1)</h3>
+      <p class="muted small" style="margin:0">
+        The classical derivative is \(D_0^{1}f=f'(x)\). The relative derivative can be written as:
+      </p>
+      <div class="math">
+        \[
+          \boxed{
+            D_{1}^{1} f(x)
+            = \frac{x}{f(x)}\,\frac{df}{dx}
+            = \frac{x\,D_0^{1}f(x)}{f(x)}
           }
         \]
       </div>
 
       <div class="note">
         <strong>Idea:</strong>
-        If \(D_{1}^{1} f\) is constant, then \(f\) behaves like a power \(x^\alpha\) (scaling law).
+        If \(D_{1}^{1} f\) is constant, then \(f\) behaves like a power law \(x^\alpha\) (scaling law).
       </div>
     </section>
 
@@ -300,17 +316,23 @@
         \]
       </div>
 
-      <h3>2.6) Chain rule — relative version</h3>
+      <h3>2.6) Chain rule — relative form</h3>
       <p class="muted small" style="margin:0">
         Let \(u=u(x)>0\) and \(f=f(u)>0\). Then:
       </p>
       <div class="math">
         \[
           \boxed{
-            D_{1}^{1}\big(f(u(x))\big)=\Big(D_{1}^{1} f\Big)(u)\;\cdot\;D_{1}^{1}u(x)
+            D_{1}^{1}\big(f(u(x))\big)
+            =\left(\frac{d\ln f}{d\ln u}\right)\Bigg|_{u=u(x)}
+            \cdot
+            \frac{d\ln u}{d\ln x}
           }
         \]
       </div>
+      <p class="muted small" style="margin:10px 0 0 0">
+        In short notation: \(\;D_{1}^{1}(f\circ u)=(D_{1}^{1}f)(u)\cdot D_{1}^{1}u\).
+      </p>
     </section>
 
     <section class="card">
@@ -327,7 +349,7 @@
           <tr>
             <td>\(f(x)=x^3\)</td>
             <td>\(D_{1}^{1} f=3\)</td>
-            <td>explicit relative homogeneity</td>
+            <td>power law</td>
           </tr>
           <tr>
             <td>\(f(x)=\sqrt{x}=x^{1/2}\)</td>
@@ -337,12 +359,12 @@
           <tr>
             <td>\(f(x)=e^x\)</td>
             <td>\(D_{1}^{1} f=x\)</td>
-            <td>\(\ln f=x\), then differentiate w.r.t. \(\ln x\)</td>
+            <td>\(\ln f=x\), then \(d/d\ln x\)</td>
           </tr>
           <tr>
             <td>\(f(x)=\ln x\)</td>
             <td>\(D_{1}^{1} f=\dfrac{1}{\ln x}\)</td>
-            <td>differentiate \(\ln(\ln x)\) w.r.t. \(\ln x\)</td>
+            <td>\(\ln(\ln x)\) differentiated w.r.t. \(\ln x\)</td>
           </tr>
         </tbody>
       </table>
@@ -351,21 +373,33 @@
     <section class="card">
       <h2>4) Generalization to rank \(n\): \(D_{n}^{1}\)</h2>
       <p class="muted small" style="margin:0">
-        The hierarchical principle: going to a higher rank means changing the “measurement scale” of variation.
+        The hierarchical principle: going to a higher rank changes the “measurement scale” of variation.
+        For degree 1, the natural scale is iterated logarithms.
       </p>
 
       <div class="math">
         \[
           \boxed{
-            D_{n}^{1} f(x)=\frac{d}{d\ln^{(n)}x}\big(\ln f(x)\big)
+            D_{n}^{1} f(x)
+            =\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
           }
         \]
       </div>
 
       <p class="muted small" style="margin:10px 0 0 0">
-        With this definition, the same structural rules repeat at every rank:
-        the logarithm turns the rank operation into addition, and differentiation yields a clean rule.
+        Here \(\ln^{(n)}\) means the <b>n-times iterated</b> logarithm:
+        \(\ln^{(1)}x=\ln x\), \(\ln^{(2)}x=\ln(\ln x)\), etc.
+        This matches the rank-2 definition used elsewhere:
+        \[
+          D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+        \]
       </p>
+
+      <div class="note">
+        <strong>Structural repetition:</strong>
+        Because logarithms turn multiplicative structures into additive ones, the “product/quotient/power” rules
+        keep the same form at every rank (when all expressions are well-defined).
+      </div>
 
       <div class="math">
         \[
@@ -376,18 +410,13 @@
           }
         \]
       </div>
-
-      <div class="note">
-        <strong>Hierarchical interpretation:</strong>
-        Rank 0 composition is additive, rank 1 is multiplicative, and higher ranks follow their own scale through \(\ln^{(n)}\).
-      </div>
     </section>
 
     <section class="card">
       <h2>5) Citation</h2>
       <div class="math">
         \[
-          \texttt{GOSSA AHMED. Hierarchical Calculus — Derivation Rules (D\_1 then D\_n, explicit rank & degree). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
+          \texttt{GOSSA AHMED. Hierarchical Calculus — Derivation Rules (D\_1 then D\_n, explicit rank \& degree). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
         \]
       </div>
     </section>
@@ -398,3 +427,4 @@
   </div>
 </body>
 </html>
+>
