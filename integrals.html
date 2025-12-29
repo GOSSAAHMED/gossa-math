@@ -3,17 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>التكامل الهرمي — الحساب الهرمي (بالرتبة والدرجة)</title>
-  <meta name="description" content="التكامل الهرمي هو المعكوس الطبيعي للمشتقات الهرمية. جميع المشتقات مكتوبة بالرتبة والدرجة D_r^n مثل D_1^1 و D_2^1." />
+  <title>التكامل الهرمي | الحساب الهرمي</title>
+  <meta name="description" content="التكامل الهرمي هو المعكوس الطبيعي للمشتقات الهرمية. جميع المشتقات مكتوبة بالرتبة والدرجة D_r^n مثل D_1^1 و D_2^1، مع صيغ عملية وأمثلة متحققة." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- hreflang -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/integrals-en.html">
-
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/integrals.html">
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/integrals-en.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/integrals-en.html">
-
+  <!-- Canonical + hreflang (FIXED) -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/integrals.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/integrals.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/integrals-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/integrals-en.html" />
 
   <style>
     :root{
@@ -84,6 +82,7 @@
 
     h1{margin:0 0 8px 0; font-size:28px}
     h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
@@ -166,10 +165,10 @@
       </div>
 
       <nav aria-label="التنقل">
-        <a href="./index.html">نظرة عامة</a>
+        <a href="./index.html">الرئيسية</a>
+        <a href="./theory.html">النظرية</a>
         <a href="./series.html">المتسلسلات</a>
-        <a href="./rules.html">قوانين الاشتقاق</a>
-        <a href="./integrals.html">التكامل</a>
+        <a href="./rules.html">القواعد</a>
         <a href="./equations.html">المعادلات</a>
         <a href="./integrals-en.html">English</a>
       </nav>
@@ -180,13 +179,14 @@
     <header class="hero">
       <h1>التكامل الهرمي</h1>
       <p class="muted">
-        التكامل الهرمي هو المعكوس الطبيعي للمشتقات الهرمية.
-        في الرتبة 0 يكون التراكم جمعيًا، في الرتبة 1 يصبح التراكم نسبيًا (ضربيًا)،
-        وفي الرتبة 2 يصبح التراكم لوغاريتميًا (أُسّيًا على مستوى البنية).
+        التكامل الهرمي هو المعكوس الطبيعي للمشتقات الهرمية (خصوصًا عند الدرجة \(1\)).
+        في الرتبة \(0\) يكون التراكم جمعيًا، في الرتبة \(1\) يصبح التراكم نسبيًا (ضربيًا)،
+        وفي الرتبة \(2\) يصبح التراكم في فضاء \(\ln\!\ln\) (وبنية أُسّية مزدوجة).
         <br>
-        <b>قاعدة الترميز:</b> كل مشتق في هذه الصفحة يُكتب دائمًا بالرتبة والدرجة:
-        \(\;D_r^n\). وهنا أغلب الاستعمالات تكون <b>درجة 1</b> مثل: \(\;D_n^{1}\).
+        <b>قاعدة الترميز:</b> كل مشتق يُكتب صراحة بالرتبة والدرجة:
+        \(\;D_r^n\). وهنا سنستعمل غالبًا \(\;D_n^{1}\).
       </p>
+
       <p class="muted small" style="margin:10px 0 0 0">
         Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
         <br>
@@ -198,7 +198,7 @@
       <h2>1) التعريف: التكامل الهرمي \(\mathcal{I}_n\)</h2>
       <p class="muted small" style="margin:0">
         نرمز للتكامل الهرمي من الرتبة \(n\) بالعامل \(\mathcal{I}_n\)، وهو معكوس المشتق الهرمي
-        <b>عند الدرجة 1</b> أي \(D_n^{1}\) (على مجال مناسب وبثابت تكاملي هرمي).
+        من الرتبة \(n\) والدرجة \(1\)، أي \(D_n^{1}\)، على مجال مناسب:
       </p>
       <div class="math">
         \[
@@ -207,16 +207,20 @@
           }
         \]
       </div>
+
       <div class="note">
-        <strong>ملاحظة:</strong>
-        كما يظهر ثابت التكامل جمعيًا في الرتبة 0، يظهر في الرتبة 1 بثابت ضربي، وفي الرتبة 2 بثابت أُسّي… إلخ.
+        <strong>قاعدة الثابت الهرمي (مهم):</strong>
+        “الثابت” يعيش في فضاء التراكم الطبيعي:
+        <span class="ltr">Rank 0: \(F \mapsto F + C\)</span>،
+        <span class="ltr">Rank 1: \(\ln F \mapsto \ln F + C\) (أي \(F \mapsto C_\times F\))</span>،
+        <span class="ltr">Rank 2: \(\ln\ln F \mapsto \ln\ln F + C\)</span>.
       </div>
     </section>
 
     <section class="card">
       <h2>2) النظرية الأساسية للتكامل الهرمي</h2>
 
-      <h2 style="margin-top:14px">2.1) المعكوسية الأولى</h2>
+      <h3>2.1) المعكوسية الأولى</h3>
       <div class="math">
         \[
           \boxed{
@@ -225,60 +229,49 @@
         \]
       </div>
 
-      <h2 style="margin-top:14px">2.2) المعكوسية الثانية (حتى ثابت تكاملي هرمي)</h2>
+      <h3>2.2) المعكوسية الثانية (حتى ثابت تكاملي هرمي)</h3>
       <p class="muted small" style="margin:0">
-        إذا كانت \(F\) تحقق \(D_n^{1}F=f\) فإن:
-      </p>
-      <div class="math">
-        \[
-          \boxed{
-            \mathcal{I}_n\!\left[D_{n}^{1}F\right]=F\;\odot\;C_n
-          }
-        \]
-      </div>
-
-      <p class="muted small" style="margin:10px 0 0 0">
-        حيث العملية \(\odot\) وثابت التكامل \(C_n\) يعتمدان على الرتبة:
+        إذا كانت \(F\) تحقق \(D_n^{1}F=f\)، فإن \(\mathcal{I}_n[f]\) تعيد \(F\) حتى ثابت هرمي من نفس الرتبة:
       </p>
 
       <table>
         <thead>
           <tr>
             <th>الرتبة</th>
-            <th>شكل الثابت</th>
-            <th>العملية \(\odot\)</th>
+            <th>أين يعيش “الثابت”؟</th>
+            <th>الصيغة المكافئة</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="ltr">0</td>
-            <td class="ltr">\(C\) (جمعي)</td>
-            <td class="ltr">\(+\)</td>
+            <td class="ltr">في \(F\)</td>
+            <td class="ltr">\(F + C\)</td>
           </tr>
           <tr>
             <td class="ltr">1</td>
-            <td class="ltr">\(C_\times>0\) (ضربي)</td>
-            <td class="ltr">\(\times\)</td>
+            <td class="ltr">في \(\ln F\)</td>
+            <td class="ltr">\(F\cdot C_\times\) حيث \(C_\times=e^C>0\)</td>
           </tr>
           <tr>
             <td class="ltr">2</td>
-            <td class="ltr">\(C_{\exp}>1\) (أُسّي/بنيوي)</td>
-            <td class="ltr">تركيب أُسّي</td>
+            <td class="ltr">في \(\ln(\ln F)\)</td>
+            <td class="ltr">\(\exp(\exp(\,\cdot\, + C))\) (ثابت بنيوي)</td>
           </tr>
         </tbody>
       </table>
 
       <div class="note">
         <strong>الفكرة:</strong>
-        في كل رتبة، “الثابت” يأخذ طبيعة التراكم في تلك الرتبة: جمع ← ضرب ← أسّ ← ...
+        جمع ← ضرب ← بنية (أسّ مزدوج) ← مستويات أعلى.
       </div>
     </section>
 
     <section class="card">
-      <h2>3) التكامل النسبي \(\mathcal{I}_1\) (الرتبة الأولى) — 5 أمثلة</h2>
+      <h2>3) التكامل النسبي \(\mathcal{I}_1\) (الرتبة الأولى) — أمثلة متحققة</h2>
 
       <p class="muted small" style="margin:0">
-        نعتمد الصيغة العملية (على مجال مناسب):
+        بما أن \(D_{1}^{1}y=\dfrac{d\ln y}{d\ln x}\)، فإن حل \(D_1^{1}y=f(x)\) يعطي:
       </p>
 
       <div class="math">
@@ -294,48 +287,54 @@
           <tr>
             <th>الدالة \(f(x)\)</th>
             <th>التكامل النسبي \(\mathcal{I}_1[f](x)\)</th>
-            <th>تحقق سريع (كل مشتق بصيغة \(D_r^n\))</th>
+            <th>تحقق سريع</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="ltr">\(f(x)=1\)</td>
-            <td class="ltr">\(\mathcal{I}_1[1]=x\)</td>
+            <td class="ltr">\(1\)</td>
+            <td class="ltr">\(x\)</td>
             <td class="ltr">\(D_{1}^{1}(x)=1\)</td>
           </tr>
           <tr>
-            <td class="ltr">\(f(x)=a\) (ثابت)</td>
-            <td class="ltr">\(\mathcal{I}_1[a]=x^a\)</td>
+            <td class="ltr">\(a\) (ثابت)</td>
+            <td class="ltr">\(x^a\)</td>
             <td class="ltr">\(D_{1}^{1}(x^a)=a\)</td>
           </tr>
           <tr>
-            <td class="ltr">\(f(x)=\ln x\)</td>
-            <td class="ltr">\(\mathcal{I}_1[\ln x]=e^{(\ln x)^2/2}\)</td>
+            <td class="ltr">\(\ln x\)</td>
+            <td class="ltr">\(\exp((\ln x)^2/2)\)</td>
             <td class="ltr">\(D_{1}^{1}(\cdot)=\ln x\)</td>
           </tr>
           <tr>
-            <td class="ltr">\(f(x)=x^k\)</td>
-            <td class="ltr">\(\mathcal{I}_1[x^k]=e^{x^k/k}\ (k\neq0)\)</td>
+            <td class="ltr">\(x^k\)</td>
+            <td class="ltr">\(\exp(x^k/k)\ \ (k\neq0)\)</td>
             <td class="ltr">\(D_{1}^{1}(\cdot)=x^k\)</td>
           </tr>
           <tr>
-            <td class="ltr">\(f(x)=\dfrac{1}{\ln x}\)</td>
-            <td class="ltr">\(\mathcal{I}_1\!\left[\frac{1}{\ln x}\right]=\ln x\)</td>
-            <td class="ltr">\(D_{1}^{1}(\ln x)=\frac{1}{\ln x}\)</td>
+            <td class="ltr">\(\dfrac{1}{\ln x}\)</td>
+            <td class="ltr">\(\ln x\)</td>
+            <td class="ltr">\(D_{1}^{1}(\ln x)=\dfrac{1}{\ln x}\)</td>
           </tr>
         </tbody>
       </table>
 
       <p class="muted small" style="margin:10px 0 0 0">
-        هذه الأمثلة تُظهر أن التكامل النسبي يبني “نموًا مضبوطًا نسبيًا”: يظهر الضرب والأسّ بصورة طبيعية.
+        هذه الأمثلة توضّح أن التكامل النسبي يبني نموًا مضبوطًا: يظهر الضرب والأسّ بصورة طبيعية.
       </p>
     </section>
 
     <section class="card">
-      <h2>4) التكامل اللوغاريتمي \(\mathcal{I}_2\) (الرتبة الثانية) — 5 أمثلة</h2>
+      <h2>4) التكامل اللوغاريتمي \(\mathcal{I}_2\) (الرتبة الثانية) — أمثلة متحققة</h2>
+
+      <div class="note">
+        <strong>شروط المجال:</strong>
+        استعمال \(\ln(\ln x)\) يتطلب \(x>1\) (حتى تكون \(\ln x>0\)).
+        كما أن النتائج تكون عادة \(y>1\) حتى تكون \(\ln(\ln y)\) معرفة.
+      </div>
 
       <p class="muted small" style="margin:0">
-        على مجال \(x>1\) (حتى تكون \(\ln x>0\)) نعتمد الصيغة العملية:
+        بما أن \(D_{2}^{1}y=\dfrac{d\ln(\ln y)}{d\ln(\ln x)}\)، فإن حل \(D_2^{1}y=f(x)\) يعطي:
       </p>
 
       <div class="math">
@@ -351,41 +350,42 @@
           <tr>
             <th>الدالة \(f(x)\)</th>
             <th>التكامل اللوغاريتمي \(\mathcal{I}_2[f](x)\)</th>
-            <th>تحقق سريع (كل مشتق بصيغة \(D_r^n\))</th>
+            <th>تحقق سريع</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="ltr">\(f(x)=1\)</td>
-            <td class="ltr">\(\mathcal{I}_2[1]=x\)</td>
+            <td class="ltr">\(1\)</td>
+            <td class="ltr">\(x\)</td>
             <td class="ltr">\(D_{2}^{1}(x)=1\)</td>
           </tr>
           <tr>
-            <td class="ltr">\(f(x)=a\) (ثابت)</td>
-            <td class="ltr">\(\mathcal{I}_2[a]=e^{(\ln x)^a}\)</td>
-            <td class="ltr">\(D_{2}^{1}(\cdot)=a\)</td>
+            <td class="ltr">\(a\) (ثابت)</td>
+            <td class="ltr">\(\exp\!\big(C(\ln x)^a\big)\)</td>
+            <td class="ltr">\(D_{2}^{1}(\cdot)=a\) لأي \(C>0\)</td>
           </tr>
           <tr>
-            <td class="ltr">\(f(x)=\ln\ln x\)</td>
-            <td class="ltr">\(\mathcal{I}_2[\ln\ln x]=\exp(\exp((\ln\ln x)^2/2))\)</td>
+            <td class="ltr">\(\ln\ln x\)</td>
+            <td class="ltr">\(\exp(\exp((\ln\ln x)^2/2))\)</td>
             <td class="ltr">\(D_{2}^{1}(\cdot)=\ln\ln x\)</td>
           </tr>
           <tr>
-            <td class="ltr">\(f(x)=\ln x\)</td>
-            <td class="ltr">\(\mathcal{I}_2[\ln x]=e^{x}\)</td>
+            <td class="ltr">\(\ln x\)</td>
+            <td class="ltr">\(\exp(x)\)</td>
             <td class="ltr">\(D_{2}^{1}(e^x)=\ln x\)</td>
           </tr>
           <tr>
-            <td class="ltr">\(f(x)=(\ln\ln x)^n\)</td>
-            <td class="ltr">\(\mathcal{I}_2[(\ln\ln x)^n]=\exp\!\big(\exp((\ln\ln x)^{n+1}/(n+1))\big)\)</td>
+            <td class="ltr">\((\ln\ln x)^n\)</td>
+            <td class="ltr">\(\exp(\exp((\ln\ln x)^{n+1}/(n+1)))\)</td>
             <td class="ltr">\(D_{2}^{1}(\cdot)=(\ln\ln x)^n\)</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="muted small" style="margin:10px 0 0 0">
-        التكامل اللوغاريتمي يبني “تراكمًا بنيويًا”: يظهر الأسّ المكرر طبيعيًا لأن مقياس القياس هو \(\ln\ln x\).
-      </p>
+      <div class="note">
+        <strong>ملاحظة:</strong>
+        في صف \(f(x)=a\) تظهر ثابتية الرتبة الثانية طبيعيًا داخل فضاء \(\ln\!\ln\)، ولهذا كتبنا الحل مع ثابت \(C>0\) لتفادي أي تناقض.
+      </div>
     </section>
 
     <section class="card">
@@ -395,15 +395,15 @@
       </p>
       <div class="math">
         \[
-          \texttt{GOSSA AHMED. Hierarchical Calculus — Hierarchical Integrals (Fundamental Theorem + Examples). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
+          \texttt{GOSSA AHMED. Hierarchical Calculus — Hierarchical Integrals. Official Website. Zenodo DOI: 10.5281/zenodo.17917302 (2025).}
         \]
       </div>
     </section>
 
     <footer>
-      © 2025 — الحساب الهرمي | Gossa Ahmed — مؤرشف عبر Zenodo (DOI)
+      © 2025 — الحساب الهرمي | GOSSA AHMED — ترميز صريح \(D_r^n\)
     </footer>
   </div>
 </body>
 </html>
->
+
