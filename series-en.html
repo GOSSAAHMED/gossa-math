@@ -9,10 +9,9 @@
 
   <!-- hreflang -->
   <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/series-en.html">
-
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/series-en.html">
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/series.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/series-en.html">
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/series-en.html">
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/series.html">
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/series-en.html">
 
   <style>
     :root{
@@ -196,43 +195,41 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/series-en.html">
 
-<!-- Schema START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "headline": "Hierarchical Series",
-  "alternativeHeadline": "Series Theory within Hierarchical Calculus",
-  "author": {
-    "@type": "Person",
-    "name": "Ahmed Gossa",
-    "url": "https://gossaahmed.github.io/gossa-math/"
-  },
-  "about": [
-    "Hierarchical Calculus",
-    "Hierarchical Series",
-    "Differential Calculus",
-    "Relative Derivative D1",
-    "Unsolvable Differential Equations"
-  ],
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Hierarchical Calculus",
-    "url": "https://gossaahmed.github.io/gossa-math/"
-  },
-  "url": "https://gossaahmed.github.io/gossa-math/series-en.html",
-  "inLanguage": "en",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Hierarchical Calculus"
+  <!-- Schema START -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Hierarchical Series",
+    "alternativeHeadline": "Series Theory within Hierarchical Calculus",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Hierarchical Series",
+      "Differential Calculus",
+      "Relative Derivative D1",
+      "Hierarchical Derivative D2",
+      "Function Approximation"
+    ],
+    "isPartOf": {
+      "@type": "CreativeWork",
+      "name": "Hierarchical Calculus",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "url": "https://gossaahmed.github.io/gossa-math/series-en.html",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
+    }
   }
-}
-</script>
-<!-- Schema END -->
-
-</head>
+  </script>
+  <!-- Schema END -->
 
 </head>
 
@@ -260,15 +257,15 @@
       <h1>Series: Differential, Relative, and Logarithmic</h1>
       <p class="muted" style="margin:0; line-height:1.9">
         This page unifies three approximation families around a reference point \(x_0\):
-        (1) the classical differential Taylor series (rank \(D_0\)),
-        (2) a relative multiplicative (“product”) Taylor series (rank \(D_1\)),
-        (3) a rank-2 logarithmic exponential series (rank \(D_2\)).
+        (1) the classical differential Taylor series (rank 0, operator \(D_0^n\)),
+        (2) a relative multiplicative (“product”) Taylor series (rank 1, operator \(D_1^n\)),
+        (3) a rank-2 logarithmic exponential series (rank 2, operator \(D_2^n\)).
         We always write derivatives with both <b>rank</b> and <b>degree</b>.
       </p>
       <div style="margin-top:10px">
-        <span class="pill">D₀: differential</span>
-        <span class="pill">D₁: relative (product)</span>
-        <span class="pill">D₂: log-rank (exponential)</span>
+        <span class="pill">rank 0: differential</span>
+        <span class="pill">rank 1: relative (product)</span>
+        <span class="pill">rank 2: log-rank (exponential)</span>
         <span class="pill">Function approximation</span>
       </div>
     </header>
@@ -280,23 +277,23 @@
         <div class="label">Expansion point</div>
         <p class="muted small" style="margin:0">
           Choose \(x_0\) inside the domain. Approximation quality depends on the notion of “closeness”:
-          <br>— For \(D_0\): additive closeness via \(x-x_0\).
-          <br>— For \(D_1\): relative closeness via \(x/x_0\).
-          <br>— For \(D_2\): logarithmic closeness via \(\ln x/\ln x_0\) (equivalently \(\ln(\ln x)\)).
+          <br>— For rank 0: additive closeness via \(x-x_0\).
+          <br>— For rank 1: relative closeness via \(x/x_0\).
+          <br>— For rank 2: logarithmic closeness via \(\ln x/\ln x_0\) (equivalently \(\ln(\ln x)\)).
         </p>
       </div>
 
       <div class="note">
         <strong>Domain note:</strong>
-        The \(D_2\) series typically requires \(x>1\) and \(x_0>1\) so that \(\ln(\ln x)\) is defined.
-        It also uses \(\ln(\ln f)\), hence we usually consider ranges where \(f(x)>1\).
+        Rank \(D_2\) uses \(\ln(\ln x)\) and \(\ln(\ln f)\), hence we assume
+        \(x>1\) (so \(\ln x>0\)) and \(f(x)>1\) (so \(\ln f>0\)).
       </div>
     </section>
 
     <div class="grid">
       <!-- D0 -->
       <section class="card">
-        <h2><span class="bar"></span>1) Differential series — rank \(D_0\)</h2>
+        <h2><span class="bar"></span>1) Differential series — rank 0 (operator \(D_0^n\))</h2>
         <p class="muted small">
           The classical Taylor series built from the standard differential operator. We write rank+degree as \(D_0^n\).
         </p>
@@ -325,9 +322,9 @@
 
       <!-- D1 -->
       <section class="card">
-        <h2><span class="bar"></span>2) Relative multiplicative series — rank \(D_1\)</h2>
+        <h2><span class="bar"></span>2) Relative multiplicative series — rank 1 (operator \(D_1^n\))</h2>
         <p class="muted small">
-          A “product Taylor”: sum → product and minus → division. Built from successive relative derivatives of degree \(n\) at rank 1: \(D_1^n\).
+          A “product Taylor”: sum → product and minus → division. Built from successive relative derivatives (degree \(n\)) at rank 1.
         </p>
 
         <div class="block">
@@ -359,6 +356,9 @@
               \left.\left(\frac{d}{d\ln x}\right)^{n}\ln f(x)\right|_{x=x_0}.
             \]
           </p>
+          <p class="muted small" style="margin:8px 0 0 0">
+            Here the <b>degree</b> \(n\) is the order of differentiation with respect to \(\ln x\).
+          </p>
         </div>
 
         <div class="block">
@@ -375,9 +375,10 @@
 
       <!-- D2 -->
       <section class="card">
-        <h2><span class="bar"></span>3) Rank-2 logarithmic exponential series — rank \(D_2\) (Option A)</h2>
+        <h2><span class="bar"></span>3) Rank-2 logarithmic exponential series — rank 2 (operator \(D_2^n\))</h2>
         <p class="muted small">
-          In rank \(D_2\), the effective variable is \(\ln(\ln x)\). We adopt Option A: approximating \(\ln f(x)/\ln f(x_0)\).
+          In rank 2, the effective variable is \(\ln(\ln x)\). We use a practical formulation that approximates
+          \(\ln f(x)\) relative to \(\ln f(x_0)\), while the rank-2 derivative itself is defined through \(\ln(\ln f)\).
         </p>
 
         <div class="block">
@@ -392,7 +393,20 @@
         </div>
 
         <div class="block">
-          <div class="label">Formula (Option A)</div>
+          <div class="label">Rank-2 derivative (degree 1)</div>
+          <div class="math">
+            \[
+              \boxed{
+              D_{2}^{1} f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+              }
+              \qquad
+              (x>1,\ f(x)>1)
+            \]
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Formula (practical form)</div>
           <div class="math">
             \[
               \frac{\ln f(x)}{\ln f(x_0)}
@@ -416,7 +430,7 @@
         <div class="block">
           <div class="label">Interpretation</div>
           <p class="muted small" style="margin:0">
-            Rank \(D_2\) measures closeness through \(\ln(\ln x)\), hence \(\ln x/\ln x_0\) appears naturally.
+            Rank 2 measures closeness through \(\ln(\ln x)\), hence \(\ln x/\ln x_0\) appears naturally.
             Negative exponents again correspond to division.
           </p>
         </div>
@@ -430,17 +444,17 @@
           <div class="label">Practical recipe</div>
           <ul class="muted small">
             <li>Choose \(x_0\) inside your region of interest.</li>
-            <li>Select the closeness scale: additive (\(D_0\)), relative (\(D_1\)), or log-scale (\(D_2\)).</li>
+            <li>Select the closeness scale: additive (rank 0), relative (rank 1), or log-log scale (rank 2).</li>
             <li>Pick a truncation degree \(N\) (e.g., 3 or 4) and use the truncated formula.</li>
-            <li>Reminder: \(D_0^n\) are ordinary derivatives, while \(D_1^n\) and \(D_2^n\) here are successive derivatives of \(\ln f\) and \(\ln(\ln f)\) as defined above.</li>
+            <li>Reminder: \(D_0^n\) are ordinary derivatives, while the rank-1 and rank-2 series are built from successive derivatives with respect to \(\ln x\) and \(\ln(\ln x)\) as defined above.</li>
           </ul>
         </div>
 
         <div class="note">
           <strong>Quick conclusion rule:</strong>
-          <br>— Power-law behavior (\(x^p\), \(\sqrt{x}\)) → \(D_1\) is typically strongest.
-          <br>— Oscillations (sin/cos) → \(D_0\) is typically strongest locally.
-          <br>— Log-scale behavior → \(D_2\) is typically strongest.
+          <br>— Power-law behavior (\(x^p\), \(\sqrt{x}\)) → rank 1 is typically strongest.
+          <br>— Oscillations (sin/cos) → rank 0 is typically strongest locally.
+          <br>— Log-scale / multi-scale behavior → rank 2 can be strongest when defined.
         </div>
       </section>
     </div>
@@ -456,39 +470,40 @@
       <div class="block">
         <div class="label">1) \(f(x)=x^p\) (power law)</div>
         <p class="muted small" style="margin:0">
-          <b>Strongest:</b> \(D_1\) (relative multiplicative). Since \(\ln f=p\ln x\), the scale structure is captured very efficiently (often with very few terms).
-          <br><b>When \(D_0\) wins:</b> only for extremely small additive neighborhoods.
+          <b>Strongest:</b> rank 1 (relative multiplicative). Since \(\ln f=p\ln x\), the scale structure is captured very efficiently (often with very few terms).
+          <br><b>When rank 0 wins:</b> only for extremely small additive neighborhoods.
         </p>
       </div>
 
       <div class="block">
         <div class="label">2) \(f(x)=\sqrt{x}\)</div>
         <p class="muted small" style="margin:0">
-          <b>Strongest:</b> \(D_1\) — a special case of power law with \(p=\tfrac12\).
+          <b>Strongest:</b> rank 1 — a special case of power law with \(p=\tfrac12\).
         </p>
       </div>
 
       <div class="block">
         <div class="label">3) \(f(x)=e^x\)</div>
         <p class="muted small" style="margin:0">
-          <b>Typically strongest:</b> \(D_1\) for relative changes (e.g., \(x=1.1x_0\)) because growth is well-described via \(\ln f\).
-          <br><b>\(D_0\):</b> excellent in very small additive neighborhoods.
-          <br><b>\(D_2\):</b> may help across broader scales if \(\ln(\ln f)\) is well-defined.
+          <b>Depends on the notion of closeness:</b>
+          <br><b>rank 0:</b> best for very small additive neighborhoods.
+          <br><b>rank 1:</b> useful when changes are discussed in relative terms (ratios of \(x\)).
+          <br><b>rank 2:</b> can help across broader scales when \(\ln(\ln f)\) is well-defined.
         </p>
       </div>
 
       <div class="block">
         <div class="label">4) \(f(x)=\ln x\) (for \(x>1\))</div>
         <p class="muted small" style="margin:0">
-          <b>Strongest:</b> \(D_2\) (Option A), since \(\ln x\) naturally aligns with the \(\ln(\ln x)\) scale.
-          <br><b>Locally:</b> \(D_0\) also works well if \(x-x_0\) is small.
+          <b>Often strongest:</b> rank 2 (when defined), since \(\ln x\) aligns with the \(\ln(\ln x)\) scale.
+          <br><b>Locally:</b> rank 0 also works well if \(x-x_0\) is small.
         </p>
       </div>
 
       <div class="block">
         <div class="label">5) \(f(x)=\dfrac{1}{1-\alpha x}\) (away from the pole)</div>
         <p class="muted small" style="margin:0">
-          <b>Strongest:</b> \(D_0\) (Taylor), provided \(x_0\) is safely away from the pole \(x=1/\alpha\).
+          <b>Strongest:</b> rank 0 (Taylor), provided \(x_0\) is safely away from the pole \(x=1/\alpha\).
           Singularities typically control convergence radii in additive expansions.
         </p>
       </div>
@@ -496,27 +511,28 @@
       <div class="block">
         <div class="label">6) \(f(x)=\sin x + 2\)</div>
         <p class="muted small" style="margin:0">
-          <b>Strongest:</b> \(D_0\) locally, since oscillations are best captured additively.
-          <br>\(D_1\) is usually less economical for non-scale-invariant oscillations.
+          <b>Strongest:</b> rank 0 locally, since oscillations are best captured additively.
+          <br>rank 1 is usually less economical for non-scale-invariant oscillations.
         </p>
       </div>
 
       <div class="block">
         <div class="label">7) \(f(x)=1+\dfrac{1}{x}\)</div>
         <p class="muted small" style="margin:0">
-          <b>Often strongest:</b> \(D_1\) for relative changes because the variation is scale-driven and slow.
-          <br>\(D_0\) is also good locally, but may require higher degree for the same accuracy over larger relative changes.
+          <b>Often strongest:</b> rank 1 for relative changes because the variation is scale-driven and slow.
+          <br>rank 0 is also good locally, but may require higher degree for the same accuracy over larger relative changes.
         </p>
       </div>
 
       <div class="note">
         <strong>Final takeaway:</strong>
-        There is no universally best series. The best choice depends on the function type (power / oscillatory / logarithmic) and the notion of closeness (difference / ratio / log-log scale).
+        There is no universally best series. The best choice depends on the function type (power / oscillatory / logarithmic)
+        and the notion of closeness (difference / ratio / log-log scale).
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Series in Hierarchical Calculus (D₀, D₁, D₂)
+      © 2025 — GOSSA AHMED · Series in Hierarchical Calculus (rank 0, 1, 2)
     </footer>
   </div>
 </body>
