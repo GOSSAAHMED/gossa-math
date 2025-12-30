@@ -2,17 +2,17 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-<link rel="canonical" href="https://gossaahmed.github.io/gossa-math/index-en.html">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>الحساب الهرمي — الموقع الرسمي (DOI)</title>
   <meta name="description" content="الحساب الهرمي: إطار رياضي للمشتقات والمعادلات متعددة الطبقات. DOI رسمي عبر Zenodo." />
   <meta name="author" content="GOSSA AHMED" />
-<link rel="canonical" href="https://gossaahmed.github.io/gossa-math/">
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/">
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/index-ar.html">
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/">
 
+  <!-- Canonical & hreflang (AR homepage) -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/index-ar.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/index-ar.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/" />
 
   <style>
     :root{
@@ -85,6 +85,7 @@
       font-size: 13px;
       color: var(--text);
       text-decoration:none;
+      white-space:nowrap;
     }
     nav a:hover{background: rgba(255,255,255,.07)}
 
@@ -100,6 +101,7 @@
       color: var(--text);
       font-size: 13px;
       cursor:pointer;
+      white-space:nowrap;
     }
     .btn:hover{background: rgba(255,255,255,.08)}
     .btn.primary{
@@ -297,26 +299,24 @@
       padding-top: 18px;
       border-top: 1px solid rgba(255,255,255,.10);
     }
+
     /* === Hierarchical Calculus Logo === */
-.site-logo {
-  text-align: center;
-  margin: 32px auto 20px auto;
-}
-
-.site-logo img {
-  width: 220px;
-  max-width: 85%;
-  height: auto;
-  filter: drop-shadow(0 0 18px rgba(255, 200, 120, 0.35));
-}
-
+    .site-logo {
+      text-align: center;
+      margin: 32px auto 20px auto;
+    }
+    .site-logo img {
+      width: 220px;
+      max-width: 85%;
+      height: auto;
+      filter: drop-shadow(0 0 18px rgba(255, 200, 120, 0.35));
+    }
   </style>
-  
 
   <!-- MathJax -->
   <script>
     window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
       options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
@@ -325,9 +325,8 @@
 
 <body>
   <div class="site-logo">
-  <img src="assets/images/hierarchical-calculus-logo.png"
-       alt="Hierarchical Calculus Logo">
-</div>
+    <img src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
+  </div>
 
   <div class="topbar">
     <div class="inner">
@@ -341,35 +340,29 @@
 
       <nav aria-label="التنقل">
         <a href="#overview">نظرة عامة</a>
-        <a href="./hierarchical-calculus.html">الحساب الهرمي</a>
-        <a class="btn" href="comparison-hierarchical-calculus-ar.html">
-  مقارنة الحسابات
-</a>
         <a href="#core">التعريفات الأساسية</a>
         <a href="#equations">المعادلات الهرمية</a>
-<a href="./unsolvable-differential-equations-hierarchical.html">
-  حلّ المعادلات التفاضلية المستحيلة
-</a> 
-        <a href="./why-differential-calculus-fails-hierarchical-calculus-ar.html">
-  لماذا يفشل الحساب التفاضلي — وكيف يحل الحساب الهرمي ما يستحيل حله
-</a>
+        <a href="#cite">الاستشهاد</a>
+        <a href="#links">صفحات المرجع</a>
 
+        <a href="./hierarchical-calculus.html">الحساب الهرمي</a>
+        <a href="./comparison-hierarchical-calculus-ar.html">مقارنة الحسابات</a>
+        <a href="./unsolvable-differential-equations-hierarchical.html">حلّ المعادلات التفاضلية المستحيلة</a>
+        <a href="./why-differential-calculus-fails-hierarchical-calculus-ar.html">لماذا يفشل الحساب التفاضلي</a>
         <a href="./series.html">المتسلسلات الهرمية</a>
         <a href="./rules.html">قوانين الاشتقاق الهرمي</a>
         <a href="./integrals.html">التكامل الهرمي</a>
-        <a href="./equations-solved.html">المعادلات الهرمية (أمثلة محلولة)</a>
-        <a href="./hierarchical-derivatives-relations.html">العلاقة بين المشتقات الهرمية</a>
-        <a href="./foundations-2011-2012.html" class="book-btn">📄 الأعمال التأسيسية (2011–2012)</a>
+        <a href="./equations-solved.html">أمثلة محلولة</a>
+        <a href="./hierarchical-derivatives-relations.html">العلاقة بين المشتقات</a>
         <a href="./derivative-rank-degree.html">الرتبة والدرجة</a>
-        <a href="#cite">الاستشهاد</a>
-        <a href="faq.html">أسئلة شائعة</a>
-        <a href="physics.html">تطبيقات فيزيائية</a>
-        <a href="paper/paper-ar.html">الورقة العلمية (عربي)</a>
-        <a href="#links">صفحات المرجع</a>
+        <a href="./foundations-2011-2012.html">الأعمال التأسيسية (2011–2012)</a>
+        <a href="./faq.html">أسئلة شائعة</a>
+        <a href="./physics.html">تطبيقات فيزيائية</a>
+        <a href="./paper/paper-ar.html">الورقة العلمية (عربي)</a>
       </nav>
 
       <div class="actions">
-        <a class="btn" href="index-en.html" title="English version">English</a>
+        <a class="btn" href="./" title="English version">English</a>
         <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
       </div>
     </div>
@@ -381,10 +374,10 @@
         <div>
           <h1>الحساب الهرمي</h1>
           <p>
-            إطار رياضي يقدّم طبقات مشتقات ومعادلات متعددة المستويات: من التفاضلي <span class="muted">(الطبقة 0)</span>
-            إلى النسبي <span class="muted">(الطبقة 1)</span> واللوغاريتمي <span class="muted">(الطبقة 2)</span>
-            والتتريشي <span class="muted">(الطبقة 3)</span> وصولًا إلى المشتق الهرمي العام <span class="muted">(الطبقة n)</span>.
-            هذا الموقع هو مرجع تعريفي/تقني للإصدارات المؤرشفة رسميًا عبر Zenodo.
+            إطار رياضي يقدّم طبقات مشتقات ومعادلات متعددة المستويات: من التفاضلي <span class="muted">(الرتبة 0)</span>
+            إلى النسبي <span class="muted">(الرتبة 1)</span> واللوغاريتمي <span class="muted">(الرتبة 2)</span>
+            والتتريشي <span class="muted">(الرتبة 3)</span> وصولًا إلى المشتق الهرمي العام <span class="muted">(الرتبة n)</span>.
+            هذا الموقع مرجع تعريفي/تقني للإصدارات المؤرشفة رسميًا عبر Zenodo.
           </p>
         </div>
 
@@ -400,7 +393,7 @@
       <div class="doi-box">
         <div><strong>DOI (Concept — المرجع الأساسي):</strong>
           <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
-            https://doi.org/10.5281/zenodo.17917302
+            10.5281/zenodo.17917302
           </a>
         </div>
         <div class="small">
@@ -409,8 +402,10 @@
           <span class="muted">— إصدار الموقع v1.0.0</span>
         </div>
         <div class="small muted">
-          GitHub: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GOSSAAHMED/gossa-math</a>
-          · تواصل: <a href="mailto:ahmedgossa50@gmail.com">ahmedgossa50@gmail.com</a>
+          GitHub:
+          <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GOSSAAHMED/gossa-math</a>
+          · تواصل:
+          <a href="mailto:ahmedgossa50@gmail.com">ahmedgossa50@gmail.com</a>
         </div>
       </div>
 
@@ -423,43 +418,24 @@
     </header>
 
     <div class="grid">
-      <!-- التعريفات الأساسية (محدّثة) -->
       <section class="card" id="core">
         <h2><span class="bar"></span>التعريفات الأساسية</h2>
 
-       <p class="muted small">
-  نرمز بـ \(D_0^{(1)}\) للمشتق التفاضلي (الطبقة 0)، وبـ \(D_1^{(1)}\) للمشتق النسبي (الطبقة 1).
-  ونرمز عمومًا بـ \(D_n^{(1)}\) للمشتق الهرمي من الرتبة \(n\) عند الدرجة \(1\).
-</p>
+        <p class="muted small" style="margin:0">
+          <strong>ترميز رسمي:</strong> <em>الدرجة فوق والرتبة تحت</em>.
+          نكتب المشتق الهرمي بالصيغة \(D^{k}_{n}\) حيث \(n\) رتبة القياس و\(k\) درجة الاشتقاق.
+          وأكثر حالة استعمالًا هي \(k=1\).
+        </p>
 
         <div class="block">
-          <div class="label">الرتبة والدرجة <span class="tag">Order &amp; Degree</span></div>
-
+          <div class="label">تعريف عام <span class="tag">General</span></div>
           <p class="muted small" style="margin:0">
-            نكتب المشتق الهرمي بصيغة ثنائية المؤشر:
+            المشتق الهرمي من الرتبة \(n\) عند الدرجة \(1\) (مع شروط المجال):
           </p>
 
           <div class="math-box">
             \[
-              D_n^{(k)} f(x)
-            \]
-          </div>
-
-          <p class="muted small" style="margin:8px 0 0 0">
-            حيث \(n\) هي <strong>الرتبة</strong> (طبقة القياس: تفاضلي/نسبي/لوغاريتمي/…)،
-            و\(k\) هي <strong>الدرجة</strong> (مستوى التحليل داخل الهرم)، وتُؤخذ \(k=1,2,3,\dots\).
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="label">تعريف <span class="tag">Definition</span></div>
-          <p class="muted small" style="margin:0">
-            المشتق الهرمي من الرتبة \(n\) عند الدرجة المباشرة \(k=1\) يُعرَّف (تحت شروط المجال) كما يلي:
-          </p>
-
-          <div class="math-box">
-            \[
-              D_n^{(1)} f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
+              D^{1}_{n} f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}
             \]
           </div>
 
@@ -470,36 +446,35 @@
         </div>
 
         <div class="block">
-          <div class="label">طبقات خاصة <span class="tag">Levels</span></div>
+          <div class="label">طبقات خاصة <span class="tag">D₀–D₃</span></div>
 
           <div class="math-box">
             \[
-              D_0^{(1)} f(x)=\frac{df(x)}{dx}
+              D^{1}_{0} f(x)=\frac{df(x)}{dx}
             \]
           </div>
 
           <div class="math-box">
             \[
-              D_1^{(1)} f(x)=\frac{d\ln f(x)}{d\ln x}
+              D^{1}_{1} f(x)=\frac{d\ln f(x)}{d\ln x}
               =\frac{x}{f(x)}\,\frac{df(x)}{dx}
             \]
           </div>
 
           <div class="math-box">
             \[
-              D_2^{(1)} f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+              D^{1}_{2} f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
             \]
           </div>
 
           <div class="math-box">
             \[
-              D_3^{(1)} f(x)=\frac{d\ln^{(3)} f(x)}{d\ln^{(3)} x}
+              D^{1}_{3} f(x)=\frac{d\ln^{(3)} f(x)}{d\ln^{(3)} x}
             \]
           </div>
         </div>
       </section>
 
-      <!-- روابط سريعة -->
       <aside class="card">
         <h2><span class="bar"></span>روابط سريعة</h2>
         <div class="quicklinks">
@@ -529,7 +504,7 @@
           <div class="label">ملاحظة أكاديمية <span class="tag">Note</span></div>
           <p class="muted small" style="margin:0; line-height:1.8">
             للاستشهاد العلمي العام بالمشروع استخدم <strong>Concept DOI</strong>.
-            أمّا عند الإشارة إلى نتائج مرتبطة بالإصدار الحالي فاستعمل <strong>Version DOI</strong>.
+            أمّا عند الإشارة إلى إصدار محدد فاستعمل <strong>Version DOI</strong>.
           </p>
         </div>
       </aside>
@@ -538,28 +513,29 @@
     <section class="card" id="equations" style="margin-top:16px">
       <h2><span class="bar"></span>المعادلات الهرمية</h2>
       <p class="muted small">
-        المعادلات الهرمية تعمّم المعادلات التفاضلية باستخدام مشتقات من طبقات مختلفة. الصيغة العامة:
+        المعادلات الهرمية تعمّم المعادلات التفاضلية باستخدام مشتقات من رتب مختلفة. الصيغة العامة:
       </p>
 
       <div class="math-box">
-  \[
-    D_n y = F(x,y)
-  \]
-</div>
+        \[
+          D^{1}_{n}y = F(x,y)
+        \]
+      </div>
 
       <div class="block">
-        <div class="label">مثال <span class="tag">Example</span></div>
+        <div class="label">الصيغة العامة بالدرجة <span class="tag">Degree</span></div>
         <p class="muted small" style="margin:0">
-          مثال إرشادي على تحويل معادلة انفجارية:
+          عند درجات أعلى \(k=1,2,3,\dots\) نكتب:
         </p>
-       <div class="math-box">
-  \[
-    D_n^{(k)}\,y = F(x,y),\qquad k=1,2,3,\dots
-  \]
-</div>
+
+        <div class="math-box">
+          \[
+            D^{k}_{n}y = F(x,y),\qquad k=1,2,3,\dots
+          \]
+        </div>
 
         <p class="muted small" style="margin:8px 0 0 0">
-          باستعمال التحويل الهرمي المناسب قد تُكتب بصيغة أبسط في طبقة أعلى (يعرض التفصيل في صفحة المعادلات).
+          وبالرفع الهرمي المناسب قد تتحول المعادلة إلى صيغة أبسط في رتبة أعلى (تفاصيل أكثر في صفحات المعادلات).
         </p>
       </div>
     </section>
@@ -578,19 +554,19 @@
       <div class="block">
         <div class="label">BibTeX <span class="tag">LaTeX</span></div>
         <div class="cite-block">@software{gossa_hierarchical_calculus_2025,
-  author = {Gossa Ahmed},
+  author = {Gossa, Ahmed},
   title  = {Hierarchical Calculus},
   year   = {2025},
   doi    = {10.5281/zenodo.17917302},
-  url    = {https://github.com/GOSSAAHMED/gossa-math}
+  url    = {https://gossaahmed.github.io/gossa-math/index-ar.html}
 }</div>
       </div>
     </section>
 
     <section class="card" id="links" style="margin-top:16px">
-      <h2><span class="bar"></span>صفحات المرجع (قيد الإضافة)</h2>
+      <h2><span class="bar"></span>صفحات المرجع</h2>
       <p class="muted small">
-        هذه الروابط مُعدّة لتقسيم المحتوى إلى مرجع أكاديمي كامل. يمكنك إنشاء هذه الملفات لاحقًا بنفس القالب.
+        روابط الصفحات المرجعية (يمكنك إضافتها لاحقًا بنفس القالب).
       </p>
 
       <div class="quicklinks">
@@ -601,17 +577,17 @@
         </div>
         <div class="linkcard">
           <strong>المعادلات</strong>
-          <span>معادلات هرميّة + تحويلات + حلول.</span><br>
+          <span>تحويلات + حلول + أمثلة.</span><br>
           <a href="equations.html">equations.html</a>
         </div>
         <div class="linkcard">
           <strong>الحساب العددي</strong>
-          <span>Calcul numérique + مقارنة أخطاء.</span><br>
+          <span>أمثلة عددية + مقارنة الأخطاء.</span><br>
           <a href="numerics.html">numerics.html</a>
         </div>
         <div class="linkcard">
           <strong>المراجع</strong>
-          <span>قائمة مراجع + توثيق + استشهادات.</span><br>
+          <span>قائمة مراجع + توثيق.</span><br>
           <a href="references.html">references.html</a>
         </div>
         <div class="linkcard">
@@ -622,7 +598,7 @@
         <div class="linkcard">
           <strong>English Pages</strong>
           <span>نفس البنية بالإنجليزية.</span><br>
-          <a href="index-en.html">index-en.html</a>
+          <a href="./">index-en.html</a>
         </div>
       </div>
     </section>
@@ -634,7 +610,6 @@
   </div>
 </body>
 </html>
-
 
 
 
