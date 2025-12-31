@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>تطبيق الحساب الهرمي في الهندسة المدنية | 14 تطبيقًا وأمثلة عددية</title>
+<meta name="description" content="صفحة مرجعية موسعة جدًا لتطبيق الحساب الهرمي في الهندسة المدنية مع 14 تطبيقًا واقعيًا وأمثلة عددية تشمل الخرسانة، التربة، الجسور، الأحمال، الزلازل، الصيانة، FEM، وتكاليف المشاريع باستخدام المشتقات D0^1 إلى Dn^1.">
+<meta name="author" content="GOSSA AHMED">
+
+<style>
+body{margin:0;font-family:system-ui,Arial;line-height:2;background:#0f1b2e;color:#eaf2ff}
+.wrap{max-width:1200px;margin:auto;padding:30px}
+h1,h2,h3{color:#7aa7ff}
+.card{background:rgba(255,255,255,.05);padding:24px;border-radius:18px;margin-top:26px}
+.math{background:#00000030;padding:14px;border-radius:12px;margin:14px 0;direction:ltr;text-align:left}
+.note{background:#ffcc6620;border:1px solid #ffcc66;padding:18px;border-radius:14px;margin-top:18px}
+table{width:100%;border-collapse:collapse;margin-top:16px}
+th,td{border-bottom:1px solid rgba(255,255,255,.1);padding:12px;text-align:right}
+footer{margin-top:50px;text-align:center;font-size:13px;opacity:.75}
+</style>
+
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<div class="wrap">
+
+<h1>تطبيق الحساب الهرمي في الهندسة المدنية</h1>
+
+<p>
+الهندسة المدنية علم يتعامل مع <b>منشآت تعيش لعقود</b>،  
+وتفشل بسبب <b>تراكمات بنيوية</b> لا بسبب قيمة مفردة.
+لهذا فإن الاعتماد على التفاضل التقليدي وحده
+\(D_0^1\) يؤدي غالبًا إلى قرارات متأخرة.
+الحساب الهرمي يقدّم إطارًا تحليليًا
+يقيس التغير، النسبة، وتسارع الخطر.
+</p>
+
+<div class="note">
+<strong>السلم الهرمي:</strong>
+\[
+D_0^1 \rightarrow \text{تغير عددي}
+\quad
+D_1^1 \rightarrow \text{تغير نسبي}
+\quad
+D_2^1 \rightarrow \text{تسارع بنيوي}
+\quad
+\dots
+\]
+</div>
+
+<!-- ====================== التطبيقات ====================== -->
+
+<h2>القسم الأول: المواد والخرسانة</h2>
+
+<div class="card">
+<h3>1) نمو تشققات الخرسانة</h3>
+<p>
+شق بطول \(L(t)\).  
+زيادة 2 مم في شق طوله 10 مم أخطر من نفس الزيادة في شق طوله 200 مم.
+</p>
+<div class="math">
+\[
+L=20 \text{ mm} \Rightarrow \Delta L=2 \text{ mm}
+\]
+\[
+D_1^1 L = \frac{\Delta L}{L} = 0.10
+\]
+</div>
+<p>
+نسبة 10% تشير إلى خطر نسبي مرتفع.
+</p>
+</div>
+
+<div class="card">
+<h3>2) تسارع نمو التشققات</h3>
+<p>
+إذا زادت النسبة من 5% إلى 10% خلال فترة قصيرة:
+</p>
+<div class="math">
+\[
+D_2^1 L > 0
+\]
+</div>
+<p>
+هذا مؤشر انتقال الشق إلى طور غير مستقر.
+</p>
+</div>
+
+<div class="card">
+<h3>3) زحف الخرسانة (Creep)</h3>
+<p>
+التشوه \( \varepsilon(t) \) قد يبدو بطيئًا عدديًا،
+لكن:
+</p>
+<div class="math">
+\[
+D_1^1 \varepsilon \approx ثابت
+\quad
+D_2^1 \varepsilon > 0
+\]
+</div>
+<p>
+يعني أن الزحف نفسه يتسارع.
+</p>
+</div>
+
+<h2>القسم الثاني: التربة والأساسات</h2>
+
+<div class="card">
+<h3>4) هبوط الأساسات</h3>
+<p>
+هبوط 15 مم لأساس بارتفاع 1 م:
+</p>
+<div class="math">
+\[
+D_1^1 S = \frac{15}{1000} = 1.5\%
+\]
+</div>
+<p>
+نسبة صغيرة عدديًا لكنها خطيرة إن كانت متزايدة.
+</p>
+</div>
+
+<div class="card">
+<h3>5) تسارع الهبوط التفاضلي</h3>
+<p>
+إذا تضاعفت نسبة الهبوط خلال فترة قصيرة:
+</p>
+<div class="math">
+\[
+D_2^1 S \gg 0
+\]
+</div>
+<p>
+هذا إنذار قبل فقدان الاستقرار.
+</p>
+</div>
+
+<div class="card">
+<h3>6) تحجيم الأساسات</h3>
+<p>
+تكبير المبنى بعامل 2:
+</p>
+<div class="math">
+\[
+\text{الحمل} \sim s^3,\quad
+\text{المساحة} \sim s^2
+\]
+\[
+D_1^1 W = 3
+\]
+</div>
+<p>
+الحمل ينمو أسرع من قدرة التربة.
+</p>
+</div>
+
+<h2>القسم الثالث: الجسور والمنشآت</h2>
+
+<div class="card">
+<h3>7) تدهور الجسور</h3>
+<p>
+مؤشر الحالة \(H=0.8\) يبدو جيدًا،
+لكن:
+</p>
+<div class="math">
+\[
+D_1^1 H \approx 0
+\quad
+D_2^1 H > 0
+\]
+</div>
+<p>
+يعني تدهورًا بنيويًا خفيًا.
+</p>
+</div>
+
+<div class="card">
+<h3>8) التعب الإنشائي</h3>
+<p>
+سعة الإجهاد \(A\) تزداد بنسبة 3% كل دورة:
+</p>
+<div class="math">
+\[
+D_1^1 A = 0.03
+\]
+</div>
+<p>
+لكن إذا ازدادت هذه النسبة:
+</p>
+<div class="math">
+\[
+D_2^1 A > 0
+\]
+</div>
+</div>
+
+<div class="card">
+<h3>9) التشوهات طويلة الأمد</h3>
+<p>
+تشوهات صغيرة لكنها متسارعة أخطر من تشوهات كبيرة ثابتة.
+</p>
+</div>
+
+<h2>القسم الرابع: الزلازل والديناميكا</h2>
+
+<div class="card">
+<h3>10) تضخيم الاستجابة الزلزالية</h3>
+<p>
+سعة الاهتزاز من 5 إلى 7 سم:
+</p>
+<div class="math">
+\[
+D_1^1 A = \frac{2}{5} = 40\%
+\]
+</div>
+</div>
+
+<div class="card">
+<h3>11) الاقتراب من الرنين</h3>
+<p>
+عندما تصبح النسبة نفسها متزايدة:
+</p>
+<div class="math">
+\[
+D_2^1 A \uparrow
+\]
+</div>
+<p>
+هذا مؤشر اقتراب الانهيار.
+</p>
+</div>
+
+<h2>القسم الخامس: النمذجة العددية والإدارة</h2>
+
+<div class="card">
+<h3>12) جودة نموذج FEM</h3>
+<p>
+خطأ تقريبي:
+</p>
+<div class="math">
+\[
+E(h)=4h^2 \Rightarrow D_1^1 E = 2
+\]
+</div>
+<p>
+العدد 2 هو الرتبة الحقيقية للنموذج.
+</p>
+</div>
+
+<div class="card">
+<h3>13) نمو تكلفة المشاريع</h3>
+<p>
+تكلفة من 10 إلى 12 مليون:
+</p>
+<div class="math">
+\[
+D_1^1 C = 20\%
+\]
+</div>
+<p>
+أخطر من زيادة 2 مليون في مشروع ضخم.
+</p>
+</div>
+
+<div class="card">
+<h3>14) قرار التدخل الهندسي</h3>
+<table>
+<tr><th>المؤشر</th><th>الرتبة</th><th>القرار</th></tr>
+<tr><td>قيمة</td><td>\(D_0^1\)</td><td>مراقبة</td></tr>
+<tr><td>نسبة</td><td>\(D_1^1\)</td><td>صيانة</td></tr>
+<tr><td>تسارع</td><td>\(D_2^1\)</td><td>تدعيم</td></tr>
+<tr><td>انفجار بنيوي</td><td>\(D_3^1\)</td><td>إخلاء/إزالة</td></tr>
+</table>
+</div>
+
+<div class="note">
+<strong>
+الهندسة المدنية لا تفشل فجأة،  
+بل تفشل هرميًا.  
+والحساب الهرمي هو لغة هذا الفشل.
+</strong>
+</div>
+
+<footer>
+© 2025 — GOSSA AHMED · صفحة مرجعية في تطبيق الحساب الهرمي في الهندسة المدنية
+</footer>
+
+</div>
+</body>
+</html>
