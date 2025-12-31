@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>متى ينهار الحساب التفاضلي الكلاسيكي؟</title>
+
+  <meta name="description"
+        content="تشرح هذه الصفحة متى ولماذا يصبح الحساب التفاضلي الكلاسيكي غير كافٍ بنيويًا، وكيف يعيد الحساب الهرمي توصيف التغير بشكل طبيعي عبر الرفع إلى المستويات الأعلى.">
+
+  <meta name="author" content="GOSSA AHMED">
+
+  <link rel="canonical"
+        href="https://gossaahmed.github.io/gossa-math/mata-yanhari-alhisab-altafaduli.html">
+
+  <link rel="alternate" hreflang="ar"
+        href="https://gossaahmed.github.io/gossa-math/mata-yanhari-alhisab-altafaduli.html">
+  <link rel="alternate" hreflang="en"
+        href="https://gossaahmed.github.io/gossa-math/when-does-classical-calculus-break-down.html">
+  <link rel="alternate" hreflang="x-default"
+        href="https://gossaahmed.github.io/gossa-math/when-does-classical-calculus-break-down.html">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body{
+      margin:0;
+      background:#0b1220;
+      color:#e6e6e6;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, "Noto Sans Arabic", sans-serif;
+      line-height:1.95;
+    }
+    main{
+      max-width:900px;
+      margin:auto;
+      padding:48px 18px 70px;
+    }
+    h1,h2,h3{
+      color:#66d9ef;
+    }
+    h1{
+      font-size:2.1em;
+      margin-bottom:18px;
+      line-height:1.35;
+    }
+    h2{
+      margin-top:42px;
+      font-size:1.55em;
+    }
+    p{
+      margin:14px 0;
+      color:#e9eef5;
+    }
+    ul{
+      margin:12px 0 0;
+      padding:0 22px 0 0;
+    }
+    li{ margin:6px 0; }
+    .box{
+      background:#0f1a2c;
+      border:1px solid #22314f;
+      border-right:4px solid #66d9ef;
+      padding:16px 18px;
+      margin:22px 0;
+      border-radius:10px;
+    }
+    a{
+      color:#66d9ef;
+      text-decoration:none;
+    }
+    a:hover{ text-decoration:underline; }
+    footer{
+      margin-top:60px;
+      padding-top:18px;
+      border-top:1px solid #22314f;
+      color:#aaa;
+      font-size:0.95em;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+<h1>متى ينهار الحساب التفاضلي الكلاسيكي؟</h1>
+
+<p>
+حقق الحساب التفاضلي الكلاسيكي نجاحًا كبيرًا في توصيف التغير المحلي،
+لكن فعاليته ليست مطلقة.  
+توجد حالات محددة يصبح فيها الإطار التفاضلي <strong>غير كافٍ بنيويًا</strong>،
+ليس لأن الرياضيات “تفشل”، بل لأن مستوى القياس لا يطابق طبيعة الظاهرة.
+</p>
+
+<h2>1) ما الذي يفترضه الحساب التفاضلي الكلاسيكي؟</h2>
+
+<p>
+جوهر الحساب التفاضلي هو قياس التغير عبر <strong>الفرق الإضافي</strong>.
+المشتق يقيس كيف تتغير كمية ما عندما يتغير المتغير المستقل بمقدار صغير جدًا.
+</p>
+
+<div class="box">
+<p>وهذا يفترض ضمنيًا:</p>
+<ul>
+  <li>وجود مقياس ثابت للقياس</li>
+  <li>قابلية التقريب الخطي محليًا</li>
+  <li>استقرار التفسير تحت اضطرابات إضافية (فرق \(x-x_0\))</li>
+</ul>
+</div>
+
+<h2>2) الهشاشة الخفية للمستوى التفاضلي</h2>
+
+<p>
+تبدأ هذه الافتراضات بالضعف عندما:</p>
+
+<ul>
+  <li>يصبح <strong>المقياس نفسه</strong> جزءًا من ديناميكية الظاهرة</li>
+  <li>يصبح التغير محكومًا بـ <strong>النِّسب</strong> بدل الفروق</li>
+  <li>تتطور <strong>آلية التغير</strong> نفسها مع الزمن أو مع \(x\)</li>
+</ul>
+
+<p>
+في هذه الحالات يبقى المشتق التفاضلي معرفًا حسابيًا،
+لكن <strong>معناه البنيوي</strong> يصبح هشًا أو مضللًا.
+</p>
+
+<h2>3) إشارات الانهيار (علامات عملية)</h2>
+
+<p>
+يميل الحساب التفاضلي إلى الانهيار بنيويًا عندما نلاحظ:</p>
+
+<div class="box">
+<ul>
+  <li>حساسية غير مبررة لتغيير الوحدات أو إعادة القياس (Rescaling)</li>
+  <li>عدم استقرار قرب نقاط مرجعية معينة</li>
+  <li>معادلات “مقاومة للتبسيط” رغم كونها سليمة حسابيًا</li>
+  <li>حلول شكلية موجودة لكن تفسيرها الفيزيائي ضعيف أو غير طبيعي</li>
+</ul>
+</div>
+
+<h2>4) التفسير الهرمي: الانهيار ليس خطأ بل إشارة</h2>
+
+<p>
+هذه الصعوبات لا تعني أن الحساب التفاضلي خاطئ،
+بل تعني أن الظاهرة تُقاس داخل مستوى أدنى من مستواها الطبيعي.
+</p>
+
+<p>
+في الحساب الهرمي تُفهم هذه الحالة على أنها إشارة للرفع:
+</p>
+
+<ul>
+  <li>من التغير المطلق → إلى التغير <strong>النسبي</strong></li>
+  <li>ومن النسبي → إلى التغير <strong>اللوغاريتمي</strong></li>
+  <li>ومن آلية ثابتة → إلى آلية <strong>متغيرة بنيويًا</strong></li>
+</ul>
+
+<h2>5) من الانهيار إلى الرفع الهرمي</h2>
+
+<p>
+ما يبدو “انهيارًا” في المستوى التفاضلي
+يتحول غالبًا إلى <strong>تبسيط مباشر</strong> في مستوى أعلى.
+</p>
+
+<div class="box">
+<p>
+الاستجابة الصحيحة ليست إجبار المعادلة على بدائل اصطناعية،
+بل <strong>رفعها هرميًا</strong> إلى المستوى الذي تصبح فيه بنيتها طبيعية.
+</p>
+</div>
+
+<h2>6) خلاصة</h2>
+
+<p>
+الحساب التفاضلي لا يفشل لأنه غير صحيح،
+بل لأنه <strong>محلي بطبيعته</strong>.
+وعندما تكون طبيعة التغير نسبية أو لوغاريتمية أو بنيوية،
+فإن الحساب الهرمي يقدم الامتداد الطبيعي المناسب.
+</p>
+
+<footer>
+<p>
+© 2025 — GOSSA AHMED ·
+<a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+Hierarchical Calculus (DOI)
+</a>
+</p>
+</footer>
+
+</main>
+</body>
+</html>
