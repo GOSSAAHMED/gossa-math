@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>D₀ vs D₁ (One Example) | Hierarchical Calculus</title>
-  <meta name="description" content="A clear, extended comparison between the classical derivative D0 and the relative derivative D1 in Hierarchical Calculus, using one carefully chosen example." />
+  <title>D₀¹ vs D₁¹ (One Example) | Hierarchical Calculus</title>
+  <meta name="description" content="A clear, extended comparison between the classical derivative D0^1 and the relative derivative D1^1 in Hierarchical Calculus, using one carefully chosen example." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- Canonical + hreflang (English is primary) -->
+  <!-- Canonical + hreflang (English primary) -->
   <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/difference-en.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/difference-en.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/difference.html" />
@@ -156,8 +156,8 @@
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": "D0 vs D1 (One Example) | Hierarchical Calculus",
-  "alternativeHeadline": "Difference between the classical derivative D0 and the relative derivative D1",
+  "headline": "D0^1 vs D1^1 (One Example) | Hierarchical Calculus",
+  "alternativeHeadline": "Difference between the classical derivative D0^1 and the relative derivative D1^1",
   "author": {
     "@type": "Person",
     "name": "Ahmed Gossa",
@@ -170,7 +170,7 @@
     "Rank and Degree",
     "Differential Calculus"
   ],
-  "abstract": "A long-form reference page explaining the difference between D0 and D1 using one clear example and the conceptual interpretation within Hierarchical Calculus.",
+  "abstract": "A long-form reference page explaining the difference between D0^1 and D1^1 using one clear example and the conceptual interpretation within Hierarchical Calculus.",
   "inLanguage": "en",
   "url": "https://gossaahmed.github.io/gossa-math/difference-en.html",
   "publisher": {
@@ -187,8 +187,8 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
-          <strong>D₀ vs D₁</strong>
-          <span>One example · conceptual meaning</span>
+          <strong>\(D_0^1\) vs \(D_1^1\)</strong>
+          <span>One example · explicit \(D_r^n\)</span>
         </div>
       </div>
 
@@ -197,7 +197,7 @@
         <a href="./theory-en.html">Theory</a>
         <a href="./rules-en.html">Rules</a>
         <a href="./equations-en.html">Equations</a>
-        <a href="./rank-degree-en.html">Rank & Degree</a>
+        <a href="./integrals-en.html">Integrals</a>
         <a href="./difference.html">العربية</a>
       </nav>
     </div>
@@ -205,51 +205,53 @@
 
   <div class="wrap">
     <header class="hero">
-      <h1>Difference Between the Classical Derivative \(D_0\) and the Relative Derivative \(D_1\)</h1>
+      <h1>Difference Between the Classical Derivative \(D_0^1\) and the Relative Derivative \(D_1^1\)</h1>
       <p class="muted">
         In classical calculus, the derivative measures infinitesimal linear change.
-        Hierarchical Calculus introduces the <b>relative derivative</b> \(D_1\) to measure <b>structural / relative</b> variation.
+        Hierarchical Calculus introduces the <b>relative derivative</b> \(D_1^1\) to measure <b>structural / relative</b> variation.
         Although both operators describe “change”, they answer different mathematical questions.
         <br>
         This page explains the difference using <b>one carefully chosen example</b>, with a clear interpretation and practical takeaways.
       </p>
-      <p class="muted small" style="margin:10px 0 0 0">
-        Tip: If you are new, read <a href="./theory-en.html">Theory</a> first, then <a href="./rank-degree-en.html">Rank & Degree</a>.
-      </p>
+      <div class="note">
+        <strong>Notation rule:</strong>
+        In this website, every derivative is written with explicit <strong>rank</strong> and <strong>degree</strong> as \(D_r^n\).
+        The classical derivative is always \(D_0^1\). The relative derivative (rank \(1\), degree \(1\)) is \(D_1^1\).
+      </div>
     </header>
 
     <section class="card">
       <h2>Quick Summary</h2>
       <ul class="muted small" style="margin:0">
-        <li>\(D_0\) measures <b>local linear</b> change (tangent slope).</li>
-        <li>\(D_1\) measures <b>relative / structural</b> change inside a hierarchical framework.</li>
-        <li>\(D_0\) depends on absolute scaling, while \(D_1\) is designed to normalize change.</li>
-        <li>\(D_1\) uses explicit parameters (rank and degree), while \(D_0\) does not.</li>
+        <li>\(D_0^1\) measures <b>local linear</b> change (tangent slope).</li>
+        <li>\(D_1^1\) measures <b>relative / structural</b> change inside a hierarchical framework.</li>
+        <li>\(D_0^1\) depends on absolute scaling, while \(D_1^1\) is designed to normalize change.</li>
+        <li>In Hierarchical Calculus, derivatives are written as \(D_r^n\) (explicit rank \(r\) and degree \(n\)).</li>
         <li>The two operators are <b>not interchangeable</b>; they answer different questions.</li>
       </ul>
     </section>
 
     <section class="card">
-      <h2>1) What \(D_0\) means (classical interpretation)</h2>
+      <h2>1) What \(D_0^1\) means (classical interpretation)</h2>
       <p class="muted small" style="margin:0">
-        The classical derivative \(D_0 f(x)\) is the limit of a ratio of infinitesimal differences.
+        The classical derivative \(D_0^1 f(x)\) is the limit of a ratio of infinitesimal differences.
         Geometrically, it is the slope of the tangent line at a point.
         Analytically, it measures how fast the function changes with respect to its variable.
       </p>
 
       <div class="note">
         <strong>Key point:</strong>
-        \(D_0\) treats change as <b>absolute</b> and local. It does not encode a notion of hierarchy,
+        \(D_0^1\) treats change as <b>absolute</b> and local. It does not encode hierarchy,
         normalization, or structural “level”.
       </div>
     </section>
 
     <section class="card">
-      <h2>2) What \(D_1\) means (relative / structural interpretation)</h2>
+      <h2>2) What \(D_1^1\) means (relative / structural interpretation)</h2>
       <p class="muted small" style="margin:0">
-        The relative derivative \(D_1\) is defined in Hierarchical Calculus to capture variation
+        The relative derivative \(D_1^1\) is defined in Hierarchical Calculus to capture variation
         <b>relative to the structure of the function</b>.
-        Instead of measuring absolute slope, \(D_1\) measures how the function changes in a normalized way,
+        Instead of measuring absolute slope, \(D_1^1\) measures how the function changes in a normalized way,
         using explicit hierarchical parameters.
       </p>
 
@@ -264,7 +266,7 @@
         <tbody>
           <tr>
             <td>Derivative symbol</td>
-            <td>\(D_0\)</td>
+            <td>\(D_0^1\)</td>
             <td>\(D_r^n\) (explicit rank \(r\) and degree \(n\))</td>
           </tr>
           <tr>
@@ -281,10 +283,8 @@
       </table>
 
       <div class="note">
-        <strong>Notation reminder:</strong>
-        In this website, \(D_0\) denotes the classical differential derivative,
-        and \(D_1\) denotes the relative derivative.
-        When needed, hierarchical derivatives are written as \(D_r^n\).
+        <strong>Reminder:</strong>
+        Here we compare the classical operator \(D_0^1\) to the relative operator \(D_1^1\) using one example.
       </div>
     </section>
 
@@ -299,19 +299,19 @@
         \]
       </div>
       <p class="muted small" style="margin:10px 0 0 0">
-        This example is intentionally simple: it allows us to compare what \(D_0\) and \(D_1\) are measuring
+        This example is intentionally simple: it allows us to compare what \(D_0^1\) and \(D_1^1\) measure
         without extra technical assumptions.
       </p>
     </section>
 
     <section class="card">
-      <h2>4) Computing \(D_0 f(x)\)</h2>
+      <h2>4) Computing \(D_0^1 f(x)\)</h2>
       <p class="muted small" style="margin:0">
         Classical calculus gives:
       </p>
       <div class="math">
         \[
-          D_0 f(x)=\frac{d}{dx}(x^2)=2x.
+          D_0^1 f(x)=\frac{d}{dx}(x^2)=2x.
         \]
       </div>
       <p class="muted small" style="margin:10px 0 0 0">
@@ -319,23 +319,22 @@
       </p>
       <div class="math">
         \[
-          D_0 f(2)=4.
+          D_0^1 f(2)=4.
         \]
       </div>
 
       <div class="note">
         <strong>Interpretation:</strong>
-        \(D_0 f(2)=4\) is the slope of the tangent line at \(x=2\).
-        If we scale the input or evaluate at a different \(x\), the value changes accordingly.
+        \(D_0^1 f(2)=4\) is the tangent slope at \(x=2\).
+        It depends on the absolute location \(x\) and changes if the scale changes.
       </div>
     </section>
 
     <section class="card">
-      <h2>5) Computing \(D_1 f(x)\) (rank 1, degree 1)</h2>
+      <h2>5) Computing \(D_1^1 f(x)\) (relative behavior)</h2>
       <p class="muted small" style="margin:0">
-        In Hierarchical Calculus, the most common relative derivative is rank \(1\), degree \(1\), written \(D_1^1\).
-        For power functions \(x^a\), it yields a constant result equal to the exponent \(a\).
-        Therefore, for \(f(x)=x^2\):
+        The rank-\(1\), degree-\(1\) relative derivative \(D_1^1\) captures normalized structural change.
+        For power functions \(x^a\), \(D_1^1(x^a)=a\). Therefore, for \(f(x)=x^2\):
       </p>
 
       <div class="math">
@@ -355,15 +354,15 @@
 
       <div class="note">
         <strong>Interpretation:</strong>
-        \(D_1^1\) returns the <b>relative structural behavior</b> of \(f\).
-        For a power law \(x^a\), the “relative change” is controlled by the exponent \(a\), not by the absolute scale.
+        \(D_1^1\) returns the structural exponent-like behavior of the function,
+        which remains stable under multiplicative scaling.
       </div>
     </section>
 
     <section class="card">
       <h2>6) Why the answers differ (the real reason)</h2>
       <p class="muted small" style="margin:0">
-        The difference is not a computational accident; it reflects two different questions:
+        The difference reflects two different questions:
       </p>
 
       <table>
@@ -376,9 +375,9 @@
         </thead>
         <tbody>
           <tr>
-            <td>\(D_0\)</td>
+            <td>\(D_0^1\)</td>
             <td>“How fast does \(f\) change at this point?”</td>
-            <td>Location \(x\), scaling, local slope</td>
+            <td>Location \(x\), local slope, absolute scale</td>
           </tr>
           <tr>
             <td>\(D_1^1\)</td>
@@ -390,31 +389,28 @@
 
       <div class="note">
         <strong>Takeaway:</strong>
-        \(D_0\) is a local, absolute slope operator.
-        \(D_1\) is a relative, normalized structural operator.
-        Therefore, their values are expected to differ.
+        \(D_0^1\) is absolute and local.
+        \(D_1^1\) is relative and structural.
+        Their values are expected to differ.
       </div>
     </section>
 
     <section class="card">
       <h2>7) Practical guidance: when to use which?</h2>
-      <p class="muted small" style="margin:0">
-        Both derivatives are useful, but they serve different modeling goals:
-      </p>
-      <ul class="muted small" style="margin:10px 0 0 0">
-        <li>Use \(D_0\) when you need <b>absolute local sensitivity</b> (classical differential change).</li>
-        <li>Use \(D_1\) when you need <b>relative / scale-normalized</b> variation (hierarchical structure).</li>
-        <li>If your phenomenon is naturally multiplicative or scale-relative, \(D_1\) can be more stable than \(D_0\).</li>
+      <ul class="muted small" style="margin:0">
+        <li>Use \(D_0^1\) when you need <b>absolute local sensitivity</b> (classical differential change).</li>
+        <li>Use \(D_1^1\) when you need <b>relative / scale-normalized</b> variation (hierarchical structure).</li>
+        <li>If your phenomenon is naturally multiplicative, \(D_1^1\) can be more stable than \(D_0^1\).</li>
       </ul>
     </section>
 
     <section class="card">
       <h2>8) Related pages</h2>
       <ul class="muted small" style="margin:0">
-        <li><a href="./theory-en.html">Theory: foundations of \(D_1\)</a></li>
-        <li><a href="./rank-degree-en.html">Rank & Degree: the structure behind \(D_r^n\)</a></li>
+        <li><a href="./theory-en.html">Theory: foundations of \(D_1^1\)</a></li>
         <li><a href="./rules-en.html">Rules: basic identities and properties</a></li>
         <li><a href="./equations-en.html">Equations: applications and solved forms</a></li>
+        <li><a href="./integrals-en.html">Integrals: inverse operators</a></li>
       </ul>
     </section>
 
@@ -422,13 +418,13 @@
       <h2>9) Citation</h2>
       <div class="math">
         \[
-          \texttt{GOSSA\ AHMED.\ Hierarchical\ Calculus\ —\ D_0\ vs\ D_1\ (One\ Example).\ Official\ Website.\ (2025).}
+          \texttt{GOSSA\ AHMED.\ Hierarchical\ Calculus\ —\ D_0^1\ vs\ D_1^1\ (One\ Example).\ Official\ Website.\ (2025).}
         \]
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · \(D_0\) vs \(D_1\) (one example)
+      © 2025 — GOSSA AHMED · \(D_0^1\) vs \(D_1^1\) (one example)
     </footer>
   </div>
 </body>
