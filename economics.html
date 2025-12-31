@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تطبيق الحساب الهرمي في الاقتصاد | 20 تطبيقًا مع أمثلة عددية</title>
+  <meta name="description" content="صفحة موسعة لتطبيق الحساب الهرمي في الاقتصاد: 20 تطبيقًا وأمثلة عددية تشمل النمو، التضخم، سعر الصرف، الدين، الفائدة، المرونة، الفقاعات، المخاطر. باستخدام المشتقات الهرمية D0^1 و D1^1 و D2^1 حتى Dn^1." />
+  <meta name="author" content="GOSSA AHMED" />
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/economics-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/economics.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/economics-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/economics-en.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:2.0;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1100px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .math{
+      margin-top:8px; padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius:12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:var(--warn)}
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
+    }
+    thead th{
+      text-align:right;
+      font-size:13px;
+      padding:10px 10px;
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+    }
+    tbody td{
+      padding:10px 10px;
+      font-size:13px;
+      color:rgba(234,242,255,.88);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+    }
+    tbody tr:last-child td{border-bottom:none}
+    footer{
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>الحساب الهرمي في الاقتصاد</strong>
+          <span>20 تطبيقًا · \(D_0^1, D_1^1, D_2^1\) · حتى \(D_n^1\)</span>
+        </div>
+      </div>
+
+      <nav aria-label="Navigation">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./theory.html">النظرية</a>
+        <a href="./rules.html">القواعد</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="./integrals.html">التكاملات</a>
+        <a href="./economics-en.html">English</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <h1>تطبيق الحساب الهرمي في الاقتصاد</h1>
+      <p class="muted">
+        الاقتصاد بطبيعته “نسبي”: النمو، التضخم، العائد، المرونة، المخاطر—كلها تُقرأ كنِسَب.
+        لذلك فإن المشتق التفاضلي \(D_0^1\) وحده لا يكفي دائمًا، بينما
+        \(D_1^1\) يلتقط القياس النسبي (المرونات)، و\(D_2^1\) يلتقط “تسارع النِّسَب”
+        (الذي يظهر في الفقاعات والأزمات وانفلات المخاطر).
+      </p>
+
+      <div class="note">
+        <strong>قاعدة الترميز:</strong>
+        نكتب دائمًا \(D_r^1\) مع رتبة \(r\).
+        التفاضلي \(D_0^1\)، النسبي \(D_1^1\)، اللوغاريتمي \(D_2^1\)، وتستمر الهرمية حتى \(D_n^1\).
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>كيف نقرأ الرتب اقتصاديًا؟</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>الرتبة</th>
+            <th>المؤثر</th>
+            <th>المعنى الاقتصادي</th>
+            <th>تقريب عددي سريع</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>\(D_0^1 y \approx \dfrac{\Delta y}{\Delta x}\)</td>
+            <td>تغيّر مطلق</td>
+            <td>فرق/ميل</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>\(D_1^1 y \approx \dfrac{\Delta y/y}{\Delta x/x}\)</td>
+            <td>تغيّر نسبي (مرونة)</td>
+            <td>%\(y\) على %\(x\)</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>\(D_2^1 y \) (سلوك رتبة ثانية)</td>
+            <td>تسارع التغيّر النسبي (إنذار فقاعات/أزمات)</td>
+            <td>هل “% التغير” نفسه يتسارع؟</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="muted small" style="margin:10px 0 0 0">
+        ملاحظة عملية: صيغة \(D_2^1\) الدقيقة تتطلب مجالات موجبة مناسبة. في الاقتصاد نستخدم غالبًا
+        مؤشرات موجبة (مثل مؤشر مخاطر، أو نسبة دين/ناتج، أو مؤشر أسعار) لتكون الرتبة الثانية معرفة بشكل طبيعي.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>20 تطبيقًا اقتصاديًا مع أمثلة عددية</h2>
+      <div class="note">
+        <strong>طريقة القراءة:</strong> في كل مثال اقرأ أولًا \(D_0^1\) (العدد)، ثم \(D_1^1\) (النسبة/المرونة).
+        وإذا ظهر تغير متسارع في النِّسَب، فهنا تظهر أهمية الرتبة \(D_2^1\).
+      </div>
+    </section>
+
+    <!-- 1 -->
+    <section class="card">
+      <h3>1) نمو الناتج المحلي (GDP)</h3>
+      <p class="muted small" style="margin:0">من 200 إلى 220 (مليار).</p>
+      <div class="math">
+        \[
+          D_0^1:\;\Delta GDP=20
+          \qquad
+          D_1^1:\;\frac{20}{200}=10\%
+        \]
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="card">
+      <h3>2) التضخم (CPI)</h3>
+      <p class="muted small" style="margin:0">مؤشر الأسعار من 100 إلى 108.</p>
+      <div class="math">
+        \[
+          D_0^1:\; +8
+          \qquad
+          D_1^1:\;\frac{8}{100}=8\%
+        \]
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="card">
+      <h3>3) الفرق بين النمو الاسمي والحقيقي</h3>
+      <p class="muted small" style="margin:0">GDP الاسمي +10% والتضخم 6%.</p>
+      <div class="math">
+        \[
+          \text{نمو حقيقي تقريبي} \approx 10\%-6\%=4\%
+        \]
+      </div>
+      <p class="muted small" style="margin:0">هنا القراءة “نسبية” بطبيعتها.</p>
+    </section>
+
+    <!-- 4 -->
+    <section class="card">
+      <h3>4) سعر الصرف</h3>
+      <p class="muted small" style="margin:0">الدولار من 100 إلى 115 (عملة محلية).</p>
+      <div class="math">
+        \[
+          D_0^1:\; +15
+          \qquad
+          D_1^1:\;\frac{15}{100}=15\%
+        \]
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="card">
+      <h3>5) ميزان التجارة: نسبة العجز</h3>
+      <p class="muted small" style="margin:0">عجز من 5 إلى 7 (مليار).</p>
+      <div class="math">
+        \[
+          D_0^1:\; +2
+          \qquad
+          D_1^1:\;\frac{2}{5}=40\%
+        \]
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="card">
+      <h3>6) الدين إلى الناتج (Debt/GDP)</h3>
+      <p class="muted small" style="margin:0">الدين 120، الناتج 200 → 0.60. ثم الدين 132 والناتج 204.</p>
+      <div class="math">
+        \[
+          \text{قبل: }0.60
+          \quad
+          \text{بعد: }\frac{132}{204}\approx0.647
+          \quad\Rightarrow\quad \text{ارتفاع نسبي }\approx \frac{0.647-0.60}{0.60}=7.8\%
+        \]
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="card">
+      <h3>7) الفائدة المركبة</h3>
+      <p class="muted small" style="margin:0">رأس مال 100 بنسبة 5% سنويًا لمدة سنتين.</p>
+      <div class="math">
+        \[
+          100\to 105\to 110.25
+          \qquad
+          D_1^1 \text{ هنا هو جوهر التراكم النسبي}
+        \]
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="card">
+      <h3>8) الخصم (Present Value)</h3>
+      <p class="muted small" style="margin:0">تدفق 120 بعد سنة، ومعدل خصم 10%.</p>
+      <div class="math">
+        \[
+          PV=\frac{120}{1.10}\approx 109.09
+        \]
+      </div>
+      <p class="muted small" style="margin:0">المقارنة هنا نسبية عبر عامل الخصم.</p>
+    </section>
+
+    <!-- 9 -->
+    <section class="card">
+      <h3>9) البطالة كنسبة (وليس كنقاط فقط)</h3>
+      <p class="muted small" style="margin:0">البطالة من 10% إلى 12%.</p>
+      <div class="math">
+        \[
+          D_0^1:\; +2\text{ نقطة}
+          \qquad
+          D_1^1:\;\frac{12-10}{10}=20\%\;\text{زيادة نسبية في البطالة}
+        \]
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="card">
+      <h3>10) الأجور والأسعار (دوامة)</h3>
+      <p class="muted small" style="margin:0">التضخم 4% ثم 8% خلال فترة قصيرة.</p>
+      <div class="math">
+        \[
+          \text{النسبة تضاعفت: }\frac{8}{4}=2
+          \quad\Rightarrow\quad \text{سلوك رتبة ثانية }(D_2^1)
+        \]
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="card">
+      <h3>11) فقاعة أسعار أصل (أسهم/عقار)</h3>
+      <p class="muted small" style="margin:0">النمو النسبي الشهري: 2% ثم 5% ثم 12%.</p>
+      <div class="math">
+        \[
+          \text{تسارع في النِّسَب}\;\Rightarrow\; \text{رتبة }D_2^1 \text{ (إنذار فقاعة)}
+        \]
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="card">
+      <h3>12) علاوة المخاطر (Risk Premium)</h3>
+      <p class="muted small" style="margin:0">علاوة من 3% إلى 4.5%.</p>
+      <div class="math">
+        \[
+          D_0^1:\; +1.5\text{ نقطة}
+          \qquad
+          D_1^1:\;\frac{4.5-3}{3}=50\%
+        \]
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section class="card">
+      <h3>13) تقلبات السوق (Volatility Index)</h3>
+      <p class="muted small" style="margin:0">مؤشر تقلب من 16 إلى 24.</p>
+      <div class="math">
+        \[
+          D_0^1:\; +8
+          \qquad
+          D_1^1:\;\frac{8}{16}=50\%
+        \]
+      </div>
+      <p class="muted small" style="margin:0">إذا تكرر ارتفاع 50% ثم صار 80% فهنا رتبة ثانية.</p>
+    </section>
+
+    <!-- 14 -->
+    <section class="card">
+      <h3>14) مرونة الطلب السعرية (نسبي)</h3>
+      <p class="muted small" style="margin:0">السعر +10%، الكمية -15%.</p>
+      <div class="math">
+        \[
+          E \approx \frac{-15\%}{10\%}=-1.5 \quad (\text{هذا هو } D_1^1)
+        \]
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section class="card">
+      <h3>15) مرونة العرض</h3>
+      <p class="muted small" style="margin:0">السعر +8%، العرض +4%.</p>
+      <div class="math">
+        \[
+          E_s \approx \frac{4\%}{8\%}=0.5
+        \]
+      </div>
+    </section>
+
+    <!-- 16 -->
+    <section class="card">
+      <h3>16) الميل الحدي للاستهلاك (MPC)</h3>
+      <p class="muted small" style="margin:0">الدخل +1000، الاستهلاك +700.</p>
+      <div class="math">
+        \[
+          D_0^1:\; \Delta C/\Delta Y = 0.7
+        \]
+      </div>
+      <p class="muted small" style="margin:0">وعند المقارنات بين فئات دخل مختلفة تظهر فائدة القراءة النسبية.</p>
+    </section>
+
+    <!-- 17 -->
+    <section class="card">
+      <h3>17) الإنتاجية</h3>
+      <p class="muted small" style="margin:0">الإنتاج 500 إلى 540، ساعات العمل 100 إلى 105.</p>
+      <div class="math">
+        \[
+          \text{الإنتاجية قبل}=5
+          \quad
+          \text{بعد}\approx \frac{540}{105}=5.1429
+          \quad\Rightarrow\quad \text{تحسن نسبي}\approx \frac{5.1429-5}{5}=2.86\%
+        \]
+      </div>
+    </section>
+
+    <!-- 18 -->
+    <section class="card">
+      <h3>18) عدم المساواة (مؤشر موجب)</h3>
+      <p class="muted small" style="margin:0">مؤشر موجب \(R\) من 1.20 إلى 1.35.</p>
+      <div class="math">
+        \[
+          D_0^1:\; +0.15
+          \qquad
+          D_1^1:\;\frac{0.15}{1.20}=12.5\%
+        \]
+      </div>
+      <p class="muted small" style="margin:0">مؤشرات موجبة مثل \(R\) مناسبة لوصف رتبة ثانية عند تسارع النِّسَب.</p>
+    </section>
+
+    <!-- 19 -->
+    <section class="card">
+      <h3>19) تبني تقنية/منصة (انتشار)</h3>
+      <p class="muted small" style="margin:0">المستخدمون من 1.0M إلى 1.3M في شهر.</p>
+      <div class="math">
+        \[
+          D_0^1:\; +0.3M
+          \qquad
+          D_1^1:\;\frac{0.3}{1.0}=30\%
+        \]
+      </div>
+      <p class="muted small" style="margin:0">إذا زادت النسبة من 30% إلى 60%: تسارع رتبة ثانية.</p>
+    </section>
+
+    <!-- 20 -->
+    <section class="card">
+      <h3>20) تكلفة مشروع/برنامج اقتصادي</h3>
+      <p class="muted small" style="margin:0">التكلفة من 10M إلى 12M.</p>
+      <div class="math">
+        \[
+          D_0^1:\; +2M
+          \qquad
+          D_1^1:\;\frac{2}{10}=20\%
+          \quad\Rightarrow\quad \text{زيادة نسبية}
+        \]
+      </div>
+      <p class="muted small" style="margin:0">إذا تحولت 20% إلى 35% في الدورة التالية فهذا تسارع رتبة ثانية.</p>
+    </section>
+
+    <section class="card">
+      <h2>دليل عملي سريع: متى أستخدم أي رتبة؟</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>السؤال الاقتصادي</th>
+            <th>الرتبة المناسبة</th>
+            <th>سبب الاختيار</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>كم زادت القيمة؟</td>
+            <td>\(D_0^1\)</td>
+            <td>تقارير رقمية مباشرة</td>
+          </tr>
+          <tr>
+            <td>كم زادت كنسبة/مرونة؟</td>
+            <td>\(D_1^1\)</td>
+            <td>مقارنات عادلة عبر الأحجام</td>
+          </tr>
+          <tr>
+            <td>هل النِّسَب نفسها تتسارع؟</td>
+            <td>\(D_2^1\)</td>
+            <td>فقاعات/أزمات/انفلات مخاطر</td>
+          </tr>
+          <tr>
+            <td>سلوك متعدد الأطوار ومعقد</td>
+            <td>\(D_n^1\)</td>
+            <td>تحليل هرمي أعلى</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>الخلاصة:</strong>
+        \(D_0^1\) يصف التغير، \(D_1^1\) يصف التغير النسبي (المرونة)،
+        و\(D_2^1\) يصف تسارع التغير النسبي—وهو قلب كثير من الأزمات والفقاعات.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>إحالة (Citation)</h2>
+      <div class="math">
+        \[
+          \texttt{GOSSA\ AHMED.\ تطبيق\ الحساب\ الهرمي\ في\ الاقتصاد:\ 20\ تطبيقًا\ مع\ أمثلة\ عددية.\ الموقع\ الرسمي.\ (2025).}
+        \]
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · الاقتصاد — \(D_r^1\), \(D_0^1\), \(D_1^1\), \(D_2^1\)
+    </footer>
+  </div>
+</body>
+</html>
