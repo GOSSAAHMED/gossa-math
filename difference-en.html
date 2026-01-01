@@ -5,22 +5,36 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>D₀¹ vs D₁¹ (One Example) | Hierarchical Calculus</title>
-  <meta name="description" content="A clear, extended comparison between the classical derivative D0^1 and the relative derivative D1^1 in Hierarchical Calculus, using one carefully chosen example." />
-  <meta name="author" content="GOSSA AHMED" />
+  <meta name="description" content="A clear, extended comparison between the classical derivative D0^1 and the relative derivative D1^1 in Hierarchical Calculus, using one carefully chosen example. Includes interpretation, worked steps, and practical guidance." />
+  <meta name="author" content="Ahmed Gossa" />
 
-  <!-- Canonical + hreflang (English primary) -->
   <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/difference-en.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/difference-en.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/difference.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/difference-en.html" />
 
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Hierarchical Calculus" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="D₀¹ vs D₁¹ (One Example) | Hierarchical Calculus" />
+  <meta property="og:description" content="Difference between the classical derivative D0^1 and the relative derivative D1^1 in Hierarchical Calculus, with a full example and interpretation." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/difference-en.html" />
+  <meta property="og:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png" />
+  <meta property="og:image:alt" content="Ahmed Gossa — Hierarchical Calculus official logo" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="D₀¹ vs D₁¹ (One Example) | Hierarchical Calculus" />
+  <meta name="twitter:description" content="Difference between D0^1 and D1^1 with one clear example." />
+  <meta name="twitter:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png" />
+
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
-      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     *{box-sizing:border-box}
@@ -46,11 +60,11 @@
       max-width:1050px; margin:0 auto; padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
+
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
-      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    .brand img{
+      width:34px; height:auto;
+      filter: drop-shadow(0 0 10px rgba(255, 200, 120, 0.25));
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
@@ -87,6 +101,27 @@
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    .author-card{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin:14px 0 10px;
+      flex-wrap:wrap;
+    }
+    .author-photo{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #4db6ff;
+      box-shadow:0 6px 18px rgba(0,0,0,.45);
+      flex:0 0 auto;
+    }
+    .author-info span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
     .card{
       margin-top:14px; padding:16px;
       border:1px solid rgba(255,255,255,.10);
@@ -109,6 +144,13 @@
       border-radius:14px;
     }
     .note strong{color:var(--warn)}
+    .ok{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(134,239,172,.35);
+      background: rgba(134,239,172,.10);
+      border-radius:14px;
+    }
+    .ok strong{color:var(--ok)}
 
     table{
       width:100%;
@@ -136,6 +178,9 @@
     }
     tbody tr:last-child td{border-bottom:none}
 
+    ul{margin:8px 0 0 0; padding-left:18px}
+    li{margin:6px 0}
+
     footer{
       margin-top:18px; padding-top:18px;
       border-top:1px solid rgba(255,255,255,.10);
@@ -143,10 +188,9 @@
     }
   </style>
 
-  <!-- MathJax -->
   <script>
     window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
       options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
@@ -161,7 +205,8 @@
   "author": {
     "@type": "Person",
     "name": "Ahmed Gossa",
-    "url": "https://gossaahmed.github.io/gossa-math/"
+    "url": "https://gossaahmed.github.io/gossa-math/",
+    "image": "https://gossaahmed.github.io/gossa-math/assets/images/ahmed-gossa.jpg"
   },
   "about": [
     "Hierarchical Calculus",
@@ -170,9 +215,10 @@
     "Rank and Degree",
     "Differential Calculus"
   ],
-  "abstract": "A long-form reference page explaining the difference between D0^1 and D1^1 using one clear example and the conceptual interpretation within Hierarchical Calculus.",
+  "abstract": "A long-form educational reference explaining the difference between D0^1 and D1^1 using one clear example and the conceptual interpretation within Hierarchical Calculus.",
   "inLanguage": "en",
   "url": "https://gossaahmed.github.io/gossa-math/difference-en.html",
+  "image": "https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png",
   "publisher": {
     "@type": "Organization",
     "name": "Hierarchical Calculus"
@@ -185,7 +231,9 @@
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <a href="./index.html" title="Home">
+          <img src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
+        </a>
         <div class="title">
           <strong>\(D_0^1\) vs \(D_1^1\)</strong>
           <span>One example · explicit \(D_r^n\)</span>
@@ -206,13 +254,23 @@
   <div class="wrap">
     <header class="hero">
       <h1>Difference Between the Classical Derivative \(D_0^1\) and the Relative Derivative \(D_1^1\)</h1>
+
+      <div class="author-card">
+        <img src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa" class="author-photo">
+        <div class="author-info">
+          <strong>Ahmed Gossa</strong><br>
+          <span>Independent Researcher — Hierarchical Calculus</span>
+        </div>
+      </div>
+
       <p class="muted">
         In classical calculus, the derivative measures infinitesimal linear change.
         Hierarchical Calculus introduces the <b>relative derivative</b> \(D_1^1\) to measure <b>structural / relative</b> variation.
         Although both operators describe “change”, they answer different mathematical questions.
         <br>
-        This page explains the difference using <b>one carefully chosen example</b>, with a clear interpretation and practical takeaways.
+        This page explains the difference using <b>one carefully chosen example</b>, with interpretation and practical takeaways.
       </p>
+
       <div class="note">
         <strong>Notation rule:</strong>
         In this website, every derivative is written with explicit <strong>rank</strong> and <strong>degree</strong> as \(D_r^n\).
@@ -224,11 +282,17 @@
       <h2>Quick Summary</h2>
       <ul class="muted small" style="margin:0">
         <li>\(D_0^1\) measures <b>local linear</b> change (tangent slope).</li>
-        <li>\(D_1^1\) measures <b>relative / structural</b> change inside a hierarchical framework.</li>
-        <li>\(D_0^1\) depends on absolute scaling, while \(D_1^1\) is designed to normalize change.</li>
-        <li>In Hierarchical Calculus, derivatives are written as \(D_r^n\) (explicit rank \(r\) and degree \(n\)).</li>
+        <li>\(D_1^1\) measures <b>relative / structural</b> change (scale-normalized behavior).</li>
+        <li>\(D_0^1\) depends on absolute scaling, while \(D_1^1\) is stable under multiplicative scaling.</li>
         <li>The two operators are <b>not interchangeable</b>; they answer different questions.</li>
       </ul>
+
+      <div class="ok">
+        <strong>One-line takeaway</strong>
+        <div class="muted small" style="margin-top:6px">
+          \(D_0^1\) is “how fast”, while \(D_1^1\) is “how fast relative to the structure”.
+        </div>
+      </div>
     </section>
 
     <section class="card">
@@ -241,50 +305,30 @@
 
       <div class="note">
         <strong>Key point:</strong>
-        \(D_0^1\) treats change as <b>absolute</b> and local. It does not encode hierarchy,
-        normalization, or structural “level”.
+        \(D_0^1\) treats change as <b>absolute</b> and local. It does not encode hierarchy or normalization.
       </div>
     </section>
 
     <section class="card">
       <h2>2) What \(D_1^1\) means (relative / structural interpretation)</h2>
       <p class="muted small" style="margin:0">
-        The relative derivative \(D_1^1\) is defined in Hierarchical Calculus to capture variation
-        <b>relative to the structure of the function</b>.
-        Instead of measuring absolute slope, \(D_1^1\) measures how the function changes in a normalized way,
-        using explicit hierarchical parameters.
+        The relative derivative \(D_1^1\) is defined to capture variation
+        <b>relative to the function’s level</b>.
+        Instead of measuring absolute slope, \(D_1^1\) measures how the function changes on a scale-normalized basis.
       </p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Concept</th>
-            <th>Classical calculus</th>
-            <th>Hierarchical calculus</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Derivative symbol</td>
-            <td>\(D_0^1\)</td>
-            <td>\(D_r^n\) (explicit rank \(r\) and degree \(n\))</td>
-          </tr>
-          <tr>
-            <td>What is measured?</td>
-            <td>Absolute local change</td>
-            <td>Relative / structural change</td>
-          </tr>
-          <tr>
-            <td>Hierarchy</td>
-            <td>Not present</td>
-            <td>Central (rank controls level)</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="math">
+        \[
+          \boxed{
+            D_1^1 f(x)=\frac{d\ln f(x)}{d\ln x}
+          }
+        \]
+      </div>
 
       <div class="note">
-        <strong>Reminder:</strong>
-        Here we compare the classical operator \(D_0^1\) to the relative operator \(D_1^1\) using one example.
+        <strong>Interpretation:</strong>
+        If \(D_1^1 f\) is constant, then \(f\) behaves like a power law \(x^\alpha\).
+        This is why rank 1 is a natural tool for scaling and self-similarity.
       </div>
     </section>
 
@@ -298,17 +342,10 @@
           f(x)=x^2,\qquad x>0.
         \]
       </div>
-      <p class="muted small" style="margin:10px 0 0 0">
-        This example is intentionally simple: it allows us to compare what \(D_0^1\) and \(D_1^1\) measure
-        without extra technical assumptions.
-      </p>
     </section>
 
     <section class="card">
       <h2>4) Computing \(D_0^1 f(x)\)</h2>
-      <p class="muted small" style="margin:0">
-        Classical calculus gives:
-      </p>
       <div class="math">
         \[
           D_0^1 f(x)=\frac{d}{dx}(x^2)=2x.
@@ -325,26 +362,24 @@
 
       <div class="note">
         <strong>Interpretation:</strong>
-        \(D_0^1 f(2)=4\) is the tangent slope at \(x=2\).
-        It depends on the absolute location \(x\) and changes if the scale changes.
+        \(D_0^1 f(2)=4\) is the tangent slope at \(x=2\), and it changes with the absolute scale of \(x\).
       </div>
     </section>
 
     <section class="card">
-      <h2>5) Computing \(D_1^1 f(x)\) (relative behavior)</h2>
+      <h2>5) Computing \(D_1^1 f(x)\)</h2>
       <p class="muted small" style="margin:0">
-        The rank-\(1\), degree-\(1\) relative derivative \(D_1^1\) captures normalized structural change.
-        For power functions \(x^a\), \(D_1^1(x^a)=a\). Therefore, for \(f(x)=x^2\):
+        For power functions \(x^a\), the relative derivative satisfies \(D_1^1(x^a)=a\).
+        Therefore:
       </p>
-
       <div class="math">
         \[
-          D_1^1\big(x^2\big)=2.
+          D_1^1(x^2)=2.
         \]
       </div>
 
       <p class="muted small" style="margin:10px 0 0 0">
-        In particular at \(x=2\):
+        In particular:
       </p>
       <div class="math">
         \[
@@ -354,16 +389,12 @@
 
       <div class="note">
         <strong>Interpretation:</strong>
-        \(D_1^1\) returns the structural exponent-like behavior of the function,
-        which remains stable under multiplicative scaling.
+        \(D_1^1\) returns the structural exponent-like behavior (here: 2), independent of the point \(x\).
       </div>
     </section>
 
     <section class="card">
-      <h2>6) Why the answers differ (the real reason)</h2>
-      <p class="muted small" style="margin:0">
-        The difference reflects two different questions:
-      </p>
+      <h2>6) Why the answers differ</h2>
 
       <table>
         <thead>
@@ -377,45 +408,59 @@
           <tr>
             <td>\(D_0^1\)</td>
             <td>“How fast does \(f\) change at this point?”</td>
-            <td>Location \(x\), local slope, absolute scale</td>
+            <td>Local slope and absolute position \(x\)</td>
           </tr>
           <tr>
             <td>\(D_1^1\)</td>
             <td>“What is the relative structural variation of \(f\)?”</td>
-            <td>Structure class (e.g., exponent in \(x^a\))</td>
+            <td>Function class / structure (e.g., exponent)</td>
           </tr>
         </tbody>
       </table>
 
-      <div class="note">
-        <strong>Takeaway:</strong>
-        \(D_0^1\) is absolute and local.
-        \(D_1^1\) is relative and structural.
-        Their values are expected to differ.
+      <div class="ok">
+        <strong>Core lesson</strong>
+        <div class="muted small" style="margin-top:6px">
+          \(D_0^1\) sees the function locally, while \(D_1^1\) identifies its structural type.
+        </div>
       </div>
     </section>
 
     <section class="card">
       <h2>7) Practical guidance: when to use which?</h2>
       <ul class="muted small" style="margin:0">
-        <li>Use \(D_0^1\) when you need <b>absolute local sensitivity</b> (classical differential change).</li>
-        <li>Use \(D_1^1\) when you need <b>relative / scale-normalized</b> variation (hierarchical structure).</li>
-        <li>If your phenomenon is naturally multiplicative, \(D_1^1\) can be more stable than \(D_0^1\).</li>
+        <li>Use \(D_0^1\) for <b>absolute local sensitivity</b> (engineering, control, classical analysis).</li>
+        <li>Use \(D_1^1\) for <b>scale-invariant / normalized</b> behavior (growth, scaling laws, similarity).</li>
+        <li>If a phenomenon is multiplicative or follows a power law, \(D_1^1\) becomes naturally stable.</li>
       </ul>
     </section>
 
     <section class="card">
-      <h2>8) Related pages</h2>
+      <h2>8) Self-check (mini exercises)</h2>
+      <p class="muted small" style="margin:0">Compute \(D_1^1 f\) for each function (assuming \(x>0\)):</p>
+      <ul class="muted small">
+        <li>\(f(x)=x^5\)</li>
+        <li>\(f(x)=x^{-2}\)</li>
+        <li>\(f(x)=\sqrt{x}\)</li>
+        <li>\(f(x)=e^x\)</li>
+      </ul>
+      <div class="note">
+        <strong>Hint:</strong> For \(x^a\), \(D_1^1(x^a)=a\). For \(e^x\), \(D_1^1(e^x)=x\).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>9) Related pages</h2>
       <ul class="muted small" style="margin:0">
-        <li><a href="./theory-en.html">Theory: foundations of \(D_1^1\)</a></li>
-        <li><a href="./rules-en.html">Rules: basic identities and properties</a></li>
-        <li><a href="./equations-en.html">Equations: applications and solved forms</a></li>
-        <li><a href="./integrals-en.html">Integrals: inverse operators</a></li>
+        <li><a href="./theory-en.html">Theory</a></li>
+        <li><a href="./rules-en.html">Rules</a></li>
+        <li><a href="./derivative-rank-degree-en.html">Rank &amp; Degree</a></li>
+        <li><a href="./equations-en.html">Equations</a></li>
       </ul>
     </section>
 
     <section class="card">
-      <h2>9) Citation</h2>
+      <h2>10) Citation</h2>
       <div class="math">
         \[
           \texttt{GOSSA\ AHMED.\ Hierarchical\ Calculus\ —\ D_0^1\ vs\ D_1^1\ (One\ Example).\ Official\ Website.\ (2025).}
@@ -424,9 +469,13 @@
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · \(D_0^1\) vs \(D_1^1\) (one example)
+      © <span id="y"></span> Ahmed Gossa · \(D_0^1\) vs \(D_1^1\) (one example)
     </footer>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
 
