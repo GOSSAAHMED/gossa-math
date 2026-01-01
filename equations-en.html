@@ -1,568 +1,685 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<title>Hierarchical Equations | Hierarchical Calculus (D0, D1, D_r^n)</title>
-<meta name="description" content="Reference + tutorial: Hierarchical equations unify differential (D0), relative (D1), logarithmic (rank 2), and higher-rank equations using the rank–degree notation D_r^n. Includes strict definitions, domain assumptions, lifting method, worked examples, and a mini-solver workflow." />
-<meta name="author" content="Ahmed Gossa" />
+  <title>Hierarchical Equations | Hierarchical Calculus (Rank–Degree Derivatives D_r^n)</title>
+  <meta name="description" content="Reference + tutorial: Hierarchical equations unify differential (D0), relative (D1), logarithmic (rank 2), and higher-rank equations using rank–degree notation D_r^n. Includes strict definitions, domain assumptions, lifting method, solved workflows, and canonical examples across ranks." />
+  <meta name="author" content="Ahmed Gossa" />
 
-<link rel="canonical" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
-<link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
-<link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/equations.html" />
-<link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/equations.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
 
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:title" content="Hierarchical Equations | Hierarchical Calculus (D0, D1, D_r^n)" />
-<meta property="og:description" content="Strict definitions + domain conditions + hierarchical lifting + solved examples across ranks." />
-<meta property="og:url" content="https://gossaahmed.github.io/gossa-math/equations-en.html" />
-<meta name="twitter:card" content="summary" />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Hierarchical Equations | Hierarchical Calculus (Rank–Degree Derivatives D_r^n)" />
+  <meta property="og:description" content="Strict definitions + domain conditions + hierarchical lifting + canonical examples across ranks." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/equations-en.html" />
+  <meta name="twitter:card" content="summary" />
 
-<style>
-:root{
-  --bg1:#0b1220; --bg2:#0f1b2e;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(0,0,0,.22);
-  --b: rgba(255,255,255,.12);
-  --txt:#eaf2ff; --mut: rgba(234,242,255,.72);
-  --accent:#61d2d2; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
-  --shadow: 0 18px 48px rgba(0,0,0,.38);
-  --radius: 18px;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:
-    radial-gradient(1200px 800px at 20% 10%, rgba(26,167,161,.20), transparent 55%),
-    radial-gradient(900px 700px at 75% 15%, rgba(122,167,255,.14), transparent 60%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--txt);
-  line-height:1.85;
-}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:auto;padding:30px 16px 60px}
+  <style>
+    :root{
+      --bg1:#0b1220; --bg2:#0f1b2e;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(0,0,0,.22);
+      --b: rgba(255,255,255,.12);
+      --txt:#eaf2ff; --mut: rgba(234,242,255,.72);
+      --accent:#61d2d2; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(26,167,161,.20), transparent 55%),
+        radial-gradient(900px 700px at 75% 15%, rgba(122,167,255,.14), transparent 60%),
+        linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--txt);
+      line-height:1.85;
+      min-height:100vh;
+    }
+    a{color:var(--accent2);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-.top{
-  display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;
-  padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.10);
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;top:0;backdrop-filter: blur(10px); z-index:9;
-}
-.brand{display:flex;gap:12px;align-items:center}
-.logo-img{
-  width:38px;height:38px;border-radius:12px;object-fit:cover;
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 12px 22px rgba(0,0,0,.28);
-  background:rgba(255,255,255,.04);
-}
-.brand .t1{font-weight:900}
-.brand .t2{font-size:12px;color:var(--mut)}
-nav{display:flex;gap:10px;flex-wrap:wrap}
-nav a{
-  padding:8px 10px;border:1px solid var(--b);border-radius:999px;
-  background:rgba(255,255,255,.03);
-  font-size:13px;
-}
+    .container{max-width:1100px;margin:auto;padding:26px 16px 70px}
 
-h1{margin:22px 0 8px;font-size:30px}
-.subtitle{color:var(--mut);margin:0 0 16px;max-width:920px}
+    /* Topbar */
+    .top{
+      display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+      padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.10);
+      background:rgba(11,18,32,.55);
+      position:sticky;top:0;backdrop-filter: blur(12px); z-index:9;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo-img{
+      width:40px;height:40px;border-radius:12px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
+    }
+    .brand .t1{font-weight:900}
+    .brand .t2{font-size:12px;color:var(--mut)}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    nav a{
+      padding:8px 10px;border:1px solid var(--b);border-radius:999px;
+      background:rgba(255,255,255,.03);
+      font-size:13px;
+      color:var(--txt);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.06)}
 
-.card{
-  background:var(--card);
-  border:1px solid var(--b);
-  border-radius:var(--radius);
-  padding:18px;
-  margin:14px 0;
-  box-shadow: var(--shadow);
-}
-.grid{display:grid;grid-template-columns:1fr;gap:14px}
-@media(min-width:950px){.grid{grid-template-columns:1.25fr .75fr}}
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      padding:20px 18px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(97,210,210,.18), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.18), transparent 55%);
+      pointer-events:none;
+    }
+    .hero > *{position:relative}
+    h1{margin:0 0 10px;font-size:30px}
+    .subtitle{color:var(--mut);margin:0;max-width:960px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      font-size:13px;color:rgba(234,242,255,.88);
+    }
+    .pill code{
+      font-family:var(--mono);
+      background:rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:2px 6px;border-radius:8px;
+      color:rgba(234,242,255,.92);
+    }
 
-.kpi{
-  background:rgba(0,0,0,.20);
-  border:1px solid var(--b);
-  border-radius:16px;
-  padding:14px;
-  margin-bottom:12px;
-}
-.kpi h3{margin:0 0 8px;font-size:16px;color:#bfe8ff}
-.small{font-size:14px;color:var(--mut);line-height:1.85}
-.hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+    /* Cards */
+    .card{
+      background:var(--card);
+      border:1px solid var(--b);
+      border-radius:var(--radius);
+      padding:18px;
+      margin:14px 0;
+      box-shadow: var(--shadow);
+    }
+    .grid{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:950px){.grid{grid-template-columns:1.25fr .75fr}}
 
-.tag{
-  display:inline-block;padding:3px 10px;border-radius:999px;
-  border:1px solid var(--b);background:rgba(255,255,255,.03);
-  font-size:12px;color:#bfe8ff; margin:4px 6px 0 0;
-}
-.math{
-  background:var(--card2);
-  border:1px solid var(--b);
-  border-radius:14px;
-  padding:12px;
-  margin-top:10px;
-  overflow:auto;
-}
-.callout{
-  border-left:4px solid var(--accent);
-  padding:12px 14px;border-radius:14px;
-  background:rgba(97,210,210,.10);
-  border:1px solid rgba(97,210,210,.25);
-  margin-top:12px;
-}
-.note{
-  border:1px solid rgba(255,204,102,.35);
-  background: rgba(255,204,102,.10);
-  border-radius: 14px;
-  padding: 12px 12px;
-  margin-top:12px;
-}
-.note strong{color:var(--warn)}
-.ok{
-  border:1px solid rgba(134,239,172,.35);
-  background: rgba(134,239,172,.10);
-  border-radius: 14px;
-  padding: 12px 12px;
-  margin-top:12px;
-}
-.ok strong{color:var(--ok)}
-ul{margin:10px 0 0 0; padding-left:18px}
-li{margin:6px 0}
+    .small{font-size:14px;color:var(--mut);line-height:1.85}
+    .hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+    .tag{
+      display:inline-block;padding:3px 10px;border-radius:999px;
+      border:1px solid var(--b);background:rgba(255,255,255,.03);
+      font-size:12px;color:#bfe8ff; margin:4px 6px 0 0;
+    }
+    .math{
+      background:var(--card2);
+      border:1px solid var(--b);
+      border-radius:14px;
+      padding:12px;
+      margin-top:10px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .callout{
+      border-left:4px solid var(--accent);
+      padding:12px 14px;border-radius:14px;
+      background:rgba(97,210,210,.10);
+      border:1px solid rgba(97,210,210,.25);
+      margin-top:12px;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+    .ok{
+      border:1px solid rgba(134,239,172,.35);
+      background: rgba(134,239,172,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .ok strong{color:var(--ok)}
+    ul{margin:10px 0 0 0; padding-left:18px}
+    li{margin:6px 0}
 
-.footer{
-  margin-top:18px;padding:14px 16px;border:1px solid var(--b);border-radius:16px;
-  background:rgba(255,255,255,.04)
-}
-pre{white-space:pre-wrap}
-.toc a{display:block;margin:7px 0}
+    /* KPI boxes */
+    .kpi{
+      background:rgba(0,0,0,.20);
+      border:1px solid var(--b);
+      border-radius:16px;
+      padding:14px;
+      margin-bottom:12px;
+    }
+    .kpi h3{margin:0 0 8px;font-size:16px;color:#bfe8ff}
 
-/* author card */
-.author-card{
-  display:flex;
-  gap:14px;
-  align-items:center;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.04);
-  border-radius:18px;
-  padding:14px 16px;
-  margin:18px 0 14px;
-  box-shadow: 0 18px 48px rgba(0,0,0,.22);
-}
-.avatar{
-  width:64px;height:64px;border-radius:50%;
-  object-fit:cover;
-  border:3px solid rgba(97,210,210,.65);
-  box-shadow:0 14px 30px rgba(0,0,0,.30);
-}
-.author-card .name{font-weight:900;font-size:18px;line-height:1.2}
-.author-card .role{color:var(--mut);font-size:13px;margin-top:2px}
-</style>
+    /* TOC */
+    .toc a{display:block;margin:7px 0}
 
-<script>
-window.MathJax={
-  tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},
-  options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
-};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    /* Author card */
+    .author-card{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:14px 16px;
+      margin:16px 0 0;
+      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(97,210,210,.65);
+      box-shadow:0 14px 30px rgba(0,0,0,.30);
+      background:rgba(255,255,255,.05);
+    }
+    .author-card .name{font-weight:900;font-size:18px;line-height:1.2}
+    .author-card .role{color:var(--mut);font-size:13px;margin-top:2px}
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "headline": "Hierarchical Equations | Hierarchical Calculus",
-  "alternativeHeadline": "Hierarchical Equations and Solutions via Rank–Degree Derivatives",
-  "author": {
-    "@type": "Person",
-    "name": "Ahmed Gossa",
-    "url": "https://gossaahmed.github.io/gossa-math/"
-  },
-  "about": [
-    "Hierarchical Calculus",
-    "Hierarchical Equations",
-    "Differential Equations",
-    "Relative Derivative D1",
-    "Rank–Degree notation D_r^n",
-    "Hierarchical Lifting"
-  ],
-  "abstract": "A reference + tutorial presenting hierarchical equations, strict rank–degree definitions, domain assumptions, lifting method, and worked examples across ranks.",
-  "inLanguage": "en",
-  "url": "https://gossaahmed.github.io/gossa-math/equations-en.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Hierarchical Calculus"
+    /* Footer */
+    footer{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--mut);
+      font-size:12px;
+      text-align:center;
+    }
+
+    /* Buttons */
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:9px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      font-size:13px;
+      color:var(--txt);
+      white-space:nowrap;
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{border-color: rgba(97,210,210,.35); background: rgba(97,210,210,.12)}
+    .code{
+      font-family:var(--mono);
+      background:rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:2px 6px;border-radius:8px;
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax={
+      tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},
+      options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Hierarchical Equations | Hierarchical Calculus",
+    "alternativeHeadline": "Hierarchical Equations and Solutions via Rank–Degree Derivatives",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Hierarchical Equations",
+      "Differential Equations",
+      "Relative Derivative D1",
+      "Rank–Degree notation D_r^n",
+      "Hierarchical Lifting"
+    ],
+    "abstract": "A reference + tutorial presenting hierarchical equations, strict rank–degree definitions, domain assumptions, lifting method, and canonical examples across ranks.",
+    "inLanguage": "en",
+    "url": "https://gossaahmed.github.io/gossa-math/equations-en.html",
+    "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
   }
-}
-</script>
-
+  </script>
 </head>
 
 <body>
 
-<div class="top">
-  <div class="brand">
-    <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
-    <div>
-      <div class="t1">Hierarchical Calculus</div>
-      <div class="t2">Hierarchical Equations</div>
+  <div class="top">
+    <div class="brand">
+      <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo" />
+      <div>
+        <div class="t1">Hierarchical Calculus</div>
+        <div class="t2">Hierarchical Equations (Rank–Degree Framework)</div>
+      </div>
     </div>
+
+    <nav aria-label="Navigation">
+      <a href="index-en.html">Home</a>
+      <a href="theory-en.html">Theory</a>
+      <a href="rules-en.html">Rules</a>
+      <a href="integrals-en.html">Integrals</a>
+      <a href="series-en.html">Series</a>
+      <a href="equations.html">العربية</a>
+    </nav>
   </div>
 
-  <nav aria-label="Navigation">
-    <a href="index-en.html">Home</a>
-    <a href="theory-en.html">Theory</a>
-    <a href="rules-en.html">Rules</a>
-    <a href="#definition">Definition</a>
-    <a href="#notation">Notation</a>
-    <a href="#examples">Examples</a>
-    <a href="#lifting">Lifting</a>
-    <a href="#workflow">Workflow</a>
-    <a href="#cite">Citation</a>
-    <a href="index-ar.html">العربية</a>
-  </nav>
-</div>
+  <div class="container">
 
-<div class="container">
+    <section class="hero">
+      <h1>Hierarchical Equations</h1>
+      <p class="subtitle">
+        A <b>hierarchical equation</b> is an equation written using rank–degree derivatives \(D_r^n\).
+        The goal is <b>structural simplification</b>: a nonlinear equation in one representation may become separable
+        (or closer to linear) after choosing the right <b>rank</b> and applying a suitable <b>hierarchical lift</b>.
+      </p>
 
-  <h1>Hierarchical Equations</h1>
-  <p class="subtitle">
-    A hierarchical equation is an equation written using rank–degree derivatives \(D_r^n\).
-    The main goal is <b>structural simplification</b>: equations that are highly nonlinear in one representation
-    may become separable or closer to linear after a suitable <b>hierarchical lift</b>.
-  </p>
+      <div class="pill-row" aria-label="Key concepts">
+        <div class="pill">Notation: <code>D_r^n</code> (rank + degree)</div>
+        <div class="pill">Strict definition uses <code>\(\ln^{(r)}\)</code> on both sides</div>
+        <div class="pill">Main method: lifting via <code>\(u=\ln^{(k)}(f)\)</code></div>
+      </div>
 
-  <div class="author-card">
-    <img class="avatar" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
-    <div>
-      <div class="name">Ahmed Gossa</div>
-      <div class="role">Independent Researcher — Hierarchical Calculus</div>
+      <div class="author-card">
+        <img class="avatar" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa" />
+        <div>
+          <div class="name">Ahmed Gossa</div>
+          <div class="role">Independent Researcher — Hierarchical Calculus</div>
+        </div>
+      </div>
+
+      <div class="btnrow">
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">Concept DOI</a>
+        <a class="btn" href="hierarchical-derivatives-relations-en.html">Derivative Relations</a>
+        <a class="btn" href="derivative-rank-degree-en.html">Rank & Degree</a>
+      </div>
+
+      <div class="note">
+        <strong>Single-source-of-truth rule:</strong>
+        Throughout this website, the rank-\(r\) derivative is always defined by applying \(\ln^{(r)}\) to both \(x\) and \(f(x)\).
+        This prevents contradictions between pages.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Quick Table of Contents</h2>
+      <div class="small toc">
+        <a href="#definition">1) Definition of hierarchical equations</a>
+        <a href="#notation">2) Notation and strict rank definition</a>
+        <a href="#domains">3) Domain assumptions (avoid hidden singularities)</a>
+        <a href="#classification">4) Classification by rank (0,1,2,3,...)</a>
+        <a href="#examples">5) Canonical examples across ranks</a>
+        <a href="#lifting">6) Hierarchical lifting (the main method)</a>
+        <a href="#workflow">7) Practical workflow (mini-solver)</a>
+        <a href="#consistency">8) Consistency checklist (avoid contradictions)</a>
+        <a href="#related">9) Related pages</a>
+        <a href="#cite">10) Citation</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card" id="definition">
+        <h2>1) Definition</h2>
+        <p class="small">
+          A <b>rank–degree hierarchical equation</b> is any relation involving a function \(f\) and a finite set of
+          hierarchical derivatives \(D_{r}^{n}f\), possibly with different ranks and degrees:
+        </p>
+
+        <div class="math">
+          \[
+            \mathcal{E}\Big(
+            x,\ f,\ \{D_{r_i}^{\,n_i}f\}_{i=1}^{m}
+            \Big)=0.
+          \]
+        </div>
+
+        <div class="hr"></div>
+
+        <p class="small">
+          A useful “max rank” view: a <b>level-\(k\)</b> equation uses ranks up to \(k\):
+        </p>
+
+        <div class="math">
+          \[
+            \mathcal{E}_k\big(x,\ f,\ D_{0}^{\bullet}f,\ D_{1}^{\bullet}f,\ \dots,\ D_{k}^{\bullet}f\big)=0,
+          \]
+        </div>
+
+        <p class="small">
+          where \(D_{r}^{\bullet}f\) means “some degrees of rank \(r\)”.
+        </p>
+
+        <div class="ok">
+          <strong>Why rank matters</strong>
+          <div class="small" style="margin-top:6px">
+            Choosing a higher rank means measuring variation on a different scale (log-scale, iterated log-scale, …).
+            Many equations become simpler when their natural scaling is matched by the chosen rank.
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="classification">
+        <h2>4) Quick classification (by rank)</h2>
+
+        <div class="kpi">
+          <h3>Rank 0 — Differential (Classical)</h3>
+          <div class="math">\[
+            F\big(x,f,D_0^{\bullet} f\big)=0
+          \]</div>
+          <div class="small">Measures additive change in \(x\). Solutions often involve integrals.</div>
+        </div>
+
+        <div class="kpi">
+          <h3>Rank 1 — Relative</h3>
+          <div class="math">\[
+            F\big(x,f,D_1^{\bullet} f\big)=0
+          \]</div>
+          <div class="small">Measures scaling/ratio change in \(\ln x\). Solutions often become exponential forms.</div>
+        </div>
+
+        <div class="kpi">
+          <h3>Rank 2 — Logarithmic</h3>
+          <div class="math">\[
+            F\big(x,f,D_2^{\bullet} f\big)=0
+          \]</div>
+          <div class="small">Measures variation on \(\ln(\ln x)\). Solutions often involve nested exponentials.</div>
+        </div>
+
+        <div class="kpi">
+          <h3>Rank 3+ — Higher hierarchy</h3>
+          <div class="math">\[
+            F\big(x,f,D_3^{\bullet} f,\dots\big)=0
+          \]</div>
+          <div class="small">Nested scales beyond \(\ln(\ln(\ln(\cdot)))\).</div>
+        </div>
+      </section>
     </div>
-  </div>
 
-  <div class="card">
-    <h2>Quick Table of Contents</h2>
-    <div class="small toc">
-      <a href="#definition">1) Definition of hierarchical equations</a>
-      <a href="#notation">2) Notation and strict rank definition</a>
-      <a href="#domains">3) Domain assumptions (avoid hidden singularities)</a>
-      <a href="#classification">4) Classification by rank (0,1,2,3,...)</a>
-      <a href="#examples">5) Canonical examples + solved forms</a>
-      <a href="#lifting">6) Hierarchical lifting (the main method)</a>
-      <a href="#workflow">7) Practical workflow (mini-solver)</a>
-      <a href="#cite">8) Citation</a>
-    </div>
-  </div>
+    <section class="card" id="notation">
+      <h2>2) Notation (D0, D1, and the general form \(D_r^n\))</h2>
 
-  <div class="grid">
-    <div class="card" id="definition">
-      <h2>1) Definition</h2>
       <p class="small">
-        A <b>rank–degree hierarchical equation</b> is any relation involving a function \(f\) and a finite set of its
-        hierarchical derivatives \(D_r^n f\) (possibly with different ranks and degrees).
+        This website uses the shorthand:
+        <span class="tag">D0</span> for the classical derivative and <span class="tag">D1</span> for the relative derivative.
+        In rank–degree form:
       </p>
 
       <div class="math">
         \[
-          \mathcal{E}\Big(
-          x,\ f,\ \{D_{r_i}^{\,n_i}f\}_{i=1}^{m}
-          \Big)=0.
+          D_0 \equiv D_{0}^{1},
+          \qquad
+          D_1 \equiv D_{1}^{1}.
+        \]
+      </div>
+
+      <p class="small">
+        The <b>strict adopted definition</b> of the rank-\(r\), degree-1 derivative is:
+      </p>
+
+      <div class="math">
+        \[
+          \boxed{
+            D_{r}^{1} f(x)=\frac{d\,\ln^{(r)}\!\big(f(x)\big)}{d\,\ln^{(r)}\!(x)}
+          }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Consistency:</strong>
+        We do not use mixed forms such as \(\frac{d(\ln f)}{d\ln^{(r)}x}\). The adopted definition applies \(\ln^{(r)}\) to both sides.
+      </div>
+
+      <div class="hr"></div>
+
+      <p class="small">Special cases:</p>
+
+      <div class="math">
+        \[
+        D_{0}^{1} f=\frac{df}{dx},
+        \qquad
+        D_{1}^{1} f=\frac{d\ln f}{d\ln x}=\frac{x}{f}\frac{df}{dx},
+        \qquad
+        D_{2}^{1} f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+        \]
+      </div>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">Key idea</div>
+        <div class="small">
+          The same equation can be rewritten in different ranks. The “right” rank often exposes a simpler separable or linear structure.
+          This is the heart of hierarchical lifting.
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="domains">
+      <h2>3) Domain assumptions (avoid hidden singularities)</h2>
+      <p class="small">
+        Higher ranks explicitly involve iterated logarithms, so every equation must specify its domain.
+        A safe checklist:
+      </p>
+
+      <ul class="small">
+        <li><b>Rank 0:</b> only the classical domain of \(f\) is required.</li>
+        <li><b>Rank 1:</b> typically require \(x>0\) and \(f(x)>0\) (because \(\ln x\) and \(\ln f\) appear).</li>
+        <li><b>Rank 2:</b> typically require \(x>1\) and \(f(x)>1\) (so \(\ln(\ln x)\) and \(\ln(\ln f)\) exist).</li>
+        <li>Avoid points where the denominator scale vanishes (e.g., \(\ln x=0\) when differentiating w.r.t. \(\ln(\ln x)\)).</li>
+      </ul>
+
+      <div class="note">
+        <strong>Reviewer-style note:</strong>
+        For rank 2 and above, state the stronger conditions \(x>1\) and \(f(x)>1\) explicitly (or their equivalent inequalities).
+      </div>
+    </section>
+
+    <section class="card" id="examples">
+      <h2>5) Canonical examples across ranks</h2>
+      <p class="small">
+        These examples show how the same “shape” of equation leads to different natural solution forms depending on rank.
+        They are written using the strict definition from the <a href="#notation">Notation</a> section.
+      </p>
+
+      <div class="hr"></div>
+
+      <h3>Example A — Rank 0 (classical): \(D_{0}^{1} f=g(x)\)</h3>
+      <div class="math">
+        \[
+          D_{0}^{1} f(x)=g(x)
+          \quad\Longleftrightarrow\quad
+          \frac{df}{dx}=g(x)
+          \quad\Longrightarrow\quad
+          f(x)=\int g(x)\,dx + C.
         \]
       </div>
 
       <div class="hr"></div>
 
+      <h3>Example B — Rank 1 (relative): \(D_{1}^{1} f=g(x)\)</h3>
+      <div class="math">
+        \[
+          D_{1}^{1} f(x)=g(x)
+          \quad\Longleftrightarrow\quad
+          \frac{d\ln f}{d\ln x}=g(x).
+        \]
+      </div>
+      <div class="math">
+        \[
+          \frac{d\ln f}{dx}=\frac{g(x)}{x}
+          \quad\Longrightarrow\quad
+          \ln f(x)=\int \frac{g(x)}{x}\,dx + C
+          \quad\Longrightarrow\quad
+          f(x)=C_0\exp\!\left(\int \frac{g(x)}{x}\,dx\right).
+        \]
+      </div>
+
+      <div class="ok">
+        <strong>Interpretation</strong>
+        <div class="small" style="margin-top:6px">
+          Rank 1 naturally produces multiplicative/exponential solutions because the unknown becomes \(\ln f\).
+          This is why rank 1 aligns with scaling laws and power-like behaviors.
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <h3>Example C — Rank 1 logistic-type: \(D_{1}^{1} f = a - b f\)</h3>
       <p class="small">
-        If you prefer a “max rank” view: a <b>level-\(k\)</b> equation is an equation that uses ranks up to \(k\):
+        This is structurally simple in rank 1 because it becomes separable in \(f\) versus \(\ln x\):
+      </p>
+      <div class="math">
+        \[
+          \frac{d\ln f}{d\ln x} = a-bf
+          \quad\Longleftrightarrow\quad
+          \frac{1}{f}\frac{df}{d\ln x}=a-bf
+          \quad\Longrightarrow\quad
+          \frac{df}{f(a-bf)}=d\ln x.
+        \]
+      </div>
+      <div class="note">
+        <strong>Practical tip:</strong>
+        You may keep this as an implicit solution here and link to a full explicit solution on a “Solved Equations” page.
+      </div>
+
+      <div class="hr"></div>
+
+      <h3>Example D — Rank 2: \(D_{2}^{1} f=g(x)\)</h3>
+      <div class="math">
+        \[
+          D_{2}^{1} f(x)=g(x)
+          \quad\Longleftrightarrow\quad
+          \frac{d\ln(\ln f)}{d\ln(\ln x)}=g(x).
+        \]
+      </div>
+      <div class="math">
+        \[
+          \ln(\ln f)=\int g(x)\,d\ln(\ln x) + C
+          \quad\Longrightarrow\quad
+          \ln f = C_1 \exp\!\left(\int g(x)\,d\ln(\ln x)\right)
+          \quad\Longrightarrow\quad
+          f=\exp\!\Big( C_1 \exp(\cdots)\Big).
+        \]
+      </div>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">Interpretation</div>
+        <div class="small">
+          Rank 2 naturally generates nested exponential behavior because the transformed unknown is \(\ln(\ln f)\).
+          This is ideal when the phenomenon lives on nested scales.
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="lifting">
+      <h2>6) Hierarchical lifting (the main method)</h2>
+      <p class="small">
+        Lifting means rewriting the same problem at a rank where its structure becomes simpler.
+        A standard lift is:
       </p>
 
       <div class="math">
         \[
-          \mathcal{E}_k\big(x,\ f,\ D_{0}^{\bullet}f,\ D_{1}^{\bullet}f,\ \dots,\ D_{k}^{\bullet}f\big)=0,
+          u=\ln^{(k)}(f)
+          \quad\Rightarrow\quad
+          D_{k}^{1} f = \frac{du}{d\ln^{(k)}(x)}.
         \]
       </div>
 
-      <p class="small">
-        where \(D_{r}^{\bullet}f\) means “some degrees of rank \(r\)” (e.g., degree 1 and degree 2).
-      </p>
+      <div class="math">
+        \[
+          \mathcal{E}_k\big(x,f,D_{0}^{\bullet} f,\dots,D_{k}^{\bullet} f\big)=0
+          \quad \xrightarrow{\;\text{Lift}\;}
+          \widetilde{\mathcal{E}}_{k}\big(\ln^{(k)}x,\ u,\ \tfrac{du}{d\ln^{(k)}x}\big)=0.
+        \]
+      </div>
 
       <div class="ok">
-        <strong>Consistency</strong>
+        <strong>Main message</strong>
         <div class="small" style="margin-top:6px">
-          On this site the rank-\(r\) operator is always defined by applying \(\ln^{(r)}\) on both \(x\) and \(f(x)\):
-          \[
-            D_{r}^{1} f(x)=\frac{d\,\ln^{(r)}(f(x))}{d\,\ln^{(r)}(x)}.
-          \]
-          This prevents notation drift between pages.
+          The goal is not to replace classical calculus, but to choose a rank that matches the natural scaling
+          so the solver sees a simpler pattern (separable, linear, constant-coefficient, etc.).
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="card" id="classification">
-      <h2>4) Quick classification (by rank)</h2>
+    <section class="card" id="workflow">
+      <h2>7) Practical workflow (mini-solver)</h2>
+      <ul class="small">
+        <li><b>Step 1:</b> Identify the growth type (power? exponential? nested? multi-scale?).</li>
+        <li><b>Step 2:</b> Choose a rank \(k\) matching the scale (0, 1, 2, ...).</li>
+        <li><b>Step 3:</b> Transform the unknown: \(u=\ln^{(k)}(f)\).</li>
+        <li><b>Step 4:</b> Rewrite the equation in \(u\) and \(\ln^{(k)}(x)\).</li>
+        <li><b>Step 5:</b> Solve in \(u\) using classical methods (separable/linear/etc.).</li>
+        <li><b>Step 6:</b> Invert the transform (iterated exponentials) to recover \(f\).</li>
+        <li><b>Step 7:</b> State the domain where all logs are valid.</li>
+      </ul>
 
-      <div class="kpi">
-        <h3>Rank 0 — Differential (D0)</h3>
-        <div class="math">\[
-          F\big(x,f,D_0 f,\dots\big)=0
-        \]</div>
-        <div class="small">Base structure: additive change in \(x\).</div>
+      <div class="note">
+        <strong>Tip:</strong>
+        If you create a future page like <span class="code">equations-solved-en.html</span>,
+        link each example above to its full solution.
       </div>
+    </section>
 
-      <div class="kpi">
-        <h3>Rank 1 — Relative (D1)</h3>
-        <div class="math">\[
-          F\big(x,f,D_1 f,\dots\big)=0
-        \]</div>
-        <div class="small">Base structure: ratios / scaling in \(\ln x\).</div>
-      </div>
+    <section class="card" id="consistency">
+      <h2>8) Consistency checklist (avoid contradictions)</h2>
+      <ul class="small">
+        <li>Always write derivatives in explicit form \(D_r^n\) when explaining rank/degree concepts.</li>
+        <li>Use the strict definition: \(\ln^{(r)}\) applied to both \(x\) and \(f(x)\).</li>
+        <li>State domain conditions whenever \(\ln\) or iterated \(\ln\) appears.</li>
+        <li>Keep rank fixed when raising degree \(n\) (do not mix “rank change” with “degree change”).</li>
+        <li>Link to the Rank & Degree page for the global definition used on the site.</li>
+      </ul>
+    </section>
 
-      <div class="kpi">
-        <h3>Rank 2 — Logarithmic</h3>
-        <div class="math">\[
-          F\big(x,f,D_2 f,\dots\big)=0
-        \]</div>
-        <div class="small">Base structure: iterated log scales \(\ln(\ln x)\).</div>
-      </div>
+    <section class="card" id="related">
+      <h2>9) Related pages</h2>
+      <ul class="small">
+        <li><a href="derivative-rank-degree-en.html">Derivative Rank & Degree (definitions)</a></li>
+        <li><a href="rules-en.html">Derivation Rules</a></li>
+        <li><a href="integrals-en.html">Hierarchical Integrals</a></li>
+        <li><a href="series-en.html">Series (rank-based expansions)</a></li>
+        <li><a href="hierarchical-derivatives-relations-en.html">Derivative Relations</a></li>
+      </ul>
+    </section>
 
-      <div class="kpi">
-        <h3>Rank 3+ — Higher hierarchy</h3>
-        <div class="math">\[
-          F\big(x,f,D_3 f,\dots\big)=0
-        \]</div>
-        <div class="small">Base structure: nested layers beyond \(\ln(\ln(\ln(\cdot)))\).</div>
-      </div>
-    </div>
-  </div>
+    <section class="card" id="cite">
+      <h2>10) Citation</h2>
+      <p class="small">
+        Official reference DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </p>
 
-  <div class="card" id="notation">
-    <h2>2) Notation (D0, D1, and the general form \(D_r^n\))</h2>
-
-    <p class="small">
-      Your site uses the symbols <span class="tag">D0</span> (classical differential derivative) and
-      <span class="tag">D1</span> (relative derivative). In rank–degree form:
-    </p>
-
-    <div class="math">
-      \[
-        D_0 \equiv D_{0}^{1},
-        \qquad
-        D_1 \equiv D_{1}^{1}.
-      \]
-    </div>
-
-    <p class="small">
-      The strict rank-\(r\) definition (degree 1) is:
-    </p>
-
-    <div class="math">
-      \[
-        \boxed{
-          D_{r}^{1} f(x)=\frac{d\,\ln^{(r)}(f(x))}{d\,\ln^{(r)}(x)}
-        }
-      \]
-    </div>
-
-    <div class="hr"></div>
-
-    <p class="small">
-      Special cases:
-    </p>
-
-    <div class="math">
-      \[
-      D_{0}^{1} f=\frac{df}{dx},
-      \qquad
-      D_{1}^{1} f=\frac{d\ln f}{d\ln x}=\frac{x}{f}\frac{df}{dx},
-      \qquad
-      D_{2}^{1} f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
-      \]
-    </div>
-
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">Key idea</div>
-      <div class="small">
-        The same equation can be written in different ranks. Choosing the right rank often reveals a simpler structure.
-        This is the role of hierarchical lifting.
-      </div>
-    </div>
-  </div>
-
-  <div class="card" id="domains">
-    <h2>3) Domain assumptions (avoid hidden singularities)</h2>
-    <p class="small">
-      Because higher ranks use iterated logarithms, every equation should state its valid domain.
-      Here is a practical checklist:
-    </p>
-
-    <ul class="small">
-      <li><b>Rank 0:</b> usually no extra condition beyond the classical domain of \(f\).</li>
-      <li><b>Rank 1:</b> need \(x>0\) and \(f(x)>0\) if \(\ln x\) and \(\ln f\) are used.</li>
-      <li><b>Rank 2:</b> need \(\ln x>0\) and \(\ln f>0\) (often written as \(x>1\) and \(f(x)>1\)).</li>
-      <li>Avoid points where the denominator scale vanishes (e.g., \(\ln x=0\) when differentiating w.r.t. \(\ln(\ln x)\)).</li>
-    </ul>
-
-    <div class="note">
-      <strong>Reviewer-style note:</strong>
-      When using \(\ln(\ln x)\) or \(\ln(\ln f)\), explicitly state the stronger conditions \(x>1\) and \(f(x)>1\) (or the equivalent inequalities).
-    </div>
-  </div>
-
-  <div class="card" id="examples">
-    <h2>5) Canonical examples (with solved forms)</h2>
-    <p class="small">
-      These examples show how an equation looks at different ranks, and how the solution changes naturally with the rank.
-    </p>
-
-    <div class="hr"></div>
-
-    <h3>Example A — Rank 0 (classical): \(D_0 f=g(x)\)</h3>
-    <div class="math">
-      \[
-        D_0 f(x)=g(x)
-        \quad\Longleftrightarrow\quad
-        \frac{df}{dx}=g(x)
-        \quad\Longrightarrow\quad
-        f(x)=\int g(x)\,dx + C.
-      \]
-    </div>
-
-    <div class="hr"></div>
-
-    <h3>Example B — Rank 1 (relative): \(D_1 f=g(x)\)</h3>
-    <div class="math">
-      \[
-        D_1 f(x)=g(x)
-        \quad\Longleftrightarrow\quad
-        \frac{d\ln f}{d\ln x}=g(x).
-      \]
-    </div>
-    <div class="math">
-      \[
-        \frac{d\ln f}{dx}=\frac{g(x)}{x}
-        \quad\Longrightarrow\quad
-        \ln f(x)=\int \frac{g(x)}{x}\,dx + C
-        \quad\Longrightarrow\quad
-        f(x)=C_0\exp\!\left(\int \frac{g(x)}{x}\,dx\right).
-      \]
-    </div>
-    <p class="small">
-      Notice the natural multiplicative form of the solution (this is why rank 1 matches power-like scaling).
-    </p>
-
-    <div class="hr"></div>
-
-    <h3>Example C — Rank 1 logistic-type: \(D_1 f = a - b f\)</h3>
-    <p class="small">
-      This is structurally simple in rank 1 because it becomes separable in \(\ln f\):
-    </p>
-    <div class="math">
-      \[
-        \frac{d\ln f}{d\ln x} = a-bf
-        \quad\Longleftrightarrow\quad
-        \frac{1}{f}\frac{df}{d\ln x}=a-bf.
-      \]
-    </div>
-    <div class="math">
-      \[
-        \frac{df}{f(a-bf)}=d\ln x.
-      \]
-    </div>
-    <p class="small muted">
-      (You can keep it as an implicit solution here, or present the explicit form on the solved-equations page.)
-    </p>
-
-    <div class="hr"></div>
-
-    <h3>Example D — Rank 2: \(D_2 f=g(x)\)</h3>
-    <div class="math">
-      \[
-        D_2 f(x)=g(x)
-        \quad\Longleftrightarrow\quad
-        \frac{d\ln(\ln f)}{d\ln(\ln x)}=g(x).
-      \]
-    </div>
-    <div class="math">
-      \[
-        \ln(\ln f)=\int g(x)\,d\ln(\ln x) + C
-        \quad\Longrightarrow\quad
-        \ln f = C_1 \exp\!\left(\int g(x)\,d\ln(\ln x)\right)
-        \quad\Longrightarrow\quad
-        f=\exp\!\Big( C_1 \exp(\cdots)\Big).
-      \]
-    </div>
-
-    <div class="callout">
-      <div style="font-weight:900;margin-bottom:6px">Interpretation</div>
-      <div class="small">
-        Rank 2 naturally produces “double exponential / nested log” behavior because the unknown becomes \(\ln(\ln f)\).
-        This is exactly what you want when the phenomenon lives on nested scales.
-      </div>
-    </div>
-  </div>
-
-  <div class="card" id="lifting">
-    <h2>6) Hierarchical lifting (the main method)</h2>
-    <p class="small">
-      Lifting means rewriting the same problem in a higher-rank variable to simplify the structure.
-      A standard lift is:
-    </p>
-
-    <div class="math">
-      \[
-        u=\ln^{(k)}(f)
-        \quad\Rightarrow\quad
-        D_k f = \frac{du}{d\ln^{(k)}(x)}.
-      \]
-    </div>
-
-    <div class="math">
-      \[
-        \mathcal{E}_k\big(x,f,D_0 f,\dots,D_k f\big)=0
-        \quad \xrightarrow{\;\text{Lift}\;}
-        \widetilde{\mathcal{E}}_{k}\big(\ln^{(k)}x,\ u,\ \tfrac{du}{d\ln^{(k)}x}\big)=0.
-      \]
-    </div>
-
-    <div class="ok">
-      <strong>Main message</strong>
-      <div class="small" style="margin-top:6px">
-        The goal is not to “replace calculus”, but to choose the level where the equation matches the natural scaling,
-        so the solver sees a simpler pattern (separable / linear / constant-coefficient, etc.).
-      </div>
-    </div>
-  </div>
-
-  <div class="card" id="workflow">
-    <h2>7) Practical workflow (mini-solver)</h2>
-    <ul class="small">
-      <li><b>Step 1:</b> Identify the growth type (power? exponential? nested? multi-scale?).</li>
-      <li><b>Step 2:</b> Choose a rank \(k\) that matches the scale (0, 1, 2, ...).</li>
-      <li><b>Step 3:</b> Transform the unknown: \(u=\ln^{(k)}(f)\).</li>
-      <li><b>Step 4:</b> Rewrite the equation in \(u\) and \(\ln^{(k)}(x)\).</li>
-      <li><b>Step 5:</b> Solve in \(u\) using classical methods (separable/linear/etc.).</li>
-      <li><b>Step 6:</b> Invert the transform (iterated exponentials) to recover \(f\).</li>
-      <li><b>Step 7:</b> State the domain where all logs are valid.</li>
-    </ul>
-
-    <div class="note">
-      <strong>Tip:</strong>
-      If you want this page to “feed” the solved-equations page, add links under each example:
-      “See full solution → equations-solved-en.html#example-…”
-    </div>
-  </div>
-
-  <div class="card" id="cite">
-    <h2>8) Citation</h2>
-    <p class="small">
-      Official reference DOI:
-      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
-    </p>
-
-    <div class="math">
-<pre style="margin:0;color:#eaf2ff">
+      <div class="math">
+<pre style="margin:0;color:#eaf2ff;font-family:var(--mono)">
 @software{gossa_hierarchical_calculus_2025,
   author = {Gossa Ahmed},
   title  = {Hierarchical Calculus},
@@ -571,32 +688,26 @@ window.MathJax={
   url    = {https://github.com/GOSSAAHMED/gossa-math}
 }
 </pre>
-    </div>
+      </div>
+    </section>
 
-    <div class="footer small">
-      Useful links:
-      <ul>
-        <li><a href="index-en.html">Home</a></li>
-        <li><a href="theory-en.html">Theory</a></li>
-        <li><a href="rules-en.html">Rules</a></li>
-        <li><a href="equations-solved-en.html">Solved Equations</a></li>
-        <li><a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">Version DOI (v1.0.0)</a></li>
-      </ul>
-    </div>
+    <footer>
+      © <span id="y"></span> Ahmed Gossa · Hierarchical Equations · Hierarchical Calculus
+    </footer>
+
   </div>
 
-</div>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
 
-<script>
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', ()=> setTimeout(()=> {
-    const id = location.hash.replace('#','');
-    const el = document.getElementById(id);
-    if(el) el.setAttribute('tabindex','-1'), el.focus({preventScroll:true});
-  }, 0));
-});
-</script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', ()=> setTimeout(()=> {
+        const id = location.hash.replace('#','');
+        const el = document.getElementById(id);
+        if(el){ el.setAttribute('tabindex','-1'); el.focus({preventScroll:true}); }
+      }, 0));
+    });
+  </script>
 
 </body>
 </html>
