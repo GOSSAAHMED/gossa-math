@@ -5,14 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>الحساب الهرمي — الموقع الرسمي (DOI)</title>
-  <meta name="description" content="الحساب الهرمي: إطار رياضي للمشتقات والمعادلات متعددة الطبقات. DOI رسمي عبر Zenodo." />
+  <meta name="description" content="الحساب الهرمي: إطار رياضي للمشتقات والمعادلات متعددة الطبقات. الموقع الرسمي مع DOI مؤرشف عبر Zenodo." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical & hreflang (AR homepage) -->
   <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/index-ar.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/index-ar.html" />
-  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/" />
-  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/index-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/index-en.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:title" content="الحساب الهرمي — الموقع الرسمي (DOI)" />
+  <meta property="og:description" content="إطار رياضي للمشتقات والمعادلات متعددة الطبقات. DOI رسمي عبر Zenodo." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/index-ar.html" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- Preload (optional, improves performance slightly) -->
+  <link rel="preload" as="image" href="assets/images/hierarchical-calculus-logo.png" />
+  <link rel="preload" as="image" href="assets/images/ahmed-gossa.jpg" />
 
   <style>
     :root{
@@ -26,6 +38,7 @@
       --accent:#39d3c3;
       --accent2:#7aa7ff;
       --warn:#ffcc66;
+      --ok:#86efac;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -33,6 +46,7 @@
     }
 
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: var(--sans);
@@ -49,6 +63,19 @@
 
     .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 60px}
 
+    /* === Top Logo Banner === */
+    .site-logo {
+      text-align: center;
+      margin: 28px auto 18px auto;
+    }
+    .site-logo img {
+      width: 220px;
+      max-width: 85%;
+      height: auto;
+      filter: drop-shadow(0 0 18px rgba(255, 200, 120, 0.35));
+    }
+
+    /* === Topbar === */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -58,15 +85,17 @@
     .topbar .inner{
       max-width:1100px; margin:0 auto; padding:10px 18px;
       display:flex; align-items:center; gap:12px; justify-content:space-between;
+      flex-wrap:wrap;
     }
 
     .brand{
       display:flex; align-items:center; gap:10px; min-width:220px;
     }
-    .logo{
-      width:36px; height:36px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+    .logo-badge{
+      width:38px; height:38px; border-radius:12px; object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
       box-shadow: 0 12px 22px rgba(0,0,0,.28);
+      background: rgba(255,255,255,.04);
     }
     .brand .title{
       display:flex; flex-direction:column; line-height:1.15;
@@ -86,6 +115,7 @@
       color: var(--text);
       text-decoration:none;
       white-space:nowrap;
+      transition:.2s;
     }
     nav a:hover{background: rgba(255,255,255,.07)}
 
@@ -102,6 +132,7 @@
       font-size: 13px;
       cursor:pointer;
       white-space:nowrap;
+      transition:.2s;
     }
     .btn:hover{background: rgba(255,255,255,.08)}
     .btn.primary{
@@ -109,8 +140,9 @@
       background: rgba(57,211,195,.12);
     }
 
+    /* === Hero === */
     header.hero{
-      margin-top:20px;
+      margin-top:18px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border-radius: var(--radius);
@@ -137,18 +169,37 @@
       flex-wrap:wrap;
     }
 
+    .hero h1{
+      margin:0 0 8px 0;
+      font-size: 34px;
+      letter-spacing:.3px;
+    }
+    .hero p{
+      margin:8px 0 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+      max-width: 900px;
+    }
+
+    /* === Author === */
     .author-profile{
       display:flex;
       align-items:center;
       gap:12px;
       margin-top: 6px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:10px 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
     }
     .author-photo{
-      width:110px;
-      height:110px;
+      width:88px;
+      height:88px;
       object-fit:cover;
       border-radius:50%;
-      border:3px solid #4db6ff;
+      border:3px solid rgba(122,167,255,.65);
       box-shadow:0 10px 30px rgba(0,0,0,.45);
       display:block;
     }
@@ -160,19 +211,7 @@
     .author-name strong{font-size:14px}
     .author-name span{font-size:12px; color:var(--muted)}
 
-    .hero h1{
-      margin:0 0 8px 0;
-      font-size: 34px;
-      letter-spacing:.3px;
-    }
-    .hero p{
-      margin:8px 0 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.8;
-      max-width: 900px;
-    }
-
+    /* === Layout Grid === */
     .grid{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
@@ -182,8 +221,10 @@
     @media (max-width: 980px){
       .grid{grid-template-columns: 1fr}
       .brand, .actions{min-width:auto}
+      .author-profile{width:100%}
     }
 
+    /* === Cards === */
     .card{
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.05);
@@ -242,7 +283,7 @@
     }
     .label .tag{
       font-size: 12px;
-      color: rgba(255,255,255,.8);
+      color: rgba(255,255,255,.85);
       background: rgba(122,167,255,.12);
       border: 1px solid rgba(122,167,255,.22);
       padding: 2px 8px;
@@ -287,10 +328,13 @@
       background: rgba(255,255,255,.04);
       border-radius: 14px;
       padding: 12px 12px;
+      transition:.2s;
     }
+    .linkcard:hover{background: rgba(255,255,255,.06)}
     .linkcard strong{display:block; margin-bottom:6px}
     .linkcard span{color:var(--muted); font-size:13px; line-height:1.6}
 
+    /* === Footer === */
     footer{
       margin-top: 18px;
       color: var(--muted);
@@ -300,16 +344,11 @@
       border-top: 1px solid rgba(255,255,255,.10);
     }
 
-    /* === Hierarchical Calculus Logo === */
-    .site-logo {
-      text-align: center;
-      margin: 32px auto 20px auto;
-    }
-    .site-logo img {
-      width: 220px;
-      max-width: 85%;
-      height: auto;
-      filter: drop-shadow(0 0 18px rgba(255, 200, 120, 0.35));
+    /* === Mobile nav spacing === */
+    @media (max-width: 850px){
+      nav{gap:8px}
+      nav a{padding:7px 9px}
+      .hero h1{font-size:30px}
     }
   </style>
 
@@ -321,63 +360,65 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hierarchical Calculus",
+  "url": "https://gossaahmed.github.io/gossa-math/",
+  "inLanguage": "ar",
+  "author": {
+    "@type": "Person",
+    "name": "Ahmed Gossa",
+    "url": "https://gossaahmed.github.io/gossa-math/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hierarchical Calculus"
+  }
+}
+</script>
 </head>
 
 <body>
-  <div class="site-logo">
+
+  <!-- Big logo (top) -->
+  <div class="site-logo" aria-hidden="false">
     <img src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
   </div>
 
+  <!-- Sticky topbar -->
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo-badge" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
         <div class="title">
           <strong>الحساب الهرمي</strong>
           <span>الموقع الرسمي + DOI (Zenodo)</span>
         </div>
       </div>
 
+      <!-- Keep NAV clean: essentials only (avoid huge menu in topbar) -->
       <nav aria-label="التنقل">
         <a href="#overview">نظرة عامة</a>
-        <a href="#core">التعريفات الأساسية</a>
-        <a href="#equations">المعادلات الهرمية</a>
+        <a href="#core">التعريفات</a>
+        <a href="#equations">المعادلات</a>
         <a href="#cite">الاستشهاد</a>
-        <a href="#links">صفحات المرجع</a>
-
-        <a href="./hierarchical-calculus.html">الحساب الهرمي</a>
-        <a href="what-does-a-derivative-measure.html">
-  ماذا يقيس المشتق حقًا؟
-</a>
-        <a href="./comparison-hierarchical-calculus-ar.html">مقارنة الحسابات</a>
-        <a href="./economics.html">تطبيق الحساب الهرمي في الاقتصاد (20 مثالًا)</a>
-        <a href="./civil-engineering.html">تطبيق الحساب الهرمي في الهندسة المدنية</a>
-        <a href="./astronomy-ar.html">تطبيق الحساب الهرمي في الفلك</a>
-        <a href="./physics-ar.html">تطبيق الحساب الهرمي على الفيزياء</a>
-        <a href="./euclidean-geometry.html">الحساب الهرمي في الهندسة الإقليدية</a>
-        <a href="./mata-yanhari-alhisab-altafaduli.html">متى ينهار الحساب التفاضلي الكلاسيكي؟</a>
-        <a href="./difference.html">الفرق بين D0^1 و D1^1 (مثال واحد)</a>
-        <a href="./unsolvable-differential-equations-hierarchical.html">حلّ المعادلات التفاضلية المستحيلة</a>
-        <a href="./why-differential-calculus-fails-hierarchical-calculus-ar.html">لماذا يفشل الحساب التفاضلي</a>
-        <a href="./series.html">المتسلسلات الهرمية</a>
-        <a href="./rules.html">قوانين الاشتقاق الهرمي</a>
-        <a href="./integrals.html">التكامل الهرمي</a>
-        <a href="./equations-solved.html">أمثلة محلولة</a>
-        <a href="./hierarchical-derivatives-relations.html">العلاقة بين المشتقات</a>
-        <a href="./derivative-rank-degree.html">الرتبة والدرجة</a>
-        <a href="./foundations-2011-2012.html">الأعمال التأسيسية (2011–2012)</a>
-        <a href="./physics.html">تطبيقات فيزيائية</a>
-
+        <a href="#links">الروابط</a>
       </nav>
 
       <div class="actions">
-        <a class="btn" href="./" title="English version">English</a>
+        <a class="btn" href="index-en.html" title="English version">English</a>
         <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
       </div>
     </div>
   </div>
 
   <div class="wrap">
+
+    <!-- Hero -->
     <header class="hero" id="overview">
       <div class="hero-top">
         <div>
@@ -385,8 +426,8 @@
           <p>
             إطار رياضي يقدّم طبقات مشتقات ومعادلات متعددة المستويات: من التفاضلي <span class="muted">(الرتبة 0)</span>
             إلى النسبي <span class="muted">(الرتبة 1)</span> واللوغاريتمي <span class="muted">(الرتبة 2)</span>
-            والتتريشي <span class="muted">(الرتبة 3)</span> وصولًا إلى المشتق الهرمي العام <span class="muted">(الرتبة n)</span>.
-            هذا الموقع مرجع تعريفي/تقني للإصدارات المؤرشفة رسميًا عبر Zenodo.
+            ثم الرتب الأعلى <span class="muted">(3…n)</span>.
+            هذا الموقع هو المرجع الرسمي للإصدارات المؤرشفة عبر Zenodo، مع روابط DOI للاستشهاد العلمي.
           </p>
         </div>
 
@@ -423,15 +464,19 @@
         <span class="pill">MathJax Typesetting</span>
         <span class="pill">Arabic + English</span>
         <span class="pill">Release v1.0.0</span>
+        <span class="pill">Explicit Rank–Degree \(D_n^k\)</span>
       </div>
     </header>
 
+    <!-- Main Grid -->
     <div class="grid">
+
+      <!-- Core Definitions -->
       <section class="card" id="core">
         <h2><span class="bar"></span>التعريفات الأساسية</h2>
 
         <p class="muted small" style="margin:0">
-          <strong>ترميز رسمي:</strong> <em>الدرجة فوق والرتبة تحت</em>.
+          <strong>قاعدة الترميز:</strong> <em>الدرجة فوق والرتبة تحت</em>.
           نكتب المشتق الهرمي بالصيغة \(D^{k}_{n}\) حيث \(n\) رتبة القياس و\(k\) درجة الاشتقاق.
           وأكثر حالة استعمالًا هي \(k=1\).
         </p>
@@ -482,26 +527,43 @@
             \]
           </div>
         </div>
+
+        <div class="block">
+          <div class="label">شروط المجال <span class="tag">Domain</span></div>
+          <p class="muted small" style="margin:0; line-height:1.9">
+            لأن الرتب الأعلى تستخدم لوغاريتمات متكررة، يجب الانتباه إلى شروط المجال:
+          </p>
+          <ul class="muted small" style="margin:8px 0 0 0; padding-right:18px">
+            <li><strong>الرتبة 0:</strong> شروط المجال المعتادة للدالة.</li>
+            <li><strong>الرتبة 1:</strong> غالبًا \(x>0\) و \(f(x)>0\).</li>
+            <li><strong>الرتبة 2:</strong> غالبًا \(x>1\) و \(f(x)>1\) حتى تكون \(\ln(\ln x)\) و \(\ln(\ln f)\) معرفة.</li>
+          </ul>
+        </div>
       </section>
 
+      <!-- Quicklinks + Pages -->
       <aside class="card">
         <h2><span class="bar"></span>روابط سريعة</h2>
+
         <div class="quicklinks">
           <div class="linkcard">
             <strong>سجل Zenodo</strong>
             <span>المصدر المؤرشف للإصدار v1.0.0 وملفاته.</span><br>
             <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">فتح السجل</a>
           </div>
+
           <div class="linkcard">
             <strong>GitHub Releases</strong>
             <span>قائمة الإصدارات والتحديثات المستقبلية.</span><br>
             <a href="https://github.com/GOSSAAHMED/gossa-math/releases" target="_blank" rel="noopener">فتح الإصدارات</a>
           </div>
+
           <div class="linkcard">
-            <strong>تحميل</strong>
-            <span>ZIP / PDF (لاحقًا) + روابط الاستشهاد.</span><br>
-            <a href="#links">انتقل لصفحات المرجع</a>
+            <strong>الموقع الإنجليزي</strong>
+            <span>النسخة الإنجليزية الرسمية للموقع.</span><br>
+            <a href="index-en.html">index-en.html</a>
           </div>
+
           <div class="linkcard">
             <strong>التواصل</strong>
             <span>للتعاون العلمي أو الاستفسار.</span><br>
@@ -511,18 +573,35 @@
 
         <div class="block" style="margin-top:12px">
           <div class="label">ملاحظة أكاديمية <span class="tag">Note</span></div>
-          <p class="muted small" style="margin:0; line-height:1.8">
+          <p class="muted small" style="margin:0; line-height:1.9">
             للاستشهاد العلمي العام بالمشروع استخدم <strong>Concept DOI</strong>.
             أمّا عند الإشارة إلى إصدار محدد فاستعمل <strong>Version DOI</strong>.
           </p>
         </div>
+
+        <div class="block" style="margin-top:12px">
+          <div class="label">صفحات أساسية <span class="tag">Core Pages</span></div>
+          <p class="muted small" style="margin:0">
+            هذه أهم الصفحات داخل النسخة العربية:
+          </p>
+          <ul class="muted small" style="margin:8px 0 0 0; padding-right:18px; line-height:1.95">
+            <li><a href="hierarchical-calculus.html">الحساب الهرمي</a></li>
+            <li><a href="theory.html">النظرية</a></li>
+            <li><a href="rules.html">قوانين الاشتقاق الهرمي</a></li>
+            <li><a href="integrals.html">التكامل الهرمي</a></li>
+            <li><a href="equations.html">المعادلات الهرمية</a></li>
+            <li><a href="equations-solved.html">أمثلة محلولة</a></li>
+          </ul>
+        </div>
       </aside>
     </div>
 
+    <!-- Equations -->
     <section class="card" id="equations" style="margin-top:16px">
       <h2><span class="bar"></span>المعادلات الهرمية</h2>
       <p class="muted small">
-        المعادلات الهرمية تعمّم المعادلات التفاضلية باستخدام مشتقات من رتب مختلفة. الصيغة العامة:
+        المعادلات الهرمية تعمّم المعادلات التفاضلية باستخدام مشتقات من رتب مختلفة.
+        وهي مفيدة عندما يكون سلوك النمو/التغير طبيعيًا على مقياس نسبي أو لوغاريتمي أو على طبقات متكررة.
       </p>
 
       <div class="math-box">
@@ -544,11 +623,26 @@
         </div>
 
         <p class="muted small" style="margin:8px 0 0 0">
-          وبالرفع الهرمي المناسب قد تتحول المعادلة إلى صيغة أبسط في رتبة أعلى (تفاصيل أكثر في صفحات المعادلات).
+          وبالرفع الهرمي المناسب قد تتحول المعادلة إلى صيغة أبسط في رتبة أعلى
+          (تفاصيل أكثر في صفحات المعادلات، وخاصة: <a href="equations.html">equations.html</a>).
         </p>
+      </div>
+
+      <div class="block">
+        <div class="label">فكرة الرفع الهرمي <span class="tag">Lifting</span></div>
+        <p class="muted small" style="margin:0; line-height:1.9">
+          إذا كانت المعادلة تتضمن \(\ln(\ln y)\) أو مستويات متكررة، فكتابة المشكلة على رتبة أعلى قد يجعلها مباشرة وبسيطة.
+          مثال عام:
+        </p>
+        <div class="math-box">
+          \[
+            u=\ln^{(n)}(y)\quad \Rightarrow \quad D_n^1 y=\frac{du}{d\ln^{(n)}(x)}
+          \]
+        </div>
       </div>
     </section>
 
+    <!-- Citation -->
     <section class="card" id="cite" style="margin-top:16px">
       <h2><span class="bar"></span>كيفية الاستشهاد</h2>
       <p class="muted small">
@@ -570,12 +664,18 @@
   url    = {https://gossaahmed.github.io/gossa-math/index-ar.html}
 }</div>
       </div>
+
+      <div class="block">
+        <div class="label">إشارة للإصدار <span class="tag">Version DOI</span></div>
+        <div class="cite-block">GOSSA AHMED. Hierarchical Calculus — Version v1.0.0. Zenodo. https://doi.org/10.5281/zenodo.17917303 (2025).</div>
+      </div>
     </section>
 
+    <!-- Links -->
     <section class="card" id="links" style="margin-top:16px">
       <h2><span class="bar"></span>صفحات المرجع</h2>
       <p class="muted small">
-        روابط الصفحات المرجعية (يمكنك إضافتها لاحقًا بنفس القالب).
+        روابط الصفحات المرجعية الأساسية (العربية + الإنجليزية).
       </p>
 
       <div class="quicklinks">
@@ -584,31 +684,45 @@
           <span>تعريفات، بديهيات، مبرهنات، خواص.</span><br>
           <a href="theory.html">theory.html</a>
         </div>
+
         <div class="linkcard">
           <strong>المعادلات</strong>
           <span>تحويلات + حلول + أمثلة.</span><br>
           <a href="equations.html">equations.html</a>
         </div>
+
         <div class="linkcard">
-          <strong>الحساب العددي</strong>
-          <span>أمثلة عددية + مقارنة الأخطاء.</span><br>
-          <a href="numerics.html">numerics.html</a>
+          <strong>قوانين الاشتقاق</strong>
+          <span>الهوية، الضرب، القسمة، السلسلة.</span><br>
+          <a href="rules.html">rules.html</a>
         </div>
+
         <div class="linkcard">
-          <strong>المراجع</strong>
-          <span>قائمة مراجع + توثيق.</span><br>
-          <a href="references.html">references.html</a>
+          <strong>التكامل</strong>
+          <span>المؤثر العكسي + أمثلة.</span><br>
+          <a href="integrals.html">integrals.html</a>
         </div>
+
         <div class="linkcard">
-          <strong>تنزيلات</strong>
-          <span>PDF/ZIP + إصدارات + DOI.</span><br>
-          <a href="download.html">download.html</a>
+          <strong>أمثلة محلولة</strong>
+          <span>نتائج جاهزة للاستعمال.</span><br>
+          <a href="equations-solved.html">equations-solved.html</a>
         </div>
+
         <div class="linkcard">
-          <strong>English Pages</strong>
-          <span>نفس البنية بالإنجليزية.</span><br>
-          <a href="./">index-en.html</a>
+          <strong>النسخة الإنجليزية</strong>
+          <span>الصفحة الرئيسية الإنجليزية الرسمية.</span><br>
+          <a href="index-en.html">index-en.html</a>
         </div>
+      </div>
+
+      <div class="block">
+        <div class="label">مقالات مختارة <span class="tag">Featured</span></div>
+        <ul class="muted small" style="margin:0; padding-right:18px; line-height:1.95">
+          <li><a href="difference.html">الفرق بين \(D_0^1\) و \(D_1^1\) (مثال واحد)</a></li>
+          <li><a href="unsolvable-differential-equations-hierarchical.html">حلّ المعادلات التفاضلية “المستحيلة”</a></li>
+          <li><a href="why-differential-calculus-fails-hierarchical-calculus-ar.html">لماذا يفشل الحساب التفاضلي الكلاسيكي؟</a></li>
+        </ul>
       </div>
     </section>
 
@@ -617,6 +731,18 @@
       <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
     </footer>
   </div>
+
+  <!-- Small UX: focus sections when navigating with hash -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', ()=> setTimeout(()=> {
+        const id = location.hash.replace('#','');
+        const el = document.getElementById(id);
+        if(el){ el.setAttribute('tabindex','-1'); el.focus({preventScroll:true}); }
+      }, 0));
+    });
+  </script>
+
 </body>
 </html>
 
