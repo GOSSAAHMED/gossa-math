@@ -2,22 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hierarchical Calculus: From Differential to Relative and Logarithmic Derivatives</title>
-  <meta name="description" content="A clear introduction to Hierarchical Calculus linking the differential derivative to the relative and logarithmic derivatives with geometric and engineering interpretation.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hierarchical Calculus — From Differential to Relative and Logarithmic Derivatives</title>
+  <meta name="description" content="A clear academic introduction to Hierarchical Calculus linking the differential derivative (rank 0) to relative (rank 1) and logarithmic (rank 2) derivatives with geometric and engineering interpretation.">
+  <meta name="author" content="Ahmed Gossa">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/hierarchical-calculus-en.html">
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/hierarchical-calculus-en.html">
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/hierarchical-calculus.html">
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/hierarchical-calculus-en.html">
+
+  <!-- OpenGraph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hierarchical Calculus">
+  <meta property="og:title" content="Hierarchical Calculus — From Differential to Relative and Logarithmic Derivatives">
+  <meta property="og:description" content="Academic introduction to hierarchical derivatives: rank 0, rank 1, and rank 2 with interpretation.">
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/hierarchical-calculus-en.html">
+  <meta property="og:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png">
+  <meta property="og:image:alt" content="Ahmed Gossa — Hierarchical Calculus official logo">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hierarchical Calculus — From Differential to Relative and Logarithmic Derivatives">
+  <meta name="twitter:description" content="Academic introduction to hierarchical derivatives: rank 0, rank 1, and rank 2 with interpretation.">
+  <meta name="twitter:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png">
+
+  <!-- Schema.org (Article + Person) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Hierarchical Calculus — From Differential to Relative and Logarithmic Derivatives",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/",
+      "image": "https://gossaahmed.github.io/gossa-math/assets/images/ahmed-gossa.jpg"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
+    },
+    "url": "https://gossaahmed.github.io/gossa-math/hierarchical-calculus-en.html",
+    "inLanguage": "en",
+    "image": "https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png",
+    "about": [
+      "Hierarchical Calculus",
+      "Relative Derivative",
+      "Logarithmic Derivative",
+      "Rank",
+      "Degree"
+    ]
+  }
+  </script>
 
   <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['\\(','\\)']],
-        displayMath: [['\\[','\\]']]
-      }
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']]
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-  <!-- Page style (can be unified later into a shared CSS file) -->
+  <!-- Page style (kept close to your original) -->
   <style>
     body{
       margin:0;
@@ -27,13 +79,85 @@
       line-height:1.85;
     }
     main{
-      max-width:900px;
+      max-width:920px;
       margin:auto;
       padding:40px 20px 24px;
     }
     h1,h2,h3{ color:#66d9ef; }
-    h1{ font-size:2.15em; margin:0 0 18px; }
-    .subtitle{ color:#b7c4d6; margin:0 0 28px; font-size:1.02em; }
+    h1{ font-size:2.15em; margin:0 0 12px; }
+    .subtitle{ color:#b7c4d6; margin:0 0 18px; font-size:1.02em; }
+
+    /* Top mini bar */
+    .topline{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border:1px solid #22314f;
+      background:#0f1a2c;
+      border-radius:12px;
+      margin-bottom:18px;
+    }
+    .topline .left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .site-badge{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#e6e6e6;
+    }
+    .site-badge img{
+      width:38px; height:auto;
+      filter: drop-shadow(0 0 10px rgba(255, 200, 120, 0.25));
+    }
+    .site-badge strong{ font-size:14px; }
+    .top-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .top-links a{
+      color:#7dd3fc;
+      text-decoration:none;
+      border:1px solid #2a3a5e;
+      background:#0b1220;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:.95em;
+    }
+    .top-links a:hover{ border-color:#66d9ef; }
+
+    /* Author card */
+    .author-card{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin:18px 0 14px;
+      padding:14px 16px;
+      border:1px solid #22314f;
+      background:#0f1a2c;
+      border-radius:12px;
+    }
+    .author-photo{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #4db6ff;
+      box-shadow:0 6px 18px rgba(0,0,0,.45);
+      flex:0 0 auto;
+    }
+    .author-info{ line-height:1.45; }
+    .author-info .muted{ color:#b7c4d6; font-size:.95em; }
+
     h2{ margin-top:42px; font-size:1.55em; }
     p{ margin:14px 0; }
     ul{ margin:14px 26px; }
@@ -56,6 +180,17 @@
       margin:18px 0;
       color:#d9e3f0;
     }
+
+    .doi-box{
+      background:#0f1a2c;
+      border:1px solid rgba(102,217,239,.35);
+      padding:12px 14px;
+      border-radius:12px;
+      margin:18px 0 22px;
+      color:#d9e3f0;
+    }
+    .doi-box a{ color:#7dd3fc; text-decoration:none; }
+    .doi-box a:hover{ text-decoration:underline; }
 
     .navbtns{
       display:flex;
@@ -83,31 +218,18 @@
       transform:translateY(-1px);
       border-color:#66d9ef;
     }
-    .btn.primary{
-      border-color:#66d9ef;
-    }
-
-    .lang{
-      display:flex;
-      justify-content:flex-end;
-      gap:10px;
-      margin-bottom:12px;
-    }
-    .lang a{
-      color:#7dd3fc;
-      text-decoration:none;
-      border:1px solid #2a3a5e;
-      background:#0f1a2c;
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:.95em;
-    }
-    .lang a:hover{ border-color:#66d9ef; }
+    .btn.primary{ border-color:#66d9ef; }
 
     footer{
       margin-top:22px;
       color:#9fb0c7;
       font-size:.92em;
+    }
+
+    @media (max-width:650px){
+      .author-card{ flex-direction:column; text-align:center; }
+      .navbtns{ flex-direction:column; }
+      .btn{ max-width:100%; }
     }
   </style>
 </head>
@@ -115,14 +237,47 @@
 <body>
 <main>
 
-  <!-- Language switch -->
-  <div class="lang">
-    <a href="./hierarchical-calculus.html" title="Arabic version">Arabic</a>
-    <a href="./hierarchical-calculus-en.html" title="English version">English</a>
+  <!-- Top line: Home + quick academic links + language switch -->
+  <div class="topline">
+    <div class="left">
+      <a class="site-badge" href="./index.html" title="Back to homepage">
+        <img src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
+        <div>
+          <strong>Hierarchical Calculus</strong><br>
+          <span style="color:#b7c4d6; font-size:.92em;">Official website + DOI (Zenodo)</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="top-links">
+      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">Concept DOI</a>
+      <a href="./references-en.html">References</a>
+      <a href="./faq-en.html">FAQ</a>
+      <a href="./hierarchical-calculus.html" title="Arabic version">العربية</a>
+      <a href="./hierarchical-calculus-en.html" aria-current="page" title="English version">English</a>
+    </div>
   </div>
 
   <h1>Hierarchical Calculus</h1>
-  <p class="subtitle">From differential derivatives to relative and logarithmic derivatives — a rank/order framework with a geometric & engineering interpretation.</p>
+  <p class="subtitle">
+    From differential derivatives to relative and logarithmic derivatives — a rank/degree framework with geometric & engineering interpretation.
+  </p>
+
+  <!-- Author -->
+  <div class="author-card">
+    <img src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa" class="author-photo">
+    <div class="author-info">
+      <strong>Ahmed Gossa</strong><br>
+      <span class="muted">Independent Researcher — Hierarchical Calculus</span>
+    </div>
+  </div>
+
+  <!-- DOI block -->
+  <div class="doi-box">
+    <strong>How to cite:</strong>
+    Use the Concept DOI for general citation:
+    <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+  </div>
 
   <h2>1. Introduction</h2>
   <p>
@@ -134,7 +289,7 @@
     Moving upward increases specialization and typically shrinks the domain of definition.
   </p>
 
-  <h2>2. Differential derivative: absolute change</h2>
+  <h2>2. Differential derivative: absolute change (Rank 0)</h2>
   <p>The classical derivative measures absolute change:</p>
   <div class="math">
     \[
@@ -144,7 +299,7 @@
 
   <h2>3. Relative derivative: scale-aware change (Rank 1)</h2>
   <p>
-    In your framework, the <strong>relative derivative</strong> (rank \(1\)) is defined so that the core relation holds:
+    In this framework, the <strong>relative derivative</strong> (rank \(1\)) is defined so that the core relation holds:
   </p>
 
   <div class="math">
@@ -160,7 +315,7 @@
   </div>
 
   <div class="callout">
-    Interpretation: \(D^{1}_{1}y\) measures how \(y\) changes <em>relative to its own level</em> when \(x\) changes relative to its scale.
+    <strong>Interpretation:</strong> \(D^{1}_{1}y\) measures how \(y\) changes <em>relative to its own level</em> when \(x\) changes relative to its scale.
     This is naturally tied to self-similarity, growth rates, and power-law behaviors.
   </div>
 
@@ -183,22 +338,22 @@
   </div>
 
   <div class="callout">
-    Interpretation: rank \(2\) tracks shifts in the <em>growth mechanism</em> itself (transitions, saturation, regime changes),
+    <strong>Interpretation:</strong> rank \(2\) tracks shifts in the <em>growth mechanism</em> itself (transitions, saturation, regime changes),
     which is common in nonlinear engineering and physical phenomena.
   </div>
 
-  <h2>5. Rank and Order</h2>
+  <h2>5. Rank and Degree</h2>
   <p>
-    Hierarchical calculus has two independent dimensions:
+    Hierarchical Calculus has two independent dimensions:
   </p>
   <ul>
     <li><strong>Rank</strong> (vertical): the type of measurement (differential, relative, logarithmic, ...)</li>
-    <li><strong>Order</strong> (horizontal): repeated differentiation within the same rank</li>
+    <li><strong>Degree</strong> (horizontal): repeated differentiation within the same rank</li>
   </ul>
 
   <div class="math">
     \[
-      D^{n}_{r}
+      D^{k}_{n}
     \]
   </div>
 
@@ -208,7 +363,7 @@
   </p>
   <div class="math">
     \[
-      \Omega_{r+1}\subset\Omega_r
+      \Omega_{n+1}\subset\Omega_n
     \]
   </div>
   <p>
@@ -222,15 +377,12 @@
     <li><strong>Logarithmic (rank 2)</strong>: changes in the relative-change regime</li>
   </ul>
 
-  <footer>© Hierarchical Calculus — English page</footer>
+  <footer>© 2025 — Hierarchical Calculus (English)</footer>
 
-  <!-- Prev / Next navigation -->
+  <!-- Prev / Next navigation (fixed to English pages) -->
   <div class="navbtns">
-    <!-- PREV: choose a relevant previous page -->
-    <a class="btn" href="./derivative-rank-degree.html">← Previous: Rank &amp; Order</a>
-
-    <!-- NEXT: choose a relevant next page -->
-    <a class="btn primary" href="./hierarchical-derivatives-relations.html">Next: Relations between derivatives →</a>
+    <a class="btn" href="./derivative-rank-degree-en.html">← Previous: Rank &amp; Degree</a>
+    <a class="btn primary" href="./hierarchical-derivatives-relations-en.html">Next: Relations between derivatives →</a>
   </div>
 
 </main>
