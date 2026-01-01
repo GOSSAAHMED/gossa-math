@@ -360,7 +360,70 @@
       max-width: 85%;
       height: auto;
       filter: drop-shadow(0 0 18px rgba(255, 200, 120, 0.35));
-    }
+    }/* ===== Beautiful Page Buttons ===== */
+.page-buttons{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+.page-btn{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding:18px 18px;
+  border-radius:18px;
+  text-decoration:none;
+  color:#ffffff;
+  font-weight:700;
+  font-size:16px;
+  letter-spacing:.2px;
+  box-shadow:0 14px 36px rgba(0,0,0,.35);
+  transition: all .35s ease;
+  overflow:hidden;
+}
+
+.page-btn span{
+  font-weight:400;
+  font-size:13px;
+  opacity:.85;
+}
+
+/* Hover animation */
+.page-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,.22),
+    rgba(255,255,255,0)
+  );
+  opacity:0;
+  transition:opacity .35s ease;
+}
+.page-btn:hover::before{
+  opacity:1;
+}
+.page-btn:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 22px 60px rgba(0,0,0,.55);
+}
+
+/* === Individual colors === */
+.page-btn.astronomy{
+  background:linear-gradient(135deg, #5b9dff, #7f5bff);
+}
+.page-btn.economics{
+  background:linear-gradient(135deg, #2dd4bf, #059669);
+}
+.page-btn.engineering{
+  background:linear-gradient(135deg, #f59e0b, #ef4444);
+}
+
+    
   </style>
 
   <!-- MathJax -->
@@ -698,6 +761,7 @@
   </div>
 </body>
 </html>
+
 
 
 
