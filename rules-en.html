@@ -3,21 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hierarchical Derivation Rules — (Rank & Degree)</title>
-  <meta name="description" content="Hierarchical derivation rules: start from the relative derivative (rank 1) then generalize to rank n. All derivatives use explicit rank and degree notation D_r^n (e.g., D_0^1, D_1^1, D_n^1)." />
-  <meta name="author" content="GOSSA AHMED" />
 
-  <!-- canonical + hreflang -->
+  <title>Hierarchical Derivation Rules | Hierarchical Calculus (Rank & Degree)</title>
+  <meta name="description" content="Hierarchical derivation rules in Hierarchical Calculus. Start from the relative derivative (rank 1) then generalize to rank n. Includes intuition, examples, self-check exercises, and FAQs. All derivatives use explicit rank and degree notation D_r^n." />
+  <meta name="author" content="Ahmed Gossa" />
+
   <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/rules-en.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/rules-en.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/rules.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/rules-en.html" />
 
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Hierarchical Calculus" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Hierarchical Derivation Rules | Hierarchical Calculus (Rank & Degree)" />
+  <meta property="og:description" content="Operational rules for D_1^1 and the extension to D_n^1 with intuition, examples, and FAQs." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/rules-en.html" />
+  <meta property="og:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png" />
+  <meta property="og:image:alt" content="Ahmed Gossa — Hierarchical Calculus official logo" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hierarchical Derivation Rules | Hierarchical Calculus (Rank & Degree)" />
+  <meta name="twitter:description" content="Operational rules for D_1^1 and the extension to D_n^1 with intuition, examples, and FAQs." />
+  <meta name="twitter:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png" />
+
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
-      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -47,22 +61,25 @@
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
-      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    .brand img{
+      width:34px; height:auto;
+      filter: drop-shadow(0 0 10px rgba(255, 200, 120, 0.25));
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
     .brand .title span{font-size:12px; color:var(--muted)}
 
-    nav{display:flex; gap:8px; flex-wrap:wrap}
-    nav a{
-      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:9px 12px; border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text); font-size: 13px;
       white-space:nowrap;
     }
-    nav a:hover{background:rgba(255,255,255,.07)}
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{border-color: rgba(57,211,195,.35); background: rgba(57,211,195,.12)}
 
     header.hero{
       margin-top:16px; padding:20px 18px;
@@ -87,6 +104,37 @@
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    .author-card{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin:14px 0 10px;
+      flex-wrap:wrap;
+    }
+    .author-photo{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #4db6ff;
+      box-shadow:0 6px 18px rgba(0,0,0,.45);
+      flex:0 0 auto;
+    }
+    .author-info span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .doi-box{
+      border:1px solid rgba(57,211,195,.28);
+      background: rgba(57,211,195,.08);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top: 12px;
+      line-height: 1.9;
+    }
+    .doi-box a{color:#bfe8ff}
+
     .card{
       margin-top:14px; padding:16px;
       border:1px solid rgba(255,255,255,.10);
@@ -109,6 +157,13 @@
       border-radius:14px;
     }
     .note strong{color:var(--warn)}
+    .ok{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(134,239,172,.35);
+      background: rgba(134,239,172,.10);
+      border-radius:14px;
+    }
+    .ok strong{color:var(--ok)}
 
     table{
       width:100%;
@@ -136,13 +191,8 @@
     }
     tbody tr:last-child td{border-bottom:none}
 
-    code{
-      font-family:var(--mono);
-      background:rgba(0,0,0,.25);
-      border:1px solid rgba(255,255,255,.10);
-      padding:2px 6px;
-      border-radius:8px;
-    }
+    ul{margin:8px 0 0 0; padding-left:18px}
+    li{margin:6px 0}
 
     footer{
       margin-top:18px; padding-top:18px;
@@ -151,37 +201,39 @@
     }
   </style>
 
-  <!-- MathJax -->
   <script>
     window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
       options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <!-- JSON-LD -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": "Derivation Rules (Rank & Degree) — Hierarchical Calculus",
+  "headline": "Hierarchical Derivation Rules (Rank & Degree) — Hierarchical Calculus",
   "alternativeHeadline": "Operational rules for D_1^1 and the extension to D_n^1",
   "author": {
     "@type": "Person",
     "name": "Ahmed Gossa",
-    "url": "https://gossaahmed.github.io/gossa-math/"
+    "url": "https://gossaahmed.github.io/gossa-math/",
+    "image": "https://gossaahmed.github.io/gossa-math/assets/images/ahmed-gossa.jpg"
   },
   "about": [
     "Hierarchical Calculus",
-    "Relative Derivative D1",
-    "Classical Derivative D0",
+    "Relative Derivative",
+    "Logarithmic Derivative",
+    "Iterated Logarithms",
     "Derivation Rules",
+    "Scaling Laws",
     "Hierarchical Derivatives"
   ],
-  "abstract": "A reference page describing the core derivation rules for the relative derivative (D_1^1) and the extension to higher hierarchical derivatives (D_n^1).",
+  "abstract": "A tutorial and reference page describing the derivation rules for the relative derivative (rank 1) and the general hierarchical derivative (rank n), with examples, intuition, and educational self-check exercises.",
   "url": "https://gossaahmed.github.io/gossa-math/rules-en.html",
   "inLanguage": "en",
+  "image": "https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png",
   "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
 }
 </script>
@@ -191,27 +243,37 @@
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <a href="./index.html" title="Home">
+          <img src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
+        </a>
         <div class="title">
           <strong>Hierarchical Derivation Rules</strong>
           <span>Explicit notation: \(D_r^n\) (rank + degree)</span>
         </div>
       </div>
 
-      <nav aria-label="Navigation">
-        <a href="./index-en.html">Home</a>
-        <a href="./series-en.html">Series</a>
-        <a href="./integrals-en.html">Integrals</a>
-        <a href="./equations-en.html">Equations</a>
-        <a href="./hierarchical-derivatives-relations-en.html">Relations</a>
-        <a href="./rules.html">العربية</a>
-      </nav>
+      <div class="actions">
+        <a class="btn" href="./index.html">Home</a>
+        <a class="btn" href="./derivative-rank-degree-en.html">Rank &amp; Degree</a>
+        <a class="btn" href="./hierarchical-derivatives-relations-en.html">Relations</a>
+        <a class="btn" href="./rules.html">العربية</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
+      </div>
     </div>
   </div>
 
   <div class="wrap">
     <header class="hero">
       <h1>Hierarchical Derivation Rules</h1>
+
+      <div class="author-card">
+        <img src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa" class="author-photo">
+        <div class="author-info">
+          <strong>Ahmed Gossa</strong><br>
+          <span>Independent Researcher — Hierarchical Calculus</span>
+        </div>
+      </div>
+
       <p class="muted">
         This page summarizes the operational rules of hierarchical differentiation.
         We begin with the <b>relative derivative</b> (rank 1) then generalize to rank \(n\).
@@ -220,17 +282,47 @@
         \(\;D_r^n\). In this page we use <b>degree 1</b> only:
         \(\;D_{0}^{1}, D_{1}^{1}, D_{n}^{1}\).
       </p>
+
+      <div class="doi-box">
+        <div><strong>Concept DOI (main reference):</strong>
+          <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+            10.5281/zenodo.17917302
+          </a>
+        </div>
+        <div class="small">
+          <strong>Version DOI (v1.0.0):</strong>
+          <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
+          <span class="muted">— website release v1.0.0</span>
+        </div>
+      </div>
+
       <div class="note">
         <strong>Domain note (degree 1):</strong>
-        For rank 1 we typically require \(x>0\) and \(f(x)>0\) (because \(\ln x\) and \(\ln f\) appear).
-        For rank 2 we typically require \(x>1\) and \(f(x)>1\) (because \(\ln\ln x\) and \(\ln\ln f\) appear).
+        For rank 1 we typically require \(x>0\) and \(f(x)>0\).
+        For rank 2 we typically require \(x>1\) and \(f(x)>1\).
       </div>
-      <p class="muted small" style="margin:10px 0 0 0">
-        Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
-        <br>
-        Version DOI (v1.0.0): <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
-      </p>
     </header>
+
+    <section class="card">
+      <h2>0) Quick intuition (for all readers)</h2>
+      <p class="muted small" style="margin:0">
+        Classical calculus measures <b>absolute change</b> using \(D_0^1 f=\frac{df}{dx}\).
+        Hierarchical calculus adds higher ranks that measure change on transformed scales:
+        <br><br>
+        <b>Rank 1</b> measures relative change (log-log scale):
+        \[
+          D_1^1 f = \frac{d\ln f}{d\ln x}.
+        \]
+        If this quantity is constant, the function follows a <b>power law</b>.
+        This is why rank 1 is important in physics, engineering, and scaling theory.
+      </p>
+      <div class="ok">
+        <strong>One sentence summary</strong>
+        <div class="muted small" style="margin-top:6px">
+          Rank increases when absolute variation becomes less informative than scale-invariant variation.
+        </div>
+      </div>
+    </section>
 
     <section class="card">
       <h2>1) Quick definition: the relative derivative (rank 1, degree 1)</h2>
@@ -259,11 +351,6 @@
           }
         \]
       </div>
-
-      <div class="note">
-        <strong>Idea:</strong>
-        If \(D_{1}^{1} f\) is constant, then \(f\) behaves like a power law \(x^\alpha\) (scaling law).
-      </div>
     </section>
 
     <section class="card">
@@ -279,7 +366,7 @@
         \]
       </div>
 
-      <h3>2.2) Product rule (relative composition)</h3>
+      <h3>2.2) Product rule</h3>
       <div class="math">
         \[
           \boxed{
@@ -330,53 +417,57 @@
           }
         \]
       </div>
-      <p class="muted small" style="margin:10px 0 0 0">
-        In short notation: \(\;D_{1}^{1}(f\circ u)=(D_{1}^{1}f)(u)\cdot D_{1}^{1}u\).
-      </p>
     </section>
 
     <section class="card">
-      <h2>3) Quick checks for \(D_{1}^{1}\)</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Function \(f(x)\)</th>
-            <th>Result</th>
-            <th>Comment</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>\(f(x)=x^3\)</td>
-            <td>\(D_{1}^{1} f=3\)</td>
-            <td>power law</td>
-          </tr>
-          <tr>
-            <td>\(f(x)=\sqrt{x}=x^{1/2}\)</td>
-            <td>\(D_{1}^{1} f=\tfrac{1}{2}\)</td>
-            <td>power law</td>
-          </tr>
-          <tr>
-            <td>\(f(x)=e^x\)</td>
-            <td>\(D_{1}^{1} f=x\)</td>
-            <td>\(\ln f=x\), then \(d/d\ln x\)</td>
-          </tr>
-          <tr>
-            <td>\(f(x)=\ln x\)</td>
-            <td>\(D_{1}^{1} f=\dfrac{1}{\ln x}\)</td>
-            <td>\(\ln(\ln x)\) differentiated w.r.t. \(\ln x\)</td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>3) Examples (worked)</h2>
+
+      <h3>3.1) Example: \(f(x)=x^a\)</h3>
+      <div class="math">
+        \[
+          D_1^1(x^a)=a.
+        \]
+      </div>
+      <div class="note">
+        <strong>Meaning:</strong> power laws appear as constants in rank 1. This is why rank 1 is the natural scale for self-similar processes.
+      </div>
+
+      <h3>3.2) Example: \(f(x)=e^x\)</h3>
+      <div class="math">
+        \[
+          D_1^1(e^x)=x.
+        \]
+      </div>
+
+      <h3>3.3) Example: \(f(x)=\ln x\)</h3>
+      <div class="math">
+        \[
+          D_1^1(\ln x)=\frac{1}{\ln x}.
+        \]
+      </div>
     </section>
 
     <section class="card">
-      <h2>4) Generalization to rank \(n\): \(D_{n}^{1}\)</h2>
+      <h2>4) Self-check (mini exercises)</h2>
       <p class="muted small" style="margin:0">
-        The hierarchical principle: going to a higher rank changes the “measurement scale” of variation.
-        For degree 1, the natural scale is iterated logarithms.
+        Try to compute \(D_1^1 f\) in each case:
       </p>
+      <ul class="muted small">
+        <li>\(f(x)=x^5\)</li>
+        <li>\(f(x)=x^{-2}\)</li>
+        <li>\(f(x)=\sqrt{\ln x}\)</li>
+        <li>\(f(x)=\dfrac{x^2}{\ln x}\)</li>
+      </ul>
+      <div class="ok">
+        <strong>Hint:</strong>
+        <div class="muted small" style="margin-top:6px">
+          Use: product rule + quotient rule + constant exponent rule + chain rule.
+        </div>
+      </div>
+    </section>
 
+    <section class="card">
+      <h2>5) Generalization to rank \(n\): \(D_n^1\)</h2>
       <div class="math">
         \[
           \boxed{
@@ -386,19 +477,9 @@
         \]
       </div>
 
-      <p class="muted small" style="margin:10px 0 0 0">
-        Here \(\ln^{(n)}\) means the <b>n-times iterated</b> logarithm:
-        \(\ln^{(1)}x=\ln x\), \(\ln^{(2)}x=\ln(\ln x)\), etc.
-        This matches the rank-2 definition used elsewhere:
-        \[
-          D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
-        \]
-      </p>
-
       <div class="note">
-        <strong>Structural repetition:</strong>
-        Because logarithms turn multiplicative structures into additive ones, the “product/quotient/power” rules
-        keep the same form at every rank (when all expressions are well-defined).
+        <strong>Key idea:</strong>
+        The same structural rules remain valid for all ranks as long as the logarithmic chains are defined.
       </div>
 
       <div class="math">
@@ -413,7 +494,33 @@
     </section>
 
     <section class="card">
-      <h2>5) Citation</h2>
+      <h2>6) FAQ (short)</h2>
+      <h3>6.1) Why do we use logs?</h3>
+      <p class="muted small">
+        Logs convert multiplicative changes into additive ones. This makes scaling rules simple and stable.
+      </p>
+
+      <h3>6.2) When is rank 1 better than rank 0?</h3>
+      <p class="muted small">
+        When you care about <b>percentage / ratio growth</b> rather than absolute growth.
+      </p>
+
+      <h3>6.3) What is the meaning of higher ranks?</h3>
+      <p class="muted small">
+        Higher ranks measure changes of the growth mechanism itself (nested scale behavior).
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>7) Related topics</h2>
+      <p class="muted small" style="margin:0">
+        Relative derivative, logarithmic derivative, iterated logarithms, scaling laws, self-similarity, power-law behavior,
+        hierarchical derivatives, hierarchical equations.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>8) Citation</h2>
       <div class="math">
         \[
           \texttt{GOSSA AHMED. Hierarchical Calculus — Derivation Rules (D\_1 then D\_n, explicit rank \& degree). Official Website. Zenodo. https://doi.org/10.5281/zenodo.17917302 (2025).}
@@ -422,9 +529,12 @@
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Hierarchical Derivation Rules — explicit \(D_r^n\)
+      © <span id="y"></span> Ahmed Gossa · Hierarchical Derivation Rules — explicit \(D_r^n\)
     </footer>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
->
