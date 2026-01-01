@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Hierarchical Calculus & Physics — Newton, Einstein, Quantum, Dark Energy, and Quantum Gravity</title>
+  <meta name="description" content="An extended English page: applying Hierarchical Calculus to unify Newtonian physics, relativity, and quantum mechanics via the derivative ladder D0, D1, D2, and beyond—connected directly to dark energy and quantum gravity." />
+  <meta name="author" content="GOSSA AHMED" />
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/physics-ar.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
+
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1050px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:28px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+
+    .math{
+      margin-top:8px; padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius:12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .note{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:var(--warn)}
+    .toc a{display:inline-block; margin:4px 0}
+
+    .pillrow{margin-top:10px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px; color: var(--muted);
+      margin: 6px 6px 0 0;
+      white-space:nowrap;
+    }
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
+    }
+    thead th{
+      text-align:left;
+      font-size:13px;
+      padding:10px 10px;
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+    }
+    tbody td{
+      padding:10px 10px;
+      font-size:13px;
+      color:rgba(234,242,255,.88);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+    }
+    tbody tr:last-child td{border-bottom:none}
+
+    footer{
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Hierarchical Calculus & Physics</strong>
+          <span>Newton · Einstein · Quantum · Dark Energy · Quantum Gravity</span>
+        </div>
+      </div>
+
+      <nav aria-label="Navigation">
+        <a href="./index.html">Home</a>
+        <a href="./theory-en.html">Theory</a>
+        <a href="./rules-en.html">Rules</a>
+        <a href="./equations-en.html">Equations</a>
+        <a href="./index-ar.html">العربية</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <h1>Applying Hierarchical Calculus to Physics</h1>
+      <p class="muted">
+        This page does not replace Newtonian physics, relativity, or quantum mechanics. Instead, it proposes a
+        <b>unified language of change</b> that clarifies why different theories dominate at different regimes:
+        absolute change (\(D_0^1\)), relative/scale change (\(D_1^1\)), structural/logarithmic change (\(D_2^1\)),
+        and higher ranks \(D_n^1\). We connect this lens directly to cosmic acceleration (dark energy) and to
+        the core tension behind quantum gravity.
+      </p>
+      <div class="pillrow">
+        <span class="pill">Rank 0: \(D_0^1\)</span>
+        <span class="pill">Rank 1: \(D_1^1\)</span>
+        <span class="pill">Rank 2: \(D_2^1\)</span>
+        <span class="pill">Higher ranks: \(D_n^1\)</span>
+      </div>
+      <p class="muted small" style="margin:10px 0 0 0">
+        Author: <b>GOSSA AHMED</b>
+      </p>
+    </header>
+
+    <section class="card toc" id="toc">
+      <h2>Contents</h2>
+      <a href="#ladder">1) The derivative ladder: \(D_0^1\) to \(D_n^1\)</a><br>
+      <a href="#newton">2) Newton: rank-0 physics and symbolic equations</a><br>
+      <a href="#relativity">3) Einstein: relativity as scale physics and core equations</a><br>
+      <a href="#quantum">4) Quantum: structural change, states, and symbolic equations</a><br>
+      <a href="#darkenergy">5) Dark energy: acceleration as a higher-rank signal</a><br>
+      <a href="#qg">6) Quantum gravity: where “rank mismatch” shows up</a><br>
+      <a href="#bridge">7) A unified map: connecting the three frameworks</a><br>
+      <a href="#conclusion">Conclusion</a>
+    </section>
+
+    <!-- 1) Ladder -->
+    <section class="card" id="ladder">
+      <h2>1) The derivative ladder of change</h2>
+      <p class="muted">
+        A key claim is conceptual: many “conflicts” between physical frameworks reflect a mismatch in
+        <b>the type of change</b> being modeled. Hierarchical Calculus organizes this into a clear ladder:
+      </p>
+
+      <div class="math">
+        \[
+          D_0^1 f(t)=\frac{df}{dt},\qquad
+          D_1^1 f(t)=\frac{d\ln f}{d\ln t},\qquad
+          D_2^1 f(t)=\frac{d\ln(\ln f)}{d\ln(\ln t)}
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Physical intuition (quick):</strong><br>
+        Rank 0: local absolute change.<br>
+        Rank 1: scale/relative change (laws across frames or scales).<br>
+        Rank 2: structural change in the scale-law itself (the “relative rule” evolves).<br>
+        Higher ranks describe deeper structural transitions.
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Framework</th>
+            <th>Dominant change type</th>
+            <th>Natural rank (conceptual)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Newtonian physics</td>
+            <td>Absolute local change</td>
+            <td>\(D_0^1\)</td>
+          </tr>
+          <tr>
+            <td>Relativity</td>
+            <td>Relative/scale-dependent change</td>
+            <td>\(D_1^1\)</td>
+          </tr>
+          <tr>
+            <td>Quantum mechanics</td>
+            <td>Structural change (states/measurement)</td>
+            <td>\(D_2^1\) (or higher, context-dependent)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 2) Newton -->
+    <section class="card" id="newton">
+      <h2>2) Newton: rank-0 physics and symbolic equations</h2>
+      <p class="muted">
+        Newtonian physics is built on the rank-0 derivative \(D_0^1=\dfrac{d}{dt}\) and assumes (approximately)
+        absolute time and space for everyday regimes.
+      </p>
+
+      <h3>2.1 Newton’s laws</h3>
+      <div class="math">
+        \[
+          \mathbf{F}=m\mathbf{a}=m\frac{d^2\mathbf{x}}{dt^2}
+        \]
+      </div>
+
+      <h3>2.2 Newtonian gravity</h3>
+      <div class="math">
+        \[
+          \mathbf{F}=-\,G\frac{Mm}{r^2}\,\hat{\mathbf{r}},\qquad
+          \nabla^2\Phi = 4\pi G\rho
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Hierarchical reading:</strong>
+        Rank-0 descriptions excel when scales do not shift dramatically and when measurement structure does not dominate
+        the dynamics.
+      </div>
+    </section>
+
+    <!-- 3) Relativity -->
+    <section class="card" id="relativity">
+      <h2>3) Einstein: relativity as scale physics</h2>
+      <p class="muted">
+        Relativity reorganizes physics around frame dependence and invariants. Conceptually, this aligns with rank-1 thinking:
+        laws that remain meaningful under rescaling and frame transformations.
+      </p>
+
+      <h3>3.1 Special relativity</h3>
+      <div class="math">
+        \[
+          ds^2 = -c^2dt^2 + dx^2 + dy^2 + dz^2,\qquad
+          E^2=(pc)^2+(mc^2)^2
+        \]
+      </div>
+
+      <h3>3.2 General relativity (Einstein field equations)</h3>
+      <div class="math">
+        \[
+          G_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}\,T_{\mu\nu}
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Direct link to dark energy:</strong>
+        The term \(\Lambda\) is the standard entry point for modeling cosmic acceleration as an effective vacuum energy.
+      </div>
+    </section>
+
+    <!-- 4) Quantum -->
+    <section class="card" id="quantum">
+      <h2>4) Quantum mechanics: structural change</h2>
+      <p class="muted">
+        Quantum theory replaces classical trajectories with states \(|\psi\rangle\), amplitudes, operators, and measurement.
+        This shift is structural: the “object being evolved” is a state in Hilbert space, and probabilities arise from amplitudes.
+        Such a transition is naturally described as a higher-rank move in the language of change.
+      </p>
+
+      <h3>4.1 Schrödinger equation</h3>
+      <div class="math">
+        \[
+          i\hbar\frac{\partial}{\partial t}\,|\psi(t)\rangle=\hat{H}\,|\psi(t)\rangle
+        \]
+      </div>
+
+      <h3>4.2 Uncertainty principle</h3>
+      <div class="math">
+        \[
+          \Delta x\,\Delta p \ge \frac{\hbar}{2}
+        \]
+      </div>
+
+      <h3>4.3 Dirac equation (relativistic quantum)</h3>
+      <div class="math">
+        \[
+          (i\gamma^\mu \partial_\mu - m)\psi = 0
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Hierarchical reading:</strong>
+        Quantum phenomena are not merely “more accurate Newtonian physics.” They introduce a different structure of description
+        (superposition, measurement, operator algebra), consistent with moving up the rank ladder.
+      </div>
+    </section>
+
+    <!-- 5) Dark Energy -->
+    <section class="card" id="darkenergy">
+      <h2>5) Dark energy: acceleration as a higher-rank signal</h2>
+      <p class="muted">
+        In cosmology, expansion is captured by the scale factor \(a(t)\). This is intrinsically relative:
+        distances scale rather than add. A rank-1 quantity is therefore natural:
+      </p>
+
+      <div class="math">
+        \[
+          D_1^1 a(t)=\frac{d\ln a}{d\ln t}
+        \]
+      </div>
+
+      <p class="muted">
+        Observations indicate accelerated expansion. In a hierarchical interpretation, this may reflect not only
+        “more growth,” but a change in the scale-law itself—suggesting a rank-2 lens:
+      </p>
+
+      <div class="math">
+        \[
+          D_2^1 a(t)=\frac{d\ln(\ln a)}{d\ln(\ln t)}
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Key idea:</strong>
+        Dark energy can be read as evidence that the expansion’s relative law evolves structurally (a rank transition),
+        while in standard GR it is modeled through \(\Lambda\).
+      </div>
+
+      <h3>5.1 Standard symbolic link</h3>
+      <div class="math">
+        \[
+          \rho_\Lambda = \frac{\Lambda c^2}{8\pi G}
+        \]
+      </div>
+      <p class="muted small">
+        (A widely used symbolic relation connecting \(\Lambda\) to an effective energy density.)
+      </p>
+    </section>
+
+    <!-- 6) Quantum Gravity -->
+    <section class="card" id="qg">
+      <h2>6) Quantum gravity: where “rank mismatch” appears</h2>
+      <p class="muted">
+        Quantum gravity attempts to merge a geometric theory (GR: smooth spacetime curvature) with a structural theory
+        (QM: states, operators, measurement). This is not only technically hard; conceptually it mixes different “levels of change.”
+      </p>
+
+      <div class="note">
+        <strong>Hierarchical viewpoint:</strong>
+        If gravity is encoded in the structure of spacetime itself, and quantum theory encodes reality via state structure,
+        the unification may require a framework that handles structural transitions explicitly (higher-rank description),
+        rather than forcing everything into a single rank.
+      </div>
+
+      <h3>6.1 Wheeler–DeWitt (symbolic)</h3>
+      <div class="math">
+        \[
+          \hat{H}\,\Psi[g_{\mu\nu}] = 0
+        \]
+      </div>
+      <p class="muted small">
+        Here \(\Psi[g_{\mu\nu}]\) is a “wave function of geometry” in certain approaches, expressed symbolically.
+      </p>
+
+      <h3>6.2 Where the ladder matters</h3>
+      <p class="muted">
+        Near the Planck regime, spacetime may not remain a smooth background. A hierarchical ladder suggests that describing
+        such behavior may require ranks beyond classical geometry and beyond standard quantum evolution—capturing changes in
+        the rules of description themselves.
+      </p>
+    </section>
+
+    <!-- 7) Unified Bridge -->
+    <section class="card" id="bridge">
+      <h2>7) A unified map connecting the frameworks</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Core symbolic equation</th>
+            <th>Hierarchical reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Newton</td>
+            <td>\(\mathbf{F}=m\frac{d^2\mathbf{x}}{dt^2}\)</td>
+            <td>Absolute local change: \(\;D_0^1\)</td>
+          </tr>
+          <tr>
+            <td>Relativity</td>
+            <td>\(G_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}\)</td>
+            <td>Scale/frame structure: \(\;D_1^1\) (conceptual)</td>
+          </tr>
+          <tr>
+            <td>Quantum</td>
+            <td>\(i\hbar\partial_t|\psi\rangle=\hat{H}|\psi\rangle\)</td>
+            <td>Structural evolution: \(\;D_2^1\) (conceptual)</td>
+          </tr>
+          <tr>
+            <td>Dark energy</td>
+            <td>\(\rho_\Lambda=\frac{\Lambda c^2}{8\pi G}\)</td>
+            <td>Possible rank-2 signature in expansion law: \(\;D_2^1 a(t)\)</td>
+          </tr>
+          <tr>
+            <td>Quantum gravity</td>
+            <td>\(\hat{H}\Psi[g_{\mu\nu}]=0\)</td>
+            <td>Boundary regime suggesting higher-rank description</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>One-sentence summary:</strong>
+        Hierarchical Calculus unifies physics as a “ladder of change”: Newton anchors rank 0, relativity elevates to scale structure (rank 1),
+        quantum introduces deeper structure (rank 2), while dark energy and quantum gravity appear as frontier signals that may require higher ranks.
+      </div>
+    </section>
+
+    <section class="card" id="conclusion">
+      <h2>Conclusion</h2>
+      <p class="muted">
+        This approach does not alter experimental truths; it organizes them by change-level: Newton remains valid at rank 0,
+        relativity dominates when scale and frame structure matters, and quantum theory governs when state/measurement structure is essential.
+        Dark energy and quantum gravity then represent frontier regimes where the structure of the laws may itself evolve—motivating higher-rank language.
+      </p>
+
+      <div class="note">
+        <strong>Next step:</strong>
+        If you want, I can also provide the exact link snippet for your English index page to display this as a “Reference Page”
+        alongside Astronomy and Economics.
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Hierarchical Calculus & Physics — Newton · Einstein · Quantum · Dark Energy · Quantum Gravity
+    </footer>
+  </div>
+</body>
+</html>
