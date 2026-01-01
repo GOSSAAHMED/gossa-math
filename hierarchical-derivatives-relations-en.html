@@ -3,20 +3,64 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hierarchical Derivatives Relationships (Rank & Degree)</title>
-  <meta name="description" content="Relationships between hierarchical derivatives with explicit rank and degree notation D_r^n. Closed-form links between D_n^1 and D_0^1 and between consecutive ranks." />
-  <meta name="author" content="GOSSA AHMED" />
 
-  <!-- hreflang -->
+  <title>Hierarchical Derivatives Relationships — Rank & Degree Links</title>
+  <meta name="description" content="Academic reference for relationships between hierarchical derivatives with explicit rank and degree notation D_n^k. Closed-form links between D_n^1, D_0^1, and consecutive ranks." />
+  <meta name="author" content="Ahmed Gossa" />
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations-en.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations-en.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations-en.html" />
 
+  <!-- OpenGraph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hierarchical Calculus">
+  <meta property="og:title" content="Hierarchical Derivatives Relationships — Rank & Degree Links">
+  <meta property="og:description" content="Relationships between hierarchical derivatives: closed-form links between D_n^1, D_0^1, and consecutive ranks." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations-en.html">
+  <meta property="og:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png">
+  <meta property="og:image:alt" content="Ahmed Gossa — Hierarchical Calculus official logo">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hierarchical Derivatives Relationships — Rank & Degree Links">
+  <meta name="twitter:description" content="Relationships between hierarchical derivatives: closed-form links between D_n^1, D_0^1, and consecutive ranks.">
+  <meta name="twitter:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ScholarlyArticle",
+    "headline":"Hierarchical Derivatives Relationships — Rank & Degree Links",
+    "author":{
+      "@type":"Person",
+      "name":"Ahmed Gossa",
+      "url":"https://gossaahmed.github.io/gossa-math/",
+      "image":"https://gossaahmed.github.io/gossa-math/assets/images/ahmed-gossa.jpg"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Hierarchical Calculus"
+    },
+    "url":"https://gossaahmed.github.io/gossa-math/hierarchical-derivatives-relations-en.html",
+    "inLanguage":"en",
+    "image":"https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png",
+    "about":[
+      "Hierarchical Calculus",
+      "Hierarchical Derivatives",
+      "Rank",
+      "Degree",
+      "Relative Derivative",
+      "Logarithmic Derivative"
+    ]
+  }
+  </script>
+
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
-      --card: rgba(255,255,255,.06);
-      --border: rgba(255,255,255,.14);
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
       --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
@@ -36,6 +80,7 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
 
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -47,10 +92,9 @@
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
-      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    .brand img{
+      width:34px; height:auto;
+      filter: drop-shadow(0 0 10px rgba(255, 200, 120, 0.25));
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
@@ -68,6 +112,7 @@
     }
     nav a:hover{background: rgba(255,255,255,.07)}
 
+    /* Hero */
     header.hero{
       margin-top:16px;
       border:1px solid rgba(255,255,255,.10);
@@ -90,6 +135,37 @@
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    /* Author */
+    .author-card{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin:14px 0 6px;
+    }
+    .author-photo{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #4db6ff;
+      box-shadow:0 6px 18px rgba(0,0,0,.45);
+      flex:0 0 auto;
+    }
+    .author-info{ line-height:1.35; }
+    .author-info span{ color:var(--muted); font-size:13px; }
+
+    /* DOI box */
+    .doi-box{
+      border:1px solid rgba(57,211,195,.28);
+      background: rgba(57,211,195,.08);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top: 12px;
+      line-height: 1.9;
+    }
+    .doi-box a{color:#bfe8ff}
+
+    /* Cards */
     .card{
       margin-top:14px;
       border:1px solid rgba(255,255,255,.10);
@@ -126,12 +202,16 @@
       padding-top: 18px;
       border-top: 1px solid rgba(255,255,255,.10);
     }
+
+    @media (max-width:650px){
+      .author-card{flex-direction:column; text-align:center}
+    }
   </style>
 
   <!-- MathJax -->
   <script>
     window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
       options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
@@ -139,35 +219,67 @@
 </head>
 
 <body>
+  <!-- Top bar -->
   <div class="topbar">
     <div class="inner">
+
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <a href="./index.html" title="Home">
+          <img src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
+        </a>
         <div class="title">
           <strong>Hierarchical Derivatives Relationships</strong>
-          <span>Explicit rank & degree notation: \(D_r^n\)</span>
+          <span>Explicit rank &amp; degree notation: \(D_n^k\)</span>
         </div>
       </div>
-      <nav>
-        <a href="./index-en.html">Home</a>
-        <a href="./rules.html">Rules</a>
-        <a href="./series-en.html">Series</a>
+
+      <!-- Fixed EN links -->
+      <nav aria-label="Navigation">
+        <a href="./index.html">Home</a>
+        <a href="./hierarchical-calculus-en.html">Theory</a>
+        <a href="./rules-en.html">Rules</a>
         <a href="./integrals-en.html">Integrals</a>
-        <a href="./hierarchical-derivatives-relations.html">العربية</a>
+        <a href="./series-en.html">Series</a>
+        <a href="./references-en.html">References</a>
+        <a href="./hierarchical-derivatives-relations.html" title="Arabic version">العربية</a>
       </nav>
+
     </div>
   </div>
 
   <div class="wrap">
+
     <header class="hero">
       <h1>Relationships between hierarchical derivatives</h1>
+
+      <div class="author-card">
+        <img src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa" class="author-photo">
+        <div class="author-info">
+          <strong>Ahmed Gossa</strong><br>
+          <span>Independent Researcher — Hierarchical Calculus</span>
+        </div>
+      </div>
+
       <p class="muted">
         Hierarchical derivatives are not independent operators; they form linked levels of a single derivative pyramid.
         <br>
-        <b>Notation rule:</b> every derivative is written with both <b>rank</b> and <b>degree</b>: \(\;D_r^n\).
-        In this page, most formulas concern <b>degree 1</b>, so we write it explicitly:
+        <b>Notation rule:</b> every derivative is written with both <b>rank</b> and <b>degree</b>: \(\;D_n^k\).
+        This page mainly concerns <b>degree 1</b>, so we write:
         \(\;D_0^{1}, D_1^{1}, D_2^{1}, \dots, D_n^{1}\).
       </p>
+
+      <div class="doi-box">
+        <div><strong>Concept DOI (main reference):</strong>
+          <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+            10.5281/zenodo.17917302
+          </a>
+        </div>
+        <div class="small muted">
+          For full theory: <a href="./hierarchical-calculus-en.html">Hierarchical Calculus (Theory)</a>
+          · For rank/degree details: <a href="./derivative-rank-degree-en.html">Rank &amp; Degree</a>
+        </div>
+      </div>
+
     </header>
 
     <section class="card">
@@ -285,13 +397,16 @@
       <div class="note">
         <strong>Note:</strong>
         Higher degrees (e.g. \(D_1^{2}\), \(D_1^{3}\), …) are obtained by successive application within the same rank,
-        as defined on the “Rank & Degree” page.
+        as defined on the “Rank &amp; Degree” page.
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Hierarchical Derivatives Relationships (with \(D_r^n\))
+      © 2025 — Ahmed Gossa · Hierarchical Derivatives Relationships
+      · Concept DOI:
+      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
     </footer>
   </div>
 </body>
 </html>
+
