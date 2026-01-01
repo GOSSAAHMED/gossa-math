@@ -5,41 +5,50 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>Derivative Rank & Degree | Hierarchical Calculus (D0, D1, Dₙ¹)</title>
-  <meta name="description" content="Reference + tutorial: every hierarchical derivative is defined by a rank (type/layer) and a degree (successive application). Unified notation D_r^n, the single adopted definition of D_r^1 via iterated logarithms, domain conditions, computable operators δ_r, and worked examples." />
+  <meta name="description" content="Reference + tutorial: every hierarchical derivative is defined by a rank (type/layer) and a degree (successive application). Unified notation D_n^k, the adopted definition of D_r^1 via iterated logarithms, domain conditions, computable operators δ_r, and worked examples." />
   <meta name="author" content="Ahmed Gossa" />
 
-  <!-- Canonical -->
   <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
 
-  <!-- hreflang -->
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Hierarchical Calculus" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Derivative Rank & Degree | Hierarchical Calculus (D0, D1, Dₙ¹)" />
-  <meta property="og:description" content="Unified notation D_r^n + single adopted definition of D_r^1 + domain conditions + δ_r operators + examples." />
+  <meta property="og:description" content="Unified notation D_n^k + adopted definition of D_r^1 + domain conditions + δ_r operators + examples." />
   <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png" />
+  <meta property="og:image:alt" content="Ahmed Gossa — Hierarchical Calculus official logo" />
 
-  <!-- Structured Data -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Derivative Rank & Degree | Hierarchical Calculus (D0, D1, Dₙ¹)" />
+  <meta name="twitter:description" content="Unified notation D_n^k + adopted definition of D_r^1 + domain conditions + δ_r operators + examples." />
+  <meta name="twitter:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png" />
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "ScholarlyArticle",
     "headline": "Derivative Rank and Degree in Hierarchical Calculus",
     "inLanguage": "en",
     "author": {
       "@type": "Person",
       "name": "Ahmed Gossa",
-      "url": "https://gossaahmed.github.io/gossa-math/"
+      "url": "https://gossaahmed.github.io/gossa-math/",
+      "image": "https://gossaahmed.github.io/gossa-math/assets/images/ahmed-gossa.jpg"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://gossaahmed.github.io/gossa-math/derivative-rank-degree-en.html"
     },
+    "image": "https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png",
     "about": [
       "Hierarchical Calculus",
       "Hierarchical Derivative D_n^1",
@@ -76,6 +85,7 @@
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 60px}
+
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -87,9 +97,9 @@
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
-      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    .brand img{
+      width:34px; height:auto;
+      filter: drop-shadow(0 0 10px rgba(255, 200, 120, 0.25));
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
@@ -129,6 +139,37 @@
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    .author-card{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin:14px 0 12px;
+      flex-wrap:wrap;
+    }
+    .author-photo{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #4db6ff;
+      box-shadow:0 6px 18px rgba(0,0,0,.45);
+      flex:0 0 auto;
+    }
+    .author-info span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .doi-box{
+      border:1px solid rgba(57,211,195,.28);
+      background: rgba(57,211,195,.08);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top: 12px;
+      line-height: 1.9;
+    }
+    .doi-box a{color:#bfe8ff}
+
     .card{
       margin-top:14px;
       border:1px solid rgba(255,255,255,.10);
@@ -137,7 +178,11 @@
       box-shadow: var(--shadow);
       padding: 18px 18px;
     }
-    .bar{width:4px; height:18px; border-radius:99px; background: linear-gradient(180deg, var(--accent), var(--accent2)); display:inline-block}
+    .bar{
+      width:4px; height:18px; border-radius:99px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      display:inline-block
+    }
 
     .block{
       border:1px solid rgba(255,255,255,.12);
@@ -191,12 +236,15 @@
       padding-top: 18px;
       border-top: 1px solid rgba(255,255,255,.10);
     }
+
+    @media (max-width:650px){
+      .author-card{flex-direction:column; text-align:center}
+    }
   </style>
 
-  <!-- MathJax -->
   <script>
     window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
       options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
@@ -206,38 +254,69 @@
 <body>
   <div class="topbar">
     <div class="inner">
+
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <a href="./index.html" title="Home">
+          <img src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
+        </a>
         <div class="title">
           <strong>Derivative Rank & Degree</strong>
-          <span>Unified notation: \(D_r^n\) — with the adopted definition of \(D_r^1\)</span>
+          <span>Unified notation: \(D_r^n\) — adopted definition of \(D_r^1\)</span>
         </div>
       </div>
+
       <div class="actions">
         <a class="btn" href="./index.html">Home</a>
+        <a class="btn" href="./hierarchical-calculus-en.html">Theory</a>
+        <a class="btn" href="./references-en.html">References</a>
         <a class="btn" href="./derivative-rank-degree.html">العربية</a>
-        <a class="btn" href="./rules-en.html">Rules</a>
         <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
       </div>
+
     </div>
   </div>
 
   <div class="wrap">
     <header class="hero">
       <h1>Every derivative has a rank and a degree</h1>
+
+      <div class="author-card">
+        <img src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa" class="author-photo">
+        <div class="author-info">
+          <strong>Ahmed Gossa</strong><br>
+          <span>Independent Researcher — Hierarchical Calculus</span>
+        </div>
+      </div>
+
       <p class="muted" style="margin:0">
         In Hierarchical Calculus, a derivative is never written without specifying its <b>rank</b> (type / transformation layer)
         and its <b>degree</b> (how many successive applications). The compact notation is:
       </p>
+
       <div class="math" style="margin-top:12px">
         \[
           \boxed{D_{r}^{n}}
         \]
       </div>
+
       <p class="muted small" style="margin:10px 0 0 0">
         where \(r \in \{0,1,2,\dots\}\) is the rank (0: differential, 1: relative, 2: logarithmic, …)
         and \(n \in \{0,1,2,\dots\}\) is the degree.
       </p>
+
+      <div class="doi-box">
+        <div><strong>Concept DOI (main reference):</strong>
+          <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+            10.5281/zenodo.17917302
+          </a>
+        </div>
+        <div class="small muted">
+          Related pages:
+          <a href="./hierarchical-derivatives-relations-en.html">Derivative Relationships</a>
+          ·
+          <a href="./rules-en.html">Rules</a>
+        </div>
+      </div>
 
       <div class="ok">
         <strong>Single-source-of-truth rule</strong>
