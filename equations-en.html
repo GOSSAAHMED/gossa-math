@@ -8,13 +8,11 @@
 <meta name="description" content="Reference + tutorial: Hierarchical equations unify differential (D0), relative (D1), logarithmic (rank 2), and higher-rank equations using the rank–degree notation D_r^n. Includes strict definitions, domain assumptions, lifting method, worked examples, and a mini-solver workflow." />
 <meta name="author" content="Ahmed Gossa" />
 
-<!-- Canonical + hreflang -->
 <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
 <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
 <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/equations.html" />
 <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/equations-en.html" />
 
-<!-- Open Graph / Twitter -->
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Hierarchical Equations | Hierarchical Calculus (D0, D1, D_r^n)" />
@@ -143,7 +141,6 @@ pre{white-space:pre-wrap}
 .toc a{display:block;margin:7px 0}
 </style>
 
-<!-- MathJax -->
 <script>
 window.MathJax={
   tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]']]},
@@ -152,7 +149,6 @@ window.MathJax={
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -196,16 +192,16 @@ window.MathJax={
   </div>
 
   <nav aria-label="Navigation">
-    <a href="index-en.html">Home</a>
-    <a href="theory-en.html">Theory</a>
-    <a href="rules-en.html">Rules</a>
+    <a href="./index-en.html">Home</a>
+    <a href="./theory-en.html">Theory</a>
+    <a href="./rules-en.html">Rules</a>
     <a href="#definition">Definition</a>
     <a href="#notation">Notation</a>
     <a href="#examples">Examples</a>
     <a href="#lifting">Lifting</a>
     <a href="#workflow">Workflow</a>
     <a href="#cite">Citation</a>
-    <a href="index-ar.html">العربية</a>
+    <a href="./index-ar.html">العربية</a>
   </nav>
 </div>
 
@@ -256,7 +252,7 @@ window.MathJax={
 
       <div class="math">
         \[
-          \mathcal{E}_k\big(x,\ f,\ D_{0}^{\bullet}f,\ D_{1}^{\bullet}f,\ \dots,\ D_{k}^{\bullet}f\big)=0,
+          \mathcal{E}_k\big(x,\ f,\ D_{0}^{\bullet}f,\ D_{1}^{\bullet}f,\ \dots,\ D_{k}^{\bullet}f\big)=0.
         \]
       </div>
 
@@ -552,10 +548,10 @@ window.MathJax={
     <div class="footer small">
       Useful links:
       <ul>
-        <li><a href="index-en.html">Home</a></li>
-        <li><a href="theory-en.html">Theory</a></li>
-        <li><a href="rules-en.html">Rules</a></li>
-        <li><a href="equations-solved-en.html">Solved Equations</a></li>
+        <li><a href="./index-en.html">Home</a></li>
+        <li><a href="./theory-en.html">Theory</a></li>
+        <li><a href="./rules-en.html">Rules</a></li>
+        <li><a href="./equations-solved-en.html">Solved Equations</a></li>
         <li><a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">Version DOI (v1.0.0)</a></li>
       </ul>
@@ -565,12 +561,11 @@ window.MathJax={
 </div>
 
 <script>
-/* small UX: if a link points to #hash, keep focus */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', ()=> setTimeout(()=> {
     const id = location.hash.replace('#','');
     const el = document.getElementById(id);
-    if(el) el.setAttribute('tabindex','-1'), el.focus({preventScroll:true});
+    if(el){ el.setAttribute('tabindex','-1'); el.focus({preventScroll:true}); }
   }, 0));
 });
 </script>
