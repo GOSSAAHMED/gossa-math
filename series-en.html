@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>Series — Differential, Relative, and Logarithmic | Hierarchical Calculus</title>
-  <meta name="description" content="A unified reference page: Differential Taylor series (D0), Relative multiplicative series (D1), and Rank-2 logarithmic exponential series (D2), with approximation use-cases and examples." />
+  <meta name="description" content="A unified reference page: Differential Taylor series (D0), Relative multiplicative series (D1), and Rank-2 logarithmic exponential series (D2), with practical usage guidance and examples." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical + hreflang -->
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Series — Differential, Relative, and Logarithmic | Hierarchical Calculus" />
-  <meta property="og:description" content="Differential Taylor (D0), Relative multiplicative (D1), Rank-2 logarithmic exponential (D2). Use-cases + examples." />
+  <meta property="og:description" content="Ranked approximation series: D0 (differential), D1 (relative multiplicative), D2 (logarithmic exponential). Best choice depends on function type and closeness notion." />
   <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/series-en.html" />
   <meta name="twitter:card" content="summary" />
 
@@ -38,7 +38,6 @@
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -50,13 +49,11 @@
         linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
     }
-
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-
     .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 60px}
 
-    /* ===== Topbar ===== */
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -65,15 +62,14 @@
     }
     .topbar .inner{
       max-width:1100px; margin:0 auto; padding:10px 16px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px; flex-wrap:wrap;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
 
     .brand{display:flex; align-items:center; gap:10px}
     .logo-img{
       width:38px;height:38px;border-radius:12px;object-fit:cover;
       border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
       background:rgba(255,255,255,.04);
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
@@ -98,7 +94,7 @@
       background: rgba(57,211,195,.12);
     }
 
-    /* ===== Hero ===== */
+    /* Hero */
     header.hero{
       margin-top:18px;
       border:1px solid rgba(255,255,255,.10);
@@ -121,16 +117,14 @@
 
     .hero-top{
       display:flex;
+      align-items:flex-start;
       justify-content:space-between;
       gap:14px;
-      align-items:flex-start;
       flex-wrap:wrap;
     }
 
     .author-card{
-      display:flex;
-      gap:12px;
-      align-items:center;
+      display:flex; gap:12px; align-items:center;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.04);
       border-radius:18px;
@@ -161,7 +155,7 @@
       margin: 6px 6px 0 0;
     }
 
-    /* ===== Layout ===== */
+    /* Grid + Cards */
     .grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -198,7 +192,6 @@
       margin: 12px 0;
     }
     .label{font-weight:800; margin-bottom:8px}
-
     .math{
       margin-top: 8px;
       border:1px solid rgba(255,255,255,.10);
@@ -209,7 +202,6 @@
       direction:ltr;
       text-align:left;
     }
-
     code{
       font-family: var(--mono);
       background: rgba(0,0,0,.22);
@@ -217,6 +209,8 @@
       border-radius:10px;
       direction:ltr;
     }
+    ul{margin:8px 0 0 0; padding-left:18px}
+    li{margin:6px 0}
 
     .note{
       border:1px solid rgba(255,204,102,.35);
@@ -227,8 +221,6 @@
       line-height:1.9;
     }
     .note strong{color:var(--warn)}
-    ul{margin:8px 0 0 0; padding-left:18px}
-    li{margin:6px 0}
 
     footer{
       margin-top: 18px;
@@ -277,7 +269,6 @@
     }
   }
   </script>
-
 </head>
 
 <body>
@@ -309,9 +300,9 @@
           <p class="muted" style="margin:0; line-height:1.9">
             This page unifies three approximation families around a reference point \(x_0\):
             (1) the classical differential Taylor series (rank 0, operator \(D_0^n\)),
-            (2) a relative multiplicative (“product”) Taylor series (rank 1, operator \(D_1^n\)),
-            (3) a rank-2 logarithmic exponential series (rank 2, operator \(D_2^n\)).
-            We always write derivatives with both <b>rank</b> and <b>degree</b>.
+            (2) a relative multiplicative (“Product Taylor”) series (rank 1, operator \(D_1^n\)),
+            (3) a rank-2 logarithmic–exponential series (rank 2, operator \(D_2^n\)).
+            We always write derivatives explicitly with both <b>rank</b> and <b>degree</b>.
           </p>
 
           <div style="margin-top:10px">
@@ -332,9 +323,7 @@
       </div>
     </header>
 
-    <!-- content stays the same -->
-    <!-- you can keep the rest unchanged, paste your original content here -->
-
+    <!-- Core concepts -->
     <section class="card" style="margin-top:16px">
       <h2><span class="bar"></span>Core Concepts</h2>
 
@@ -342,9 +331,9 @@
         <div class="label">Expansion point</div>
         <p class="muted small" style="margin:0">
           Choose \(x_0\) inside the domain. Approximation quality depends on the notion of “closeness”:
-          <br>— For rank 0: additive closeness via \(x-x_0\).
-          <br>— For rank 1: relative closeness via \(x/x_0\).
-          <br>— For rank 2: logarithmic closeness via \(\ln x/\ln x_0\) (equivalently \(\ln(\ln x)\)).
+          <br>— Rank 0: additive closeness via \(x-x_0\).
+          <br>— Rank 1: relative closeness via \(x/x_0\).
+          <br>— Rank 2: logarithmic closeness via \(\ln x/\ln x_0\) (equivalently \(\ln(\ln x)\)).
         </p>
       </div>
 
@@ -355,12 +344,257 @@
       </div>
     </section>
 
-    <!-- ✅ from here paste the rest of your old body exactly كما هو -->
+    <div class="grid">
+
+      <!-- D0 -->
+      <section class="card">
+        <h2><span class="bar"></span>1) Differential series — rank 0 (operator \(D_0^n\))</h2>
+        <p class="muted small">
+          The classical Taylor series built from the standard differential operator. Rank+degree is written \(D_0^n\).
+        </p>
+
+        <div class="block">
+          <div class="label">Formula (Taylor)</div>
+          <div class="math">
+            \[
+              f(x)=\sum_{n=0}^{\infty}\frac{(D_{0}^{n}f)(x_0)}{n!}\,(x-x_0)^{n}.
+            \]
+          </div>
+          <p class="muted small" style="margin:10px 0 0 0">
+            Here \(D_{0}^{0}f=f\), \(D_{0}^{1}f=df/dx\), \(D_{0}^{2}f=d^2f/dx^2\), etc.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="label">When is it strongest?</div>
+          <ul class="muted small">
+            <li>When \(x\) is extremely close to \(x_0\) additively (\(x-x_0\)).</li>
+            <li>Excellent local approximations for analytic functions (sin, cos, exp...).</li>
+            <li>Limited by nearby poles/singularities that control convergence radius.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- D1 -->
+      <section class="card">
+        <h2><span class="bar"></span>2) Relative multiplicative series — rank 1 (operator \(D_1^n\))</h2>
+        <p class="muted small">
+          A “product Taylor”: sum → product, minus → division. Built from successive relative derivatives of degree \(n\) at rank 1.
+        </p>
+
+        <div class="block">
+          <div class="label">Definitions</div>
+          <div class="math">
+            \[
+              t=\frac{x}{x_0},\qquad \Delta=\ln\!\left(\frac{x}{x_0}\right)=\ln t.
+            \]
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Formula (agreed “Form 2”)</div>
+          <div class="math">
+            \[
+              \frac{f(x)}{f(x_0)}
+              =
+              \prod_{n=1}^{\infty}
+              \left(\frac{x}{x_0}\right)^{
+                \frac{\left(D_{1}^{n}\ln f\right)(x_0)}{n!}\;\Delta^{\,n-1}
+              }.
+            \]
+          </div>
+
+          <p class="muted small" style="margin:10px 0 0 0">
+            where
+            \[
+              \left(D_{1}^{n}\ln f\right)(x_0)
+              =
+              \left.\left(\frac{d}{d\ln x}\right)^{n}\ln f(x)\right|_{x=x_0}.
+            \]
+          </p>
+          <p class="muted small" style="margin:8px 0 0 0">
+            Here the <b>degree</b> \(n\) is the differentiation order with respect to \(\ln x\).
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="label">Why multiplicative?</div>
+          <p class="muted small" style="margin:0">
+            We expand \(\ln f\) with respect to \(\ln x\) (additive), then map back to \(f\) (multiplicative).
+            A negative exponent means division:
+            \[
+              \left(\frac{x}{x_0}\right)^{-a}=\frac{1}{\left(\frac{x}{x_0}\right)^{a}}.
+            \]
+          </p>
+        </div>
+      </section>
+
+      <!-- D2 -->
+      <section class="card">
+        <h2><span class="bar"></span>3) Rank-2 logarithmic–exponential series — rank 2 (operator \(D_2^n\))</h2>
+        <p class="muted small">
+          In rank 2, the effective variable is \(\ln(\ln x)\).
+          We use a practical formulation that approximates \(\ln f(x)\) relative to \(\ln f(x_0)\),
+          while the rank-2 derivative itself is defined through \(\ln(\ln f)\).
+        </p>
+
+        <div class="block">
+          <div class="label">Definitions</div>
+          <div class="math">
+            \[
+              \Delta_2=\ln(\ln x)-\ln(\ln x_0)=\ln\!\left(\frac{\ln x}{\ln x_0}\right),
+              \qquad
+              t_2=\frac{\ln x}{\ln x_0}.
+            \]
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Rank-2 derivative (degree 1)</div>
+          <div class="math">
+            \[
+              \boxed{
+              D_{2}^{1} f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}
+              }
+              \qquad
+              (x>1,\ f(x)>1)
+            \]
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="label">Formula (practical form)</div>
+          <div class="math">
+            \[
+              \frac{\ln f(x)}{\ln f(x_0)}
+              =
+              \prod_{n=1}^{\infty}
+              \left(\frac{\ln x}{\ln x_0}\right)^{
+                \frac{\left(D_{2}^{n}\ln^{(2)} f\right)(x_0)}{n!}\;\Delta_2^{\,n-1}
+              }.
+            \]
+          </div>
+
+          <p class="muted small" style="margin:10px 0 0 0">
+            where \(\ln^{(2)}f=\ln(\ln f)\), and
+            \[
+              \left(D_{2}^{n}\ln^{(2)} f\right)(x_0)
+              =
+              \left.\left(\frac{d}{d\,\ln(\ln x)}\right)^{n}\ln(\ln f(x))\right|_{x=x_0}.
+            \]
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="label">Interpretation</div>
+          <p class="muted small" style="margin:0">
+            Rank 2 measures closeness through \(\ln(\ln x)\), hence \(\ln x/\ln x_0\) appears naturally.
+            Negative exponents again correspond to division.
+          </p>
+        </div>
+      </section>
+
+      <!-- Approximation practice -->
+      <section class="card">
+        <h2><span class="bar"></span>How to use these series for approximation</h2>
+
+        <div class="block">
+          <div class="label">Practical recipe</div>
+          <ul class="muted small">
+            <li>Choose \(x_0\) inside your region of interest.</li>
+            <li>Select the closeness scale: difference (rank 0), ratio (rank 1), or log-log (rank 2).</li>
+            <li>Pick a truncation degree \(N\) (e.g., 3 or 4) and use the truncated formula.</li>
+            <li>Reminder: \(D_0^n\) are ordinary derivatives, while rank-1 and rank-2 series are built from successive derivatives with respect to \(\ln x\) and \(\ln(\ln x)\).</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          <strong>Quick conclusion rule:</strong>
+          <br>— Power-law behavior (\(x^p\), \(\sqrt{x}\)) → rank 1 is typically strongest.
+          <br>— Oscillations (sin/cos) → rank 0 is typically strongest locally.
+          <br>— Multi-scale log behavior → rank 2 can be strongest when defined.
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Seven functions -->
+    <section class="card" style="margin-top:16px">
+      <h2><span class="bar"></span>Seven familiar functions: which approximation is strongest?</h2>
+      <p class="muted small">
+        The goal is <b>structural reasoning</b>: which series captures a function shape more efficiently.
+        Assume \(x_0>1\) (e.g., \(x_0=10\)) and compare near \(x_0\).
+      </p>
+
+      <div class="block">
+        <div class="label">1) \(f(x)=x^p\) (power law)</div>
+        <p class="muted small" style="margin:0">
+          <b>Strongest:</b> rank 1 (relative multiplicative).
+          Since \(\ln f=p\ln x\), the scale structure is captured extremely efficiently.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">2) \(f(x)=\sqrt{x}\)</div>
+        <p class="muted small" style="margin:0">
+          <b>Strongest:</b> rank 1 — a special case of power law with \(p=\tfrac12\).
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">3) \(f(x)=e^x\)</div>
+        <p class="muted small" style="margin:0">
+          <b>Depends on closeness notion:</b>
+          <br><b>rank 0:</b> best for very small additive neighborhoods.
+          <br><b>rank 1:</b> useful when change is discussed in relative terms.
+          <br><b>rank 2:</b> can help across broader scales when \(\ln(\ln f)\) is well-defined.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">4) \(f(x)=\ln x\) (for \(x>1\))</div>
+        <p class="muted small" style="margin:0">
+          <b>Often strongest:</b> rank 2 (when defined), since \(\ln x\) aligns with \(\ln(\ln x)\) scale.
+          <br><b>Locally:</b> rank 0 also works well if \(x-x_0\) is small.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">5) \(f(x)=\dfrac{1}{1-\alpha x}\) (away from the pole)</div>
+        <p class="muted small" style="margin:0">
+          <b>Strongest:</b> rank 0 (Taylor), provided \(x_0\) is safely away from the pole \(x=1/\alpha\).
+          Singularities often control additive convergence radii.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">6) \(f(x)=\sin x + 2\)</div>
+        <p class="muted small" style="margin:0">
+          <b>Strongest:</b> rank 0 locally, since oscillations are best captured additively.
+          Rank 1 is usually less economical for non-scale-invariant oscillations.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="label">7) \(f(x)=1+\dfrac{1}{x}\)</div>
+        <p class="muted small" style="margin:0">
+          <b>Often strongest:</b> rank 1 for relative changes because variation is scale-driven and slow.
+          Rank 0 is also good locally but may require higher degree for the same accuracy over larger relative changes.
+        </p>
+      </div>
+
+      <div class="note">
+        <strong>Final takeaway:</strong>
+        There is no universally best series. The best choice depends on the function type (power / oscillatory / logarithmic)
+        and the notion of closeness (difference / ratio / log-log scale).
+      </div>
+    </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Series in Hierarchical Calculus (rank 0, 1, 2)
+      © 2025 — GOSSA AHMED · Series in Hierarchical Calculus (ranks 0, 1, 2)
     </footer>
 
   </div>
 </body>
 </html>
+
