@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>الجزء العددي | الحساب الهرمي</title>
-  <meta name="description" content="الجزء العددي في الحساب الهرمي: تقريبات محلية في الرتبة 0 (D0)، الرتبة 1 (D1 نسبي)، والرتبة 2 (D2 لوغاريتمي)، مع مقارنة الأخطاء على نموذج متعدد المقاييس وقانون قدرة." />
+  <title>العدديات | الحساب الهرمي</title>
+  <meta name="description" content="العدديات في الحساب الهرمي: تقريبات محلية بالرتبة 0 (D0)، الرتبة 1 (D1 النسبي)، الرتبة 2 (D2 اللوغاريتمي)، مع مقارنة أخطاء على نماذج متعددة المقاييس وقوانين القوى." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- canonical + hreflang -->
@@ -36,7 +36,7 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
 
-    /* topbar (unified) */
+    /* topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -124,9 +124,17 @@
       width:100%;
       border-collapse:separate;
       border-spacing:0;
-      min-width: 860px;
+      min-width: 820px;
       background: rgba(0,0,0,.18);
       direction:ltr;
+    }
+    caption{
+      caption-side:top;
+      padding:10px 10px 8px;
+      text-align:right;
+      color: rgba(234,242,255,.78);
+      font-size:13px;
+      direction:rtl;
     }
     th,td{
       padding:10px 10px;
@@ -152,8 +160,7 @@
       color:#bfe8ff;
       font-size:12px;
     }
-    code{font-family:var(--mono)}
-    .rtl{direction:rtl; text-align:right}
+    code{font-family:var(--mono); direction:ltr}
     footer{
       margin-top:18px; padding-top:18px;
       border-top:1px solid rgba(255,255,255,.10);
@@ -175,19 +182,19 @@
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": "الجزء العددي | الحساب الهرمي",
-  "alternativeHeadline": "مقارنة الأخطاء بين D0 وD1 (نسبي) وD2 (لوغاريتمي)",
+  "headline": "العدديات | الحساب الهرمي",
+  "alternativeHeadline": "مقارنة الأخطاء بين تقريبات D0 و D1 و D2",
   "author": {
     "@type": "Person",
     "name": "Ahmed Gossa",
     "url": "https://gossaahmed.github.io/gossa-math/"
   },
   "about": [
-    "الحساب الهرمي",
-    "تقريبات عددية",
-    "المشتق النسبي D1",
-    "المشتق اللوغاريتمي D2",
-    "تحليل الخطأ"
+    "Hierarchical Calculus",
+    "Numerical Approximation",
+    "Relative Derivative D1",
+    "Logarithmic Derivative D2",
+    "Error Analysis"
   ],
   "inLanguage": "ar",
   "url": "https://gossaahmed.github.io/gossa-math/numerics.html",
@@ -203,7 +210,7 @@
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
           <strong>الحساب الهرمي</strong>
-          <span>الجزء العددي — مقارنة الأخطاء (ترميز \(D_r^n\))</span>
+          <span>العدديات — مقارنة الأخطاء (ترميز صريح \(D_r^n\))</span>
         </div>
       </div>
 
@@ -222,15 +229,14 @@
 
   <div class="wrap">
     <header class="hero">
-      <h1>الحساب العددي ومقارنة الأخطاء</h1>
+      <h1>العدديات ومقارنة الأخطاء</h1>
       <p class="muted">
-        الفكرة الأساسية: بدل تقريب \(f(x)\) مباشرة (رتبة 0)، يمكن تقريبها في فضاء
-        <b>نسبي</b> (رتبة 1) أو فضاء <b>لوغاريتمي أعلى (لوغ–لوغ)</b> (رتبة 2) ثم الرجوع،
-        وغالبًا يكون ذلك أكثر استقرارًا عدديًا.
+        بدلًا من تقريب \(f(x)\) مباشرةً (الرتبة 0)، يمكن تقريبها في فضاء
+        <b>نسبي</b> (الرتبة 1) أو في فضاء أعلى <b>لوغ–لوغ</b> (الرتبة 2)، ثم العودة إلى \(f\).
+        هذا كثيرًا ما يُحسن الاستقرار العددي للقيم الكبيرة وللسلوك متعدد المقاييس.
         <br>
-        <b>قاعدة الترميز:</b> نكتب كل مشتق بالرتبة والدرجة:
-        \(\;D_r^n\). وفي هذه الصفحة نستعمل غالبًا الدرجة \(1\):
-        \(\;D_0^1, D_1^1, D_2^1\).
+        <b>قاعدة الترميز:</b> نكتب المشتقات دائمًا بالرتبة والدرجة:
+        \(\;D_r^n\). وفي هذه الصفحة نستعمل غالبًا الدرجة \(1\): \(\;D_0^1, D_1^1, D_2^1\).
       </p>
       <p class="muted small" style="margin:10px 0 0 0">
         Concept DOI:
@@ -239,12 +245,12 @@
     </header>
 
     <section class="card" id="methods">
-      <h2>1) طرق التقريب المحلية (حول نقطة \(x_0\))</h2>
+      <h2>1) طرق التقريب المحلي (حول نقطة أساس \(x_0\))</h2>
       <p class="muted small" style="margin:0">
-        نقارن ثلاث نماذج محلية من الدرجة الأولى عبر تثبيت مشتق مناسب (عند الدرجة \(1\)) محليًا حول \(x_0\).
+        نقارن ثلاث نماذج من الدرجة الأولى عبر تثبيت مشتق مناسب (درجة \(1\)) محليًا عند \(x_0\).
       </p>
 
-      <h3 style="margin-top:14px"><span class="badge">الرتبة 0 (D0)</span> تايلور 1 (جمعي)</h3>
+      <h3 style="margin-top:14px"><span class="badge">الرتبة 0 (D0)</span> تايلور من الدرجة الأولى (إضافي)</h3>
       <div class="math">
         \[
           f(x)\approx f(x_0)+\left(D_{0}^{1}f\right)(x_0)\,(x-x_0).
@@ -260,29 +266,39 @@
         \]
       </div>
 
-      <h3><span class="badge">الرتبة 2 (D2)</span> النموذج اللوغ–لوغ (بنيوي)</h3>
+      <h3><span class="badge">الرتبة 2 (D2)</span> نموذج لوغ–لوغ (بنيوي)</h3>
       <div class="math">
         \[
-          D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+          \boxed{
+            D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}
+          }
         \]
         \[
-          \ln(\ln f(x))\approx \ln(\ln f(x_0)) +
-          \left(D_{2}^{1}f\right)(x_0)\left(\ln(\ln x)-\ln(\ln x_0)\right).
+          \Delta_2=\ln(\ln x)-\ln(\ln x_0)=\ln\!\left(\frac{\ln x}{\ln x_0}\right),
+          \qquad
+          a=\left(D_{2}^{1}f\right)(x_0).
         \]
         \[
-          \Rightarrow\quad
-          f(x)\approx \exp\!\Big(\exp\!\big(\ln(\ln f(x_0)) + (D_{2}^{1}f)(x_0)\big(\ln(\ln x)-\ln(\ln x_0)\big)\big)\Big).
+          \ln(\ln f(x))\approx \ln(\ln f(x_0)) + a\,\Delta_2
+          \quad\Rightarrow\quad
+          f(x)\approx \exp\!\Big(\exp(\ln(\ln f(x_0)) + a\,\Delta_2)\Big).
         \]
       </div>
 
       <div class="note">
         <strong>ملاحظة مجال:</strong>
-        الرتبة الثانية تتطلب \(x>1\) (حتى \(\ln x>0\)) وغالبًا \(f(x)>1\) (حتى \(\ln f>0\)).
+        الرتبة 2 تتطلب \(x>1\) (حتى تكون \(\ln x>0\)) وغالبًا \(f(x)>1\) (حتى تكون \(\ln f>0\)).
+      </div>
+
+      <div class="note">
+        <strong>مقياس الخطأ:</strong>
+        نستعمل الخطأ النسبي:
+        \(\;\varepsilon = \left|\dfrac{\widehat{f}(x)-f(x)}{f(x)}\right|\).
       </div>
     </section>
 
     <section class="card" id="exp1">
-      <h2>2) تجربة 1: نموذج متعدد المقاييس حيث الرتبة 2 تصبح دقيقة</h2>
+      <h2>2) تجربة 1: نموذج متعدد المقاييس تصبح فيه الرتبة 2 دقيقة</h2>
 
       <div class="math">
         \[
@@ -294,25 +310,26 @@
       </p>
 
       <div class="callout">
-        <div style="font-weight:900;margin-bottom:6px">سبب الاختيار</div>
+        <div style="font-weight:900;margin-bottom:6px">لماذا هذا المثال؟</div>
         <div class="muted small">
-          هنا \(\ln(\ln f)=\ln((\ln x)^2)=2\ln(\ln x)\)، لذا \(D_{2}^{1}f=2\) ثابت.
-          إذن تقريب الرتبة 2 يكون “دقيقًا نظريًا”، وأي \(\approx 0\) في الجدول سببه التقريب/التدوير في العرض فقط.
+          لدينا \(\ln(\ln f)=\ln((\ln x)^2)=2\ln(\ln x)\)، وبالتالي \(D_{2}^{1}f=2\) ثابت.
+          إذن التقريب من الرتبة الثانية دقيق نظريًا؛ وأي خطأ ظاهر \(\approx 0\) سببه التقريب العددي/التنسيق.
         </div>
       </div>
 
-      <div class="tablewrap" aria-label="جدول التجربة 1">
+      <div class="tablewrap" aria-label="Experiment 1 table">
         <table>
+          <caption>جدول — تجربة 1 (متعدد المقاييس): مقارنة D0 و D1 و D2</caption>
           <thead>
             <tr>
               <th>x</th>
-              <th>True</th>
-              <th>Rank 0</th>
-              <th>Rank 1</th>
-              <th>Rank 2</th>
-              <th>Rel.err R0</th>
-              <th>Rel.err R1</th>
-              <th>Rel.err R2</th>
+              <th>القيمة الحقيقية</th>
+              <th>الرتبة 0</th>
+              <th>الرتبة 1</th>
+              <th>الرتبة 2</th>
+              <th>خطأ نسبي R0</th>
+              <th>خطأ نسبي R1</th>
+              <th>خطأ نسبي R2</th>
             </tr>
           </thead>
           <tbody>
@@ -328,12 +345,12 @@
 
       <div class="note">
         <strong>ملاحظة:</strong>
-        إذا حسبت الجدول ببرنامج واحتفظت بعدد أكبر من الأرقام، ستظهر أخطاء الرتبة 2 قريبة من دقة الآلة (Machine precision).
+        عند حساب الجدول برمجيًا، استعمل عددًا أكبر من الأرقام لإظهار أن أخطاء الرتبة 2 قرب دقة الآلة.
       </div>
     </section>
 
     <section class="card" id="exp2">
-      <h2>3) تجربة 2: قانون قدرة حيث الرتبة 1 تصبح دقيقة</h2>
+      <h2>3) تجربة 2: قانون قوى تصبح فيه الرتبة 1 دقيقة</h2>
 
       <div class="math">
         \[
@@ -345,22 +362,23 @@
       </p>
 
       <div class="callout">
-        <div style="font-weight:900;margin-bottom:6px">سبب الاختيار</div>
+        <div style="font-weight:900;margin-bottom:6px">لماذا هذا المثال؟</div>
         <div class="muted small">
-          لقوانين القدرة يكون \(D_{1}^{1}g=3.5\) ثابتًا، لذلك النموذج النسبي (الرتبة 1) يطابق القيمة الحقيقية (حتى التدوير).
+          في قوانين القوى يكون \(D_{1}^{1}g=3.5\) ثابتًا، لذا نموذج الرتبة 1 يطابق القيمة الحقيقية (مع تقريب طفيف فقط).
         </div>
       </div>
 
-      <div class="tablewrap" aria-label="جدول التجربة 2">
+      <div class="tablewrap" aria-label="Experiment 2 table">
         <table>
+          <caption>جدول — تجربة 2 (قانون قوى): مقارنة D0 و D1</caption>
           <thead>
             <tr>
               <th>x</th>
-              <th>True</th>
-              <th>Rank 0</th>
-              <th>Rank 1</th>
-              <th>Rel.err R0</th>
-              <th>Rel.err R1</th>
+              <th>القيمة الحقيقية</th>
+              <th>الرتبة 0</th>
+              <th>الرتبة 1</th>
+              <th>خطأ نسبي R0</th>
+              <th>خطأ نسبي R1</th>
             </tr>
           </thead>
           <tbody>
@@ -381,8 +399,8 @@
       <div class="callout">
         <div style="font-weight:900;margin-bottom:6px">قاعدة عملية</div>
         <div class="muted small">
-          إذا كان السلوك “قانون قدرة” ⟶ الرتبة 1 (المشتق النسبي \(D_{1}^{1}\)) غالبًا هي الإحداثيات الأنسب.<br>
-          إذا كان السلوك متعدد المقاييس مثل \(\exp((\ln x)^k)\) ⟶ الرتبة 2 (\(D_{2}^{1}\)) تصبح أكثر استقرارًا وقد تكون دقيقة لبعض النماذج.
+          قوانين القوى ⟶ الرتبة 1 (المشتق النسبي \(D_{1}^{1}\)) غالبًا هو نظام الإحداثيات الصحيح.<br>
+          السلوك متعدد المقاييس مثل \(\exp((\ln x)^k)\) ⟶ الرتبة 2 (\(D_{2}^{1}\)) تصبح شديدة الاستقرار وقد تكون دقيقة تمامًا لبعض النماذج.
         </div>
       </div>
 
@@ -395,7 +413,7 @@
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · الجزء العددي (ترميز \(D_r^n\))
+      © 2025 — GOSSA AHMED · العدديات (ترميز صريح \(D_r^n\))
     </footer>
   </div>
 </body>
