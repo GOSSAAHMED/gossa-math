@@ -3,28 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>تطبيقات فيزيائية — العملية الأديباتية | الحساب الهرمي</title>
-  <meta name="description" content="تطبيق ترموديناميكي: العملية الأديباتية لغاز مثالي. القانون يصبح أبسط في لغة الرتبة 1 (النسبي). كل المشتقات مكتوبة بالرتبة والدرجة D_r^n (مثل D_0^1 و D_1^1)." />
+
+  <title>الحساب الهرمي والفيزياء — نيوتن، أينشتاين، الكم، الطاقة المظلمة، والجاذبية الكمومية</title>
+  <meta name="description" content="صفحة عربية موسّعة: تطبيق الحساب الهرمي كسلّم للتغير (D0، D1، D2، وما بعد) لفهم لماذا تهيمن فيزياء نيوتن والنسبية والكم في مجالات مختلفة، مع ربط مفاهيمي بالطاقة المظلمة والجاذبية الكمومية." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- canonical + hreflang -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/physics.html" />
-  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/physics.html" />
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/physics-ar.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/physics-ar.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:title" content="الحساب الهرمي والفيزياء" />
+  <meta property="og:description" content="لغة موحّدة للتغير: نيوتن (D0)، النسبية (D1)، الكم (D2)، وربط مفاهيمي بالطاقة المظلمة والجاذبية الكمومية." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/physics-ar.html" />
+  <meta name="twitter:card" content="summary" />
 
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
       --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
-      --card: rgba(255,255,255,.05); --border: rgba(255,255,255,.12);
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
     }
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
       background:
@@ -35,8 +46,9 @@
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
 
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -44,26 +56,40 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
-      max-width:980px; margin:0 auto; padding:10px 16px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      max-width:1050px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
     }
+
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+    .logo-img{
+      width:38px;height:38px;border-radius:12px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
       box-shadow:0 12px 22px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
     .brand .title span{font-size:12px; color:var(--muted)}
 
-    nav{display:flex; gap:8px; flex-wrap:wrap}
-    nav a{
-      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04); border-radius:999px;
-      font-size:13px; color:var(--text); white-space:nowrap;
+    /* Buttons */
+    .actions{display:flex; gap:8px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size:13px;
+      cursor:pointer;
+      white-space:nowrap;
     }
-    nav a:hover{background:rgba(255,255,255,.07)}
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.12);
+    }
 
     header.hero{
       margin-top:16px; padding:20px 18px;
@@ -82,19 +108,57 @@
     }
     header.hero > *{position:relative}
 
+    .hero-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
     h1{margin:0 0 8px 0; font-size:28px}
     h2{margin:0 0 10px 0; font-size:18px}
     h3{margin:14px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
-    code{font-family:var(--mono)}
 
+    /* Author card */
+    .author-card{
+      display:flex; gap:12px; align-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:12px 14px;
+      box-shadow:0 18px 48px rgba(0,0,0,.22);
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(57,211,195,.65);
+      box-shadow:0 14px 30px rgba(0,0,0,.30);
+    }
+    .author-card .name{font-weight:900;font-size:16px;line-height:1.2}
+    .author-card .role{color:var(--muted);font-size:12px;margin-top:2px}
+
+    /* Pills */
+    .pillrow{margin-top:10px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px; color: var(--muted);
+      margin: 6px 6px 0 0;
+      white-space:nowrap;
+    }
+
+    /* Sections */
     .card{
-      margin-top:14px; padding:16px 16px;
+      margin-top:14px; padding:16px;
       border:1px solid var(--border);
       background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
     .math{
       margin-top:8px; padding:10px 12px;
@@ -105,47 +169,64 @@
       direction:ltr; text-align:left;
     }
     .note{
-      margin-top:12px; padding:12px 12px;
+      margin-top:12px; padding:12px;
       border:1px solid rgba(255,204,102,.35);
       background: rgba(255,204,102,.10);
       border-radius:14px;
     }
     .note strong{color:var(--warn)}
-
-    /* responsive table */
-    .tablewrap{
-      overflow:auto;
-      border:1px solid rgba(255,255,255,.10);
+    .callout{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background: rgba(57,211,195,.10);
       border-radius:14px;
-      margin-top:10px;
-      background: rgba(0,0,0,.18);
+      border-right:4px solid var(--accent);
     }
+
+    /* Links box */
+    .links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .linkbox{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      min-width: 220px;
+      flex: 1;
+    }
+    .linkbox strong{display:block;margin-bottom:6px}
+    .linkbox a{display:block; margin:4px 0; font-size:13px}
+
     table{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
-      min-width: 760px;
-      direction:ltr;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
     }
     thead th{
-      text-align:left;
+      text-align:right;
       font-size:13px;
       padding:10px 10px;
       background: rgba(255,255,255,.06);
       border-bottom:1px solid rgba(255,255,255,.10);
-      position:sticky; top:0;
+      vertical-align:top;
     }
     tbody td{
       padding:10px 10px;
       font-size:13px;
       color:rgba(234,242,255,.88);
       border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
     }
     tbody tr:last-child td{border-bottom:none}
-
-    .rtl-table table{direction:rtl}
-    .rtl-table thead th, .rtl-table tbody td{direction:rtl; text-align:right}
-    .ltr{direction:ltr; text-align:left}
 
     footer{
       margin-top:18px; padding-top:18px;
@@ -163,279 +244,505 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <!-- JSON-LD -->
+  <!-- Schema JSON-LD -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "headline": "تطبيقات فيزيائية — العملية الأديباتية | الحساب الهرمي",
-  "alternativeHeadline": "قانون أديباتي كمشتق نسبي ثابت (رتبة 1)",
-  "author": {
-    "@type": "Person",
-    "name": "Ahmed Gossa",
-    "url": "https://gossaahmed.github.io/gossa-math/"
-  },
-  "about": [
-    "الحساب الهرمي",
-    "المشتق النسبي",
-    "الترموديناميك",
-    "العملية الأديباتية",
-    "غاز مثالي"
-  ],
-  "inLanguage": "ar",
-  "url": "https://gossaahmed.github.io/gossa-math/physics.html",
-  "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
-}
-</script>
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "الحساب الهرمي والفيزياء",
+    "alternativeHeadline": "نيوتن، أينشتاين، الكم، الطاقة المظلمة، والجاذبية الكمومية عبر سلّم التغير",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Physics",
+      "Newtonian Mechanics",
+      "Relativity",
+      "Quantum Mechanics",
+      "Dark Energy",
+      "Quantum Gravity"
+    ],
+    "url": "https://gossaahmed.github.io/gossa-math/physics-ar.html",
+    "inLanguage": "ar",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
+    }
+  }
+  </script>
 </head>
 
 <body>
+
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
         <div class="title">
-          <strong>الحساب الهرمي</strong>
-          <span>تطبيقات فيزيائية — ترميز صريح \(D_r^n\)</span>
+          <strong>الحساب الهرمي والفيزياء</strong>
+          <span>نيوتن · أينشتاين · الكم · الطاقة المظلمة · الجاذبية الكمومية</span>
         </div>
       </div>
 
-      <nav aria-label="التنقل">
-        <a href="./index.html">الرئيسية</a>
-        <a href="./theory.html">النظرية</a>
-        <a href="./equations.html">المعادلات</a>
-        <a href="./numerics.html">العددي</a>
-        <a href="./glossary.html">المصطلحات</a>
-        <a href="./references.html">المراجع</a>
-        <a href="./physics-en.html">English</a>
-      </nav>
+      <div class="actions">
+        <a class="btn" href="./index-ar.html">الرئيسية</a>
+        <a class="btn" href="./theory.html">النظرية</a>
+        <a class="btn" href="./rules.html">القواعد</a>
+        <a class="btn" href="./equations.html">المعادلات</a>
+        <a class="btn" href="./physics-en.html">English</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
+      </div>
     </div>
   </div>
 
   <div class="wrap">
+
+    <!-- HERO -->
     <header class="hero">
-      <h1>تطبيق ترموديناميكي: العملية الأديباتية (غاز مثالي)</h1>
-      <p class="muted">
-        هذا المثال يوضح لماذا تكون لغة <b>الرتبة 1 (النسبي)</b> طبيعية في كثير من قوانين الفيزياء:
-        القوانين كثيرًا ما تربط <b>النِّسب</b> لا الفروق.
-        <br>
-        <b>قاعدة الترميز:</b> أي مشتق يُكتب دائمًا بالرتبة والدرجة \(\;D_r^n\).
-        في هذه الصفحة نستعمل الدرجة \(1\): \(\;D_0^{1}, D_1^{1}\).
-      </p>
-      <p class="muted small" style="margin:10px 0 0 0">
-        Concept DOI:
-        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
-      </p>
+      <div class="hero-top">
+
+        <div>
+          <h1>تطبيق الحساب الهرمي لفهم مستويات الفيزياء</h1>
+
+          <p class="muted">
+            هذه الصفحة ليست بديلًا لفيزياء نيوتن أو النسبية أو ميكانيكا الكم،
+            ولا تدّعي تعديل الحقائق التجريبية.
+            لكنها تقدّم <b>لغة تنظّم أنواع التغير</b>:
+            التغير المطلق (\(D_0^1\))، التغير النسبي (\(D_1^1\))،
+            التغير البنيوي (\(D_2^1\))، ثم رتب أعلى.
+          </p>
+
+          <div class="pillrow">
+            <span class="pill">الرتبة 0: \(D_0^1\)</span>
+            <span class="pill">الرتبة 1: \(D_1^1\)</span>
+            <span class="pill">الرتبة 2: \(D_2^1\)</span>
+            <span class="pill">رتب أعلى: \(D_n^1\)</span>
+          </div>
+
+          <!-- ACTION BUTTONS -->
+          <div class="actions" style="margin-top:12px">
+            <a class="btn" href="#toc">الفهرس</a>
+            <a class="btn" href="#claims">ماذا تدّعي؟</a>
+            <a class="btn" href="#links">روابط مهمة</a>
+            <a class="btn" href="#references">المراجع</a>
+          </div>
+
+          <p class="muted small" style="margin:10px 0 0 0">
+            المؤلف: <b>GOSSA AHMED</b>
+          </p>
+        </div>
+
+        <div class="author-card">
+          <img class="avatar" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
+          <div>
+            <div class="name">GOSSA AHMED</div>
+            <div class="role">Independent Researcher — Hierarchical Calculus</div>
+          </div>
+        </div>
+
+      </div>
     </header>
 
-    <section class="card">
-      <h2>1) القانون الفيزيائي</h2>
-      <p class="muted small" style="margin:0">
-        في عملية أديباتية لغاز مثالي:
-      </p>
-      <div class="math">
-        \[
-          P\,V^{\gamma}=\text{ثابت}, \qquad \gamma=\frac{C_p}{C_v}.
-        \]
+    <!-- (A) Claims -->
+    <section class="card" id="claims">
+      <h2>ماذا تدّعي هذه الصفحة؟ وماذا لا تدّعي؟</h2>
+
+      <div class="note">
+        <strong>✅ ماذا تدّعي:</strong>
+        <ul class="muted small" style="margin:8px 0 0 0">
+          <li>تقديم لغة موحّدة لتصنيف “أنواع التغير” عبر الرتب \(D_0, D_1, D_2\).</li>
+          <li>إظهار لماذا تكون فيزياء نيوتن قوية في التغير المطلق، والنسبية في التغير النسبي، والكم في التغير البنيوي.</li>
+          <li>اقتراح زاوية مفاهيمية: الطاقة المظلمة والجاذبية الكمومية قد تكونان “حدودًا رتبية” لنظم أكثر تعقيدًا.</li>
+        </ul>
       </div>
-      <p class="muted small" style="margin:0">
-        حيث \(P\) الضغط، و\(V\) الحجم، و\(\gamma\) نسبة السعات الحرارية.
-      </p>
+
+      <div class="note">
+        <strong>❌ ماذا لا تدّعي:</strong>
+        <ul class="muted small" style="margin:8px 0 0 0">
+          <li>لا تدّعي إلغاء النسبية أو الكم أو استبدال الفيزياء القياسية.</li>
+          <li>لا تدّعي تقديم نظرية مكتملة للطاقة المظلمة أو للجاذبية الكمومية.</li>
+          <li>لا تدّعي نتائج تجريبية جديدة، بل تنظّم المفاهيم بطريقة مختلفة.</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>2) الصيغة التفاضلية التقليدية (رتبة 0 — \(D_0^{1}\))</h2>
-      <p class="muted small" style="margin:0">نأخذ اللوغاريتم ثم نشتق بالنسبة إلى \(V\):</p>
+    <!-- (B) Links -->
+    <section class="card" id="links">
+      <h2>روابط مهمة داخل المشروع</h2>
+      <p class="muted small" style="margin:0">
+        إذا أردت قراءة الحساب الهرمي كنظرية كاملة (تعريفات، قواعد، تكاملات، متسلسلات)، استخدم هذه الصفحات:
+      </p>
 
-      <div class="math">
-        \[
-          \ln P + \gamma \ln V = \text{ثابت}.
-        \]
+      <div class="links">
+        <div class="linkbox">
+          <strong>الأساس النظري</strong>
+          <a href="./theory.html">النظرية (Arabic)</a>
+          <a href="./theory-en.html">Theory (English)</a>
+        </div>
+
+        <div class="linkbox">
+          <strong>الأدوات</strong>
+          <a href="./rules.html">القواعد</a>
+          <a href="./integrals.html">التكاملات</a>
+          <a href="./series.html">المتسلسلات</a>
+        </div>
+
+        <div class="linkbox">
+          <strong>التطبيقات</strong>
+          <a href="./equations.html">المعادلات</a>
+          <a href="./numerics.html">الحسابات العددية</a>
+          <a href="./index-ar.html">الرئيسية</a>
+        </div>
       </div>
+    </section>
+
+    <!-- TOC -->
+    <section class="card toc" id="toc">
+      <h2>الفهرس</h2>
+      <a href="#ladder">1) سلّم المشتقات: من \(D_0^1\) إلى \(D_n^1\)</a><br>
+      <a href="#newton">2) نيوتن: فيزياء الرتبة 0 والمعادلات الأساسية</a><br>
+      <a href="#relativity">3) أينشتاين: النسبية كفيزياء مقياسية</a><br>
+      <a href="#quantum">4) الكم: التغير البنيوي والحالة والقياس</a><br>
+      <a href="#darkenergy">5) الطاقة المظلمة: التسارع كإشارة رتبية أعلى</a><br>
+      <a href="#qg">6) الجاذبية الكمومية: أين يظهر عدم التطابق الرتبي؟</a><br>
+      <a href="#bridge">7) خريطة موحّدة: ربط المجالات الثلاثة</a><br>
+      <a href="#references">المراجع والاستشهاد</a><br>
+      <a href="#conclusion">الخلاصة</a>
+    </section>
+
+    <!-- 1) Ladder -->
+    <section class="card" id="ladder">
+      <h2>1) سلّم المشتقات: كيف نصنّف أنواع التغير؟</h2>
+      <p class="muted">
+        الفكرة الأساسية هنا مفاهيمية: كثير من “التناقضات” بين أطر الفيزياء ليست تناقضًا في النتائج،
+        بل هي اختلاف في <b>نوع التغير</b> الذي يتم نمذجته.
+        الحساب الهرمي يقترح سلّمًا واضحًا:
+      </p>
 
       <div class="math">
         \[
-          \frac{dP}{P}+\gamma\frac{dV}{V}=0
-          \quad\Rightarrow\quad
-          \frac{dP}{dV}=-\gamma\frac{P}{V}.
+          D_0^1 f(t)=\frac{df}{dt},\qquad
+          D_1^1 f(t)=\frac{d\ln f}{d\ln t},\qquad
+          D_2^1 f(t)=\frac{d\ln(\ln f)}{d\ln(\ln t)}
         \]
       </div>
 
       <div class="note">
-        <strong>ملاحظة:</strong>
-        هذه صيغة معيارية صحيحة، لكنها تُخفي بنية “النِّسب” داخل الكسور \(\frac{dP}{P}\) و\(\frac{dV}{V}\).
+        <strong>تفسير سريع:</strong><br>
+        الرتبة 0: تغير مطلق محلي.<br>
+        الرتبة 1: تغير نسبي/مقياسي (القوانين عبر المقاييس/الأطر).<br>
+        الرتبة 2: تغير بنيوي في قانون التغير النسبي نفسه.<br>
+        الرتب الأعلى تصف انتقالات بنيوية أعمق.
       </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>الإطار</th>
+            <th>نوع التغير المسيطر</th>
+            <th>الرتبة الطبيعية (مفهوميًا)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ميكانيكا نيوتن</td>
+            <td>تغير مطلق محلي</td>
+            <td>\(D_0^1\)</td>
+          </tr>
+          <tr>
+            <td>النسبية</td>
+            <td>تغير نسبي/مقياسي</td>
+            <td>\(D_1^1\)</td>
+          </tr>
+          <tr>
+            <td>ميكانيكا الكم</td>
+            <td>تغير بنيوي (حالة/قياس)</td>
+            <td>\(D_2^1\) (أو أعلى حسب السياق)</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
-    <section class="card">
-      <h2>3) الصيغة الهرمية النسبية (رتبة 1 — \(D_1^{1}\))</h2>
-
-      <p class="muted small" style="margin:0">
-        نعرّف المشتق النسبي (رتبة 1، درجة 1):
+    <!-- 2) Newton -->
+    <section class="card" id="newton">
+      <h2>2) نيوتن: فيزياء الرتبة 0 والمعادلات الأساسية</h2>
+      <p class="muted">
+        فيزياء نيوتن تعتمد على المشتقة من الرتبة 0:
+        \(\;D_0^1=\dfrac{d}{dt}\). وهي مناسبة جدًا عندما تكون المقاييس ثابتة نسبيًا،
+        وعندما لا تكون بنية القياس أو الحالة هي المكوّن الحاكم.
       </p>
 
+      <h3>2.1 قوانين نيوتن</h3>
       <div class="math">
         \[
-          \boxed{
-            D_{1}^{1} P(V)=\frac{d\ln P}{d\ln V}.
-          }
+          \mathbf{F}=m\mathbf{a}=m\frac{d^2\mathbf{x}}{dt^2}
         \]
       </div>
 
-      <p class="muted small" style="margin:0">
-        من \(\ln P = -\gamma \ln V + \text{ثابت}\) نحصل مباشرة على:
-      </p>
-
+      <h3>2.2 الجاذبية النيوتونية</h3>
       <div class="math">
         \[
-          \boxed{
-            D_{1}^{1} P = -\gamma.
-          }
+          \mathbf{F}=-\,G\frac{Mm}{r^2}\,\hat{\mathbf{r}},\qquad
+          \nabla^2\Phi = 4\pi G\rho
         \]
       </div>
 
       <div class="note">
-        <strong>المغزى:</strong>
-        في فضاء الرتبة 1 (النسبي)، يتحول القانون إلى ثابت، أي “خطّي” في فضاء اللوغاريتمات.
+        <strong>قراءة هرمية:</strong>
+        الرتبة 0 قوية عندما لا يحدث انتقال مقياسي كبير، وعندما تكون القيم قابلة للنمذجة عبر تغيرات محلية مطلقة.
       </div>
     </section>
 
-    <section class="card">
-      <h2>4) استرجاع الحل</h2>
-      <p class="muted small" style="margin:0">
-        حلُّ \(D_{1}^{1}P=-\gamma\) يعطي قانون قدرة:
+    <!-- 3) Relativity -->
+    <section class="card" id="relativity">
+      <h2>3) أينشتاين: النسبية كفيزياء مقياسية</h2>
+      <p class="muted">
+        النسبية تعيد تنظيم الفيزياء حول اعتماد الإطار والثوابت التي تبقى صحيحة تحت التحويلات.
+        هذا يقارب فكرة الرتبة 1: القوانين التي تُقرأ طبيعيًا عندما يكون التغير “نسبيًا/مقياسيًا”.
       </p>
+
+      <h3>3.1 النسبية الخاصة</h3>
       <div class="math">
         \[
-          P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}.
-        \]
-      </div>
-      <p class="muted small" style="margin:0">
-        وهو مكافئ تمامًا لـ \(P\,V^\gamma=\text{ثابت}\).
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>5) مقارنة مختصرة</h2>
-
-      <div class="tablewrap rtl-table" aria-label="جدول مقارنة">
-        <table>
-          <thead>
-            <tr>
-              <th>المقاربة</th>
-              <th>المعادلة</th>
-              <th>الطبيعة</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>تقليدية (رتبة 0)</td>
-              <td class="ltr">\(\dfrac{dP}{dV}=-\gamma\dfrac{P}{V}\)</td>
-              <td>معادلة تفاضلية في \(P(V)\)</td>
-            </tr>
-            <tr>
-              <td>هرمية (رتبة 1)</td>
-              <td class="ltr">\(D_{1}^{1}P=-\gamma\)</td>
-              <td>ثابت (خطّي في فضاء اللوغاريتم)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>6) تحقق عددي سريع (تحقق + خطأ نسبي)</h2>
-
-      <p class="muted small" style="margin:0">
-        نختار \(\gamma=1.4\) (قيمة قريبة من الهواء). نقطة مرجعية:
-        \(V_0=1.00\,\mathrm{L}\), \(P_0=100.00\,\mathrm{kPa}\).
-        ونعرّف:
-      </p>
-
-      <div class="math">
-        \[
-          K = P_0\,V_0^{\gamma} = 100.00\;(\mathrm{kPa}\cdot \mathrm{L}^{\gamma}).
+          ds^2 = -c^2dt^2 + dx^2 + dy^2 + dz^2,\qquad
+          E^2=(pc)^2+(mc^2)^2
         \]
       </div>
 
-      <p class="muted small" style="margin:0">
-        نحسب \(P(V)=P_0\left(\frac{V}{V_0}\right)^{-\gamma}\) ثم نتحقق من ثبات
-        \(K_i=P_iV_i^\gamma\).
-        ولإظهار خطأ عددي صغير، ندوّر \(P_i\) إلى منزلتين عشريتين (كخطأ قياس/تقريب).
-      </p>
-
-      <div class="tablewrap rtl-table" aria-label="جدول تحقق عددي">
-        <table>
-          <thead>
-            <tr>
-              <th>\(V\) (L)</th>
-              <th>\(P\) النظري (kPa)</th>
-              <th>\(P\) بعد التدوير</th>
-              <th>\(K_i=P_iV^\gamma\)</th>
-              <th>الخطأ النسبي</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="ltr">1.20</td>
-              <td class="ltr">\(\approx 77.4723\)</td>
-              <td class="ltr">77.47</td>
-              <td class="ltr">\(\approx 99.9971\)</td>
-              <td class="ltr">\(\approx 0.0029\%\)</td>
-            </tr>
-            <tr>
-              <td class="ltr">1.50</td>
-              <td class="ltr">\(\approx 56.6855\)</td>
-              <td class="ltr">56.69</td>
-              <td class="ltr">\(\approx 100.0079\)</td>
-              <td class="ltr">\(\approx 0.0079\%\)</td>
-            </tr>
-            <tr>
-              <td class="ltr">2.00</td>
-              <td class="ltr">\(\approx 37.8929\)</td>
-              <td class="ltr">37.89</td>
-              <td class="ltr">\(\approx 99.9923\)</td>
-              <td class="ltr">\(\approx 0.0077\%\)</td>
-            </tr>
-          </tbody>
-        </table>
+      <h3>3.2 النسبية العامة (معادلات أينشتاين)</h3>
+      <div class="math">
+        \[
+          G_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}\,T_{\mu\nu}
+        \]
       </div>
 
       <div class="note">
-        <strong>النتيجة:</strong>
-        يبقى \(K_i\) قريبًا جدًا من \(K=100\) بعد التدوير، والخطأ النسبي أقل من \(0.01\%\).
+        <strong>ارتباط مباشر بالطاقة المظلمة:</strong>
+        الحد \(\Lambda\) هو المدخل القياسي لوصف التسارع الكوني كمكوّن فراغي/طاقي فعّال.
+      </div>
+    </section>
+
+    <!-- 4) Quantum -->
+    <section class="card" id="quantum">
+      <h2>4) ميكانيكا الكم: التغير البنيوي</h2>
+      <p class="muted">
+        ميكانيكا الكم تستبدل المسار الكلاسيكي بحالة \(|\psi\rangle\)، وسعات، ومؤثرات، وقياس.
+        هذا انتقال بنيوي في “نوع الوصف” نفسه:
+        ما يتطور ليس موضعًا فقط، بل حالة في فضاء هيلبرت، والاحتمالات تنشأ من السعات.
+        لذلك يمكن قراءته كمستوى أعلى في سلّم التغير.
+      </p>
+
+      <h3>4.1 معادلة شرودنغر</h3>
+      <div class="math">
+        \[
+          i\hbar\frac{\partial}{\partial t}\,|\psi(t)\rangle=\hat{H}\,|\psi(t)\rangle
+        \]
       </div>
 
-      <h3>تحقق إضافي: ثبات \(D_1^{1}P\)</h3>
+      <h3>4.2 مبدأ عدم اليقين</h3>
+      <div class="math">
+        \[
+          \Delta x\,\Delta p \ge \frac{\hbar}{2}
+        \]
+      </div>
 
-      <p class="muted small" style="margin:0">
-        من النظرية: \(\;D_1^{1}P=\dfrac{d\ln P}{d\ln V}=-\gamma\).
-        عدديًا يمكن تقدير \(D_1^{1}P\) بين نقطتين:
+      <h3>4.3 معادلة ديراك (كم نسبي)</h3>
+      <div class="math">
+        \[
+          (i\gamma^\mu \partial_\mu - m)\psi = 0
+        \]
+      </div>
+
+      <div class="note">
+        <strong>قراءة هرمية:</strong>
+        الكم ليس مجرد “نيوتن بدقة أعلى” بل يُدخل بنية وصف مختلفة:
+        تراكب، قياس، جبر مؤثرات… وهذا يتماشى مع صعود في الرتبة.
+      </div>
+    </section>
+
+    <!-- 5) Dark Energy -->
+    <section class="card" id="darkenergy">
+      <h2>5) الطاقة المظلمة: التسارع كإشارة رتبية أعلى</h2>
+      <p class="muted">
+        في علم الكون، التمدد يُقاس بعامل القياس \(a(t)\). وهذا بطبيعته نسبي:
+        المسافات تتضاعف بدل أن تُضاف.
+        لذلك كمية من الرتبة 1 تبدو طبيعية:
       </p>
 
       <div class="math">
         \[
-          D_{1}^{1}P \approx \frac{\ln(P_2/P_1)}{\ln(V_2/V_1)}.
+          D_1^1 a(t)=\frac{d\ln a}{d\ln t}
         \]
       </div>
 
-      <ul class="muted small" style="margin:10px 0 0 0">
-        <li>بين \(V=1.20\) و\(V=1.50\): \(\;D_{1}^{1}P \approx -1.3995\) (قريب من \(-1.4\)).</li>
-        <li>بين \(V=1.50\) و\(V=2.00\): \(\;D_{1}^{1}P \approx -1.4005\) (قريب من \(-1.4\)).</li>
-      </ul>
+      <p class="muted">
+        لكن الرصد يشير إلى تسارع في التمدد، أي أن قانون التمدد النسبي نفسه يتغير.
+        هنا تظهر قراءة رتبة أعلى (الرتبة 2):
+      </p>
+
+      <div class="math">
+        \[
+          D_2^1 a(t)=\frac{d\ln(\ln a)}{d\ln(\ln t)}
+        \]
+      </div>
+
+      <div class="note">
+        <strong>الفكرة الأساسية:</strong>
+        يمكن قراءة الطاقة المظلمة كإشارة على أن قانون التمدد النسبي يتطور بنيويًا (انتقال رتبي)،
+        بينما في النسبية العامة يُنمذج ذلك عادة عبر \(\Lambda\).
+      </div>
+
+      <h3>5.1 الرابط القياسي</h3>
+      <div class="math">
+        \[
+          \rho_\Lambda = \frac{\Lambda c^2}{8\pi G}
+        \]
+      </div>
+      <p class="muted small">
+        (صيغة رمزية شائعة تربط \(\Lambda\) بكثافة طاقة فعّالة للفراغ.)
+      </p>
     </section>
 
-    <section class="card">
-      <h2>7) تفسير</h2>
-      <p class="muted small" style="margin:0">
-        الحساب الهرمي لا يغيّر الفيزياء؛ إنما يختار لغة التغيّر الأنسب لبنية القانون.
-        في العملية الأديباتية، التغيّر طبيعيًا “نسبي”: الضغط يتبع الحجم على مقياس لوغاريتمي.
+    <!-- 6) Quantum Gravity -->
+    <section class="card" id="qg">
+      <h2>6) الجاذبية الكمومية: أين يظهر عدم التطابق الرتبي؟</h2>
+      <p class="muted">
+        الجاذبية الكمومية تحاول دمج إطار هندسي (النسبية العامة: زمكان أملس وانحناء)
+        مع إطار بنيوي (الكم: حالات ومؤثرات وقياس).
+        الصعوبة ليست تقنية فقط؛ بل قد تكون أيضًا في اختلاف “مستوى التغير” الذي يصفه كل إطار.
       </p>
+
+      <div class="note">
+        <strong>منظور هرمي:</strong>
+        إذا كانت الجاذبية متجسدة في بنية الزمكان، والكم متجسد في بنية الحالة،
+        فقد يتطلب الدمج لغة تُصمم للتعامل مع انتقالات بنيوية صريحة (رتب أعلى)،
+        بدل فرض كل شيء ضمن رتبة واحدة.
+      </div>
+
+      <h3>6.1 معادلة ويلر–دي ويت (رمزية)</h3>
+      <div class="math">
+        \[
+          \hat{H}\,\Psi[g_{\mu\nu}] = 0
+        \]
+      </div>
+      <p class="muted small">
+        حيث \(\Psi[g_{\mu\nu}]\) تُقرأ في بعض المقاربات كـ “دالة موجية للهندسة” بشكل رمزي.
+      </p>
+
+      <h3>6.2 أين يدخل سلّم الرتب؟</h3>
+      <p class="muted">
+        قرب مقياس بلانك قد لا يبقى الزمكان خلفية ملساء.
+        سلّم الرتب يقترح أن هذه المنطقة قد تحتاج وصفًا أعلى:
+        تغيّر في القوانين نفسها أو في بنية الوصف الفيزيائي.
+      </p>
+    </section>
+
+    <!-- 7) Unified Bridge -->
+    <section class="card" id="bridge">
+      <h2>7) خريطة موحّدة تربط الأطر الثلاثة</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>المجال</th>
+            <th>معادلة رمزية أساسية</th>
+            <th>قراءة هرمية</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>نيوتن</td>
+            <td>\(\mathbf{F}=m\dfrac{d^2\mathbf{x}}{dt^2}\)</td>
+            <td>تغير مطلق محلي: \(\;D_0^1\)</td>
+          </tr>
+          <tr>
+            <td>النسبية</td>
+            <td>\(G_{\mu\nu}+\Lambda g_{\mu\nu}=\dfrac{8\pi G}{c^4}T_{\mu\nu}\)</td>
+            <td>بنية مقياسية/إطارية: \(\;D_1^1\) (مفهوميًا)</td>
+          </tr>
+          <tr>
+            <td>الكم</td>
+            <td>\(i\hbar\partial_t|\psi\rangle=\hat{H}|\psi\rangle\)</td>
+            <td>تغير بنيوي: \(\;D_2^1\) (مفهوميًا)</td>
+          </tr>
+          <tr>
+            <td>الطاقة المظلمة</td>
+            <td>\(\rho_\Lambda=\dfrac{\Lambda c^2}{8\pi G}\)</td>
+            <td>قد تُقرأ كإشارة رتبة 2 في قانون \(a(t)\)</td>
+          </tr>
+          <tr>
+            <td>الجاذبية الكمومية</td>
+            <td>\(\hat{H}\Psi[g_{\mu\nu}]=0\)</td>
+            <td>حدّ يتطلب ربما رتبًا أعلى لوصف تغيّر البنية</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>ملخص بجملة واحدة:</strong>
+        الحساب الهرمي يوحّد الفيزياء كسلّم للتغير: نيوتن يثبت الرتبة 0،
+        النسبية ترفعها إلى بنية مقياسية (رتبة 1)،
+        الكم يقدم تغيرًا بنيويًا (رتبة 2)،
+        بينما الطاقة المظلمة والجاذبية الكمومية إشارات حدودية قد تحتاج لغة رتب أعلى.
+      </div>
+    </section>
+
+    <!-- References -->
+    <section class="card" id="references">
+      <h2>المراجع وصيغة الاستشهاد</h2>
+
+      <div class="note">
+        <strong>مرجع الحساب الهرمي:</strong><br>
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </div>
+
+      <div class="note">
+        <strong>صيغة استشهاد مقترحة:</strong>
+        <div class="math">
+\[
+\texttt{GOSSA AHMED. Hierarchical Calculus & Physics — Arabic Version. Official Website. Zenodo DOI: 10.5281/zenodo.17917302 (2025).}
+\]
+        </div>
+      </div>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">تنبيه أكاديمي</div>
+        <div class="muted small">
+          الصيغ الفيزيائية المعروضة هنا (نيوتن/أينشتاين/شرودنغر/ديراك) هي صيغ قياسية معروفة.
+          الإضافة الأساسية للصفحة هي التصنيف “الرتبي” للتغير كمنهج تنظيمي/مفاهيمي.
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="card" id="conclusion">
+      <h2>الخلاصة</h2>
+      <p class="muted">
+        الحساب الهرمي لا يغيّر الفيزياء، بل يعيد ترتيبها كسلّم للتغير:
+        نيوتن فعّال في الرتبة 0،
+        النسبية تهيمن عندما تكون البنية المقياسية والإطارات مهمة،
+        والكم يحكم عندما تصبح بنية الحالة والقياس مركزية.
+        أما الطاقة المظلمة والجاذبية الكمومية فقد تشير إلى حدود تتطلب لغة رتب أعلى.
+      </p>
+
+      <div class="note">
+        <strong>التالي:</strong>
+        <a href="./equations.html">المعادلات</a> ·
+        <a href="./integrals.html">التكاملات</a> ·
+        <a href="./series.html">المتسلسلات</a> ·
+        <a href="./numerics.html">الحسابات العددية</a>
+      </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Physics (Adiabatic Process) — \(D_r^n\) Notation
+      © 2025 — GOSSA AHMED · الحساب الهرمي والفيزياء — نيوتن · أينشتاين · الكم · الطاقة المظلمة · الجاذبية الكمومية
     </footer>
+
   </div>
 </body>
 </html>
