@@ -4,29 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>تطبيق الحساب الهرمي في الفلك — من التوسع الكوني إلى الطاقة المظلمة</title>
-  <meta name="description" content="صفحة عربية موسعة تشرح تطبيق الحساب الهرمي في الفلك وربطه بالتوسع الكوني والطاقة المظلمة عبر مشتقات الرتب D0 و D1 و D2، مع عرض منهجي وتطبيقات فلكية." />
+  <title>ورقة: الحساب الهرمي في الفلك والكونيات — قراءة رتبية للتمدد الكوني والطاقة المظلمة</title>
+  <meta name="description" content="نسخة ورقية (Paper-style) باللغة العربية: الحساب الهرمي في الفلك والكونيات. تقدم مدخلًا نظريًا ومنهجيًا وتجربة عددية وتفسيرًا رتبيًا لعامل التمدد a(t) والتسارع والطاقة المظلمة عبر D0 وD1 وD2، مع مناقشة وحدود ومراجع." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/astronomy-ar.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/astronomy-ar.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/astronomy-en.html" />
-  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/astronomy-ar.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/astronomy-en.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:title" content="ورقة: الحساب الهرمي في الفلك والكونيات" />
+  <meta property="og:description" content="Paper-style page: تفسير رتبي للتمدد الكوني والطاقة المظلمة عبر D0 وD1 وD2 مع تجربة عددية ومراجع." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/astronomy-ar.html" />
+  <meta name="twitter:card" content="summary" />
 
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
       --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.05); --border: rgba(255,255,255,.12);
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
-      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Noto Sans", sans-serif;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      margin:0; font-family:var(--sans); color:var(--text); line-height:2.0;
       background:
         radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
@@ -35,9 +44,8 @@
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
 
-    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -45,14 +53,16 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
-      max-width:1050px; margin:0 auto; padding:10px 16px;
+      max-width:1100px; margin:0 auto; padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
+
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+    .logo-img{
+      width:38px;height:38px;border-radius:12px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
       box-shadow:0 12px 22px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
@@ -66,37 +76,72 @@
     }
     nav a:hover{background:rgba(255,255,255,.07)}
 
-    /* Hero */
     header.hero{
-      margin-top:16px; padding:20px 18px;
+      margin-top:16px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-      position:relative; overflow:hidden;
+      padding: 22px 18px;
+      position:relative;
+      overflow:hidden;
     }
     header.hero:before{
-      content:""; position:absolute; inset:-2px;
+      content:"";
+      position:absolute; inset:-2px;
       background:
         radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
         radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
       pointer-events:none;
     }
     header.hero > *{position:relative}
+
+    .hero-top{
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap:14px; flex-wrap:wrap;
+    }
+
+    .author-card{
+      display:flex; gap:12px; align-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:12px 14px;
+      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(57,211,195,.65);
+      box-shadow:0 14px 30px rgba(0,0,0,.30);
+    }
+    .author-card .name{font-weight:900;font-size:16px;line-height:1.2}
+    .author-card .role{color:var(--muted);font-size:12px;margin-top:2px}
+
     h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
-    /* Cards */
+    .pillrow{margin-top:10px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px; color: var(--muted);
+      margin: 6px 6px 0 0;
+      white-space:nowrap;
+    }
+
     .card{
       margin-top:14px; padding:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
-    h2{margin:0 0 10px 0; font-size:18px}
-    h3{margin:14px 0 8px 0; font-size:16px}
 
     .math{
       margin-top:8px; padding:10px 12px;
@@ -115,7 +160,49 @@
     }
     .note strong{color:var(--warn)}
 
+    .callout{
+      margin-top:12px; padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background: rgba(57,211,195,.10);
+      border-radius:14px;
+      border-right:4px solid var(--accent);
+    }
+
     .toc a{display:inline-block; margin:4px 0}
+
+    .tablewrap{
+      overflow:auto;
+      border-radius:14px;
+      margin-top:12px;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width: 940px;
+      background: rgba(0,0,0,.18);
+    }
+    th,td{
+      padding:10px 10px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      font-size:13px;
+      text-align:center;
+      white-space:nowrap;
+    }
+    th{
+      color:#bfe8ff;
+      background:rgba(255,255,255,.06);
+      font-weight:800;
+      position:sticky; top:0;
+    }
+    tr:last-child td{border-bottom:none}
+    .ok{color:#7dffb0; font-weight:800}
+
+    .refs{margin: 10px 0 0 0; padding: 0 18px 0 0}
+    .refs li{margin:10px 0; color: rgba(234,242,255,.88)}
+    .refs small{color: var(--muted)}
+    code{font-family:var(--mono)}
 
     footer{
       margin-top:18px; padding-top:18px;
@@ -132,205 +219,376 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "الحساب الهرمي في الفلك والكونيات — قراءة رتبية للتمدد الكوني والطاقة المظلمة",
+    "alternativeHeadline": "Paper-style: Hierarchical Calculus in Astronomy & Cosmology",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Astronomy",
+      "Cosmology",
+      "Scale Factor",
+      "Cosmic Acceleration",
+      "Dark Energy"
+    ],
+    "inLanguage": "ar",
+    "url": "https://gossaahmed.github.io/gossa-math/astronomy-ar.html",
+    "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
+  }
+  </script>
 </head>
 
 <body>
+
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
         <div class="title">
-          <strong>الحساب الهرمي في الفلك</strong>
-          <span>التوسع الكوني والطاقة المظلمة</span>
+          <strong>ورقة: الحساب الهرمي في الفلك</strong>
+          <span>Cosmology · \(a(t)\) · Dark Energy · \(D_0^1\) · \(D_1^1\) · \(D_2^1\)</span>
         </div>
       </div>
 
-      <nav aria-label="التنقل">
+      <nav aria-label="Navigation">
         <a href="./index-ar.html">الرئيسية</a>
         <a href="./theory-ar.html">النظرية</a>
         <a href="./rules-ar.html">القواعد</a>
         <a href="./equations-ar.html">المعادلات</a>
-        <a href="./index.html">English</a>
+        <a href="./astronomy-en.html">English</a>
       </nav>
     </div>
   </div>
 
   <div class="wrap">
-    <header class="hero">
-      <h1>تطبيق الحساب الهرمي في الفلك</h1>
-      <p class="muted">
-        صفحة عربية موسَّعة تربط الحساب الهرمي مباشرة بظواهر كونية كبرى: عامل التوسع \(a(t)\)، التسارع الكوني،
-        والطاقة المظلمة، ثم تنتقل إلى تطبيقات فلكية عملية (النجوم، المجرات، المدارات، الثقوب السوداء...).
-      </p>
-      <p class="muted small" style="margin:10px 0 0 0">
-        المؤلف: <b>GOSSA AHMED</b> · موقع رسمي: <a href="./index.html">gossa-math</a>
-      </p>
+
+    <!-- Title block -->
+    <header class="hero" id="top">
+      <div class="hero-top">
+        <div>
+          <h1>الحساب الهرمي في الفلك والكونيات — قراءة رتبية للتمدد الكوني والطاقة المظلمة</h1>
+          <p class="muted" style="margin:0">
+            هذه الصفحة مكتوبة بصيغة ورقة بحثية مبسطة (Paper-style).  
+            تقدم إطارًا وصفيًا يعتمد “سلم التغير” \(D_0^1 \to D_1^1 \to D_2^1 \to D_n^1\) لفهم
+            التمدد الكوني \(a(t)\) والتسارع والطاقة المظلمة بوصفها تحولات في نوع التغير (Rank transitions).
+          </p>
+
+          <div class="pillrow">
+            <span class="pill">Rank 0: \(D_0^1\)</span>
+            <span class="pill">Rank 1: \(D_1^1\)</span>
+            <span class="pill">Rank 2: \(D_2^1\)</span>
+            <span class="pill">Higher: \(D_n^1\)</span>
+          </div>
+
+          <p class="muted small" style="margin:10px 0 0 0">
+            <b>المؤلف:</b> GOSSA AHMED · <b>الصفة:</b> Independent Researcher — Hierarchical Calculus  
+            <br>
+            <b>الموقع الرسمي:</b> <a href="./index-ar.html">gossa-math</a>
+          </p>
+        </div>
+
+        <div class="author-card">
+          <img class="avatar" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
+          <div>
+            <div class="name">GOSSA AHMED</div>
+            <div class="role">Independent Researcher</div>
+          </div>
+        </div>
+      </div>
     </header>
 
+    <!-- Abstract -->
+    <section class="card" id="abstract">
+      <h2>الملخص (Abstract)</h2>
+      <p class="muted">
+        نقترح في هذه الورقة-الصفحة قراءة منهجية تربط الحساب الهرمي بعلم الفلك والكونيات عبر مفهوم “نوع التغير”.
+        في حين يقيس الحساب التفاضلي الكلاسيكي التغير المطلق بواسطة \(D_0^1\)، فإن كثيرًا من الظواهر الفلكية
+        تُفهم بشكل أوضح كنمو نسبي أو انحلال نسبي، وهو ما يلتقطه \(D_1^1\).
+        أما التسارع الكوني (المرتبط بالطاقة المظلمة)، فيمكن قراءته كتحول في قانون النمو النسبي نفسه،
+        ما يجعل توصيف الرتبة الثانية \(D_2^1\) أداة طبيعية لوصف “التغير البنيوي”.
+        نعرض تجربة عددية بسيطة توضح أن Rank 2 قد يصبح شبه دقيق في نماذج متعددة المقاييس،
+        ونناقش كيف يمكن استخدام هذا السلم لتفسير انتقالات في الأنظمة الفلكية مثل تطور النجوم،
+        نمو الثقوب السوداء، وتطور البنى المجرية.
+      </p>
+
+      <div class="note">
+        <strong>كلمات مفتاحية:</strong>
+        <span class="muted small">
+          Cosmology · Scale Factor · Dark Energy · Hierarchical Derivatives · Multi-scale Growth · Rank Transitions
+        </span>
+      </div>
+    </section>
+
+    <!-- Contents -->
     <section class="card toc" id="toc">
-      <h2>محتويات الصفحة</h2>
-      <a href="#p1">1) الأساس المفهومي للحساب الهرمي في الفلك</a><br>
-      <a href="#p2">2) التوسع الكوني والطاقة المظلمة بصياغة هرمية</a><br>
-      <a href="#p3">3) تطبيقات فلكية عملية داخل الإطار الهرمي</a><br>
-      <a href="#conclusion">الخلاصة</a>
+      <h2>المحتويات</h2>
+      <a href="#intro">1) المقدمة (Introduction)</a><br>
+      <a href="#background">2) الخلفية النظرية (Background)</a><br>
+      <a href="#method">3) المنهجية (Methodology)</a><br>
+      <a href="#numerics">4) تجربة عددية (Numerical Experiment)</a><br>
+      <a href="#discussion">5) مناقشة (Discussion)</a><br>
+      <a href="#limits">6) الحدود والقيود (Limitations)</a><br>
+      <a href="#future">7) عمل مستقبلي (Future Work)</a><br>
+      <a href="#conclusion">الخلاصة</a><br>
+      <a href="#references">المراجع</a>
     </section>
 
-    <!-- الجزء (1) -->
-    <section class="card" id="p1">
-      <h2>1) الأساس المفهومي للحساب الهرمي في الفلك</h2>
+    <!-- 1) Introduction -->
+    <section class="card" id="intro">
+      <h2>1) المقدمة (Introduction)</h2>
 
-      <h3>1.1 علم الفلك كعلم متعدد المستويات</h3>
+      <h3>1.1 الدافع العلمي</h3>
       <p class="muted">
-        يتميّز علم الفلك بكونه علمًا متعدد المستويات على نحو جذري. فهو لا يدرس نظامًا فيزيائيًا واحدًا ضمن مقياس ثابت،
-        بل يتعامل مع ظواهر تمتد عبر فروق هائلة في المكان والزمن والطاقة: من البلازما النجمية إلى تطور النجوم ثم تشكّل
-        المجرات وأخيرًا التوسع الكوني الشامل. هذه الطبيعة متعددة المستويات تجعل الاعتماد الحصري على الحساب التفاضلي
-        التقليدي غير كافٍ لوصف جميع الظواهر بدقة مفهومية.
+        يواجه وصف الكون عبر المعادلات تحديًا مفاهيميًا:  
+        هل نفس “نوع التغير” يصلح لكل الظواهر؟  
+        التمدد الكوني ليس نموًا إضافيًا محليًا، بل هو تغير مقياسي يضرب المسافات.
+        كذلك، التسارع الكوني ليس فقط “زيادة في السرعة”، بل قد يكون تغيرًا في قانون النمو النسبي نفسه.
+        هذه الورقة تقترح أن كثيرًا من الخلافات في التفسير يمكن إعادة تنظيمها عبر سؤال واحد:
+        <b>ما نوع التغير الذي نتحدث عنه؟</b>
       </p>
 
-      <h3>1.2 التغير المطلق مقابل التغير النسبي</h3>
+      <h3>1.2 سياق أدبيات الطاقة المظلمة</h3>
       <p class="muted">
-        في الحساب التفاضلي التقليدي يُقاس التغير عبر مشتقة من الشكل:
+        منذ اكتشاف تسارع تمدد الكون عبر مستعرات Ia (Riess, Perlmutter)،
+        أصبح نموذج ΛCDM هو الإطار القياسي، حيث يتم تضمين \(\Lambda\) كحد ثابت أو طاقة فراغ فعالة.
+        لكن مشكلة الثابت الكوني (Weinberg) تشير إلى توتر عميق بين التفسير الكمي والطبيعة الهندسية.
+        هنا نقترح قراءة مكملة:  
+        يمكن اعتبار التسارع إشارة إلى انتقال وصفي نحو رتبة أعلى في سلّم التغير.
       </p>
+
+      <div class="note">
+        <strong>هدف الورقة:</strong>
+        إعادة تنظيم الفهم الكوني عبر مراتب التغير \(D_0^1,D_1^1,D_2^1\)، دون ادعاء بديل تجريبي،
+        بل بوصف تنظيمي (descriptive framework) قابل للتوسعة.
+      </div>
+    </section>
+
+    <!-- 2) Background -->
+    <section class="card" id="background">
+      <h2>2) الخلفية النظرية (Background)</h2>
+
+      <p class="muted">
+        نعرّف ثلاث مراتب أساسية (درجة 1) تُستخدم هنا لتوصيف التغير:
+      </p>
+
       <div class="math">
         \[
-          D_0^1 f(t)=\frac{df}{dt}
+          D_0^1 f(t)=\frac{df}{dt},\qquad
+          D_1^1 f(t)=\frac{d\ln f}{d\ln t},\qquad
+          D_2^1 f(t)=\frac{d\ln(\ln f)}{d\ln(\ln t)}.
         \]
       </div>
+
+      <h3>2.1 تفسير فيزيائي مختصر</h3>
+      <div class="note">
+        <strong>Rank 0:</strong> تغير مطلق محلي (إضافة).<br>
+        <strong>Rank 1:</strong> تغير نسبي/مقياسي (ضرب — يشبه المرونة).<br>
+        <strong>Rank 2:</strong> تغير بنيوي في قانون التغير النسبي نفسه (لوغ-لوغ).<br>
+        <strong>Ranks أعلى:</strong> انتقالات أعمق في بنية القوانين أو في بنية “الوصف”.
+      </div>
+
+      <h3>2.2 عامل التمدد الكوني ككمية مقياسية</h3>
       <p class="muted">
-        لكن كثيرًا من الظواهر الفلكية يحكمها التغير النسبي أكثر من المطلق، ولهذا يكون المشتق النسبي الطبيعي:
+        عامل التمدد \(a(t)\) يصف كيف تتوسع المسافات المشتركة مع الزمن،
+        لذا فهو مناسب لغويًا للتوصيف النسبي (rank 1) قبل أي توصيف محلي مطلق.
       </p>
+    </section>
+
+    <!-- 3) Methodology -->
+    <section class="card" id="method">
+      <h2>3) المنهجية (Methodology)</h2>
+
+      <h3>3.1 القاعدة العملية</h3>
+      <p class="muted">
+        لا نبدأ بسؤال “ما قيمة \(a(t)\)؟” بل بسؤال:
+        <b>هل التغير إضافي أم مقياسي أم بنيوي؟</b>  
+        ثم نختار الرتبة المناسبة ونقوم بتقريب محلي حول نقطة مرجعية \(t_0\).
+      </p>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">خريطة اختيار الرتبة</div>
+        <div class="muted small">
+          • إذا كان التغير محليًا صغيرًا في القيمة: استخدم \(D_0^1\).<br>
+          • إذا كان التغير في شكل نسب ومعدلات نمو: استخدم \(D_1^1\).<br>
+          • إذا لاحظت أن معدلات النمو نفسها تتغير مع الزمن (تسارع/تحول بنيوي): استخدم \(D_2^1\).<br>
+          • إذا كان هناك انتقال في بنية النظام (طور/مرحلة): قد تحتاج \(D_n^1\).
+        </div>
+      </div>
+
+      <h3>3.2 قراءة الطاقة المظلمة عبر الرتبة</h3>
+      <p class="muted">
+        في ΛCDM يتم تمثيل التسارع بواسطة \(\Lambda\).  
+        في القراءة الهرمية، يمكن فهمه كذلك كظهور رتبة أعلى:
+        أي أن قانون النمو النسبي للتمدد يتغير مع الزمن بطريقة تتجاوز rank 1.
+      </p>
+    </section>
+
+    <!-- 4) Numerical Experiment -->
+    <section class="card" id="numerics">
+      <h2>4) تجربة عددية (Numerical Experiment)</h2>
+
+      <h3>4.1 النموذج</h3>
       <div class="math">
         \[
-          D_1^1 f(t)=\frac{d\ln f}{d\ln t}
+          a(t)=\exp\big((\ln t)^2\big),\quad t>1,\quad t_0=10.
         \]
+      </div>
+
+      <p class="muted">
+        هذا النموذج يمثل نموًا متعدد المقاييس، ويُظهر لماذا يمكن للرتبة الثانية أن تصبح شبه دقيقة.
+      </p>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">برهان الفكرة</div>
+        <div class="muted small">
+          \[
+            \ln(\ln a)=\ln((\ln t)^2)=2\ln(\ln t)
+          \]
+          وبالتالي:
+          \[
+            D_2^1 a(t)=2
+          \]
+          ثابت، أي أن Rank 2 يلتقط البنية الأساسية كاملة.
+        </div>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr>
+              <th>\(t\)</th>
+              <th>القيمة الحقيقية</th>
+              <th>Rank 0</th>
+              <th>Rank 1</th>
+              <th>Rank 2</th>
+              <th>خطأ نسبي R0</th>
+              <th>خطأ نسبي R1</th>
+              <th>خطأ نسبي R2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>8</td><td>75.496</td><td>15.850</td><td>71.829</td><td class="ok">75.496</td><td>0.790</td><td>0.0486</td><td class="ok">≈0</td></tr>
+            <tr><td>9</td><td>124.935</td><td>108.284</td><td>123.556</td><td class="ok">124.935</td><td>0.133</td><td>0.0110</td><td class="ok">≈0</td></tr>
+            <tr><td>10</td><td>200.717</td><td>200.717</td><td>200.717</td><td class="ok">200.717</td><td>0</td><td>0</td><td class="ok">0</td></tr>
+            <tr><td>11</td><td>314.160</td><td>293.151</td><td>311.319</td><td class="ok">314.160</td><td>0.0669</td><td>0.00904</td><td class="ok">≈0</td></tr>
+            <tr><td>12</td><td>480.468</td><td>385.585</td><td>464.759</td><td class="ok">480.468</td><td>0.197</td><td>0.0327</td><td class="ok">≈0</td></tr>
+            <tr><td>15</td><td>1530.785</td><td>662.886</td><td>1298.719</td><td class="ok">1530.785</td><td>0.567</td><td>0.152</td><td class="ok">≈0</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="note">
-        <strong>فكرة أساسية:</strong>
-        عندما يكون السؤال الفيزيائي: «كيف ينمو النظام؟» لا «كم تغيّر؟»، فإن \(D_1^1\) يصبح أداة أوضح من \(D_0^1\).
+        <strong>نتيجة عددية:</strong>
+        Rank 0 يفشل لأنه يفترض نموذجًا جمعيًا محليًا، وRank 1 يتحسن لأنه يحترم القياس النسبي،
+        بينما Rank 2 يصبح شبه مطابق لأنه يعمل في الفضاء البنيوي الطبيعي للنمو.
       </div>
     </section>
 
-    <!-- الجزء (2) -->
-    <section class="card" id="p2">
-      <h2>2) التوسع الكوني والطاقة المظلمة بصياغة هرمية</h2>
+    <!-- 5) Discussion -->
+    <section class="card" id="discussion">
+      <h2>5) مناقشة (Discussion)</h2>
 
-      <h3>2.1 التوسع الكوني كظاهرة نسبية خالصة</h3>
+      <h3>5.1 لماذا Rank 2 مهم للطاقة المظلمة؟</h3>
       <p class="muted">
-        عند دراسة التوسع الكوني، تظهر الطبيعة النسبية بوضوح: الكون لا “يزيد” بمقدار ثابت، بل تنمو المسافات بنسبة ما.
-        لذلك يكون التعبير الطبيعي عن عامل التوسع \(a(t)\) هو:
-      </p>
-      <div class="math">
-        \[
-          D_1^1 a(t)=\frac{d\ln a}{d\ln t}
-        \]
-      </div>
-      <p class="muted">
-        هذا التعبير يلتقط جوهر قانون هابل بصورة أنقى، لأنه يربط نمو البنية الكونية بالزمن على نحو نسبي.
+        إذا كان التمدد ظاهرة مقياسية، فإن السؤال الفيزيائي لا يجب أن يُختزل إلى “مشتقة ثانية”
+        بالمعنى الكلاسيكي فقط، بل إلى:
+        هل قانون النمو النسبي ثابت أم يتغير؟  
+        هذا بالضبط ما يلتقطه \(D_2^1\): التغير في “قانون التغير النسبي”.
       </p>
 
-      <h3>2.2 التسارع الكوني كتحول في بنية النمو</h3>
+      <h3>5.2 توافق مع ΛCDM</h3>
       <p class="muted">
-        التسارع الكوني لا يعني فقط زيادة مقدار النمو، بل تغيرًا في نمط النمو النسبي نفسه، وهنا تظهر الرتبة الثانية:
+        إطار ΛCDM ينجح في المطابقة مع البيانات لكنه يترك السؤال التفسيري مفتوحًا:
+        لماذا \(\Lambda\) بهذا الحجم؟  
+        القراءة الهرمية لا تحل المشكلة الكمية مباشرة، لكنها تقترح أن \(\Lambda\) قد يكون إسقاطًا رتبيًا
+        لسلوك بنيوي أعلى عندما نكتبه بلغة رتبة أدنى.
       </p>
-      <div class="math">
-        \[
-          D_2^1 a(t)=\frac{d\ln(\ln a)}{d\ln(\ln t)}
-        \]
-      </div>
 
       <div class="note">
-        <strong>قراءة هرمية للطاقة المظلمة:</strong>
-        يمكن فهم «الطاقة المظلمة» كإشارة إلى أن التوسع انتقل إلى مستوى وصف أعلى (من \(D_1^1\) إلى \(D_2^1\))،
-        بدل تفسيرها فقط كمكوّن غامض يُضاف إلى المعادلات.
+        <strong>نقطة جوهرية:</strong>
+        هذه الورقة لا تغيّر القياس التجريبي؛ لكنها تغيّر “لغة الوصف”، وهذا قد يساعد لاحقًا في بناء نماذج
+        أكثر بساطة عند الانتقال بين المقاييس.
       </div>
-
-      <h3>2.3 التضخم الكوني ضمن السلم الهرمي</h3>
-      <p class="muted">
-        مرحلة التضخم تمثل نموًا فائقًا في بداية الكون، ويمكن النظر إليها كمرحلة تقع على رتبة أعلى من الوصف؛
-        إذ يصبح حتى الوصف الأُسّي غير كافٍ دون الانتقال إلى رتب أعلى من السلم الهرمي.
-      </p>
-
-      <h3>2.4 مقارنة موجزة مع النموذج القياسي</h3>
-      <p class="muted">
-        لا يتعارض الحساب الهرمي مع نموذج ΛCDM، لكنه يعيد تفسير معنى بعض الكميات ضمن مستويات التغير،
-        بحيث تظهر الثوابت كتمثيلات تقريبية لتأثيرات أعلى رتبة داخل معادلات أدنى رتبة.
-      </p>
     </section>
 
-    <!-- الجزء (3) -->
-    <section class="card" id="p3">
-      <h2>3) تطبيقات فلكية عملية داخل الإطار الهرمي</h2>
+    <!-- 6) Limitations -->
+    <section class="card" id="limits">
+      <h2>6) الحدود والقيود (Limitations)</h2>
+      <ul class="muted small" style="margin:0; padding:0 18px 0 0">
+        <li>تعريف \(D_2^1\) الصارم يعتمد على \(\ln(\ln(\cdot))\)، لذا يلزم مجال موجب مناسب.</li>
+        <li>التحليل هنا وصفي/تنظيمي، وليس بديلًا لنظرية جاذبية أو نموذج كوني معياري.</li>
+        <li>النموذج العددي المختار مثال تعليمي؛ تطبيقه على بيانات حقيقية يتطلب معايرة إحصائية.</li>
+        <li>عند البيانات المرصودة، تحتاج الرتب إلى تقدير مشتقات وسط ضجيج القياس (سلاسل زمنية).</li>
+      </ul>
 
-      <h3>3.1 تطور النجوم كمسار هرمي</h3>
-      <p class="muted">
-        تطور النجوم يمر بمراحل نوعية. في المراحل الهادئة يكون الوصف النسبي مناسبًا مثل:
-        \(D_1^1 L(t)\) و\(D_1^1 R(t)\)،
-        بينما قرب النهاية تظهر انتقالات بنيوية تستدعي النظر إلى \(D_2^1\) لفهم تغير نمط النمو نفسه.
-      </p>
-
-      <h3>3.2 اللمعان النجمي والمقاييس اللوغاريتمية</h3>
-      <p class="muted">
-        لأن الرصد الفلكي يستخدم مقاييس لوغاريتمية (Magnitude)، فإن الرتبة الثانية تتوافق طبيعيًا مع البيانات،
-        وتجعل العلاقة بين النظرية والرصد أكثر تماسكًا.
-      </p>
-
-      <h3>3.3 المستعرات العظمى كقفزات بنيوية</h3>
-      <p class="muted">
-        المستعر الأعظم يمثل قفزة بنيوية في حالة النظام، حيث يصبح التغير غير سلس محليًا،
-        ويُفهم ضمن انتقال هرمي في مستوى الوصف.
-      </p>
-
-      <h3>3.4 المدارات الكوكبية والاستقرار طويل المدى</h3>
-      <p class="muted">
-        استقرار المدار على مدى طويل يعتمد على تراكم نسبي للانحرافات. استخدام \(D_1^1 r(t)\)
-        يكشف ما إذا كان الانحراف ينمو كنمط نسبي ثابت أو يتضخم تدريجيًا نحو عدم الاستقرار.
-      </p>
-
-      <h3>3.5 هجرة الكواكب</h3>
-      <p class="muted">
-        هجرة الكواكب داخل الأقراص عملية تراكمية. الوصف الهرمي يفرّق بين تغير موضعي لحظي وتغير نسبي طويل المدى.
-      </p>
-
-      <h3>3.6 تطور المجرات والتحول البنيوي</h3>
-      <p class="muted">
-        اندماجات المجرات لا تغيّر القيم فقط، بل تعيد تشكيل البنية. هنا تصبح الرتب الأعلى مفيدة لفهم الانتقالات النوعية
-        (مثل التحول من حلزونية إلى إهليلجية بعد تصادمات).
-      </p>
-
-      <h3>3.7 الثقوب السوداء ونمو الكتلة</h3>
-      <p class="muted">
-        نمو كتلة الثقب الأسود قد يكون بطيئًا نسبيًا في مراحل، ثم يصبح أسيًا أو فائقًا (مرحلة الكوازارات).
-        الحساب الهرمي يميز بين هذه المراحل عبر مستويات الوصف.
-      </p>
-
-      <h3>3.8 موجات الجاذبية</h3>
-      <p class="muted">
-        إشارات موجات الجاذبية تجمع بين تغيرات محلية سريعة وبنية عامة للنظام المصدر.
-        الفصل بين المستويين يسهل تفسير البيانات الرصدية.
-      </p>
-
-      <h3>3.9 مصير الكون</h3>
-      <p class="muted">
-        يمكن دراسة سيناريوهات المصير (تمدد أبدي، تجمّد عظيم، تمزق عظيم) بوصفها اختلافًا في بنية التغير على المدى البعيد،
-        لا مجرد اختلاف في القيم النهائية.
-      </p>
+      <div class="note">
+        <strong>اقتراح عملي:</strong>
+        العمل المستقبلي يمكن أن يستخدم أدوات تقدير مشتقات قوية (smoothing + regression) لقياس
+        \(D_1^1 a(t)\) و\(D_2^1 a(t)\) من بيانات المستعرات Ia وBAO وCMB.
+      </div>
     </section>
 
+    <!-- 7) Future Work -->
+    <section class="card" id="future">
+      <h2>7) عمل مستقبلي (Future Work)</h2>
+      <p class="muted">
+        يمكن توسيع هذا العمل عبر أربع مسارات:
+      </p>
+      <ol class="muted small" style="margin:0; padding:0 18px 0 0">
+        <li>اشتقاق علاقة تربط \(D_1^1 a(t)\) و\(D_2^1 a(t)\) بمقاييس الرصد مباشرة (H(z), q(z)).</li>
+        <li>تطبيق المنهج على بيانات فعلية (Planck, Pantheon, BAO) لرسم “منحنى الرتبة”.</li>
+        <li>بناء نموذج ديناميكي يحدد متى يحدث انتقال رتبي بين مراحل الكون (early/late).</li>
+        <li>استكشاف رتب أعلى \(D_n^1\) لربط التضخم، الانتقال الإشعاعي/المادي، والطاقة المظلمة ضمن سلم واحد.</li>
+      </ol>
+    </section>
+
+    <!-- Conclusion -->
     <section class="card" id="conclusion">
       <h2>الخلاصة</h2>
       <p class="muted">
-        الحساب الهرمي يقدّم لغة رياضية أقرب لطبيعة الظواهر الفلكية: فهو يميّز بين التغير المطلق (\(D_0^1\))،
-        والتغير النسبي (\(D_1^1\))، والتغير البنيوي اللوغاريتمي (\(D_2^1\))، ثم يفتح الباب للرتب الأعلى.
-        بهذه القراءة يصبح التوسع الكوني والطاقة المظلمة حالات ضمن سلم عام للتغير، لا ألغازًا معزولة.
+        تقترح هذه الورقة أن كثيرًا من ظواهر الفلك والكونيات يمكن تنظيمها عبر “سلم التغير”:
+        \(D_0^1\) للتغير المطلق، \(D_1^1\) للتغير النسبي المقياسي، و\(D_2^1\) للتغير البنيوي في قانون النمو النسبي.
+        بهذا الإطار، يصبح التسارع الكوني والطاقة المظلمة قابلين للقراءة بوصفهما انتقالًا وصفيًا نحو رتبة أعلى.
       </p>
 
+      <div class="note">
+        <strong>إحالة مقترحة (Citation):</strong>
+        <div class="math">
+          \[
+            \texttt{GOSSA\ AHMED.\ ورقة:\ الحساب\ الهرمي\ في\ الفلك\ والكونيات.\ الموقع\ الرسمي.\ (2025).}
+          \]
+        </div>
+      </div>
+    </section>
 
+    <!-- References -->
+    <section class="card" id="references">
+      <h2>المراجع (References)</h2>
+      <ol class="refs">
+        <li><b>Riess et al.</b> (1998). <i>Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant.</i> AJ 116, 1009.</li>
+        <li><b>Perlmutter et al.</b> (1999). <i>Measurements of Ω and Λ from 42 High-Redshift Supernovae.</i> ApJ 517, 565.</li>
+        <li><b>Planck Collaboration</b> (2018). <i>Cosmological parameters.</i> A&amp;A 641, A6 · arXiv:1807.06209</li>
+        <li><b>Weinberg</b> (1989). <i>The Cosmological Constant Problem.</i> Rev. Mod. Phys. 61, 1.</li>
+        <li><b>Peebles &amp; Ratra</b> (2003). <i>The Cosmological Constant and Dark Energy.</i> Rev. Mod. Phys. 75, 559.</li>
+        <li><b>Hubble</b> (1929). <i>A relation between distance and radial velocity among extra-galactic nebulae.</i> PNAS 15(3), 168.</li>
+        <li>WMAP: <a href="https://map.gsfc.nasa.gov/" target="_blank" rel="noopener">NASA WMAP</a> · ESA Planck: <a href="https://www.esa.int/Science_Exploration/Space_Science/Planck" target="_blank" rel="noopener">ESA Planck</a></li>
+      </ol>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · تطبيق الحساب الهرمي في الفلك — من التوسع الكوني إلى الطاقة المظلمة
+      © 2025 — GOSSA AHMED · ورقة: الحساب الهرمي في الفلك والكونيات — التمدد الكوني والطاقة المظلمة
     </footer>
+
   </div>
 </body>
 </html>
+>
