@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>Hierarchical Calculus in Economics | 20 Applications + Numeric Examples</title>
-  <meta name="description" content="A reference page: applying Hierarchical Calculus to economics using the derivative ladder D0 (absolute change), D1 (relative/elastic change), and D2 (acceleration of relative change). Includes 20 applications with numeric examples: growth, inflation, exchange rates, debt, interest, elasticity, bubbles, and risk." />
+  <title>Hierarchical Calculus in Economics | 20 Applications with Scientific Rationale</title>
+  <meta name="description" content="A research-style reference page: Hierarchical Calculus in Economics using rank derivatives D0^1, D1^1, D2^1 up to Dn^1, with 20 applications, numeric examples, economic context, and a rank-2 early warning lens for bubbles and crises." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical + hreflang -->
@@ -17,51 +17,48 @@
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="Hierarchical Calculus in Economics" />
-  <meta property="og:description" content="D0 (absolute), D1 (relative/elastic), D2 (acceleration of relative rates). 20 applications + numeric examples." />
+  <meta property="og:title" content="Hierarchical Calculus in Economics | 20 Applications with Scientific Rationale" />
+  <meta property="og:description" content="A structured research-style page: D0 (absolute change), D1 (relative change/elasticity), D2 (acceleration of relative change) with 20 economic examples and early warning interpretation." />
   <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/economics-en.html" />
   <meta name="twitter:card" content="summary" />
 
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
-      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --text:#eaf2ff; --muted: rgba(234,242,255,.74);
       --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
-      --card: rgba(255,255,255,.05); --border: rgba(255,255,255,.12);
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
-      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-
     body{
-      margin:0; font-family:var(--sans); color:var(--text); line-height:1.95;
+      margin:0; font-family:var(--sans); color:var(--text);
+      line-height:2.05;
       background:
         radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
     }
-
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-
     .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
 
-    /* Topbar */
+    /* topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.55);
+      background: rgba(11,18,32,.60);
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
       max-width:1100px; margin:0 auto; padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between;
-      gap:10px; flex-wrap:wrap;
+      gap:12px; flex-wrap:wrap;
     }
 
     .brand{display:flex; align-items:center; gap:10px}
@@ -75,27 +72,38 @@
     .brand .title strong{font-size:14px}
     .brand .title span{font-size:12px; color:var(--muted)}
 
-    /* Buttons */
-    .actions{display:flex; gap:8px; flex-wrap:wrap}
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+      font-size:13px;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.08)}
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:8px 12px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
       font-size:13px;
-      cursor:pointer;
       white-space:nowrap;
     }
-    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn:hover{background:rgba(255,255,255,.08)}
     .btn.primary{
       border-color: rgba(57,211,195,.35);
       background: rgba(57,211,195,.12);
     }
 
+    /* hero */
     header.hero{
-      margin-top:16px; padding:20px 18px;
+      margin-top:16px;
+      padding:20px 18px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border-radius:var(--radius);
@@ -112,27 +120,16 @@
     header.hero > *{position:relative}
 
     .hero-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap:14px; flex-wrap:wrap;
     }
-
-    h1{margin:0 0 8px 0; font-size:28px}
-    h2{margin:0 0 10px 0; font-size:18px}
-    h3{margin:14px 0 8px 0; font-size:16px}
-    .muted{color:var(--muted)}
-    .small{font-size:13px}
-
-    /* Author card */
     .author-card{
       display:flex; gap:12px; align-items:center;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.04);
       border-radius:18px;
       padding:12px 14px;
-      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+      box-shadow:0 18px 48px rgba(0,0,0,.22);
     }
     .avatar{
       width:64px;height:64px;border-radius:50%;
@@ -143,40 +140,58 @@
     .author-card .name{font-weight:900;font-size:16px;line-height:1.2}
     .author-card .role{color:var(--muted);font-size:12px;margin-top:2px}
 
-    /* Pills */
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
     .pillrow{margin-top:10px}
     .pill{
       display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      font-size: 12px; color: var(--muted);
-      margin: 6px 6px 0 0;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      font-size:12px;
+      color:var(--muted);
+      margin:6px 6px 0 0;
       white-space:nowrap;
     }
 
-    /* Cards */
     .card{
-      margin-top:14px; padding:16px;
+      margin-top:14px;
+      padding:16px;
       border:1px solid var(--border);
-      background: var(--card);
+      background:var(--card);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
 
     .math{
-      margin-top:8px; padding:10px 12px;
+      margin-top:8px;
+      padding:10px 12px;
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
+      background:rgba(0,0,0,.18);
       border-radius:12px;
       overflow:auto;
-      direction:ltr; text-align:left;
+      direction:ltr;
+      text-align:left;
+    }
+    code{
+      font-family:var(--mono);
+      background:rgba(0,0,0,.22);
+      padding:2px 6px;
+      border-radius:10px;
+      direction:ltr;
     }
 
     .note{
-      margin-top:12px; padding:12px;
+      margin-top:12px;
+      padding:12px;
       border:1px solid rgba(255,204,102,.35);
-      background: rgba(255,204,102,.10);
+      background:rgba(255,204,102,.10);
       border-radius:14px;
     }
     .note strong{color:var(--warn)}
@@ -185,12 +200,15 @@
       margin-top:12px;
       padding:12px 14px;
       border:1px solid rgba(57,211,195,.25);
-      background: rgba(57,211,195,.10);
+      background:rgba(57,211,195,.10);
       border-radius:14px;
       border-left:4px solid var(--accent);
     }
 
-    /* Tables */
+    .toc a{display:block; margin:6px 0}
+    ul{margin:8px 0 0 0; padding:0 0 0 18px}
+    li{margin:6px 0}
+
     table{
       width:100%;
       border-collapse:separate;
@@ -204,14 +222,14 @@
       text-align:left;
       font-size:13px;
       padding:10px 10px;
-      background: rgba(255,255,255,.06);
+      background:rgba(255,255,255,.06);
       border-bottom:1px solid rgba(255,255,255,.10);
       vertical-align:top;
     }
     tbody td{
       padding:10px 10px;
       font-size:13px;
-      color:rgba(234,242,255,.88);
+      color:rgba(234,242,255,.90);
       border-bottom:1px solid rgba(255,255,255,.08);
       vertical-align:top;
     }
@@ -220,25 +238,10 @@
     footer{
       margin-top:18px; padding-top:18px;
       border-top:1px solid rgba(255,255,255,.10);
-      color:var(--muted); font-size:12px; text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
     }
-
-    /* Back to top */
-    .toTop{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:99;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(11,18,32,.55);
-      backdrop-filter: blur(10px);
-      color: var(--text);
-      font-size:13px;
-      box-shadow: 0 16px 40px rgba(0,0,0,.35);
-    }
-    .toTop:hover{background: rgba(255,255,255,.08)}
   </style>
 
   <!-- MathJax -->
@@ -256,7 +259,7 @@
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": "Hierarchical Calculus in Economics",
-    "alternativeHeadline": "20 Applications + Numeric Examples using D0, D1, D2 and beyond",
+    "alternativeHeadline": "20 Applications with Scientific Rationale and a Rank-2 Early Warning Lens",
     "author": {
       "@type": "Person",
       "name": "Ahmed Gossa",
@@ -265,85 +268,67 @@
     "about": [
       "Hierarchical Calculus",
       "Economics",
-      "Growth",
-      "Inflation",
+      "Relative Change",
       "Elasticity",
-      "Interest Rates",
-      "Debt Dynamics",
-      "Financial Risk",
-      "Bubbles and Crises"
+      "Risk",
+      "Early Warning Signals"
     ],
-    "url": "https://gossaahmed.github.io/gossa-math/economics-en.html",
     "inLanguage": "en",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Hierarchical Calculus"
-    }
+    "url": "https://gossaahmed.github.io/gossa-math/economics-en.html",
+    "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
   }
   </script>
-
 </head>
 
 <body>
 
-  <!-- TOPBAR -->
   <div class="topbar">
     <div class="inner">
       <div class="brand">
         <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
         <div class="title">
-          <strong>Economics Applications</strong>
-          <span>20 examples · \(D_0^1, D_1^1, D_2^1\) · up to \(D_n^1\)</span>
+          <strong>Hierarchical Calculus in Economics</strong>
+          <span>Research style · 20 applications · \(D_0^1\), \(D_1^1\), \(D_2^1\)</span>
         </div>
       </div>
 
-      <div class="actions">
-        <a class="btn" href="./index-en.html">Home</a>
-        <a class="btn" href="./theory-en.html">Theory</a>
-        <a class="btn" href="./rules-en.html">Rules</a>
-        <a class="btn" href="./equations-en.html">Equations</a>
-        <a class="btn" href="./integrals-en.html">Integrals</a>
-        <a class="btn" href="./economics.html">العربية</a>
-        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
-      </div>
+      <nav aria-label="Navigation">
+        <a href="./index-en.html">Home</a>
+        <a href="./theory-en.html">Theory</a>
+        <a href="./rules-en.html">Rules</a>
+        <a href="./equations-en.html">Equations</a>
+        <a href="./integrals-en.html">Integrals</a>
+        <a href="./economics.html">العربية</a>
+      </nav>
+
+      <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
     </div>
   </div>
 
   <div class="wrap">
 
-    <!-- HERO -->
-    <header class="hero" id="top">
+    <header class="hero">
       <div class="hero-top">
-
         <div>
-          <h1>Hierarchical Calculus in Economics</h1>
-          <p class="muted">
-            Economics is naturally <b>relative</b>: growth, inflation, returns, exchange rates, elasticity, and risk
-            are best interpreted through ratios and percent changes.
-            Hierarchical Calculus formalizes this by organizing change into ranks:
-            <b>absolute change</b> (\(D_0^1\)),
-            <b>relative/elastic change</b> (\(D_1^1\)),
-            and <b>acceleration of relative change</b> (\(D_2^1\)).
-            This rank-2 layer often appears during bubbles, stress, and runaway risk regimes.
+          <h1>Hierarchical Calculus in Economics: A Rank-Based Lens for Change</h1>
+          <p class="muted" style="margin:0">
+            This page proposes a research-style reference framework for economic measurement through a “ladder of change.”
+            Economic dynamics are rarely purely absolute; they are typically <b>relative</b> (growth, inflation, returns, elasticity),
+            and sometimes the <b>relative law itself accelerates</b> (bubbles, crises, regime shifts).
+            In Hierarchical Calculus, we use:
+            <b>\(D_0^1\)</b> for absolute change,
+            <b>\(D_1^1\)</b> for relative change (elasticity-like),
+            and <b>\(D_2^1\)</b> for acceleration of relative change—often interpretable as an early warning layer.
           </p>
-
           <div class="pillrow">
-            <span class="pill">Rank 0: absolute change</span>
-            <span class="pill">Rank 1: elasticity / relative rates</span>
-            <span class="pill">Rank 2: acceleration of relative rates</span>
-            <span class="pill">Beyond: multi-phase regimes</span>
+            <span class="pill">Rank 0: \(D_0^1\) (absolute)</span>
+            <span class="pill">Rank 1: \(D_1^1\) (relative/elasticity)</span>
+            <span class="pill">Rank 2: \(D_2^1\) (relative acceleration)</span>
+            <span class="pill">Higher ranks: \(D_n^1\) (multi-phase regimes)</span>
           </div>
-
-          <div class="actions" style="margin-top:12px">
-            <a class="btn" href="#toc">Contents</a>
-            <a class="btn" href="#interpretation">Interpretation</a>
-            <a class="btn" href="#apps">20 Applications</a>
-            <a class="btn" href="#guide">Decision guide</a>
-            <a class="btn" href="#references">References</a>
-          </div>
-
           <p class="muted small" style="margin:10px 0 0 0">
-            Author: <b>GOSSA AHMED</b>
+            Concept DOI:
+            <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
           </p>
         </div>
 
@@ -354,39 +339,80 @@
             <div class="role">Independent Researcher — Hierarchical Calculus</div>
           </div>
         </div>
-
       </div>
     </header>
 
-    <!-- TOC -->
-    <section class="card" id="toc">
-      <h2>Contents</h2>
-      <a href="#interpretation">1) How to interpret ranks in economics</a><br>
-      <a href="#apps">2) 20 applications with numeric examples</a><br>
-      <a href="#guide">3) Quick decision guide</a><br>
-      <a href="#references">References & citation</a><br>
+    <!-- Abstract -->
+    <section class="card" id="abstract">
+      <h2>Abstract</h2>
+      <p class="muted" style="margin:0">
+        This page presents a rank-based descriptive framework for economic change using hierarchical derivatives.
+        Rank-0 \(D_0^1\) captures absolute change and is useful for direct reporting but often fails at cross-scale comparison.
+        Rank-1 \(D_1^1\) captures relative change and aligns naturally with the concept of elasticity.
+        Rank-2 \(D_2^1\) captures acceleration of relative change and is frequently associated with instability, bubbles,
+        crisis dynamics, and regime shifts.
+        We provide 20 numeric examples with full economic context and a scientific rationale for why each rank is appropriate.
+      </p>
     </section>
 
-    <!-- Interpretation -->
-    <section class="card" id="interpretation">
-      <h2>1) How to interpret ranks in economics</h2>
+    <!-- Contents -->
+    <section class="card toc" id="toc">
+      <h2>Contents</h2>
+      <a href="#method">1) Methodology & Notation</a>
+      <a href="#ranks">2) Economic meaning of ranks</a>
+      <a href="#ews">3) Rank-2 as an Early Warning Signal</a>
+      <a href="#examples">4) Twenty applications (with rationale)</a>
+      <a href="#discussion">5) Discussion</a>
+      <a href="#conclusion">6) Conclusion</a>
+      <a href="#refs">7) References & Citation</a>
+    </section>
 
-      <div class="callout">
-        <div style="font-weight:900;margin-bottom:6px">Core intuition</div>
-        <div class="muted small">
-          Rank 0 answers “how much did it move?”<br>
-          Rank 1 answers “how much did it move <b>in percent</b>?” (elasticity-like)<br>
-          Rank 2 answers “is the <b>percent rate itself accelerating</b>?”
-        </div>
+    <!-- Methodology -->
+    <section class="card" id="method">
+      <h2>1) Methodology & Notation</h2>
+      <p class="muted">
+        We write hierarchical derivatives explicitly by rank: \(D_r^1\).
+        This page is not a replacement for econometrics; it is a measurement framework that distinguishes:
+        (i) absolute changes, (ii) relative changes comparable across scale, and
+        (iii) changes in the relative law itself (acceleration / structural shift).
+      </p>
+
+      <div class="math">
+        \[
+        D_0^1 y = \frac{dy}{dx},
+        \qquad
+        D_1^1 y = \frac{d\ln y}{d\ln x},
+        \qquad
+        D_2^1 y = \frac{d\ln(\ln y)}{d\ln(\ln x)}.
+        \]
       </div>
 
+      <div class="note">
+        <strong>Domain assumptions:</strong><br>
+        • Rank-1 often requires \(x>0\), \(y>0\) (log-defined).<br>
+        • Rank-2 typically requires \(x>1\), \(y>1\) (log-log defined).<br>
+        • Many economic indices and ratios (CPI, risk indices, debt ratios, price indices) naturally satisfy positive domains.
+      </div>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">Why ranks?</div>
+        <div class="muted small">
+          Because “how much did it change?” is not the same as “how much did it change relatively?”
+          And “is the relative rate accelerating?” is a deeper question associated with instability and regime shifts.
+        </div>
+      </div>
+    </section>
+
+    <!-- Rank interpretation -->
+    <section class="card" id="ranks">
+      <h2>2) Economic meaning of ranks</h2>
       <table>
         <thead>
           <tr>
             <th>Rank</th>
-            <th>Operator (quick view)</th>
+            <th>Operator (approx.)</th>
             <th>Economic meaning</th>
-            <th>Fast numeric reading</th>
+            <th>Practical reading</th>
           </tr>
         </thead>
         <tbody>
@@ -394,49 +420,71 @@
             <td>0</td>
             <td>\(D_0^1 y \approx \dfrac{\Delta y}{\Delta x}\)</td>
             <td>Absolute change</td>
-            <td>Difference / slope</td>
+            <td>Raw differences</td>
           </tr>
           <tr>
             <td>1</td>
             <td>\(D_1^1 y \approx \dfrac{\Delta y/y}{\Delta x/x}\)</td>
-            <td>Relative change (elasticity)</td>
+            <td>Relative change / elasticity</td>
             <td>%\(y\) per %\(x\)</td>
           </tr>
           <tr>
             <td>2</td>
-            <td>\(D_2^1 y\) (rank-2 layer)</td>
+            <td>\(D_2^1 y\)</td>
             <td>Acceleration of relative change</td>
-            <td>Is the “% change” speeding up?</td>
+            <td>Is the “rate” itself shifting?</td>
           </tr>
         </tbody>
       </table>
 
       <p class="muted small" style="margin:10px 0 0 0">
-        Practical note: in economics, the rank-2 layer is used as a structured descriptor for
-        “acceleration of relative rates,” especially in markets and risk indicators.
+        From an econometric perspective, \(D_1^1\) provides a natural coordinate system for growth and elasticity,
+        while \(D_2^1\) can be interpreted as a second-layer descriptor that monitors how elasticity/rates evolve over time.
+      </p>
+    </section>
+
+    <!-- Early warning -->
+    <section class="card" id="ews">
+      <h2>3) Rank-2 \(D_2^1\) as an Early Warning Signal</h2>
+      <p class="muted">
+        Many macro-financial instabilities arise not because a variable rises, but because its <b>relative growth law accelerates</b>.
+        Examples include inflation doubling quickly, risk premia surging, volatility spikes, and credit growth runaway.
+        In this interpretation, rank-2 captures a structural shift: the relative rule changes.
       </p>
 
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">Scientific intuition</div>
+        <div class="muted small">
+          \(D_1^1\) measures the relative rate.  
+          \(D_2^1\) measures whether that relative rate is accelerating.  
+          Persistent acceleration is commonly observed in bubbles and crisis transitions.
+        </div>
+      </div>
+
       <div class="note">
-        <strong>Notation:</strong>
-        We write derivatives explicitly as \(D_r^1\).
-        \(D_0^1\) is classical, \(D_1^1\) is relative, \(D_2^1\) is rank-2 behavior, and beyond is \(D_n^1\).
+        <strong>Methodological caution:</strong>
+        A high rank-2 signal does not guarantee a crisis; it is a structured warning indicator that should be integrated
+        with traditional macro and financial diagnostics.
       </div>
     </section>
 
-    <!-- Apps -->
-    <section class="card" id="apps">
-      <h2>2) 20 applications with numeric examples</h2>
-
+    <!-- Examples header -->
+    <section class="card" id="examples">
+      <h2>4) Twenty applications (each with context + rationale)</h2>
       <div class="note">
-        <strong>Reading tip:</strong>
-        Compare \(D_0^1\) (raw values) vs \(D_1^1\) (percent/elastic values).
-        If relative rates accelerate, the system enters the rank-2 layer \(D_2^1\).
+        <strong>Reading tip:</strong> For each case: interpret \(D_0^1\) (raw), then \(D_1^1\) (relative),
+        and observe when rank-2 meaning emerges (acceleration of rates).
       </div>
     </section>
 
-    <!-- 1 -->
-    <section class="card"><h3>1) GDP growth</h3>
-      <p class="muted small" style="margin:0">GDP from 200 to 220 (billion).</p>
+    <!-- Examples 1..20 (research style) -->
+    <section class="card">
+      <h3>1) GDP growth</h3>
+      <p class="muted">
+        GDP is a baseline macro indicator, but absolute growth alone can mislead across different scales.
+        If GDP rises from 200 to 220, the rank-0 reading is +20, while the rank-1 reading is 10%.
+        Scientifically, rank-1 is the appropriate comparative coordinate because it normalizes by size.
+      </p>
       <div class="math">\[
         D_0^1:\;\Delta GDP=20
         \qquad
@@ -444,9 +492,12 @@
       \]</div>
     </section>
 
-    <!-- 2 -->
-    <section class="card"><h3>2) Inflation (CPI)</h3>
-      <p class="muted small" style="margin:0">Price index from 100 to 108.</p>
+    <section class="card">
+      <h3>2) Inflation (CPI)</h3>
+      <p class="muted">
+        Inflation is inherently proportional: its welfare impact depends on percentage change.
+        CPI from 100 to 108 yields +8 in rank-0 but 8% in rank-1, which is economically more meaningful for purchasing power.
+      </p>
       <div class="math">\[
         D_0^1:\;+8
         \qquad
@@ -454,17 +505,24 @@
       \]</div>
     </section>
 
-    <!-- 3 -->
-    <section class="card"><h3>3) Nominal vs real growth</h3>
-      <p class="muted small" style="margin:0">Nominal growth 10%, inflation 6%.</p>
+    <section class="card">
+      <h3>3) Nominal vs real growth</h3>
+      <p class="muted">
+        Nominal growth includes inflation; real growth approximates true output expansion.
+        If nominal growth is 10% and inflation is 6%, a standard approximation yields real growth ≈ 4%.
+        This is a rank-1 comparison by construction.
+      </p>
       <div class="math">\[
         \text{Approx. real growth} \approx 10\%-6\%=4\%
       \]</div>
     </section>
 
-    <!-- 4 -->
-    <section class="card"><h3>4) Exchange rate move</h3>
-      <p class="muted small" style="margin:0">USD from 100 to 115 (local currency).</p>
+    <section class="card">
+      <h3>4) Exchange rate depreciation</h3>
+      <p class="muted">
+        Exchange rates matter primarily through proportional effects on trade costs, imported inflation, and debt servicing.
+        100 → 115 is +15 (rank-0) but 15% depreciation (rank-1).
+      </p>
       <div class="math">\[
         D_0^1:\;+15
         \qquad
@@ -472,9 +530,12 @@
       \]</div>
     </section>
 
-    <!-- 5 -->
-    <section class="card"><h3>5) Trade deficit growth</h3>
-      <p class="muted small" style="margin:0">Deficit from 5 to 7 (billion).</p>
+    <section class="card">
+      <h3>5) Trade deficit expansion</h3>
+      <p class="muted">
+        Deficits must be interpreted relative to baseline. A deficit 5 → 7 is +2 but +40% relative deterioration,
+        affecting sustainability and external vulnerability more than the raw number suggests.
+      </p>
       <div class="math">\[
         D_0^1:\;+2
         \qquad
@@ -482,10 +543,11 @@
       \]</div>
     </section>
 
-    <!-- 6 -->
-    <section class="card"><h3>6) Debt-to-GDP ratio</h3>
-      <p class="muted small" style="margin:0">
-        Debt 120, GDP 200 → 0.60. Then debt 132, GDP 204.
+    <section class="card">
+      <h3>6) Debt-to-GDP ratio</h3>
+      <p class="muted">
+        Debt sustainability depends on economic scale. A ratio 0.60 → 0.647 implies ≈ 7.8% relative deterioration,
+        which is the relevant signal for credit risk and fiscal monitoring.
       </p>
       <div class="math">\[
         \text{Before: }0.60
@@ -496,54 +558,70 @@
       \]</div>
     </section>
 
-    <!-- 7 -->
-    <section class="card"><h3>7) Compounded interest</h3>
-      <p class="muted small" style="margin:0">100 at 5% yearly for 2 years.</p>
+    <section class="card">
+      <h3>7) Compounded interest</h3>
+      <p class="muted">
+        Financial accumulation is multiplicative. 100 at 5% for 2 years becomes 110.25.
+        Rank-1 is the natural language because compounding is fundamentally relative growth.
+      </p>
       <div class="math">\[
         100\to 105\to 110.25
-        \qquad
-        (\text{Rank 1 is natural for compounding.})
       \]</div>
     </section>
 
-    <!-- 8 -->
-    <section class="card"><h3>8) Discounting (present value)</h3>
-      <p class="muted small" style="margin:0">120 in 1 year, discount rate 10%.</p>
+    <section class="card">
+      <h3>8) Discounting (present value)</h3>
+      <p class="muted">
+        Discounting is a relative transformation between time and value.
+        A cash flow of 120 discounted at 10% gives \(PV\approx109.09\).
+      </p>
       <div class="math">\[
         PV=\frac{120}{1.10}\approx 109.09
       \]</div>
     </section>
 
-    <!-- 9 -->
-    <section class="card"><h3>9) Unemployment as relative change</h3>
-      <p class="muted small" style="margin:0">Unemployment from 10% to 12%.</p>
+    <section class="card">
+      <h3>9) Unemployment: points vs relative shift</h3>
+      <p class="muted">
+        A rise from 10% to 12% is +2 points but a 20% relative increase.
+        The relative view is often more informative for labor-market shock severity.
+      </p>
       <div class="math">\[
-        D_0^1:\;+2 \text{ points}
+        D_0^1:\;+2\text{ points}
         \qquad
         D_1^1:\;\frac{12-10}{10}=20\%
       \]</div>
     </section>
 
-    <!-- 10 -->
-    <section class="card"><h3>10) Wage–price spiral signal (rank-2)</h3>
-      <p class="muted small" style="margin:0">Inflation 4% then 8% quickly.</p>
+    <section class="card">
+      <h3>10) Wage–price spiral signal (rank-2)</h3>
+      <p class="muted">
+        When inflation doubles quickly (4% → 8%), the relative law changes structurally.
+        This is a rank-2 style warning because the rate itself accelerates.
+      </p>
       <div class="math">\[
         \frac{8}{4}=2
-        \quad\Rightarrow\quad \text{relative rate doubled (rank-2 warning)}
+        \quad\Rightarrow\quad \text{rank-2 behavior}
       \]</div>
     </section>
 
-    <!-- 11 -->
-    <section class="card"><h3>11) Asset bubble signature</h3>
-      <p class="muted small" style="margin:0">Monthly growth: 2% → 5% → 12%.</p>
+    <section class="card">
+      <h3>11) Asset bubble signature</h3>
+      <p class="muted">
+        Bubbles often feature accelerating relative growth: 2% → 5% → 12% monthly.
+        The acceleration itself is the structural signal, consistent with a rank-2 interpretation.
+      </p>
       <div class="math">\[
-        \text{Relative rates accelerate}\;\Rightarrow\; \text{rank-2 instability layer}
+        2\% \to 5\% \to 12\%
+        \Rightarrow \text{relative acceleration (rank-2 warning)}
       \]</div>
     </section>
 
-    <!-- 12 -->
-    <section class="card"><h3>12) Risk premium jump</h3>
-      <p class="muted small" style="margin:0">Risk premium from 3% to 4.5%.</p>
+    <section class="card">
+      <h3>12) Risk premium jump</h3>
+      <p class="muted">
+        A premium 3% → 4.5% is +1.5 points, but +50% relative. The relative shock often drives capital flight and repricing.
+      </p>
       <div class="math">\[
         D_0^1:\;+1.5\text{ points}
         \qquad
@@ -551,9 +629,12 @@
       \]</div>
     </section>
 
-    <!-- 13 -->
-    <section class="card"><h3>13) Volatility index move</h3>
-      <p class="muted small" style="margin:0">Index from 16 to 24.</p>
+    <section class="card">
+      <h3>13) Volatility index move</h3>
+      <p class="muted">
+        Volatility affects risk nonlinearly. 16 → 24 is +8 but +50% relative,
+        often meaning disproportionate stress on leverage and liquidity.
+      </p>
       <div class="math">\[
         D_0^1:\;+8
         \qquad
@@ -561,43 +642,59 @@
       \]</div>
     </section>
 
-    <!-- 14 -->
-    <section class="card"><h3>14) Price elasticity of demand</h3>
-      <p class="muted small" style="margin:0">Price +10%, quantity −15%.</p>
+    <section class="card">
+      <h3>14) Price elasticity of demand</h3>
+      <p class="muted">
+        Elasticity is rank-1 by definition: it is a ratio of percentage changes.
+        If price rises 10% and quantity falls 15%, elasticity ≈ -1.5.
+      </p>
       <div class="math">\[
         E \approx \frac{-15\%}{10\%}=-1.5
       \]</div>
     </section>
 
-    <!-- 15 -->
-    <section class="card"><h3>15) Supply elasticity</h3>
-      <p class="muted small" style="margin:0">Price +8%, supply +4%.</p>
+    <section class="card">
+      <h3>15) Supply elasticity</h3>
+      <p class="muted">
+        If price rises 8% and supply rises 4%, elasticity is 0.5, indicating capacity or adjustment constraints.
+      </p>
       <div class="math">\[
         E_s \approx \frac{4\%}{8\%}=0.5
       \]</div>
     </section>
 
-    <!-- 16 -->
-    <section class="card"><h3>16) Marginal propensity to consume</h3>
-      <p class="muted small" style="margin:0">Income +1000, consumption +700.</p>
+    <section class="card">
+      <h3>16) Marginal propensity to consume (MPC)</h3>
+      <p class="muted">
+        MPC governs the spending multiplier. If income rises by 1000 and consumption rises by 700, \(MPC=0.7\).
+        Rank-0 is sufficient locally, while rank-1 helps across heterogeneous income groups.
+      </p>
       <div class="math">\[
-        MPC=\frac{\Delta C}{\Delta Y}=\frac{700}{1000}=0.7
+        MPC=\Delta C/\Delta Y = 0.7
       \]</div>
     </section>
 
-    <!-- 17 -->
-    <section class="card"><h3>17) Productivity improvement</h3>
-      <p class="muted small" style="margin:0">Output 500→540, hours 100→105.</p>
+    <section class="card">
+      <h3>17) Productivity improvement</h3>
+      <p class="muted">
+        Productivity is naturally a ratio. Output 500→540 and hours 100→105 yields productivity 5→5.1429,
+        a 2.86% relative improvement (rank-1 interpretation).
+      </p>
       <div class="math">\[
-        \text{Before}=5,\quad \text{After}\approx \frac{540}{105}=5.1429
+        \text{Before}=5
+        \quad
+        \text{After}\approx \frac{540}{105}=5.1429
         \Rightarrow
         \frac{5.1429-5}{5}\approx 2.86\%
       \]</div>
     </section>
 
-    <!-- 18 -->
-    <section class="card"><h3>18) Positive inequality/risk index</h3>
-      <p class="muted small" style="margin:0">Index \(R\): 1.20→1.35.</p>
+    <section class="card">
+      <h3>18) Positive inequality/risk index</h3>
+      <p class="muted">
+        Positive indices fit log-based descriptions well. 1.20 → 1.35 is +0.15 but +12.5% relative.
+        If the relative rate accelerates repeatedly, rank-2 becomes relevant.
+      </p>
       <div class="math">\[
         D_0^1:\;+0.15
         \qquad
@@ -605,9 +702,12 @@
       \]</div>
     </section>
 
-    <!-- 19 -->
-    <section class="card"><h3>19) Technology adoption (platform growth)</h3>
-      <p class="muted small" style="margin:0">Users 1.0M→1.3M in a month.</p>
+    <section class="card">
+      <h3>19) Technology/platform adoption</h3>
+      <p class="muted">
+        Adoption often follows diffusion with network effects. Users 1.0M → 1.3M is +0.3M but +30% relative growth.
+        Accelerating adoption rates (30% → 60% → 90%) suggest structural scaling and rank-2 behavior.
+      </p>
       <div class="math">\[
         D_0^1:\;+0.3M
         \qquad
@@ -615,92 +715,77 @@
       \]</div>
     </section>
 
-    <!-- 20 -->
-    <section class="card"><h3>20) Project cost overrun</h3>
-      <p class="muted small" style="margin:0">Cost 10M→12M.</p>
+    <section class="card">
+      <h3>20) Project cost overrun</h3>
+      <p class="muted">
+        A 2M overrun may or may not be serious depending on baseline. 10M → 12M is +2M but +20% relative.
+        If overruns accelerate (20% → 35% → 55%), that is a rank-2 instability signal.
+      </p>
       <div class="math">\[
         D_0^1:\;+2M
         \qquad
         D_1^1:\;\frac{2}{10}=20\%
-        \quad\Rightarrow\quad \text{scale-aware alarm}
       \]</div>
     </section>
 
-    <!-- Guide -->
-    <section class="card" id="guide">
-      <h2>3) Quick decision guide</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Question</th>
-            <th>Recommended rank</th>
-            <th>Why</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>How much changed?</td>
-            <td>\(D_0^1\)</td>
-            <td>Raw reporting (levels and differences)</td>
-          </tr>
-          <tr>
-            <td>How much changed in percent / elasticity?</td>
-            <td>\(D_1^1\)</td>
-            <td>Scale-invariant economics, rates, and growth</td>
-          </tr>
-          <tr>
-            <td>Are relative rates accelerating?</td>
-            <td>\(D_2^1\)</td>
-            <td>Bubbles, crises, runaway risk dynamics</td>
-          </tr>
-          <tr>
-            <td>Multi-phase complex regimes</td>
-            <td>\(D_n^1\)</td>
-            <td>Higher hierarchical analysis (multiple transitions)</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Discussion -->
+    <section class="card" id="discussion">
+      <h2>5) Discussion</h2>
+      <p class="muted">
+        The examples show that economics naturally lives in a relative coordinate system.
+        Rank-1 aligns with standard elasticity and growth diagnostics, while rank-2 captures structural changes in rates,
+        which often precede crisis transitions.
+        The practical value of this framework is interpretability: it clarifies which “type of change” a metric represents.
+      </p>
 
       <div class="note">
-        <strong>Takeaway:</strong>
-        \(D_0^1\) = change, \(D_1^1\) = relative change (elasticity),
-        \(D_2^1\) = acceleration of relative change.
+        <strong>Practical implementation:</strong>
+        Rank-2 indicators can be embedded into risk dashboards (inflation, volatility, risk premia, credit growth, asset prices).
+        Persistent acceleration of relative rates can justify preemptive policy or prudential measures.
       </div>
     </section>
 
-    <!-- References -->
-    <section class="card" id="references">
-      <h2>References & citation</h2>
+    <!-- Conclusion -->
+    <section class="card" id="conclusion">
+      <h2>6) Conclusion</h2>
+      <p class="muted">
+        This page provides a structured rank-based interpretation of economic change.
+        Rank-0 supports raw reporting, rank-1 is the natural economic language for comparison and elasticity,
+        and rank-2 highlights acceleration of relative rates—often relevant to bubbles, crises, and regime shifts.
+        The core takeaway is that many economic phenomena are best understood when not forced into a single measurement rank.
+      </p>
+    </section>
 
-      <div class="note">
-        <strong>Concept DOI:</strong>
-        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
-      </div>
+    <!-- References -->
+    <section class="card" id="refs">
+      <h2>7) References & Citation</h2>
 
       <div class="note">
         <strong>Suggested citation:</strong>
-        <div class="math">\[
-\texttt{GOSSA\ AHMED.\ Hierarchical\ Calculus\ in\ Economics:\ 20\ Applications\ with\ Numeric\ Examples.\ Official\ Website.\ Zenodo\ DOI:\ 10.5281/zenodo.17917302\ (2025).}
-\]</div>
+        <div class="math">
+          \[
+            \texttt{GOSSA\ AHMED.\ Hierarchical\ Calculus\ in\ Economics:\ 20\ Applications\ with\ Scientific\ Rationale\ and\ Numeric\ Examples.\ Official\ Website.\ 2025.}
+          \]
+        </div>
       </div>
 
       <div class="callout">
-        <div style="font-weight:900;margin-bottom:6px">Academic note</div>
+        <div style="font-weight:900;margin-bottom:6px">Concept DOI</div>
         <div class="muted small">
-          The numerical examples are didactic and intended to demonstrate how different ranks capture different economic interpretations:
-          absolute levels, relative rates, and acceleration of relative rates.
+          <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
         </div>
       </div>
+
+      <p class="muted small" style="margin:10px 0 0 0">
+        Note: this is a conceptual reference. It can be extended with real datasets, empirical estimations,
+        and statistical change-point tests for structural breaks.
+      </p>
     </section>
 
     <footer>
       © 2025 — GOSSA AHMED · Economics — explicit \(D_r^1\), \(D_0^1\), \(D_1^1\), \(D_2^1\)
     </footer>
+
   </div>
-
-  <!-- Back to Top -->
-  <a class="toTop" href="#top" aria-label="Back to top">↑ Top</a>
-
 </body>
 </html>
