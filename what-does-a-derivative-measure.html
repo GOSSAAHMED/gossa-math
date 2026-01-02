@@ -4,37 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>ماذا يقيس المشتق حقًا؟ — من التغيّر التفاضلي إلى التغيّر الهرمي | الحساب الهرمي</title>
-  <meta name="description" content="صفحة تفسيرية أكاديمية: ما الذي يقيسه المشتق؟ التغيّر التفاضلي D0، التغيّر النسبي D1، التغيّر اللوغاريتمي D2، ولماذا نحتاج الرفع الهرمي لوصف تغيّر آلية التغيّر." />
+  <title>ماذا يقيس المشتق فعليًا؟ — تفسير هرمي لمعنى التغيّر (نمط IEEE)</title>
+  <meta name="description" content="نسخة ورقية بأسلوب IEEE تشرح معنى المشتق في الحساب الهرمي: رتبة 0 (تفاضلي)، رتبة 1 (نسبي)، ورتبة 2 (لوغاريتمي/بنيوي)، مع تفسير موحّد ومراجع." />
+  <meta name="keywords" content="معنى المشتق, ماذا يقيس المشتق, الحساب الهرمي, مشتق نسبي, مشتق لوغاريتمي, D0, D1, D2" />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- Canonical & hreflang (عدّل الروابط حسب اسم الملف الذي ستضعه) -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure.html">
-  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure.html">
-  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure-en.html">
-  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure-en.html">
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure-en.html" />
 
   <style>
     :root{
-      --bg0:#0b1220;
-      --bg1:#0f1b2e;
-      --card: rgba(255,255,255,.06);
-      --border: rgba(255,255,255,.14);
-      --text:#eaf2ff;
-      --muted: rgba(234,242,255,.72);
-      --accent:#39d3c3;
-      --accent2:#7aa7ff;
-      --warn:#ffcc66;
-      --shadow: 0 18px 48px rgba(0,0,0,.38);
-      --radius: 18px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.05); --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 48px rgba(0,0,0,.38); --radius: 18px;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family: var(--sans);
-      color:var(--text);
+      margin:0; font-family:var(--sans); color:var(--text); line-height:2.05;
       background:
         radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
@@ -43,161 +35,115 @@
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1000px; margin:0 auto; padding:26px 16px 60px}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
 
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
       background: rgba(11,18,32,.55);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
-      max-width:1000px; margin:0 auto; padding:10px 16px;
+      max-width:1100px; margin:0 auto; padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
     .logo{
       width:34px; height:34px; border-radius:10px;
       background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
-      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
     .brand .title span{font-size:12px; color:var(--muted)}
-    .actions{display:flex; gap:10px; flex-wrap:wrap}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:9px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      font-size: 13px;
-      cursor:pointer;
-      white-space:nowrap;
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04); border-radius:999px;
+      font-size:13px; color:var(--text); white-space:nowrap;
     }
-    .btn:hover{background: rgba(255,255,255,.08)}
-    .btn.primary{
-      border-color: rgba(57,211,195,.35);
-      background: rgba(57,211,195,.12);
-    }
+    nav a:hover{background:rgba(255,255,255,.07)}
 
     header.hero{
-      margin-top:18px;
+      margin-top:16px; padding:20px 18px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px 18px;
-      position:relative;
-      overflow:hidden;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
     }
     header.hero:before{
-      content:"";
-      position:absolute; inset:-2px;
+      content:""; position:absolute; inset:-2px;
       background:
         radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
         radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
       pointer-events:none;
     }
     header.hero > *{position:relative}
-    h1{margin:0 0 8px 0; font-size:30px}
+
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
     .card{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      margin-top:14px; padding:16px;
+      border:1px solid var(--border);
+      background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 18px 18px;
-      margin-top:14px;
     }
-    .card h2{
-      margin:0 0 10px 0;
-      font-size: 18px;
-      display:flex; align-items:center; gap:10px;
-    }
-    .bar{
-      width:4px; height:18px; border-radius:99px;
-      background: linear-gradient(180deg, var(--accent), var(--accent2));
-      display:inline-block;
-    }
-
-    .block{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      border-radius: 14px;
-      padding: 14px 16px;
-      margin: 12px 0;
-    }
-    .label{font-weight:800; margin-bottom:8px}
     .math{
-      margin-top: 8px;
+      margin-top:10px; padding:12px 12px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
-      border-radius: 12px;
-      padding: 10px 12px;
+      border-radius:12px;
       overflow:auto;
-      direction:ltr;
-      text-align:left;
-    }
-    code{
-      font-family: var(--mono);
-      background: rgba(0,0,0,.22);
-      padding:2px 6px;
-      border-radius:10px;
-      direction:ltr;
+      direction:ltr; text-align:left;
     }
     .note{
+      margin-top:12px; padding:12px;
       border:1px solid rgba(255,204,102,.35);
       background: rgba(255,204,102,.10);
-      border-radius: 14px;
-      padding: 12px 12px;
-      margin-top:12px;
-      line-height:1.9;
+      border-radius:14px;
     }
     .note strong{color:var(--warn)}
-    ul{margin:8px 0 0 0; padding:0 18px 0 0}
-    li{margin:6px 0}
 
-    table{
-      width:100%;
-      border-collapse: collapse;
+    .paper-meta{
       margin-top:10px;
-      overflow:hidden;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
+      padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background: rgba(57,211,195,.08);
+      border-radius:14px;
+      border-right:4px solid var(--accent);
     }
-    th, td{
-      padding:10px 12px;
-      border-bottom:1px solid rgba(255,255,255,.10);
-      font-size: 13.5px;
-      vertical-align: top;
-    }
-    th{color:rgba(234,242,255,.9); text-align:right; background: rgba(255,255,255,.04)}
-    td{color:var(--muted)}
-    tr:last-child td{border-bottom:none}
+    .paper-meta b{color:#bfe8ff}
 
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
+    .cta{margin-top:12px; display:flex; flex-wrap:wrap; gap:8px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.04);
-      font-size: 12px;
-      color: var(--muted);
-      margin: 6px 6px 0 0;
+      color: var(--text); font-size:13px;
+      text-decoration:none;
     }
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.10);
+    }
+
+    ol.refs{margin:0; padding-right:18px}
+    ol.refs li{margin:8px 0; color:rgba(234,242,255,.88); font-size:13px}
+    code{font-family:var(--mono)}
 
     footer{
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align:center;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,.10);
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
     }
   </style>
 
@@ -209,6 +155,33 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "ماذا يقيس المشتق فعليًا؟ — تفسير هرمي لمعنى التغيّر",
+  "alternativeHeadline": "من التغيّر التفاضلي إلى النسبي ثم اللوغاريتمي (عرض بأسلوب IEEE)",
+  "author": {
+    "@type": "Person",
+    "name": "Ahmed Gossa",
+    "url": "https://gossaahmed.github.io/gossa-math/"
+  },
+  "about": [
+    "الحساب الهرمي",
+    "معنى المشتق",
+    "مشتق نسبي",
+    "مشتق لوغاريتمي",
+    "قوانين القياس"
+  ],
+  "abstract": "تشرح هذه الصفحة بأسلوب ورقة IEEE ماذا يعني أن نقيس التغيّر بالمشتق عندما نوسّع مفهوم التغيّر من الميل المطلق إلى التغيّر النسبي ثم البنيوي. باستخدام مشتقات صريحة \(D_0^1\) و\(D_1^1\) و\(D_2^1\)، نبيّن أن كثيرًا من عدم الاستقرار في النمذجة يأتي من استعمال رتبة قياس غير مناسبة لطبيعة الظاهرة.",
+  "keywords": ["معنى المشتق","الحساب الهرمي","مشتق نسبي","مشتق لوغاريتمي","D0","D1","D2"],
+  "inLanguage": "ar",
+  "url": "https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure.html",
+  "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
+}
+</script>
 </head>
 
 <body>
@@ -218,176 +191,200 @@
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
           <strong>الحساب الهرمي</strong>
-          <span>صفحة تفسيرية — ما الذي يقيسه المشتق؟</span>
+          <span>عرض ورقي — معنى المشتق (D0, D1, D2)</span>
         </div>
       </div>
 
-      <div class="actions">
-        <a class="btn" href="./index.html">الرئيسية</a>
-        <a class="btn" href="./index-en.html" title="English version">English</a>
-        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
-      </div>
+      <nav aria-label="Navigation">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./theory.html">النظرية</a>
+        <a href="./rules.html">القواعد</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="./what-does-a-derivative-measure-en.html">English</a>
+      </nav>
     </div>
   </div>
 
   <div class="wrap">
+
     <header class="hero">
-      <h1>ماذا يقيس المشتق حقًا؟</h1>
-      <p class="muted" style="margin:0; line-height:1.9">
-        هذه الصفحة تشرح الفكرة المركزية: <b>المشتق يقيس التغيّر ضمن مقياس معيّن</b>.
-        عندما يشارك المقياس نفسه في الديناميكا، يصبح الانتقال من \(D_0\) إلى \(D_1\) ثم \(D_2\) ضرورة تفسيرية لا “تعقيدًا”.
+      <h1>ماذا يقيس المشتق فعليًا؟</h1>
+      <p class="muted">
+        غالبًا ما يُدرّس المشتق على أنه “ميل”. لكن عمليًا هو <b>قياس للتغيّر</b> بالنسبة إلى مقياس مختار.
+        الحساب الهرمي يجعل هذا المقياس صريحًا عبر رتب:
+        تغيّر مطلق \(D_0^1\)، تغيّر نسبي \(D_1^1\)، وتغيّر لوغاريتمي/بنيوي \(D_2^1\).
       </p>
-      <div style="margin-top:10px">
-        <span class="pill">D₀: تفاضلي</span>
-        <span class="pill">D₁: نسبي</span>
-        <span class="pill">D₂: لوغاريتمي</span>
-        <span class="pill">رفع هرمي</span>
+
+      <div class="paper-meta">
+        <div><b>المؤلف:</b> GOSSA AHMED</div>
+        <div><b>الموقع:</b> <a href="./index.html">gossa-math</a></div>
+        <div><b>DOI:</b> <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></div>
+        <div class="small muted" style="margin-top:6px">
+          اقتباس مقترح: GOSSA AHMED، “ماذا يقيس المشتق فعليًا؟ — تفسير هرمي لمعنى التغيّر”، الموقع الرسمي، 2025.
+        </div>
+      </div>
+
+      <div class="cta">
+        <a class="btn primary" href="#cite">اقتباس IEEE</a>
+        <a class="btn" href="#refs">المراجع</a>
+        <a class="btn" href="#abstract">الملخص</a>
+        <a class="btn" href="./what-does-a-derivative-measure-en.html">English Version</a>
       </div>
     </header>
 
-    <section class="card">
-      <h2><span class="bar"></span>1) النظرة الكلاسيكية: المشتق بوصفه ميلًا</h2>
-      <p class="muted small" style="margin:0; line-height:1.9">
-        في الحساب التفاضلي الكلاسيكي، يُفهم المشتق على أنه <b>معدل التغيّر اللحظي</b> أو <b>ميل المماس</b>.
-        هذا مناسب عندما يُقاس التغيّر <b>مطلقًا</b> ضمن مقياس ثابت.
+    <section class="card" id="abstract">
+      <h2>الملخص (Abstract)</h2>
+      <p class="muted">
+        يشيع تفسير المشتق على أنه ميل محلي، لكنه في الأنظمة العلمية والهندسية كثيرًا ما يكون قياس التغيّر الصحيح
+        نسبيًا أو بنيويًا وليس مطلقًا. تقدم هذه الصفحة بصيغة “ورقة IEEE” تفسيرًا هرميًا لمعنى المشتق عبر المشتقات
+        \(D_0^1\) و\(D_1^1\) و\(D_2^1\). نوضح أن عدم الاستقرار في النماذج الكلاسيكية يظهر غالبًا عند استخدام قياس رتبة-0
+        لوصف ظاهرة يحكمها سلوك قياس-نسبي أو متعدد المقاييس. ويوفّر الإطار الهرمي مبدأً واضحًا لاختيار رتبة القياس المناسبة.
       </p>
-
-      <div class="block">
-        <div class="label">التفسير الهندسي</div>
-        <p class="muted small" style="margin:0">
-          يمثّل \( \dfrac{dy}{dx} \) ميل المماس لمنحنى \(y=f(x)\) عند نقطة معيّنة.
-        </p>
-      </div>
-
-      <div class="block">
-        <div class="label">متى يصبح الميل غير كافٍ؟</div>
-        <p class="muted small" style="margin:0">
-          عندما لا يكون التغيّر مرتبطًا بالقيمة المطلقة فقط، بل <b>بالنسبة</b> أو <b>بالبنية الداخلية للنمو</b>.
-        </p>
-      </div>
+      <p class="muted small">
+        <b>مصطلحات مفهرسة—</b> معنى المشتق، الحساب الهرمي، مشتق نسبي، مشتق لوغاريتمي، قوانين القياس.
+      </p>
     </section>
 
     <section class="card">
-      <h2><span class="bar"></span>2) التغيّر المطلق مقابل التغيّر النسبي</h2>
-      <p class="muted small" style="margin:0; line-height:1.9">
-        قد يكون الفرق العددي نفسه ذا معنى مختلف بحسب السياق.
-        لذلك تظهر النِّسَب في الفيزياء وقوانين القياس (Scaling).
+      <h2>I. المقدمة</h2>
+      <p class="muted">
+        يَعرض التعليم التقليدي المشتق \(\frac{dy}{dx}\) كميل تفاضلي. هذا صحيح ضمن رتبة-0، لكنه ليس بالضرورة
+        التفسير الأشمل للتغيّر. فعديد الظواهر تتطور بضربٍ تراكمي (multiplicative) أو تخضع لقوانين قياس (scaling)
+        أو تمر بتحولات طورية. عندها تصبح \(\Delta y / y\) أهم من \(\Delta y\).
+        الحساب الهرمي ينظم مفهوم التغيّر في سلم رُتبي يجعل “المقياس” صريحًا بدل أن يكون ضمنيًا.
       </p>
-
-      <div class="block">
-        <div class="label">مثال سريع</div>
-        <ul class="muted small">
-          <li>زيادة 10 وحدات على كمية مقدارها 100.</li>
-          <li>زيادة 10 وحدات على كمية مقدارها 1.</li>
-        </ul>
-        <p class="muted small" style="margin:8px 0 0 0">
-          الفرق متساوٍ تفاضليًا، لكنه غير متساوٍ نسبيًا.
-        </p>
-      </div>
     </section>
 
     <section class="card">
-      <h2><span class="bar"></span>3) المشتق النسبي: قياس التغيّر بالنسبة إلى الذات</h2>
-      <p class="muted small" style="margin:0; line-height:1.9">
-        بدل قياس مقدار التغيّر المطلق، يمكن قياس التغيّر النسبي:
-        كيف تتغيّر الكمية مقارنةً بقيمتها الحالية؟
+      <h2>II. الإطار الهرمي للتغيّر</h2>
+      <p class="muted">
+        لنأخذ دالة موجبة \(f(x)>0\). يعرّف الحساب الهرمي سُلّم مشتقات يقيس التغيّر وفق تحولات بنيوية متدرجة.
+        في هذه الورقة نركز على مشتقات الدرجة الأولى:
       </p>
-
-      <div class="block">
-        <div class="label">الصيغة</div>
-        <div class="math">
-          \[
-            D^{1}_{1} f(x)=\frac{x}{f(x)}\,\frac{df(x)}{dx}.
-          \]
-        </div>
-        <p class="muted small" style="margin:10px 0 0 0">
-          هذا القياس أكثر طبيعية في مسائل النمو والانحلال والتحجيم لأنه يزيل الوحدات ويعبّر عن تغيّر “ذاتي”.
-        </p>
+      <div class="math">
+        \[
+          D_0^1 f(x)=\frac{df}{dx},\qquad
+          D_1^1 f(x)=\frac{d\ln f}{d\ln x},\qquad
+          D_2^1 f(x)=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+        \]
       </div>
-    </section>
-
-    <section class="card">
-      <h2><span class="bar"></span>4) متى لا يكفي التغيّر النسبي؟</h2>
-      <p class="muted small" style="margin:0; line-height:1.9">
-        في بعض الظواهر لا يتغيّر المقدار فقط، بل <b>تتغيّر آلية التغيّر نفسها</b>.
-        عندها يصبح من الطبيعي الانتقال إلى مقياس أعلى يظهر فيه البناء البنيوي بوضوح.
-      </p>
-
       <div class="note">
-        <strong>فكرة:</strong>
-        عندما يكون النمو “متعدد الطبقات”، تظهر اللوغاريتمات بوصفها أداة لكشف البنية لا مجرد تعقيد شكلي.
+        <strong>مبدأ التفسير:</strong>
+        كل مشتق هو قياس للتغيّر بالنسبة لمقياس. رتبة-0 تستخدم مقياسًا خارجيًا. رتبة-1 تُدخل التطبيع داخليًا
+        عبر \((x,f)\). رتبة-2 تقيس تغير “قانون النسبة” نفسه.
       </div>
     </section>
 
     <section class="card">
-      <h2><span class="bar"></span>5) التغيّر الهرمي: قياس تغيّر آلية التغيّر</h2>
-      <p class="muted small" style="margin:0; line-height:1.9">
-        في الرتبة الثانية نقيس التغيّر في مقياس لوغاريتمي أعلى، أي تغيّر التغيّر نفسه.
+      <h2>III. رتبة-0: التغيّر المطلق</h2>
+      <p class="muted">
+        المشتق التفاضلي يقيس مقدار تغير \(f\) لكل وحدة من \(x\):
       </p>
-
-      <div class="block">
-        <div class="label">المشتق اللوغاريتمي (رتبة 2)</div>
-        <div class="math">
-          \[
-            D^{1}_{2} f(x)=\frac{d(\ln\ln f(x))}{d(\ln\ln x)}.
-          \]
-        </div>
-        <p class="muted small" style="margin:10px 0 0 0">
-          هذا المستوى مناسب عندما تكون الديناميكا ذات بنية لوغاريتمية-لوغاريتمية.
-        </p>
-      </div>
+      <div class="math">\[
+        D_0^1 f(x)=\frac{df}{dx}.
+      \]</div>
+      <p class="muted">
+        وهو مناسب عندما تكون وحدات القياس هي المرجع الصحيح (مثلاً متر/ثانية). لكنه غير ثابت تحت تغيير المقاييس
+        لأن قيمته تتأثر بالحجم الحالي وبالوحدة.
+      </p>
     </section>
 
     <section class="card">
-      <h2><span class="bar"></span>6) تفسير موحّد: مفهوم واحد بمستويات متعددة</h2>
-
-      <table aria-label="جدول مستويات القياس">
-        <thead>
-          <tr>
-            <th>المستوى</th>
-            <th>ما الذي يقيسه</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>\(D^{1}_{0}\) (تفاضلي)</td>
-            <td>تغيّر مطلق ضمن مقياس ثابت</td>
-          </tr>
-          <tr>
-            <td>\(D^{1}_{1}\) (نسبي)</td>
-            <td>تغيّر ذاتي (نسبي) بالنسبة إلى قيمة الدالة/المتغير</td>
-          </tr>
-          <tr>
-            <td>\(D^{1}_{2}\) (لوغاريتمي)</td>
-            <td>تغيّر بنيوي: تغيّر آلية التغيّر نفسها</td>
-          </tr>
-          <tr>
-            <td>\(D^{1}_{n}\) (هرمي عام)</td>
-            <td>تغيّر متعدد الطبقات عبر \(\ln^{(n)}\)</td>
-          </tr>
-        </tbody>
-      </table>
-
+      <h2>IV. رتبة-1: التغيّر النسبي (الثابت تحت القياس)</h2>
+      <p class="muted">
+        عندما تكون الظاهرة نسبية (نمو/انكماش/مرونة)، يصبح المشتق النسبي هو القياس الطبيعي:
+      </p>
+      <div class="math">\[
+        D_1^1 f(x)=\frac{d\ln f}{d\ln x}
+        =
+        \frac{x}{f(x)}\frac{df(x)}{dx}.
+      \]</div>
+      <p class="muted">
+        وهو “نسبة تغير \(f\)” مقابل “نسبة تغير \(x\)”. إذا كانت الدالة قانون قوة \(f(x)=C x^a\) فإن:
+      </p>
+      <div class="math">\[
+        D_1^1 f(x)=a \quad \text{ثابت}.
+      \]</div>
       <div class="note">
-        <strong>خلاصة:</strong>
-        الحساب الهرمي لا يلغي التفاضل، بل يضعه في مستواه الصحيح ويكمّله عندما يصبح القياس المطلق غير كافٍ.
+        <strong>نتيجة محورية:</strong>
+        رتبة-1 تستخرج أسّ القياس مباشرة، وهو ثابت في قوانين القوة. لذلك تكون رتبة-1 أكثر ثباتًا عدديًا
+        في المسائل متعددة المقاييس.
       </div>
     </section>
 
     <section class="card">
-      <h2><span class="bar"></span>7) الخلاصة</h2>
-      <p class="muted small" style="margin:0; line-height:1.9">
-        المشتق ليس “شيئًا واحدًا” فقط، بل يقيس التغيّر وفق مقياس.
-        عندما يشارك المقياس في الديناميكا، يصبح الرفع الهرمي
-        \(D^{1}_{0}\rightarrow D^{1}_{1}\rightarrow D^{1}_{2}\)
-        هو اللغة الطبيعية للتوصيف.
+      <h2>V. رتبة-2: التغيّر اللوغاريتمي/البنيوي</h2>
+      <p class="muted">
+        عندما لا يكون حتى “قانون النسبة” ثابتًا، نحتاج قياسًا أعلى يلتقط تغير القاعدة نفسها:
       </p>
+      <div class="math">\[
+        D_2^1 f(x)=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+      \]</div>
+      <p class="muted">
+        رتبة-2 تجيب عن سؤال: هل “النسبة” نفسها تتغير؟ وهي مناسبة لرصد تسارع النسب أو الانتقال بين أنظمة قياس مختلفة.
+        عمليًا، تحتاج هذه الرتبة إلى مجالات موجبة مناسبة (مثل \(x>1\), \(f>1\)) أو تحويل إلى مؤشر موجب.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>VI. تفسير موحّد</h2>
+      <p class="muted">
+        يمكن قراءة السلم الهرمي كسلم لاختيارات القياس:
+      </p>
+      <div class="math">\[
+        \text{رتبة-0: تغير مطلق}\quad
+        \text{رتبة-1: تغير نسبي}\quad
+        \text{رتبة-2: تغير بنيوي في قانون النسبة}.
+      \]</div>
+      <p class="muted">
+        من هنا يظهر سبب شائع للفشل في النمذجة: ليس لأن الرياضيات ناقصة، بل لأن رتبة القياس غير مناسبة للظاهرة.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>VII. مناقشة</h2>
+      <p class="muted">
+        في الفيزياء والاقتصاد والهندسة تظهر قوانين القياس والمرونات ومؤشرات المخاطر المتسارعة في كل مكان.
+        هذه كلها تحتاج رتبة-1 أو رتبة-2 بدل حصر القياس في الميل التفاضلي. الحساب الهرمي لا يلغي التفاضل،
+        بل يضعه ضمن إطار أوسع يجعل اختيار المشتق قرارًا علميًا مرتبطًا ببنية الظاهرة.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>VIII. الخلاصة</h2>
+      <p class="muted">
+        المشتق يقيس التغيّر بالنسبة إلى مقياس. التفاضل الكلاسيكي يثبت المقياس خارجيًا (رتبة-0)، بينما يفتح
+        الحساب الهرمي الباب لقياس نسبي (رتبة-1) وقياس بنيوي/لوغاريتمي (رتبة-2). اختيار الرتبة المناسبة
+        هو مفتاح الفهم والاستقرار في النمذجة.
+      </p>
+    </section>
+
+    <section class="card" id="cite">
+      <h2>اقتباس مقترح (IEEE)</h2>
+      <div class="math">
+        \[
+          \texttt{GOSSA\ AHMED,\ “ماذا\ يقيس\ المشتق\ فعليًا؟\ —\ تفسير\ هرمي\ لمعنى\ التغيّر,”\ الموقع\ الرسمي,\ 2025.\ DOI:\ 10.5281/zenodo.17917302.}
+        \]
+      </div>
+    </section>
+
+    <section class="card" id="refs">
+      <h2>المراجع (IEEE)</h2>
+      <ol class="refs">
+        <li>G. Strang, <i>Calculus</i>. Wellesley-Cambridge Press, 1991.</li>
+        <li>J. R. Taylor, <i>Classical Mechanics</i>. University Science Books, 2005.</li>
+        <li>G. B. West, <i>Scale</i>. Penguin Press, 2017.</li>
+        <li>G. H. Hardy, <i>A Course of Pure Mathematics</i>. Cambridge University Press, 1908.</li>
+        <li>G. A. Gossa, “Hierarchical Calculus (Concept DOI),” Zenodo, 2025. DOI: 10.5281/zenodo.17917302.</li>
+      </ol>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Concept DOI:
-      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      © 2025 — GOSSA AHMED · الحساب الهرمي — معنى المشتق (نمط IEEE)
+      <br>
+      DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
     </footer>
+
   </div>
 </body>
 </html>
