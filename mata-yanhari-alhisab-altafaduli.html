@@ -1,25 +1,252 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>متى ينهار الحساب التفاضلي الكلاسيكي؟</title>
+  <title>متى ينهار الحساب التفاضلي الكلاسيكي؟ | الحساب الهرمي</title>
+  <meta name="description" content="صفحة مرجعية تشرح متى ولماذا يصبح الحساب التفاضلي الكلاسيكي غير كافٍ بنيويًا، وما هي إشارات الانهيار، وكيف يعيد الحساب الهرمي توصيف التغير بشكل طبيعي عبر الرفع إلى مستويات أعلى." />
+  <meta name="author" content="GOSSA AHMED" />
 
-  <meta name="description"
-        content="تشرح هذه الصفحة متى ولماذا يصبح الحساب التفاضلي الكلاسيكي غير كافٍ بنيويًا، وكيف يعيد الحساب الهرمي توصيف التغير بشكل طبيعي عبر الرفع إلى المستويات الأعلى.">
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/mata-yanhari-alhisab-altafaduli.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/mata-yanhari-alhisab-altafaduli.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/when-does-classical-calculus-break-down.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/when-does-classical-calculus-break-down.html" />
 
-  <meta name="author" content="GOSSA AHMED">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:title" content="متى ينهار الحساب التفاضلي الكلاسيكي؟ | الحساب الهرمي" />
+  <meta property="og:description" content="متى يصبح التفاضل المحلي غير كافٍ بنيويًا؟ وما الإشارة التي تدفعنا للرفع الهرمي إلى D1 و D2؟" />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/mata-yanhari-alhisab-altafaduli.html" />
+  <meta name="twitter:card" content="summary" />
 
-  <link rel="canonical"
-        href="https://gossaahmed.github.io/gossa-math/mata-yanhari-alhisab-altafaduli.html">
+  <!-- Favicon (اختياري إذا لديك) -->
+  <!-- <link rel="icon" href="assets/images/favicon.png" /> -->
 
-  <link rel="alternate" hreflang="ar"
-        href="https://gossaahmed.github.io/gossa-math/mata-yanhari-alhisab-altafaduli.html">
-  <link rel="alternate" hreflang="en"
-        href="https://gossaahmed.github.io/gossa-math/when-does-classical-calculus-break-down.html">
-  <link rel="alternate" hreflang="x-default"
-        href="https://gossaahmed.github.io/gossa-math/when-does-classical-calculus-break-down.html">
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(0,0,0,.22);
+      --b: rgba(255,255,255,.12);
+      --accent:#66d9ef; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, "Noto Sans Arabic", sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      line-height:1.95;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(102,217,239,.16), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.58);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1080px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      min-width:200px;
+    }
+    .logo-img{
+      width:38px;height:38px;border-radius:12px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
+    }
+    .brand .title{display:flex;flex-direction:column;line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px;color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
+    nav a{
+      padding:7px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+      font-size:13px;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    .actions{
+      display:flex; gap:10px; align-items:center;
+      min-width:200px; justify-content:flex-end;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(102,217,239,.45);
+      background: rgba(102,217,239,.14);
+    }
+
+    .wrap{
+      max-width:1080px;
+      margin:0 auto;
+      padding:22px 16px 70px;
+    }
+
+    header.hero{
+      margin-top:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(102,217,239,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    .hero-top{
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .hero h1{
+      margin:0 0 10px 0;
+      font-size:30px;
+      letter-spacing:.2px;
+      line-height:1.35;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      max-width:900px;
+    }
+
+    .author{
+      display:flex; align-items:center; gap:12px;
+      margin-top:6px;
+    }
+    .author img{
+      width:86px; height:86px;
+      object-fit:cover;
+      border-radius:50%;
+      border:3px solid rgba(102,217,239,.65);
+      box-shadow:0 14px 28px rgba(0,0,0,.35);
+    }
+    .author .name{display:flex; flex-direction:column; gap:2px}
+    .author .name strong{font-size:14px}
+    .author .name span{font-size:12px; color:var(--muted)}
+
+    .doi-box{
+      margin-top:14px;
+      border:1px solid rgba(102,217,239,.35);
+      background: rgba(102,217,239,.10);
+      border-radius:14px;
+      padding:12px 12px;
+      line-height:1.9;
+    }
+    .doi-box a{color:#bfe8ff}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      font-size:12px; color:var(--muted);
+      margin:8px 6px 0 0;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media(max-width:980px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px;
+      margin-top:14px;
+    }
+    .card h2{
+      margin:0 0 10px 0;
+      font-size:18px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .bar{
+      width:4px;height:18px;border-radius:99px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      display:inline-block;
+    }
+
+    .small{font-size:13px}
+    .muted{color:var(--muted)}
+
+    .box{
+      margin:12px 0 0 0;
+      background:var(--card2);
+      border:1px solid rgba(255,255,255,.12);
+      border-right:4px solid rgba(102,217,239,.95);
+      border-radius:14px;
+      padding:12px 14px;
+    }
+    ul{margin:10px 0 0 0; padding:0 18px 0 0}
+    li{margin:6px 0; color:rgba(234,242,255,.88)}
+
+    .toc a{
+      display:block;
+      margin:8px 0;
+      color:rgba(234,242,255,.92);
+    }
+
+    footer{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+  </style>
 
   <!-- MathJax -->
   <script>
@@ -30,170 +257,226 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <style>
-    body{
-      margin:0;
-      background:#0b1220;
-      color:#e6e6e6;
-      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, "Noto Sans Arabic", sans-serif;
-      line-height:1.95;
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "متى ينهار الحساب التفاضلي الكلاسيكي؟",
+    "alternativeHeadline": "متى يصبح التفاضل المحلي غير كافٍ بنيويًا وكيف يعالجه الحساب الهرمي",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Differential Calculus",
+      "Relative Derivative",
+      "Logarithmic Rank",
+      "Hierarchical Lifting"
+    ],
+    "inLanguage": "ar",
+    "url": "https://gossaahmed.github.io/gossa-math/mata-yanhari-alhisab-altafaduli.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
     }
-    main{
-      max-width:900px;
-      margin:auto;
-      padding:48px 18px 70px;
-    }
-    h1,h2,h3{
-      color:#66d9ef;
-    }
-    h1{
-      font-size:2.1em;
-      margin-bottom:18px;
-      line-height:1.35;
-    }
-    h2{
-      margin-top:42px;
-      font-size:1.55em;
-    }
-    p{
-      margin:14px 0;
-      color:#e9eef5;
-    }
-    ul{
-      margin:12px 0 0;
-      padding:0 22px 0 0;
-    }
-    li{ margin:6px 0; }
-    .box{
-      background:#0f1a2c;
-      border:1px solid #22314f;
-      border-right:4px solid #66d9ef;
-      padding:16px 18px;
-      margin:22px 0;
-      border-radius:10px;
-    }
-    a{
-      color:#66d9ef;
-      text-decoration:none;
-    }
-    a:hover{ text-decoration:underline; }
-    footer{
-      margin-top:60px;
-      padding-top:18px;
-      border-top:1px solid #22314f;
-      color:#aaa;
-      font-size:0.95em;
-    }
-  </style>
+  }
+  </script>
 </head>
 
 <body>
-<main>
 
-<h1>متى ينهار الحساب التفاضلي الكلاسيكي؟</h1>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
+        <div class="title">
+          <strong>الحساب الهرمي</strong>
+          <span>صفحة مرجعية — متى ينهار الحساب التفاضلي؟</span>
+        </div>
+      </div>
 
-<p>
-حقق الحساب التفاضلي الكلاسيكي نجاحًا كبيرًا في توصيف التغير المحلي،
-لكن فعاليته ليست مطلقة.  
-توجد حالات محددة يصبح فيها الإطار التفاضلي <strong>غير كافٍ بنيويًا</strong>،
-ليس لأن الرياضيات “تفشل”، بل لأن مستوى القياس لا يطابق طبيعة الظاهرة.
-</p>
+      <nav aria-label="التنقل">
+        <a href="index-ar.html">الرئيسية</a>
+        <a href="theory.html">النظرية</a>
+        <a href="rules.html">القوانين</a>
+        <a href="equations.html">المعادلات</a>
+        <a href="#toc">المحتويات</a>
+      </nav>
 
-<h2>1) ما الذي يفترضه الحساب التفاضلي الكلاسيكي؟</h2>
+      <div class="actions">
+        <a class="btn" href="when-does-classical-calculus-break-down.html" title="English version">English</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
+  </div>
 
-<p>
-جوهر الحساب التفاضلي هو قياس التغير عبر <strong>الفرق الإضافي</strong>.
-المشتق يقيس كيف تتغير كمية ما عندما يتغير المتغير المستقل بمقدار صغير جدًا.
-</p>
+  <main class="wrap">
 
-<div class="box">
-<p>وهذا يفترض ضمنيًا:</p>
-<ul>
-  <li>وجود مقياس ثابت للقياس</li>
-  <li>قابلية التقريب الخطي محليًا</li>
-  <li>استقرار التفسير تحت اضطرابات إضافية (فرق \(x-x_0\))</li>
-</ul>
-</div>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-top">
+        <div>
+          <h1>متى ينهار الحساب التفاضلي الكلاسيكي؟</h1>
+          <p>
+            ينجح الحساب التفاضلي في وصف التغير المحلي، لكن هناك حالات يصبح فيها الوصف التفاضلي
+            <b>غير كافٍ بنيويًا</b>، ليس لأن الرياضيات تفشل، بل لأن مستوى القياس لا يطابق طبيعة الظاهرة.
+            هنا يأتي دور الحساب الهرمي باعتباره <b>رفعًا طبيعيًا</b> لمستويات التغير.
+          </p>
+        </div>
 
-<h2>2) الهشاشة الخفية للمستوى التفاضلي</h2>
+        <div class="author" aria-label="المؤلف">
+          <img src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
+          <div class="name">
+            <strong>GOSSA AHMED</strong>
+            <span>Independent Researcher — Hierarchical Calculus</span>
+          </div>
+        </div>
+      </div>
 
-<p>
-تبدأ هذه الافتراضات بالضعف عندما:</p>
+      <div class="doi-box">
+        <div><strong>Concept DOI:</strong>
+          <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+        </div>
+        <div class="small muted">
+          النسخة الإنجليزية: <a href="when-does-classical-calculus-break-down.html">when-does-classical-calculus-break-down.html</a>
+        </div>
+      </div>
 
-<ul>
-  <li>يصبح <strong>المقياس نفسه</strong> جزءًا من ديناميكية الظاهرة</li>
-  <li>يصبح التغير محكومًا بـ <strong>النِّسب</strong> بدل الفروق</li>
-  <li>تتطور <strong>آلية التغير</strong> نفسها مع الزمن أو مع \(x\)</li>
-</ul>
+      <div>
+        <span class="pill">Differential Level (D₀)</span>
+        <span class="pill">Relative Level (D₁)</span>
+        <span class="pill">Logarithmic Level (D₂)</span>
+        <span class="pill">Hierarchical Lifting</span>
+      </div>
+    </header>
 
-<p>
-في هذه الحالات يبقى المشتق التفاضلي معرفًا حسابيًا،
-لكن <strong>معناه البنيوي</strong> يصبح هشًا أو مضللًا.
-</p>
+    <!-- GRID: TOC + QUICK NOTE -->
+    <div class="grid">
+      <section class="card" id="toc">
+        <h2><span class="bar"></span>جدول المحتويات</h2>
+        <div class="small toc">
+          <a href="#s1">1) ما الذي يفترضه الحساب التفاضلي؟</a>
+          <a href="#s2">2) الهشاشة الخفية للمستوى التفاضلي</a>
+          <a href="#s3">3) إشارات الانهيار (علامات عملية)</a>
+          <a href="#s4">4) التفسير الهرمي: الانهيار كإشارة</a>
+          <a href="#s5">5) من الانهيار إلى الرفع الهرمي</a>
+          <a href="#s6">6) خلاصة</a>
+        </div>
+      </section>
 
-<h2>3) إشارات الانهيار (علامات عملية)</h2>
+      <aside class="card">
+        <h2><span class="bar"></span>فكرة الصفحة</h2>
+        <p class="small muted" style="margin:0">
+          هذه الصفحة ليست “نقدًا” للحساب التفاضلي، بل تحديدٌ دقيقٌ
+          للحدود البنيوية لقياس يعتمد على الفروق الإضافية.
+          عندما تصبح الظاهرة <b>نسبية</b> أو <b>لوغاريتمية</b> أو <b>متعددة المقاييس</b>،
+          يصبح الرفع إلى مستويات \(D_1\) أو \(D_2\) تفسيرًا طبيعيًا بدل التعويضات المصطنعة.
+        </p>
+      </aside>
+    </div>
 
-<p>
-يميل الحساب التفاضلي إلى الانهيار بنيويًا عندما نلاحظ:</p>
+    <!-- CONTENT SECTIONS -->
+    <section class="card" id="s1">
+      <h2><span class="bar"></span>1) ما الذي يفترضه الحساب التفاضلي الكلاسيكي؟</h2>
+      <p class="muted small" style="margin:0">
+        جوهر الحساب التفاضلي هو قياس التغير عبر <b>الفرق الإضافي</b>:
+        المشتق يقيس كيف تتغير كمية ما عندما يتغير المتغير المستقل بمقدار صغير جدًا.
+      </p>
 
-<div class="box">
-<ul>
-  <li>حساسية غير مبررة لتغيير الوحدات أو إعادة القياس (Rescaling)</li>
-  <li>عدم استقرار قرب نقاط مرجعية معينة</li>
-  <li>معادلات “مقاومة للتبسيط” رغم كونها سليمة حسابيًا</li>
-  <li>حلول شكلية موجودة لكن تفسيرها الفيزيائي ضعيف أو غير طبيعي</li>
-</ul>
-</div>
+      <div class="box small">
+        <p style="margin:0 0 8px 0">وهذا يفترض ضمنيًا:</p>
+        <ul>
+          <li>وجود مقياس ثابت للقياس</li>
+          <li>قابلية التقريب الخطي محليًا</li>
+          <li>استقرار التفسير تحت اضطرابات إضافية (فرق \(x-x_0\))</li>
+        </ul>
+      </div>
+    </section>
 
-<h2>4) التفسير الهرمي: الانهيار ليس خطأ بل إشارة</h2>
+    <section class="card" id="s2">
+      <h2><span class="bar"></span>2) الهشاشة الخفية للمستوى التفاضلي</h2>
+      <p class="muted small" style="margin:0">
+        تبدأ هذه الافتراضات بالضعف عندما:
+      </p>
+      <ul class="small">
+        <li>يصبح <b>المقياس نفسه</b> جزءًا من ديناميكية الظاهرة</li>
+        <li>يصبح التغير محكومًا بـ <b>النِّسب</b> بدل الفروق</li>
+        <li>تتطور <b>آلية التغير</b> نفسها مع الزمن أو مع \(x\)</li>
+      </ul>
 
-<p>
-هذه الصعوبات لا تعني أن الحساب التفاضلي خاطئ،
-بل تعني أن الظاهرة تُقاس داخل مستوى أدنى من مستواها الطبيعي.
-</p>
+      <div class="box small">
+        <p style="margin:0">
+          في هذه الحالات يبقى المشتق التفاضلي معرفًا حسابيًا،
+          لكن <b>معناه البنيوي</b> يصبح هشًا أو مضللًا.
+        </p>
+      </div>
+    </section>
 
-<p>
-في الحساب الهرمي تُفهم هذه الحالة على أنها إشارة للرفع:
-</p>
+    <section class="card" id="s3">
+      <h2><span class="bar"></span>3) إشارات الانهيار (علامات عملية)</h2>
+      <p class="muted small" style="margin:0">
+        يميل الحساب التفاضلي إلى الانهيار بنيويًا عندما نلاحظ:
+      </p>
 
-<ul>
-  <li>من التغير المطلق → إلى التغير <strong>النسبي</strong></li>
-  <li>ومن النسبي → إلى التغير <strong>اللوغاريتمي</strong></li>
-  <li>ومن آلية ثابتة → إلى آلية <strong>متغيرة بنيويًا</strong></li>
-</ul>
+      <div class="box small">
+        <ul>
+          <li>حساسية غير مبررة لتغيير الوحدات أو إعادة القياس (Rescaling)</li>
+          <li>عدم استقرار قرب نقاط مرجعية معينة</li>
+          <li>معادلات مقاومة للتبسيط رغم كونها سليمة حسابيًا</li>
+          <li>حلول شكلية موجودة لكن تفسيرها الفيزيائي ضعيف أو غير طبيعي</li>
+        </ul>
+      </div>
+    </section>
 
-<h2>5) من الانهيار إلى الرفع الهرمي</h2>
+    <section class="card" id="s4">
+      <h2><span class="bar"></span>4) التفسير الهرمي: الانهيار ليس خطأ بل إشارة</h2>
+      <p class="muted small" style="margin:0">
+        هذه الصعوبات لا تعني أن الحساب التفاضلي خاطئ، بل تعني أن الظاهرة تُقاس داخل مستوى أدنى من مستواها الطبيعي.
+        في الحساب الهرمي تُفهم هذه الحالة على أنها إشارة للرفع:
+      </p>
 
-<p>
-ما يبدو “انهيارًا” في المستوى التفاضلي
-يتحول غالبًا إلى <strong>تبسيط مباشر</strong> في مستوى أعلى.
-</p>
+      <div class="box small">
+        <ul>
+          <li>من التغير المطلق → إلى التغير <b>النسبي</b></li>
+          <li>ومن النسبي → إلى التغير <b>اللوغاريتمي</b></li>
+          <li>ومن آلية ثابتة → إلى آلية <b>متغيرة بنيويًا</b></li>
+        </ul>
+      </div>
+    </section>
 
-<div class="box">
-<p>
-الاستجابة الصحيحة ليست إجبار المعادلة على بدائل اصطناعية،
-بل <strong>رفعها هرميًا</strong> إلى المستوى الذي تصبح فيه بنيتها طبيعية.
-</p>
-</div>
+    <section class="card" id="s5">
+      <h2><span class="bar"></span>5) من الانهيار إلى الرفع الهرمي</h2>
+      <p class="muted small" style="margin:0">
+        ما يبدو “انهيارًا” في المستوى التفاضلي يتحول غالبًا إلى <b>تبسيط مباشر</b> في مستوى أعلى.
+      </p>
 
-<h2>6) خلاصة</h2>
+      <div class="box small">
+        <p style="margin:0">
+          الاستجابة الصحيحة ليست إجبار المعادلة على بدائل اصطناعية،
+          بل <b>رفعها هرميًا</b> إلى المستوى الذي تصبح فيه بنيتها طبيعية.
+        </p>
+      </div>
+    </section>
 
-<p>
-الحساب التفاضلي لا يفشل لأنه غير صحيح،
-بل لأنه <strong>محلي بطبيعته</strong>.
-وعندما تكون طبيعة التغير نسبية أو لوغاريتمية أو بنيوية،
-فإن الحساب الهرمي يقدم الامتداد الطبيعي المناسب.
-</p>
+    <section class="card" id="s6">
+      <h2><span class="bar"></span>6) خلاصة</h2>
+      <p class="muted small" style="margin:0">
+        الحساب التفاضلي لا يفشل لأنه غير صحيح، بل لأنه <b>محلي بطبيعته</b>.
+        وعندما تكون طبيعة التغير نسبية أو لوغاريتمية أو بنيوية،
+        فإن الحساب الهرمي يقدم الامتداد الطبيعي المناسب.
+      </p>
+    </section>
 
-<footer>
-<p>
-© 2025 — GOSSA AHMED ·
-<a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
-Hierarchical Calculus (DOI)
-</a>
-</p>
-</footer>
+    <footer>
+      © 2025 — GOSSA AHMED ·
+      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+    </footer>
 
-</main>
+  </main>
+
 </body>
 </html>
