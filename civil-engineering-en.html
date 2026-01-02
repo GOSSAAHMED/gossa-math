@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>Hierarchical Calculus in Civil Engineering | 20 Real Applications + Numeric Examples</title>
-  <meta name="description" content="A large reference page: Hierarchical Calculus in Civil Engineering with 20 real applications and numeric examples. Uses hierarchical derivatives by rank: D0^1 (classical), D1^1 (relative), D2^1 (logarithmic/acceleration of risk), up to Dn^1." />
+  <meta name="description" content="Paper-style reference page: Hierarchical Calculus in Civil Engineering with 20 real applications, numeric examples, additional engineering equations, and discussion. Uses hierarchical derivatives D0^1, D1^1, D2^1 up to Dn^1." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical + hreflang -->
@@ -21,6 +22,9 @@
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,"Liberation Mono","Courier New", monospace;
+      --border: rgba(255,255,255,.10);
+      --card: rgba(255,255,255,.05);
     }
     *{box-sizing:border-box}
     body{
@@ -35,6 +39,7 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
 
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -50,7 +55,10 @@
       width:34px; height:34px; border-radius:10px;
       background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
       box-shadow:0 12px 22px rgba(0,0,0,.28);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
     }
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
     .brand .title span{font-size:12px; color:var(--muted)}
@@ -63,6 +71,7 @@
     }
     nav a:hover{background:rgba(255,255,255,.07)}
 
+    /* Hero */
     header.hero{
       margin-top:16px; padding:20px 18px;
       border:1px solid rgba(255,255,255,.10);
@@ -86,10 +95,11 @@
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    /* Cards */
     .card{
       margin-top:14px; padding:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      background: var(--card);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
@@ -100,6 +110,8 @@
       border-radius:12px;
       overflow:auto;
       direction:ltr; text-align:left;
+      font-family:var(--mono);
+      font-size:13px;
     }
     .note{
       margin-top:12px; padding:12px;
@@ -109,6 +121,43 @@
     }
     .note strong{color:var(--warn)}
 
+    /* Paper style extras */
+    .paper-meta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px; color: var(--muted);
+      white-space:nowrap;
+    }
+    .toc a{display:inline-block; margin:4px 0}
+
+    .case-meta{margin:8px 0 10px 0}
+    .tag{
+      display:inline-block; margin:5px 6px 0 0;
+      padding:4px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      font-size:12px; color:rgba(234,242,255,.80);
+    }
+    .discussion{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background: rgba(57,211,195,.08);
+      border-radius:14px;
+      border-left:4px solid var(--accent);
+      color:rgba(234,242,255,.92);
+      font-size:13px;
+    }
+
+    /* Tables */
     table{
       width:100%;
       border-collapse:separate;
@@ -135,6 +184,24 @@
     }
     tbody tr:last-child td{border-bottom:none}
 
+    /* Buttons */
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-size:13px;
+      text-decoration:none;
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.14);
+    }
+
     footer{
       margin-top:18px; padding-top:18px;
       border-top:1px solid rgba(255,255,255,.10);
@@ -151,14 +218,16 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+  <!-- JSON-LD Schema -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
   "headline": "Hierarchical Calculus in Civil Engineering | 20 Real Applications + Numeric Examples",
+  "alternativeHeadline": "Paper-style synthesis: D0^1, D1^1, D2^1 with engineering interpretation and discussion",
   "author": {"@type":"Person","name":"Ahmed Gossa","url":"https://gossaahmed.github.io/gossa-math/"},
   "about": ["Hierarchical Calculus","Civil Engineering","Structural Health Monitoring","Geotechnical Engineering","Concrete","Bridges","FEM","Scaling Laws","Relative Derivative D1","Logarithmic Derivative D2"],
-  "abstract": "A large reference page with 20 civil engineering applications and numeric examples using hierarchical derivatives by rank: D0^1, D1^1, D2^1, up to Dn^1.",
+  "abstract": "This paper-style page proposes a practical interpretation of hierarchical derivatives (D0^1, D1^1, D2^1) in civil engineering, emphasizing scale-aware diagnostics and acceleration of risk. It provides 20 real applications with numeric examples, additional engineering equations, and discussion for decision-making.",
   "inLanguage": "en",
   "url": "https://gossaahmed.github.io/gossa-math/civil-engineering-en.html",
   "publisher": {"@type":"Organization","name":"Hierarchical Calculus"}
@@ -170,10 +239,13 @@
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <div class="logo" aria-hidden="true">
+          <!-- Optional real logo: put logo.png in same folder -->
+          <!-- <img src="./logo.png" alt="Logo"> -->
+        </div>
         <div class="title">
-          <strong>Civil Engineering Applications</strong>
-          <span>20 examples · \(D_0^1, D_1^1, D_2^1\) · up to \(D_n^1\)</span>
+          <strong>Civil Engineering — Paper</strong>
+          <span>20 cases · \(D_0^1, D_1^1, D_2^1\) · up to \(D_n^1\)</span>
         </div>
       </div>
 
@@ -184,511 +256,966 @@
         <a href="./equations-en.html">Equations</a>
         <a href="./integrals-en.html">Integrals</a>
         <a href="./civil-engineering.html">العربية</a>
+        <a href="#refs">References</a>
       </nav>
     </div>
   </div>
 
   <div class="wrap">
-    <header class="hero">
+    <header class="hero" id="top">
       <h1>Hierarchical Calculus in Civil Engineering</h1>
       <p class="muted">
-        Civil engineering problems are rarely “about numbers only”. They are about
-        <b>scale</b>, <b>ratios</b>, <b>accumulation</b>, and <b>accelerating risk</b>.
-        The classical derivative \(D_0^1\) measures absolute change.
-        The relative derivative \(D_1^1\) measures structural change (percentage-like behavior).
-        The logarithmic hierarchical derivative \(D_2^1\) captures <b>acceleration of risk</b>
-        (a change of the change-rate itself, at a higher hierarchical level).
-        <br><br>
-        This page provides <b>20 real civil engineering applications</b> with <b>numeric examples</b> and a practical guide
-        for choosing ranks \(D_0^1, D_1^1, D_2^1\), and beyond.
+        Civil engineering systems evolve through <b>scale</b>, <b>ratios</b>, <b>cumulative damage</b>, and <b>accelerating risk</b>.
+        Classical calculus (\(D_0^1\)) measures absolute change, but many engineering decisions require rank-aware indicators:
+        \(D_1^1\) for scale-invariant deterioration and \(D_2^1\) for identifying turning points where the relative change itself accelerates.
       </p>
+
+      <div class="paper-meta">
+        <span class="pill">Author: <b>GOSSA AHMED</b></span>
+        <span class="pill">Format: Paper-style synthesis</span>
+        <span class="pill">Keywords: SHM · Geotech · Durability · FEM</span>
+        <span class="pill">Year: 2025</span>
+      </div>
+
+      <div class="btnrow">
+        <a class="btn primary" href="#abstract">Abstract</a>
+        <a class="btn" href="#method">Method</a>
+        <a class="btn" href="#cases">Cases (1–20)</a>
+        <a class="btn" href="#guide">Decision Guide</a>
+        <a class="btn" href="#refs">References</a>
+      </div>
 
       <div class="note">
         <strong>Notation rule:</strong>
-        Every derivative is written as \(D_r^1\).
-        Classical differential derivative is \(D_0^1\),
-        relative derivative is \(D_1^1\),
-        logarithmic derivative is \(D_2^1\),
-        and the hierarchy continues up to \(D_n^1\).
+        Every derivative is written explicitly as \(D_r^1\).
+        Classical \(D_0^1\), relative \(D_1^1\), logarithmic/hierarchical \(D_2^1\), extending up to \(D_n^1\).
       </div>
     </header>
 
-    <section class="card">
-      <h2>How to read the numeric examples</h2>
+    <!-- Abstract -->
+    <section class="card" id="abstract">
+      <h2>Abstract</h2>
+      <p class="muted">
+        This paper-style reference proposes a practical interpretation of hierarchical derivatives in civil engineering.
+        Many engineering failures are not driven solely by large absolute values, but by <b>accelerating structural change</b>.
+        The classical derivative \(D_0^1\) captures local increments; the relative derivative \(D_1^1\) captures scale-invariant
+        deterioration and normalized utilization; and the rank-2 derivative \(D_2^1\) conceptually captures turning points where
+        the <b>relative rate itself changes rapidly</b>. We present twenty real civil engineering cases with numeric examples,
+        additional engineering equations, and discussion paragraphs designed for decision-making in monitoring, geotechnical risk,
+        structural durability, numerical modeling, and asset management.
+      </p>
+
+      <p class="muted small">
+        <b>Keywords:</b> hierarchical calculus; structural health monitoring; durability; settlement; slope stability;
+        fatigue; utilization; nonlinear risk; FEM convergence; decision thresholds.
+      </p>
+    </section>
+
+    <!-- Contents -->
+    <section class="card toc" id="toc">
+      <h2>Contents</h2>
+      <a href="#intro">1) Introduction</a><br>
+      <a href="#method">2) Methodology: \(D_0^1\), \(D_1^1\), \(D_2^1\)</a><br>
+      <a href="#table">3) Rank interpretation table</a><br>
+      <a href="#cases">4) Applications and numeric examples (1–20)</a><br>
+      <a href="#guide">5) Practical decision guide</a><br>
+      <a href="#discussion">6) General discussion + limitations + future work</a><br>
+      <a href="#refs">References</a><br>
+    </section>
+
+    <!-- Introduction -->
+    <section class="card" id="intro">
+      <h2>1) Introduction</h2>
+      <p class="muted">
+        Civil engineering diagnostics must function across large variations of scale: from millimeter crack growth to kilometer-scale
+        infrastructure networks, from short-term dynamic vibration to decades-long durability and fatigue.
+        Standard derivatives are powerful but often hide scale effects that dominate decision-making. Engineering assessment is frequently based on:
+        (i) normalized indices (utilization, damage fraction, condition index),
+        (ii) relative rates of deterioration, and
+        (iii) acceleration of those rates near failure thresholds.
+      </p>
+      <p class="muted">
+        Hierarchical Calculus organizes these ideas into a ladder of change:
+        absolute (\(D_0^1\)), relative (\(D_1^1\)), and structural/logarithmic (\(D_2^1\)),
+        offering a unified language for interpreting monitoring data, risk escalation, and regime changes.
+      </p>
+    </section>
+
+    <!-- Method -->
+    <section class="card" id="method">
+      <h2>2) Methodology: Hierarchical derivatives</h2>
+      <p class="muted">
+        We employ three conceptual derivative layers (all degree 1):
+      </p>
+      <div class="math">
+        \[
+          D_0^1 f(x)=\frac{df}{dx},
+          \qquad
+          D_1^1 f(x)=\frac{d\ln f}{d\ln x},
+          \qquad
+          D_2^1 f(x)=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Engineering interpretation:</strong><br>
+        \(D_0^1\): local increments (mm, kN, points).<br>
+        \(D_1^1\): scale-invariant deterioration and ratios (“% change”, elasticity-like).<br>
+        \(D_2^1\): acceleration of relative change; turning points in risk and regime shifts.
+      </div>
+
+      <p class="muted small">
+        <b>Domain note:</b> Strict \(D_2^1\) requires \(x>1\), \(f(x)>1\). In engineering practice, rank-2 is often applied
+        through positive-domain mappings (health indices, normalized metrics, risk indices), preserving the conceptual meaning:
+        <i>change of a change-rate</i>.
+      </p>
+    </section>
+
+    <!-- Table -->
+    <section class="card" id="table">
+      <h2>3) How to read the examples</h2>
       <table>
         <thead>
           <tr>
             <th>Rank</th>
-            <th>Operator</th>
+            <th>Operator (quick)</th>
             <th>Engineering meaning</th>
-            <th>Quick numeric approximation used here</th>
+            <th>Numeric reading used here</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>0</td>
-            <td>\(D_0^1 y \approx \dfrac{\Delta y}{\Delta x}\)</td>
-            <td>Absolute change per unit</td>
-            <td>Plain slope</td>
+            <td>\(D_0^1 y \approx \Delta y\)</td>
+            <td>Absolute change per interval</td>
+            <td>Plain increment/slope</td>
           </tr>
           <tr>
             <td>1</td>
-            <td>\(D_1^1 y \approx \dfrac{\Delta y / y}{\Delta x / x}\)</td>
-            <td>Relative structural change (scale invariant)</td>
-            <td>“% change of y” over “% change of x”</td>
+            <td>\(D_1^1 y \approx \Delta y/y\)</td>
+            <td>Relative structural change</td>
+            <td>% change / utilization / normalized trend</td>
           </tr>
           <tr>
             <td>2</td>
-            <td>\(D_2^1 y \approx \dfrac{\Delta \ln\ln y}{\Delta \ln\ln x}\) (domains apply)</td>
-            <td>Acceleration of structural change (hierarchical risk)</td>
-            <td>Use it when the <b>relative rate itself</b> is changing fast</td>
+            <td>\(D_2^1 y\) (conceptual)</td>
+            <td>Acceleration of relative change</td>
+            <td>Turning points, near-failure escalation</td>
           </tr>
         </tbody>
       </table>
-      <p class="muted small" style="margin:10px 0 0 0">
-        Note: \(D_2^1\) requires domain constraints (e.g., \(x>1\), \(y>1\)) in its strict form. In engineering practice,
-        it is used as a <b>rank-2 descriptor</b> for “acceleration of relative change” once variables are mapped to a suitable positive domain
-        (e.g., risk indices, normalized health metrics).
-      </p>
     </section>
 
-    <!-- ===================== 20 APPLICATIONS ===================== -->
-
-    <section class="card">
-      <h2>Applications and numeric examples (1–20)</h2>
+    <!-- ===================== CASES ===================== -->
+    <section class="card" id="cases">
+      <h2>4) Applications and numeric examples (1–20)</h2>
       <div class="note">
-        <strong>Tip:</strong> For each case, read “What \(D_0^1\) says” vs “What \(D_1^1\) says” first.
-        Then look at the rank-2 note: “When \(D_2^1\) matters”.
+        <strong>Reading tip:</strong>
+        In each case compare \(D_0^1\) (raw increment) vs \(D_1^1\) (relative significance).  
+        Use rank-2 interpretation when the relative rate itself is increasing quickly.
       </div>
     </section>
 
-    <!-- 1 -->
+    <!-- ===================== CASE 1 ===================== -->
     <section class="card">
-      <h3>1) Concrete crack length growth</h3>
-      <p class="muted small" style="margin:0">
-        Crack length \(L\) increases from 20 mm to 22 mm in one inspection interval.
+      <h3>Case 1 — Concrete crack length growth</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Concrete durability</span>
+        <span class="tag">Goal: early cracking detection</span>
+        <span class="tag">Rank focus: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        Crack length \(L\) grows from 20 mm to 22 mm over one inspection interval. The absolute increment is small,
+        but the relative increase can be significant in damage mechanics.
       </p>
       <div class="math">
         \[
-          \Delta L = 2 \text{ mm}
-          \qquad
-          D_0^1:\; \text{absolute growth} = 2 \text{ mm/interval}
-        \]
-        \[
-          D_1^1:\; \text{relative growth} \approx \frac{\Delta L}{L} = \frac{2}{20}=0.10=10\%
+          D_0^1:\;\Delta L = 2\text{ mm},\qquad
+          D_1^1:\;\frac{2}{20}=0.10=10\%.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Engineering reading: 10% per interval is a stronger warning than “+2 mm”.
-      </p>
+      <p class="muted"><b>Additional engineering equation (fracture-style indicator):</b></p>
+      <div class="math">
+        \[
+          K_I = Y\,\sigma \sqrt{\pi a}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        Crack propagation is nonlinear in \(a\). Relative growth indicates whether the crack is approaching a regime where
+        stress intensity rises rapidly. A 10% growth per interval is a stronger warning than “+2 mm” if the crack is already near a critical size.
+      </div>
     </section>
 
-    <!-- 2 -->
+    <!-- ===================== CASE 2 ===================== -->
     <section class="card">
-      <h3>2) Acceleration of cracking (risk turning point)</h3>
-      <p class="muted small" style="margin:0">
-        If relative crack growth increased from 5%/interval to 10%/interval, the relative rate doubled.
+      <h3>Case 2 — Acceleration of cracking (turning-point signal)</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Monitoring</span>
+        <span class="tag">Goal: detect regime shift</span>
+        <span class="tag">Rank focus: \(D_2^1\)</span>
+      </div>
+      <p class="muted">
+        Suppose relative crack growth increases from 5% per interval to 10% per interval. The relative rate doubled.
       </p>
       <div class="math">
         \[
-          D_1^1\text{(rate)}:\; \frac{10\%}{5\%}=2
-          \quad \Rightarrow \quad \text{accelerating risk (rank-2 behavior)}
+          \frac{10\%}{5\%}=2 \Rightarrow \text{accelerating risk (rank-2 behavior)}.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        This is where \(D_2^1\) is conceptually the right level: it detects “growth of the growth-rate”.
-      </p>
+      <p class="muted"><b>Additional equation (rate-of-rate descriptor):</b></p>
+      <div class="math">
+        \[
+          \text{If } r=\frac{\Delta L}{L},\quad \text{then rank-2 monitors }\Delta r.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        Many failures occur when damage acceleration begins, not when damage is already large.
+        Rank-2 monitoring focuses on detecting turning points early, enabling interventions before irreversibility.
+      </div>
     </section>
 
-    <!-- 3 -->
+    <!-- ===================== CASE 3 ===================== -->
     <section class="card">
-      <h3>3) Concrete creep strain</h3>
-      <p class="muted small" style="margin:0">
-        Creep strain \(\varepsilon\) increases from 400 με to 460 με over a fixed time window.
+      <h3>Case 3 — Concrete creep strain increase</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Long-term deflection</span>
+        <span class="tag">Goal: time-dependent deformation</span>
+        <span class="tag">Rank focus: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        Creep strain increases from 400 με to 460 με in a fixed time window.
       </p>
       <div class="math">
         \[
-          D_0^1:\; \Delta \varepsilon = 60\ \mu\varepsilon
-          \qquad
-          D_1^1:\; \frac{60}{400}=15\%
+          D_0^1:\;\Delta \varepsilon = 60\mu\varepsilon,\qquad
+          D_1^1:\;\frac{60}{400}=15\%.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        If this 15% becomes 25% in the next window, risk acceleration suggests rank-2 monitoring.
-      </p>
+      <p class="muted"><b>Additional equation (creep compliance view):</b></p>
+      <div class="math">
+        \[
+          \varepsilon(t)=\frac{\sigma}{E}\left(1+\varphi(t)\right).
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        Relative creep growth is the meaningful comparison across different stress levels and elements.
+        If relative creep increases faster in later stages, it indicates structural progression and motivates rank-2 risk interpretation.
+      </div>
     </section>
 
-    <!-- 4 -->
+    <!-- ===================== CASE 4 ===================== -->
     <section class="card">
-      <h3>4) Drying shrinkage (serviceability)</h3>
-      <p class="muted small" style="margin:0">
+      <h3>Case 4 — Drying shrinkage (serviceability-driven)</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Concrete durability</span>
+        <span class="tag">Goal: crack control</span>
+        <span class="tag">Rank focus: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
         Shrinkage strain increases from 250 με to 300 με.
       </p>
       <div class="math">
         \[
-          D_0^1:\; 50\ \mu\varepsilon
+          D_0^1:\;50\mu\varepsilon,\qquad
+          D_1^1:\;\frac{50}{250}=20\%.
+        \]
+      </div>
+      <p class="muted"><b>Additional equation (restrained shrinkage stress):</b></p>
+      <div class="math">
+        \[
+          \sigma_{sh} \approx E\,\varepsilon_{sh}\,R.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        Shrinkage-induced cracking depends on restraint \(R\). Relative shrinkage growth is a direct indicator for rising
+        cracking risk, especially in restrained members. Rank-2 helps when shrinkage-related cracking becomes accelerating.
+      </div>
+    </section>
+
+    <!-- ===================== CASE 5 ===================== -->
+    <section class="card">
+      <h3>Case 5 — Rebar corrosion loss and area reduction</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Durability</span>
+        <span class="tag">Goal: capacity loss</span>
+        <span class="tag">Rank focus: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        Bar diameter reduces from 16.0 mm to 15.2 mm due to corrosion.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;\Delta d=-0.8\text{ mm},\qquad
+          D_1^1:\;\frac{-0.8}{16}=-5\%.
+        \]
+      </div>
+      <p class="muted"><b>Additional equation (area sensitivity):</b></p>
+      <div class="math">
+        \[
+          A=\frac{\pi d^2}{4}\Rightarrow \frac{\Delta A}{A}\approx 2\frac{\Delta d}{d}\approx -10\%.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        A small diameter loss translates into a larger area (capacity) loss.
+        This illustrates why rank-1 indicators are essential: they reveal the true severity hidden in absolute numbers.
+      </div>
+    </section>
+
+    <!-- ===================== CASES 6–20 (as requested) ===================== -->
+    <!-- (The exact Cases 6–20 you approved earlier, fully included below) -->
+
+    <!-- ===================== CASE 6 ===================== -->
+    <section class="card">
+      <h3>Case 6 — Foundation settlement (absolute vs relative thresholds)</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Geotechnics</span>
+        <span class="tag">Goal: Serviceability / Limit state</span>
+        <span class="tag">Rank focus: \(D_1^1\) + decision thresholds</span>
+      </div>
+
+      <p class="muted">
+        Settlement increases from \(S_1=12\text{ mm}\) to \(S_2=15\text{ mm}\). A permissible settlement limit is
+        \(S_{\max}=25\text{ mm}\). Absolute change is \(\Delta S=3\text{ mm}\), but the engineering meaning is
+        strongly controlled by how close the structure is to the admissible threshold.
+      </p>
+
+      <div class="math">
+        \[
+          D_0^1:\;\Delta S = 3\text{ mm},
           \qquad
-          D_1^1:\; \frac{50}{250}=20\%
+          D_1^1:\;\frac{\Delta S}{S_1}=\frac{3}{12}=25\%.
+        \]
+        \[
+          \text{Limit utilization:}\;\eta=\frac{S_2}{S_{\max}}=\frac{15}{25}=0.60.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Relative change connects better to crack risk and restraint conditions than the absolute microstrain number.
-      </p>
-    </section>
 
-    <!-- 5 -->
-    <section class="card">
-      <h3>5) Rebar corrosion loss (diameter reduction)</h3>
-      <p class="muted small" style="margin:0">
-        Bar diameter drops from 16.0 mm to 15.2 mm due to corrosion.
-      </p>
+      <p class="muted"><b>Additional engineering equation (serviceability limit view):</b></p>
       <div class="math">
         \[
-          D_0^1:\; \Delta d = -0.8\text{ mm}
+          \eta(t)=\frac{S(t)}{S_{\max}},\qquad \eta \to 1 \;\Rightarrow\; \text{serviceability failure}.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        In practice, decisions are not driven by \(\Delta S\) alone, but by normalized utilization \(\eta\) and its trajectory.
+        A 25% relative jump in settlement (rank-1) is a strong signal even if the absolute value still appears modest. Rank-2
+        becomes essential if the settlement rate accelerates across rainfall events or construction phases, indicating
+        a regime shift in soil response.
+      </div>
+    </section>
+
+    <!-- ===================== CASE 7 ===================== -->
+    <section class="card">
+      <h3>Case 7 — Differential settlement across a span (distortion control)</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Geotechnics / Structural</span>
+        <span class="tag">Goal: Distortion / cracking control</span>
+        <span class="tag">Rank focus: normalized distortion</span>
+      </div>
+
+      <p class="muted">
+        Two supports settle differently: \(S_L=8\text{ mm}\) and \(S_R=14\text{ mm}\). For span length \(L=10\text{ m}\),
+        the primary concern is not the absolute values but the induced distortion and curvature demand.
+      </p>
+
+      <div class="math">
+        \[
+          \Delta S = S_R - S_L = 6\text{ mm},
           \qquad
-          D_1^1:\; \frac{-0.8}{16}=-5\%
+          \text{slope} \approx \frac{\Delta S}{L}=\frac{6\text{ mm}}{10\text{ m}}=0.6\text{ mm/m}.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Engineering reading: 5% diameter loss is already serious because steel area scales with \(d^2\).
-      </p>
+
+      <p class="muted"><b>Additional engineering equation (angular distortion index):</b></p>
       <div class="math">
         \[
-          \frac{\Delta A}{A} \approx 2\frac{\Delta d}{d} \approx -10\%
+          \beta = \frac{\Delta S}{L}.
         \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Differential settlement is a primary driver of cracking in masonry, slabs, and brittle components. The normalized
+        distortion index \(\beta\) provides a rank-1 style measure that is comparable across spans. Monitoring \(\beta(t)\)
+        is more decision-relevant than tracking \(S_L\) and \(S_R\) separately. Rank-2 descriptors become relevant if
+        the distortion grows at an increasing relative rate across successive loading cycles.
       </div>
     </section>
 
-    <!-- 6 -->
+    <!-- ===================== CASE 8 ===================== -->
     <section class="card">
-      <h3>6) Foundation settlement (absolute vs relative)</h3>
-      <p class="muted small" style="margin:0">
-        Settlement \(S\) goes from 12 mm to 15 mm. If reference permissible is 25 mm.
+      <h3>Case 8 — Consolidation progress and unexpected acceleration</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Consolidation</span>
+        <span class="tag">Goal: time-dependent prediction</span>
+        <span class="tag">Rank focus: \(D_1^1\) + \(D_2^1\)</span>
+      </div>
+
+      <p class="muted">
+        Suppose settlement progress increases from 40% to 55% of a predicted final settlement over a comparable time window.
+        The absolute progress is +15 percentage points, but the relative progress increase is 37.5%.
       </p>
+
       <div class="math">
         \[
-          D_0^1:\; \Delta S = 3\text{ mm}
-          \qquad
-          D_1^1\text{ (vs current)}:\; \frac{3}{12}=25\%
-        \]
-        \[
-          \text{Relative to limit:}\; \frac{15}{25}=0.60
+          D_0^1:\; +15\text{ points},\qquad
+          D_1^1:\; \frac{55-40}{40}=37.5\%.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Relative indicators (25% jump; 60% of limit) are more decision-relevant than “+3 mm”.
-      </p>
-    </section>
 
-    <!-- 7 -->
-    <section class="card">
-      <h3>7) Differential settlement across span</h3>
-      <p class="muted small" style="margin:0">
-        Left support settles 8 mm; right support settles 14 mm. Span is 10 m.
-      </p>
+      <p class="muted"><b>Additional engineering equation (Terzaghi 1D consolidation, conceptual):</b></p>
       <div class="math">
         \[
-          \Delta S = 14-8=6\text{ mm}
-          \qquad
-          \text{Slope} \approx \frac{6\text{ mm}}{10\text{ m}} = 0.6\text{ mm/m}
+          T_v=\frac{c_v\,t}{H_d^2},
+          \qquad U \approx f(T_v).
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Track the relative growth of this distortion over time (rank 1), and its acceleration (rank 2) for early warning.
-      </p>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Consolidation is governed by diffusion-type dynamics through \(c_v\). If relative progress accelerates unexpectedly,
+        it may indicate drainage changes, layering effects, or underestimated \(c_v\). Rank-2 monitoring is useful when the
+        relative settlement progress itself changes regime, signaling that the soil model assumptions may require revision.
+      </div>
     </section>
 
-    <!-- 8 -->
+    <!-- ===================== CASE 9 ===================== -->
     <section class="card">
-      <h3>8) Consolidation progress (time-dependent)</h3>
-      <p class="muted small" style="margin:0">
-        Settlement progressed from 40% to 55% of final estimate.
+      <h3>Case 9 — Slope stability: Factor of Safety degradation</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Slopes</span>
+        <span class="tag">Goal: limit state safety</span>
+        <span class="tag">Rank focus: \(D_1^1\) + turning-point risk</span>
+      </div>
+
+      <p class="muted">
+        Factor of Safety decreases from 1.35 to 1.20 after rainfall. The absolute drop is 0.15, but the relative drop is
+        approximately 11.1%, which is more informative for probabilistic decision making.
       </p>
+
       <div class="math">
         \[
-          D_0^1:\; +15 \text{ percentage points}
-          \qquad
-          D_1^1:\; \frac{55-40}{40}=37.5\%
+          D_0^1:\;\Delta FoS=-0.15,\qquad
+          D_1^1:\;\frac{-0.15}{1.35} \approx -11.1\%.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        A rising relative progress rate may indicate unexpected drainage/softening mechanisms (rank-2 monitoring).
-      </p>
-    </section>
 
-    <!-- 9 -->
-    <section class="card">
-      <h3>9) Slope stability factor of safety (FoS) degradation</h3>
-      <p class="muted small" style="margin:0">
-        FoS decreases from 1.35 to 1.20 after heavy rainfall.
-      </p>
+      <p class="muted"><b>Additional engineering equation (conceptual Mohr–Coulomb shear strength):</b></p>
       <div class="math">
         \[
-          D_0^1:\; \Delta \text{FoS}=-0.15
-          \qquad
-          D_1^1:\; \frac{-0.15}{1.35} \approx -11.1\%
+          \tau_f = c' + \sigma' \tan\phi'.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Relative drop is a clearer alarm signal. If such drops become faster across events → rank-2 risk acceleration.
-      </p>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Rainfall changes effective stress \(\sigma'\) and thus reduces shear strength, leading to FoS reduction.
+        Relative deterioration is a key warning indicator across different slopes. Rank-2 becomes critical if repeated
+        storms produce increasingly larger relative drops, signaling transition toward instability.
+      </div>
     </section>
 
-    <!-- 10 -->
+    <!-- ===================== CASE 10 ===================== -->
     <section class="card">
-      <h3>10) Bearing capacity margin</h3>
-      <p class="muted small" style="margin:0">
-        Demand load \(Q_d\) rises from 900 kN to 980 kN; capacity estimate \(Q_u=1200\) kN.
+      <h3>Case 10 — Bearing capacity margin and utilization growth</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Foundations</span>
+        <span class="tag">Goal: utilization tracking</span>
+        <span class="tag">Rank focus: normalized demand/capacity</span>
+      </div>
+
+      <p class="muted">
+        Demand load rises from 900 kN to 980 kN while capacity is \(Q_u=1200\) kN. Instead of absolute demand change, engineers
+        track utilization \(\eta=Q_d/Q_u\).
       </p>
+
       <div class="math">
         \[
-          D_0^1:\; +80\text{ kN}
-          \qquad
-          \text{Utilization}=\frac{980}{1200}=0.817
+          D_0^1:\; +80\text{ kN},\qquad
+          \eta_1=\frac{900}{1200}=0.75,\quad
+          \eta_2=\frac{980}{1200}=0.817.
         \]
         \[
-          D_1^1\text{ (utilization change)}:\; \frac{0.817-0.75}{0.75}\approx 8.9\%
+          D_1^1(\eta):\;\frac{0.817-0.75}{0.75}\approx 8.9\%.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Utilization is a natural positive domain for rank-2 descriptors if the utilization growth accelerates.
-      </p>
-    </section>
 
-    <!-- 11 -->
-    <section class="card">
-      <h3>11) Pile load test: stiffness change</h3>
-      <p class="muted small" style="margin:0">
-        At 600 kN, settlement used to be 6 mm. Now it is 8 mm (same load level).
-      </p>
+      <p class="muted"><b>Additional engineering equation (limit state inequality):</b></p>
       <div class="math">
         \[
-          D_0^1:\; \Delta s = +2\text{ mm}
-          \qquad
-          D_1^1:\; \frac{2}{6}\approx 33.3\%
+          Q_d \le Q_u/\gamma,
+          \qquad \text{or} \qquad \eta \le \eta_{\max}.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        A 33% relative stiffness loss is a strong sign of degradation or soil condition change.
-      </p>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Utilization is naturally a scale-normalized (rank-1) indicator. Monitoring the growth rate of \(\eta(t)\) is
+        operationally meaningful for asset management. If utilization begins increasing at an accelerating relative pace,
+        rank-2 provides an early turning-point warning before failure conditions are reached.
+      </div>
     </section>
 
-    <!-- 12 -->
+    <!-- ===================== CASE 11 ===================== -->
     <section class="card">
-      <h3>12) Bridge deck condition index</h3>
-      <p class="muted small" style="margin:0">
-        Condition index drops from 82 to 74 (out of 100) in one year.
+      <h3>Case 11 — Pile load test: stiffness loss under same load level</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Piles</span>
+        <span class="tag">Goal: stiffness degradation</span>
+        <span class="tag">Rank focus: \(D_1^1\) stiffness loss</span>
+      </div>
+
+      <p class="muted">
+        At 600 kN, settlement used to be 6 mm and now is 8 mm. This implies stiffness degradation or soil weakening.
       </p>
+
       <div class="math">
         \[
-          D_0^1:\; -8 \text{ points/year}
-          \qquad
-          D_1^1:\; \frac{-8}{82}\approx -9.76\%/\text{year}
+          D_0^1:\;\Delta s = 2\text{ mm},\qquad
+          D_1^1:\;\frac{2}{6}\approx 33.3\%.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        If the yearly relative drop increases over years (e.g., -5%, then -10%), rank-2 is the early-warning layer.
-      </p>
-    </section>
 
-    <!-- 13 -->
-    <section class="card">
-      <h3>13) Fatigue damage accumulation (Miner’s rule-like)</h3>
-      <p class="muted small" style="margin:0">
-        Damage index \(D\) increases from 0.30 to 0.36 in a monitoring period.
-      </p>
+      <p class="muted"><b>Additional engineering equation (secant stiffness):</b></p>
       <div class="math">
         \[
-          D_0^1:\; +0.06
-          \qquad
-          D_1^1:\; \frac{0.06}{0.30}=20\%
+          k_s=\frac{Q}{s}.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Relative rise indicates how quickly you are approaching the critical threshold \(D\to1\).
-      </p>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Using \(k_s\), stiffness decreases from \(600/6=100\) kN/mm to \(600/8=75\) kN/mm, i.e. a 25% loss.
+        Relative metrics immediately reveal degradation severity. Rank-2 becomes relevant if stiffness loss rates accelerate
+        across successive tests, suggesting progressive failure mechanisms.
+      </div>
     </section>
 
-    <!-- 14 -->
+    <!-- ===================== CASE 12 ===================== -->
     <section class="card">
-      <h3>14) Serviceability deflection growth</h3>
-      <p class="muted small" style="margin:0">
-        Midspan deflection increases from 18 mm to 21 mm under comparable conditions.
+      <h3>Case 12 — Bridge deck condition index decline</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Bridges</span>
+        <span class="tag">Goal: asset management</span>
+        <span class="tag">Rank focus: \(D_1^1\) deterioration rate</span>
+      </div>
+
+      <p class="muted">
+        Condition index drops from 82 to 74 in one year. The absolute change is -8 points, but the relative decline is ~9.76%.
       </p>
+
       <div class="math">
         \[
-          D_0^1:\; +3\text{ mm}
-          \qquad
-          D_1^1:\; \frac{3}{18}=16.7\%
+          D_0^1:\;-8\text{ points/year},\qquad
+          D_1^1:\;\frac{-8}{82}\approx -9.76\%/\text{year}.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Relative deflection growth is often more meaningful than the absolute increment when comparing spans/structures.
-      </p>
-    </section>
 
-    <!-- 15 -->
-    <section class="card">
-      <h3>15) Dynamic amplification (vibration response)</h3>
-      <p class="muted small" style="margin:0">
-        RMS acceleration increases from 0.08g to 0.11g after a change in support conditions.
-      </p>
+      <p class="muted"><b>Additional engineering equation (deterioration forecast model):</b></p>
       <div class="math">
         \[
-          D_0^1:\; +0.03g
-          \qquad
-          D_1^1:\; \frac{0.03}{0.08}=37.5\%
+          CI(t)=CI_0\,e^{-kt}.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        If this relative increase itself accelerates across days/weeks → use rank-2 health index tracking.
-      </p>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Exponential-style deterioration is naturally captured by rank-1 descriptors. A rising \(k(t)\) indicates
+        structural acceleration of decay (rank-2 regime). This is crucial for prioritizing interventions
+        before the index falls below a policy threshold.
+      </div>
     </section>
 
-    <!-- 16 -->
+    <!-- ===================== CASE 13 ===================== -->
     <section class="card">
-      <h3>16) Seismic drift ratio monitoring</h3>
-      <p class="muted small" style="margin:0">
-        Drift ratio demand rises from 0.9% to 1.2% after updating site hazard or retrofit changes.
+      <h3>Case 13 — Fatigue damage accumulation (Miner-type index)</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Fatigue</span>
+        <span class="tag">Goal: cumulative damage</span>
+        <span class="tag">Rank focus: approaching threshold</span>
+      </div>
+
+      <p class="muted">
+        Damage index increases from 0.30 to 0.36. Absolute change is +0.06, while relative change is 20%.
       </p>
+
       <div class="math">
         \[
-          D_0^1:\; +0.3\% \text{ points}
-          \qquad
-          D_1^1:\; \frac{1.2-0.9}{0.9}=33.3\%
+          D_0^1:\;+0.06,\qquad
+          D_1^1:\;\frac{0.06}{0.30}=20\%.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Relative rise is more interpretable for performance-based decision making.
-      </p>
-    </section>
 
-    <!-- 17 -->
-    <section class="card">
-      <h3>17) Liquefaction-related index change (geotechnical risk index)</h3>
-      <p class="muted small" style="margin:0">
-        A normalized liquefaction risk index \(R\) increases from 1.10 to 1.40 (dimensionless, positive).
-      </p>
+      <p class="muted"><b>Additional engineering equation (Miner’s rule):</b></p>
       <div class="math">
         \[
-          D_0^1:\; +0.30
-          \qquad
-          D_1^1:\; \frac{0.30}{1.10}\approx 27.3\%
+          D=\sum_i \frac{n_i}{N_i},
+          \qquad D\to 1 \Rightarrow \text{failure}.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Indices like \(R>1\) are suitable for rank-2 descriptors (log-log domain is naturally defined).
-      </p>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Rank-1 is ideal for interpreting “how fast we approach failure threshold.” If the relative increment in damage
+        becomes larger as D grows, this signals acceleration (rank-2), consistent with nonlinear crack growth and stiffness loss.
+      </div>
     </section>
 
-    <!-- 18 -->
+    <!-- ===================== CASE 14 ===================== -->
     <section class="card">
-      <h3>18) Scour depth at bridge piers</h3>
-      <p class="muted small" style="margin:0">
-        Scour depth increases from 0.80 m to 0.92 m after flood events.
+      <h3>Case 14 — Serviceability deflection growth under comparable loads</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Structures</span>
+        <span class="tag">Goal: serviceability</span>
+        <span class="tag">Rank focus: normalization across spans</span>
+      </div>
+
+      <p class="muted">
+        Midspan deflection increases from 18 mm to 21 mm. Absolute increase is 3 mm, relative increase is 16.7%.
       </p>
+
       <div class="math">
         \[
-          D_0^1:\; +0.12\text{ m}
-          \qquad
-          D_1^1:\; \frac{0.12}{0.80}=15\%
+          D_0^1:\;+3\text{ mm},\qquad
+          D_1^1:\;\frac{3}{18}=16.7\%.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        If seasonal relative increases rise (e.g., 10%, then 15%, then 25%), the “risk acceleration” layer is rank-2.
-      </p>
-    </section>
 
-    <!-- 19 -->
-    <section class="card">
-      <h3>19) FEM convergence order (numerical civil engineering)</h3>
-      <p class="muted small" style="margin:0">
-        If discretization step \(h\) reduces from 0.20 to 0.10 and the error reduces from 0.040 to 0.010.
-      </p>
+      <p class="muted"><b>Additional engineering equation (elastic deflection scaling):</b></p>
       <div class="math">
         \[
-          \frac{h_2}{h_1}=\frac{0.10}{0.20}=0.5,\quad
-          \frac{E_2}{E_1}=\frac{0.010}{0.040}=0.25
-        \]
-        \[
-          D_1^1 E \approx \frac{\ln(E_2/E_1)}{\ln(h_2/h_1)}=\frac{\ln(0.25)}{\ln(0.5)}=2
+          \delta \propto \frac{L^4}{EI}.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Rank-1 here returns the true engineering quantity: convergence order \(p=2\).
-      </p>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Because deflection scales strongly with span \(L\), a purely absolute measure is misleading when comparing structures.
+        Rank-1 relative deflection growth is more comparable. Rank-2 becomes relevant if relative deflection growth accelerates,
+        often indicating stiffness degradation, cracking, or boundary condition changes.
+      </div>
     </section>
 
-    <!-- 20 -->
+    <!-- ===================== CASE 15 ===================== -->
     <section class="card">
-      <h3>20) Cost growth (project control)</h3>
-      <p class="muted small" style="margin:0">
-        Project cost increases from 10.0M to 12.0M (same scope window). Compare absolute vs relative.
+      <h3>Case 15 — Dynamic amplification: vibration response growth</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Dynamics</span>
+        <span class="tag">Goal: operational safety</span>
+        <span class="tag">Rank focus: \(D_1^1\) response growth</span>
+      </div>
+
+      <p class="muted">
+        RMS acceleration increases from 0.08g to 0.11g. Absolute change is +0.03g, relative is 37.5%.
       </p>
+
       <div class="math">
         \[
-          D_0^1:\; +2.0\text{M}
-          \qquad
-          D_1^1:\; \frac{2.0}{10.0}=20\%
+          D_0^1:\;+0.03g,\qquad
+          D_1^1:\;\frac{0.03}{0.08}=37.5\%.
         \]
       </div>
-      <p class="muted small" style="margin:0">
-        Relative growth is scale-aware. If the 20% becomes 35% in the next window, rank-2 “acceleration” becomes the alarm layer.
-      </p>
+
+      <p class="muted"><b>Additional engineering equation (single DOF resonance amplification):</b></p>
+      <div class="math">
+        \[
+          X(\omega)=\frac{F_0/k}{\sqrt{(1-r^2)^2+(2\zeta r)^2}},\qquad r=\frac{\omega}{\omega_n}.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Increased vibration can imply stiffness loss (lower \(\omega_n\)), damping changes, or excitation changes.
+        Rank-1 provides comparability across baselines; rank-2 is essential if relative vibration growth accelerates,
+        indicating progressive damage and imminent serviceability/comfort violation.
+      </div>
     </section>
 
+    <!-- ===================== CASE 16 ===================== -->
     <section class="card">
-      <h2>Practical decision guide: which rank should a civil engineer use?</h2>
+      <h3>Case 16 — Seismic drift ratio demand increase</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Seismic</span>
+        <span class="tag">Goal: performance-based design</span>
+        <span class="tag">Rank focus: normalized drift</span>
+      </div>
+
+      <p class="muted">
+        Drift ratio demand rises from 0.9% to 1.2%. Absolute is +0.3 points, relative is 33.3%.
+      </p>
+
+      <div class="math">
+        \[
+          D_0^1:\;+0.3\%\text{ points},\qquad
+          D_1^1:\;\frac{1.2-0.9}{0.9}=33.3\%.
+        \]
+      </div>
+
+      <p class="muted"><b>Additional engineering equation (interstory drift definition):</b></p>
+      <div class="math">
+        \[
+          \theta=\frac{\Delta}{h}.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Drift ratio is inherently normalized, so it naturally aligns with rank-1 descriptors. Increasing relative drift demand
+        may trigger retrofit decisions. If drift increases at an accelerating relative rate under repeated events or degraded
+        stiffness, rank-2 becomes essential for near-collapse warning.
+      </div>
+    </section>
+
+    <!-- ===================== CASE 17 ===================== -->
+    <section class="card">
+      <h3>Case 17 — Liquefaction-related risk index (positive domain)</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Liquefaction</span>
+        <span class="tag">Goal: risk index escalation</span>
+        <span class="tag">Rank focus: \(D_2^1\) possible</span>
+      </div>
+
+      <p class="muted">
+        A normalized liquefaction risk index rises from \(R_1=1.10\) to \(R_2=1.40\). Absolute +0.30, relative +27.3%.
+      </p>
+
+      <div class="math">
+        \[
+          D_0^1:\;+0.30,\qquad
+          D_1^1:\;\frac{0.30}{1.10}=27.3\%.
+        \]
+      </div>
+
+      <p class="muted"><b>Additional engineering equation (FS of liquefaction, conceptual):</b></p>
+      <div class="math">
+        \[
+          FS_{liq}=\frac{CRR}{CSR}.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Indices in positive domain (like \(R>1\)) are naturally compatible with higher-rank descriptors.
+        If relative escalation continues and accelerates under successive hazard updates, rank-2 detects “risk-growth of risk-growth,”
+        i.e., systemic turning-point behavior.
+      </div>
+    </section>
+
+    <!-- ===================== CASE 18 ===================== -->
+    <section class="card">
+      <h3>Case 18 — Scour depth at bridge piers (hydraulic risk escalation)</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Hydraulics</span>
+        <span class="tag">Goal: pier stability</span>
+        <span class="tag">Rank focus: \(D_1^1\) + rank-2 alarms</span>
+      </div>
+
+      <p class="muted">
+        Scour depth increases from 0.80 m to 0.92 m after flood events. Absolute +0.12 m, relative +15%.
+      </p>
+
+      <div class="math">
+        \[
+          D_0^1:\;+0.12\text{ m},\qquad
+          D_1^1:\;\frac{0.12}{0.80}=15\%.
+        \]
+      </div>
+
+      <p class="muted"><b>Additional engineering equation (scour scaling concept):</b></p>
+      <div class="math">
+        \[
+          d_s \propto \left(\frac{V^2}{gD}\right)^m
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Scour growth is nonlinear with velocity \(V\). Relative changes are therefore critical for forecasting.
+        If relative scour growth increases across seasons (10% → 15% → 25%), rank-2 becomes the appropriate early-warning layer.
+      </div>
+    </section>
+
+    <!-- ===================== CASE 19 ===================== -->
+    <section class="card">
+      <h3>Case 19 — FEM convergence order (numerical civil engineering)</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: FEM</span>
+        <span class="tag">Goal: convergence verification</span>
+        <span class="tag">Rank focus: \(D_1^1\) order extraction</span>
+      </div>
+
+      <p class="muted">
+        Mesh size \(h\) reduces from 0.20 to 0.10, error reduces from 0.040 to 0.010. Rank-1 extracts convergence order.
+      </p>
+
+      <div class="math">
+        \[
+          \frac{h_2}{h_1}=0.5,\qquad \frac{E_2}{E_1}=0.25.
+        \]
+        \[
+          p \approx \frac{\ln(E_2/E_1)}{\ln(h_2/h_1)}
+          =\frac{\ln(0.25)}{\ln(0.5)}=2.
+        \]
+      </div>
+
+      <p class="muted"><b>Additional engineering equation (expected error scaling):</b></p>
+      <div class="math">
+        \[
+          E(h)\approx C h^p.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        FEM quality is fundamentally a scaling-law issue. Rank-1 is exactly the mathematical object that extracts scaling exponent \(p\).
+        This is a direct demonstration that hierarchical derivatives are not only “theoretical”—they naturally appear in numerical engineering.
+      </div>
+    </section>
+
+    <!-- ===================== CASE 20 ===================== -->
+    <section class="card">
+      <h3>Case 20 — Cost growth and accelerating project risk</h3>
+      <div class="case-meta">
+        <span class="tag">Domain: Project Control</span>
+        <span class="tag">Goal: budget risk escalation</span>
+        <span class="tag">Rank focus: \(D_1^1\) + \(D_2^1\)</span>
+      </div>
+
+      <p class="muted">
+        Project cost increases from 10.0M to 12.0M. Absolute increase is 2.0M, relative is 20%.
+        Engineering projects often fail due to “accelerating overruns,” not initial overruns.
+      </p>
+
+      <div class="math">
+        \[
+          D_0^1:\;+2.0M,\qquad
+          D_1^1:\;\frac{2.0}{10.0}=20\%.
+        \]
+      </div>
+
+      <p class="muted"><b>Additional engineering equation (Earned Value index, conceptual):</b></p>
+      <div class="math">
+        \[
+          CPI=\frac{EV}{AC},\qquad CPI<1 \Rightarrow \text{overrun}.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        Monitoring cost overrun requires relative indicators (CPI, SPI, utilization). A stable 20% overrun is one regime;
+        increasing overruns (20% → 35%) represent accelerating risk. Rank-2 is conceptually the correct layer
+        for detecting escalation early, enabling timely scope correction before catastrophic budget failure.
+      </div>
+    </section>
+
+    <!-- Decision Guide -->
+    <section class="card" id="guide">
+      <h2>5) Practical decision guide</h2>
       <table>
         <thead>
           <tr>
-            <th>Question you ask</th>
-            <th>Recommended operator</th>
-            <th>Typical use</th>
+            <th>Engineering question</th>
+            <th>Recommended rank</th>
+            <th>Why</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>“How many mm / kN / points changed?”</td>
+            <td>How many mm / kN / points changed?</td>
             <td>\(D_0^1\)</td>
-            <td>Field reporting, raw monitoring, short-term comparisons</td>
+            <td>Raw reporting and local comparison</td>
           </tr>
           <tr>
-            <td>“How large is the change relative to the current state?”</td>
+            <td>How significant is the change relative to the baseline?</td>
             <td>\(D_1^1\)</td>
-            <td>Health indices, scale-invariant comparisons, early warnings</td>
+            <td>Scale-aware and comparable across structures</td>
           </tr>
           <tr>
-            <td>“Is the relative change itself accelerating?”</td>
+            <td>Is the relative change accelerating (turning point)?</td>
             <td>\(D_2^1\)</td>
-            <td>Turning points, irreversible regimes, near-failure detection</td>
+            <td>Early warning of regime shifts and near-failure escalation</td>
           </tr>
           <tr>
-            <td>“Are we in multi-phase cascading behavior?”</td>
+            <td>Multi-phase cascading behavior across years?</td>
             <td>\(D_n^1\)</td>
-            <td>Complex systems, long-term asset management across regimes</td>
+            <td>Hierarchical modeling across structural transitions</td>
           </tr>
         </tbody>
       </table>
 
       <div class="note">
         <strong>Engineering takeaway:</strong>
-        Many failures are not “big numbers” problems—they are <b>accelerating structural change</b> problems.
-        That is exactly what hierarchical ranks are designed to capture.
+        Many failures are not “big numbers” problems — they are <b>accelerating structural change</b> problems.
       </div>
     </section>
 
-    <section class="card">
-      <h2>Citation</h2>
+    <!-- General Discussion -->
+    <section class="card" id="discussion">
+      <h2>6) General discussion, limitations, and future work</h2>
+
+      <h3>6.1 General discussion</h3>
+      <p class="muted">
+        A consistent pattern across civil engineering domains is that decision-making depends on ratios and approach-to-threshold behavior.
+        This naturally elevates rank-1 descriptors as central tools in monitoring and diagnostics. Rank-2 descriptors provide additional value
+        as early warnings: they detect when the deterioration process changes regime and becomes structurally accelerating.
+      </p>
+
+      <h3>6.2 Limitations</h3>
+      <p class="muted">
+        Strict rank-2 formulas require domain constraints (log-log). In applied engineering, rank-2 may be computed through mapped indices
+        rather than direct raw variables. Additionally, real systems are noisy; extracting acceleration reliably requires robust sampling,
+        filtering, and uncertainty quantification.
+      </p>
+
+      <h3>6.3 Future work</h3>
+      <p class="muted">
+        Future development includes: (i) defining standardized positive-domain health mappings for rank-2 indicators, (ii) integrating hierarchical
+        derivatives into Bayesian SHM pipelines, (iii) validating rank-2 turning-point detection on real bridge and slope datasets, and
+        (iv) extending to higher ranks for multi-phase regime transitions in long-term asset management.
+      </p>
+    </section>
+
+    <!-- References -->
+    <section class="card" id="refs">
+      <h2>References</h2>
+      <p class="muted small">
+        The references below are standard foundational sources used for context. The hierarchical derivative ladder and its interpretation
+        are part of the author's framework.
+      </p>
+
       <div class="math">
         \[
-          \texttt{GOSSA\ AHMED.\ Hierarchical\ Calculus\ in\ Civil\ Engineering:\ 20\ Applications\ with\ Numeric\ Examples.\ Official\ Website.\ (2025).}
+        \textbf{[1]}\;\text{Terzaghi, K. (1943). Theoretical Soil Mechanics. Wiley.}
+        \]
+        \[
+        \textbf{[2]}\;\text{Fellenius, B. H. (2001). Basics of Foundation Design.}
+        \]
+        \[
+        \textbf{[3]}\;\text{Eurocode 2: Design of Concrete Structures.}
+        \]
+        \[
+        \textbf{[4]}\;\text{Miner, M. A. (1945). Cumulative Damage in Fatigue. Journal of Applied Mechanics.}
+        \]
+        \[
+        \textbf{[5]}\;\text{Bathe, K. J. (1996). Finite Element Procedures. Prentice Hall.}
+        \]
+        \[
+        \textbf{[6]}\;\text{GOSSA AHMED (2025). Hierarchical Calculus Framework (Official Website).}
         \]
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Civil Engineering Applications — explicit \(D_r^1\), \(D_0^1\), \(D_1^1\), \(D_2^1\)
+      © 2025 — GOSSA AHMED · Civil Engineering — Paper Edition · Hierarchical derivatives \(D_r^1\)
+      <br>
+      <a href="#top">Back to top ↑</a>
     </footer>
   </div>
 </body>
