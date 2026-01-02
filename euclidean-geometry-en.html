@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>الحساب الهرمي في الهندسة الإقليدية | 7 أمثلة واقعية (مقارنة D₀¹ و D₁¹)</title>
-  <meta name="description" content="نسخة Paper عربية أكاديمية: تطبيق الحساب الهرمي في الهندسة الإقليدية عبر 7 أمثلة عددية واقعية مع مقارنة D0^1 و D1^1 سطرًا بسطر. التشابه، التحجيم، الأسس الهندسية، الانحناء، الشبكات العددية، وثوابت القياس." />
+  <title>Hierarchical Calculus in Euclidean Geometry | Paper-Style with 7 Real Examples (D₀¹ vs D₁¹)</title>
+  <meta name="description" content="A full Paper-style English page: Hierarchical Calculus in Euclidean Geometry with 7 real numeric examples comparing D0^1 vs D1^1. Includes abstract, method, expanded discussions, additional equations, decision guide, and references." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry.html" />
-  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry.html" />
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry-en.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry-en.html" />
 
   <style>
@@ -28,7 +28,7 @@
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family:var(--sans); color:var(--text); line-height:2.05;
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.95;
       background:
         radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
@@ -74,7 +74,7 @@
     /* Hero */
     header.hero{
       margin-top:16px; padding:20px 18px;
-      border:1px solid rgba(255,255,255,.10);
+      border:1px solid var(--border);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border-radius:var(--radius);
       box-shadow:var(--shadow);
@@ -165,7 +165,7 @@
       margin-top:10px;
     }
     thead th{
-      text-align:right;
+      text-align:left;
       font-size:13px;
       padding:10px 10px;
       background: rgba(255,255,255,.06);
@@ -187,7 +187,7 @@
       border:1px solid rgba(57,211,195,.25);
       background: rgba(57,211,195,.08);
       border-radius:14px;
-      border-right:4px solid var(--accent);
+      border-left:4px solid var(--accent);
       color:rgba(234,242,255,.92);
       font-size:13px;
     }
@@ -213,13 +213,13 @@
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": "الحساب الهرمي في الهندسة الإقليدية | 7 أمثلة واقعية (مقارنة D0^1 و D1^1)",
-  "alternativeHeadline": "التحجيم، التشابه، أسس المساحة والحجم، الانحناء، الشبكات العددية، وثوابت القياس باستخدام المشتقات الهرمية",
+  "headline": "Hierarchical Calculus in Euclidean Geometry | Paper-Style with 7 Real Examples (D0^1 vs D1^1)",
+  "alternativeHeadline": "Scaling, similarity, dimension exponents, curvature, meshes, and invariance using hierarchical derivatives",
   "author": {"@type":"Person","name":"Ahmed Gossa","url":"https://gossaahmed.github.io/gossa-math/"},
   "about": ["Hierarchical Calculus","Euclidean Geometry","Similarity","Scaling Laws","Relative Derivative D1","Classical Derivative D0"],
-  "abstract": "صفحة تطبيقية بنمط ورقة بحثية تشرح كيف تكشف المشتقة النسبية D1^1 البنية الثابتة للتحجيم والتشابه في الهندسة الإقليدية، عبر سبعة أمثلة عددية مع مقارنة مباشرة بين D0^1 و D1^1 وإضافة تعليل علمي ونقاش لكل مثال.",
-  "inLanguage": "ar",
-  "url": "https://gossaahmed.github.io/gossa-math/euclidean-geometry.html",
+  "abstract": "A Paper-style page demonstrating how D1^1 extracts invariant scaling exponents in Euclidean geometry, with seven numeric case studies, additional equations, expanded interpretations, and structured discussions.",
+  "inLanguage": "en",
+  "url": "https://gossaahmed.github.io/gossa-math/euclidean-geometry-en.html",
   "publisher": {"@type":"Organization","name":"Hierarchical Calculus"}
 }
 </script>
@@ -230,22 +230,22 @@
     <div class="inner">
       <div class="brand">
         <div class="logo" aria-hidden="true">
-          <!-- ضع logo.png في نفس المجلد ثم فعّل السطر -->
+          <!-- Place logo.png in same folder then uncomment -->
           <!-- <img src="./logo.png" alt="Logo"> -->
         </div>
         <div class="title">
-          <strong>الهندسة الإقليدية — Paper</strong>
-          <span>7 أمثلة · \(D_0^1\) مقابل \(D_1^1\) · ثوابت التحجيم</span>
+          <strong>Euclidean Geometry — Paper</strong>
+          <span>7 cases · \(D_0^1\) vs \(D_1^1\) · scaling invariants</span>
         </div>
       </div>
 
       <nav aria-label="Navigation">
-        <a href="./index.html">الرئيسية</a>
-        <a href="./theory.html">النظرية</a>
-        <a href="./rules.html">القواعد</a>
-        <a href="./equations.html">المعادلات</a>
-        <a href="./integrals.html">التكاملات</a>
-        <a href="./euclidean-geometry-en.html">English</a>
+        <a href="./index-en.html">Home</a>
+        <a href="./theory-en.html">Theory</a>
+        <a href="./rules-en.html">Rules</a>
+        <a href="./equations-en.html">Equations</a>
+        <a href="./integrals-en.html">Integrals</a>
+        <a href="./euclidean-geometry.html">العربية</a>
         <a href="#refs">References</a>
       </nav>
     </div>
@@ -253,70 +253,73 @@
 
   <div class="wrap">
     <header class="hero" id="top">
-      <h1>الحساب الهرمي في الهندسة الإقليدية</h1>
+      <h1>Hierarchical Calculus in Euclidean Geometry</h1>
       <p class="muted">
-        الهندسة الإقليدية قائمة جوهريًا على <b>التحجيم</b> و<b>التشابه</b> و<b>ثوابت البنية</b>.
-        لذلك فإن التغير المطلق \(D_0^1\) قد لا يكشف المعنى العميق للهندسة، بينما المشتقة النسبية \(D_1^1\)
-        تُعيد صياغة الأسئلة الهندسية بوصفها أسسًا (exponents) وثوابت تحجيم مستقلة عن الوحدات.
+        Euclidean geometry is fundamentally a theory of <b>scaling</b>, <b>similarity</b>, and <b>invariants</b>.
+        Many geometric questions are not about “how many units changed”, but about “how the structure changes under rescaling”.
+        This makes the relative derivative \(D_1^1\) a natural operator: it extracts stable exponents such as \(1,2,3,-1\),
+        which encode geometric dimension, curvature scaling, and numerical convergence behavior.
       </p>
 
       <div class="paper-meta">
-        <span class="pill">المؤلف: <b>GOSSA AHMED</b></span>
-        <span class="pill">النمط: ورقة بحثية (Paper-style)</span>
+        <span class="pill">Author: <b>GOSSA AHMED</b></span>
+        <span class="pill">Format: Paper-style</span>
         <span class="pill">Keywords: Similarity · Scaling · Curvature · Mesh</span>
         <span class="pill">2025</span>
       </div>
 
       <div class="btnrow">
-        <a class="btn primary" href="#abstract">الملخص</a>
-        <a class="btn" href="#intro">المقدمة</a>
-        <a class="btn" href="#method">المنهجية</a>
-        <a class="btn" href="#examples">الأمثلة</a>
-        <a class="btn" href="#guide">دليل القرار</a>
-        <a class="btn" href="#refs">المراجع</a>
+        <a class="btn primary" href="#abstract">Abstract</a>
+        <a class="btn" href="#intro">Introduction</a>
+        <a class="btn" href="#method">Method</a>
+        <a class="btn" href="#cases">Cases</a>
+        <a class="btn" href="#guide">Decision Guide</a>
+        <a class="btn" href="#refs">References</a>
       </div>
 
       <div class="note">
-        <strong>قاعدة الترميز:</strong>
-        في هذا الموقع نكتب المشتقات بشكل صريح: \(D_r^n\).  
-        المشتق الكلاسيكي هو \(D_0^1\). المشتق النسبي هو \(D_1^1\).
+        <strong>Notation rule:</strong>
+        On this website derivatives are written explicitly as \(D_r^n\).
+        The classical differential derivative is \(D_0^1\). The basic relative derivative is \(D_1^1\).
       </div>
     </header>
 
     <!-- Abstract -->
     <section class="card" id="abstract">
-      <h2>الملخص (Abstract)</h2>
+      <h2>Abstract</h2>
       <p class="muted">
-        تهدف هذه الورقة التطبيقية إلى بيان أن كثيرًا من مشكلات الهندسة الإقليدية لا تُفهم بصورة مثالية عبر مشتقات مطلقة،
-        لأنها تتعلق بخصائص ثابتة تحت التحجيم مثل التشابه، الأس، والانحناء، وجودة الشبكات العددية.
-        لذلك نقدم إطارًا عمليًا يربط بين \(D_0^1\) و\(D_1^1\) عبر سبعة أمثلة عددية.
-        تُظهر النتائج أن \(D_1^1\) يعمل كـ “مستخرج للثوابت الهندسية” لأن الأسس (مثل 1 و2 و3 و-1)
-        تظهر مباشرة كقيم ثابتة لا تعتمد على الوحدة أو الحجم الحالي.
+        This paper-style application page shows that many Euclidean geometry phenomena are better described by structural,
+        scale-invariant operators rather than absolute slopes. Using seven numeric case studies, we compare
+        \(D_0^1\) (absolute change) to \(D_1^1\) (relative/log-derivative).
+        Results demonstrate that \(D_1^1\) acts as an “invariant extractor”: it returns scaling exponents directly,
+        independent of units or current size. These exponents coincide with geometric dimensions, curvature scaling laws,
+        and convergence orders in numerical geometry.
       </p>
       <p class="muted small">
-        <b>Keywords:</b> التحجيم؛ التشابه؛ الأسس الهندسية؛ الانحناء؛ الهندسة العددية؛ المشتقات الهرمية؛ invariants.
+        <b>Keywords:</b> Euclidean geometry; similarity; scaling laws; invariants; curvature; numerical mesh; hierarchical calculus.
       </p>
     </section>
 
     <!-- Intro -->
     <section class="card" id="intro">
-      <h2>1) المقدمة</h2>
+      <h2>1) Introduction</h2>
       <p class="muted">
-        كثير من قضايا الهندسة الإقليدية ليست “كم تغيّر الطول؟” بل “كيف يتغيّر تحت التحجيم؟”.
-        فعندما تتشابه الأشكال، تصبح النسب ثابتة، والمساحات تتبع أسًا مقداره 2، والحجوم تتبع أسًا مقداره 3.
-        هذه ليست تفاصيل حسابية، بل هي بنية عميقة في الهندسة.
+        In Euclidean geometry, similarity implies that shape properties are preserved under scaling.
+        If an object is rescaled by a factor \(s\), lengths scale as \(s^1\), areas as \(s^2\), and volumes as \(s^3\).
+        These are not numerical coincidences but structural laws.
       </p>
       <p class="muted">
-        من هنا تظهر أهمية \(D_1^1\): إذ يعيد صياغة التغير بوصفه تغيرًا نسبيًا بالنسبة لتحجيم المتغير،
-        وهو ما يجعل النتائج مستقلة عن وحدة القياس ويجعل المقارنة بين الأشكال أكثر علمية.
+        The classical derivative \(D_0^1\) measures unit-dependent slopes, which are useful for sensitivity analysis but
+        often fail to reveal scale invariance. The relative derivative \(D_1^1\), however, is designed exactly for
+        extracting stable exponents in power-law regimes.
       </p>
     </section>
 
     <!-- Method -->
     <section class="card" id="method">
-      <h2>2) المنهجية الرياضية</h2>
+      <h2>2) Method</h2>
       <p class="muted">
-        نستخدم في هذه الصفحة معامل تحجيم \(s>0\) ونقارن:
+        We use a scaling parameter \(s>0\) and compare:
       </p>
       <div class="math">
         \[
@@ -327,82 +330,83 @@
       </div>
 
       <div class="note">
-        <strong>قاعدة محورية:</strong>
-        إذا كان \(y(s)=C s^a\) حيث \(C>0\)، فإن:
+        <strong>Central rule:</strong>
+        If \(y(s)=C s^a\) with \(C>0\), then:
         \[
           D_1^1 y(s)=a.
         \]
-        أي أن \(D_1^1\) يستخرج الأس مباشرة بوصفه ثابتًا هندسيًا.
+        Thus \(D_1^1\) directly returns the scaling exponent.
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>المؤثر</th>
-            <th>المعنى</th>
-            <th>السلوك تحت التحجيم</th>
+            <th>Operator</th>
+            <th>Meaning</th>
+            <th>Scaling behavior</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>\(D_0^1\)</td>
-            <td>تغير مطلق لكل وحدة</td>
-            <td>يعتمد على الوحدة والحجم</td>
+            <td>Absolute change per unit</td>
+            <td>Depends on units and current scale</td>
           </tr>
           <tr>
             <td>\(D_1^1\)</td>
-            <td>تغير نسبي/بنيوي</td>
-            <td>ثابت في قوانين القوة (Power laws)</td>
+            <td>Relative structural change</td>
+            <td>Constant for power laws (scale-invariant)</td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <!-- Examples -->
-    <section class="card" id="examples">
-      <h2>3) الأمثلة التطبيقية (1–7)</h2>
+    <!-- Cases -->
+    <section class="card" id="cases">
+      <h2>3) Case Studies (1–7)</h2>
       <div class="note">
-        <strong>طريقة القراءة:</strong>
-        في كل مثال نقارن \(D_0^1\) (حساسية مطلقة) و\(D_1^1\) (ثابت تحجيم).
-        ثم نضيف معادلة أخرى + تفسير + فقرة نقاش.
+        <strong>Reading tip:</strong>
+        Each case includes (i) the numeric setup, (ii) \(D_0^1\) vs \(D_1^1\),
+        (iii) an additional equation, and (iv) a discussion paragraph.
       </div>
     </section>
 
-    <!-- Example 1 -->
+    <!-- Case 1 -->
     <section class="card">
-      <h3>المثال 1 — تحجيم طول في رسم هندسي (CAD)</h3>
+      <h3>Case 1 — Scaling a length (CAD / engineering drawing)</h3>
       <p class="muted">
-        طول في مخطط هندسي يُعاد تحجيمه بعامل \(s\). إذا كان \(L(s)=10s\) (سم)،
-        فالقيمة عند \(s=2\) تصبح 20 سم. الهدف ليس القيمة وحدها بل “بنية التحجيم”.
+        A CAD model is rescaled by factor \(s\). Let a segment length be \(L(s)=10s\) cm.
+        Evaluate the two derivatives and interpret their geometric meaning.
       </p>
       <div class="math">
         \[
-          L(s)=10s,\quad L(2)=20
+          L(s)=10s,\quad L(2)=20.
         \]
       </div>
+
       <table>
         <thead>
           <tr>
-            <th>الخطوة</th>
+            <th>Step</th>
             <th>\(D_0^1\)</th>
             <th>\(D_1^1\)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>الحساب</td>
-            <td>\(D_0^1L=10\)</td>
-            <td>\(D_1^1L=1\)</td>
+            <td>Compute</td>
+            <td>\(D_0^1 L=10\)</td>
+            <td>\(D_1^1 L=1\)</td>
           </tr>
           <tr>
-            <td>المعنى</td>
-            <td>زيادة مطلقة</td>
-            <td>الطول يتبع \(s^1\)</td>
+            <td>Meaning</td>
+            <td>“+10 cm per +1 scale unit”</td>
+            <td>“Length scales like \(s^1\)”</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="muted"><b>معادلة إضافية (التشابه):</b></p>
+      <p class="muted"><b>Additional equation (similarity ratio):</b></p>
       <div class="math">
         \[
           \frac{L(s_2)}{L(s_1)}=\frac{s_2}{s_1}.
@@ -411,47 +415,46 @@
 
       <div class="discussion">
         <b>Discussion:</b>
-        \(D_1^1=1\) هنا ليس رقمًا حسابيًا، بل هو “بُعد” الطول داخل التشابه.
-        لذلك فهو أكثر ثباتًا من ميل مطلق يعتمد على الوحدة.
+        The value \(D_1^1=1\) is not a local slope—it is the structural exponent defining the similarity class.
+        Unlike \(D_0^1\), this value is independent of units and remains stable across scales.
       </div>
     </section>
 
-    <!-- Example 2 -->
+    <!-- Case 2 -->
     <section class="card">
-      <h3>المثال 2 — تحجيم المساحة في مخطط أرضية</h3>
+      <h3>Case 2 — Scaling an area (floor plan / tiling)</h3>
       <p class="muted">
-        مربع طول ضلعه \(L(s)=3s\) متر، وبالتالي المساحة \(A(s)=9s^2\).
-        مقارنة \(D_0^1\) و\(D_1^1\) تكشف الفرق بين الحساسية المطلقة وثابت التحجيم.
+        A square is scaled by \(s\). If \(L(s)=3s\) meters, then \(A(s)=L(s)^2=9s^2\).
       </p>
       <div class="math">
         \[
-          A(s)=9s^2,\quad A(2)=36
+          A(s)=9s^2,\quad A(2)=36.
         \]
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>الخطوة</th>
+            <th>Step</th>
             <th>\(D_0^1\)</th>
             <th>\(D_1^1\)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>الحساب</td>
+            <td>Compute</td>
             <td>\(D_0^1A=18s \Rightarrow D_0^1A(2)=36\)</td>
             <td>\(D_1^1A=2\)</td>
           </tr>
           <tr>
-            <td>المعنى</td>
-            <td>الحساسية المطلقة تتضخم مع \(s\)</td>
-            <td>المساحة تتبع \(s^2\)</td>
+            <td>Meaning</td>
+            <td>Absolute sensitivity grows with scale</td>
+            <td>Area scales like \(s^2\)</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="muted"><b>معادلة إضافية (قانون المساحة):</b></p>
+      <p class="muted"><b>Additional equation (area law):</b></p>
       <div class="math">
         \[
           A \propto L^2.
@@ -460,46 +463,47 @@
 
       <div class="discussion">
         <b>Discussion:</b>
-        عندما نقارن مساحات أشكال بأحجام مختلفة، فإن \(D_1^1=2\) يوفر معيارًا هندسيًا ثابتًا،
-        بينما الميل المطلق يتغير بتغير المقياس ولا يصلح للمقارنة.
+        When comparing objects with different sizes, absolute slopes are misleading.
+        The exponent \(2\) remains stable, revealing the geometric dimension of area scaling.
       </div>
     </section>
 
-    <!-- Example 3 -->
+    <!-- Case 3 -->
     <section class="card">
-      <h3>المثال 3 — تحجيم الحجم في نموذج ثلاثي الأبعاد</h3>
+      <h3>Case 3 — Scaling a volume (3D modeling)</h3>
       <p class="muted">
-        جسم ثلاثي الأبعاد له حجم \(V(s)=2s^3\). عند \(s=1.5\) نحصل على \(V=6.75\).
-        ما يهم هندسيًا هو أن الحجم يتبع \(s^3\) (بنية ثلاثية).
+        Consider a 3D object with \(V(s)=2s^3\). At \(s=1.5\), \(V=6.75\).
+        The geometric meaning is that volume follows cubic scaling.
       </p>
       <div class="math">
         \[
-          V(s)=2s^3,\quad V(1.5)=6.75
+          V(s)=2s^3,\quad V(1.5)=6.75.
         \]
       </div>
+
       <table>
         <thead>
           <tr>
-            <th>الخطوة</th>
+            <th>Step</th>
             <th>\(D_0^1\)</th>
             <th>\(D_1^1\)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>الحساب</td>
+            <td>Compute</td>
             <td>\(D_0^1V=6s^2 \Rightarrow D_0^1V(1.5)=13.5\)</td>
             <td>\(D_1^1V=3\)</td>
           </tr>
           <tr>
-            <td>المعنى</td>
-            <td>الحساسية تعتمد على الحجم الحالي</td>
-            <td>ثابت تحجيم ثلاثي</td>
+            <td>Meaning</td>
+            <td>Scale-dependent slope</td>
+            <td>Volume scales like \(s^3\)</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="muted"><b>معادلة إضافية (التشابه الحجمي):</b></p>
+      <p class="muted"><b>Additional equation (volume similarity):</b></p>
       <div class="math">
         \[
           \frac{V_2}{V_1}=\left(\frac{s_2}{s_1}\right)^3.
@@ -508,47 +512,47 @@
 
       <div class="discussion">
         <b>Discussion:</b>
-        القيمة 3 هي “البعد الحجمي” الذي يبقى ثابتًا عبر كل النماذج المتماثلة.
-        لذلك \(D_1^1\) يعمل كأداة استخراج لبنية الفضاء الإقليدي.
+        The constant exponent \(3\) is a geometric invariant of Euclidean space.
+        \(D_1^1\) reveals this directly, while \(D_0^1\) changes with the current scale.
       </div>
     </section>
 
-    <!-- Example 4 -->
+    <!-- Case 4 -->
     <section class="card">
-      <h3>المثال 4 — مثلثات متشابهة: ثبات النسبة</h3>
+      <h3>Case 4 — Similar triangles (ratio invariance)</h3>
       <p class="muted">
-        إذا كان ضلع \(a(s)=5s\) فإن النسبة \(a/s=5\) ثابتة.  
-        الفرق أن \(D_1^1\) يلتقط التشابه مباشرة دون بناء نسبة يدويًا.
+        Let a side be \(a(s)=5s\). The ratio \(a/s=5\) is constant,
+        but \(D_1^1\) detects similarity without constructing ratios manually.
       </p>
       <div class="math">
         \[
-          a(s)=5s,\quad \frac{a}{s}=5
+          a(s)=5s,\quad \frac{a}{s}=5.
         \]
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>المقارنة</th>
+            <th>Comparison</th>
             <th>\(D_0^1\)</th>
             <th>\(D_1^1\)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>ثبات التشابه</td>
-            <td>\(D_0^1(a/s)=0\) (بعد التطبيع)</td>
-            <td>\(D_1^1 a=1\) فورًا</td>
+            <td>Similarity detection</td>
+            <td>\(D_0^1(a/s)=0\) (after normalization)</td>
+            <td>\(D_1^1a=1\) directly</td>
           </tr>
           <tr>
-            <td>المعنى</td>
-            <td>يحتاج تطبيع مسبق</td>
-            <td>التطبيع ضمني</td>
+            <td>Meaning</td>
+            <td>Needs explicit ratio building</td>
+            <td>Normalization is intrinsic</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="muted"><b>معادلة إضافية (تشابه المثلثات):</b></p>
+      <p class="muted"><b>Additional equation (triangle similarity):</b></p>
       <div class="math">
         \[
           \frac{a_2}{a_1}=\frac{b_2}{b_1}=\frac{c_2}{c_1}=s.
@@ -557,47 +561,47 @@
 
       <div class="discussion">
         <b>Discussion:</b>
-        الهندسة الإقليدية تفضّل المقارنات النسبية، و\(D_1^1\) يعيد صياغة ذلك كقيمة ثابتة.
-        هذا يجعله مفضلًا في مسائل التشابه والتحجيم.
+        Similarity is fundamentally exponent-based. \(D_1^1\) extracts the exponent immediately,
+        making it a clean descriptor for similarity classes.
       </div>
     </section>
 
-    <!-- Example 5 -->
+    <!-- Case 5 -->
     <section class="card">
-      <h3>المثال 5 — تحجيم الانحناء: دائرة تتوسع</h3>
+      <h3>Case 5 — Curvature scaling (circle expansion)</h3>
       <p class="muted">
-        نصف القطر \(R(s)=2s\) والانحناء \(k=1/R=\frac{1}{2}s^{-1}\).
-        إذن الانحناء يتبع أسًا سالبًا.
+        A circle radius is scaled as \(R(s)=2s\). Curvature is \(k=1/R=\frac{1}{2}s^{-1}\).
+        Curvature therefore follows a negative scaling exponent.
       </p>
       <div class="math">
         \[
-          R(s)=2s,\quad k(s)=\frac{1}{2}s^{-1}
+          R(s)=2s,\quad k(s)=\frac{1}{2}s^{-1}.
         \]
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>المقارنة</th>
+            <th>Comparison</th>
             <th>\(D_0^1\)</th>
             <th>\(D_1^1\)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>المشتقة</td>
+            <td>Derivative</td>
             <td>\(D_0^1k=-\frac{1}{2}s^{-2}\)</td>
             <td>\(D_1^1k=-1\)</td>
           </tr>
           <tr>
-            <td>المعنى</td>
-            <td>حساسية تتغير مع \(s\)</td>
-            <td>الانحناء يتبع \(s^{-1}\)</td>
+            <td>Meaning</td>
+            <td>Scale-dependent sensitivity</td>
+            <td>Curvature scales as \(s^{-1}\)</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="muted"><b>معادلة إضافية (انحناء منحنى عام):</b></p>
+      <p class="muted"><b>Additional equation (general curvature):</b></p>
       <div class="math">
         \[
           k=\frac{|x'y''-y'x''|}{(x'^2+y'^2)^{3/2}}.
@@ -606,47 +610,47 @@
 
       <div class="discussion">
         <b>Discussion:</b>
-        الإشارة السالبة (-1) ليست مجرد عدد: إنها تصنيف بنيوي لقياس “كيف ينكمش الانحناء عند التكبير”.
-        وهذا مهم في الهندسة التفاضلية والتصميم المنحني.
+        The exponent \(-1\) classifies curvature behavior under scaling.
+        This is crucial in differential geometry and in shape analysis (e.g., smoothing, design curvature constraints).
       </div>
     </section>
 
-    <!-- Example 6 -->
+    <!-- Case 6 -->
     <section class="card">
-      <h3>المثال 6 — تنعيم الشبكات العددية: رتبة التقارب</h3>
+      <h3>Case 6 — Mesh refinement (numerical geometry / FEM)</h3>
       <p class="muted">
-        في الهندسة العددية إذا كان الخطأ \(E(h)=Ch^p\) فإن \(p\) هو رتبة التقارب.
-        دع \(E(h)=4h^2\).
+        Let mesh step be \(h\) and numerical error follow \(E(h)=Ch^p\). The exponent \(p\) is the convergence order.
+        Consider \(E(h)=4h^2\).
       </p>
       <div class="math">
         \[
-          E(h)=4h^2,\quad E(0.2)=0.16
+          E(h)=4h^2,\quad E(0.2)=0.16.
         \]
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>المقارنة</th>
+            <th>Comparison</th>
             <th>\(D_0^1\)</th>
             <th>\(D_1^1\)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>المشتقة</td>
-            <td>\(D_0^1E=8h\Rightarrow 1.6\)</td>
+            <td>Derivative</td>
+            <td>\(D_0^1E=8h \Rightarrow 1.6\)</td>
             <td>\(D_1^1E=2\)</td>
           </tr>
           <tr>
-            <td>المعنى</td>
-            <td>حساسية تعتمد على \(h\)</td>
-            <td>رتبة التقارب \(p=2\)</td>
+            <td>Meaning</td>
+            <td>Slope depends on \(h\)</td>
+            <td>Convergence order \(p=2\)</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="muted"><b>معادلة إضافية (استخراج الأس من نقطتين):</b></p>
+      <p class="muted"><b>Additional equation (extract exponent from two points):</b></p>
       <div class="math">
         \[
           p=\frac{\ln(E_2/E_1)}{\ln(h_2/h_1)}.
@@ -655,132 +659,133 @@
 
       <div class="discussion">
         <b>Discussion:</b>
-        هذا المثال يُظهر بشكل قوي أن \(D_1^1\) ليس فلسفة نظرية فقط،
-        بل هو الأداة القياسية في تقييم الخوارزميات عبر استخراج “الأس”.
+        This case shows \(D_1^1\) is not merely conceptual—it is a standard engineering diagnostic tool.
+        In numerical analysis, the exponent is the primary measure of algorithm quality.
       </div>
     </section>
 
-    <!-- Example 7 -->
+    <!-- Case 7 -->
     <section class="card">
-      <h3>المثال 7 — قياس شكلي: المحيط مقابل المساحة</h3>
+      <h3>Case 7 — Shape descriptor: perimeter vs area (scale-free)</h3>
       <p class="muted">
-        وصف كثير من الأشكال يعتمد على العلاقة بين المحيط والمساحة.
-        إذا كان \(P(s)=12s\) و \(A(s)=9s^2\)، فإن الأسين (1 و2) يظهران كقيم ثابتة.
+        Shape descriptors often combine perimeter \(P\) and area \(A\).
+        Under scaling, \(P\sim s^1\) while \(A\sim s^2\).
+        Let \(P(s)=12s\), \(A(s)=9s^2\).
       </p>
       <div class="math">
         \[
-          P(s)=12s,\quad A(s)=9s^2
+          P(s)=12s,\quad A(s)=9s^2.
         \]
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>الكمية</th>
+            <th>Quantity</th>
             <th>\(D_0^1\)</th>
             <th>\(D_1^1\)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>المحيط</td>
+            <td>Perimeter</td>
             <td>\(D_0^1P=12\)</td>
             <td>\(D_1^1P=1\)</td>
           </tr>
           <tr>
-            <td>المساحة</td>
+            <td>Area</td>
             <td>\(D_0^1A=18s\)</td>
             <td>\(D_1^1A=2\)</td>
           </tr>
         </tbody>
       </table>
 
-      <p class="muted"><b>معادلة إضافية (مؤشر شكل لا يعتمد على التحجيم):</b></p>
+      <p class="muted"><b>Additional equation (scale-invariant descriptor):</b></p>
       <div class="math">
         \[
-          Q=\frac{P^2}{A}\quad \Rightarrow \quad Q \text{ ثابت تحت التحجيم}.
+          Q=\frac{P^2}{A}\quad \Rightarrow\quad Q \text{ is invariant under scaling}.
         \]
       </div>
 
       <div class="discussion">
         <b>Discussion:</b>
-        الكثير من مقاييس جودة الشكل مبنية على تراكيب مثل \(P^2/A\) لأنها لا تتأثر بالتحجيم.
-        هذا يوضح أن البنية النسبية هي جوهر الهندسة، وهو ما يلتقطه \(D_1^1\) طبيعيًا.
+        Many geometric quality measures are built from combinations like \(P^2/A\) because they remove scale effects.
+        This highlights that structural invariants dominate geometric reasoning.
       </div>
     </section>
 
-    <!-- Guide -->
+    <!-- Decision Guide -->
     <section class="card" id="guide">
-      <h2>4) دليل القرار: متى أستخدم \(D_0^1\) أو \(D_1^1\)؟</h2>
+      <h2>4) Decision Guide: When to use \(D_0^1\) vs \(D_1^1\)</h2>
       <table>
         <thead>
           <tr>
-            <th>السؤال</th>
-            <th>الأداة</th>
-            <th>السبب العلمي</th>
+            <th>Question</th>
+            <th>Recommended operator</th>
+            <th>Reason</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>كم تغيرت القيمة بالأرقام؟</td>
+            <td>How much did the value change numerically?</td>
             <td>\(D_0^1\)</td>
-            <td>مفيد للحساسية المطلقة</td>
+            <td>Absolute sensitivity / reporting</td>
           </tr>
           <tr>
-            <td>كيف تتغير تحت التحجيم؟</td>
+            <td>How does the quantity behave under rescaling?</td>
             <td>\(D_1^1\)</td>
-            <td>مستخرج للأس/البنية الثابتة</td>
+            <td>Extracts stable exponents / invariants</td>
           </tr>
           <tr>
-            <td>مقارنة أشكال بأحجام مختلفة</td>
+            <td>Comparing shapes of different sizes</td>
             <td>\(D_1^1\)</td>
-            <td>مقارنة عادلة غير مرتبطة بالوحدة</td>
+            <td>Scale-free comparison</td>
           </tr>
         </tbody>
       </table>
 
       <div class="note">
-        <strong>خلاصة:</strong>
-        إذا كانت المسألة قائمة على التشابه/التحجيم → \(D_1^1\) هو الوصف الأكثر استقرارًا.
+        <strong>Takeaway:</strong>
+        If the phenomenon is dominated by similarity/scaling laws, \(D_1^1\) is the stable descriptor.
       </div>
     </section>
 
     <!-- References -->
     <section class="card" id="refs">
-      <h2>المراجع (References)</h2>
+      <h2>References</h2>
       <div class="math">
         \[
-          \textbf{[1]}\; \text{Euclid. Elements. Classical foundations of Euclidean geometry.}
+          [1]\;\text{Euclid. Elements. Classical foundations of Euclidean geometry.}
         \]
         \[
-          \textbf{[2]}\; \text{Coxeter, H. S. M. (1969). Introduction to Geometry.}
+          [2]\;\text{Coxeter, H. S. M. (1969). Introduction to Geometry.}
         \]
         \[
-          \textbf{[3]}\; \text{Kreyszig, E. Differential Geometry. (Curvature & invariants).}
+          [3]\;\text{Kreyszig, E. Differential Geometry. (Curvature & invariants).}
         \]
         \[
-          \textbf{[4]}\; \text{Bathe, K. J. Finite Element Procedures. (Error scaling).}
+          [4]\;\text{Bathe, K. J. Finite Element Procedures. (Error scaling).}
         \]
         \[
-          \textbf{[5]}\; \text{GOSSA AHMED (2025). Hierarchical Calculus (Official Website).}
+          [5]\;\text{GOSSA AHMED (2025). Hierarchical Calculus (Official Website).}
         \]
       </div>
     </section>
 
     <!-- Citation -->
     <section class="card">
-      <h2>إحالة (Citation)</h2>
+      <h2>Citation</h2>
       <div class="math">
         \[
-          \texttt{GOSSA\ AHMED.\ الحساب\ الهرمي\ في\ الهندسة\ الإقليدية:\ 7\ أمثلة\ واقعية\ (D_0^1\ vs\ D_1^1).\ الموقع\ الرسمي.\ (2025).}
+          \texttt{GOSSA\ AHMED.\ Hierarchical\ Calculus\ in\ Euclidean\ Geometry:\ Paper-Style\ with\ 7\ Real\ Examples\ (D_0^1\ vs\ D_1^1).\ Official\ Website.\ (2025).}
         \]
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · الهندسة الإقليدية — \(D_r^n\), \(D_0^1\), \(D_1^1\)
+      © 2025 — GOSSA AHMED · Euclidean Geometry — \(D_r^n\), \(D_0^1\), \(D_1^1\)
       <br>
-      <a href="#top">العودة للأعلى ↑</a>
+      <a href="#top">Back to top ↑</a>
     </footer>
   </div>
 </body>
