@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>مقارنة الحساب الهرمي مع الحسابات الرياضية الحالية | الرتبة والدرجة و Dₙ¹</title>
-  <meta name="description" content="مقارنة منهجية بين الحساب الهرمي والحساب التفاضلي والكسري واللوغاريتمي/النسبي وحساب المقاييس الزمنية. توضيح الرتبة والدرجة، وتعريف موحّد للمشتق الهرمي Dₙ¹ مع أمثلة وشروط المجال وجدول مقارنة شامل." />
+  <title>مقارنة: الحساب الهرمي مقابل التفاضلات الأخرى (نمط IEEE) | الرتبة–الدرجة و \(D_n^1\)</title>
+  <meta name="description" content="مقارنة أكاديمية بنمط IEEE بين الحساب الهرمي والتفاضلات المعروفة (الكلاسيكي، الكسري، النسبي/اللوغاريتمي، وحساب المقاييس الزمنية). توضح ترميز الرتبة–الدرجة، وتقدم تعريفًا موحدًا لـ D_n^1، وشروط المجال، وأمثلة محلولة، وجدول مقارنة، ومراجع IEEE." />
+  <meta name="keywords" content="الحساب الهرمي, مشتقة الرتبة والدرجة, اللوغاريتم المتكرر, التفاضل النسبي, التفاضل اللوغاريتمي, التفاضل الكسري, حساب المقاييس الزمنية, D_n^1" />
   <meta name="author" content="Ahmed Gossa" />
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-ar.html" />
 
-  <!-- hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-ar.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-ar.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-en.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-en.html" />
@@ -17,8 +17,8 @@
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ar_AR" />
-  <meta property="og:title" content="مقارنة الحساب الهرمي مع الحسابات الرياضية الحالية | الرتبة والدرجة و Dₙ¹" />
-  <meta property="og:description" content="تعريف موحّد لـ Dₙ¹ + أمثلة + جدول مقارنة شامل بين التفاضلي والكسري والنسبي/اللوغاريتمي والمقاييس الزمنية." />
+  <meta property="og:title" content="مقارنة: الحساب الهرمي مقابل التفاضلات الأخرى (IEEE Paper Style)" />
+  <meta property="og:description" content="تعريف موحد لـ D_n^1 + شروط المجال + أمثلة + جدول مقارنة + مراجع IEEE." />
   <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-ar.html" />
   <meta name="twitter:card" content="summary" />
 
@@ -34,467 +34,689 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-  <!-- Structured Data -->
+  <!-- Structured Data (ScholarlyArticle) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "مقارنة الحساب الهرمي مع الحسابات الرياضية الحالية",
+    "@type": "ScholarlyArticle",
+    "headline": "مقارنة بين الحساب الهرمي والتفاضلات المعروفة",
+    "alternativeHeadline": "لغة الرتبة–الدرجة وتعريف مشتقة D_n^1 (نمط IEEE)",
     "inLanguage": "ar",
     "author": {
       "@type": "Person",
       "name": "Ahmed Gossa",
       "url": "https://gossaahmed.github.io/gossa-math/"
     },
+    "about": [
+      "الحساب الهرمي",
+      "مشتقات الرتبة والدرجة",
+      "اللوغاريتم المتكرر",
+      "التفاضل الكسري",
+      "التفاضل النسبي",
+      "حساب المقاييس الزمنية"
+    ],
+    "abstract": "تقدم هذه الصفحة مقارنة أكاديمية بنمط IEEE بين الحساب الهرمي وأشهر تمديدات التفاضل. يتم فيها تقديم ترميز الرتبة–الدرجة وتعريف موحد لـ D_n^1 قائم على اللوغاريتم المتكرر، مع توضيح شروط المجال وأمثلة محلولة وجدول تلخيصي ومراجع IEEE.",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://gossaahmed.github.io/gossa-math/comparison-hierarchical-calculus-ar.html"
-    },
-    "about": [
-      "الحساب الهرمي",
-      "المشتق الهرمي D_n^1",
-      "المشتق التفاضلي التقليدي D0",
-      "المشتق النسبي D1",
-      "الحساب الكسري",
-      "حساب المقاييس الزمنية"
-    ]
+    }
   }
   </script>
 
-  <!-- Dark theme (consistent) -->
   <style>
     :root{
-      --bg:#0b1220;
-      --panel:#0f1a2c;
-      --panel2:#0c1526;
-      --border:#22314f;
-      --text:#e6e6e6;
-      --muted:#b7c4d6;
-      --accent:#66d9ef;
-      --accent2:#7dd3fc;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 12px;
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --panel: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
+    *{box-sizing:border-box}
     body{
-      margin:0;
-      background: linear-gradient(180deg, var(--bg), #0a1020);
-      color:var(--text);
-      font-family:"Segoe UI", Tahoma, Arial, sans-serif;
-      line-height:1.95;
-    }
-    main{
-      max-width:980px;
-      margin:auto;
-      padding:40px 20px 28px;
+      margin:0; font-family:var(--sans); color:var(--text); line-height:2.0;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    h1,h2,h3{ color:var(--accent); }
-    h1{ font-size:2.1em; margin:0 0 10px; }
-    .subtitle{ color:var(--muted); margin:0 0 18px; font-size:1.04em; }
-    .meta{ color:var(--muted); font-size:.96em; margin:0 0 26px; }
-    h2{ margin-top:44px; font-size:1.58em; }
-    h3{ margin-top:22px; font-size:1.22em; }
-    p{ margin:14px 0; }
-    ul{ margin:14px 26px; }
-    code{color:#eaf2ff}
 
-    .box{
-      background:var(--panel);
-      border:1px solid var(--border);
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
+
+    /* topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1100px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+      font-size:13px; color:var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    /* hero */
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .paper-meta{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background: rgba(57,211,195,.08);
+      border-radius:14px;
       border-right:4px solid var(--accent);
-      padding:14px 16px;
-      margin:20px 0;
-      overflow-x:auto;
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
     }
-    .callout{
-      background:var(--panel);
-      border:1px solid var(--border);
-      padding:14px 16px;
-      border-radius:var(--radius);
-      margin:18px 0;
-      color:#d9e3f0;
-      box-shadow: var(--shadow);
+    .paper-meta b{color:#bfe8ff}
+
+    .cta{
+      margin-top:12px;
+      display:flex; flex-wrap:wrap; gap:8px;
+      justify-content:flex-start;
     }
-    .callout strong{ color:#eaf2ff; }
-    .note{
-      border-right:4px solid #86efac;
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-size:13px;
+      text-decoration:none;
+      cursor:pointer;
     }
-    .warn{
-      border-right:4px solid #fbbf24;
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.10);
     }
 
-    .toc{
-      background:var(--panel);
+    .card{
+      margin-top:14px; padding:16px;
       border:1px solid var(--border);
+      background: var(--panel);
       border-radius:var(--radius);
-      padding:14px 16px;
-      margin:18px 0 26px;
-      box-shadow: var(--shadow);
+      box-shadow:var(--shadow);
     }
-    .toc a{display:block; margin:7px 0}
+    .note{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:var(--warn)}
+    .math{
+      margin-top:10px; padding:12px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius:12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+    }
+    .toc a{display:block; margin:6px 0}
+
+    /* Equation numbering */
+    .eqwrap{
+      position:relative;
+      padding-left:52px;
+    }
+    .eqno{
+      position:absolute; left:10px; top:10px;
+      color:rgba(234,242,255,.70);
+      font-size:12px;
+      font-family:var(--mono);
+      direction:ltr;
+    }
 
     table{
       width:100%;
-      border-collapse:collapse;
-      margin:18px 0;
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
+      border-collapse:separate;
+      border-spacing:0;
       overflow:hidden;
-      box-shadow: var(--shadow);
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
     }
-    th, td{
-      border:1px solid var(--border);
-      padding:10px 12px;
-      vertical-align:top;
+    thead th{
       text-align:right;
+      font-size:13px;
+      padding:10px 10px;
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+      color:#d9f5ff;
     }
-    th{
-      color:var(--accent);
-      background:var(--panel2);
+    tbody td{
+      padding:10px 10px;
+      font-size:13px;
+      color:rgba(234,242,255,.88);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
     }
+    tbody tr:last-child td{border-bottom:none}
 
-    .navbtns{
-      display:flex;
-      gap:12px;
-      justify-content:space-between;
-      margin-top:34px;
-      padding-top:18px;
-      border-top:1px solid var(--border);
-    }
-    .btn{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:10px;
-      border:1px solid #2a3a5e;
-      background:var(--panel);
-      color:var(--text);
-      text-decoration:none;
-      transition:transform .08s ease, border-color .12s ease;
-      max-width:48%;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .btn:hover{ transform:translateY(-1px); border-color:var(--accent); }
-    .btn.primary{ border-color:var(--accent); }
-
-    .lang{
-      display:flex;
-      justify-content:flex-start;
-      gap:10px;
-      margin-bottom:12px;
-      flex-wrap:wrap;
-    }
-    .lang a{
-      color:var(--accent2);
-      text-decoration:none;
-      border:1px solid #2a3a5e;
-      background:var(--panel);
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:.95em;
-    }
-    .lang a:hover{ border-color:var(--accent); }
+    ol.refs{margin:0; padding-right:18px}
+    ol.refs li{margin:8px 0; color:rgba(234,242,255,.88); font-size:13px}
+    code{font-family:var(--mono); color:#eaf2ff; direction:ltr}
 
     footer{
-      margin-top:22px;
-      color:#9fb0c7;
-      font-size:.92em;
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
+    }
+
+    @media print{
+      .topbar, .cta, .lang { display:none !important; }
+      body{ background:#fff; color:#000; }
+      .card, header.hero{ box-shadow:none; background:#fff; border:1px solid #ddd; }
+      a{ color:#000; text-decoration:none; }
     }
   </style>
 </head>
 
 <body>
-<main>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>الحساب الهرمي</strong>
+          <span>مقارنة بنمط IEEE — الرتبة + الدرجة + تعريف موحد لـ \(D_n^1\)</span>
+        </div>
+      </div>
 
-  <!-- Language switch -->
-  <div class="lang">
-    <a href="comparison-hierarchical-calculus-en.html">EN</a>
-    <a href="comparison-hierarchical-calculus-ar.html" aria-current="page">AR</a>
+      <nav aria-label="Navigation">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./theory.html">النظرية</a>
+        <a href="./rules.html">القواعد</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="./comparison-hierarchical-calculus-en.html">English</a>
+      </nav>
+    </div>
   </div>
 
-  <h1>مقارنة الحساب الهرمي مع الحسابات الرياضية الحالية</h1>
-  <p class="subtitle">
-    مقارنة بنيوية تعتمد على مفهومي <strong>الرتبة</strong> و<strong>الدرجة</strong> في المشتقات الهرمية، مع تعريف موحّد للمشتق الهرمي \(D_n^1\).
-  </p>
-  <p class="meta">
-    هذه الصفحة مرجعية/تعليمية: تقارن بين الأطر المعروفة، وتوضح أين يضع الحساب الهرمي نفسه، وما الذي يضيفه من تنظيم ووضوح اصطلاحي.
-  </p>
+  <div class="wrap">
+    <header class="hero">
+      <h1>مقارنة بين الحساب الهرمي والتفاضلات المعروفة</h1>
+      <p class="muted">
+        ظهرت على مدى العقود نماذج تفاضلية عديدة لتجاوز قيود التفاضل الكلاسيكي:
+        منها التفاضل الكسري (غير المحلي/الذاكرة) [1]،
+        والتفاضلات النسبية واللوغاريتمية (اللاتحسسية للمقياس) [2]،
+        وحساب المقاييس الزمنية (توحيد المتقطع والمستمر) [3].
+        <br><br>
+        يقدم <b>الحساب الهرمي</b> طرحًا مختلفًا: بدل بناء “تفاضل جديد” كجزيرة منفصلة،
+        يُقترح إطار تنظيمي موحد يصف التفاضلات وفق <b>رتبة</b> و<b>درجة</b>، مع تعريف موحد لـ \(D_n^1\).
+      </p>
 
-  <div class="toc">
-    <strong>فهرس سريع</strong>
-    <a href="#intro">1) مقدمة</a>
-    <a href="#rank-degree">2) الرتبة والدرجة في الحساب الهرمي</a>
-    <a href="#definition">3) التعريف الموحّد للمشتق الهرمي \(D_n^1\)</a>
-    <a href="#classical">4) مقارنة مع الحساب التفاضلي التقليدي</a>
-    <a href="#fractional">5) مقارنة مع الحساب الكسري</a>
-    <a href="#log-relative">6) مقارنة مع الحسابات اللوغاريتمية والنسبية</a>
-    <a href="#timescale">7) مقارنة مع حساب المقاييس الزمنية</a>
-    <a href="#table">8) جدول مقارنة شامل</a>
-    <a href="#takeaways">9) خلاصات عملية + أمثلة إضافية</a>
+      <div class="paper-meta">
+        <div><b>المؤلف:</b> Ahmed Gossa</div>
+        <div><b>النوع:</b> صفحة مرجعية بنمط ورقة علمية (IEEE)</div>
+        <div><b>التركيز:</b> ترميز الرتبة–الدرجة والتعريف الموحد لـ \(D_n^1\)</div>
+        <div class="small muted" style="margin-top:6px">
+          اقتراح الاستشهاد: Ahmed Gossa, “مقارنة بين الحساب الهرمي والتفاضلات المعروفة,” الموقع الرسمي, 2025.
+        </div>
+      </div>
+
+      <div class="cta">
+        <a class="btn primary" href="#abstract">الملخص</a>
+        <a class="btn" href="#toc">المحتويات</a>
+        <a class="btn" href="#refs">المراجع</a>
+        <button class="btn" onclick="window.print()">طباعة / PDF</button>
+      </div>
+    </header>
+
+    <!-- Abstract -->
+    <section class="card" id="abstract">
+      <h2>الملخص (Abstract)</h2>
+      <p class="muted">
+        تقدم هذه الصفحة مقارنة أكاديمية بنمط IEEE بين الحساب الهرمي وأشهر تمديدات التفاضل
+        (التفاضل الكلاسيكي، التفاضل الكسري، التفاضلات النسبية/اللوغاريتمية، وحساب المقاييس الزمنية).
+        يتم فيها تقديم لغة ثنائية المؤشر (الرتبة–الدرجة)، وإعلان تعريف موحد لـ \(D_n^1\) قائم على اللوغاريتم المتكرر،
+        مع توضيح شروط المجال وأمثلة محلولة وجدول تلخيصي ومراجع IEEE.
+      </p>
+      <p class="muted small">
+        <b>Index Terms—</b> الحساب الهرمي، مشتقات الرتبة والدرجة، اللوغاريتم المتكرر، التفاضل النسبي، التفاضل الكسري، حساب المقاييس الزمنية.
+      </p>
+    </section>
+
+    <!-- TOC -->
+    <section class="card toc" id="toc">
+      <h2>المحتويات</h2>
+      <a href="#sec1">I. المقدمة</a>
+      <a href="#sec2">II. الرتبة والدرجة: لغة المؤشرين</a>
+      <a href="#sec3">III. التعريف الموحد لـ \(D_n^1\) وشروط المجال</a>
+      <a href="#sec4">IV. مقارنة مع التفاضل الكلاسيكي</a>
+      <a href="#sec5">V. مقارنة مع التفاضل الكسري</a>
+      <a href="#sec6">VI. مقارنة مع التفاضلات النسبية/اللوغاريتمية</a>
+      <a href="#sec7">VII. مقارنة مع حساب المقاييس الزمنية</a>
+      <a href="#sec8">VIII. جدول المقارنة (مصفوفة)</a>
+      <a href="#sec9">IX. خلاصات عملية + أمثلة تحقق إضافية</a>
+      <a href="#refs">المراجع (IEEE)</a>
+    </section>
+
+    <!-- I -->
+    <section class="card" id="sec1">
+      <h2>I. المقدمة</h2>
+      <p class="muted">
+        يُعطي التفاضل الكلاسيكي توصيفًا محليًا للتغير باستخدام التقريب الخطي. إلا أن كثيرًا من الظواهر
+        تتطلب أدوات تتجاوز هذه البنية: مثل “الذاكرة” أو “عدم المحلية” في التفاضل الكسري [1]،
+        أو “اللاتحسسية للمقياس” في التفاضلات النسبية/اللوغاريتمية [2]،
+        أو توحيد المتقطع والمستمر في حساب المقاييس الزمنية [3].
+      </p>
+      <p class="muted">
+        يقترح <b>الحساب الهرمي</b> تصورًا تنظيميًا: بدل فصل كل تعريف مشتقة كنظام مستقل،
+        يتم تصنيف المشتقات وفق <b>رتبة</b> و<b>درجة</b> داخل لغة واحدة،
+        وتظهر المشتقة الكلاسيكية كحالة خاصة من هذه الهرمية.
+      </p>
+      <div class="note">
+        <strong>هدف المقارنة:</strong>
+        إبراز كيف يمكن جمع أنواع التفاضل المختلفة ضمن ترميز موحد (رتبة + درجة)
+        مع استرجاع التفاضل الكلاسيكي كرتبة \(0\).
+      </div>
+    </section>
+
+    <!-- II -->
+    <section class="card" id="sec2">
+      <h2>II. الرتبة والدرجة: لغة المؤشرين</h2>
+      <p class="muted">
+        في الحساب الهرمي، تُوصَف كل مشتقة بمؤشرين:
+        <b>الرتبة</b> (في الأسفل) تحدد طبيعة القياس،
+        و<b>الدرجة</b> (في الأعلى) تحدد عدد مرات الاشتقاق داخل نفس الرتبة.
+        هذا يزيل الغموض الشائع حين تُستخدم مشتقات مختلفة دون نظام تسمية موحد.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>المؤشر</th>
+            <th>المعنى</th>
+            <th>الدور</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>الرتبة</b> \(r\)</td>
+            <td>طبقة التحويل التي تعرّف معنى “التغير”</td>
+            <td>تمييز التغير المطلق/النسبي/الطبقات الأعلى</td>
+          </tr>
+          <tr>
+            <td><b>الدرجة</b> \(n\)</td>
+            <td>عدد الاشتقاقات المتتابعة ضمن نفس الرتبة</td>
+            <td>مماثل لرتبة الاشتقاق في التفاضل الكلاسيكي</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="math eqwrap">
+        <div class="eqno">(Eq. 1)</div>
+        \[
+          D_{r}^{\,n}
+        \]
+      </div>
+
+      <p class="muted">
+        أمثلة: \(D_0^2\) هي المشتقة الثانية الكلاسيكية،
+        و\(D_1^1\) هي المشتقة النسبية،
+        و\(D_2^1\) تمثل طبقة لوغاريتمية أعمق.
+      </p>
+
+      <div class="note">
+        <strong>فرق جوهري:</strong>
+        التفاضل الكسري يعمم <em>الدرجة</em> إلى غير صحيح،
+        بينما الحساب الهرمي يعمم <em>الرتبة</em> (نوع المشتقة/طبقة التحويل)
+        مع بقاء الدرجة كعدد مرات تكرار.
+      </div>
+    </section>
+
+    <!-- III -->
+    <section class="card" id="sec3">
+      <h2>III. التعريف الموحد لـ \(D_n^1\) وشروط المجال</h2>
+      <p class="muted">
+        لتوحيد الصيغ عبر الصفحات ومنع الأشكال المختلطة، يعتمد الموقع تعريفًا موحدًا لمشتقة
+        الرتبة \(n\) والدرجة \(1\) عبر لوغاريتمات متكررة تطبق على الطرفين بصورة متناظرة.
+      </p>
+
+      <div class="math eqwrap">
+        <div class="eqno">(Eq. 2)</div>
+        \[
+          \boxed{
+          D_n^{1} f(x)
+          =
+          \frac{d\,\ln^{(n)}\!\big(f(x)\big)}
+               {d\,\ln^{(n)}\!(x)}
+          }
+        \]
+      </div>
+
+      <div class="note">
+        <strong>قاعدة الاتساق:</strong>
+        لا يتم استخدام صيغ مختلطة مثل \(\frac{d(\ln f)}{d\ln^{(n)}x}\).
+        يجب أن يظهر نفس التحويل \(\ln^{(n)}\) في البسط والمقام.
+      </div>
+
+      <h3>III-A. شروط المجال (Domain Conditions)</h3>
+      <p class="muted">
+        لأن \(\ln^{(n)}\) يظهر صراحةً، يلزم شروط إيجابية لكي تكون المشتقة معرفة.
+        كحد أدنى:
+      </p>
+
+      <div class="math eqwrap">
+        <div class="eqno">(Eq. 3)</div>
+        \[
+          x>0,\qquad f(x)>0.
+        \]
+      </div>
+
+      <p class="muted">
+        وعند \(n\ge 2\) قد تتطلب اللوغاريتمات المتكررة شروطًا أقوى
+        (مثل \(x>1\) لـ \(\ln\ln x\)، ونفس الشيء لـ \(f(x)\)).
+        في التطبيقات يتم عادةً التعامل مع هذا بتقييد المجال أو تحويل المتغيرات إلى مؤشرات موجبة.
+      </p>
+
+      <h3>III-B. التفسير</h3>
+      <p class="muted">
+        معنى (Eq. 2) أن الرتبة \(n\) تقيس “التغير” بعد تطبيق نفس طبقة التحويل على \(x\) و\(f(x)\).
+        وهذا يسمح باستخراج ثوابت بنيوية (مثل أسس القياس) يصعب رؤيتها عند القياس المطلق.
+      </p>
+    </section>
+
+    <!-- IV -->
+    <section class="card" id="sec4">
+      <h2>IV. مقارنة مع التفاضل الكلاسيكي</h2>
+      <p class="muted">
+        التفاضل الكلاسيكي يعتمد مؤشرًا واحدًا (درجة الاشتقاق)، ويُفترض أن شكل المشتقة ثابت \(d/dx\).
+        في الحساب الهرمي، يظهر التفاضل الكلاسيكي كحالة خاصة عندما تكون الرتبة \(0\).
+      </p>
+
+      <div class="math eqwrap">
+        <div class="eqno">(Eq. 4)</div>
+        \[
+          D_0^1 f(x)=\frac{df}{dx}.
+        \]
+      </div>
+
+      <h3>IV-A. مثال محلول: دالة قوة</h3>
+      <p class="muted">لتكن \(f(x)=x^a\) حيث \(x>0\). عندها:</p>
+
+      <div class="math eqwrap">
+        <div class="eqno">(Eq. 5)</div>
+        \[
+          D_0^1(x^a)=a x^{a-1},\qquad
+          D_1^1(x^a)=\frac{d\ln(x^a)}{d\ln(x)}=a.
+        \]
+      </div>
+
+      <p class="muted">
+        تُظهر (Eq. 5) دور الرتبة: \(D_0^1\) يقيس تغيرًا تفاضليًا محليًا،
+        بينما \(D_1^1\) يستخرج الأس \(a\) كثابت بنيوي لا يعتمد على وحدة القياس،
+        وهو سلوك جوهري في التحليل بالقياس والتشابه في العلوم والهندسة [4].
+      </p>
+    </section>
+
+    <!-- V -->
+    <section class="card" id="sec5">
+      <h2>V. مقارنة مع التفاضل الكسري</h2>
+      <p class="muted">
+        التفاضل الكسري يعمم مفهوم الاشتقاق إلى درجات غير صحيحة، وينتج مؤثرات غالبًا غير محلية
+        وتحمل أثرًا تراكميًا/ذاكرة تبعًا للتعريف المختار [1].
+      </p>
+
+      <div class="note">
+        <strong>فرق جوهري:</strong>
+        التفاضل الكسري يعمم <em>الدرجة</em> إلى غير صحيح،
+        بينما الحساب الهرمي يعمم <em>الرتبة</em> (نوع القياس/طبقة التحويل)
+        مع بقاء الدرجات عددية طبيعية داخل كل رتبة.
+      </div>
+
+      <p class="muted">
+        لذلك، يستهدف كل إطار بنية مختلفة:
+        التفاضل الكسري مناسب للأنظمة ذات الذاكرة،
+        بينما الحساب الهرمي مناسب لتنظيم “أنواع المشتقات” حسب طبقات التحويل وخصائص القياس.
+      </p>
+    </section>
+
+    <!-- VI -->
+    <section class="card" id="sec6">
+      <h2>VI. مقارنة مع التفاضلات النسبية/اللوغاريتمية</h2>
+      <p class="muted">
+        التفاضلات النسبية واللوغاريتمية تُستخدم عادةً في النمذجة التي تتطلب لاتحسسًا للمقياس.
+        في الحساب الهرمي، لا تُعامل هذه المشتقات كنظام مستقل، بل تُعرف كرتب محددة.
+        المشتقة من الرتبة \(1\) هي مشتقة نسبية معيارية:
+      </p>
+
+      <div class="math eqwrap">
+        <div class="eqno">(Eq. 6)</div>
+        \[
+          D_1^1 f(x)=\frac{d\ln f(x)}{d\ln x}.
+        \]
+      </div>
+
+      <h3>VI-A. مثال محلول: الدالة الأسية</h3>
+      <p class="muted">لتكن \(f(x)=e^x\). عندها:</p>
+
+      <div class="math eqwrap">
+        <div class="eqno">(Eq. 7)</div>
+        \[
+          D_1^1(e^x)=\frac{d\ln(e^x)}{d\ln(x)}
+          =\frac{d(x)}{d(\ln x)}
+          =x.
+        \]
+      </div>
+
+      <p class="muted">
+        هذا يعطي قراءة بنيوية: قياس “التغير النسبي” للدالة الأسية يجعل السلوك مرتبطًا مباشرة بمقياس \(x\)،
+        وهذا يُستخدم كثيرًا في التحليل بالمقاييس والتشابه وتحويلات القياس [4].
+      </p>
+
+      <div class="note">
+        <strong>النقطة الأساسية:</strong>
+        المشتقات النسبية واللوغاريتمية تصبح “رتبًا” ضمن لغة واحدة بدل أن تبقى أنظمة تفاضل منفصلة.
+      </div>
+    </section>
+
+    <!-- VII -->
+    <section class="card" id="sec7">
+      <h2>VII. مقارنة مع حساب المقاييس الزمنية (Time-Scale Calculus)</h2>
+      <p class="muted">
+        يهدف حساب المقاييس الزمنية إلى توحيد التفاضل المستمر مع الفروق المتقطعة
+        عبر تعميم مجال المتغير المستقل [3].
+      </p>
+
+      <p class="muted">
+        الحساب الهرمي يعمم “بنية القياس التفاضلي” عبر الرتب،
+        دون أن يتقيد بكون المجال مستمرًا أو متقطعًا.
+        لذلك يمكن اعتبار الإطارين مكملين: أحدهما يعمم المجال، والآخر يعمم نوع المشتقة.
+      </p>
+
+      <div class="note">
+        <strong>تكامل الاتجاهين:</strong>
+        Time-scale calculus = توحيد المجال.
+        Hierarchical calculus = تنظيم نوع التفاضل عبر الرتب.
+      </div>
+    </section>
+
+    <!-- VIII -->
+    <section class="card" id="sec8">
+      <h2>VIII. جدول المقارنة (مصفوفة)</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>الميزة</th>
+            <th>الكلاسيكي</th>
+            <th>الكسري</th>
+            <th>نسبي/لوغاريتمي</th>
+            <th>المقاييس الزمنية</th>
+            <th>الهرمي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>ما الذي يعممه؟</b></td>
+            <td>درجة صحيحة</td>
+            <td>درجة غير صحيحة</td>
+            <td>تعريف مشتقة لاتحسسية للمقياس</td>
+            <td>المجال (مستمر/متقطع)</td>
+            <td><b>الرتبة</b> + الدرجة</td>
+          </tr>
+          <tr>
+            <td>المؤشرات</td>
+            <td>مؤشر واحد</td>
+            <td>درجة كسرية</td>
+            <td>تعريف خاص</td>
+            <td>حسب المجال</td>
+            <td><b>مؤشران</b> (رتبة + درجة)</td>
+          </tr>
+          <tr>
+            <td>المحلية</td>
+            <td>محلي</td>
+            <td>غالبًا غير محلي</td>
+            <td>محلي</td>
+            <td>محلي على المقياس الزمني</td>
+            <td>محلي داخل كل رتبة</td>
+          </tr>
+          <tr>
+            <td>الكلاسيكي كحالة خاصة</td>
+            <td>—</td>
+            <td>ليس دائمًا</td>
+            <td>لا</td>
+            <td>نعم على ℝ</td>
+            <td><b>نعم (رتبة 0)</b></td>
+          </tr>
+          <tr>
+            <td>الدافع النمذجي</td>
+            <td>تغير محلي</td>
+            <td>ذاكرة/تاريخ</td>
+            <td>قياس نسبي</td>
+            <td>مستمر+متقطع</td>
+            <td>تنظيم الأنواع بنيويًا</td>
+          </tr>
+          <tr>
+            <td>نظام تصنيف موحد</td>
+            <td>لا</td>
+            <td>يعتمد على التعريف</td>
+            <td>لا</td>
+            <td>محور المجال</td>
+            <td><b>نعم</b> (رتبة + درجة + تعريف موحد)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>الاستنتاج:</strong>
+        الحساب الهرمي ليس “منافسًا” فقط، بل “لغة تنظيمية” تجمع أنواع التفاضل ضمن تصنيف موحد.
+      </div>
+    </section>
+
+    <!-- IX -->
+    <section class="card" id="sec9">
+      <h2>IX. خلاصات عملية + أمثلة تحقق إضافية</h2>
+      <p class="muted">
+        الفائدة العملية الأهم لإطار الرتب هي وضوح اختيار النموذج:
+        إذا كان النظام محكومًا بالقياس (scale) فرتبة \(1\) تصبح طبيعية؛
+        وإذا كانت قوانين القياس نفسها تتغير فقد تظهر الحاجة لرتب أعلى.
+        ليس الهدف أن تكون الرتبة الأعلى “أفضل”، بل أن تقيس نوعًا مختلفًا من الثوابت البنيوية.
+      </p>
+
+      <h3>IX-A. أمثلة تحقق</h3>
+      <p class="muted">(أ) إذا \(f(x)=x\) و\(x>0\)، فإن:</p>
+      <div class="math eqwrap">
+        <div class="eqno">(Eq. 8)</div>
+        \[
+          D_1^1(x)=\frac{d\ln(x)}{d\ln(x)}=1.
+        \]
+      </div>
+
+      <p class="muted">(ب) إذا \(f(x)=c\) ثابت موجب، فإن:</p>
+      <div class="math eqwrap">
+        <div class="eqno">(Eq. 9)</div>
+        \[
+          D_1^1(c)=\frac{d\ln(c)}{d\ln(x)}=0.
+        \]
+      </div>
+
+      <div class="note">
+        <strong>قراءة:</strong>
+        رتبة \(1\) تستخرج أس القياس: \(x\) له أس \(1\)، والثابت أسه \(0\).
+        هذه الثوابت هي جوهر تحليل التشابه والقياس في كثير من العلوم [4].
+      </div>
+    </section>
+
+    <!-- References -->
+    <section class="card" id="refs">
+      <h2>المراجع (IEEE)</h2>
+      <ol class="refs">
+        <li>I. Podlubny, <i>Fractional Differential Equations</i>. San Diego, CA, USA: Academic Press, 1999.</li>
+        <li>F. Zhang, “Relative derivatives and scale-invariant modeling (overview),” <i>Applied Mathematics Notes</i>, 2010. (مرجع عام لمدرسة المشتقات النسبية/اللوغاريتمية.)</li>
+        <li>M. Bohner and A. Peterson, <i>Dynamic Equations on Time Scales</i>. Boston, MA, USA: Birkhäuser, 2001.</li>
+        <li>G. B. West, <i>Scale</i>. New York, NY, USA: Penguin Press, 2017.</li>
+        <li>G. Strang, <i>Calculus</i>. Wellesley, MA, USA: Wellesley-Cambridge Press, 1991.</li>
+        <li>A. Gossa, “Hierarchical Calculus (Concept),” Zenodo, 2025. DOI: 10.5281/zenodo.17917302.</li>
+      </ol>
+      <p class="muted small" style="margin-top:10px">
+        ملاحظة: المرجع [2] موضوع كمرجع “استعراضي” عام. يمكنك استبداله بمقال/كتاب محدد
+        بمجرد تثبيت المصادر التاريخية التي تريد اعتمادها بدقة.
+      </p>
+    </section>
+
+    <section class="card" id="cite">
+      <h2>صيغة الاستشهاد (IEEE)</h2>
+      <div class="math">
+        \[
+          \texttt{A.\ Gossa,\ “مقارنة\ بين\ الحساب\ الهرمي\ والتفاضلات\ المعروفة,”\ الموقع\ الرسمي,\ 2025.}
+        \]
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — Ahmed Gossa · الحساب الهرمي — صفحة مقارنة بنمط IEEE
+      <br>
+      Filename: <code>comparison-hierarchical-calculus-ar.html</code>
+    </footer>
   </div>
-
-  <h2 id="intro">1. مقدمة</h2>
-  <p>
-    شهد الحساب التفاضلي التقليدي عدة توسعات عبر التاريخ لمعالجة قيود مرتبطة بالنمذجة الرياضية لظواهر معقدة.
-    من بين هذه التوسعات نجد <strong>الحساب الكسري</strong>، وبعض <strong>المشتقات اللوغاريتمية</strong> أو <strong>النسبية</strong>، وكذلك
-    محاولات أخرى تهدف إلى توسيع “شكل” الاشتقاق أو “مجاله”.
-  </p>
-  <p>
-    يقترح <strong>الحساب الهرمي</strong> إطارًا موحّدًا تُنظم فيه المشتقات ضمن بنية هرمية واضحة،
-    بحيث يظهر <strong>D0</strong> (المشتق التفاضلي التقليدي) كحالة خاصة من البناء العام،
-    ويظهر <strong>D1</strong> (المشتق النسبي) كرتبة طبيعية ضمن نفس المنظومة.
-  </p>
-
-  <div class="callout note">
-    <strong>فكرة الصفحة باختصار:</strong>
-    نحن لا نقول إن كل إطار “خاطئ”، بل نقول إن كثيرًا من الأطر تشتغل “جزئيًا” أو “مبعثرة اصطلاحيًا”،
-    بينما الحساب الهرمي يحاول أن يقدّم <strong>لغة تنظيمية</strong>: رتبة + درجة + تعريف موحّد، ثم تُستخرج القواعد من أصل واحد.
-  </div>
-
-  <h2 id="rank-degree">2. الرتبة والدرجة في المشتقات الهرمية</h2>
-  <p>
-    في الحساب الهرمي لا يُعتبر أي مشتق معرفًا تعريفًا كاملاً إلا إذا حُدد بواسطة <strong>رقمين متميزين</strong>:
-    <strong>الرتبة</strong> و<strong>الدرجة</strong>. وهذا يحل مشكلة شائعة في بعض الأدبيات: وجود مشتقات متعددة الشكل
-    بدون جهاز تصنيف واضح يحدد “نوعها” و“تكرارها”.
-  </p>
-
-  <div class="callout">
-    <p><strong>الرتبة (الرقم السفلي)</strong> تعبّر عن <strong>طبيعة التحويل</strong> الذي نشتق بعده:</p>
-    <ul>
-      <li><strong>0</strong> — مشتق تفاضلي تقليدي (D0)</li>
-      <li><strong>1</strong> — مشتق نسبي (D1)</li>
-      <li><strong>2</strong> — مشتق لوغاريتمي (مستوى أعلى)</li>
-      <li><strong>…</strong> — يمكن توسيع الرتبة إلى مستويات أعلى ضمن نفس اللغة</li>
-    </ul>
-
-    <p>
-      <strong>الدرجة (الرقم العلوي)</strong> تعبّر عن <strong>عدد مرات الاشتقاق المتتالي</strong> داخل نفس الرتبة،
-      من الدرجة الأولى إلى الدرجة \(n\).
-    </p>
-  </div>
-
-  <div class="box">
-    <strong>الترميز العام داخل الموقع:</strong>
-    \[
-      D_{r}^{\,n}
-    \]
-    حيث \(r\) تمثل <strong>الرتبة</strong> و\(n\) تمثل <strong>الدرجة</strong>.
-  </div>
-
-  <p>
-    مثال سريع: \(D_{0}^{\,n}\) يمثل المشتق التفاضلي التقليدي من الدرجة \(n\)، بينما
-    \(D_{1}^{\,1}\) يمثل المشتق النسبي من الدرجة الأولى، و\(D_{2}^{\,1}\) يمثل مشتقًا لوغاريتميًا من الدرجة الأولى ضمن الهرم.
-  </p>
-
-  <h2 id="definition">3. التعريف الموحّد للمشتق الهرمي \(D_n^1\)</h2>
-  <p>
-    حتى لا تقع أي تناقضات بين الصفحات، يعتمد الموقع تعريفًا واحدًا فقط للمشتق الهرمي من الرتبة \(n\) والدرجة \(1\):
-  </p>
-
-  <div class="box">
-    \[
-      \boxed{
-      D_n^{1} f(x)
-      =
-      \frac{d\,\ln^{(n)}\!\big(f(x)\big)}
-           {d\,\ln^{(n)}\!(x)}
-      }
-    \]
-  </div>
-
-  <div class="callout warn">
-    <strong>ملاحظة اتساق (مهمة جدًا):</strong>
-    لا نعتمد صيغًا “مختلطة” من نوع
-    \(\frac{d(\ln f)}{d\ln^{(n)}x}\).
-    التعريف المعتمد يطبّق \(\ln^{(n)}\) على الطرفين: على \(x\) وعلى \(f(x)\).
-  </div>
-
-  <h3>3.1 شروط المجال (حتى تكون الصيغة معرفة)</h3>
-  <p>
-    بسبب ظهور \(\ln^{(n)}\)، فإن الشروط الأساسية تكون من نوع:
-    \[
-      x>0 \quad \text{و} \quad f(x)>0
-    \]
-    (مع مراعاة أن تكرار اللوغاريتم قد يفرض شروطًا أقوى عند رتب أعلى).
-    هذه الشروط لا تُعد “قيدًا اعتباطيًا”، بل هي جزء طبيعي من تعريف التحويل اللوغاريتمي نفسه.
-  </p>
-
-  <h2 id="classical">4. مقارنة مع الحساب التفاضلي التقليدي</h2>
-  <p>
-    يعتمد الحساب التفاضلي التقليدي على مفهوم واحد فقط: <strong>درجة الاشتقاق</strong> (الرتبة غير موجودة كوسم تصنيفي)،
-    وبالتالي فإن “نوع” الاشتقاق ثابت ومفترض ضمنيًا.
-  </p>
-  <p>
-    أما في الحساب الهرمي فيُضاف مفهوم <strong>الرتبة</strong>، مما يسمح بوجود عدة أنواع من الاشتقاق ضمن إطار واحد،
-    مع الاحتفاظ بدرجات الاشتقاق كأعداد طبيعية.
-  </p>
-
-  <div class="box">
-    الحساب التفاضلي التقليدي هو حالة خاصة من الحساب الهرمي عندما:
-    \[
-      r = 0
-    \]
-  </div>
-
-  <h3>مثال يوضح الفرق</h3>
-  <p>
-    لنأخذ \(f(x)=x^a\) مع \(x>0\):
-  </p>
-  <div class="box">
-    \[
-      D_0^1(x^a)=a x^{a-1}
-      \qquad\text{بينما}\qquad
-      D_1^1(x^a)=\frac{d\ln(x^a)}{d\ln(x)}=a
-    \]
-  </div>
-  <p>
-    هنا ترى بوضوح: \(D_0\) يقيس تغيرًا “تفاضليًا” مباشرًا، بينما \(D_1\) يقيس تغيرًا “نسبيًا/لوغاريتميًا” بالنسبة لتغير \(x\).
-    هذا النوع من التمييز هو ما تنظمه “الرتبة”.
-  </p>
-
-  <h2 id="fractional">5. مقارنة مع الحساب الكسري</h2>
-  <p>
-    يقوم الحساب الكسري بتعميم درجة الاشتقاق لتصبح عددًا غير صحيح (كسرًا)، وغالبًا ما يؤدي ذلك إلى مشتقات غير محلية
-    تعتمد على تكاملات أو ذاكرة تاريخية (history dependence) حسب التعريف المستخدم.
-  </p>
-  <p>
-    في المقابل، لا يغيّر الحساب الهرمي طبيعة الدرجة (تبقى طبيعية داخل النسق)،
-    بل يعمّم <strong>الرتبة</strong> كوسم بنيوي لطبيعة الاشتقاق، مع إمكانية بناء مستويات أعلى.
-  </p>
-
-  <div class="callout">
-    <strong>الفرق الجوهري:</strong>
-    الحساب الكسري يعمّم <strong>الدرجة</strong>، بينما الحساب الهرمي يعمّم <strong>الرتبة</strong>.
-    لذا فهما يتوجهان لحل مشكلتين مختلفتين في الأصل: “درجة غير صحيحة” مقابل “أنواع اشتقاق متعددة بلا جهاز تصنيف موحّد”.
-  </div>
-
-  <h2 id="log-relative">6. مقارنة مع الحسابات اللوغاريتمية والنسبية</h2>
-  <p>
-    غالبًا ما تُقدَّم المشتقات اللوغاريتمية أو النسبية كنظريات مستقلة ذات استعمالات خاصة (مثل النماذج ذات المقياس النسبي).
-    المشكلة ليست في فعاليتها، بل في أنها تظهر كـ “جزر منفصلة” بدون لغة تصنيف عامة تربطها بباقي الأنواع.
-  </p>
-  <p>
-    في الحساب الهرمي، تمثل هذه المشتقات <strong>رتبًا محددة</strong> ضمن البنية الهرمية،
-    ولا تُعامل كنظم منفصلة. وبالتالي يصبح:
-    <ul>
-      <li>D0 = رتبة تفاضلية</li>
-      <li>D1 = رتبة نسبية</li>
-      <li>وما فوق ذلك = رتب أعلى وفق نفس التعريف الموحّد</li>
-    </ul>
-  </p>
-
-  <h3>مثال إضافي (وظيفة أسّية)</h3>
-  <p>
-    خذ \(f(x)=e^x\). عند الرتبة \(1\):
-  </p>
-  <div class="box">
-    \[
-      D_1^1(e^x)=\frac{d\ln(e^x)}{d\ln(x)}=\frac{d(x)}{d(\ln x)}=x
-    \]
-  </div>
-  <p>
-    هذا المثال بسيط لكنه قوي: يبيّن أن الاشتقاق النسبي يُحوّل السلوك من “قيمة تتبع \(e^x\)” إلى “مقياس مرتبط بـ \(x\)”.
-  </p>
-
-  <h2 id="timescale">7. مقارنة مع حساب المقاييس الزمنية (Time-Scale Calculus)</h2>
-  <p>
-    يركّز حساب المقاييس الزمنية على توحيد المجالات المتصلة والمتقطعة من خلال تعميم المتغير المستقل (التعامل مع الزمن كمقياس عام).
-    أي أنه يوسّع <strong>المجال</strong> الذي نشتق فوقه.
-  </p>
-  <p>
-    أما الحساب الهرمي فيركّز على تعميم <strong>بنية الاشتقاق نفسها</strong> (كيف نشتق؟ وبأي تحويل؟ وبأي رتبة؟)،
-    بغض النظر عن طبيعة المجال. لذا يمكن النظر إليهما كمسارين مختلفين: أحدهما يعمم المجال، والآخر يعمم شكل الاشتقاق.
-  </p>
-
-  <h2 id="table">8. جدول المقارنة الشامل</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>الخاصية</th>
-        <th>التفاضلي</th>
-        <th>الكسري</th>
-        <th>اللوغاريتمي / النسبي</th>
-        <th>الهرمي</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>تعريف المشتق</td>
-        <td>درجة فقط</td>
-        <td>درجة كسرية</td>
-        <td>تعريف خاص</td>
-        <td>رتبة + درجة + تعريف موحّد</td>
-      </tr>
-      <tr>
-        <td>المحلية</td>
-        <td>محلي</td>
-        <td>غالبًا غير محلي</td>
-        <td>محلي</td>
-        <td>محلي لكل رتبة (ضمن التحويل المعتمد)</td>
-      </tr>
-      <tr>
-        <td>هل هو إطار موحّد؟</td>
-        <td>لا</td>
-        <td>جزئي (حسب التعريف)</td>
-        <td>لا</td>
-        <td>نعم (تصنيف + تعريف + قواعد)</td>
-      </tr>
-      <tr>
-        <td>التفاضلي كحالة خاصة</td>
-        <td>—</td>
-        <td>لا</td>
-        <td>لا</td>
-        <td>نعم عند \(r=0\)</td>
-      </tr>
-      <tr>
-        <td>مشكلة يعالجها</td>
-        <td>النمذجة التفاضلية القياسية</td>
-        <td>الذاكرة/اللّامحلية</td>
-        <td>المقاييس النسبية</td>
-        <td>التنظيم البنيوي لأنواع الاشتقاق</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2 id="takeaways">9. الخلاصة + أمثلة إضافية</h2>
-  <p>
-    يقدّم الحساب الهرمي بنية ثنائية المعلمة تعتمد على <strong>الرتبة</strong> و<strong>الدرجة</strong>،
-    مما يسمح بتوسيع الحساب التفاضلي دون فقدان بساطته الأساسية، ودون تحويل “الأنواع المختلفة” إلى نظريات منفصلة بلا رابط.
-  </p>
-
-  <h3>أمثلة إضافية (تقوية الفكرة)</h3>
-  <p>
-    (أ) إذا كانت \(f(x)=x\) مع \(x>0\)، فإن:
-  </p>
-  <div class="box">
-    \[
-      D_1^1(x)=\frac{d\ln(x)}{d\ln(x)}=1
-    \]
-  </div>
-  <p>
-    (ب) إذا كانت \(f(x)=c\) ثابتًا موجبًا، فإن:
-  </p>
-  <div class="box">
-    \[
-      D_1^1(c)=\frac{d\ln(c)}{d\ln(x)}=0
-    \]
-  </div>
-
-  <div class="navbtns">
-    <a class="btn" href="index-ar.html">الصفحة الرئيسية</a>
-    <a class="btn primary" href="hierarchical-calculus-ar.html">الحساب الهرمي</a>
-  </div>
-
-  <footer>
-    اسم الملف:
-    <code>comparison-hierarchical-calculus-ar.html</code>
-  </footer>
-
-</main>
 </body>
 </html>
