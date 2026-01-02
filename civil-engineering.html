@@ -1,296 +1,1123 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<title>تطبيق الحساب الهرمي في الهندسة المدنية | 14 تطبيقًا وأمثلة عددية</title>
-<meta name="description" content="صفحة مرجعية موسعة جدًا لتطبيق الحساب الهرمي في الهندسة المدنية مع 14 تطبيقًا واقعيًا وأمثلة عددية تشمل الخرسانة، التربة، الجسور، الأحمال، الزلازل، الصيانة، FEM، وتكاليف المشاريع باستخدام المشتقات D0^1 إلى Dn^1.">
-<meta name="author" content="GOSSA AHMED">
+  <title>الحساب الهرمي في الهندسة المدنية | 20 تطبيقًا واقعيًا مع أمثلة عددية</title>
+  <meta name="description" content="نسخة Paper أكاديمية: الحساب الهرمي في الهندسة المدنية مع 20 تطبيقًا واقعيًا وأمثلة عددية، ومعادلة إضافية وتفسير هندسي ومناقشة لكل حالة. باستخدام D0^1 و D1^1 و D2^1 حتى Dn^1." />
+  <meta name="author" content="GOSSA AHMED" />
 
-<style>
-body{margin:0;font-family:system-ui,Arial;line-height:2;background:#0f1b2e;color:#eaf2ff}
-.wrap{max-width:1200px;margin:auto;padding:30px}
-h1,h2,h3{color:#7aa7ff}
-.card{background:rgba(255,255,255,.05);padding:24px;border-radius:18px;margin-top:26px}
-.math{background:#00000030;padding:14px;border-radius:12px;margin:14px 0;direction:ltr;text-align:left}
-.note{background:#ffcc6620;border:1px solid #ffcc66;padding:18px;border-radius:14px;margin-top:18px}
-table{width:100%;border-collapse:collapse;margin-top:16px}
-th,td{border-bottom:1px solid rgba(255,255,255,.1);padding:12px;text-align:right}
-footer{margin-top:50px;text-align:center;font-size:13px;opacity:.75}
-</style>
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/civil-engineering.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/civil-engineering.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/civil-engineering-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/civil-engineering-en.html" />
 
-<script>
-window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};
+  <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,"Liberation Mono","Courier New", monospace;
+      --border: rgba(255,255,255,.10);
+      --card: rgba(255,255,255,.05);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); line-height:2.05;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1100px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    /* Hero */
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    /* Cards */
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .math{
+      margin-top:8px; padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius:12px;
+      overflow:auto;
+      direction:ltr; text-align:left;
+      font-family:var(--mono);
+      font-size:13px;
+    }
+    .note{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+    }
+    .note strong{color:var(--warn)}
+
+    /* Paper style extras */
+    .paper-meta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px; color: var(--muted);
+      white-space:nowrap;
+    }
+    .toc a{display:inline-block; margin:4px 0}
+
+    .case-meta{margin:8px 0 10px 0}
+    .tag{
+      display:inline-block; margin:5px 6px 0 0;
+      padding:4px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      font-size:12px; color:rgba(234,242,255,.80);
+    }
+    .discussion{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background: rgba(57,211,195,.08);
+      border-radius:14px;
+      border-right:4px solid var(--accent);
+      color:rgba(234,242,255,.92);
+      font-size:13px;
+    }
+
+    /* Tables */
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
+    }
+    thead th{
+      text-align:right;
+      font-size:13px;
+      padding:10px 10px;
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+    }
+    tbody td{
+      padding:10px 10px;
+      font-size:13px;
+      color:rgba(234,242,255,.88);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+    }
+    tbody tr:last-child td{border-bottom:none}
+
+    /* Buttons */
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-size:13px;
+      text-decoration:none;
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.14);
+    }
+
+    footer{
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
+    }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "الحساب الهرمي في الهندسة المدنية | 20 تطبيقًا واقعيًا مع أمثلة عددية",
+  "author": {"@type":"Person","name":"Ahmed Gossa","url":"https://gossaahmed.github.io/gossa-math/"},
+  "about": ["Hierarchical Calculus","Civil Engineering","Structural Health Monitoring","Geotechnical Engineering","Concrete","Bridges","FEM","Scaling Laws","Relative Derivative D1","Logarithmic Derivative D2"],
+  "abstract": "تقدم هذه الصفحة نسخة Paper أكاديمية تشرح توظيف مشتقات الحساب الهرمي (D0^1 و D1^1 و D2^1) في الهندسة المدنية عبر 20 حالة واقعية مع أمثلة عددية ومعادلات هندسية إضافية ونقاش موسع لدعم اتخاذ القرار.",
+  "inLanguage": "ar",
+  "url": "https://gossaahmed.github.io/gossa-math/civil-engineering.html",
+  "publisher": {"@type":"Organization","name":"Hierarchical Calculus"}
+}
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-<div class="wrap">
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- ضع logo.png في نفس المجلد ثم فعّل السطر التالي -->
+          <!-- <img src="./logo.png" alt="Logo"> -->
+        </div>
+        <div class="title">
+          <strong>الهندسة المدنية — نسخة Paper</strong>
+          <span>20 حالة · \(D_0^1, D_1^1, D_2^1\) · حتى \(D_n^1\)</span>
+        </div>
+      </div>
 
-<h1>تطبيق الحساب الهرمي في الهندسة المدنية</h1>
+      <nav aria-label="Navigation">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./theory.html">النظرية</a>
+        <a href="./rules.html">القواعد</a>
+        <a href="./equations.html">المعادلات</a>
+        <a href="./integrals.html">التكاملات</a>
+        <a href="./civil-engineering-en.html">English</a>
+        <a href="#refs">References</a>
+      </nav>
+    </div>
+  </div>
 
-<p>
-الهندسة المدنية علم يتعامل مع <b>منشآت تعيش لعقود</b>،  
-وتفشل بسبب <b>تراكمات بنيوية</b> لا بسبب قيمة مفردة.
-لهذا فإن الاعتماد على التفاضل التقليدي وحده
-\(D_0^1\) يؤدي غالبًا إلى قرارات متأخرة.
-الحساب الهرمي يقدّم إطارًا تحليليًا
-يقيس التغير، النسبة، وتسارع الخطر.
-</p>
+  <div class="wrap">
+    <header class="hero" id="top">
+      <h1>الحساب الهرمي في الهندسة المدنية</h1>
+      <p class="muted">
+        مشكلات الهندسة المدنية ليست “أرقامًا فقط”، بل ترتبط بالـ<b>مقياس</b> و<b>النِّسَب</b> و<b>تراكم الضرر</b> و<b>تسارع المخاطر</b>.
+        المشتق الكلاسيكي \(D_0^1\) يلتقط التغير المطلق، بينما كثير من القرارات الهندسية تتطلب مؤشرات رتبية:
+        \(D_1^1\) لوصف التدهور النسبي والمؤشرات المعيارية، و\(D_2^1\) لاكتشاف لحظات التحول حين يتسارع التغير النسبي نفسه.
+      </p>
 
-<div class="note">
-<strong>السلم الهرمي:</strong>
-\[
-D_0^1 \rightarrow \text{تغير عددي}
-\quad
-D_1^1 \rightarrow \text{تغير نسبي}
-\quad
-D_2^1 \rightarrow \text{تسارع بنيوي}
-\quad
-\dots
-\]
-</div>
+      <div class="paper-meta">
+        <span class="pill">المؤلف: <b>GOSSA AHMED</b></span>
+        <span class="pill">تنسيق: ورقة بحثية (Paper-style)</span>
+        <span class="pill">Keywords: SHM · Geotech · Durability · FEM</span>
+        <span class="pill">2025</span>
+      </div>
 
-<!-- ====================== التطبيقات ====================== -->
+      <div class="btnrow">
+        <a class="btn primary" href="#abstract">الملخص</a>
+        <a class="btn" href="#method">المنهجية</a>
+        <a class="btn" href="#cases">الحالات 1–20</a>
+        <a class="btn" href="#guide">دليل القرار</a>
+        <a class="btn" href="#refs">المراجع</a>
+      </div>
 
-<h2>القسم الأول: المواد والخرسانة</h2>
+      <div class="note">
+        <strong>قاعدة الترميز:</strong>
+        نكتب دائمًا المشتقة بشكل \(D_r^1\).
+        الكلاسيكي \(D_0^1\)، النسبي \(D_1^1\)، والرتبة الثانية \(D_2^1\)، وتستمر الهرمية حتى \(D_n^1\).
+      </div>
+    </header>
 
-<div class="card">
-<h3>1) نمو تشققات الخرسانة</h3>
-<p>
-شق بطول \(L(t)\).  
-زيادة 2 مم في شق طوله 10 مم أخطر من نفس الزيادة في شق طوله 200 مم.
-</p>
-<div class="math">
-\[
-L=20 \text{ mm} \Rightarrow \Delta L=2 \text{ mm}
-\]
-\[
-D_1^1 L = \frac{\Delta L}{L} = 0.10
-\]
-</div>
-<p>
-نسبة 10% تشير إلى خطر نسبي مرتفع.
-</p>
-</div>
+    <!-- Abstract -->
+    <section class="card" id="abstract">
+      <h2>الملخص (Abstract)</h2>
+      <p class="muted">
+        تقدم هذه الصفحة نسخة Paper أكاديمية لتطبيق الحساب الهرمي في الهندسة المدنية.
+        كثير من الإخفاقات الهندسية ليست نتيجة “زيادة كبيرة في القيم”، بل نتيجة
+        <b>تسارع في التدهور النسبي</b>. يصف \(D_0^1\) الزيادات المحلية، بينما يصف \(D_1^1\) التدهور النسبي
+        والمؤشرات المعيارية مثل الاستغلال (utilization)، أما \(D_2^1\) فيمثل طبقة إنذار مبكر عندما يتغير
+        معدل التغير النسبي بسرعة (نقطة تحول). نقدم 20 حالة واقعية مع أمثلة عددية ومعادلات هندسية إضافية
+        ونقاش موسع لدعم اتخاذ القرار في الرصد الإنشائي والجيوتكنيك والمتانة والنمذجة العددية وإدارة الأصول.
+      </p>
 
-<div class="card">
-<h3>2) تسارع نمو التشققات</h3>
-<p>
-إذا زادت النسبة من 5% إلى 10% خلال فترة قصيرة:
-</p>
-<div class="math">
-\[
-D_2^1 L > 0
-\]
-</div>
-<p>
-هذا مؤشر انتقال الشق إلى طور غير مستقر.
-</p>
-</div>
+      <p class="muted small">
+        <b>Keywords:</b> الحساب الهرمي؛ الرصد الإنشائي؛ المتانة؛ الهبوط؛ استقرار المنحدرات؛ التعب؛ الاستغلال؛ المخاطر غير الخطية؛ تقارب FEM؛ اتخاذ القرار.
+      </p>
+    </section>
 
-<div class="card">
-<h3>3) زحف الخرسانة (Creep)</h3>
-<p>
-التشوه \( \varepsilon(t) \) قد يبدو بطيئًا عدديًا،
-لكن:
-</p>
-<div class="math">
-\[
-D_1^1 \varepsilon \approx ثابت
-\quad
-D_2^1 \varepsilon > 0
-\]
-</div>
-<p>
-يعني أن الزحف نفسه يتسارع.
-</p>
-</div>
+    <!-- Contents -->
+    <section class="card toc" id="toc">
+      <h2>فهرس المحتوى</h2>
+      <a href="#intro">1) المقدمة</a><br>
+      <a href="#method">2) المنهجية: \(D_0^1\), \(D_1^1\), \(D_2^1\)</a><br>
+      <a href="#table">3) جدول تفسير الرتب</a><br>
+      <a href="#cases">4) التطبيقات والأمثلة (1–20)</a><br>
+      <a href="#guide">5) دليل عملي لاختيار الرتبة</a><br>
+      <a href="#discussion">6) نقاش عام + قيود + عمل مستقبلي</a><br>
+      <a href="#refs">المراجع</a><br>
+    </section>
 
-<h2>القسم الثاني: التربة والأساسات</h2>
+    <!-- Intro -->
+    <section class="card" id="intro">
+      <h2>1) المقدمة</h2>
+      <p class="muted">
+        تتغير الأنظمة المدنية عبر مقاييس شديدة الاتساع: من نمو شروخ بالمليمتر إلى بنى تحتية واسعة بالكيلومترات،
+        ومن اهتزازات سريعة إلى تدهور تدريجي يمتد لعقود. لذا فإن الاعتماد على التغير المطلق وحده قد يخفي
+        بنية التدهور الحقيقي. في الواقع، قرارات التصميم والصيانة تعتمد كثيرًا على:
+        (1) مؤشرات معيارية (Condition Index, Utilization, Damage Index)،
+        (2) معدلات تدهور نسبية،
+        (3) تسارع هذه المعدلات قرب حدود الفشل.
+      </p>
+      <p class="muted">
+        ينظم الحساب الهرمي هذه الفكرة ضمن سلم للتغير:
+        مطلق (\(D_0^1\))، نسبي (\(D_1^1\))، وبنيوي/لوغاريتمي (\(D_2^1\))،
+        ما يقدم لغة موحدة لقراءة بيانات الرصد وتحولات المخاطر بين الأنظمة.
+      </p>
+    </section>
 
-<div class="card">
-<h3>4) هبوط الأساسات</h3>
-<p>
-هبوط 15 مم لأساس بارتفاع 1 م:
-</p>
-<div class="math">
-\[
-D_1^1 S = \frac{15}{1000} = 1.5\%
-\]
-</div>
-<p>
-نسبة صغيرة عدديًا لكنها خطيرة إن كانت متزايدة.
-</p>
-</div>
+    <!-- Method -->
+    <section class="card" id="method">
+      <h2>2) المنهجية: المشتقات الهرمية</h2>
+      <p class="muted">
+        نعتمد ثلاث طبقات (درجة 1):
+      </p>
+      <div class="math">
+        \[
+          D_0^1 f(x)=\frac{df}{dx},
+          \qquad
+          D_1^1 f(x)=\frac{d\ln f}{d\ln x},
+          \qquad
+          D_2^1 f(x)=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+        \]
+      </div>
 
-<div class="card">
-<h3>5) تسارع الهبوط التفاضلي</h3>
-<p>
-إذا تضاعفت نسبة الهبوط خلال فترة قصيرة:
-</p>
-<div class="math">
-\[
-D_2^1 S \gg 0
-\]
-</div>
-<p>
-هذا إنذار قبل فقدان الاستقرار.
-</p>
-</div>
+      <div class="note">
+        <strong>تفسير هندسي:</strong><br>
+        \(D_0^1\): زيادات محلية (mm, kN, points).<br>
+        \(D_1^1\): تدهور نسبي/مؤشرات معيارية قابلة للمقارنة.<br>
+        \(D_2^1\): تسارع في التغير النسبي (إنذار مبكر لنقطة تحول).
+      </div>
 
-<div class="card">
-<h3>6) تحجيم الأساسات</h3>
-<p>
-تكبير المبنى بعامل 2:
-</p>
-<div class="math">
-\[
-\text{الحمل} \sim s^3,\quad
-\text{المساحة} \sim s^2
-\]
-\[
-D_1^1 W = 3
-\]
-</div>
-<p>
-الحمل ينمو أسرع من قدرة التربة.
-</p>
-</div>
+      <p class="muted small">
+        <b>ملاحظة المجال:</b> الصيغة الصارمة لـ \(D_2^1\) تتطلب مجالًا مناسبًا. عمليًا نستخدم تحويلات لمؤشرات موجبة
+        (Health/Risk indices, utilization) بحيث يبقى المعنى: “تغير معدل التغير النسبي”.
+      </p>
+    </section>
 
-<h2>القسم الثالث: الجسور والمنشآت</h2>
+    <!-- Table -->
+    <section class="card" id="table">
+      <h2>3) كيف نقرأ الأمثلة؟</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>الرتبة</th>
+            <th>الصيغة التقريبية</th>
+            <th>المعنى الهندسي</th>
+            <th>القراءة العددية</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>\(D_0^1 y \approx \Delta y\)</td>
+            <td>تغير مطلق</td>
+            <td>زيادة مباشرة</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>\(D_1^1 y \approx \Delta y/y\)</td>
+            <td>تغير نسبي</td>
+            <td>% تدهور / استغلال / مقارنة عادلة</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>\(D_2^1 y\) (تصوري)</td>
+            <td>تسارع النسَب</td>
+            <td>نقطة تحول / قرب الفشل</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-<div class="card">
-<h3>7) تدهور الجسور</h3>
-<p>
-مؤشر الحالة \(H=0.8\) يبدو جيدًا،
-لكن:
-</p>
-<div class="math">
-\[
-D_1^1 H \approx 0
-\quad
-D_2^1 H > 0
-\]
-</div>
-<p>
-يعني تدهورًا بنيويًا خفيًا.
-</p>
-</div>
+    <!-- Cases header -->
+    <section class="card" id="cases">
+      <h2>4) التطبيقات والأمثلة (1–20)</h2>
+      <div class="note">
+        <strong>طريقة القراءة:</strong>
+        اقرأ \(D_0^1\) ثم \(D_1^1\).  
+        عندما يتسارع التغير النسبي نفسه، تظهر أهمية \(D_2^1\).
+      </div>
+    </section>
 
-<div class="card">
-<h3>8) التعب الإنشائي</h3>
-<p>
-سعة الإجهاد \(A\) تزداد بنسبة 3% كل دورة:
-</p>
-<div class="math">
-\[
-D_1^1 A = 0.03
-\]
-</div>
-<p>
-لكن إذا ازدادت هذه النسبة:
-</p>
-<div class="math">
-\[
-D_2^1 A > 0
-\]
-</div>
-</div>
+    <!-- CASE 1 -->
+    <section class="card">
+      <h3>الحالة 1 — نمو طول الشرخ في الخرسانة</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: متانة الخرسانة</span>
+        <span class="tag">الهدف: إنذار مبكر</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        ينمو طول الشرخ من 20 مم إلى 22 مم خلال دورة رصد. الزيادة المطلقة تبدو صغيرة،
+        لكن الزيادة النسبية (10%) تحمل دلالة أكبر في ميكانيكا الضرر.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;\Delta L = 2\text{ mm},\qquad
+          D_1^1:\;\frac{2}{20}=10\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (مؤشر شدة الإجهاد):</b></p>
+      <div class="math">
+        \[
+          K_I = Y\,\sigma \sqrt{\pi a}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        نمو الشرخ ليس خطيًا مع \(a\). لذلك فإن الزيادة النسبية تعكس اقتراب النظام من نطاق تصبح فيه \(K_I\) أكبر بكثير.
+        هذا ما يجعل \(D_1^1\) أكثر تعبيرًا من الزيادة المطلقة وحدها.
+      </div>
+    </section>
 
-<div class="card">
-<h3>9) التشوهات طويلة الأمد</h3>
-<p>
-تشوهات صغيرة لكنها متسارعة أخطر من تشوهات كبيرة ثابتة.
-</p>
-</div>
+    <!-- CASE 2 -->
+    <section class="card">
+      <h3>الحالة 2 — تسارع نمو الشروخ (إشارة نقطة تحول)</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: الرصد الإنشائي</span>
+        <span class="tag">الهدف: اكتشاف تحول</span>
+        <span class="tag">الرتبة: \(D_2^1\)</span>
+      </div>
+      <p class="muted">
+        إذا ارتفع معدل النمو النسبي للشرخ من 5% إلى 10% لكل دورة، فإن “معدل التغير النسبي” تضاعف.
+      </p>
+      <div class="math">
+        \[
+          \frac{10\%}{5\%}=2 \Rightarrow \text{سلوك رتبة ثانية (تسارع خطر)}.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (مراقبة تغير المعدل):</b></p>
+      <div class="math">
+        \[
+          r=\frac{\Delta L}{L}\quad \Rightarrow \quad \text{مؤشر رتبة ثانية يراقب }\Delta r.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        كثير من الفشل يحدث عند بداية التسارع، وليس عند بلوغ الضرر قيمة كبيرة.  
+        لذلك تمثل الرتبة الثانية طبقة إنذار مبكر تحدد بدء تحول النظام نحو اللاانعكاسية.
+      </div>
+    </section>
 
-<h2>القسم الرابع: الزلازل والديناميكا</h2>
+    <!-- CASE 3 -->
+    <section class="card">
+      <h3>الحالة 3 — زيادة زحف الخرسانة (Creep)</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: تشوهات طويلة الأمد</span>
+        <span class="tag">الهدف: الخدمة</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        ترتفع انفعالات الزحف من 400 με إلى 460 με خلال نافذة زمنية ثابتة.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;60\mu\varepsilon,\qquad
+          D_1^1:\;\frac{60}{400}=15\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (صياغة معامل الزحف):</b></p>
+      <div class="math">
+        \[
+          \varepsilon(t)=\frac{\sigma}{E}\left(1+\varphi(t)\right).
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        التغير النسبي في الزحف يسمح بالمقارنة بين عناصر مختلفة الإجهاد.  
+        إذا زاد المعدل النسبي لاحقًا، فذلك يشير إلى انتقال سلوكي، وهنا تظهر أهمية الرتبة الثانية لتفسير التسارع.
+      </div>
+    </section>
 
-<div class="card">
-<h3>10) تضخيم الاستجابة الزلزالية</h3>
-<p>
-سعة الاهتزاز من 5 إلى 7 سم:
-</p>
-<div class="math">
-\[
-D_1^1 A = \frac{2}{5} = 40\%
-\]
-</div>
-</div>
+    <!-- CASE 4 -->
+    <section class="card">
+      <h3>الحالة 4 — انكماش الجفاف وتأثيره على الشروخ</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: المتانة</span>
+        <span class="tag">الهدف: التحكم بالتشققات</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        يرتفع انكماش الجفاف من 250 με إلى 300 με.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;50\mu\varepsilon,\qquad
+          D_1^1:\;\frac{50}{250}=20\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (إجهاد الانكماش المقيد):</b></p>
+      <div class="math">
+        \[
+          \sigma_{sh} \approx E\,\varepsilon_{sh}\,R.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        خطر التشقق يعتمد على درجة التقييد \(R\). لذا فإن القراءة النسبية تعكس زيادة الخطر بصورة مباشرة.
+        إذا أصبح النمو النسبي نفسه يتسارع مع الزمن، فذلك يدل على انتقال نحو نطاق تشققات حاد.
+      </div>
+    </section>
 
-<div class="card">
-<h3>11) الاقتراب من الرنين</h3>
-<p>
-عندما تصبح النسبة نفسها متزايدة:
-</p>
-<div class="math">
-\[
-D_2^1 A \uparrow
-\]
-</div>
-<p>
-هذا مؤشر اقتراب الانهيار.
-</p>
-</div>
+    <!-- CASE 5 -->
+    <section class="card">
+      <h3>الحالة 5 — تآكل التسليح وتأثيره على مساحة المقطع</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: متانة</span>
+        <span class="tag">الهدف: فقدان مقاومة</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        ينخفض قطر السيخ من 16.0 مم إلى 15.2 مم بسبب التآكل.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;-0.8\text{ mm},\qquad
+          D_1^1:\;\frac{-0.8}{16}=-5\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (حساسية المساحة):</b></p>
+      <div class="math">
+        \[
+          A=\frac{\pi d^2}{4}\Rightarrow \frac{\Delta A}{A}\approx 2\frac{\Delta d}{d}\approx -10\%.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        نقص القطر بنسبة 5% يؤدي إلى نقص المساحة بنسبة تقارب 10% (وهذا مهم جدًا للقدرة).  
+        هذا المثال يوضح لماذا التغير النسبي أكثر فاعلية من الأرقام المطلقة في الحكم على الخطر.
+      </div>
+    </section>
 
-<h2>القسم الخامس: النمذجة العددية والإدارة</h2>
+    <!-- ========================================================= -->
+    <!-- الحالات 6 إلى 20: نفس أسلوب الـ Paper (كل حالة فيها معادلة + تفسير + Discussion) -->
+    <!-- لتجنب إطالة الرد بشكل مبالغ فيه، وضعت القسم كاملاً جاهزًا أدناه (مُدرج بالكامل) -->
+    <!-- ========================================================= -->
 
-<div class="card">
-<h3>12) جودة نموذج FEM</h3>
-<p>
-خطأ تقريبي:
-</p>
-<div class="math">
-\[
-E(h)=4h^2 \Rightarrow D_1^1 E = 2
-\]
-</div>
-<p>
-العدد 2 هو الرتبة الحقيقية للنموذج.
-</p>
-</div>
+    <!-- CASE 6 -->
+    <section class="card">
+      <h3>الحالة 6 — هبوط الأساس (مطلق vs نسبي مع حدود)</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: جيوتكنيك</span>
+        <span class="tag">الهدف: خدمة/حدود</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        يرتفع الهبوط من 12 مم إلى 15 مم. الحد المسموح 25 مم. القرار يعتمد على الاقتراب من الحد.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;3\text{ mm},\qquad
+          D_1^1:\;\frac{3}{12}=25\%,\qquad
+          \eta=\frac{15}{25}=0.60.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (مؤشر الاستغلال):</b></p>
+      <div class="math">
+        \[
+          \eta(t)=\frac{S(t)}{S_{\max}},\qquad \eta\to 1 \Rightarrow \text{فشل خدمة}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        مؤشر \(\eta\) يعبر مباشرة عن قرب المنشأ من حد عدم القبول.  
+        إذا بدأت \(\eta\) بالازدياد بوتيرة نسبية متسارعة، فهذه علامة على تحول في سلوك التربة (رتبة ثانية).
+      </div>
+    </section>
 
-<div class="card">
-<h3>13) نمو تكلفة المشاريع</h3>
-<p>
-تكلفة من 10 إلى 12 مليون:
-</p>
-<div class="math">
-\[
-D_1^1 C = 20\%
-\]
-</div>
-<p>
-أخطر من زيادة 2 مليون في مشروع ضخم.
-</p>
-</div>
+    <!-- CASE 7 -->
+    <section class="card">
+      <h3>الحالة 7 — هبوط تفاضلي عبر بحر</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: جيوتكنيك/إنشاء</span>
+        <span class="tag">الهدف: التشوه</span>
+        <span class="tag">الرتبة: مؤشرات معيارية</span>
+      </div>
+      <p class="muted">
+        هبوط دعامة يسار 8 مم ويمين 14 مم والبحر 10 م. المهم هو التشوه النسبي.
+      </p>
+      <div class="math">
+        \[
+          \Delta S = 6\text{ mm},\qquad
+          \beta=\frac{\Delta S}{L}=\frac{6}{10}=0.6\text{ mm/m}.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (مؤشر التشوه الزاوي):</b></p>
+      <div class="math">
+        \[
+          \beta=\frac{\Delta S}{L}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        التشوه التفاضلي سبب أساسي للشقوق في العناصر الهشة.  
+        مراقبة \(\beta(t)\) أكثر فاعلية من مراقبة الهبوط المطلق لكل نقطة.
+      </div>
+    </section>
 
-<div class="card">
-<h3>14) قرار التدخل الهندسي</h3>
-<table>
-<tr><th>المؤشر</th><th>الرتبة</th><th>القرار</th></tr>
-<tr><td>قيمة</td><td>\(D_0^1\)</td><td>مراقبة</td></tr>
-<tr><td>نسبة</td><td>\(D_1^1\)</td><td>صيانة</td></tr>
-<tr><td>تسارع</td><td>\(D_2^1\)</td><td>تدعيم</td></tr>
-<tr><td>انفجار بنيوي</td><td>\(D_3^1\)</td><td>إخلاء/إزالة</td></tr>
-</table>
-</div>
+    <!-- CASE 8 -->
+    <section class="card">
+      <h3>الحالة 8 — تقدم الانضغاط (Consolidation) وتسارع غير متوقع</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Consolidation</span>
+        <span class="tag">الهدف: تحقق النموذج</span>
+        <span class="tag">الرتبة: \(D_1^1\) + \(D_2^1\)</span>
+      </div>
+      <p class="muted">
+        تقدم الهبوط من 40% إلى 55% من القيمة النهائية. التغير النسبي 37.5%.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+15\text{ نقطة},\qquad
+          D_1^1:\;\frac{55-40}{40}=37.5\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (Terzaghi):</b></p>
+      <div class="math">
+        \[
+          T_v=\frac{c_v t}{H_d^2},\qquad U \approx f(T_v).
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        تسارع التقدم النسبي قد يعني تغيرًا في التصريف أو طبقات التربة أو \(c_v\).  
+        إذا أصبح معدل التقدم النسبي يتغير بسرعة، فهذا تحول رتبة ثانية يستدعي مراجعة الفرضيات.
+      </div>
+    </section>
 
-<div class="note">
-<strong>
-الهندسة المدنية لا تفشل فجأة،  
-بل تفشل هرميًا.  
-والحساب الهرمي هو لغة هذا الفشل.
-</strong>
-</div>
+    <!-- CASE 9 -->
+    <section class="card">
+      <h3>الحالة 9 — استقرار منحدر: تدهور عامل الأمان</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: منحدرات</span>
+        <span class="tag">الهدف: أمان حدّي</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        ينخفض FoS من 1.35 إلى 1.20 بعد أمطار. الانخفاض النسبي ≈ 11.1%.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;-0.15,\qquad
+          D_1^1:\;\frac{-0.15}{1.35}=-11.1\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (Mohr–Coulomb):</b></p>
+      <div class="math">
+        \[
+          \tau_f = c' + \sigma' \tan\phi'.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        الأمطار تقلل \(\sigma'\) فتضعف مقاومة القص.  
+        إذا أصبحت الانخفاضات النسبية تتكرر وتزداد، فهذا تسارع رتبة ثانية نحو عدم الاستقرار.
+      </div>
+    </section>
 
-<footer>
-© 2025 — GOSSA AHMED · صفحة مرجعية في تطبيق الحساب الهرمي في الهندسة المدنية
-</footer>
+    <!-- CASE 10 -->
+    <section class="card">
+      <h3>الحالة 10 — هامش تحمل الأساس ومؤشر الاستغلال</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Foundations</span>
+        <span class="tag">الهدف: utilization</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        الحمل المطلوب يرتفع من 900 إلى 980 kN، والقدرة 1200 kN.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+80kN,\qquad
+          \eta_1=0.75,\quad \eta_2=0.817,
+          \quad D_1^1(\eta)=\frac{0.817-0.75}{0.75}=8.9\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (شرط حدّي):</b></p>
+      <div class="math">
+        \[
+          Q_d \le Q_u/\gamma\quad \Leftrightarrow\quad \eta \le \eta_{\max}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        الاستخدام \(\eta\) هو مؤشر معياري.  
+        إذا بدأ \(\eta\) بالارتفاع بمعدل نسبي متسارع، فهذه إشارة رتبة ثانية لاقتراب التحول نحو خطر.
+      </div>
+    </section>
 
-</div>
+    <!-- CASE 11 -->
+    <section class="card">
+      <h3>الحالة 11 — اختبار ركيزة: فقدان الصلابة</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Piles</span>
+        <span class="tag">الهدف: صلابة</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        عند نفس الحمل 600 kN كان الهبوط 6 مم وأصبح 8 مم.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+2mm,\qquad D_1^1:\;\frac{2}{6}=33.3\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (صلابة مقطعية):</b></p>
+      <div class="math">
+        \[
+          k_s=\frac{Q}{s}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        الصلابة تقل من 100 إلى 75 kN/mm (نقص 25%).  
+        التغير النسبي أوضح من الزيادة المطلقة في الهبوط عند اتخاذ قرار تدخل.
+      </div>
+    </section>
+
+    <!-- CASE 12 -->
+    <section class="card">
+      <h3>الحالة 12 — تراجع مؤشر حالة سطح الجسر</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Bridges</span>
+        <span class="tag">الهدف: إدارة أصول</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        ينخفض مؤشر الحالة من 82 إلى 74 خلال سنة.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;-8\text{ نقطة},\qquad
+          D_1^1:\;\frac{-8}{82}=-9.76\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (نموذج اضمحلال):</b></p>
+      <div class="math">
+        \[
+          CI(t)=CI_0 e^{-kt}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        إذا زادت قيمة \(k\) مع الزمن فهذا تسارع رتبة ثانية.  
+        وهنا يصبح التدخل ضرورياً قبل السقوط تحت حد سياسة الصيانة.
+      </div>
+    </section>
+
+    <!-- CASE 13 -->
+    <section class="card">
+      <h3>الحالة 13 — تراكم ضرر التعب (Miner)</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Fatigue</span>
+        <span class="tag">الهدف: قرب العتبة</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        يرتفع مؤشر الضرر من 0.30 إلى 0.36.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+0.06,\qquad
+          D_1^1:\;\frac{0.06}{0.30}=20\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (Miner):</b></p>
+      <div class="math">
+        \[
+          D=\sum_i \frac{n_i}{N_i},\qquad D\to1 \Rightarrow \text{فشل}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        قراءة \(D_1^1\) تعبر عن سرعة الاقتراب من الفشل.  
+        إذا زادت نسبة الزيادة مع زيادة \(D\)، فهذا يشير لتسارع رتبة ثانية.
+      </div>
+    </section>
+
+    <!-- CASE 14 -->
+    <section class="card">
+      <h3>الحالة 14 — زيادة الترخيم الخدمي</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Structures</span>
+        <span class="tag">الهدف: Serviceability</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        الترخيم من 18 إلى 21 مم.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+3mm,\qquad
+          D_1^1:\;\frac{3}{18}=16.7\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (Scaling):</b></p>
+      <div class="math">
+        \[
+          \delta \propto \frac{L^4}{EI}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        بسبب اعتماد الترخيم على \(L^4\)، فإن المقارنة المطلقة غير عادلة عبر بحور مختلفة.  
+        التغير النسبي يكشف تدهور الصلابة ويتيح مقارنة علمية.
+      </div>
+    </section>
+
+    <!-- CASE 15 -->
+    <section class="card">
+      <h3>الحالة 15 — تضخيم ديناميكي: زيادة الاهتزاز</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Dynamics</span>
+        <span class="tag">الهدف: سلامة تشغيلية</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        RMS يزيد من 0.08g إلى 0.11g.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+0.03g,\qquad
+          D_1^1:\;\frac{0.03}{0.08}=37.5\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (SDOF):</b></p>
+      <div class="math">
+        \[
+          X(\omega)=\frac{F_0/k}{\sqrt{(1-r^2)^2+(2\zeta r)^2}}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        ارتفاع الاستجابة قد يعني انخفاض الصلابة أو تغير التخميد.  
+        إذا تسارعت هذه الزيادة النسبية، فهذه علامة رتبة ثانية على تقدم الضرر.
+      </div>
+    </section>
+
+    <!-- CASE 16 -->
+    <section class="card">
+      <h3>الحالة 16 — ارتفاع نسبة الانجراف الزلزالي</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Seismic</span>
+        <span class="tag">الهدف: Performance</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        الانجراف من 0.9% إلى 1.2%.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+0.3\%\text{ نقاط},\qquad
+          D_1^1:\;\frac{1.2-0.9}{0.9}=33.3\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية:</b></p>
+      <div class="math">
+        \[
+          \theta=\frac{\Delta}{h}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        الانجراف مؤشر معياري بطبيعته.  
+        تسارعه النسبي عبر أحداث متعددة يمثل انتقالًا رتبيًا نحو خطر الانهيار.
+      </div>
+    </section>
+
+    <!-- CASE 17 -->
+    <section class="card">
+      <h3>الحالة 17 — مؤشر خطر التسييل (موجب)</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Liquefaction</span>
+        <span class="tag">الهدف: Risk index</span>
+        <span class="tag">الرتبة: \(D_2^1\) ممكن</span>
+      </div>
+      <p class="muted">
+        مؤشر خطر \(R\) من 1.10 إلى 1.40.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+0.30,\qquad
+          D_1^1:\;\frac{0.30}{1.10}=27.3\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية:</b></p>
+      <div class="math">
+        \[
+          FS_{liq}=\frac{CRR}{CSR}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        بما أن \(R>1\) فإن المجال مناسب للرتبة الثانية.  
+        تسارع الزيادة النسبية عبر تحديثات الخطر يحدد نقطة تحول منهجية في المخاطر.
+      </div>
+    </section>
+
+    <!-- CASE 18 -->
+    <section class="card">
+      <h3>الحالة 18 — ازدياد النحر (Scour) عند ركائز الجسر</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: Hydraulics</span>
+        <span class="tag">الهدف: استقرار الركيزة</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        النحر من 0.80 إلى 0.92 م.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+0.12m,\qquad
+          D_1^1:\;\frac{0.12}{0.80}=15\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (Scaling):</b></p>
+      <div class="math">
+        \[
+          d_s \propto \left(\frac{V^2}{gD}\right)^m.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        بسبب لاخطية الاعتماد على السرعة \(V\)، فإن الزيادات النسبية هي الأقوى في التنبؤ.  
+        إذا تسارعت النسبة موسميًا فهذا انتقال رتبي يستدعي إنذارًا مبكرًا.
+      </div>
+    </section>
+
+    <!-- CASE 19 -->
+    <section class="card">
+      <h3>الحالة 19 — رتبة تقارب FEM (استخراج الأس)</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: FEM</span>
+        <span class="tag">الهدف: تحقق التقارب</span>
+        <span class="tag">الرتبة: \(D_1^1\)</span>
+      </div>
+      <p class="muted">
+        \(h\) من 0.20 إلى 0.10، والخطأ من 0.040 إلى 0.010.
+      </p>
+      <div class="math">
+        \[
+          p=\frac{\ln(E_2/E_1)}{\ln(h_2/h_1)}
+          =\frac{\ln(0.25)}{\ln(0.5)}=2.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية:</b></p>
+      <div class="math">
+        \[
+          E(h)\approx C h^p.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        هذا مثال واضح أن الرتبة الأولى تستخرج مباشرة أس التقارب.  
+        أي أن الحساب الهرمي يظهر طبيعيًا في النمذجة العددية دون إضافات.
+      </div>
+    </section>
+
+    <!-- CASE 20 -->
+    <section class="card">
+      <h3>الحالة 20 — تضخم تكلفة المشروع وتسارع المخاطر</h3>
+      <div class="case-meta">
+        <span class="tag">المجال: إدارة مشاريع</span>
+        <span class="tag">الهدف: السيطرة</span>
+        <span class="tag">الرتبة: \(D_1^1\) + \(D_2^1\)</span>
+      </div>
+      <p class="muted">
+        التكلفة من 10M إلى 12M: زيادة نسبية 20%.
+      </p>
+      <div class="math">
+        \[
+          D_0^1:\;+2M,\qquad
+          D_1^1:\;\frac{2}{10}=20\%.
+        \]
+      </div>
+      <p class="muted"><b>معادلة إضافية (Earned Value):</b></p>
+      <div class="math">
+        \[
+          CPI=\frac{EV}{AC},\qquad CPI<1 \Rightarrow \text{تجاوز}.
+        \]
+      </div>
+      <div class="discussion">
+        <b>Discussion:</b>
+        الفشل غالبًا يحدث بسبب التسارع: 20% ثم 35% ثم 50%.  
+        الرتبة الثانية هي الأداة الطبيعية لرصد “تزايد معدل التجاوز” مبكرًا.
+      </div>
+    </section>
+
+    <!-- Guide -->
+    <section class="card" id="guide">
+      <h2>5) دليل عملي: متى أستخدم أي رتبة؟</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>السؤال الهندسي</th>
+            <th>الرتبة</th>
+            <th>السبب</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>كم تغيرت القيمة بالمطلق؟</td>
+            <td>\(D_0^1\)</td>
+            <td>تقارير مباشرة</td>
+          </tr>
+          <tr>
+            <td>ما أهمية التغير نسبةً للحالة؟</td>
+            <td>\(D_1^1\)</td>
+            <td>مقارنة عادلة عبر الأحجام</td>
+          </tr>
+          <tr>
+            <td>هل التغير النسبي نفسه يتسارع؟</td>
+            <td>\(D_2^1\)</td>
+            <td>تحول/إنذار مبكر</td>
+          </tr>
+          <tr>
+            <td>سلوك متعدد الأطوار طويل الأمد</td>
+            <td>\(D_n^1\)</td>
+            <td>تحليل هرمي أعلى</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>الخلاصة الهندسية:</strong>
+        كثير من الانهيارات ليست “قيمة كبيرة”، بل “تسارع في التدهور النسبي”.
+      </div>
+    </section>
+
+    <!-- Discussion -->
+    <section class="card" id="discussion">
+      <h2>6) نقاش عام + قيود + عمل مستقبلي</h2>
+
+      <h3>6.1 نقاش عام</h3>
+      <p class="muted">
+        يتكرر نمط مشترك في كل الحالات: القرارات تعتمد على الاقتراب من حدود، وعلى المؤشرات النسبية المعيارية.
+        لذا تظهر الرتبة الأولى كأداة مركزية. أما الرتبة الثانية فتضيف طبقة إنذار مبكر ترصد
+        تغير سلوك النظام قبل الانهيار.
+      </p>
+
+      <h3>6.2 قيود</h3>
+      <p class="muted">
+        صيغة \(D_2^1\) الصارمة تتطلب مجالًا مناسبًا. عمليًا نستخدم مؤشرات موجبة أو تحويلات.
+        كما أن البيانات قد تكون ضجيجية، ولذلك يلزم ترشيح واحتمالية لاستخراج التسارع بثقة.
+      </p>
+
+      <h3>6.3 عمل مستقبلي</h3>
+      <p class="muted">
+        يتضمن العمل المستقبلي: (1) تعريف تحويلات معيارية موجبة لمؤشرات الصحة، (2) دمج الرتب ضمن نماذج Bayesian SHM،
+        (3) اختبار إنذار الرتبة الثانية على بيانات جسور حقيقية، (4) توسيع التحليل إلى رتب أعلى للأنظمة متعددة الأطوار.
+      </p>
+    </section>
+
+    <!-- References -->
+    <section class="card" id="refs">
+      <h2>المراجع (References)</h2>
+      <p class="muted small">
+        المراجع أدناه مصادر معيارية للسياق الهندسي. إطار الحساب الهرمي هو جزء من منهج المؤلف.
+      </p>
+
+      <div class="math">
+        \[
+        \textbf{[1]}\;\text{Terzaghi, K. (1943). Theoretical Soil Mechanics. Wiley.}
+        \]
+        \[
+        \textbf{[2]}\;\text{Fellenius, B. H. (2001). Basics of Foundation Design.}
+        \]
+        \[
+        \textbf{[3]}\;\text{Eurocode 2: Design of Concrete Structures.}
+        \]
+        \[
+        \textbf{[4]}\;\text{Miner, M. A. (1945). Cumulative Damage in Fatigue. Journal of Applied Mechanics.}
+        \]
+        \[
+        \textbf{[5]}\;\text{Bathe, K. J. (1996). Finite Element Procedures. Prentice Hall.}
+        \]
+        \[
+        \textbf{[6]}\;\text{GOSSA AHMED (2025). Hierarchical Calculus Framework (Official Website).}
+        \]
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · الهندسة المدنية — نسخة Paper · مشتقات \(D_r^1\)
+      <br>
+      <a href="#top">العودة للأعلى ↑</a>
+    </footer>
+  </div>
 </body>
 </html>
+
