@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FAQ — Hierarchical Calculus</title>
-  <meta name="description" content="Hierarchical Calculus FAQ. Concepts, ranks and degrees of derivatives (D_r^n), domains, limitations, and motivations." />
+
+  <title>FAQ — Hierarchical Calculus (Paper-style)</title>
+  <meta name="description" content="Hierarchical Calculus FAQ (paper-style). Definitions, rank–degree derivatives D_r^n, unified operator D_n^1, domain constraints, motivations, numerical behavior, limitations, and IEEE references." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical + hreflang -->
@@ -16,22 +17,18 @@
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="FAQ — Hierarchical Calculus" />
-  <meta property="og:description" content="Concepts, derivative ranks & degrees (D_r^n), domains, limitations, and motivations." />
+  <meta property="og:title" content="FAQ — Hierarchical Calculus (Paper-style)" />
+  <meta property="og:description" content="Rank–degree derivatives D_r^n, domains, unified definition, numerical notes, and IEEE references." />
   <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/faq-en.html" />
   <meta name="twitter:card" content="summary" />
 
+  <!-- ===================== STYLE (Paper-like) ===================== -->
   <style>
     :root{
-      --bg0:#0b1220;
-      --bg1:#0f1b2e;
-      --text:#eaf2ff;
-      --muted: rgba(234,242,255,.72);
-      --accent:#39d3c3;
-      --accent2:#7aa7ff;
-      --warn:#ffcc66;
-      --card: rgba(255,255,255,.05);
-      --border: rgba(255,255,255,.12);
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.05); --border: rgba(255,255,255,.12);
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -51,8 +48,9 @@
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
 
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -60,7 +58,7 @@
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
-      max-width:980px; margin:0 auto; padding:10px 16px;
+      max-width:1050px; margin:0 auto; padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between;
       gap:10px; flex-wrap:wrap;
     }
@@ -86,13 +84,14 @@
     }
     nav a:hover{background: rgba(255,255,255,.07)}
 
+    /* Hero header */
     header.hero{
       margin-top:16px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 20px 18px;
+      padding: 22px 18px;
       position:relative;
       overflow:hidden;
     }
@@ -106,9 +105,25 @@
     }
     header.hero > *{position:relative}
     h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:16px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    /* Paper meta block */
+    .paper-meta{
+      margin-top:12px;
+      display:flex; gap:14px; flex-wrap:wrap;
+      font-size:13px; color:var(--muted);
+    }
+    .paper-meta .pill{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    /* Cards */
     .card{
       margin-top:14px;
       border:1px solid var(--border);
@@ -117,18 +132,8 @@
       box-shadow: var(--shadow);
       padding: 16px 16px;
     }
-    h2{margin:0 0 10px 0; font-size:18px}
-    h3{margin:14px 0 8px 0; font-size:16px}
-    .math{
-      margin-top: 8px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      border-radius: 12px;
-      padding: 10px 12px;
-      overflow:auto;
-      direction:ltr;
-      text-align:left;
-    }
+
+    /* Notes and boxes */
     .note{
       border:1px solid rgba(255,204,102,.35);
       background: rgba(255,204,102,.10);
@@ -137,8 +142,79 @@
       margin-top:12px;
     }
     .note strong{color:var(--warn)}
-    ol{margin:8px 0 0 0; padding-left:22px}
-    li{margin:10px 0}
+
+    .box{
+      margin-top:10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 12px;
+      padding: 12px 12px;
+      overflow:auto;
+      direction:ltr;
+      text-align:left;
+    }
+
+    /* Equation numbering */
+    .eq{
+      display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
+    }
+    .eq .num{
+      min-width:70px; text-align:right;
+      color:rgba(234,242,255,.60);
+      font-family:var(--mono);
+      font-size:12px;
+      padding-top:4px;
+    }
+    .eq .math{
+      flex:1;
+    }
+
+    /* TOC */
+    .toc a{display:block; margin:7px 0}
+
+    /* Buttons */
+    .actions{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;
+    }
+    .btn{
+      display:inline-block;
+      padding:9px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-size:13px;
+      cursor:pointer;
+      text-decoration:none;
+      transition:transform .08s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{transform:translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(57,211,195,.45)}
+    .btn.primary{border-color: rgba(57,211,195,.55)}
+    .btn.warn{border-color: rgba(255,204,102,.55)}
+
+    /* FAQ list (paper-like Q/A) */
+    .qa{
+      margin:0; padding:0; list-style:none;
+    }
+    .qa li{
+      padding:14px 0;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .qa li:first-child{border-top:none}
+    .q{
+      font-weight:700;
+      color:rgba(234,242,255,.95);
+      margin-bottom:6px;
+    }
+    .a{
+      color:rgba(234,242,255,.82);
+      font-size:14px;
+    }
+
+    /* References */
+    .refs ol{margin:10px 0 0 18px; padding:0}
+    .refs li{margin:10px 0; color:rgba(234,242,255,.85); font-size:14px}
+
     footer{
       margin-top: 18px;
       color: var(--muted);
@@ -147,9 +223,17 @@
       padding-top: 18px;
       border-top: 1px solid rgba(255,255,255,.10);
     }
+
+    /* Print */
+    @media print{
+      .topbar, .actions, nav {display:none !important;}
+      body{background:#fff !important; color:#000 !important;}
+      .card, header.hero{box-shadow:none !important;}
+      a{color:#000 !important; text-decoration:none !important;}
+    }
   </style>
 
-  <!-- MathJax -->
+  <!-- ===================== MathJax ===================== -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
@@ -158,7 +242,21 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <!-- FAQ Structured Data -->
+  <!-- ===================== Structured Data (Scholarly Article) ===================== -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ScholarlyArticle",
+    "headline":"FAQ — Hierarchical Calculus (Paper-style)",
+    "author":{"@type":"Person","name":"Ahmed Gossa","url":"https://gossaahmed.github.io/gossa-math/"},
+    "inLanguage":"en",
+    "url":"https://gossaahmed.github.io/gossa-math/faq-en.html",
+    "description":"Hierarchical Calculus FAQ with rank–degree derivatives D_r^n, unified operator D_n^1, domain constraints, motivations, numerics, and IEEE references.",
+    "keywords":["Hierarchical Calculus","Hierarchical Derivatives","Rank and Degree","Relative Derivative","Logarithmic Derivative","D_r^n","D_n^1"]
+  }
+  </script>
+
+  <!-- ===================== FAQ Structured Data (SEO) ===================== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -169,7 +267,7 @@
         "name": "Is Hierarchical Calculus a replacement for classical calculus?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Classical calculus (rank D0) is a special case. Hierarchical Calculus extends it by adding higher ranks that model relative and logarithmic scaling within one rank–degree framework."
+          "text": "No. Classical calculus is recovered as a special case at rank r = 0. Hierarchical Calculus extends calculus by introducing a rank–degree classification that includes relative and higher logarithmic layers."
         }
       },
       {
@@ -177,23 +275,23 @@
         "name": "What is the intuitive difference between D0^1 and D1^1?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "D0^1 measures additive change (df/dx), while D1^1 measures relative change: D1^1 f = d ln f / d ln x = (x/f) df/dx."
+          "text": "D0^1 measures additive (absolute) change df/dx. D1^1 measures relative change: D1^1 f = d ln f / d ln x = (x/f) df/dx."
         }
       },
       {
         "@type": "Question",
-        "name": "What is the definition of higher ranks?",
+        "name": "What is the unified definition of D_n^1?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The rank-n, degree-1 derivative is defined by D_n^1 f(x) = d ln^(n)(f(x)) / d ln^(n)(x), with appropriate domain constraints."
+          "text": "The rank-n degree-1 hierarchical derivative is defined as D_n^1 f(x) = d ln^(n)(f(x)) / d ln^(n)(x), under suitable domain constraints."
         }
       },
       {
         "@type": "Question",
-        "name": "What are the domain constraints for higher ranks?",
+        "name": "What domain constraints are required for D1 and D2?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Rank D1 typically requires x>0 and f>0. Rank D2 often requires x>1 and f>1 so that ln ln x and ln ln f are defined."
+          "text": "Typically D1 requires x > 0 and f(x) > 0. D2 commonly requires x > 1 and f(x) > 1 so that ln ln x and ln ln f(x) exist in the real domain."
         }
       }
     ]
@@ -202,24 +300,23 @@
 </head>
 
 <body>
+  <!-- ===================== TOPBAR ===================== -->
   <div class="topbar">
     <div class="inner">
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
           <strong>Hierarchical Calculus</strong>
-          <span>FAQ — with explicit rank & degree \(D_r^n\)</span>
+          <span>FAQ — paper-style (IEEE) · explicit \(D_r^n\)</span>
         </div>
       </div>
 
-      <!-- FIXED: use EN pages in EN navbar -->
       <nav aria-label="Navigation">
         <a href="./index-en.html">Home</a>
         <a href="./theory-en.html">Theory</a>
+        <a href="./rules-en.html">Rules</a>
         <a href="./equations-en.html">Equations</a>
-        <a href="./equations-solved-en.html">Solved Equations</a>
         <a href="./numerics-en.html">Numerics</a>
-        <a href="./glossary-en.html">Glossary</a>
         <a href="./references-en.html">References</a>
         <a href="./faq.html">العربية</a>
       </nav>
@@ -227,80 +324,315 @@
   </div>
 
   <div class="wrap">
+    <!-- ===================== HERO (Paper Header) ===================== -->
     <header class="hero">
       <h1>Frequently Asked Questions (FAQ)</h1>
       <p class="muted">
-        This page answers common questions about Hierarchical Calculus.
+        This page is written in a <b>paper-style</b> format. It provides a compact academic overview of the core definitions,
+        domain constraints, numerical interpretation, and limitations of Hierarchical Calculus.
         <br>
-        <b>Important:</b> in this website, every derivative is written with both
-        its <b>rank</b> and <b>degree</b>: \(\;D_r^n\).
+        <b>Important:</b> on this website every derivative is written with both rank and degree: \(\;D_r^n\).
       </p>
+
+      <div class="paper-meta">
+        <div class="pill">Author: <b>GOSSA AHMED</b></div>
+        <div class="pill">Format: IEEE-style (web)</div>
+        <div class="pill">Updated: <span id="updated"></span></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" onclick="window.print()">Print / PDF</button>
+        <button class="btn" onclick="copyCitation()">Copy IEEE Citation</button>
+        <a class="btn warn" href="#references">Jump to References</a>
+      </div>
     </header>
 
-    <section class="card">
-      <h2>The core idea in two lines</h2>
-      <p class="muted small">
-        Hierarchical Calculus organizes different “languages of change”:
-        additive (differential) → relative → logarithmic → higher levels,
-        by choosing the rank that best matches the phenomenon.
+    <!-- ===================== ABSTRACT ===================== -->
+    <section class="card" id="abstract">
+      <h2>Abstract</h2>
+      <p class="muted">
+        Hierarchical Calculus proposes a structured organization of differentiation based on two indices:
+        <b>rank</b> (type of change) and <b>degree</b> (iteration count). Classical differential calculus appears as
+        rank \(r=0\), while relative and logarithmic-like change descriptions arise naturally as higher ranks.
+        This FAQ formalizes the rank–degree notation \(D_r^n\), presents the unified operator \(D_n^1\),
+        clarifies domain constraints for higher ranks, and explains why hierarchical representations can improve
+        interpretation and numerical stability in scale-dominated phenomena.
       </p>
 
-      <div class="math">
-        \[
-          D_0^{1} f=\frac{df}{dx},
-          \qquad
-          D_1^{1} f=\frac{d\ln f}{d\ln x},
-          \qquad
-          D_2^{1} f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
-        \]
+      <div class="note">
+        <strong>Index Terms —</strong>
+        Hierarchical Calculus, rank–degree derivatives, relative derivative, logarithmic derivative, iterated logarithms,
+        numerical conditioning, scale invariance.
       </div>
     </section>
 
-    <section class="card">
-      <h2>Questions & Answers</h2>
+    <!-- ===================== TOC ===================== -->
+    <section class="card toc" id="toc">
+      <h2>Contents</h2>
+      <a href="#core">1) Core Definitions</a>
+      <a href="#unified">2) Unified Operator \(D_n^1\)</a>
+      <a href="#domains">3) Domain Constraints</a>
+      <a href="#numerics">4) Numerical Interpretation</a>
+      <a href="#examples">5) Minimal Worked Examples</a>
+      <a href="#limitations">6) Limitations and Scope</a>
+      <a href="#faq">7) Questions & Answers</a>
+      <a href="#references">8) References (IEEE)</a>
+    </section>
 
-      <ol>
-        <li>
-          <b>Is Hierarchical Calculus a replacement for classical calculus?</b><br>
-          <span class="muted small">
-            No. Classical calculus (rank \(D_0\)) is a special case.
-            Hierarchical Calculus extends it by adding higher ranks that are better suited
-            to relative or logarithmic scaling.
-          </span>
-        </li>
+    <!-- ===================== CORE DEFINITIONS ===================== -->
+    <section class="card" id="core">
+      <h2>1) Core Definitions</h2>
+      <p class="muted">
+        Hierarchical Calculus treats “change” as a family of measurement languages. The difference between classical,
+        relative, and logarithmic derivatives is not merely a formula—it is a difference in <b>what scale is considered fundamental</b>.
+      </p>
 
-        <li>
-          <b>What is the intuitive difference between \(D_0^{1}\) and \(D_1^{1}\)?</b><br>
-          <span class="muted small">
-            \(D_0^{1}\) measures additive change, while \(D_1^{1}\) measures relative change:
-          </span>
+      <h3>1.1 Rank–degree notation</h3>
+      <p class="muted">
+        Each hierarchical derivative is labeled by two indices:
+        the <b>rank</b> \(r\) and the <b>degree</b> \(n\).
+      </p>
+
+      <div class="box">
+        <div class="eq">
           <div class="math">
             \[
-              D_1^{1} f
-              =\frac{d\ln f}{d\ln x}
-              =\frac{x}{f}\frac{df}{dx}
-              =\frac{x}{f}\,D_0^{1}f.
+              D_r^{\,n}\,f(x)
             \]
+          </div>
+          <div class="num">(Eq. 1)</div>
+        </div>
+        <p class="muted small" style="margin:8px 0 0 0">
+          Rank \(r\) describes the transformation layer (absolute vs relative vs logarithmic).
+          Degree \(n\) counts repeated differentiation within the same rank.
+        </p>
+      </div>
+
+      <h3>1.2 The first three ranks (degree 1)</h3>
+      <p class="muted">
+        The most frequently used operators in applications are degree \(1\) at ranks \(0,1,2\):
+      </p>
+
+      <div class="box">
+        <div class="eq">
+          <div class="math">
+            \[
+              D_0^{1}f(x)=\frac{df}{dx}
+              \qquad
+              D_1^{1}f(x)=\frac{d\ln f}{d\ln x}
+              \qquad
+              D_2^{1}f(x)=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+            \]
+          </div>
+          <div class="num">(Eq. 2)</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Interpretation:</strong>
+        \(D_0^1\) measures absolute change (unit-dependent),
+        \(D_1^1\) measures relative change (scale-invariant),
+        and \(D_2^1\) measures a change in the relative-change mechanism (acceleration of scale behavior).
+      </div>
+    </section>
+
+    <!-- ===================== UNIFIED OPERATOR ===================== -->
+    <section class="card" id="unified">
+      <h2>2) Unified operator \(D_n^1\)</h2>
+      <p class="muted">
+        A central goal of the site is consistency across all pages. For rank \(n\) (degree 1), the adopted definition is:
+      </p>
+
+      <div class="box">
+        <div class="eq">
+          <div class="math">
+            \[
+              \boxed{
+              D_n^{1} f(x)
+              =
+              \frac{d\,\ln^{(n)}\!\big(f(x)\big)}
+                   {d\,\ln^{(n)}\!(x)}
+              }
+            \]
+          </div>
+          <div class="num">(Eq. 3)</div>
+        </div>
+        <p class="muted small" style="margin:10px 0 0 0">
+          Here \(\ln^{(n)}\) is the <b>n-times iterated logarithm</b>.
+        </p>
+      </div>
+
+      <div class="note">
+        <strong>Consistency rule:</strong>
+        This website does <em>not</em> use mixed forms (e.g., \(\frac{d(\ln f)}{d(\ln^{(n)}x)}\)).
+        The iterated transform must be applied symmetrically to both \(x\) and \(f(x)\).
+      </div>
+    </section>
+
+    <!-- ===================== DOMAIN CONSTRAINTS ===================== -->
+    <section class="card" id="domains">
+      <h2>3) Domain constraints</h2>
+      <p class="muted">
+        Because iterated logarithms appear explicitly, each rank imposes natural positivity conditions.
+        In real-valued applications, one often maps variables into a suitable positive domain
+        (e.g., normalized indices) so that the operator becomes well-defined.
+      </p>
+
+      <div class="box">
+        <div class="eq">
+          <div class="math">
+            \[
+              \text{For } D_1^1:\; x>0,\; f(x)>0.
+              \qquad
+              \text{For } D_2^1:\; x>1,\; f(x)>1.
+            \]
+          </div>
+          <div class="num">(Eq. 4)</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Practical note:</strong>
+        Many real systems naturally satisfy these conditions: prices, indices, masses, energy, risk scores,
+        concentrations, populations, positive fields, etc.
+      </div>
+    </section>
+
+    <!-- ===================== NUMERICS ===================== -->
+    <section class="card" id="numerics">
+      <h2>4) Numerical interpretation (why it can improve conditioning)</h2>
+      <p class="muted">
+        One motivation for hierarchical representations is numerical stability. When values become large,
+        direct approximation in the raw domain may amplify errors. By operating in a transformed domain
+        (e.g., \(\ln f\) or \(\ln\ln f\)), the function often becomes “closer to linear”, reducing sensitivity.
+      </p>
+
+      <div class="box">
+        <div class="eq">
+          <div class="math">
+            \[
+              D_1^1 f
+              =
+              \frac{d\ln f}{d\ln x}
+              =
+              \frac{x}{f}\frac{df}{dx}.
+            \]
+          </div>
+          <div class="num">(Eq. 5)</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Engineering reading:</strong>
+        if \(f\) changes mainly by multiplication (growth ratios),
+        then a relative derivative is often more stable than a raw slope.
+      </div>
+    </section>
+
+    <!-- ===================== EXAMPLES ===================== -->
+    <section class="card" id="examples">
+      <h2>5) Minimal worked examples</h2>
+
+      <h3>Example A: Power law</h3>
+      <p class="muted small">
+        Let \(f(x)=x^a\), \(x>0\). Then the relative derivative extracts the exponent:
+      </p>
+      <div class="box">
+        <div class="eq">
+          <div class="math">
+            \[
+              D_1^1(x^a)
+              =
+              \frac{d\ln(x^a)}{d\ln x}
+              =
+              a.
+            \]
+          </div>
+          <div class="num">(Eq. 6)</div>
+        </div>
+      </div>
+      <p class="muted small">
+        This is why \(D_1^1\) acts as an exponent extractor in scaling laws.
+      </p>
+
+      <h3>Example B: Exponential</h3>
+      <p class="muted small">
+        Let \(f(x)=e^x\), \(x>0\). Then:
+      </p>
+      <div class="box">
+        <div class="eq">
+          <div class="math">
+            \[
+              D_1^1(e^x)
+              =
+              \frac{d\ln(e^x)}{d\ln x}
+              =
+              \frac{d(x)}{d(\ln x)}
+              =
+              x.
+            \]
+          </div>
+          <div class="num">(Eq. 7)</div>
+        </div>
+      </div>
+      <p class="muted small">
+        The operator maps exponential growth into a scale-linked quantity, emphasizing the role of the independent variable scale.
+      </p>
+    </section>
+
+    <!-- ===================== LIMITATIONS ===================== -->
+    <section class="card" id="limitations">
+      <h2>6) Limitations and scope</h2>
+      <p class="muted">
+        Hierarchical calculus does not claim to replace classical or fractional calculus. Instead, it is a classification framework
+        that helps choose the most natural derivative form for the phenomenon.
+      </p>
+
+      <div class="note">
+        <strong>Key limitations:</strong>
+        <ul class="muted small" style="margin:8px 0 0 18px">
+          <li>Domain constraints must be respected for higher ranks (\(\ln^{(n)}\)).</li>
+          <li>Not all phenomena benefit from rank changes; some are inherently linear/local.</li>
+          <li>Higher ranks should be justified by evidence of scale-driven dynamics, not applied by default.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ (Paper Q/A) ===================== -->
+    <section class="card" id="faq">
+      <h2>7) Questions & Answers</h2>
+
+      <ul class="qa">
+        <li>
+          <div class="q">Q1. Is Hierarchical Calculus a replacement for classical calculus?</div>
+          <div class="a">
+            No. Classical calculus is recovered as a special case at rank \(r=0\). Hierarchical calculus extends the language
+            by adding higher ranks that encode relative or logarithmic structural change within a unified system.
           </div>
         </li>
 
         <li>
-          <b>Are hierarchical derivatives truly new derivatives?</b><br>
-          <span class="muted small">
-            Formally, many hierarchical derivatives can be interpreted
-            as classical derivatives after a suitable change of variables
-            (e.g. \(u=\ln x\), \(v=\ln(\ln x)\)).
-            The novelty lies in organizing these transformations into a unified,
-            rank–degree framework.
-          </span>
+          <div class="q">Q2. What is the intuitive difference between \(D_0^{1}\) and \(D_1^{1}\)?</div>
+          <div class="a">
+            \(D_0^1\) measures additive change (slope). \(D_1^1\) measures relative change:
+            it answers “how fast does \(f\) change compared to its magnitude as \(x\) changes compared to its magnitude?”
+            (see Eq. 5).
+          </div>
         </li>
 
         <li>
-          <b>What is the rigorous definition of higher ranks?</b><br>
-          <span class="muted small">
-            The rank-\(n\), degree-1 derivative is defined as:
-          </span>
-          <div class="math">
+          <div class="q">Q3. Are hierarchical derivatives truly new derivatives?</div>
+          <div class="a">
+            Many can be mapped to classical derivatives via change of variables (e.g., \(u=\ln x\), \(v=\ln\ln x\)).
+            The novelty lies in systematically organizing these transformations as a hierarchy (rank + degree),
+            avoiding ad-hoc derivative definitions across different contexts.
+          </div>
+        </li>
+
+        <li>
+          <div class="q">Q4. What is the rigorous definition of higher ranks?</div>
+          <div class="a">
+            The rank-\(n\), degree-1 derivative is defined by Eq. 3:
             \[
               D_n^{1} f(x)=\frac{d\,\ln^{(n)}(f(x))}{d\,\ln^{(n)}(x)}.
             \]
@@ -308,48 +640,83 @@
         </li>
 
         <li>
-          <b>Why can higher ranks improve numerical approximation?</b><br>
-          <span class="muted small">
-            Because approximation is performed in a space where the function
-            is closer to linear (e.g. approximating \(\ln f\) or \(\ln(\ln f)\)),
-            which often reduces error amplification for large or rapidly growing values.
-          </span>
-        </li>
-
-        <li>
-          <b>Are there real physical examples?</b><br>
-          <span class="muted small">
-            Yes. Many physical laws are naturally relative.
-            For instance, the adiabatic law \(PV^\gamma=\text{const}\) gives:
-          </span>
-          <div class="math">
-            \[
-              \frac{d\ln P}{d\ln V}=-\gamma
-              \quad\Longleftrightarrow\quad
-              D_1^{1}P(V)=-\gamma.
-            \]
+          <div class="q">Q5. Why can higher ranks improve numerical approximation?</div>
+          <div class="a">
+            Because approximation is performed in a transformed space where the function may be more linear (e.g., \(\ln f\)),
+            reducing sensitivity to large magnitude ranges. This can improve conditioning and reduce error amplification.
           </div>
         </li>
 
         <li>
-          <b>What are the domain constraints for higher ranks?</b><br>
-          <span class="muted small">
-            Rank \(D_1\) typically requires \(x>0\) and \(f>0\).
-            Rank \(D_2\) often requires \(x>1\) and \(f>1\)
-            so that \(\ln(\ln x)\) and \(\ln(\ln f)\) are defined.
-          </span>
+          <div class="q">Q6. Are there real physical examples?</div>
+          <div class="a">
+            Yes. Many laws are naturally expressed in logarithms or ratios. For example, the adiabatic law \(PV^\gamma=\text{const}\)
+            yields:
+            \[
+              \frac{d\ln P}{d\ln V}=-\gamma
+              \quad\Longleftrightarrow\quad
+              D_1^{1}P(V)=-\gamma,
+            \]
+            showing that the relative derivative directly returns the physical exponent.
+          </div>
         </li>
-      </ol>
+
+        <li>
+          <div class="q">Q7. What are the domain constraints for higher ranks?</div>
+          <div class="a">
+            Typically \(D_1\) requires \(x>0\) and \(f>0\), while \(D_2\) often requires \(x>1\) and \(f>1\)
+            so that \(\ln(\ln x)\) and \(\ln(\ln f)\) exist in the real domain (see Eq. 4).
+          </div>
+        </li>
+      </ul>
 
       <div class="note">
         <strong>Notation reminder:</strong>
-        If you encounter older texts using \(D_r\) without a degree,
-        it should always be read here as \(D_r^{1}\).
+        If you encounter older drafts using \(D_r\) without a degree, interpret them here as \(D_r^1\).
       </div>
     </section>
 
-    <section class="card">
-      <h2>Contact & Citation</h2>
+    <!-- ===================== REFERENCES ===================== -->
+    <section class="card refs" id="references">
+      <h2>8) References (IEEE style)</h2>
+      <p class="muted small" style="margin:0 0 10px 0">
+        The following references provide context on classical calculus, logarithmic derivatives, fractional calculus,
+        and time-scale calculus. They are listed in IEEE format for compatibility with technical writing.
+      </p>
+
+      <ol>
+        <li>
+          A. Gossa, “Hierarchical Calculus (Concept DOI),” Zenodo, 2025. doi: 10.5281/zenodo.17917302.
+        </li>
+        <li>
+          T. M. Apostol, <i>Calculus, Vol. 1</i>. Wiley, 2nd ed., 1967.
+        </li>
+        <li>
+          I. Podlubny, <i>Fractional Differential Equations</i>. Academic Press, 1999.
+        </li>
+        <li>
+          M. Bohner and A. Peterson, <i>Dynamic Equations on Time Scales</i>. Birkhäuser, 2001.
+        </li>
+        <li>
+          A. A. Kilbas, H. M. Srivastava, and J. J. Trujillo, <i>Theory and Applications of Fractional Differential Equations</i>. Elsevier, 2006.
+        </li>
+      </ol>
+
+      <div class="box">
+        <div class="eq">
+          <div class="math">
+            \[
+              \texttt{A. Gossa, “FAQ — Hierarchical Calculus (Paper-style),” Official Website, 2025. [Online]. Available: https://gossaahmed.github.io/gossa-math/faq-en.html}
+            \]
+          </div>
+          <div class="num">(Eq. 8)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="card" id="contact">
+      <h2>Contact</h2>
       <p class="muted small">
         Concept DOI:
         <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
@@ -361,12 +728,24 @@
     </section>
 
     <footer>
-      © <span id="y"></span> — GOSSA AHMED · FAQ (explicit \(D_r^n\))
+      © <span id="y"></span> — GOSSA AHMED · FAQ (IEEE paper-style) · explicit \(D_r^n\)
     </footer>
   </div>
 
+  <!-- ===================== JS ===================== -->
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("updated").textContent = new Date().toISOString().slice(0,10);
+
+    function copyCitation(){
+      const txt =
+        'A. Gossa, "FAQ — Hierarchical Calculus (Paper-style)," Official Website, 2025. [Online]. Available: https://gossaahmed.github.io/gossa-math/faq-en.html';
+      navigator.clipboard.writeText(txt).then(()=>{
+        alert("IEEE citation copied ✅");
+      }).catch(()=>{
+        alert("Copy failed. Please copy manually from the References section.");
+      });
+    }
   </script>
 </body>
 </html>
