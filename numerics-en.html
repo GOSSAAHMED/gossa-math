@@ -127,6 +127,13 @@
       min-width: 820px;
       background: rgba(0,0,0,.18);
     }
+    caption{
+      caption-side:top;
+      padding:10px 10px 8px;
+      text-align:left;
+      color: rgba(234,242,255,.78);
+      font-size:13px;
+    }
     th,td{
       padding:10px 10px;
       border-bottom:1px solid rgba(255,255,255,.10);
@@ -260,21 +267,31 @@
       <h3><span class="badge">Rank 2 (D2)</span> Log–log model (structural)</h3>
       <div class="math">
         \[
-          D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}.
+          \boxed{
+            D_{2}^{1}f=\frac{d\ln(\ln f)}{d\ln(\ln x)}
+          }
         \]
         \[
-          \ln(\ln f(x))\approx \ln(\ln f(x_0)) +
-          \left(D_{2}^{1}f\right)(x_0)\left(\ln(\ln x)-\ln(\ln x_0)\right).
+          \Delta_2=\ln(\ln x)-\ln(\ln x_0)=\ln\!\left(\frac{\ln x}{\ln x_0}\right),
+          \qquad
+          a=\left(D_{2}^{1}f\right)(x_0).
         \]
         \[
-          \Rightarrow\quad
-          f(x)\approx \exp\!\Big(\exp\!\big(\ln(\ln f(x_0)) + (D_{2}^{1}f)(x_0)\big(\ln(\ln x)-\ln(\ln x_0)\big)\big)\Big).
+          \ln(\ln f(x))\approx \ln(\ln f(x_0)) + a\,\Delta_2
+          \quad\Rightarrow\quad
+          f(x)\approx \exp\!\Big(\exp(\ln(\ln f(x_0)) + a\,\Delta_2)\Big).
         \]
       </div>
 
       <div class="note">
         <strong>Domain note:</strong>
         Rank 2 requires \(x>1\) (so \(\ln x>0\)) and typically \(f(x)>1\) (so \(\ln f>0\)).
+      </div>
+
+      <div class="note">
+        <strong>Error metric:</strong>
+        We report relative error:
+        \(\;\varepsilon = \left|\dfrac{\widehat{f}(x)-f(x)}{f(x)}\right|\).
       </div>
     </section>
 
@@ -300,6 +317,7 @@
 
       <div class="tablewrap" aria-label="Experiment 1 table">
         <table>
+          <caption>Table — Experiment 1 (multi-scale): D0 vs D1 vs D2</caption>
           <thead>
             <tr>
               <th>x</th>
@@ -350,6 +368,7 @@
 
       <div class="tablewrap" aria-label="Experiment 2 table">
         <table>
+          <caption>Table — Experiment 2 (power law): D0 vs D1</caption>
           <thead>
             <tr>
               <th>x</th>
