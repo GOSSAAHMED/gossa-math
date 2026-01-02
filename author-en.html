@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Author — Ahmed Gossa | Hierarchical Calculus</title>
+  <meta name="description" content="Official author page: Ahmed Gossa. Academic profile, archived works (2011 Proportional Calculus, 2012 Logarithmic Calculus), timeline, and IEEE citations." />
+  <meta name="author" content="Ahmed Gossa" />
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/author-en.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/author-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/author-ar.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/author-en.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Author — Ahmed Gossa | Hierarchical Calculus" />
+  <meta property="og:description" content="Academic profile + archived works + timeline + IEEE citation." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/author-en.html" />
+  <meta name="twitter:card" content="summary" />
+
+  <style>
+    :root{
+      --bg0:#0b1220;
+      --bg1:#0f1b2e;
+      --text:#eaf2ff;
+      --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3;
+      --accent2:#7aa7ff;
+      --warn:#ffcc66;
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+      line-height:1.9;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:980px; margin:0 auto; padding:26px 16px 70px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    }
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      white-space:nowrap;
+    }
+    nav a:hover{background: rgba(255,255,255,.07)}
+
+    header.hero{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    header.hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px;
+    }
+    .note{
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-top:12px;
+    }
+    .note strong{color:var(--warn)}
+
+    .profile{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .photo{
+      width:110px; height:110px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(122,167,255,.65);
+      box-shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    .profile .info{
+      flex:1;
+      min-width:220px;
+    }
+
+    .timeline{
+      margin-top:8px;
+      padding-left:14px;
+      border-left:3px solid rgba(57,211,195,.35);
+    }
+    .titem{
+      margin:14px 0;
+      padding:12px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius:14px;
+    }
+    .titem strong{color:var(--accent)}
+    .titem .meta{color:var(--muted); font-size:13px}
+
+    .cite{
+      margin-top: 10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      border-radius: 12px;
+      padding: 12px 12px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      white-space: pre-wrap;
+      direction:ltr;
+      text-align:left;
+      overflow:auto;
+    }
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+
+  <!-- JSON-LD (Person) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Ahmed Gossa",
+    "alternateName":"GOSSA AHMED",
+    "email":"mailto:gossaahmed@yahoo.fr",
+    "url":"https://gossaahmed.github.io/gossa-math/",
+    "sameAs":[
+      "https://doi.org/10.5281/zenodo.17917302",
+      "https://github.com/GOSSAAHMED/gossa-math"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <strong>Hierarchical Calculus</strong>
+          <span>Author Page</span>
+        </div>
+      </div>
+
+      <nav aria-label="Navigation">
+        <a href="./index-en.html">Home</a>
+        <a href="./theory-en.html">Theory</a>
+        <a href="./equations-en.html">Equations</a>
+        <a href="./rules-en.html">Rules</a>
+        <a href="./references-en.html">References</a>
+        <a href="./author-ar.html">العربية</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <h1>Author: Ahmed Gossa</h1>
+      <p class="muted">
+        This page documents the author identity and the early works that preceded the formalization of
+        <b>Hierarchical Calculus</b>. It also provides direct links to archived PDF works and ready-to-copy IEEE citations.
+      </p>
+
+      <div class="profile">
+        <img class="photo" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
+        <div class="info">
+          <p style="margin:0">
+            <b>Name:</b> Ahmed Gossa (GOSSA AHMED)<br>
+            <b>Email:</b> <a href="mailto:gossaahmed@yahoo.fr">gossaahmed@yahoo.fr</a><br>
+            <b>Official Website:</b> <a href="https://gossaahmed.github.io/gossa-math/" target="_blank" rel="noopener">Hierarchical Calculus Website</a><br>
+            <b>Concept DOI:</b> <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+          </p>
+
+          <div class="note">
+            <strong>Research note:</strong>
+            The 2011 and 2012 documents represent the conceptual bridge from
+            <b>differential change</b> → <b>proportional change</b> → <b>logarithmic change</b>,
+            which later becomes an explicit rank–degree structure in Hierarchical Calculus.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>1) Short Academic Biography</h2>
+      <p class="muted small">
+        The author’s work focuses on describing “multiple languages of change” in calculus.
+        While classical differentiation is powerful, many phenomena are more naturally described
+        through proportional variation (relative scaling) or logarithmic hierarchies.
+      </p>
+      <p class="muted small">
+        These ideas were presented early in two independent manuscripts:
+        <b>Proportional Calculus (2011)</b> and <b>Logarithmic Calculus (2012)</b>,
+        which later converge into the unified framework now named <b>Hierarchical Calculus</b>.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>2) Timeline of Key Works</h2>
+
+      <div class="timeline">
+        <div class="titem">
+          <strong>2011 — Proportional Calculus</strong>
+          <div class="meta">Independent manuscript | Nov. 12, 2011 | Author: GOSSA AHMED</div>
+          <p class="muted small" style="margin:8px 0 0 0">
+            Introduces proportional (relative) differentiation, proportional integration,
+            and approximation ideas based on structural invariance.
+          </p>
+          <p class="muted small" style="margin:8px 0 0 0">
+            <a href="PROPORTIONAL_CALCULUS.pdf">Open PDF</a>
+          </p>
+        </div>
+
+        <div class="titem">
+          <strong>2012 — Logarithmic Calculus</strong>
+          <div class="meta">Independent manuscript | May 21, 2012 | Author: GOSSA AHMED</div>
+          <p class="muted small" style="margin:8px 0 0 0">
+            Extends the proportional approach by defining logarithmic differentiation and logarithmic integration,
+            with applications to hierarchical growth mechanisms.
+          </p>
+          <p class="muted small" style="margin:8px 0 0 0">
+            <a href="LOGARITMIC_CALCULUS.pdf">Open PDF</a>
+          </p>
+        </div>
+
+        <div class="titem">
+          <strong>2025 — Hierarchical Calculus (Official Website + DOI)</strong>
+          <div class="meta">Official reference | Zenodo Concept DOI</div>
+          <p class="muted small" style="margin:8px 0 0 0">
+            Unifies differential, proportional, logarithmic, and higher layers into a structured rank–degree system \(D_r^n\).
+          </p>
+          <p class="muted small" style="margin:8px 0 0 0">
+            <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">Open DOI</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Scientific connection:</strong>
+        These works illustrate an explicit shift from unit-dependent change to scale-aware and multi-layer change,
+        which is the essential motivation behind Hierarchical Calculus.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) IEEE Citation + BibTeX</h2>
+
+      <h3>3.1 IEEE — Concept DOI (General Reference)</h3>
+      <div class="cite">[1] A. Gossa, “Hierarchical Calculus — Official Website,” Zenodo, 2025. doi: 10.5281/zenodo.17917302.</div>
+
+      <h3>3.2 IEEE — 2011 Proportional Calculus</h3>
+      <div class="cite">[2] GOSSA AHMED, “Proportional Calculus,” Nov. 12, 2011. (PDF available in the official repository).</div>
+
+      <h3>3.3 IEEE — 2012 Logarithmic Calculus</h3>
+      <div class="cite">[3] GOSSA AHMED, “Logarithmic Calculus,” May 21, 2012. (PDF available in the official repository).</div>
+
+      <h3>3.4 BibTeX</h3>
+      <div class="cite">@misc{gossa_proportional_2011,
+  author = {Gossa, Ahmed},
+  title  = {Proportional Calculus},
+  year   = {2011},
+  note   = {PDF available in the official repository},
+  url    = {https://gossaahmed.github.io/gossa-math/PROPORTIONAL_CALCULUS.pdf}
+}
+
+@misc{gossa_logarithmic_2012,
+  author = {Gossa, Ahmed},
+  title  = {Logarithmic Calculus},
+  year   = {2012},
+  note   = {PDF available in the official repository},
+  url    = {https://gossaahmed.github.io/gossa-math/LOGARITMIC_CALCULUS.pdf}
+}
+
+@software{gossa_hierarchical_calculus_2025,
+  author = {Gossa, Ahmed},
+  title  = {Hierarchical Calculus — Official Website},
+  year   = {2025},
+  doi    = {10.5281/zenodo.17917302},
+  url    = {https://gossaahmed.github.io/gossa-math/index-en.html}
+}</div>
+
+      <div class="note">
+        <strong>Tip:</strong>
+        If you want maximum academic strength, we can archive the PDFs on Zenodo with individual DOIs, then replace [2] and [3] with DOI citations.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) Contact</h2>
+      <p class="muted small" style="margin:0">
+        Email: <a href="mailto:gossaahmed@yahoo.fr">gossaahmed@yahoo.fr</a><br>
+        GitHub: <a href="https://github.com/GOSSAAHMED/gossa-math" target="_blank" rel="noopener">GOSSAAHMED/gossa-math</a><br>
+        DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </p>
+    </section>
+
+    <footer>
+      © <span id="y"></span> — Ahmed Gossa · Author Page (English)
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
