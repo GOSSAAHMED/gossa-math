@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>الحساب الهرمي في الهندسة الإقليدية | 7 أمثلة واقعية (D₀¹ vs D₁¹)</title>
-  <meta name="description" content="صفحة موسعة لتطبيق الحساب الهرمي في الهندسة الإقليدية: شرح مفاهيمي + 7 أمثلة رقمية واقعية + مقارنة سطرًا بسطر بين D0^1 و D1^1 في القياس والتشابه والمساحة والحجم والانحناء وجودة الشبكات." />
+  <title>الحساب الهرمي في الهندسة الإقليدية | 7 أمثلة واقعية (مقارنة D₀¹ و D₁¹)</title>
+  <meta name="description" content="نسخة Paper عربية أكاديمية: تطبيق الحساب الهرمي في الهندسة الإقليدية عبر 7 أمثلة عددية واقعية مع مقارنة D0^1 و D1^1 سطرًا بسطر. التشابه، التحجيم، الأسس الهندسية، الانحناء، الشبكات العددية، وثوابت القياس." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- Canonical + hreflang (English primary) -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry-en.html" />
-  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry-en.html" />
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry.html" />
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry-en.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/euclidean-geometry-en.html" />
 
   <style>
@@ -22,10 +22,13 @@
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --border: rgba(255,255,255,.10);
+      --card: rgba(255,255,255,.05);
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family:var(--sans); color:var(--text); line-height:2.0;
+      margin:0; font-family:var(--sans); color:var(--text); line-height:2.05;
       background:
         radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
@@ -34,8 +37,9 @@
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
 
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -43,7 +47,7 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
-      max-width:1050px; margin:0 auto; padding:10px 16px;
+      max-width:1100px; margin:0 auto; padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
@@ -51,7 +55,10 @@
       width:34px; height:34px; border-radius:10px;
       background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
       box-shadow:0 12px 22px rgba(0,0,0,.28);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
     }
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
     .brand .title span{font-size:12px; color:var(--muted)}
@@ -64,6 +71,7 @@
     }
     nav a:hover{background:rgba(255,255,255,.07)}
 
+    /* Hero */
     header.hero{
       margin-top:16px; padding:20px 18px;
       border:1px solid rgba(255,255,255,.10);
@@ -87,10 +95,11 @@
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    /* Cards */
     .card{
       margin-top:14px; padding:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      background: var(--card);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
@@ -101,6 +110,8 @@
       border-radius:12px;
       overflow:auto;
       direction:ltr; text-align:left;
+      font-family:var(--mono);
+      font-size:13px;
     }
     .note{
       margin-top:12px; padding:12px;
@@ -109,6 +120,40 @@
       border-radius:14px;
     }
     .note strong{color:var(--warn)}
+
+    .paper-meta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px; color: var(--muted);
+      white-space:nowrap;
+    }
+
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-size:13px;
+      text-decoration:none;
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.14);
+    }
+
+    .toc a{display:inline-block; margin:4px 0}
 
     table{
       width:100%;
@@ -136,6 +181,17 @@
     }
     tbody tr:last-child td{border-bottom:none}
 
+    .discussion{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background: rgba(57,211,195,.08);
+      border-radius:14px;
+      border-right:4px solid var(--accent);
+      color:rgba(234,242,255,.92);
+      font-size:13px;
+    }
+
     footer{
       margin-top:18px; padding-top:18px;
       border-top:1px solid rgba(255,255,255,.10);
@@ -152,32 +208,19 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+  <!-- Schema -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": "الحساب الهرمي في الهندسة الإقليدية | 7 أمثلة واقعية (D0^1 vs D1^1)",
-  "alternativeHeadline": "القياس والتشابه والمساحة والحجم والانحناء وجودة الشبكات بالحساب الهرمي",
-  "author": {
-    "@type": "Person",
-    "name": "Ahmed Gossa",
-    "url": "https://gossaahmed.github.io/gossa-math/"
-  },
-  "about": [
-    "الحساب الهرمي",
-    "الهندسة الإقليدية",
-    "التشابه",
-    "قوانين القياس",
-    "المشتق النسبي D1",
-    "المشتق التقليدي D0"
-  ],
-  "abstract": "صفحة تطبيقية تبيّن كيف يلتقط المشتق النسبي D1^1 قوانين القياس والتشابه في الهندسة الإقليدية، مع سبعة أمثلة رقمية ومقارنة مباشرة مع D0^1.",
+  "headline": "الحساب الهرمي في الهندسة الإقليدية | 7 أمثلة واقعية (مقارنة D0^1 و D1^1)",
+  "alternativeHeadline": "التحجيم، التشابه، أسس المساحة والحجم، الانحناء، الشبكات العددية، وثوابت القياس باستخدام المشتقات الهرمية",
+  "author": {"@type":"Person","name":"Ahmed Gossa","url":"https://gossaahmed.github.io/gossa-math/"},
+  "about": ["Hierarchical Calculus","Euclidean Geometry","Similarity","Scaling Laws","Relative Derivative D1","Classical Derivative D0"],
+  "abstract": "صفحة تطبيقية بنمط ورقة بحثية تشرح كيف تكشف المشتقة النسبية D1^1 البنية الثابتة للتحجيم والتشابه في الهندسة الإقليدية، عبر سبعة أمثلة عددية مع مقارنة مباشرة بين D0^1 و D1^1 وإضافة تعليل علمي ونقاش لكل مثال.",
   "inLanguage": "ar",
   "url": "https://gossaahmed.github.io/gossa-math/euclidean-geometry.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Hierarchical Calculus"
-  }
+  "publisher": {"@type":"Organization","name":"Hierarchical Calculus"}
 }
 </script>
 </head>
@@ -186,10 +229,13 @@
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <div class="logo" aria-hidden="true">
+          <!-- ضع logo.png في نفس المجلد ثم فعّل السطر -->
+          <!-- <img src="./logo.png" alt="Logo"> -->
+        </div>
         <div class="title">
-          <strong>الهندسة الإقليدية</strong>
-          <span>\(D_0^1\) vs \(D_1^1\) · 7 أمثلة · \(D_r^n\)</span>
+          <strong>الهندسة الإقليدية — Paper</strong>
+          <span>7 أمثلة · \(D_0^1\) مقابل \(D_1^1\) · ثوابت التحجيم</span>
         </div>
       </div>
 
@@ -200,100 +246,140 @@
         <a href="./equations.html">المعادلات</a>
         <a href="./integrals.html">التكاملات</a>
         <a href="./euclidean-geometry-en.html">English</a>
+        <a href="#refs">References</a>
       </nav>
     </div>
   </div>
 
   <div class="wrap">
-    <header class="hero">
+    <header class="hero" id="top">
       <h1>الحساب الهرمي في الهندسة الإقليدية</h1>
       <p class="muted">
-        الهندسة الإقليدية بطبيعتها <b>قياسية/نسبية</b>: الأطوال والمساحات والحجوم والتشابه والانحناء وجودة الشبكات
-        تتحدد غالبًا بواسطة <b>النِّسب وقوانين القياس</b> لا بواسطة الفروق المطلقة.
-        لذلك يكون الحساب الهرمي أداة طبيعية لوصف هذه الظواهر.
-        <br>
-        هذه الصفحة تقدّم:
-        <b>(1)</b> إطارًا مفاهيميًا للتطبيق،
-        <b>(2)</b> <b>7 أمثلة رقمية واقعية</b>،
-        <b>(3)</b> <b>مقارنة سطرًا بسطر</b> بين \(D_0^1\) و\(D_1^1\).
+        الهندسة الإقليدية قائمة جوهريًا على <b>التحجيم</b> و<b>التشابه</b> و<b>ثوابت البنية</b>.
+        لذلك فإن التغير المطلق \(D_0^1\) قد لا يكشف المعنى العميق للهندسة، بينما المشتقة النسبية \(D_1^1\)
+        تُعيد صياغة الأسئلة الهندسية بوصفها أسسًا (exponents) وثوابت تحجيم مستقلة عن الوحدات.
       </p>
+
+      <div class="paper-meta">
+        <span class="pill">المؤلف: <b>GOSSA AHMED</b></span>
+        <span class="pill">النمط: ورقة بحثية (Paper-style)</span>
+        <span class="pill">Keywords: Similarity · Scaling · Curvature · Mesh</span>
+        <span class="pill">2025</span>
+      </div>
+
+      <div class="btnrow">
+        <a class="btn primary" href="#abstract">الملخص</a>
+        <a class="btn" href="#intro">المقدمة</a>
+        <a class="btn" href="#method">المنهجية</a>
+        <a class="btn" href="#examples">الأمثلة</a>
+        <a class="btn" href="#guide">دليل القرار</a>
+        <a class="btn" href="#refs">المراجع</a>
+      </div>
 
       <div class="note">
         <strong>قاعدة الترميز:</strong>
-        في هذا الموقع كل مشتق يُكتب على الصورة \(D_r^n\) (رتبة \(r\) ودرجة \(n\)).
-        المشتق التفاضلي التقليدي دائمًا هو \(D_0^1\)، والمشتق النسبي الأساسي هو \(D_1^1\).
+        في هذا الموقع نكتب المشتقات بشكل صريح: \(D_r^n\).  
+        المشتق الكلاسيكي هو \(D_0^1\). المشتق النسبي هو \(D_1^1\).
       </div>
-
-      <p class="muted small" style="margin:10px 0 0 0">
-        فكرة عملية: عندما تكون المسألة هندسيًا محكومة بـ<b>التشابه/القياس</b>، فإن \(D_1^1\) غالبًا يعطي توصيفًا ثابتًا.
-      </p>
     </header>
 
-    <section class="card">
-      <h2>أ) لماذا الهندسة الإقليدية “نسبية” بطبيعتها؟</h2>
-      <p class="muted small" style="margin:0">
-        الكثير من خصائص الأشكال لا تتغير عند التحجيم بعامل \(s\): المثلثات المتشابهة تبقى متشابهة،
-        والنِّسب ثابتة، والمساحة تتحول مثل \(s^2\)، والحجم مثل \(s^3\).
-        وهذه بالضبط <b>قوانين قوة</b> (Power Laws).
+    <!-- Abstract -->
+    <section class="card" id="abstract">
+      <h2>الملخص (Abstract)</h2>
+      <p class="muted">
+        تهدف هذه الورقة التطبيقية إلى بيان أن كثيرًا من مشكلات الهندسة الإقليدية لا تُفهم بصورة مثالية عبر مشتقات مطلقة،
+        لأنها تتعلق بخصائص ثابتة تحت التحجيم مثل التشابه، الأس، والانحناء، وجودة الشبكات العددية.
+        لذلك نقدم إطارًا عمليًا يربط بين \(D_0^1\) و\(D_1^1\) عبر سبعة أمثلة عددية.
+        تُظهر النتائج أن \(D_1^1\) يعمل كـ “مستخرج للثوابت الهندسية” لأن الأسس (مثل 1 و2 و3 و-1)
+        تظهر مباشرة كقيم ثابتة لا تعتمد على الوحدة أو الحجم الحالي.
       </p>
-
-      <div class="math">
-        \[
-          L \propto s^1,\qquad A \propto s^2,\qquad V \propto s^3.
-        \]
-      </div>
-
-      <p class="muted small" style="margin:10px 0 0 0">
-        المشتق التقليدي \(D_0^1\) يقيس تغيرًا مطلقًا (يعتمد على الوحدة والمقياس)،
-        بينما \(D_1^1\) يقيس تغيرًا نسبيًا بنيويًا (مناسب للتشابه وقوانين القياس).
+      <p class="muted small">
+        <b>Keywords:</b> التحجيم؛ التشابه؛ الأسس الهندسية؛ الانحناء؛ الهندسة العددية؛ المشتقات الهرمية؛ invariants.
       </p>
     </section>
 
-    <section class="card">
-      <h2>ب) صيغ تشغيلية دنيا نستعملها هنا</h2>
+    <!-- Intro -->
+    <section class="card" id="intro">
+      <h2>1) المقدمة</h2>
+      <p class="muted">
+        كثير من قضايا الهندسة الإقليدية ليست “كم تغيّر الطول؟” بل “كيف يتغيّر تحت التحجيم؟”.
+        فعندما تتشابه الأشكال، تصبح النسب ثابتة، والمساحات تتبع أسًا مقداره 2، والحجوم تتبع أسًا مقداره 3.
+        هذه ليست تفاصيل حسابية، بل هي بنية عميقة في الهندسة.
+      </p>
+      <p class="muted">
+        من هنا تظهر أهمية \(D_1^1\): إذ يعيد صياغة التغير بوصفه تغيرًا نسبيًا بالنسبة لتحجيم المتغير،
+        وهو ما يجعل النتائج مستقلة عن وحدة القياس ويجعل المقارنة بين الأشكال أكثر علمية.
+      </p>
+    </section>
+
+    <!-- Method -->
+    <section class="card" id="method">
+      <h2>2) المنهجية الرياضية</h2>
+      <p class="muted">
+        نستخدم في هذه الصفحة معامل تحجيم \(s>0\) ونقارن:
+      </p>
+      <div class="math">
+        \[
+          D_0^1 y(s)=\frac{dy}{ds},
+          \qquad
+          D_1^1 y(s)=\frac{d\ln y}{d\ln s}.
+        \]
+      </div>
+
+      <div class="note">
+        <strong>قاعدة محورية:</strong>
+        إذا كان \(y(s)=C s^a\) حيث \(C>0\)، فإن:
+        \[
+          D_1^1 y(s)=a.
+        \]
+        أي أن \(D_1^1\) يستخرج الأس مباشرة بوصفه ثابتًا هندسيًا.
+      </div>
 
       <table>
         <thead>
           <tr>
             <th>المؤثر</th>
             <th>المعنى</th>
-            <th>السلوك تحت القياس</th>
+            <th>السلوك تحت التحجيم</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>\(D_0^1 y(s)=\dfrac{dy}{ds}\)</td>
-            <td>تغيّر مطلق لكل وحدة من \(s\)</td>
-            <td>يتغير مع الوحدات والحجم الحالي</td>
+            <td>\(D_0^1\)</td>
+            <td>تغير مطلق لكل وحدة</td>
+            <td>يعتمد على الوحدة والحجم</td>
           </tr>
           <tr>
-            <td>\(D_1^1 y(s)=\dfrac{d\ln y}{d\ln s}\)</td>
-            <td>تغيّر نسبي بنيوي (أسّ القياس)</td>
-            <td>ثابت لقوانين القوة: \(y\sim s^a \Rightarrow D_1^1y=a\)</td>
+            <td>\(D_1^1\)</td>
+            <td>تغير نسبي/بنيوي</td>
+            <td>ثابت في قوانين القوة (Power laws)</td>
           </tr>
         </tbody>
       </table>
+    </section>
 
+    <!-- Examples -->
+    <section class="card" id="examples">
+      <h2>3) الأمثلة التطبيقية (1–7)</h2>
       <div class="note">
-        <strong>قاعدة مركزية:</strong>
-        إذا \(y(s)=C\,s^a\) مع \(C>0\)، فإن \(D_1^1 y(s)=a\) (ثابت).
+        <strong>طريقة القراءة:</strong>
+        في كل مثال نقارن \(D_0^1\) (حساسية مطلقة) و\(D_1^1\) (ثابت تحجيم).
+        ثم نضيف معادلة أخرى + تفسير + فقرة نقاش.
       </div>
     </section>
 
-    <!-- مثال 1 -->
+    <!-- Example 1 -->
     <section class="card">
-      <h2>مثال 1) قياس طول تحت التحجيم (رسم هندسي)</h2>
-      <p class="muted small" style="margin:0">
-        رسم CAD يُحجّم بعامل \(s\). طول ضلع يُعطى بـ \(L(s)=10s\) (بالسنتيمتر).
-        قارن \(D_0^1\) و \(D_1^1\) عند \(s=2\).
+      <h3>المثال 1 — تحجيم طول في رسم هندسي (CAD)</h3>
+      <p class="muted">
+        طول في مخطط هندسي يُعاد تحجيمه بعامل \(s\). إذا كان \(L(s)=10s\) (سم)،
+        فالقيمة عند \(s=2\) تصبح 20 سم. الهدف ليس القيمة وحدها بل “بنية التحجيم”.
       </p>
-
       <div class="math">
         \[
-          L(s)=10s,\quad L(2)=20.
+          L(s)=10s,\quad L(2)=20
         \]
       </div>
-
       <table>
         <thead>
           <tr>
@@ -305,231 +391,285 @@
         <tbody>
           <tr>
             <td>الحساب</td>
-            <td>\(D_0^1 L = \dfrac{d}{ds}(10s)=10\)</td>
-            <td>\(D_1^1 L=\dfrac{d\ln(10s)}{d\ln s}=1\)</td>
-          </tr>
-          <tr>
-            <td>التفسير</td>
-            <td>“+10 سم لكل +1 في \(s\)”</td>
-            <td>“الطول يَقيَس مثل \(s^1\)” (بعد/أسّ = 1)</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- مثال 2 -->
-    <section class="card">
-      <h2>مثال 2) قياس المساحة (مخطط أرضية/تبليط)</h2>
-      <p class="muted small" style="margin:0">
-        مربع طول ضلعه \(L(s)=3s\) متر، إذًا \(A(s)=L^2=9s^2\).
-        احسب عند \(s=2\).
-      </p>
-
-      <div class="math">
-        \[
-          A(s)=9s^2,\quad A(2)=36.
-        \]
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>الخطوة</th>
-            <th>\(D_0^1\)</th>
-            <th>\(D_1^1\)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>الحساب</td>
-            <td>\(D_0^1 A = \dfrac{d}{ds}(9s^2)=18s \Rightarrow D_0^1A(2)=36\)</td>
-            <td>\(D_1^1 A=\dfrac{d\ln(9s^2)}{d\ln s}=2\)</td>
-          </tr>
-          <tr>
-            <td>التفسير</td>
-            <td>الحساسية المطلقة تتغير مع \(s\)</td>
-            <td>المساحة تَقيَس مثل \(s^2\) (بعد/أسّ = 2)</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- مثال 3 -->
-    <section class="card">
-      <h2>مثال 3) قياس الحجم (نموذج ثلاثي الأبعاد/طباعة)</h2>
-      <p class="muted small" style="margin:0">
-        جسم ثلاثي الأبعاد يُحجّم بعامل \(s\) وحجمه \(V(s)=2s^3\) (سم\(^3\)).
-        احسب عند \(s=1.5\).
-      </p>
-
-      <div class="math">
-        \[
-          V(s)=2s^3,\quad V(1.5)=2(1.5)^3=6.75.
-        \]
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>الخطوة</th>
-            <th>\(D_0^1\)</th>
-            <th>\(D_1^1\)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>الحساب</td>
-            <td>\(D_0^1 V=\dfrac{d}{ds}(2s^3)=6s^2 \Rightarrow D_0^1V(1.5)=13.5\)</td>
-            <td>\(D_1^1 V=\dfrac{d\ln(2s^3)}{d\ln s}=3\)</td>
-          </tr>
-          <tr>
-            <td>التفسير</td>
-            <td>يعتمد على المقياس الحالي \(s\)</td>
-            <td>الحجم يَقيَس مثل \(s^3\) (بعد/أسّ = 3)</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="note">
-        <strong>ملاحظة:</strong>
-        العدد “3” هنا ثابت بنيوي يعبّر عن البعد الإقليدي للحجم.
-      </div>
-    </section>
-
-    <!-- مثال 4 -->
-    <section class="card">
-      <h2>مثال 4) مثلثات متشابهة: ثبات النِّسب</h2>
-      <p class="muted small" style="margin:0">
-        مثلثان متشابهان بعامل قياس \(s\). ضلع مطابق \(a(s)=5s\) (سم).
-        النسبة \(a(s)/s=5\) ثابتة. ماذا “يرى” كل مشتق؟
-      </p>
-
-      <div class="math">
-        \[
-          a(s)=5s,\quad \frac{a(s)}{s}=5.
-        \]
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>سطر بسطر</th>
-            <th>\(D_0^1\)</th>
-            <th>\(D_1^1\)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>مشتق النسبة</td>
-            <td>\(D_0^1\!\left(\frac{a}{s}\right)=D_0^1(5)=0\) (لكن بعد بناء النسبة يدويًا)</td>
-            <td>\(D_1^1 a = 1\) يحدد فئة التشابه مباشرة</td>
-          </tr>
-          <tr>
-            <td>قراءة هندسية</td>
-            <td>تحتاج تطبيعًا صريحًا</td>
-            <td>التطبيع مدمج في \(D_1^1\)</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- مثال 5 -->
-    <section class="card">
-      <h2>مثال 5) الانحناء تحت القياس: دائرة</h2>
-      <p class="muted small" style="margin:0">
-        دائرة تُحجّم بعامل \(s\). نصف القطر \(R(s)=R_0 s\).
-        الانحناء \(k(s)=1/R(s)=\frac{1}{R_0}s^{-1}\).
-        خذ \(R_0=2\) واحسب عند \(s=3\).
-      </p>
-
-      <div class="math">
-        \[
-          R(s)=2s,\quad k(s)=\frac{1}{2}s^{-1}.
-        \]
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>الخطوة</th>
-            <th>\(D_0^1\)</th>
-            <th>\(D_1^1\)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>قيمة الانحناء</td>
-            <td>\(k(3)=\frac{1}{6}\approx0.1667\)</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>المشتق</td>
-            <td>\(D_0^1 k=-\frac{1}{2}s^{-2}\Rightarrow D_0^1k(3)=-\frac{1}{18}\)</td>
-            <td>\(D_1^1 k=\dfrac{d\ln(\frac{1}{2}s^{-1})}{d\ln s}=-1\)</td>
+            <td>\(D_0^1L=10\)</td>
+            <td>\(D_1^1L=1\)</td>
           </tr>
           <tr>
             <td>المعنى</td>
-            <td>يعتمد على \(s\)</td>
-            <td>الانحناء يَقيَس مثل \(s^{-1}\) (أسّ ثابت)</td>
+            <td>زيادة مطلقة</td>
+            <td>الطول يتبع \(s^1\)</td>
           </tr>
         </tbody>
       </table>
-    </section>
 
-    <!-- مثال 6 -->
-    <section class="card">
-      <h2>مثال 6) جودة الشبكات (FEM): أسّ التقارب</h2>
-      <p class="muted small" style="margin:0">
-        في الهندسة العددية، إذا كان خطأ التقريب \(E(h)=C h^p\)، فإن \(p\) هو رتبة التقارب (معلومة هندسية مهمة).
-        خذ \(E(h)=4h^2\) واحسب عند \(h=0.2\).
-      </p>
-
+      <p class="muted"><b>معادلة إضافية (التشابه):</b></p>
       <div class="math">
         \[
-          E(h)=4h^2,\quad E(0.2)=4(0.04)=0.16.
+          \frac{L(s_2)}{L(s_1)}=\frac{s_2}{s_1}.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        \(D_1^1=1\) هنا ليس رقمًا حسابيًا، بل هو “بُعد” الطول داخل التشابه.
+        لذلك فهو أكثر ثباتًا من ميل مطلق يعتمد على الوحدة.
+      </div>
+    </section>
+
+    <!-- Example 2 -->
+    <section class="card">
+      <h3>المثال 2 — تحجيم المساحة في مخطط أرضية</h3>
+      <p class="muted">
+        مربع طول ضلعه \(L(s)=3s\) متر، وبالتالي المساحة \(A(s)=9s^2\).
+        مقارنة \(D_0^1\) و\(D_1^1\) تكشف الفرق بين الحساسية المطلقة وثابت التحجيم.
+      </p>
+      <div class="math">
+        \[
+          A(s)=9s^2,\quad A(2)=36
         \]
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>سطر بسطر</th>
+            <th>الخطوة</th>
             <th>\(D_0^1\)</th>
             <th>\(D_1^1\)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>المشتق</td>
-            <td>\(D_0^1E=8h \Rightarrow D_0^1E(0.2)=1.6\)</td>
-            <td>\(D_1^1E=\dfrac{d\ln(4h^2)}{d\ln h}=2\)</td>
+            <td>الحساب</td>
+            <td>\(D_0^1A=18s \Rightarrow D_0^1A(2)=36\)</td>
+            <td>\(D_1^1A=2\)</td>
           </tr>
           <tr>
-            <td>المعنى الهندسي</td>
-            <td>حساسية مطلقة تتغير مع \(h\)</td>
-            <td>رتبة التقارب \(p=2\) (ثابت بنيوي)</td>
+            <td>المعنى</td>
+            <td>الحساسية المطلقة تتضخم مع \(s\)</td>
+            <td>المساحة تتبع \(s^2\)</td>
           </tr>
         </tbody>
       </table>
 
-      <div class="note">
-        <strong>واقعي جدًا:</strong>
-        المهندس يقيم الخوارزمية حسب الأسّ/الرتبة \(p\)، لا حسب الميل المطلق.
+      <p class="muted"><b>معادلة إضافية (قانون المساحة):</b></p>
+      <div class="math">
+        \[
+          A \propto L^2.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        عندما نقارن مساحات أشكال بأحجام مختلفة، فإن \(D_1^1=2\) يوفر معيارًا هندسيًا ثابتًا،
+        بينما الميل المطلق يتغير بتغير المقياس ولا يصلح للمقارنة.
       </div>
     </section>
 
-    <!-- مثال 7 -->
+    <!-- Example 3 -->
     <section class="card">
-      <h2>مثال 7) محيط مقابل مساحة: توصيفات ثابتة تحت القياس</h2>
-      <p class="muted small" style="margin:0">
-        كثير من توصيفات الشكل تعتمد على \(P\) و\(A\).
-        تحت القياس: \(P\sim s^1\) و\(A\sim s^2\).
-        خذ \(P(s)=12s\) و\(A(s)=9s^2\). احسب عند \(s=2\).
+      <h3>المثال 3 — تحجيم الحجم في نموذج ثلاثي الأبعاد</h3>
+      <p class="muted">
+        جسم ثلاثي الأبعاد له حجم \(V(s)=2s^3\). عند \(s=1.5\) نحصل على \(V=6.75\).
+        ما يهم هندسيًا هو أن الحجم يتبع \(s^3\) (بنية ثلاثية).
       </p>
-
       <div class="math">
         \[
-          P(2)=24,\quad A(2)=36.
+          V(s)=2s^3,\quad V(1.5)=6.75
+        \]
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>الخطوة</th>
+            <th>\(D_0^1\)</th>
+            <th>\(D_1^1\)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>الحساب</td>
+            <td>\(D_0^1V=6s^2 \Rightarrow D_0^1V(1.5)=13.5\)</td>
+            <td>\(D_1^1V=3\)</td>
+          </tr>
+          <tr>
+            <td>المعنى</td>
+            <td>الحساسية تعتمد على الحجم الحالي</td>
+            <td>ثابت تحجيم ثلاثي</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="muted"><b>معادلة إضافية (التشابه الحجمي):</b></p>
+      <div class="math">
+        \[
+          \frac{V_2}{V_1}=\left(\frac{s_2}{s_1}\right)^3.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        القيمة 3 هي “البعد الحجمي” الذي يبقى ثابتًا عبر كل النماذج المتماثلة.
+        لذلك \(D_1^1\) يعمل كأداة استخراج لبنية الفضاء الإقليدي.
+      </div>
+    </section>
+
+    <!-- Example 4 -->
+    <section class="card">
+      <h3>المثال 4 — مثلثات متشابهة: ثبات النسبة</h3>
+      <p class="muted">
+        إذا كان ضلع \(a(s)=5s\) فإن النسبة \(a/s=5\) ثابتة.  
+        الفرق أن \(D_1^1\) يلتقط التشابه مباشرة دون بناء نسبة يدويًا.
+      </p>
+      <div class="math">
+        \[
+          a(s)=5s,\quad \frac{a}{s}=5
+        \]
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>المقارنة</th>
+            <th>\(D_0^1\)</th>
+            <th>\(D_1^1\)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ثبات التشابه</td>
+            <td>\(D_0^1(a/s)=0\) (بعد التطبيع)</td>
+            <td>\(D_1^1 a=1\) فورًا</td>
+          </tr>
+          <tr>
+            <td>المعنى</td>
+            <td>يحتاج تطبيع مسبق</td>
+            <td>التطبيع ضمني</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="muted"><b>معادلة إضافية (تشابه المثلثات):</b></p>
+      <div class="math">
+        \[
+          \frac{a_2}{a_1}=\frac{b_2}{b_1}=\frac{c_2}{c_1}=s.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        الهندسة الإقليدية تفضّل المقارنات النسبية، و\(D_1^1\) يعيد صياغة ذلك كقيمة ثابتة.
+        هذا يجعله مفضلًا في مسائل التشابه والتحجيم.
+      </div>
+    </section>
+
+    <!-- Example 5 -->
+    <section class="card">
+      <h3>المثال 5 — تحجيم الانحناء: دائرة تتوسع</h3>
+      <p class="muted">
+        نصف القطر \(R(s)=2s\) والانحناء \(k=1/R=\frac{1}{2}s^{-1}\).
+        إذن الانحناء يتبع أسًا سالبًا.
+      </p>
+      <div class="math">
+        \[
+          R(s)=2s,\quad k(s)=\frac{1}{2}s^{-1}
+        \]
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>المقارنة</th>
+            <th>\(D_0^1\)</th>
+            <th>\(D_1^1\)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>المشتقة</td>
+            <td>\(D_0^1k=-\frac{1}{2}s^{-2}\)</td>
+            <td>\(D_1^1k=-1\)</td>
+          </tr>
+          <tr>
+            <td>المعنى</td>
+            <td>حساسية تتغير مع \(s\)</td>
+            <td>الانحناء يتبع \(s^{-1}\)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="muted"><b>معادلة إضافية (انحناء منحنى عام):</b></p>
+      <div class="math">
+        \[
+          k=\frac{|x'y''-y'x''|}{(x'^2+y'^2)^{3/2}}.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        الإشارة السالبة (-1) ليست مجرد عدد: إنها تصنيف بنيوي لقياس “كيف ينكمش الانحناء عند التكبير”.
+        وهذا مهم في الهندسة التفاضلية والتصميم المنحني.
+      </div>
+    </section>
+
+    <!-- Example 6 -->
+    <section class="card">
+      <h3>المثال 6 — تنعيم الشبكات العددية: رتبة التقارب</h3>
+      <p class="muted">
+        في الهندسة العددية إذا كان الخطأ \(E(h)=Ch^p\) فإن \(p\) هو رتبة التقارب.
+        دع \(E(h)=4h^2\).
+      </p>
+      <div class="math">
+        \[
+          E(h)=4h^2,\quad E(0.2)=0.16
+        \]
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>المقارنة</th>
+            <th>\(D_0^1\)</th>
+            <th>\(D_1^1\)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>المشتقة</td>
+            <td>\(D_0^1E=8h\Rightarrow 1.6\)</td>
+            <td>\(D_1^1E=2\)</td>
+          </tr>
+          <tr>
+            <td>المعنى</td>
+            <td>حساسية تعتمد على \(h\)</td>
+            <td>رتبة التقارب \(p=2\)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="muted"><b>معادلة إضافية (استخراج الأس من نقطتين):</b></p>
+      <div class="math">
+        \[
+          p=\frac{\ln(E_2/E_1)}{\ln(h_2/h_1)}.
+        \]
+      </div>
+
+      <div class="discussion">
+        <b>Discussion:</b>
+        هذا المثال يُظهر بشكل قوي أن \(D_1^1\) ليس فلسفة نظرية فقط،
+        بل هو الأداة القياسية في تقييم الخوارزميات عبر استخراج “الأس”.
+      </div>
+    </section>
+
+    <!-- Example 7 -->
+    <section class="card">
+      <h3>المثال 7 — قياس شكلي: المحيط مقابل المساحة</h3>
+      <p class="muted">
+        وصف كثير من الأشكال يعتمد على العلاقة بين المحيط والمساحة.
+        إذا كان \(P(s)=12s\) و \(A(s)=9s^2\)، فإن الأسين (1 و2) يظهران كقيم ثابتة.
+      </p>
+      <div class="math">
+        \[
+          P(s)=12s,\quad A(s)=9s^2
         \]
       </div>
 
@@ -544,62 +684,103 @@
         <tbody>
           <tr>
             <td>المحيط</td>
-            <td>\(D_0^1P=\frac{d}{ds}(12s)=12\)</td>
-            <td>\(D_1^1P=\frac{d\ln(12s)}{d\ln s}=1\)</td>
+            <td>\(D_0^1P=12\)</td>
+            <td>\(D_1^1P=1\)</td>
           </tr>
           <tr>
             <td>المساحة</td>
-            <td>\(D_0^1A=18s\Rightarrow D_0^1A(2)=36\)</td>
-            <td>\(D_1^1A=\frac{d\ln(9s^2)}{d\ln s}=2\)</td>
-          </tr>
-          <tr>
-            <td>الاستبصار البنيوي</td>
-            <td>يتغير مع الوحدات والمقياس</td>
-            <td>الأسّان (1 و2) يصفان الهندسة مباشرة</td>
+            <td>\(D_0^1A=18s\)</td>
+            <td>\(D_1^1A=2\)</td>
           </tr>
         </tbody>
       </table>
-    </section>
 
-    <section class="card">
-      <h2>ج) خلاصة عملية: ماذا تثبت هذه الصفحة؟</h2>
-      <ul class="muted small" style="margin:0">
-        <li>التشابه الإقليدي قائم على الأسس؛ \(D_1^1\) يلتقط فئات التشابه مباشرة.</li>
-        <li>أسس قياس المساحة والحجم (2 و3) تظهر تلقائيًا كثوابت \(D_1^1\).</li>
-        <li>الانحناء تحت القياس يلتقطه أسّ سالب ثابت (مثال 5).</li>
-        <li>جودة الهندسة العددية (رتبة التقارب) هي أسّ بنيوي (مثال 6).</li>
-        <li>\(D_0^1\) مفيد للحساسية المطلقة، لكنه غير ثابت تحت القياس.</li>
-      </ul>
+      <p class="muted"><b>معادلة إضافية (مؤشر شكل لا يعتمد على التحجيم):</b></p>
+      <div class="math">
+        \[
+          Q=\frac{P^2}{A}\quad \Rightarrow \quad Q \text{ ثابت تحت التحجيم}.
+        \]
+      </div>
 
-      <div class="note">
-        <strong>خلاصة بجملة واحدة:</strong>
-        في الهندسة الإقليدية، عندما تكون الظاهرة محكومة بـ<b>التشابه/القياس</b>،
-        فإن \(D_1^1\) يعمل كأداة لاستخراج الثوابت البنيوية،
-        بينما \(D_0^1\) يعمل كميل يعتمد على الوحدات.
+      <div class="discussion">
+        <b>Discussion:</b>
+        الكثير من مقاييس جودة الشكل مبنية على تراكيب مثل \(P^2/A\) لأنها لا تتأثر بالتحجيم.
+        هذا يوضح أن البنية النسبية هي جوهر الهندسة، وهو ما يلتقطه \(D_1^1\) طبيعيًا.
       </div>
     </section>
 
-    <section class="card">
-      <h2>صفحات مرتبطة</h2>
-      <ul class="muted small" style="margin:0">
-        <li><a href="./theory.html">النظرية</a> — أساس \(D_r^n\)</li>
-        <li><a href="./rules.html">القواعد</a> — صيغ وهوويات</li>
-        <li><a href="./equations.html">المعادلات</a> — أنماط تطبيقية</li>
-        <li><a href="./integrals.html">التكاملات</a> — المؤثرات العكسية</li>
-      </ul>
+    <!-- Guide -->
+    <section class="card" id="guide">
+      <h2>4) دليل القرار: متى أستخدم \(D_0^1\) أو \(D_1^1\)؟</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>السؤال</th>
+            <th>الأداة</th>
+            <th>السبب العلمي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>كم تغيرت القيمة بالأرقام؟</td>
+            <td>\(D_0^1\)</td>
+            <td>مفيد للحساسية المطلقة</td>
+          </tr>
+          <tr>
+            <td>كيف تتغير تحت التحجيم؟</td>
+            <td>\(D_1^1\)</td>
+            <td>مستخرج للأس/البنية الثابتة</td>
+          </tr>
+          <tr>
+            <td>مقارنة أشكال بأحجام مختلفة</td>
+            <td>\(D_1^1\)</td>
+            <td>مقارنة عادلة غير مرتبطة بالوحدة</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>خلاصة:</strong>
+        إذا كانت المسألة قائمة على التشابه/التحجيم → \(D_1^1\) هو الوصف الأكثر استقرارًا.
+      </div>
     </section>
 
+    <!-- References -->
+    <section class="card" id="refs">
+      <h2>المراجع (References)</h2>
+      <div class="math">
+        \[
+          \textbf{[1]}\; \text{Euclid. Elements. Classical foundations of Euclidean geometry.}
+        \]
+        \[
+          \textbf{[2]}\; \text{Coxeter, H. S. M. (1969). Introduction to Geometry.}
+        \]
+        \[
+          \textbf{[3]}\; \text{Kreyszig, E. Differential Geometry. (Curvature & invariants).}
+        \]
+        \[
+          \textbf{[4]}\; \text{Bathe, K. J. Finite Element Procedures. (Error scaling).}
+        \]
+        \[
+          \textbf{[5]}\; \text{GOSSA AHMED (2025). Hierarchical Calculus (Official Website).}
+        \]
+      </div>
+    </section>
+
+    <!-- Citation -->
     <section class="card">
       <h2>إحالة (Citation)</h2>
       <div class="math">
         \[
-          \texttt{GOSSA\ AHMED.\ الحساب\ الهرمي\ في\ الهندسة\ الإقليدية:\ 7\ أمثلة\ (D_0^1\ vs\ D_1^1).\ الموقع\ الرسمي.\ (2025).}
+          \texttt{GOSSA\ AHMED.\ الحساب\ الهرمي\ في\ الهندسة\ الإقليدية:\ 7\ أمثلة\ واقعية\ (D_0^1\ vs\ D_1^1).\ الموقع\ الرسمي.\ (2025).}
         \]
       </div>
     </section>
 
     <footer>
       © 2025 — GOSSA AHMED · الهندسة الإقليدية — \(D_r^n\), \(D_0^1\), \(D_1^1\)
+      <br>
+      <a href="#top">العودة للأعلى ↑</a>
     </footer>
   </div>
 </body>
