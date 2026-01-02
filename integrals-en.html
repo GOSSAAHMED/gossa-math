@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hierarchical Integrals | Hierarchical Calculus</title>
-  <meta name="description" content="Hierarchical integrals as inverses of hierarchical derivatives. Explicit rank & degree notation D_r^n, with practical formulas and verified examples for ranks 1 and 2." />
+
+  <title>Hierarchical Integrals | Hierarchical Calculus (Rank–Degree)</title>
+  <meta name="description" content="Hierarchical integrals as inverses of hierarchical derivatives. Explicit rank–degree notation D_r^n, with strict domain rules, verified formulas, and worked examples for ranks 1 and 2." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical + hreflang -->
@@ -13,14 +14,26 @@
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/integrals.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/integrals-en.html" />
 
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Hierarchical Integrals | Hierarchical Calculus" />
+  <meta property="og:description" content="Rank–degree hierarchical integrals (inverse operators of D_n^1), with strict definitions, domain conditions, and verified examples for ranks 1 and 2." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/integrals-en.html" />
+  <meta name="twitter:card" content="summary" />
+
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
-      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(0,0,0,.22);
+      --b: rgba(255,255,255,.12);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
     }
     *{box-sizing:border-box}
     body{
@@ -33,23 +46,26 @@
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
 
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
+
+    /* topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.55);
+      background: rgba(11,18,32,.58);
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
-      max-width:1050px; margin:0 auto; padding:10px 16px;
+      max-width:1100px; margin:0 auto; padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+    .logo-img{
+      width:38px;height:38px;border-radius:12px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
       box-shadow:0 12px 22px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
@@ -58,13 +74,15 @@
     nav{display:flex; gap:8px; flex-wrap:wrap}
     nav a{
       padding:7px 10px; border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+      background:rgba(255,255,255,.04);
+      border-radius:999px; font-size:13px; color:var(--text);
       white-space:nowrap;
     }
     nav a:hover{background:rgba(255,255,255,.07)}
 
+    /* hero */
     header.hero{
-      margin-top:16px; padding:20px 18px;
+      margin-top:16px; padding:22px 18px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border-radius:var(--radius);
@@ -80,27 +98,53 @@
     }
     header.hero > *{position:relative}
 
-    h1{margin:0 0 8px 0; font-size:28px}
-    h2{margin:0 0 10px 0; font-size:18px}
-    h3{margin:14px 0 8px 0; font-size:16px}
-    .muted{color:var(--muted)}
+    .hero-top{
+      display:flex; gap:14px; align-items:flex-start; justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .hero h1{margin:0 0 8px 0; font-size:30px}
+    .hero p{margin:0; color:var(--muted); max-width:920px}
     .small{font-size:13px}
+    .muted{color:var(--muted)}
 
+    /* author card */
+    .author-card{
+      display:flex; gap:12px; align-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:12px 14px;
+      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(57,211,195,.65);
+      box-shadow:0 14px 30px rgba(0,0,0,.30);
+    }
+    .author-card .name{font-weight:900;font-size:16px;line-height:1.2}
+    .author-card .role{color:var(--muted);font-size:12px;margin-top:2px}
+
+    /* cards */
     .card{
-      margin-top:14px; padding:16px;
+      margin-top:14px; padding:18px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.05);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+
     .math{
-      margin-top:8px; padding:10px 12px;
+      margin-top:10px; padding:12px 12px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
-      border-radius:12px;
+      border-radius:14px;
       overflow:auto;
       direction:ltr; text-align:left;
     }
+
     .note{
       margin-top:12px; padding:12px;
       border:1px solid rgba(255,204,102,.35);
@@ -109,6 +153,14 @@
     }
     .note strong{color:var(--warn)}
 
+    .ok{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(134,239,172,.35);
+      background: rgba(134,239,172,.10);
+      border-radius:14px;
+    }
+    .ok strong{color:var(--ok)}
+
     table{
       width:100%;
       border-collapse:separate;
@@ -116,7 +168,7 @@
       overflow:hidden;
       border-radius:14px;
       border:1px solid rgba(255,255,255,.10);
-      margin-top:10px;
+      margin-top:12px;
     }
     thead th{
       text-align:left;
@@ -135,6 +187,8 @@
     }
     tbody tr:last-child td{border-bottom:none}
 
+    .toc a{display:block; margin:8px 0}
+
     footer{
       margin-top:18px; padding-top:18px;
       border-top:1px solid rgba(255,255,255,.10);
@@ -151,81 +205,120 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+  <!-- Structured Data -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "headline": "Hierarchical Integrals | Hierarchical Calculus",
-  "alternativeHeadline": "Hierarchical Integrals as Inverses of Hierarchical Derivatives",
-  "author": {
-    "@type": "Person",
-    "name": "Ahmed Gossa",
-    "url": "https://gossaahmed.github.io/gossa-math/"
-  },
-  "about": [
-    "Hierarchical Calculus",
-    "Hierarchical Integrals",
-    "Integral Calculus",
-    "Relative Derivative D1",
-    "Hierarchical Derivatives",
-    "Differential Equations"
-  ],
-  "abstract": "A reference page presenting hierarchical integrals, their definitions, inverse relations, and verified examples within Hierarchical Calculus.",
-  "inLanguage": "en",
-  "url": "https://gossaahmed.github.io/gossa-math/integrals-en.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Hierarchical Calculus"
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Hierarchical Integrals | Hierarchical Calculus",
+    "alternativeHeadline": "Hierarchical Integrals as Inverses of Hierarchical Derivatives",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Hierarchical Integrals",
+      "Relative Derivative D1",
+      "Rank–Degree notation D_r^n",
+      "Hierarchical Lifting"
+    ],
+    "abstract": "A reference page presenting hierarchical integrals, inverse relations, strict domain rules, and verified examples within Hierarchical Calculus.",
+    "inLanguage": "en",
+    "url": "https://gossaahmed.github.io/gossa-math/integrals-en.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
+    }
   }
-}
-</script>
+  </script>
 </head>
 
 <body>
+
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
         <div class="title">
           <strong>Hierarchical Integrals</strong>
-          <span>Explicit notation: \(D_r^n\)</span>
+          <span>Inverse operators of \(D_n^1\) (rank–degree)</span>
         </div>
       </div>
 
       <nav aria-label="Navigation">
-        <a href="./index-en.html">Home</a>
-        <a href="./theory-en.html">Theory</a>
-        <a href="./series-en.html">Series</a>
-        <a href="./rules-en.html">Rules</a>
-        <a href="./equations-en.html">Equations</a>
-        <a href="./integrals.html">العربية</a>
+        <a href="index-en.html">Home</a>
+        <a href="theory-en.html">Theory</a>
+        <a href="rules-en.html">Rules</a>
+        <a href="equations-en.html">Equations</a>
+        <a href="series-en.html">Series</a>
+        <a href="#definition">Definition</a>
+        <a href="#rank1">Rank 1</a>
+        <a href="#rank2">Rank 2</a>
+        <a href="#cite">Citation</a>
+        <a href="integrals.html">العربية</a>
       </nav>
     </div>
   </div>
 
   <div class="wrap">
+
+    <!-- HERO -->
     <header class="hero">
-      <h1>Hierarchical Integrals</h1>
-      <p class="muted">
-        Hierarchical integrals are inverse operators for hierarchical derivatives (mainly degree \(1\)).
-        Rank 0 accumulates additively, rank 1 accumulates multiplicatively (relative scale),
-        and rank 2 accumulates in the \(\ln\!\ln\) space (structural / double-exponential form).
-        <br>
-        <b>Notation rule:</b> every derivative is written with explicit <b>rank and degree</b>:
-        \(\;D_r^n\). Here we focus on \(\;D_n^{1}\).
-      </p>
-      <p class="muted small" style="margin:10px 0 0 0">
-        Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a><br>
-        Version DOI (v1.0.0): <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
-      </p>
+      <div class="hero-top">
+        <div>
+          <h1>Hierarchical Integrals</h1>
+          <p class="muted">
+            Hierarchical integrals are the inverse operators of hierarchical derivatives.
+            Rank \(0\) accumulates additively, rank \(1\) accumulates multiplicatively (relative scale),
+            and rank \(2\) accumulates in the \(\ln\!\ln\) space (structural / double-exponential form).
+            <br><br>
+            <b>Notation rule:</b> we always write derivatives with explicit <b>rank and degree</b>:
+            \(\;D_r^n\). On this page we focus on the most used case: \(\;D_n^{1}\).
+          </p>
+
+          <p class="muted small" style="margin:10px 0 0 0">
+            Concept DOI:
+            <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a><br>
+            Version DOI (v1.0.0):
+            <a href="https://doi.org/10.5281/zenodo.17917303" target="_blank" rel="noopener">10.5281/zenodo.17917303</a>
+          </p>
+        </div>
+
+        <div class="author-card" aria-label="Author">
+          <img class="avatar" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
+          <div>
+            <div class="name">GOSSA AHMED</div>
+            <div class="role">Independent Researcher — Hierarchical Calculus</div>
+          </div>
+        </div>
+      </div>
     </header>
 
+    <!-- TOC -->
     <section class="card">
+      <h2>Quick Table of Contents</h2>
+      <div class="small toc">
+        <a href="#definition">1) Definition of the hierarchical integral \(\mathcal{I}_n\)</a>
+        <a href="#inverse">2) Fundamental inverse relations</a>
+        <a href="#domains">3) Domain conditions (avoid hidden singularities)</a>
+        <a href="#rank1">4) Rank 1: \(\mathcal{I}_1\) — verified examples</a>
+        <a href="#rank2">5) Rank 2: \(\mathcal{I}_2\) — verified examples</a>
+        <a href="#workflow">6) Mini workflow (how to integrate in practice)</a>
+        <a href="#cite">7) Citation</a>
+      </div>
+    </section>
+
+    <!-- 1) Definition -->
+    <section class="card" id="definition">
       <h2>1) Definition: the hierarchical integral \(\mathcal{I}_n\)</h2>
       <p class="muted small" style="margin:0">
         The rank-\(n\) hierarchical integral \(\mathcal{I}_n\) is defined as an inverse of the
         rank-\(n\), degree-1 derivative \(D_n^{1}\) on a suitable domain:
       </p>
+
       <div class="math">
         \[
           \boxed{
@@ -235,15 +328,22 @@
       </div>
 
       <div class="note">
-        <strong>Constant rule (important):</strong>
-        “Constants” live in the natural accumulation space.
-        Rank 0: \(F \mapsto F + C\).
-        Rank 1: \(\ln F \mapsto \ln F + C\) (equivalently \(F \mapsto C_\times\,F\)).
-        Rank 2: \(\ln\!\ln F \mapsto \ln\!\ln F + C\) (equivalently a structural constant inside the double-exponential form).
+        <strong>Constant rule (critical):</strong>
+        “Constants” live in the natural accumulation space of the rank:
+        <br><br>
+        • Rank 0: \(F \mapsto F + C\).<br>
+        • Rank 1: \(\ln F \mapsto \ln F + C\) (equivalently \(F \mapsto C_{\times}F\)).<br>
+        • Rank 2: \(\ln\!\ln F \mapsto \ln\!\ln F + C\) (a structural constant inside the double-exponential form).<br>
+      </div>
+
+      <div class="ok">
+        <strong>Interpretation:</strong>
+        The hierarchy is not “new constants”, but new <em>natural spaces</em> where additive constants live.
       </div>
     </section>
 
-    <section class="card">
+    <!-- 2) Inverse relations -->
+    <section class="card" id="inverse">
       <h2>2) Fundamental inverse relations</h2>
 
       <h3>2.1) First inverse relation</h3>
@@ -265,7 +365,7 @@
           <tr>
             <th>Rank</th>
             <th>“Constant” lives in</th>
-            <th>Equivalent form for \(F\)</th>
+            <th>Equivalent form</th>
           </tr>
         </thead>
         <tbody>
@@ -282,23 +382,64 @@
           <tr>
             <td>2</td>
             <td>\(\ln(\ln F)\)</td>
-            <td>\(\exp(\exp(\,\cdot\, + C))\) (structural constant)</td>
+            <td>\(\ln(\ln F)\mapsto \ln(\ln F)+C\) (structural constant)</td>
           </tr>
         </tbody>
       </table>
 
       <div class="note">
-        <strong>Idea:</strong>
-        Sum → Product → Structural (double exponential) → higher ranks.
+        <strong>Mnemonic:</strong> Sum → Product → Structural (double exponential) → higher ranks.
       </div>
     </section>
 
-    <section class="card">
-      <h2>3) Relative integral \(\mathcal{I}_1\) (rank 1) — verified examples</h2>
+    <!-- 3) Domains -->
+    <section class="card" id="domains">
+      <h2>3) Domain conditions (avoid hidden singularities)</h2>
+      <p class="muted small" style="margin:0">
+        Because higher ranks use iterated logarithms, every integration formula must state its domain.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Required conditions</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>Classical domain of \(f\)</td>
+            <td>No iterated logs</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>\(x>0\), and outputs satisfy \(y(x)>0\)</td>
+            <td>\(\ln x\), \(\ln y\) are used</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>\(x>1\), and outputs satisfy \(y(x)>1\)</td>
+            <td>\(\ln(\ln x)\), \(\ln(\ln y)\) must exist</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>Important:</strong>
+        For rank 2, avoid \(x\approx 1\) because \(\ln x\to 0\) causes singular behavior in the integrator.
+      </div>
+    </section>
+
+    <!-- 4) Rank 1 -->
+    <section class="card" id="rank1">
+      <h2>4) Relative integral \(\mathcal{I}_1\) (rank 1) — verified examples</h2>
 
       <p class="muted small" style="margin:0">
         Since \(D_{1}^{1}y=\dfrac{d\ln y}{d\ln x}\), solving \(D_1^{1}y=f(x)\) gives:
       </p>
+
       <div class="math">
         \[
           \boxed{
@@ -312,7 +453,7 @@
           <tr>
             <th>\(f(x)\)</th>
             <th>\(\mathcal{I}_1[f](x)\)</th>
-            <th>Quick check</th>
+            <th>Check</th>
           </tr>
         </thead>
         <tbody>
@@ -345,16 +486,19 @@
       </table>
 
       <p class="muted small" style="margin:10px 0 0 0">
-        Rank-1 integration naturally produces controlled relative growth: products and exponentials appear automatically.
+        Rank-1 integration naturally produces controlled relative growth:
+        power-laws and exponentials appear automatically because the integrator is built in \(\ln\)-space.
       </p>
     </section>
 
-    <section class="card">
-      <h2>4) Logarithmic integral \(\mathcal{I}_2\) (rank 2) — verified examples</h2>
+    <!-- 5) Rank 2 -->
+    <section class="card" id="rank2">
+      <h2>5) Logarithmic integral \(\mathcal{I}_2\) (rank 2) — verified examples</h2>
 
       <div class="note">
-        <strong>Domain:</strong> rank 2 uses \(\ln(\ln x)\), so we assume \(x>1\) (hence \(\ln x>0\)).
-        Also, outputs satisfy \(y>1\) so \(\ln(\ln y)\) is defined.
+        <strong>Domain (rank 2):</strong>
+        rank 2 uses \(\ln(\ln x)\), so we assume \(x>1\) (hence \(\ln x>0\)).
+        Also outputs satisfy \(y>1\) so \(\ln(\ln y)\) exists.
       </div>
 
       <p class="muted small" style="margin:0">
@@ -374,7 +518,7 @@
           <tr>
             <th>\(f(x)\)</th>
             <th>\(\mathcal{I}_2[f](x)\)</th>
-            <th>Quick check</th>
+            <th>Check</th>
           </tr>
         </thead>
         <tbody>
@@ -385,8 +529,8 @@
           </tr>
           <tr>
             <td>\(a\) (constant)</td>
-            <td>\(\exp\!\big(C(\ln x)^a\big)\)</td>
-            <td>\(D_{2}^{1}(\cdot)=a\) (for suitable \(C>0\))</td>
+            <td>\(\exp\!\big((\ln x)^a\big)\)  (up to a structural constant)</td>
+            <td>\(D_{2}^{1}(\cdot)=a\)</td>
           </tr>
           <tr>
             <td>\(\ln\ln x\)</td>
@@ -407,17 +551,31 @@
       </table>
 
       <div class="note">
-        <strong>Remark:</strong>
-        The row \(f(x)=a\) is written with a free constant \(C\) to reflect the rank-2 integration constant naturally living in \(\ln\!\ln\) space.
+        <strong>Why “up to a structural constant”?</strong>
+        Rank 2 constants live in \(\ln\!\ln y\), so multiplying the inner exponent by a positive constant does not change \(D_2^1\).
       </div>
     </section>
 
-    <section class="card">
-      <h2>5) Citation</h2>
+    <!-- 6) Workflow -->
+    <section class="card" id="workflow">
+      <h2>6) Mini workflow (how to integrate in practice)</h2>
+      <ul class="muted small">
+        <li><b>Step 1:</b> Identify the rank: is the equation natural in \(x\), \(\ln x\), or \(\ln\ln x\)?</li>
+        <li><b>Step 2:</b> Rewrite the derivative definition (e.g. \(D_1^1y = d\ln y / d\ln x\)).</li>
+        <li><b>Step 3:</b> Convert to an ordinary integral in the correct scale.</li>
+        <li><b>Step 4:</b> Integrate and add the correct rank-constant.</li>
+        <li><b>Step 5:</b> Invert the transform (exp or double-exp) to recover \(y(x)\).</li>
+      </ul>
+    </section>
+
+    <!-- 7) Citation -->
+    <section class="card" id="cite">
+      <h2>7) Citation</h2>
       <div class="math">
-        \[
-          \texttt{GOSSA AHMED. Hierarchical Calculus — Hierarchical Integrals. Official Website. Zenodo DOI: 10.5281/zenodo.17917302 (2025).}
-        \]
+<pre style="margin:0;color:#eaf2ff;font-family:var(--mono)">
+GOSSA AHMED. Hierarchical Calculus — Hierarchical Integrals.
+Official Website. Zenodo DOI: 10.5281/zenodo.17917302 (2025).
+</pre>
       </div>
     </section>
 
@@ -425,5 +583,6 @@
       © 2025 — GOSSA AHMED · Hierarchical Integrals — explicit \(D_r^n\)
     </footer>
   </div>
+
 </body>
 </html>
