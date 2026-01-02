@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>Hierarchical Calculus & Physics — Newton, Relativity, Quantum, Dark Energy, Quantum Gravity</title>
-  <meta name="description" content="An extended reference page: using Hierarchical Calculus to organize physical laws as a ladder of change (D0, D1, D2, …), with conceptual links to Newtonian mechanics, relativity, quantum theory, dark energy, and quantum gravity." />
+  <title>Hierarchical Calculus & Physics — Newton, Einstein, Quantum, Dark Energy, and Quantum Gravity</title>
+  <meta name="description" content="Applying Hierarchical Calculus as a ladder of change (D0, D1, D2, and beyond) to clarify why Newtonian physics, relativity, and quantum mechanics dominate different regimes, with connections to dark energy and quantum gravity." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical + hreflang -->
@@ -14,15 +14,28 @@
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/physics-ar.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/physics-en.html" />
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Hierarchical Calculus & Physics" />
+  <meta property="og:description" content="A unified lens: Newton (D0), Relativity (D1), Quantum (D2), and frontier regimes (dark energy, quantum gravity) via the hierarchical derivative ladder." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/physics-en.html" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- =========================
+       STYLE (Unified)
+  ========================== -->
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
       --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
     }
     *{box-sizing:border-box}
     body{
@@ -37,6 +50,7 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
 
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -48,22 +62,34 @@
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+    .logo-img{
+      width:38px; height:38px; border-radius:12px; object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
       box-shadow:0 12px 22px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
     .brand .title span{font-size:12px; color:var(--muted)}
 
-    nav{display:flex; gap:8px; flex-wrap:wrap}
-    nav a{
-      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+    /* Buttons */
+    .actions{display:flex; gap:8px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:8px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 13px;
+      cursor:pointer;
       white-space:nowrap;
     }
-    nav a:hover{background:rgba(255,255,255,.07)}
+    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.12);
+    }
 
     header.hero{
       margin-top:16px; padding:20px 18px;
@@ -81,20 +107,59 @@
       pointer-events:none;
     }
     header.hero > *{position:relative}
+
+    .hero-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
     h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    /* Author card */
+    .author-card{
+      display:flex; gap:12px; align-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:12px 14px;
+      box-shadow:0 18px 48px rgba(0,0,0,.22);
+    }
+    .avatar{
+      width:64px; height:64px; border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(57,211,195,.65);
+      box-shadow:0 14px 30px rgba(0,0,0,.30);
+    }
+    .author-card .name{font-weight:900; font-size:16px; line-height:1.2}
+    .author-card .role{color:var(--muted); font-size:12px; margin-top:2px}
+
+    /* Pills */
+    .pillrow{margin-top:10px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px; color: var(--muted);
+      margin: 6px 6px 0 0;
+      white-space:nowrap;
+    }
+
+    /* Cards */
     .card{
       margin-top:14px; padding:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      background: var(--card);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
-    h2{margin:0 0 10px 0; font-size:18px}
-    h3{margin:14px 0 8px 0; font-size:16px}
-
     .math{
       margin-top:8px; padding:10px 12px;
       border:1px solid rgba(255,255,255,.10);
@@ -112,17 +177,7 @@
     .note strong{color:var(--warn)}
     .toc a{display:inline-block; margin:4px 0}
 
-    .pillrow{margin-top:10px}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      font-size: 12px; color: var(--muted);
-      margin: 6px 6px 0 0;
-      white-space:nowrap;
-    }
-
+    /* Table */
     table{
       width:100%;
       border-collapse:separate;
@@ -165,13 +220,15 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <!-- JSON-LD -->
+  <!-- =========================
+       (1) Schema JSON-LD
+  ========================== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": "Hierarchical Calculus & Physics",
-    "alternativeHeadline": "Newton, Relativity, Quantum, Dark Energy, and Quantum Gravity through a derivative ladder",
+    "alternativeHeadline": "Newton, Einstein, Quantum, Dark Energy, and Quantum Gravity via the Derivative Ladder",
     "author": {
       "@type": "Person",
       "name": "Ahmed Gossa",
@@ -179,103 +236,142 @@
     },
     "about": [
       "Hierarchical Calculus",
+      "Physics",
       "Newtonian Mechanics",
-      "General Relativity",
+      "Relativity",
       "Quantum Mechanics",
       "Dark Energy",
       "Quantum Gravity"
     ],
-    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "CreativeWork",
+      "name": "Hierarchical Calculus",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
     "url": "https://gossaahmed.github.io/gossa-math/physics-en.html",
-    "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hierarchical Calculus"
+    }
   }
   </script>
 </head>
 
 <body>
+
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
         <div class="title">
           <strong>Hierarchical Calculus & Physics</strong>
-          <span>Newton · Relativity · Quantum · Dark Energy · Quantum Gravity</span>
+          <span>Newton · Einstein · Quantum · Dark Energy · Quantum Gravity</span>
         </div>
       </div>
 
-      <nav aria-label="Navigation">
-        <a href="./index-en.html">Home</a>
-        <a href="./theory-en.html">Theory</a>
-        <a href="./rules-en.html">Rules</a>
-        <a href="./equations-en.html">Equations</a>
-        <a href="./physics-ar.html">العربية</a>
-      </nav>
+      <!-- (2) Buttons -->
+      <div class="actions" aria-label="Top actions">
+        <a class="btn" href="./index-en.html">Home</a>
+        <a class="btn" href="./theory-en.html">Theory</a>
+        <a class="btn" href="./equations-en.html">Equations</a>
+        <a class="btn" href="./physics-ar.html">العربية</a>
+        <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
+      </div>
     </div>
   </div>
 
   <div class="wrap">
+
+    <!-- HERO -->
     <header class="hero">
-      <h1>Hierarchical Calculus as a “Ladder of Change” in Physics</h1>
+      <div class="hero-top">
 
-      <p class="muted">
-        This page is a <b>conceptual reference</b>. It does not replace established theories, nor does it claim
-        experimental revisions. Instead, it proposes a structured way to describe physical behavior through
-        <b>a hierarchy of change operators</b>:
-        absolute change (\(D_0^1\)), relative (scale) change (\(D_1^1\)),
-        structural logarithmic change (\(D_2^1\)), and higher ranks \(D_n^1\).
-      </p>
+        <div>
+          <h1>Applying Hierarchical Calculus to Physics</h1>
 
-      <div class="note">
-        <strong>Important note:</strong>
-        The mapping between ranks and physical frameworks is <b>interpretative</b>. The equations shown below are standard;
-        the hierarchical layer is a lens for organizing regimes and modeling intuition.
+          <p class="muted">
+            This page is a <b>conceptual reference</b>. It does not replace established physics, nor does it claim
+            experimental revision. Instead, it proposes a structured “ladder of change”:
+            absolute change (\(D_0^1\)), relative/scale change (\(D_1^1\)),
+            structural/logarithmic change (\(D_2^1\)), and higher ranks \(D_n^1\).
+            <br>
+            This lens helps clarify why different theories dominate different regimes,
+            and why frontier questions (dark energy and quantum gravity) may signal deeper structural transitions.
+          </p>
+
+          <div class="pillrow">
+            <span class="pill">Rank 0: \(D_0^1\)</span>
+            <span class="pill">Rank 1: \(D_1^1\)</span>
+            <span class="pill">Rank 2: \(D_2^1\)</span>
+            <span class="pill">Higher ranks: \(D_n^1\)</span>
+          </div>
+
+          <div class="note">
+            <strong>Interpretation note:</strong>
+            The physics equations below are standard. The hierarchical framework is a way to organize
+            physical regimes by the <b>type of change</b> that best captures the phenomenon.
+          </div>
+
+          <!-- Buttons inside hero -->
+          <div class="actions" style="margin-top:12px">
+            <a class="btn" href="#toc">Contents</a>
+            <a class="btn" href="#references">References</a>
+            <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">Zenodo DOI</a>
+          </div>
+
+          <p class="muted small" style="margin:10px 0 0 0">
+            Author: <b>GOSSA AHMED</b>
+          </p>
+        </div>
+
+        <div class="author-card">
+          <img class="avatar" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
+          <div>
+            <div class="name">GOSSA AHMED</div>
+            <div class="role">Independent Researcher — Hierarchical Calculus</div>
+          </div>
+        </div>
+
       </div>
-
-      <div class="pillrow">
-        <span class="pill">Rank 0: \(D_0^1\)</span>
-        <span class="pill">Rank 1: \(D_1^1\)</span>
-        <span class="pill">Rank 2: \(D_2^1\)</span>
-        <span class="pill">Higher ranks: \(D_n^1\)</span>
-      </div>
-
-      <p class="muted small" style="margin:10px 0 0 0">
-        Author: <b>GOSSA AHMED</b>
-      </p>
     </header>
 
+    <!-- TOC -->
     <section class="card toc" id="toc">
       <h2>Contents</h2>
       <a href="#ladder">1) The derivative ladder: \(D_0^1\) to \(D_n^1\)</a><br>
-      <a href="#newton">2) Newton: rank-0 physics (local absolute dynamics)</a><br>
-      <a href="#relativity">3) Relativity: scale invariance and geometry</a><br>
-      <a href="#quantum">4) Quantum: state structure and measurement</a><br>
-      <a href="#darkenergy">5) Dark energy: acceleration and scale-law evolution</a><br>
-      <a href="#qg">6) Quantum gravity: a potential “rank mismatch”</a><br>
-      <a href="#bridge">7) Unified summary table</a><br>
+      <a href="#newton">2) Newton: rank-0 physics and core equations</a><br>
+      <a href="#relativity">3) Einstein: relativity as scale physics</a><br>
+      <a href="#quantum">4) Quantum mechanics: structural change</a><br>
+      <a href="#darkenergy">5) Dark energy: acceleration as a higher-rank signal</a><br>
+      <a href="#qg">6) Quantum gravity: where rank mismatch appears</a><br>
+      <a href="#bridge">7) Unified map: connecting the three frameworks</a><br>
+      <a href="#references">References & Citation</a><br>
       <a href="#conclusion">Conclusion</a>
     </section>
 
-    <!-- 1 -->
+    <!-- 1) Ladder -->
     <section class="card" id="ladder">
       <h2>1) The derivative ladder of change</h2>
       <p class="muted">
-        Many physical laws focus on different notions of “change.” Hierarchical Calculus makes this explicit
-        by organizing derivatives into a ladder (here shown at degree 1):
+        Many “conflicts” between physical theories can be interpreted as a mismatch in the
+        <b>type of change</b> being modeled. Hierarchical Calculus formalizes this idea through a derivative ladder:
       </p>
 
       <div class="math">
         \[
           D_0^1 f(t)=\frac{df}{dt},\qquad
           D_1^1 f(t)=\frac{d\ln f}{d\ln t},\qquad
-          D_2^1 f(t)=\frac{d\ln(\ln f)}{d\ln(\ln t)}.
+          D_2^1 f(t)=\frac{d\ln(\ln f)}{d\ln(\ln t)}
         \]
       </div>
 
       <div class="note">
-        <strong>Quick intuition:</strong><br>
+        <strong>Physical intuition:</strong><br>
         Rank 0: local absolute change.<br>
-        Rank 1: relative / scale-based change.<br>
-        Rank 2: structural change in the scale-law itself (“the relative rule evolves”).<br>
+        Rank 1: scale / relative change (laws stable across frames).<br>
+        Rank 2: structural change in the scale-law itself (the rule evolves).<br>
         Higher ranks describe deeper structural transitions.
       </div>
 
@@ -283,265 +379,309 @@
         <thead>
           <tr>
             <th>Framework</th>
-            <th>Dominant viewpoint</th>
-            <th>Conceptual rank</th>
+            <th>Dominant change type</th>
+            <th>Natural rank (conceptual)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Newtonian physics</td>
-            <td>Absolute local dynamics</td>
+            <td>Absolute local change</td>
             <td>\(D_0^1\)</td>
           </tr>
           <tr>
             <td>Relativity</td>
-            <td>Scale & frame structure</td>
+            <td>Relative / scale-dependent change</td>
             <td>\(D_1^1\)</td>
           </tr>
           <tr>
-            <td>Quantum theory</td>
-            <td>State structure & measurement</td>
-            <td>\(D_2^1\) (interpretative)</td>
+            <td>Quantum mechanics</td>
+            <td>Structural change (states & measurement)</td>
+            <td>\(D_2^1\) (or higher)</td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <!-- 2 -->
+    <!-- 2) Newton -->
     <section class="card" id="newton">
-      <h2>2) Newton: rank-0 physics (local absolute dynamics)</h2>
+      <h2>2) Newton: rank-0 physics and core equations</h2>
       <p class="muted">
-        Newtonian mechanics is naturally formulated in rank 0:
-        \(D_0^1=\dfrac{d}{dt}\), using absolute time as a useful approximation in everyday regimes.
+        Newtonian physics is built on the rank-0 derivative \(D_0^1=\dfrac{d}{dt}\) and assumes
+        (approximately) absolute time and space for everyday regimes.
       </p>
 
-      <h3>2.1 Newton’s second law</h3>
+      <h3>2.1 Newton’s laws</h3>
       <div class="math">
         \[
-          \mathbf{F}=m\mathbf{a}=m\frac{d^2\mathbf{x}}{dt^2}.
+          \mathbf{F}=m\mathbf{a}=m\frac{d^2\mathbf{x}}{dt^2}
         \]
       </div>
 
       <h3>2.2 Newtonian gravity</h3>
       <div class="math">
         \[
-          \mathbf{F}=-\,G\frac{Mm}{r^2}\,\hat{\mathbf{r}},\qquad
-          \nabla^2\Phi = 4\pi G\rho.
+          \mathbf{F}=-G\frac{Mm}{r^2}\,\hat{\mathbf{r}},\qquad
+          \nabla^2\Phi = 4\pi G\rho
         \]
       </div>
 
       <div class="note">
         <strong>Hierarchical reading:</strong>
-        Rank-0 models are strongest when the relevant scale does not drift dramatically and when the measurement
-        structure does not dominate the dynamics.
+        Rank-0 descriptions excel when scales remain stable and measurement structure does not dominate the dynamics.
       </div>
     </section>
 
-    <!-- 3 -->
+    <!-- 3) Relativity -->
     <section class="card" id="relativity">
-      <h2>3) Relativity: scale invariance and geometry</h2>
+      <h2>3) Einstein: relativity as scale physics</h2>
       <p class="muted">
-        Relativity reorganizes physics around invariants across frames. This often aligns with rank-1 thinking:
-        laws that remain meaningful under rescaling and coordinate transformations.
+        Relativity reorganizes physics around invariants and frame dependence.
+        Conceptually, it aligns with rank-1 thinking: laws that remain meaningful under transformations and rescalings.
       </p>
 
       <h3>3.1 Special relativity</h3>
       <div class="math">
         \[
           ds^2 = -c^2dt^2 + dx^2 + dy^2 + dz^2,\qquad
-          E^2=(pc)^2+(mc^2)^2.
+          E^2=(pc)^2+(mc^2)^2
         \]
       </div>
 
-      <h3>3.2 General relativity (Einstein field equations)</h3>
+      <h3>3.2 General relativity</h3>
       <div class="math">
         \[
-          G_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}\,T_{\mu\nu}.
+          G_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}\,T_{\mu\nu}
         \]
       </div>
 
       <div class="note">
-        <strong>Link to cosmic acceleration:</strong>
-        The cosmological constant \(\Lambda\) is the standard term used to model accelerated expansion in GR.
+        <strong>Direct link to dark energy:</strong>
+        The term \(\Lambda\) is the standard entry point for modeling cosmic acceleration as an effective vacuum energy.
       </div>
     </section>
 
-    <!-- 4 -->
+    <!-- 4) Quantum -->
     <section class="card" id="quantum">
-      <h2>4) Quantum theory: state structure and measurement</h2>
+      <h2>4) Quantum mechanics: structural change</h2>
       <p class="muted">
-        Quantum mechanics replaces classical trajectories with states \(|\psi\rangle\), operators, amplitudes,
-        and measurement. This is a structural shift: the object being evolved is a state in Hilbert space, and
-        probabilities arise from amplitudes. Such structural changes are naturally described by higher-rank viewpoints.
+        Quantum mechanics replaces classical trajectories with states \(|\psi\rangle\),
+        operators, and measurement. This is a structural transition:
+        the “object being evolved” becomes a state in Hilbert space,
+        and physical predictions arise from amplitudes.
       </p>
 
       <h3>4.1 Schrödinger equation</h3>
       <div class="math">
         \[
-          i\hbar\frac{\partial}{\partial t}\,|\psi(t)\rangle=\hat{H}\,|\psi(t)\rangle.
+          i\hbar\frac{\partial}{\partial t}\,|\psi(t)\rangle=\hat{H}\,|\psi(t)\rangle
         \]
       </div>
 
       <h3>4.2 Uncertainty principle</h3>
       <div class="math">
         \[
-          \Delta x\,\Delta p \ge \frac{\hbar}{2}.
+          \Delta x\,\Delta p \ge \frac{\hbar}{2}
         \]
       </div>
 
-      <h3>4.3 Dirac equation (relativistic quantum theory)</h3>
+      <h3>4.3 Dirac equation</h3>
       <div class="math">
         \[
-          (i\gamma^\mu \partial_\mu - m)\psi = 0.
+          (i\gamma^\mu \partial_\mu - m)\psi = 0
         \]
       </div>
 
       <div class="note">
         <strong>Hierarchical reading:</strong>
-        Quantum theory is not simply “more accurate classical mechanics.”
-        It introduces a different mathematical structure (superposition, operator algebra, measurement).
+        Quantum theory introduces a new structure of description (superposition, operators, measurement),
+        consistent with moving up the rank ladder.
       </div>
     </section>
 
-    <!-- 5 -->
+    <!-- 5) Dark energy -->
     <section class="card" id="darkenergy">
-      <h2>5) Dark energy: acceleration and scale-law evolution</h2>
+      <h2>5) Dark energy: acceleration as a higher-rank signal</h2>
       <p class="muted">
-        In cosmology, expansion is modeled using the scale factor \(a(t)\). Since expansion is relative,
-        a rank-1 quantity appears naturally:
+        Cosmic expansion is described by a scale factor \(a(t)\).
+        This is intrinsically relative: distances scale rather than add.
+        A rank-1 quantity is therefore natural:
       </p>
 
       <div class="math">
         \[
-          D_1^1 a(t)=\frac{d\ln a}{d\ln t}.
+          D_1^1 a(t)=\frac{d\ln a}{d\ln t}
         \]
       </div>
 
       <p class="muted">
-        Observations indicate accelerated expansion. Hierarchically, this may be interpreted as a change
-        in the growth law itself—suggesting a rank-2 diagnostic:
+        Observations indicate accelerated expansion.
+        In hierarchical terms, this may reflect a change in the <b>scale-law itself</b>,
+        suggesting a rank-2 viewpoint:
       </p>
 
       <div class="math">
         \[
-          D_2^1 a(t)=\frac{d\ln(\ln a)}{d\ln(\ln t)}.
+          D_2^1 a(t)=\frac{d\ln(\ln a)}{d\ln(\ln t)}
         \]
       </div>
 
       <div class="note">
-        <strong>Interpretative idea:</strong>
-        One may treat dark energy as evidence that the expansion law evolves structurally, while standard GR
-        models it effectively through \(\Lambda\).
+        <strong>Key idea:</strong>
+        Dark energy can be interpreted as evidence that the expansion’s relative law evolves structurally
+        (a rank transition), while in standard GR it is modeled through \(\Lambda\).
       </div>
 
-      <h3>5.1 Standard symbolic relation</h3>
+      <h3>5.1 Standard symbolic link</h3>
       <div class="math">
         \[
-          \rho_\Lambda = \frac{\Lambda c^2}{8\pi G}.
+          \rho_\Lambda = \frac{\Lambda c^2}{8\pi G}
         \]
       </div>
       <p class="muted small">
-        (A standard symbolic relation connecting \(\Lambda\) to an effective vacuum energy density.)
+        A commonly used symbolic relation connecting \(\Lambda\) to an effective vacuum energy density.
       </p>
     </section>
 
-    <!-- 6 -->
+    <!-- 6) Quantum gravity -->
     <section class="card" id="qg">
-      <h2>6) Quantum gravity: a possible “rank mismatch”</h2>
+      <h2>6) Quantum gravity: where rank mismatch appears</h2>
       <p class="muted">
-        Quantum gravity aims to unify a geometric theory (GR: spacetime curvature) with a structural theory
-        (QM: states and operators). This is not only technically difficult; it may also reflect a mismatch
-        in the mathematical “level of description.”
+        Quantum gravity aims to unify a geometric theory (GR: smooth spacetime curvature)
+        with a structural theory (QM: states, operators, measurement).
+        Conceptually, it mixes different “levels of change.”
       </p>
 
       <div class="note">
         <strong>Hierarchical viewpoint:</strong>
-        If gravity is encoded geometrically while quantum theory is encoded structurally, a successful unification
-        may require explicit tools for structural transitions (higher-rank descriptions), rather than forcing everything
-        into a single rank.
+        If gravity is encoded in spacetime structure, and quantum theory encodes reality via state structure,
+        the unification may require a framework that treats structural transitions explicitly (higher-rank description),
+        rather than forcing everything into one rank.
       </div>
 
       <h3>6.1 Wheeler–DeWitt (symbolic)</h3>
       <div class="math">
         \[
-          \hat{H}\,\Psi[g_{\mu\nu}] = 0.
+          \hat{H}\,\Psi[g_{\mu\nu}] = 0
         \]
       </div>
       <p class="muted small">
-        Here \(\Psi[g_{\mu\nu}]\) is often interpreted as a “wave function of geometry” in canonical approaches.
+        In some approaches, \(\Psi[g_{\mu\nu}]\) is interpreted as a “wave function of geometry,” written symbolically.
       </p>
 
-      <h3>6.2 Where the ladder may matter</h3>
+      <h3>6.2 Where the ladder matters</h3>
       <p class="muted">
-        Near the Planck regime, spacetime may not remain smooth. A hierarchical ladder suggests that describing
-        such behavior might require ranks beyond classical geometry and beyond standard quantum evolution—
-        capturing changes in the rule-structure of description itself.
+        Near the Planck regime, spacetime may not remain smooth.
+        A hierarchical ladder suggests that describing such regimes may require ranks beyond classical geometry
+        and beyond standard quantum evolution—capturing changes in the rules of description themselves.
       </p>
     </section>
 
-    <!-- 7 -->
+    <!-- 7) Bridge -->
     <section class="card" id="bridge">
-      <h2>7) Unified summary table</h2>
+      <h2>7) A unified map connecting the frameworks</h2>
 
       <table>
         <thead>
           <tr>
             <th>Domain</th>
-            <th>Core equation</th>
+            <th>Core equation (symbolic)</th>
             <th>Hierarchical reading</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Newton</td>
-            <td>\(\mathbf{F}=m\frac{d^2\mathbf{x}}{dt^2}\)</td>
-            <td>Absolute local dynamics: \(\;D_0^1\)</td>
+            <td>\(\mathbf{F}=m\dfrac{d^2\mathbf{x}}{dt^2}\)</td>
+            <td>Absolute local change: \(\;D_0^1\)</td>
           </tr>
           <tr>
             <td>Relativity</td>
-            <td>\(G_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}\)</td>
-            <td>Scale & invariance structure: \(\;D_1^1\) (conceptual)</td>
+            <td>\(G_{\mu\nu}+\Lambda g_{\mu\nu}=\dfrac{8\pi G}{c^4}T_{\mu\nu}\)</td>
+            <td>Scale/frame structure: \(\;D_1^1\) (conceptual)</td>
           </tr>
           <tr>
             <td>Quantum</td>
             <td>\(i\hbar\partial_t|\psi\rangle=\hat{H}|\psi\rangle\)</td>
-            <td>State & measurement structure: \(\;D_2^1\) (interpretative)</td>
+            <td>Structural evolution: \(\;D_2^1\) (conceptual)</td>
           </tr>
           <tr>
             <td>Dark energy</td>
-            <td>\(\rho_\Lambda=\frac{\Lambda c^2}{8\pi G}\)</td>
-            <td>Possible rank-2 diagnostic for expansion law evolution</td>
+            <td>\(\rho_\Lambda=\dfrac{\Lambda c^2}{8\pi G}\)</td>
+            <td>Possible rank-2 signature in expansion law</td>
           </tr>
           <tr>
             <td>Quantum gravity</td>
             <td>\(\hat{H}\Psi[g_{\mu\nu}]=0\)</td>
-            <td>Frontier regime suggesting higher-rank modeling</td>
+            <td>Boundary regime suggesting higher ranks</td>
           </tr>
         </tbody>
       </table>
 
       <div class="note">
         <strong>One-sentence summary:</strong>
-        Hierarchical Calculus can be read as a ladder of change: Newton anchors rank 0, relativity emphasizes
-        scale and invariants (rank 1), quantum theory introduces structural state-based description (rank 2),
-        while dark energy and quantum gravity appear as frontier regimes where the law-structure itself may evolve.
+        Hierarchical Calculus presents physics as a “ladder of change”:
+        Newton anchors rank 0, relativity emphasizes scale structure (rank 1),
+        quantum introduces deeper description structure (rank 2),
+        while dark energy and quantum gravity may signal frontier regimes requiring higher ranks.
       </div>
     </section>
 
+    <!-- (3) References -->
+    <section class="card" id="references">
+      <h2>References & Suggested Citation</h2>
+
+      <div class="note">
+        <strong>References (standard physics):</strong>
+        <ul class="muted small" style="margin:8px 0 0 0">
+          <li>Isaac Newton — <i>Philosophiæ Naturalis Principia Mathematica</i> (1687).</li>
+          <li>Albert Einstein — Special Relativity (1905) and General Relativity (1915).</li>
+          <li>Erwin Schrödinger — Wave mechanics and the Schrödinger equation (1926).</li>
+          <li>Paul Dirac — Relativistic quantum theory and the Dirac equation (1928).</li>
+          <li>Dark energy via the cosmological constant \(\Lambda\): standard GR cosmology.</li>
+          <li>Quantum gravity: symbolic mention of Wheeler–DeWitt equation (canonical approaches).</li>
+        </ul>
+      </div>
+
+      <div class="note">
+        <strong>Hierarchical Calculus reference:</strong><br>
+        Concept DOI:
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+      </div>
+
+      <div class="note">
+        <strong>Suggested citation:</strong>
+        <div class="math">
+\[
+\texttt{GOSSA AHMED. Hierarchical Calculus & Physics — Newton, Einstein, Quantum, Dark Energy, and Quantum Gravity. Official Website. Zenodo DOI: 10.5281/zenodo.17917302 (2025).}
+\]
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
     <section class="card" id="conclusion">
       <h2>Conclusion</h2>
       <p class="muted">
-        This framework does not modify experimental physics. It organizes physical regimes by the type of change
-        being modeled: Newton remains effective at rank 0, relativity dominates when geometry and scale invariance matter,
-        and quantum theory governs when state structure and measurement are essential. Dark energy and quantum gravity
-        remain frontier regimes where a higher-rank language may offer useful modeling intuition.
+        This framework does not alter experimental truths.
+        It organizes regimes by the type of change that best captures the phenomenon:
+        Newton remains valid at rank 0, relativity dominates when frame/scale structure matters,
+        and quantum theory governs when state/measurement structure is essential.
+        Dark energy and quantum gravity appear as frontier signals suggesting deeper structural transitions.
       </p>
+
+      <div class="note">
+        <strong>Next pages:</strong>
+        <a href="./theory-en.html">Theory</a> ·
+        <a href="./equations-en.html">Equations</a> ·
+        <a href="./numerics-en.html">Numerics</a>
+      </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Hierarchical Calculus & Physics — Newton · Relativity · Quantum · Dark Energy · Quantum Gravity
+      © 2025 — GOSSA AHMED · Hierarchical Calculus & Physics — Newton · Einstein · Quantum · Dark Energy · Quantum Gravity
     </footer>
+
   </div>
 </body>
 </html>
-
