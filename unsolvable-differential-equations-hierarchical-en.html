@@ -1,52 +1,54 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>معادلات تفاضلية “غير قابلة للحل” تُحل بالحساب الهرمي</title>
-  <meta name="description" content="صفحة أكاديمية تشرح لماذا تفشل بعض المعادلات التفاضلية على المستوى التفاضلي D0 أو النسبي D1، وكيف تُحل طبيعيًا بالرفع إلى المستوى اللوغاريتمي D2 ضمن الحساب الهرمي." />
+
+  <title>Unsolvable Differential Equations Solved by Hierarchical Calculus</title>
+  <meta name="description" content="An academic reference showing why certain differential equations resist closed-form solutions at rank D0 or even rank D1, and how they become directly solvable after hierarchical lifting to the logarithmic rank D2." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- hreflang -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html" />
-  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html" />
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html" />
   <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html" />
 
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
-      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
-    };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Unsolvable Differential Equations Solved by Hierarchical Calculus" />
+  <meta property="og:description" content="Why some ODEs fail at D0 or D1, and become solvable after hierarchical lifting to D2." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html" />
+  <meta property="og:image" content="https://gossaahmed.github.io/gossa-math/assets/images/hierarchical-calculus-logo.png" />
+  <meta name="twitter:card" content="summary" />
 
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
       --text:#eaf2ff; --muted: rgba(234,242,255,.72);
       --card: rgba(255,255,255,.06);
+      --card2: rgba(0,0,0,.22);
       --b: rgba(255,255,255,.12);
-      --accent:#66d9ef; --accent2:#7aa7ff; --warn:#ffcc66;
+      --accent:#61d2d2; --accent2:#7aa7ff; --warn:#ffcc66; --ok:#86efac;
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family:var(--sans); color:var(--text); line-height:1.95;
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
       background:
-        radial-gradient(1200px 800px at 20% 10%, rgba(102,217,239,.16), transparent 55%),
+        radial-gradient(1200px 800px at 20% 10%, rgba(97,210,210,.18), transparent 55%),
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.16), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
     }
     a{color:var(--accent2);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:980px;margin:0 auto;padding:26px 16px 70px}
 
+    /* topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -54,29 +56,31 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
-      max-width:980px;margin:0 auto;padding:10px 16px;
+      max-width:1050px;margin:0 auto;padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
-    .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px;height:34px;border-radius:10px;
-      background: linear-gradient(135deg, rgba(102,217,239,.95), rgba(122,167,255,.95));
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo-img{
+      width:38px;height:38px;border-radius:12px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
       box-shadow:0 12px 22px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
     }
-    .brand .title{display:flex;flex-direction:column;line-height:1.15}
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
     .brand .title span{font-size:12px;color:var(--muted)}
-
-    nav{display:flex;gap:8px;flex-wrap:wrap}
+    nav{display:flex; gap:8px; flex-wrap:wrap}
     nav a{
       padding:7px 10px; border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);
-      border-radius:999px; font-size:13px; color:var(--text); white-space:nowrap;
+      background:rgba(255,255,255,.04); border-radius:999px;
+      font-size:13px; color:var(--text); white-space:nowrap;
     }
     nav a:hover{background:rgba(255,255,255,.07)}
 
+    /* layout */
+    .wrap{max-width:1050px;margin:0 auto;padding:26px 16px 70px}
     header.hero{
-      margin-top:16px; padding:20px 18px;
+      margin-top:16px; padding:22px 18px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border-radius:var(--radius);
@@ -86,7 +90,7 @@
     header.hero:before{
       content:""; position:absolute; inset:-2px;
       background:
-        radial-gradient(700px 280px at 15% 10%, rgba(102,217,239,.20), transparent 55%),
+        radial-gradient(700px 280px at 15% 10%, rgba(97,210,210,.22), transparent 55%),
         radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
       pointer-events:none;
     }
@@ -94,9 +98,30 @@
 
     h1{margin:0 0 8px 0;font-size:28px}
     h2{margin:0 0 10px 0;font-size:18px}
+    h3{margin:16px 0 8px 0;font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    /* author card */
+    .author-card{
+      display:flex; gap:14px; align-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:14px 16px;
+      margin:16px 0 0;
+      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(97,210,210,.65);
+      box-shadow:0 14px 30px rgba(0,0,0,.30);
+    }
+    .author-card .name{font-weight:900;font-size:18px;line-height:1.2}
+    .author-card .role{color:var(--muted);font-size:13px;margin-top:2px}
+
+    /* cards */
     .card{
       margin-top:14px; padding:16px;
       border:1px solid rgba(255,255,255,.10);
@@ -108,43 +133,91 @@
       margin:12px 0;
       background: rgba(0,0,0,.18);
       border:1px solid rgba(255,255,255,.10);
-      border-right:4px solid rgba(102,217,239,.95);
+      border-left:4px solid rgba(97,210,210,.95);
       border-radius:12px;
       padding:12px 14px;
       overflow:auto;
       direction:ltr; text-align:left;
     }
-    ul{margin:10px 0 0 0; padding:0 18px 0 0}
+    ul{margin:10px 0 0 0; padding-left:18px}
     li{margin:6px 0}
-    .axiom{
-      margin-top:14px;
-      border:2px solid rgba(102,217,239,.75);
-      background: rgba(17,31,54,.55);
-      border-radius:14px;
-      padding:16px;
-    }
-    .axiom strong{color:rgba(102,217,239,.95)}
+
     .note{
-      margin-top:12px;
-      padding:12px;
+      margin-top:12px; padding:12px;
       border:1px solid rgba(255,204,102,.35);
       background: rgba(255,204,102,.10);
       border-radius:14px;
     }
     .note strong{color:var(--warn)}
+
+    .ok{
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(134,239,172,.35);
+      background: rgba(134,239,172,.10);
+      border-radius:14px;
+    }
+    .ok strong{color:var(--ok)}
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:12px;
+    }
+    thead th{
+      text-align:left;
+      font-size:13px;
+      padding:10px 10px;
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+    }
+    tbody td{
+      padding:10px 10px;
+      font-size:13px;
+      color:rgba(234,242,255,.88);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+    }
+    tbody tr:last-child td{border-bottom:none}
+
     footer{
       margin-top:18px; padding-top:18px;
       border-top:1px solid rgba(255,255,255,.10);
       color:var(--muted); font-size:12px; text-align:center;
     }
+
+    .kpi{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      font-size:12px;color:var(--muted);
+    }
   </style>
 
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Structured Data -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": "معادلات تفاضلية “غير قابلة للحل” تُحل بالحساب الهرمي",
-  "alternativeHeadline": "لماذا تفشل بعض المعادلات في التفاضل الكلاسيكي وكيف يحلها الرفع الهرمي",
+  "headline": "Unsolvable Differential Equations Solved by Hierarchical Calculus",
+  "alternativeHeadline": "Why certain ODEs fail at D0 or D1 and become solvable after lifting to D2",
   "author": {
     "@type": "Person",
     "name": "Ahmed Gossa",
@@ -156,75 +229,136 @@
   },
   "datePublished": "2025-12-01",
   "dateModified": "2025-12-27",
-  "inLanguage": "ar",
+  "inLanguage": "en",
   "about": [
     "Hierarchical Calculus",
-    "Unsolvable Differential Equations",
+    "Differential Equations",
     "Relative Derivative D1",
-    "Hierarchical Differential Equations",
-    "Logarithmic Rank D2"
+    "Logarithmic Rank D2",
+    "Hierarchical Lifting"
   ],
-  "abstract": "تشرح هذه المقالة لماذا تفشل بعض المعادلات التفاضلية جوهريًا ضمن التفاضل الكلاسيكي أو حتى على مستوى المشتق النسبي D1، وكيف يوفر الحساب الهرمي حلًا مباشرًا برفع الرتبة إلى D2 حيث يصبح التمثيل طبيعيًا.",
-  "url": "https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical.html"
+  "abstract": "This article explains why some differential equations resist closed-form solutions in classical calculus (D0) and even relative calculus (D1), and how Hierarchical Calculus provides a direct solution by lifting the equation to logarithmic rank D2.",
+  "url": "https://gossaahmed.github.io/gossa-math/unsolvable-differential-equations-hierarchical-en.html"
 }
 </script>
 </head>
 
 <body>
+
+  <!-- TOP BAR -->
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
         <div class="title">
-          <strong>معادلات “غير قابلة للحل” — الحساب الهرمي</strong>
-          <span>الفكرة: الفشل غالبًا هرمي (اختيار رتبة غير مناسبة)</span>
+          <strong>Hierarchical Calculus</strong>
+          <span>Unsolvable ODEs · solved by lifting to rank D2</span>
         </div>
       </div>
 
-      <nav aria-label="التنقل">
-        <a href="./index.html">الرئيسية</a>
-        <a href="./theory.html">النظرية</a>
-        <a href="./rules.html">القوانين</a>
-        <a href="./equations.html">المعادلات</a>
-        <a href="./unsolvable-differential-equations-hierarchical-en.html">English</a>
+      <nav aria-label="Navigation">
+        <a href="./index-en.html">Home</a>
+        <a href="./theory-en.html">Theory</a>
+        <a href="./rules-en.html">Rules</a>
+        <a href="./equations-en.html">Equations</a>
+        <a href="./unsolvable-differential-equations-hierarchical.html">العربية</a>
       </nav>
     </div>
   </div>
 
-  <main class="wrap">
+  <div class="wrap">
+
+    <!-- HERO -->
     <header class="hero">
-      <h1>معادلات تفاضلية “غير قابلة للحل” تُحل بالحساب الهرمي</h1>
+      <h1>“Unsolvable” Differential Equations Solved by Hierarchical Calculus</h1>
       <p class="muted" style="margin:0">
-        في نظرية المعادلات التفاضلية توجد فئة واسعة من المعادلات التي لا يظهر لها حل مغلق ضمن الإطار التفاضلي التقليدي.
-        عادةً يُعزى ذلك إلى “تعقيد جبري/تحليلي”، لكن الفكرة هنا أعمق:
-        <b>الفشل ليس رياضيًا بقدر ما هو هرمي</b>—أي أن المعادلة صيغت/قورنت على رتبة أدنى من الرتبة الطبيعية للظاهرة.
+        In the theory of differential equations, many equations are said to “have no closed-form solution”
+        within the standard differential framework. Usually this is explained as algebraic complexity —
+        but the deeper message of Hierarchical Calculus is different:
+        <b>the failure is often hierarchical</b>.
+        The equation is written at a rank lower than the natural scale of the phenomenon.
       </p>
-      <p class="muted small" style="margin:10px 0 0 0">
-        Concept DOI:
-        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
-      </p>
+
+      <div class="kpi">
+        <span class="pill">Rank 0: Differential \(D_0\)</span>
+        <span class="pill">Rank 1: Relative \(D_1\)</span>
+        <span class="pill">Rank 2: Logarithmic \(D_2\)</span>
+        <span class="pill">Concept DOI: 10.5281/zenodo.17917302</span>
+      </div>
+
+      <div class="author-card">
+        <img class="avatar" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
+        <div>
+          <div class="name">Ahmed Gossa</div>
+          <div class="role">Independent Researcher — Hierarchical Calculus</div>
+          <div class="small muted" style="margin-top:6px">
+            Concept DOI:
+            <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+          </div>
+        </div>
+      </div>
     </header>
 
+    <!-- QUICK SUMMARY -->
     <section class="card">
-      <h2>1) مقدمة</h2>
+      <h2>Quick Summary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Operator</th>
+            <th>What it measures</th>
+            <th>Why it can fail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>\(D_0^1=\frac{d}{dx}\)</td>
+            <td>Absolute slope</td>
+            <td>Equation may be fundamentally scale-driven (log/log structure)</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>\(D_1^1=\frac{d\ln y}{d\ln x}\)</td>
+            <td>Relative change</td>
+            <td>Still fails when the mechanism itself evolves logarithmically</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>\(D_2^1=\frac{d(\ln\ln y)}{d(\ln\ln x)}\)</td>
+            <td>Change of log-log structure</td>
+            <td>Matches the natural hierarchy → equation becomes solvable</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 1 INTRO -->
+    <section class="card">
+      <h2>1) Introduction</h2>
       <p class="muted small" style="margin:0">
-        يعيد الحساب الهرمي تنظيم المشتقات عبر رتب متصاعدة:
-        <b>المستوى التفاضلي</b> (\(D_0\))،
-        ثم <b>المستوى النسبي</b> (\(D_1\))،
-        ثم <b>المستوى اللوغاريتمي</b> (\(D_2\))،
-        وهكذا.
-        الفكرة العملية: عندما تكون بنية المعادلة “لوغاريتم-لوغاريتم”، فمحاولة حلها على \(D_0\) أو \(D_1\) تكون غالبًا وصفًا ناقصًا.
+        Hierarchical Calculus reorganizes derivatives into increasing ranks:
+        <b>D0</b> (differential),
+        <b>D1</b> (relative),
+        <b>D2</b> (logarithmic),
+        and so on.
+        Practical idea: if an equation naturally lives on a \(\ln(\ln(\cdot))\) scale,
+        then forcing it into rank \(D_0\) or \(D_1\) often produces unnatural complexity or apparent insolubility.
       </p>
+
       <div class="note">
-        <strong>ترميز:</strong>
-        نستخدم الرتبة والدرجة \(D_r^n\). في هذه الصفحة نركز على الدرجة 1: \(D_r^1\).
+        <strong>Notation:</strong>
+        We write every operator with explicit rank and degree \(D_r^n\).
+        Here we focus on degree \(n=1\).
       </div>
     </section>
 
+    <!-- 2 D0 FAILURE -->
     <section class="card">
-      <h2>2) الفشل على المستوى التفاضلي \(D_0\)</h2>
+      <h2>2) Failure at the differential level \(D_0\)</h2>
       <p class="muted small" style="margin:0">
-        اعتبر المعادلة التفاضلية:
+        Consider the differential equation:
       </p>
 
       <div class="math">
@@ -234,24 +368,25 @@
       </div>
 
       <p class="muted small" style="margin:0">
-        هذه المعادلة توصف عادةً بأنها:
+        This equation is typically described as:
       </p>
       <ul class="muted small">
-        <li>غير خطية</li>
-        <li>غير قابلة للفصل بسهولة ضمن الصيغ القياسية</li>
-        <li>ليست من نمط برنولي بالصياغات المدرسية المعتادة</li>
-        <li>ولا تُختزل بسهولة بتعويضات “قياسية” دون تغيير جوهر الرتبة</li>
+        <li>nonlinear</li>
+        <li>not easily separable in standard textbook forms</li>
+        <li>not a simple Bernoulli-type after ordinary substitutions</li>
+        <li>and it resists “standard” transformations without changing its natural scale</li>
       </ul>
 
       <p class="muted small" style="margin:10px 0 0 0">
-        ضمن التفاضل التقليدي وحده، غالبًا لا يظهر حل تحليلي مغلق بصيغة بسيطة “طبيعية” لهيكل المعادلة.
+        In classical calculus alone, a clean closed-form solution is not naturally visible in the same structure as the equation.
       </p>
     </section>
 
+    <!-- 3 D1 ATTEMPT -->
     <section class="card">
-      <h2>3) محاولة على المستوى النسبي \(D_1\)</h2>
+      <h2>3) Attempt at the relative level \(D_1\)</h2>
       <p class="muted small" style="margin:0">
-        نُعرّف المشتق النسبي (رتبة 1، درجة 1):
+        Define the relative derivative (rank 1, degree 1):
       </p>
 
       <div class="math">
@@ -261,7 +396,7 @@
       </div>
 
       <p class="muted small" style="margin:0">
-        بالتعويض في المعادلة نحصل على:
+        Substituting into the equation gives:
       </p>
 
       <div class="math">
@@ -271,15 +406,17 @@
       </div>
 
       <p class="muted small" style="margin:0">
-        صحيح أن الصيغة صارت “أنظف”، لكن جوهر المشكلة بقي لأن الطرف الأيمن يحمل بنية <b>لوغاريتم-لوغاريتم</b>.
-        المستوى النسبي يقيس “معدل تغير نسبي”، لكنه لا يطابق هنا مقياس تغير آلية التغير نفسها.
+        The expression is simpler, but the core difficulty remains because the right-hand side is fundamentally
+        <b>log-log structured</b>.
+        Rank 1 measures relative change, but here we need the scale where the evolution mechanism itself becomes linear.
       </p>
     </section>
 
+    <!-- 4 D2 LIFT -->
     <section class="card">
-      <h2>4) الرفع الحاسم: المستوى اللوغاريتمي \(D_2\)</h2>
+      <h2>4) The decisive lift: logarithmic rank \(D_2\)</h2>
       <p class="muted small" style="margin:0">
-        ننتقل الآن إلى الرتبة الثانية ونعرّف المشتق اللوغاريتمي (رتبة 2، درجة 1):
+        Move to rank 2 (logarithmic derivative), degree 1:
       </p>
 
       <div class="math">
@@ -289,7 +426,7 @@
       </div>
 
       <p class="muted small" style="margin:0">
-        عند صياغة المشكلة على هذه الرتبة، يظهر فورًا أن المعادلة تعادل ببساطة:
+        When the problem is formulated at this rank, the equation becomes immediately equivalent to:
       </p>
 
       <div class="math">
@@ -298,15 +435,17 @@
         \]
       </div>
 
-      <p class="muted small" style="margin:0">
-        هنا تختفي “التعقيدات” لأننا اخترنا المقياس الطبيعي لبنية المعادلة.
-      </p>
+      <div class="ok">
+        <strong>Key point:</strong>
+        The “complexity disappears” because we selected the natural hierarchical scale of the equation.
+      </div>
     </section>
 
+    <!-- 5 SOLUTION -->
     <section class="card">
-      <h2>5) الحل على رتبة \(D_2\)</h2>
+      <h2>5) Solving the equation at rank \(D_2\)</h2>
       <p class="muted small" style="margin:0">
-        بحل:
+        Solve:
       </p>
 
       <div class="math">
@@ -316,7 +455,7 @@
       </div>
 
       <p class="muted small" style="margin:0">
-        نحصل على:
+        This integrates directly:
       </p>
 
       <div class="math">
@@ -326,7 +465,7 @@
       </div>
 
       <p class="muted small" style="margin:0">
-        أي:
+        Hence:
       </p>
 
       <div class="math">
@@ -336,7 +475,7 @@
       </div>
 
       <p class="muted small" style="margin:0">
-        وأخيرًا:
+        Finally:
       </p>
 
       <div class="math">
@@ -346,53 +485,89 @@
       </div>
 
       <div class="note">
-        <strong>خلاصة:</strong>
-        الحل يظهر طبيعيًا بمجرد اختيار الرتبة المناسبة (الرفع من \(D_0\) أو \(D_1\) إلى \(D_2\)).
+        <strong>Conclusion:</strong>
+        The solution appears naturally once the correct rank is chosen
+        (lifting from \(D_0\) or \(D_1\) to \(D_2\)).
       </div>
     </section>
 
+    <!-- 6 DOMAIN -->
     <section class="card">
-      <h2>6) مسلّمة الرفع الهرمي</h2>
-      <div class="axiom">
-        <p class="muted small" style="margin:0">
-          <strong>مسلّمة الرفع الهرمي:</strong><br>
-          أي معادلة تفاضلية تفشل على المستوى التفاضلي أو النسبي بسبب اعتماد مقياسي/بنيوي
-          (scale dependence) أو بسبب تطور “آلية النمو” نفسها، يمكن إعادة صياغتها على رتبة أعلى
-          بحيث تصبح قابلة للحل مباشرة باستبدال المشتق التقليدي بالمشتق الهرمي المناسب.
-        </p>
-        <div class="math">
-          \[
-            \text{إذا فشل }\frac{dy}{dx}\text{ (أو }D_{1}^{1}y\text{)، فغالبًا }D_{r}^{1}y\text{ هو الواصف الصحيح.}
-          \]
-        </div>
-      </div>
-    </section>
+      <h2>6) Domain assumptions (important)</h2>
+      <p class="muted small" style="margin:0">
+        Because ranks \(D_1\) and \(D_2\) involve logarithms, we must explicitly state a valid domain:
+      </p>
 
-    <section class="card">
-      <h2>7) تفسير هرمي مختصر</h2>
       <ul class="muted small">
-        <li><strong>\(D_0\):</strong> يقيس الميل (تغير مطلق).</li>
-        <li><strong>\(D_1\):</strong> يقيس التغير النسبي.</li>
-        <li><strong>\(D_2\):</strong> يقيس تغير “آلية التغير” عندما يكون السلوك لوغاريتميًا-لوغاريتميًا.</li>
+        <li>For \(D_1\): require \(x>0\) and \(y>0\).</li>
+        <li>For \(D_2\): require \(\ln x>0\) and \(\ln y>0\), i.e. typically \(x>1\) and \(y>1\).</li>
+        <li>Avoid points where \(\ln x=0\) or \(\ln y=0\).</li>
+      </ul>
+
+      <div class="note">
+        <strong>Reviewer-style note:</strong>
+        Always state the stronger conditions for rank 2 explicitly (\(x>1\), \(y>1\)),
+        to avoid hidden singularities.
+      </div>
+    </section>
+
+    <!-- 7 AXIOM -->
+    <section class="card">
+      <h2>7) The hierarchical lifting axiom</h2>
+      <div class="note">
+        <strong>Hierarchical lifting axiom:</strong><br>
+        If a differential equation fails at the differential or relative level because its structure is scale-driven
+        (or because the growth mechanism itself evolves), then it can often be reformulated at a higher rank where it becomes directly solvable.
+      </div>
+
+      <div class="math">
+        \[
+          \text{If }\frac{dy}{dx}\text{ (or }D_{1}^{1}y\text{) fails, then often }D_{r}^{1}y\text{ is the correct descriptor.}
+        \]
+      </div>
+    </section>
+
+    <!-- 8 INTERPRETATION -->
+    <section class="card">
+      <h2>8) Hierarchical interpretation</h2>
+      <ul class="muted small">
+        <li><strong>\(D_0\):</strong> measures absolute slope (additive variation).</li>
+        <li><strong>\(D_1\):</strong> measures relative change (multiplicative scaling).</li>
+        <li><strong>\(D_2\):</strong> measures log-log structural evolution (nested-scale behavior).</li>
       </ul>
       <p class="muted small" style="margin:10px 0 0 0">
-        عندما تكون الظاهرة نفسها ذات طبيعة لوغاريتمية (أو تتطلب \(\ln\ln\))، فإن أي وصف على رتبة أدنى
-        يكون عرضة للفشل أو ينتج “تعويضات” غير طبيعية مقارنة بالصياغة الهرمية المباشرة.
+        When the phenomenon itself is naturally log-log, describing it in lower ranks often forces unnatural algebra.
+        Hierarchical lifting restores the natural scale.
       </p>
     </section>
 
+    <!-- 9 CITE -->
     <section class="card">
-      <h2>8) خاتمة</h2>
-      <p class="muted small" style="margin:0">
-        المثال يوضح أن ما يُسمّى “معادلات غير قابلة للحل” ليس بالضرورة غير قابل للحل جوهريًا؛
-        بل غالبًا هو <b>تحليل على رتبة غير مناسبة</b>.
-        الحساب الهرمي لا يزيد التعقيد—بل يعيد المشكلة إلى مقياسها الطبيعي.
+      <h2>9) Citation</h2>
+      <p class="muted small">
+        Concept DOI (general citation):
+        <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
       </p>
+
+      <div class="math">
+<pre style="margin:0;color:#eaf2ff;font-family:var(--mono);white-space:pre-wrap">
+@software{gossa_hierarchical_calculus_2025,
+  author = {Gossa, Ahmed},
+  title  = {Hierarchical Calculus},
+  year   = {2025},
+  doi    = {10.5281/zenodo.17917302},
+  url    = {https://github.com/GOSSAAHMED/gossa-math}
+}
+</pre>
+      </div>
     </section>
 
     <footer>
-      © 2025 — الحساب الهرمي | GOSSA AHMED — معادلات تفاضلية “غير قابلة للحل” عبر الرفع الهرمي
+      © 2025 — Hierarchical Calculus | GOSSA AHMED · Concept DOI:
+      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
     </footer>
-  </main>
+
+  </div>
+
 </body>
 </html>
