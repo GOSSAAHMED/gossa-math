@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>Hierarchical Calculus in Astronomy — From Cosmic Expansion to Dark Energy</title>
-  <meta name="description" content="An extended English page connecting Hierarchical Calculus to astronomy, with a direct bridge to cosmic expansion a(t), cosmic acceleration, and dark energy using hierarchical derivatives D0, D1, and D2." />
+  <title>Hierarchical Calculus in Astronomy | Cosmic Expansion, Dark Energy, and Multi-Scale Structures</title>
+  <meta name="description" content="Research-style reference: applying Hierarchical Calculus (D0, D1, D2) to astronomy and cosmology, with a structured lens on the scale factor a(t), cosmic acceleration, dark energy, and practical domains (stars, galaxies, black holes, signals)." />
   <meta name="author" content="GOSSA AHMED" />
 
   <!-- Canonical + hreflang -->
@@ -14,19 +14,32 @@
   <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/astronomy-ar.html" />
   <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/astronomy-en.html" />
 
+  <!-- OpenGraph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Hierarchical Calculus in Astronomy | Cosmic Expansion, Dark Energy, Multi-Scale Structures" />
+  <meta property="og:description" content="Research-style reference: D0 (local), D1 (relative/scale), D2 (structural/log–log). Applied to cosmic expansion a(t), dark energy, and astronomical systems." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/astronomy-en.html" />
+  <meta name="twitter:card" content="summary" />
+
   <style>
     :root{
       --bg0:#0b1220; --bg1:#0f1b2e;
-      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --text:#eaf2ff; --muted: rgba(234,242,255,.74);
       --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
       --shadow: 0 18px 48px rgba(0,0,0,.38);
       --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
       --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family:var(--sans); color:var(--text); line-height:1.9;
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      line-height:2.05;
       background:
         radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
         radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
@@ -35,23 +48,31 @@
     }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1050px; margin:0 auto; padding:26px 16px 70px}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
 
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.55);
+      background: rgba(11,18,32,.60);
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
-      max-width:1050px; margin:0 auto; padding:10px 16px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      max-width:1100px;
+      margin:0 auto;
+      padding:10px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
     }
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+    .logo-img{
+      width:38px;height:38px;border-radius:12px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
       box-shadow:0 12px 22px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
@@ -59,64 +80,178 @@
 
     nav{display:flex; gap:8px; flex-wrap:wrap}
     nav a{
-      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+      padding:7px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+      font-size:13px;
+      color:var(--text);
       white-space:nowrap;
     }
-    nav a:hover{background:rgba(255,255,255,.07)}
+    nav a:hover{background:rgba(255,255,255,.08)}
 
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.12);
+    }
+
+    /* Hero */
     header.hero{
-      margin-top:16px; padding:20px 18px;
+      margin-top:16px;
+      padding:20px 18px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-      position:relative; overflow:hidden;
+      position:relative;
+      overflow:hidden;
     }
     header.hero:before{
-      content:""; position:absolute; inset:-2px;
+      content:"";
+      position:absolute; inset:-2px;
       background:
         radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
         radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
       pointer-events:none;
     }
     header.hero > *{position:relative}
+
+    .hero-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .author-card{
+      display:flex; gap:12px; align-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:12px 14px;
+      box-shadow:0 18px 48px rgba(0,0,0,.22);
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(57,211,195,.65);
+      box-shadow:0 14px 30px rgba(0,0,0,.30);
+    }
+    .author-card .name{font-weight:900;font-size:16px;line-height:1.2}
+    .author-card .role{color:var(--muted);font-size:12px;margin-top:2px}
+
     h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
 
+    .pillrow{margin-top:10px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      font-size:12px;
+      color:var(--muted);
+      margin:6px 6px 0 0;
+      white-space:nowrap;
+    }
+
+    /* Cards */
     .card{
-      margin-top:14px; padding:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      margin-top:14px;
+      padding:16px;
+      border:1px solid var(--border);
+      background:var(--card);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
-    h2{margin:0 0 10px 0; font-size:18px}
-    h3{margin:14px 0 8px 0; font-size:16px}
 
     .math{
-      margin-top:8px; padding:10px 12px;
+      margin-top:8px;
+      padding:10px 12px;
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
+      background:rgba(0,0,0,.18);
       border-radius:12px;
       overflow:auto;
-      direction:ltr; text-align:left;
+      direction:ltr;
+      text-align:left;
+    }
+    code{
+      font-family:var(--mono);
+      background:rgba(0,0,0,.22);
+      padding:2px 6px;
+      border-radius:10px;
+      direction:ltr;
     }
 
     .note{
-      margin-top:12px; padding:12px;
+      margin-top:12px;
+      padding:12px;
       border:1px solid rgba(255,204,102,.35);
-      background: rgba(255,204,102,.10);
+      background:rgba(255,204,102,.10);
       border-radius:14px;
     }
     .note strong{color:var(--warn)}
-    .toc a{display:inline-block; margin:4px 0}
+
+    .callout{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background:rgba(57,211,195,.10);
+      border-radius:14px;
+      border-left:4px solid var(--accent);
+    }
+
+    .toc a{display:block; margin:6px 0}
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
+    }
+    thead th{
+      text-align:left;
+      font-size:13px;
+      padding:10px 10px;
+      background:rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+    }
+    tbody td{
+      padding:10px 10px;
+      font-size:13px;
+      color:rgba(234,242,255,.90);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+    }
+    tbody tr:last-child td{border-bottom:none}
 
     footer{
-      margin-top:18px; padding-top:18px;
+      margin-top:18px;
+      padding-top:18px;
       border-top:1px solid rgba(255,255,255,.10);
-      color:var(--muted); font-size:12px; text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
     }
   </style>
 
@@ -128,211 +263,385 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Hierarchical Calculus in Astronomy",
+    "alternativeHeadline": "Cosmic Expansion, Dark Energy, and Multi-Scale Structures",
+    "author": {
+      "@type": "Person",
+      "name": "Ahmed Gossa",
+      "url": "https://gossaahmed.github.io/gossa-math/"
+    },
+    "about": [
+      "Hierarchical Calculus",
+      "Astronomy",
+      "Cosmology",
+      "Scale factor a(t)",
+      "Dark Energy",
+      "Cosmic acceleration"
+    ],
+    "inLanguage": "en",
+    "url": "https://gossaahmed.github.io/gossa-math/astronomy-en.html",
+    "publisher": { "@type": "Organization", "name": "Hierarchical Calculus" }
+  }
+  </script>
+
 </head>
 
 <body>
+
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
         <div class="title">
           <strong>Hierarchical Calculus in Astronomy</strong>
-          <span>Cosmic expansion & dark energy</span>
+          <span>Research style · cosmic expansion · dark energy · multi-scale systems</span>
         </div>
       </div>
 
       <nav aria-label="Navigation">
-        <a href="./index.html">Home</a>
+        <a href="./index-en.html">Home</a>
         <a href="./theory-en.html">Theory</a>
         <a href="./rules-en.html">Rules</a>
         <a href="./equations-en.html">Equations</a>
-        <a href="./index-ar.html">العربية</a>
+        <a href="./astronomy-ar.html">العربية</a>
       </nav>
+
+      <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
     </div>
   </div>
 
   <div class="wrap">
+
     <header class="hero">
-      <h1>Hierarchical Calculus in Astronomy</h1>
-      <p class="muted">
-        This page connects Hierarchical Calculus directly to astronomy and cosmology:
-        the scale factor \(a(t)\), cosmic acceleration, and a structural reading of dark energy.
-        We then move to practical astronomical domains (stars, galaxies, orbits, black holes, and signals).
-      </p>
-      <p class="muted small" style="margin:10px 0 0 0">
-        Author: <b>GOSSA AHMED</b> · Official site: <a href="./index.html">gossa-math</a>
-      </p>
+      <div class="hero-top">
+        <div>
+          <h1>Hierarchical Calculus in Astronomy</h1>
+          <p class="muted" style="margin:0">
+            Astronomy and cosmology are intrinsically <b>multi-scale</b>: from stellar microphysics to galaxy evolution
+            and finally the global expansion of spacetime. Hierarchical Calculus proposes a rank-based language of change:
+            absolute local change (\(D_0^1\)), relative/scale change (\(D_1^1\)), and structural/log–log change (\(D_2^1\)).
+            This page shows how the same ladder clarifies cosmic expansion \(a(t)\), cosmic acceleration, and a structural reading of dark energy,
+            then extends the lens to practical astronomical domains (stars, galaxies, black holes, and signals).
+          </p>
+
+          <div class="pillrow">
+            <span class="pill">Rank 0: \(D_0^1\)</span>
+            <span class="pill">Rank 1: \(D_1^1\)</span>
+            <span class="pill">Rank 2: \(D_2^1\)</span>
+            <span class="pill">Higher ranks: \(D_n^1\)</span>
+          </div>
+
+          <p class="muted small" style="margin:10px 0 0 0">
+            Concept DOI:
+            <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+          </p>
+        </div>
+
+        <div class="author-card">
+          <img class="avatar" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
+          <div>
+            <div class="name">GOSSA AHMED</div>
+            <div class="role">Independent Researcher — Hierarchical Calculus</div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <section class="card toc" id="toc">
-      <h2>Contents</h2>
-      <a href="#p1">1) Conceptual foundation</a><br>
-      <a href="#p2">2) Cosmic expansion & dark energy (hierarchical form)</a><br>
-      <a href="#p3">3) Practical astronomical applications</a><br>
-      <a href="#conclusion">Conclusion</a>
+    <!-- Abstract -->
+    <section class="card" id="abstract">
+      <h2>Abstract</h2>
+      <p class="muted" style="margin:0">
+        Standard astronomical modeling frequently mixes local differential dynamics with logarithmic observational scales
+        (e.g., magnitudes, decibel-like signal measures, log-luminosity relations), and with global scale-factor descriptions in cosmology.
+        Hierarchical Calculus proposes that this mixture reflects a deeper structure: different phenomena naturally live at different ranks.
+        Rank 0 describes absolute local variation, rank 1 captures scale-invariant evolution, and rank 2 tracks structural evolution of the scale law itself.
+        We interpret cosmic acceleration and dark energy as candidates for higher-rank behavior in the expansion law, while maintaining consistency with standard ΛCDM.
+      </p>
     </section>
 
-    <!-- Part (1) -->
-    <section class="card" id="p1">
+    <!-- Contents -->
+    <section class="card toc" id="toc">
+      <h2>Contents</h2>
+      <a href="#foundation">1) Conceptual foundation: why astronomy is multi-rank</a>
+      <a href="#cosmo">2) Cosmic expansion \(a(t)\), acceleration, and dark energy</a>
+      <a href="#apps">3) Practical astronomical domains (stars, galaxies, black holes, signals)</a>
+      <a href="#map">4) Unified rank map (observations ↔ theory)</a>
+      <a href="#conclusion">Conclusion</a>
+      <a href="#refs">References & Citation</a>
+    </section>
+
+    <!-- 1) Foundation -->
+    <section class="card" id="foundation">
       <h2>1) Conceptual foundation</h2>
 
-      <h3>1.1 Astronomy is intrinsically multi-scale</h3>
+      <h3>1.1 Astronomy is inherently multi-scale</h3>
       <p class="muted">
-        Astronomy spans extreme ranges of scale: plasma microphysics, stellar evolution over billions of years,
-        galactic formation and mergers, and finally the global expansion of spacetime. Because the nature of change
-        differs across these scales, forcing every phenomenon into a single local (rank-0) differential description
-        can hide structure and require extra ad-hoc corrections.
+        Astrophysical systems span orders of magnitude in time, distance, density, and energy.
+        A single description based purely on local rank-0 derivatives can be numerically correct but conceptually inefficient,
+        since many astronomical questions are fundamentally about <b>relative scaling</b> rather than additive change.
+        Hierarchical Calculus formalizes this by separating change into ranks.
       </p>
 
-      <h3>1.2 Absolute change vs relative change</h3>
+      <h3>1.2 The derivative ladder of change</h3>
       <p class="muted">
-        Classical calculus measures absolute change:
+        A minimal ladder is given by:
       </p>
       <div class="math">
         \[
-          D_0^1 f(t)=\frac{df}{dt}
-        \]
-      </div>
-      <p class="muted">
-        Many astronomical processes are better captured by relative (scale) change, naturally expressed by the rank-1 derivative:
-      </p>
-      <div class="math">
-        \[
-          D_1^1 f(t)=\frac{d\ln f}{d\ln t}
+          D_0^1 f(t)=\frac{df}{dt},\qquad
+          D_1^1 f(t)=\frac{d\ln f}{d\ln t},\qquad
+          D_2^1 f(t)=\frac{d\ln(\ln f)}{d\ln(\ln t)}.
         \]
       </div>
 
       <div class="note">
-        <strong>Key idea:</strong>
-        When the physical question is “how does the system grow/decay in scale?” rather than “how much did it change?”,
-        \(D_1^1\) can be conceptually cleaner than \(D_0^1\).
+        <strong>Interpretation:</strong><br>
+        • \(D_0^1\): absolute local change (classical calculus).<br>
+        • \(D_1^1\): relative scaling (growth/decay in percent-like terms).<br>
+        • \(D_2^1\): structural change of the scaling law (acceleration of relative rates).<br>
+        • \(D_n^1\): deeper structural transitions.
+      </div>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">Why ranks matter observationally</div>
+        <div class="muted small">
+          Many observables are already logarithmic or ratio-based (magnitudes, flux ratios, power spectra, spectral indices).
+          Rank-1 and rank-2 descriptions align naturally with how astronomical data is recorded and compared.
+        </div>
       </div>
     </section>
 
-    <!-- Part (2) -->
-    <section class="card" id="p2">
-      <h2>2) Cosmic expansion & dark energy in hierarchical form</h2>
+    <!-- 2) Cosmology -->
+    <section class="card" id="cosmo">
+      <h2>2) Cosmic expansion & dark energy (hierarchical form)</h2>
 
       <h3>2.1 Expansion is fundamentally relative</h3>
       <p class="muted">
         Cosmic expansion is not an additive increase of a single size; it is a scaling of distances.
-        This makes the rank-1 expression for the scale factor \(a(t)\) a natural starting point:
+        The scale factor \(a(t)\) therefore invites rank-1 analysis:
       </p>
       <div class="math">
         \[
-          D_1^1 a(t)=\frac{d\ln a}{d\ln t}
+          D_1^1 a(t)=\frac{d\ln a}{d\ln t}.
         \]
       </div>
+
       <p class="muted">
-        In this reading, “Hubble-like” behavior corresponds to a regime where the relative growth pattern is stable (or slowly varying).
+        In standard cosmology, one often uses \(H(t)=\dot a/a\). Rank-1 language is compatible with this,
+        but emphasizes that expansion is intrinsically a <b>scale law</b>.
       </p>
 
-      <h3>2.2 Acceleration as a change in the growth pattern</h3>
+      <h3>2.2 Acceleration as structural evolution of the scaling law</h3>
       <p class="muted">
-        Observationally, the expansion is accelerating. In a hierarchical view, this is not only “more growth,”
-        but a structural change in how the relative growth behaves. A natural tool is the rank-2 (logarithmic) derivative:
+        Observationally, the Universe exhibits accelerated expansion.
+        In a hierarchical view, acceleration can be interpreted as a shift beyond stable scaling:
+        the relative law itself evolves. Rank-2 provides a natural descriptor:
       </p>
       <div class="math">
         \[
-          D_2^1 a(t)=\frac{d\ln(\ln a)}{d\ln(\ln t)}
+          D_2^1 a(t)=\frac{d\ln(\ln a)}{d\ln(\ln t)}.
         \]
       </div>
 
       <div class="note">
         <strong>Structural reading of dark energy:</strong>
-        Dark energy can be interpreted as evidence that the expansion has moved to a higher descriptive rank:
-        the system is not just scaling (rank-1), but the scaling law itself is evolving (rank-2).
+        Dark energy can be read as evidence that the expansion is not only scaling (rank-1),
+        but that the scaling pattern evolves structurally (rank-2).
+        This interpretation does not replace ΛCDM; it provides an additional descriptive layer for understanding “why”
+        cosmic acceleration looks structurally different from matter-dominated expansion.
       </div>
 
-      <h3>2.3 Inflation on the hierarchical ladder</h3>
+      <h3>2.3 Connection to the standard model (symbolic)</h3>
       <p class="muted">
-        Inflation represents an even more extreme regime. It can be viewed as requiring higher-rank description:
-        not only exponential growth, but transitions in the structure of growth that go beyond rank-2 in a unified ladder
-        \(D_n^1\).
+        In standard GR, accelerated expansion is modeled through the cosmological constant \(\Lambda\).
+        A common symbolic relation is:
       </p>
+      <div class="math">
+        \[
+          \rho_\Lambda = \frac{\Lambda c^2}{8\pi G}.
+        \]
+      </div>
 
-      <h3>2.4 Relation to the standard model</h3>
-      <p class="muted">
-        Hierarchical form does not negate ΛCDM; it reframes meanings. Constants can be read as effective signatures
-        of higher-rank structure when projected into lower-rank equations.
-      </p>
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">Interpretive bridge</div>
+        <div class="muted small">
+          In hierarchical language, \(\Lambda\) can be viewed as an effective imprint of higher-rank structure
+          projected into rank-0/rank-1 field equations.
+        </div>
+      </div>
     </section>
 
-    <!-- Part (3) -->
-    <section class="card" id="p3">
+    <!-- 3) Applications -->
+    <section class="card" id="apps">
       <h2>3) Practical astronomical applications</h2>
 
       <h3>3.1 Stellar evolution as a hierarchical path</h3>
       <p class="muted">
-        Stars evolve through qualitative phases (main sequence → red giant → collapse/explosion).
-        In calm regimes, relative descriptions such as \(D_1^1 L(t)\) and \(D_1^1 R(t)\) are informative,
-        while late-stage transitions can be more naturally discussed in rank-2 terms when the growth pattern itself changes.
+        Stellar evolution progresses through phases (main sequence → giant → collapse/explosion),
+        where each stage has different scaling behavior. Rank-1 quantities such as \(D_1^1 L(t)\) and \(D_1^1 R(t)\)
+        naturally track relative change in luminosity and radius, while late-stage transitions may be better
+        described as structural shifts consistent with rank-2 or higher.
       </p>
 
       <h3>3.2 Luminosity and logarithmic scales</h3>
       <p class="muted">
-        Observational astronomy routinely uses logarithmic brightness measures (magnitudes). Rank-2 language aligns with
-        how data is actually recorded and compared, making theory-to-observation mapping more coherent.
+        Astronomical brightness is often stored in magnitudes (logarithmic), and spectral relations are frequently expressed
+        in log-log space. Rank-2 language matches the observational coordinate system more directly than purely additive derivatives.
       </p>
 
-      <h3>3.3 Supernovae as structural jumps</h3>
+      <h3>3.3 Supernovae and structural jumps</h3>
       <p class="muted">
-        Supernovae are not smooth changes but structural jumps in state. Hierarchical framing treats these as rank transitions,
-        rather than forcing them into purely local derivatives.
+        Supernovae represent qualitative structural transitions rather than smooth perturbations.
+        Hierarchical framing treats such events as rank transitions (change in the rule of evolution),
+        avoiding the need to interpret them as “large but smooth” rank-0 perturbations.
       </p>
 
       <h3>3.4 Orbits and long-term stability</h3>
       <p class="muted">
-        Classical orbital mechanics is powerful locally, but long-term stability depends on small relative accumulations.
-        Using \(D_1^1 r(t)\) helps reveal whether deviations grow in a stable scale-pattern or drift toward instability.
+        Local orbital mechanics is well described by rank-0 dynamics.
+        However, long-term stability depends on small relative accumulations (precession, resonances, drift).
+        Rank-1 quantities such as \(D_1^1 r(t)\) help identify whether deviations evolve stably as scaling patterns.
       </p>
 
-      <h3>3.5 Planet migration</h3>
+      <h3>3.5 Planet migration in disks</h3>
       <p class="muted">
-        Migration in protoplanetary disks is cumulative over long times. Hierarchical language separates instantaneous local effects
-        from sustained relative drift in orbital scale.
+        Migration is cumulative over long times; short-term forces may be local,
+        but outcomes depend on relative drift of orbital scales.
+        Hierarchical separation clarifies instantaneous effects versus sustained scaling.
       </p>
 
-      <h3>3.6 Galaxies and structural evolution</h3>
+      <h3>3.6 Galaxy evolution and mergers</h3>
       <p class="muted">
-        Galaxy mergers reshape structure, not only parameters. Higher-rank descriptions help discuss qualitative transitions
-        (e.g., spiral to elliptical after repeated interactions).
+        Galaxy mergers reshape morphology and kinematics.
+        Such restructuring is naturally described as higher-rank behavior: the system changes not only in parameters
+        but in the structure of its evolution.
       </p>
 
-      <h3>3.7 Black holes and growth regimes</h3>
+      <h3>3.7 Black hole growth regimes</h3>
       <p class="muted">
-        Black-hole mass growth can be slow and scale-stable in some phases, and rapid (nearly exponential or beyond) in quasar-like phases.
-        Hierarchical ranks separate these regimes cleanly.
+        Black hole mass growth may be slow and scale-stable in some epochs, then transition into rapid accretion phases.
+        Hierarchical ranks separate these regimes cleanly as different structural laws of growth.
       </p>
 
-      <h3>3.8 Gravitational-wave signals</h3>
+      <h3>3.8 Gravitational waves: oscillations + structure</h3>
       <p class="muted">
-        Gravitational-wave data includes fast local oscillations plus global structural information about the source.
-        Hierarchical separation can help disentangle instantaneous variation from evolving signal pattern.
+        Gravitational-wave signals contain fast oscillations plus structural information about the source (chirp mass, merger phase).
+        Hierarchical decomposition can help separate local fluctuations from changes in the waveform structure.
       </p>
 
-      <h3>3.9 Fate of the universe</h3>
+      <h3>3.9 The fate of the universe</h3>
       <p class="muted">
-        Scenarios like eternal expansion, Big Freeze, or Big Rip differ in long-range growth structure.
-        Hierarchical ranks offer a clean lens to classify these behaviors by the pattern of change, not only the endpoint.
+        Scenarios such as eternal expansion, Big Freeze, or Big Rip differ primarily in the long-range structure of the expansion law.
+        Hierarchical ranks classify these by patterns of change rather than by final endpoints alone.
       </p>
     </section>
 
+    <!-- 4) Map -->
+    <section class="card" id="map">
+      <h2>4) Unified rank map (observations ↔ theory)</h2>
+      <p class="muted">
+        The table below summarizes how common astronomical domains align with ranks in the derivative ladder.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Natural observable structure</th>
+            <th>Suggested rank lens</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Local orbital dynamics</td>
+            <td>Trajectories, forces, time derivatives</td>
+            <td>\(D_0^1\)</td>
+          </tr>
+          <tr>
+            <td>Stellar growth/decay</td>
+            <td>Relative change in radius, luminosity, mass</td>
+            <td>\(D_1^1\)</td>
+          </tr>
+          <tr>
+            <td>Logarithmic observation scales</td>
+            <td>Magnitudes, log-luminosity relations, spectra</td>
+            <td>\(D_1^1\) and \(D_2^1\)</td>
+          </tr>
+          <tr>
+            <td>Cosmic expansion \(a(t)\)</td>
+            <td>Scaling of distances</td>
+            <td>\(D_1^1\)</td>
+          </tr>
+          <tr>
+            <td>Cosmic acceleration / dark energy</td>
+            <td>Evolution of the scale law</td>
+            <td>\(D_2^1\)</td>
+          </tr>
+          <tr>
+            <td>Catastrophic structural events</td>
+            <td>Supernovae, mergers, transitions</td>
+            <td>\(D_2^1\) or higher</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">Practical take-home</div>
+        <div class="muted small">
+          Rank-0 answers “how much changed locally.” Rank-1 answers “how did scale change.” Rank-2 answers “did the scaling law itself evolve.”
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
     <section class="card" id="conclusion">
       <h2>Conclusion</h2>
       <p class="muted">
-        Hierarchical Calculus provides a language tuned to astronomical reality: it distinguishes absolute change (\(D_0^1\)),
-        relative scaling (\(D_1^1\)), and structural/logarithmic change (\(D_2^1\)), and naturally extends to higher ranks.
-        From this viewpoint, cosmic acceleration and dark energy can be treated as signatures of higher-rank behavior
-        in the expansion law itself, not as isolated mysteries.
+        Hierarchical Calculus provides a language tuned to astronomical reality:
+        it distinguishes absolute change (\(D_0^1\)), relative scaling (\(D_1^1\)), and structural/log–log change (\(D_2^1\)),
+        and naturally extends to higher ranks. From this viewpoint, cosmic acceleration and dark energy
+        can be interpreted as candidate signatures of higher-rank evolution in the expansion law itself,
+        while remaining compatible with standard cosmological modeling.
       </p>
+    </section>
 
-      
+    <!-- References -->
+    <section class="card" id="refs">
+      <h2>References & Citation</h2>
+
+      <div class="note">
+        <strong>Suggested citation:</strong>
+        <div class="math">
+          \[
+            \texttt{GOSSA\ AHMED.\ Hierarchical\ Calculus\ in\ Astronomy:\ Cosmic\ Expansion,\ Dark\ Energy,\ and\ Multi\mbox{-}Scale\ Structures.\ Official\ Website.\ 2025.}
+          \]
+        </div>
+      </div>
+
+      <div class="callout">
+        <div style="font-weight:900;margin-bottom:6px">Concept DOI</div>
+        <div class="muted small">
+          <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a>
+        </div>
+      </div>
+
+      <p class="muted small" style="margin:10px 0 0 0">
+        Note: This page is a conceptual synthesis and can be expanded into a technical version with explicit Friedmann-equation
+        reformulations and observational fits in hierarchical coordinates.
+      </p>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · Hierarchical Calculus in Astronomy — From Cosmic Expansion to Dark Energy
+      © 2025 — GOSSA AHMED · Hierarchical Calculus in Astronomy — cosmic expansion · dark energy · multi-scale systems
     </footer>
+
   </div>
 </body>
 </html>
+>
