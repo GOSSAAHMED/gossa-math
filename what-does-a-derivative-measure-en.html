@@ -1,241 +1,560 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>What Does a Derivative Really Measure? — A Hierarchical Interpretation</title>
+  <title>What Does a Derivative Really Measure? — A Hierarchical Interpretation (Paper-Style)</title>
 
   <meta name="description"
-        content="What does a derivative really measure? This page explains the meaning of change from differential to relative and logarithmic levels within Hierarchical Calculus.">
+        content="A paper-style explanation of what a derivative measures: from classical absolute change (D0^1) to relative change (D1^1) and logarithmic change (D2^1) in Hierarchical Calculus. Includes abstract, method, interpretation, mini-examples, discussion, and references.">
 
   <meta name="keywords"
-        content="Derivative Meaning, What Does a Derivative Measure, Hierarchical Calculus, Relative Derivative D1, Logarithmic Derivative D2">
+        content="Derivative Meaning, What Does a Derivative Measure, Hierarchical Calculus, Relative Derivative D1, Logarithmic Derivative D2, D0^1, D1^1, D2^1">
 
-  <meta name="author" content="GOSSA AHMED">
+  <meta name="author" content="GOSSA AHMED" />
 
   <link rel="canonical"
-        href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure-en.html">
+        href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure-en.html" />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure-en.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure-en.html" />
 
   <!-- MathJax -->
   <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']]
-      }
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
+    :root{
+      --bg0:#0b1220; --bg1:#0f1b2e;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --accent:#39d3c3; --accent2:#7aa7ff; --warn:#ffcc66;
+      --shadow: 0 18px 48px rgba(0,0,0,.38);
+      --radius: 18px;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --border: rgba(255,255,255,.10);
+      --card: rgba(255,255,255,.05);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0;
-      background:#0b1220;
-      color:#eaf2ff;
-      font-family: system-ui, Arial, sans-serif;
-      line-height:1.95;
+      margin:0; font-family:var(--sans); color:var(--text); line-height:1.95;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(57,211,195,.18), transparent 55%),
+        radial-gradient(1100px 700px at 85% 30%, rgba(122,167,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
     }
-    main{
-      max-width:920px;
-      margin:auto;
-      padding:46px 18px 70px;
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:26px 16px 70px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    h1,h2,h3{
-      color:#66d9ef;
+    .topbar .inner{
+      max-width:1100px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
-    h1{
-      font-size:2.1em;
-      margin-bottom:10px;
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
     }
-    .subtitle{
-      color:#b3b3b3;
-      margin-bottom:28px;
-      font-size:1.08em;
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
+    .brand .title{display:flex; flex-direction:column; line-height:1.15}
+    .brand .title strong{font-size:14px}
+    .brand .title span{font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:8px; flex-wrap:wrap}
+    nav a{
+      padding:7px 10px; border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04); border-radius:999px; font-size:13px; color:var(--text);
+      white-space:nowrap;
     }
-    .divider{
-      height:1px;
-      background:linear-gradient(90deg, transparent, #22314f, transparent);
-      margin:26px 0 34px;
+    nav a:hover{background:rgba(255,255,255,.07)}
+
+    /* Hero */
+    header.hero{
+      margin-top:16px; padding:20px 18px;
+      border:1px solid var(--border);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
     }
+    header.hero:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(57,211,195,.20), transparent 55%),
+        radial-gradient(700px 280px at 80% 30%, rgba(122,167,255,.20), transparent 55%);
+      pointer-events:none;
+    }
+    header.hero > *{position:relative}
+
+    h1{margin:0 0 8px 0; font-size:28px}
+    h2{margin:0 0 10px 0; font-size:18px}
+    h3{margin:14px 0 8px 0; font-size:16px}
+
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .card{
+      margin-top:14px; padding:16px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
     .note{
-      background:#0f1a2c;
-      border:1px solid #22314f;
-      border-radius:12px;
-      padding:14px 16px;
-      margin:22px 0;
+      margin-top:12px; padding:12px;
+      border:1px solid rgba(255,204,102,.35);
+      background: rgba(255,204,102,.10);
+      border-radius:14px;
+      font-size:14px;
     }
-    .note strong{ color:#66d9ef; }
+    .note strong{color:var(--warn)}
 
     .math{
-      background:#111a2e;
-      border-left:4px solid #66d9ef;
-      border:1px solid #22314f;
+      margin-top:10px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
       border-radius:12px;
-      padding:16px 18px;
-      margin:20px 0;
-      overflow-x:auto;
+      overflow:auto;
+      direction:ltr;
+      text-align:left;
+      font-family:var(--mono);
+      font-size:13px;
     }
 
-    ul{
-      margin:10px 0 0 18px;
+    .paper-meta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:12px;
     }
-    li{ margin:6px 0; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px;
+      color: var(--muted);
+      white-space:nowrap;
+    }
+
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-size:13px;
+      text-decoration:none;
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(57,211,195,.35);
+      background: rgba(57,211,195,.14);
+    }
+
+    .discussion{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px solid rgba(57,211,195,.25);
+      background: rgba(57,211,195,.08);
+      border-radius:14px;
+      border-left:4px solid var(--accent);
+      color:rgba(234,242,255,.92);
+      font-size:13px;
+    }
+
+    .toc a{
+      display:inline-block;
+      margin:6px 0;
+      padding:6px 10px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      color:rgba(234,242,255,.92);
+      font-size:13px;
+    }
+    .toc a:hover{background:rgba(255,255,255,.06)}
+
+    ul{margin:10px 0 0 18px}
+    li{margin:6px 0}
 
     footer{
-      margin-top:60px;
-      padding-top:18px;
-      border-top:1px solid #22314f;
-      color:#9aa4b2;
-      font-size:.95em;
-      text-align:center;
+      margin-top:18px; padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted); font-size:12px; text-align:center;
     }
   </style>
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "What Does a Derivative Really Measure? — A Hierarchical Interpretation",
+  "author": {"@type":"Person","name":"Ahmed Gossa","url":"https://gossaahmed.github.io/gossa-math/"},
+  "about": ["Hierarchical Calculus","Derivative Meaning","Relative Derivative","Logarithmic Derivative","D0^1","D1^1","D2^1"],
+  "abstract": "A structured paper-style explanation of what a derivative measures, organized across hierarchical levels D0^1, D1^1, and D2^1 with interpretation, mini-examples, discussion, and references.",
+  "inLanguage": "en",
+  "url": "https://gossaahmed.github.io/gossa-math/what-does-a-derivative-measure-en.html",
+  "publisher": {"@type":"Organization","name":"Hierarchical Calculus"}
+}
+</script>
 </head>
 
 <body>
-<main>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- If you have a logo, activate this line -->
+          <!-- <img src="./logo.png" alt="Logo"> -->
+        </div>
+        <div class="title">
+          <strong>Derivative Meaning — Paper</strong>
+          <span>\(D_0^1\) vs \(D_1^1\) vs \(D_2^1\) · Hierarchical Interpretation</span>
+        </div>
+      </div>
 
-  <h1>What Does a Derivative Really Measure?</h1>
-  <p class="subtitle">
-    From differential change to relative and logarithmic change — a hierarchical interpretation.
-  </p>
-
-  <div class="note">
-    <strong>Core idea:</strong>
-    A derivative does not merely compute a slope.  
-    It measures change relative to a chosen scale — and that scale defines the level of calculus.
+      <nav aria-label="Navigation">
+        <a href="./index-en.html">Home</a>
+        <a href="./theory-en.html">Theory</a>
+        <a href="./rules-en.html">Rules</a>
+        <a href="./equations-en.html">Equations</a>
+        <a href="./integrals-en.html">Integrals</a>
+        <a href="./what-does-a-derivative-measure.html">العربية</a>
+        <a href="#refs">References</a>
+      </nav>
+    </div>
   </div>
 
-  <div class="divider"></div>
+  <div class="wrap">
 
-  <h2>1. The classical interpretation: absolute change</h2>
-  <p>
-    In classical calculus, the derivative
-    \[
-      \frac{dy}{dx}
-    \]
-    measures how much a quantity changes with respect to an absolute unit of the independent variable.
-  </p>
+    <!-- Hero -->
+    <header class="hero" id="top">
+      <h1>What Does a Derivative Really Measure?</h1>
 
-  <p>
-    This interpretation assumes that the scale of measurement is fixed and external to the phenomenon.
-    Such an assumption works well for local, linear, and smooth variations.
-  </p>
+      <p class="muted">
+        A derivative is not merely “a slope”.
+        It is a <b>measurement of change relative to a chosen scale</b>.
+        Changing the scale changes the derivative level:
+        absolute change (\(D_0^1\)), relative change (\(D_1^1\)), and logarithmic change (\(D_2^1\)).
+      </p>
 
-  <div class="math">
-    \[
-      D^{(1)}_{0} f(x) = \frac{df(x)}{dx}
-    \]
+      <div class="paper-meta">
+        <span class="pill">Author: <b>GOSSA AHMED</b></span>
+        <span class="pill">Year: 2025</span>
+        <span class="pill">Paper-style</span>
+        <span class="pill">Concept DOI: <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">10.5281/zenodo.17917302</a></span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="btnrow">
+        <a class="btn primary" href="#abstract">Abstract</a>
+        <a class="btn" href="#toc">Contents</a>
+        <a class="btn" href="#framework">Framework</a>
+        <a class="btn" href="#applications">Mini-Examples</a>
+        <a class="btn" href="#discussion">Discussion</a>
+        <a class="btn" href="#refs">References</a>
+        <a class="btn" href="./paper-derivative-measure.pdf" download>⬇ Download PDF</a>
+      </div>
+
+      <div class="note">
+        <strong>Core claim:</strong>
+        When a model fails, it is often not because the phenomenon is “too complex”, but because
+        the derivative level used does not match the nature of change.
+      </div>
+    </header>
+
+    <!-- Contents (TOC) -->
+    <section class="card toc" id="toc">
+      <h2>Contents</h2>
+      <a href="#abstract">Abstract</a><br>
+      <a href="#intro">1) Introduction</a><br>
+      <a href="#framework">2) Hierarchical Framework</a><br>
+      <a href="#level0">2.1 Level 0 — Absolute change</a><br>
+      <a href="#level1">2.2 Level 1 — Relative change</a><br>
+      <a href="#level2">2.3 Level 2 — Logarithmic change</a><br>
+      <a href="#applications">3) Mini-Examples (Economics · Physics · Engineering)</a><br>
+      <a href="#discussion">4) Discussion</a><br>
+      <a href="#conclusion">5) Conclusion</a><br>
+      <a href="#refs">References</a><br>
+      <a href="#cite">Suggested Citation</a><br>
+    </section>
+
+    <!-- Abstract -->
+    <section class="card" id="abstract">
+      <h2>Abstract</h2>
+      <p class="muted">
+        This paper proposes a structured interpretation of what a derivative measures, based on Hierarchical Calculus.
+        Classical calculus focuses on absolute change (\(D_0^1\)), which assumes an external fixed scale.
+        However, many systems evolve through internal proportional mechanisms, naturally described by relative change (\(D_1^1\)).
+        In complex regimes, even the relative change rate evolves, motivating a logarithmic hierarchical level (\(D_2^1\)).
+        By presenting the unified ladder \(\{D_r^1\}_{r\ge0}\), we clarify why classical slope-based thinking may become unstable,
+        and how hierarchical derivatives restore interpretability by matching the derivative rank to the phenomenon.
+      </p>
+      <p class="muted small">
+        <b>Keywords:</b> derivative meaning; relative change; scale invariance; logarithmic derivative; hierarchical calculus; \(D_0^1\); \(D_1^1\); \(D_2^1\).
+      </p>
+    </section>
+
+    <!-- Introduction -->
+    <section class="card" id="intro">
+      <h2>1) Introduction</h2>
+      <p class="muted">
+        The derivative is often introduced as “the slope of a curve”.
+        While mathematically correct, this description is incomplete:
+        it hides the fact that the derivative depends on the chosen unit scale.
+        In real systems, the relevant scale may be external (absolute units), internal (relative to the system),
+        or hierarchical (relative-to-relative).
+      </p>
+      <p class="muted">
+        Hierarchical Calculus makes this explicit by defining a ladder of derivative levels.
+        Each level answers a different scientific question about change, and the correct rank is dictated by
+        the structure of the phenomenon rather than by preference.
+      </p>
+
+      <div class="note">
+        <strong>Scientific motivation:</strong>
+        Exponential growth, scaling laws, elasticities, multiscale turbulence, and accelerating risk
+        are not naturally described by absolute change alone.
+        They require derivative operators that normalize change by the appropriate scale.
+      </div>
+    </section>
+
+    <!-- Framework -->
+    <section class="card" id="framework">
+      <h2>2) Hierarchical framework: three levels of measurement</h2>
+      <p class="muted">
+        Consider a positive function \(f(x)\). The three lowest hierarchical levels are:
+      </p>
+
+      <h3 id="level0">2.1 Level 0 — Absolute change</h3>
+      <div class="math">
+        \[
+          D_0^1 f(x)=\frac{df}{dx}.
+        \]
+      </div>
+      <p class="muted">
+        Measures change in absolute units. Useful for local sensitivities, but not scale-invariant.
+      </p>
+
+      <h3 id="level1">2.2 Level 1 — Relative change (scale becomes internal)</h3>
+      <div class="math">
+        \[
+          D_1^1 f(x)=\frac{d\ln f(x)}{d\ln x}
+          =
+          \frac{x}{f(x)}\frac{df(x)}{dx}.
+        \]
+      </div>
+      <p class="muted">
+        Measures proportional change of \(f\) per proportional change of \(x\).
+        It is stable under scaling and directly detects power-laws.
+      </p>
+
+      <h3 id="level2">2.3 Level 2 — Logarithmic change (evolution of the mechanism)</h3>
+      <div class="math">
+        \[
+          D_2^1 f(x)=\frac{d\ln(\ln f(x))}{d\ln(\ln x)}.
+        \]
+      </div>
+      <p class="muted">
+        Measures how the relative change itself evolves.
+        This captures higher-level dynamics such as acceleration of risk, regime shifts, and multiscale instability.
+      </p>
+
+      <div class="note">
+        <strong>General ladder:</strong>
+        The hierarchy continues as \(D_n^1\), providing progressively deeper “change of change” levels.
+      </div>
+    </section>
+
+    <!-- Mini-Examples -->
+    <section class="card" id="applications">
+      <h2>3) Mini-Examples (Economics · Physics · Engineering)</h2>
+
+      <div class="note">
+        <strong>Reading rule:</strong>
+        \(D_0^1\) measures absolute increments, \(D_1^1\) measures proportional structure,
+        and \(D_2^1\) measures evolution of that structure.
+      </div>
+
+      <!-- Economics -->
+      <section class="card" style="margin-top:12px">
+        <h3>Example A (Economics): Inflation and why rank-1 is the natural descriptor</h3>
+        <p class="muted">
+          Suppose CPI rises from 100 to 108 over a period.
+          Absolute change says “+8 points”, but the economic meaning is relative:
+          inflation is the percentage change.
+        </p>
+
+        <div class="math">
+          \[
+            D_0^1:\;\Delta CPI = 8
+            \qquad
+            D_1^1:\;\frac{\Delta CPI}{CPI}=\frac{8}{100}=8\%
+          \]
+        </div>
+
+        <div class="discussion">
+          <b>Discussion:</b>
+          Economic interpretation is inherently proportional: consumers respond to relative price changes.
+          Rank-1 removes the dependency on the index base level and yields a stable descriptor comparable across countries and decades.
+        </div>
+      </section>
+
+      <!-- Physics -->
+      <section class="card" style="margin-top:12px">
+        <h3>Example B (Physics): Power-law scaling and why \(D_1^1\) extracts the exponent</h3>
+        <p class="muted">
+          Many physical relations follow power laws. Suppose \(f(x)=C x^a\).
+          The exponent \(a\) is the invariant descriptor.
+        </p>
+
+        <div class="math">
+          \[
+            D_1^1 f(x)=\frac{d\ln(Cx^a)}{d\ln x}=a
+          \]
+        </div>
+
+        <div class="discussion">
+          <b>Discussion:</b>
+          This is why scaling laws in physics are naturally studied on log-log plots:
+          the exponent is what defines the phenomenon class. Rank-1 derivatives directly return that exponent.
+        </div>
+      </section>
+
+      <!-- Engineering -->
+      <section class="card" style="margin-top:12px">
+        <h3>Example C (Engineering): Accelerating risk and why rank-2 is an early warning layer</h3>
+        <p class="muted">
+          Suppose a structural health index drops 5% in year 1, then 10% in year 2.
+          The relative drop rate doubled. That is not merely change—it is <b>acceleration of relative change</b>.
+        </p>
+
+        <div class="math">
+          \[
+            \text{Relative drop ratio}=\frac{10\%}{5\%}=2
+            \quad\Rightarrow\quad
+            \text{rank-2 behavior (risk acceleration)}
+          \]
+        </div>
+
+        <div class="discussion">
+          <b>Discussion:</b>
+          Engineers care about turning points. Rank-2 warns when degradation mechanisms are intensifying,
+          even if absolute values still appear moderate.
+        </div>
+      </section>
+
+    </section>
+
+    <!-- Discussion -->
+    <section class="card" id="discussion">
+      <h2>4) Discussion</h2>
+      <p class="muted">
+        The classical derivative is powerful but not universal.
+        It is tied to absolute unit scales.
+        However, many disciplines use derivatives in implicit normalized form:
+        elasticities in economics, growth rates in biology, scaling exponents in physics,
+        and health indices in engineering.
+      </p>
+
+      <p class="muted">
+        Hierarchical Calculus provides a unified language by clarifying why one derivative definition
+        may become unstable or uninformative, and how a higher rank restores interpretability.
+      </p>
+
+      <div class="note">
+        <strong>Core message:</strong>
+        Derivatives do not have a single meaning.  
+        They measure change relative to a chosen reference scale — and that scale defines the derivative rank.
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="card" id="conclusion">
+      <h2>5) Conclusion</h2>
+      <p class="muted">
+        A derivative is best understood as a measurement instrument.
+        It measures change relative to a scale, and the choice of scale defines the level:
+        \(D_0^1\) for absolute change, \(D_1^1\) for relative change,
+        and \(D_2^1\) for change-of-mechanism.
+      </p>
+      <p class="muted">
+        The hierarchical ladder \(\{D_r^1\}\) restores clarity to systems that appear unstable
+        under classical slope interpretation, offering a principled way to match calculus to the phenomenon.
+      </p>
+    </section>
+
+    <!-- References -->
+    <section class="card" id="refs">
+      <h2>References</h2>
+      <div class="math">
+        \[
+          [1]\;\text{Spivak, M. Calculus. (Classical derivative interpretation).}
+        \]
+        \[
+          [2]\;\text{Kreyszig, E. Advanced Engineering Mathematics. (Scaling and change).}
+        \]
+        \[
+          [3]\;\text{Barenblatt, G. Scaling. (Power laws and invariance).}
+        \]
+        \[
+          [4]\;\text{GOSSA AHMED (2025). Hierarchical Calculus (Official Website).}
+        \]
+        \[
+          [5]\;\text{Zenodo Concept DOI: 10.5281/zenodo.17917302.}
+        \]
+      </div>
+    </section>
+
+    <!-- Suggested Citation -->
+    <section class="card" id="cite">
+      <h2>Suggested Citation</h2>
+      <div class="math">
+        \[
+          \texttt{GOSSA\ AHMED.\ What\ Does\ a\ Derivative\ Really\ Measure?\ A\ Hierarchical\ Interpretation.\ Official\ Website.\ (2025).\ DOI:\ 10.5281/zenodo.17917302.}
+        \]
+      </div>
+    </section>
+
+    <footer>
+      © 2025 — GOSSA AHMED · Hierarchical Calculus
+      <br>
+      Concept DOI:
+      <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
+        10.5281/zenodo.17917302
+      </a>
+      <br>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+
   </div>
-
-  <p>
-    Here, the derivative measures <em>absolute change</em>.
-  </p>
-
-  <div class="divider"></div>
-
-  <h2>2. Relative change: when scale becomes internal</h2>
-  <p>
-    Many physical and natural systems do not evolve according to absolute increments,
-    but according to proportions or ratios.
-  </p>
-
-  <p>
-    In such cases, the meaningful quantity is not
-    \(\Delta f\),
-    but
-    \(\Delta f / f\).
-  </p>
-
-  <div class="math">
-    \[
-      D^{(1)}_{1} f(x)
-      =
-      \frac{d\ln f(x)}{d\ln x}
-      =
-      \frac{x}{f(x)}\frac{df(x)}{dx}
-    \]
-  </div>
-
-  <p>
-    This derivative measures <strong>relative change</strong>:
-    how fast a quantity changes compared to its own magnitude.
-  </p>
-
-  <div class="divider"></div>
-
-  <h2>3. Logarithmic change: change of the change mechanism</h2>
-  <p>
-    In more complex systems, even the rate of relative change is not constant.
-    Instead, the mechanism of growth or decay itself evolves.
-  </p>
-
-  <p>
-    This requires a higher level of measurement.
-  </p>
-
-  <div class="math">
-    \[
-      D^{(1)}_{2} f(x)
-      =
-      \frac{d\ln(\ln f(x))}{d\ln(\ln x)}
-    \]
-  </div>
-
-  <p>
-    This derivative measures how the <em>relative change itself</em> changes.
-    It is natural in systems governed by hierarchical or multiscale dynamics.
-  </p>
-
-  <div class="divider"></div>
-
-  <h2>4. A unified hierarchical view</h2>
-  <p>
-    Hierarchical Calculus organizes these interpretations into a single framework:
-  </p>
-
-  <ul>
-    <li><strong>Level 0 (Differential):</strong> absolute change</li>
-    <li><strong>Level 1 (Relative):</strong> proportional change</li>
-    <li><strong>Level 2 (Logarithmic):</strong> evolution of the change mechanism</li>
-    <li><strong>Level n:</strong> higher-order hierarchical change</li>
-  </ul>
-
-  <p>
-    Each derivative level answers a different question about variation.
-    No level is “better” in isolation — the correct level is determined by the nature of the phenomenon.
-  </p>
-
-  <div class="note">
-    <strong>Key principle:</strong>
-    When a model fails at one derivative level, the issue is often not mathematical complexity,
-    but a mismatch between the level of description and the nature of change.
-  </div>
-
-  <div class="divider"></div>
-
-  <h2>5. Conclusion</h2>
-  <p>
-    A derivative is not a single concept with a single meaning.
-    It is a measurement tool whose interpretation depends on the scale at which change is observed.
-  </p>
-
-  <p>
-    Hierarchical Calculus makes this explicit by placing derivatives within a structured hierarchy,
-    restoring clarity and natural interpretation to problems that appear unstable or unsolvable
-    at the classical level.
-  </p>
-
-  <footer>
-    © 2025 — GOSSA AHMED · Hierarchical Calculus  
-    <br>
-    Concept DOI:
-    <a href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">
-      10.5281/zenodo.17917302
-    </a>
-  </footer>
-
-</main>
 </body>
 </html>
