@@ -3,15 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>المتسلسلات — التفاضلية والنسبية واللوغاريتمية | الحساب الهرمي</title>
-  <meta name="description" content="صفحة مرجعية موسعة: متسلسلة تايلور التفاضلية (D0)، المتسلسلة الضَّرْبية النسبية (D1)، المتسلسلة الأسّية اللوغاريتمية (D2) وتطبيقاتها في تقريب الدوال." />
+
+  <title>المتسلسلات — التفاضلية والنسبيّة واللوغاريتمية | الحساب الهرمي</title>
+  <meta name="description" content="صفحة مرجعية موحّدة: متسلسلة تايلور التفاضلية (D0)، المتسلسلة النسبية الضربية (D1)، ومتسلسلة الرتبة الثانية اللوغاريتمية-الأسية (D2)، مع حالات الاستخدام وأمثلة وتوجيه عملي للاختيار." />
   <meta name="author" content="GOSSA AHMED" />
 
-  <!-- hreflang -->
-  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/series.html">
-  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/series.html">
-  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/series-en.html">
-  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/series-en.html">
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://gossaahmed.github.io/gossa-math/series.html" />
+  <link rel="alternate" hreflang="ar" href="https://gossaahmed.github.io/gossa-math/series.html" />
+  <link rel="alternate" hreflang="en" href="https://gossaahmed.github.io/gossa-math/series-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gossaahmed.github.io/gossa-math/series-en.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:title" content="المتسلسلات — التفاضلية والنسبيّة واللوغاريتمية | الحساب الهرمي" />
+  <meta property="og:description" content="متسلسلات رتبية: D0 (تفاضلي)، D1 (نسبي ضربي)، D2 (لوغاريتمي-أسي). أفضلية كل سلسلة حسب نوع الدالة ونوع القرب." />
+  <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/series.html" />
+  <meta name="twitter:card" content="summary" />
 
   <style>
     :root{
@@ -54,15 +63,18 @@
       max-width:1100px; margin:0 auto; padding:10px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
+
     .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(57,211,195,.95), rgba(122,167,255,.95));
-      box-shadow: 0 12px 22px rgba(0,0,0,.28);
+    .logo-img{
+      width:38px;height:38px;border-radius:12px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 12px 22px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
     }
     .brand .title{display:flex; flex-direction:column; line-height:1.15}
     .brand .title strong{font-size:14px}
     .brand .title span{font-size:12px; color:var(--muted)}
+
     .actions{display:flex; gap:10px; flex-wrap:wrap}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -100,9 +112,46 @@
       pointer-events:none;
     }
     header.hero > *{position:relative}
+
+    .hero-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .author-card{
+      display:flex; gap:12px; align-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:12px 14px;
+      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(57,211,195,.65);
+      box-shadow:0 14px 30px rgba(0,0,0,.30);
+    }
+    .author-card .name{font-weight:900;font-size:16px;line-height:1.2}
+    .author-card .role{color:var(--muted);font-size:12px;margin-top:2px}
+
     h1{margin:0 0 8px 0; font-size:30px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 12px;
+      color: var(--muted);
+      margin: 6px 6px 0 0;
+    }
 
     .grid{
       display:grid;
@@ -131,6 +180,7 @@
       background: linear-gradient(180deg, var(--accent), var(--accent2));
       display:inline-block;
     }
+
     .block{
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
@@ -156,6 +206,9 @@
       border-radius:10px;
       direction:ltr;
     }
+    ul{margin:8px 0 0 0; padding:0 18px 0 0}
+    li{margin:6px 0}
+
     .note{
       border:1px solid rgba(255,204,102,.35);
       background: rgba(255,204,102,.10);
@@ -165,18 +218,7 @@
       line-height:1.9;
     }
     .note strong{color:var(--warn)}
-    ul{margin:8px 0 0 0; padding:0 18px 0 0}
-    li{margin:6px 0}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      font-size: 12px;
-      color: var(--muted);
-      margin: 6px 6px 0 0;
-    }
+
     footer{
       margin-top: 18px;
       color: var(--muted);
@@ -196,31 +238,26 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <!-- Schema START -->
+  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": "المتسلسلات الهرمية",
-    "alternativeHeadline": "نظرية المتسلسلات ضمن الحساب الهرمي (D0, D1, D2)",
+    "alternativeHeadline": "نظرية المتسلسلات في الحساب الهرمي",
     "author": {
       "@type": "Person",
       "name": "Ahmed Gossa",
       "url": "https://gossaahmed.github.io/gossa-math/"
     },
     "about": [
-      "الحساب الهرمي",
-      "المتسلسلات الهرمية",
-      "التفاضل والتكامل",
-      "المشتق النسبي D1",
-      "المشتق الهرمي D2",
-      "تقريب الدوال"
+      "Hierarchical Calculus",
+      "Hierarchical Series",
+      "Differential Taylor Series",
+      "Relative Series D1",
+      "Logarithmic Series D2",
+      "Function Approximation"
     ],
-    "isPartOf": {
-      "@type": "CreativeWork",
-      "name": "Hierarchical Calculus",
-      "url": "https://gossaahmed.github.io/gossa-math/"
-    },
     "url": "https://gossaahmed.github.io/gossa-math/series.html",
     "inLanguage": "ar",
     "publisher": {
@@ -229,44 +266,57 @@
     }
   }
   </script>
-  <!-- Schema END -->
-
 </head>
 
 <body>
+
   <div class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img class="logo-img" src="assets/images/hierarchical-calculus-logo.png" alt="Hierarchical Calculus Logo">
         <div class="title">
           <strong>المتسلسلات (مرجع)</strong>
-          <span>تفاضلية D₀ · نسبية ضربية D₁ · لوغاريتمية أسّية D₂</span>
+          <span>D₀ تفاضلي · D₁ نسبي (ضربي) · D₂ لوغاريتمي (أُسّي)</span>
         </div>
       </div>
 
       <div class="actions">
-        <a class="btn" href="./index.html">الرئيسية</a>
-        <a class="btn" href="./series-en.html" title="English version">English</a>
+        <a class="btn" href="./index-ar.html">الرئيسية</a>
+        <a class="btn" href="./series-en.html">English</a>
         <a class="btn primary" href="https://doi.org/10.5281/zenodo.17917302" target="_blank" rel="noopener">DOI</a>
       </div>
     </div>
   </div>
 
   <div class="wrap">
+
     <header class="hero">
-      <h1>المتسلسلات: التفاضلية والنسبية واللوغاريتمية</h1>
-      <p class="muted" style="margin:0; line-height:1.9">
-        هذه الصفحة توحّد ثلاث عائلات من التقريب حول نقطة مرجعية \(x_0\):
-        (1) متسلسلة تايلور التفاضلية <b>(الرتبة 0، المؤثر \(D_0^n\))</b>،
-        (2) متسلسلة ضَرْبية/أسّية نسبية <b>(الرتبة 1، المؤثر \(D_1^n\))</b>،
-        (3) متسلسلة أسّية لوغاريتمية من الرتبة الثانية <b>(الرتبة 2، المؤثر \(D_2^n\))</b>.
-        نكتب دائمًا المشتقات مع <b>الرتبة</b> و<b>الدرجة</b>.
-      </p>
-      <div style="margin-top:10px">
-        <span class="pill">D₀: تفاضلي</span>
-        <span class="pill">D₁: نسبي (ضربي)</span>
-        <span class="pill">D₂: لوغاريتمي (أسّي)</span>
-        <span class="pill">تقريب الدوال</span>
+      <div class="hero-top">
+        <div>
+          <h1>المتسلسلات: التفاضلية والنسبيّة واللوغاريتمية</h1>
+          <p class="muted" style="margin:0; line-height:1.9">
+            هذه الصفحة توحّد ثلاث عائلات تقريب حول نقطة مرجعية \(x_0\):
+            (1) متسلسلة تايلور التفاضلية (الرتبة 0، العامل \(D_0^n\))،
+            (2) متسلسلة نسبية ضربية (“Product Taylor”) (الرتبة 1، العامل \(D_1^n\))،
+            (3) متسلسلة الرتبة الثانية اللوغاريتمية-الأُسية (الرتبة 2، العامل \(D_2^n\)).
+            نكتب دائمًا المشتقات بوضوح مع <b>الرتبة</b> و<b>الدرجة</b>.
+          </p>
+
+          <div style="margin-top:10px">
+            <span class="pill">الرتبة 0: تفاضلي</span>
+            <span class="pill">الرتبة 1: نسبي (ضربي)</span>
+            <span class="pill">الرتبة 2: لوغ-لوغ (أُسّي)</span>
+            <span class="pill">تقريب الدوال</span>
+          </div>
+        </div>
+
+        <div class="author-card">
+          <img class="avatar" src="assets/images/ahmed-gossa.jpg" alt="Ahmed Gossa">
+          <div>
+            <div class="name">GOSSA AHMED</div>
+            <div class="role">Independent Researcher — Hierarchical Calculus</div>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -274,28 +324,29 @@
       <h2><span class="bar"></span>المفاهيم الأساسية</h2>
 
       <div class="block">
-        <div class="label">نقطة التوسّع</div>
+        <div class="label">نقطة التوسع</div>
         <p class="muted small" style="margin:0">
-          نختار \(x_0\) داخل مجال الدالة. جودة التقريب تعتمد على “قرب” \(x\) من \(x_0\) وفق مقياس السلسلة:
-          <br>— في الرتبة 0: القرب <b>إضافي</b> (بالفرق \(x-x_0\)).
-          <br>— في الرتبة 1: القرب <b>نسبي</b> (بالنسبة \(x/x_0\)).
-          <br>— في الرتبة 2: القرب <b>لوغاريتمي</b> (بالنسبة \(\ln x/\ln x_0\) أو \(\ln(\ln x)\)).
+          اختر \(x_0\) داخل المجال. جودة التقريب تعتمد على معنى “القرب”:
+          <br>— في الرتبة 0: القرب إضافي عبر \(x-x_0\).
+          <br>— في الرتبة 1: القرب نسبي عبر \(x/x_0\).
+          <br>— في الرتبة 2: القرب لوغاريتمي عبر \(\ln x/\ln x_0\) (أو \(\ln(\ln x)\)).
         </p>
       </div>
 
       <div class="note">
         <strong>ملاحظة مجال:</strong>
-        الرتبة \(D_2\) تستعمل \(\ln(\ln x)\) و\(\ln(\ln f)\)، لذا نفترض عادةً:
-        \(x>1\) و\(x_0>1\) (حتى تكون \(\ln x>0\))، وكذلك \(f(x)>1\) في المجال المدروس (حتى تكون \(\ln f>0\)).
+        الرتبة \(D_2\) تستعمل \(\ln(\ln x)\) و \(\ln(\ln f)\)، لذلك نفترض
+        \(x>1\) (حتى \(\ln x>0\)) و \(f(x)>1\) (حتى \(\ln f>0\)).
       </div>
     </section>
 
     <div class="grid">
+
       <!-- D0 -->
       <section class="card">
-        <h2><span class="bar"></span>1) المتسلسلة التفاضلية — الرتبة 0 (المؤثر \(D_0^n\))</h2>
+        <h2><span class="bar"></span>1) المتسلسلة التفاضلية — الرتبة 0 (العامل \(D_0^n\))</h2>
         <p class="muted small">
-          هي متسلسلة تايلور الكلاسيكية المبنية على الاشتقاق التفاضلي التقليدي. نكتب الرتبة والدرجة: \(D_0^n\).
+          متسلسلة تايلور الكلاسيكية المبنية على المشتقات العادية. نكتب الرتبة+الدرجة مثل \(D_0^n\).
         </p>
 
         <div class="block">
@@ -306,30 +357,29 @@
             \]
           </div>
           <p class="muted small" style="margin:10px 0 0 0">
-            حيث \(D_{0}^{0}f=f\)، و\(D_{0}^{1}f=\dfrac{df}{dx}\)، و\(D_{0}^{2}f=\dfrac{d^2f}{dx^2}\)، … إلخ.
+            حيث \(D_{0}^{0}f=f\)، و \(D_{0}^{1}f=df/dx\)، و \(D_{0}^{2}f=d^2f/dx^2\)، إلخ.
           </p>
         </div>
 
         <div class="block">
-          <div class="label">متى تكون أقوى؟</div>
+          <div class="label">متى تكون الأقوى؟</div>
           <ul class="muted small">
-            <li>عندما يكون \(x\) قريبًا جدًا من \(x_0\) بالفرق \(x-x_0\).</li>
-            <li>ممتازة محليًا للدوال التحليلية (sin, cos, exp, …).</li>
-            <li>مدى التقارب غالبًا تحكمه الشذوذات/الأقطاب القريبة.</li>
+            <li>عندما يكون \(x\) قريبًا جدًا من \(x_0\) إضافيًا (فرق \(x-x_0\)).</li>
+            <li>تقريب ممتاز محليًا للدوال التحليلية (sin, cos, exp...).</li>
+            <li>تتأثر بوجود أقطاب/تفردات قريبة تحدد نصف قطر التقارب.</li>
           </ul>
         </div>
       </section>
 
       <!-- D1 -->
       <section class="card">
-        <h2><span class="bar"></span>2) المتسلسلة الضَّرْبية النسبية — الرتبة 1 (المؤثر \(D_1^n\))</h2>
+        <h2><span class="bar"></span>2) المتسلسلة النسبيّة الضربيّة — الرتبة 1 (العامل \(D_1^n\))</h2>
         <p class="muted small">
-          هذه “تايلور ضَرْبي”: الجمع ↦ ضرب، والطرح ↦ قسمة.
-          تُبنى من مشتقات نسبيّة متتالية (درجة \(n\)) عند الرتبة 1.
+          “تايلور ضربي”: sum → product و minus → division. مبنية من مشتقات نسبية متتالية (درجة \(n\)) في الرتبة 1.
         </p>
 
         <div class="block">
-          <div class="label">التعريفات</div>
+          <div class="label">تعريفات</div>
           <div class="math">
             \[
               t=\frac{x}{x_0},\qquad \Delta=\ln\!\left(\frac{x}{x_0}\right)=\ln t.
@@ -338,7 +388,7 @@
         </div>
 
         <div class="block">
-          <div class="label">الصيغة (شكل 2 المتفق عليه)</div>
+          <div class="label">الصيغة (الصيغة المتفق عليها “Form 2”)</div>
           <div class="math">
             \[
               \frac{f(x)}{f(x_0)}
@@ -349,6 +399,7 @@
               }.
             \]
           </div>
+
           <p class="muted small" style="margin:10px 0 0 0">
             حيث
             \[
@@ -363,10 +414,10 @@
         </div>
 
         <div class="block">
-          <div class="label">لماذا “ضَرْبية”؟</div>
+          <div class="label">لماذا هي ضربيّة؟</div>
           <p class="muted small" style="margin:0">
-            لأننا نطوّر \(\ln f\) بالنسبة لـ \(\ln x\) (جمعًا)، ثم نرجع إلى \(f\) (فيتحول الجمع إلى ضرب).
-            والأسّ السالب يعني قسمة:
+            نحن نوسّع \(\ln f\) بالنسبة لـ \(\ln x\) (وهذا توسع جمعي)، ثم نعود إلى \(f\) فيتحول إلى توسع ضربي.
+            الأس السالب يعني قسمة:
             \[
               \left(\frac{x}{x_0}\right)^{-a}=\frac{1}{\left(\frac{x}{x_0}\right)^{a}}.
             \]
@@ -376,14 +427,15 @@
 
       <!-- D2 -->
       <section class="card">
-        <h2><span class="bar"></span>3) المتسلسلة الأسّية اللوغاريتمية — الرتبة 2 (المؤثر \(D_2^n\))</h2>
+        <h2><span class="bar"></span>3) متسلسلة الرتبة الثانية اللوغاريتمية-الأُسية — الرتبة 2 (العامل \(D_2^n\))</h2>
         <p class="muted small">
-          في الرتبة 2 يصبح المتغير الفعّال هو \(\ln(\ln x)\).
-          نستعمل صيغة عملية تقرّب \(\ln f(x)\) نسبيًا إلى \(\ln f(x_0)\)، بينما يُعرَّف مشتق الرتبة 2 عبر \(\ln(\ln f)\).
+          في الرتبة 2 يصبح المتغير الفعال هو \(\ln(\ln x)\).
+          نستعمل صيغة عملية تقرّب \(\ln f(x)\) نسبةً إلى \(\ln f(x_0)\)،
+          بينما تعريف المشتق في الرتبة 2 يتم عبر \(\ln(\ln f)\).
         </p>
 
         <div class="block">
-          <div class="label">التعريفات</div>
+          <div class="label">تعريفات</div>
           <div class="math">
             \[
               \Delta_2=\ln(\ln x)-\ln(\ln x_0)=\ln\!\left(\frac{\ln x}{\ln x_0}\right),
@@ -418,6 +470,7 @@
               }.
             \]
           </div>
+
           <p class="muted small" style="margin:10px 0 0 0">
             حيث \(\ln^{(2)}f=\ln(\ln f)\)، و
             \[
@@ -429,111 +482,113 @@
         </div>
 
         <div class="block">
-          <div class="label">تفسير مختصر</div>
+          <div class="label">تفسير</div>
           <p class="muted small" style="margin:0">
-            في الرتبة 2 نقيس القرب عبر \(\ln(\ln x)\)، لذلك تظهر النسبة \(\ln x/\ln x_0\) بشكل طبيعي.
-            وكالعادة: الأسس السالبة تعني قسمة.
+            الرتبة 2 تقيس القرب عبر \(\ln(\ln x)\)، لذلك يظهر طبيعيًا \(\ln x/\ln x_0\).
+            الأس السالب يعني قسمة كما في الرتبة 1.
           </p>
         </div>
       </section>
 
       <!-- Approximation practice -->
       <section class="card">
-        <h2><span class="bar"></span>كيف نستخدم هذه المتسلسلات في تقريب الدوال؟</h2>
+        <h2><span class="bar"></span>كيف نستخدم هذه المتسلسلات عمليًا للتقريب؟</h2>
 
         <div class="block">
-          <div class="label">وصفة عملية مختصرة</div>
+          <div class="label">وصفة تطبيقية</div>
           <ul class="muted small">
-            <li>اختر \(x_0\) داخل المجال الذي يهمك.</li>
-            <li>حدد “مقياس القرب”: إضافي (رتبة 0) أو نسبي (رتبة 1) أو لوغاريتمي-لوغاريتمي (رتبة 2).</li>
-            <li>اختر درجة القطع \(N\) (مثل 3 أو 4) واستعمل الصيغة المقطوعة حتى \(N\).</li>
-            <li>تذكير: \(D_0^n\) مشتقات تقليدية، أما سلاسل الرتبة 1 و2 فتُبنى من اشتقاقات متتالية بالنسبة لـ \(\ln x\) و\(\ln(\ln x)\) كما في التعاريف أعلاه.</li>
+            <li>اختر \(x_0\) داخل منطقة اهتمامك.</li>
+            <li>اختر مقياس القرب: فرق (رتبة 0)، نسبة (رتبة 1)، أو لوغ-لوغ (رتبة 2).</li>
+            <li>اختر درجة قطع \(N\) (مثلًا 3 أو 4) واستعمل الصيغة المقطوعة.</li>
+            <li>تذكّر: \(D_0^n\) مشتقات عادية، أما الرتبة 1 و2 فمشتقاتها تبنى على \(\ln x\) و \(\ln(\ln x)\).</li>
           </ul>
         </div>
 
         <div class="note">
-          <strong>قاعدة سريعة للاستنتاج:</strong>
-          <br>— سلوك قانون قوى (\(x^p\)، \(\sqrt{x}\)) → الرتبة 1 غالبًا الأقوى.
-          <br>— اهتزازات (sin/cos) → الرتبة 0 غالبًا الأقوى محليًا.
-          <br>— سلوك متعدد المقاييس/لوغاريتمي → الرتبة 2 قد تكون الأقوى عند تحقق شروط المجال.
+          <strong>قاعدة سريعة:</strong>
+          <br>— سلوك قوى (\(x^p\), \(\sqrt{x}\)) → الرتبة 1 غالبًا الأقوى.
+          <br>— تذبذبات (sin/cos) → الرتبة 0 غالبًا الأقوى محليًا.
+          <br>— سلوك متعدد المقاييس (log/log-log) → الرتبة 2 قد تكون الأقوى عند تحقق المجال.
         </div>
       </section>
+
     </div>
 
-    <!-- 7 examples -->
+    <!-- Seven functions -->
     <section class="card" style="margin-top:16px">
-      <h2><span class="bar"></span>سبعة أمثلة: أي تقريب يكون أقوى؟</h2>
+      <h2><span class="bar"></span>سبع دوال مألوفة: أي متسلسلة أقوى؟</h2>
       <p class="muted small">
-        الهدف هو الاستنتاج البنيوي (أي سلسلة تلتقط شكل الدالة بأقل حدود).
-        نفترض \(x_0>1\) (مثلاً \(x_0=10\)) ونقارن قرب \(x_0\).
+        الهدف هنا هو <b>تفكير بنيوي</b>: أي متسلسلة تلتقط شكل الدالة بكفاءة أعلى.
+        نفترض \(x_0>1\) (مثلًا \(x_0=10\)) ونقارن قرب \(x_0\).
       </p>
 
       <div class="block">
         <div class="label">1) \(f(x)=x^p\) (قانون قوى)</div>
         <p class="muted small" style="margin:0">
-          <b>الأقوى:</b> الرتبة 1 (نسبي ضربي). لأن \(\ln f=p\ln x\) فتُلتقط البنية المقياسية بسرعة كبيرة.
-          <br><b>متى تفوز الرتبة 0؟</b> فقط في جوار إضافي شديد الصغر.
+          <b>الأقوى:</b> الرتبة 1 (النسبي الضربي). لأن \(\ln f=p\ln x\) فالبنية تُلتقط بكفاءة عالية جدًا.
         </p>
       </div>
 
       <div class="block">
         <div class="label">2) \(f(x)=\sqrt{x}\)</div>
         <p class="muted small" style="margin:0">
-          <b>الأقوى:</b> الرتبة 1 — حالة خاصة من \(x^p\) مع \(p=\tfrac12\).
+          <b>الأقوى:</b> الرتبة 1 — حالة خاصة من قانون قوى مع \(p=\tfrac12\).
         </p>
       </div>
 
       <div class="block">
         <div class="label">3) \(f(x)=e^x\)</div>
         <p class="muted small" style="margin:0">
-          <b>يعتمد على مقياس القرب:</b>
-          <br><b>الرتبة 0:</b> ممتازة في جوار إضافي صغير جدًا.
-          <br><b>الرتبة 1:</b> مفيدة عندما تتكلم عن تغيّر نسبي (نسب \(x/x_0\)).
-          <br><b>الرتبة 2:</b> قد تساعد عبر مقاييس أكبر إذا كان \(\ln(\ln f)\) معرفًا.
+          <b>يعتمد على معنى القرب:</b>
+          <br><b>الرتبة 0:</b> الأفضل لقرب إضافي صغير جدًا.
+          <br><b>الرتبة 1:</b> مفيدة إذا كان الحديث عن تغيرات نسبية في \(x\).
+          <br><b>الرتبة 2:</b> قد تفيد عبر مقاييس أوسع حين يكون \(\ln(\ln f)\) معرفًا.
         </p>
       </div>
 
       <div class="block">
-        <div class="label">4) \(f(x)=\ln x\) (مع \(x>1\))</div>
+        <div class="label">4) \(f(x)=\ln x\) (لـ \(x>1\))</div>
         <p class="muted small" style="margin:0">
-          <b>غالبًا الأقوى:</b> الرتبة 2، لأن \(\ln x\) يتوافق مع مقياس \(\ln(\ln x)\).
-          <br><b>محليًا:</b> الرتبة 0 تعمل جيدًا إذا كان \(x-x_0\) صغيرًا.
+          <b>غالبًا الأقوى:</b> الرتبة 2 عندما تكون معرفة، لأن \(\ln x\) يتوافق مع مقياس \(\ln(\ln x)\).
+          <br><b>محليًا:</b> الرتبة 0 أيضًا قوية إذا كان \(x-x_0\) صغيرًا.
         </p>
       </div>
 
       <div class="block">
         <div class="label">5) \(f(x)=\dfrac{1}{1-\alpha x}\) (بعيدًا عن القطب)</div>
         <p class="muted small" style="margin:0">
-          <b>الأقوى:</b> الرتبة 0 (تايلور)، بشرط أن يكون \(x_0\) بعيدًا عن القطب \(x=1/\alpha\).
-          الشذوذات تتحكم عادةً في مدى التقارب في السلاسل الإضافية.
+          <b>الأقوى:</b> الرتبة 0 (تايلور) شرط أن تكون \(x_0\) بعيدة عن القطب \(x=1/\alpha\).
+          التفردات القريبة تتحكم عادة في نصف قطر التقارب.
         </p>
       </div>
 
       <div class="block">
         <div class="label">6) \(f(x)=\sin x + 2\)</div>
         <p class="muted small" style="margin:0">
-          <b>الأقوى:</b> الرتبة 0 محليًا، لأن الاهتزاز يلتقط أفضل إضافيًا.
-          الرتبة 1 عادةً أقل اقتصادًا لغير الدوال المقياسية.
+          <b>الأقوى:</b> الرتبة 0 محليًا لأن التذبذب يلتقط إضافيًا بكفاءة.
+          الرتبة 1 عادةً أقل اقتصادية في هذه الحالة.
         </p>
       </div>
 
       <div class="block">
         <div class="label">7) \(f(x)=1+\dfrac{1}{x}\)</div>
         <p class="muted small" style="margin:0">
-          <b>غالبًا الأقوى:</b> الرتبة 1 عند التغيرات النسبية، لأن التغير مقياسي وبطيء.
-          والرتبة 0 جيدة محليًا لكنها قد تحتاج درجة أعلى لدقة مماثلة عند تغيّر نسبي أكبر.
+          <b>غالبًا الأقوى:</b> الرتبة 1 عند التغيرات النسبية لأن التغير مدفوع بالمقياس وبطيء.
+          الرتبة 0 جيدة محليًا لكنها قد تحتاج درجة أعلى لنفس الدقة على تغيرات نسبية أكبر.
         </p>
       </div>
 
       <div class="note">
-        <strong>الخلاصة:</strong>
-        لا توجد سلسلة “أفضل دائمًا”. الاختيار يعتمد على طبيعة الدالة (قوى/اهتزاز/لوغاريتم) وعلى مفهوم القرب (فرق/نسبة/لوغاريتم-لوغاريتم).
+        <strong>الخلاصة النهائية:</strong>
+        لا توجد متسلسلة “أفضل دائمًا”. الاختيار يعتمد على نوع الدالة (قوى/تذبذب/لوغاريتمي)
+        وعلى مفهوم القرب (فرق/نسبة/لوغ-لوغ).
       </div>
     </section>
 
     <footer>
-      © 2025 — GOSSA AHMED · المتسلسلات في الحساب الهرمي (D₀, D₁, D₂)
+      © 2025 — GOSSA AHMED · المتسلسلات في الحساب الهرمي (الرتب 0، 1، 2)
     </footer>
+
   </div>
 </body>
 </html>
