@@ -22,7 +22,7 @@
   <meta property="og:url" content="https://gossaahmed.github.io/gossa-math/index-ar.html" />
   <meta name="twitter:card" content="summary" />
 
-  <!-- Preload -->
+  <!-- Preload (optional, improves performance slightly) -->
   <link rel="preload" as="image" href="assets/images/hierarchical-calculus-logo.png" />
   <link rel="preload" as="image" href="assets/images/ahmed-gossa.jpg" />
 
@@ -334,6 +334,53 @@
     .linkcard strong{display:block; margin-bottom:6px}
     .linkcard span{color:var(--muted); font-size:13px; line-height:1.6}
 
+    /* === NEW: sections grid for applications/articles === */
+    .cardsgrid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .boxlink{
+      display:block;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding: 14px 14px;
+      transition:.2s;
+      text-decoration:none;
+      color:var(--text);
+      box-shadow: 0 12px 26px rgba(0,0,0,.22);
+    }
+    .boxlink:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(57,211,195,.35);
+      transform: translateY(-2px);
+    }
+    .boxlink h3{
+      margin:0 0 6px 0;
+      font-size: 15px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+    }
+    .mini{
+      font-size: 12px;
+      color: var(--muted);
+      margin:0;
+      line-height:1.7;
+    }
+    .badge{
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border:1px solid rgba(122,167,255,.22);
+      background: rgba(122,167,255,.10);
+      color: rgba(234,242,255,.90);
+      white-space:nowrap;
+    }
+
     /* === Footer === */
     footer{
       margin-top: 18px;
@@ -344,6 +391,7 @@
       border-top: 1px solid rgba(255,255,255,.10);
     }
 
+    /* === Mobile nav spacing === */
     @media (max-width: 850px){
       nav{gap:8px}
       nav a{padding:7px 9px}
@@ -399,15 +447,13 @@
         </div>
       </div>
 
-      <!-- NAV -->
+      <!-- Keep NAV clean: essentials only (avoid huge menu in topbar) -->
       <nav aria-label="التنقل">
         <a href="#overview">نظرة عامة</a>
         <a href="#core">التعريفات</a>
         <a href="#equations">المعادلات</a>
         <a href="#cite">الاستشهاد</a>
         <a href="#links">الروابط</a>
-        <!-- ✅ ADDED -->
-        <a href="#papers">الأوراق</a>
       </nav>
 
       <div class="actions">
@@ -727,43 +773,106 @@
       </div>
     </section>
 
-    <!-- ✅ NEW SECTION: PAPERS -->
-    <section class="card" id="papers" style="margin-top:16px">
-      <h2><span class="bar"></span>الأوراق الأصلية (PDF)</h2>
+    <!-- ========================================================= -->
+    <!-- ✅ NEW SECTION 1: التطبيقات (صفحات عربية) -->
+    <!-- ========================================================= -->
+    <section class="card" id="apps" style="margin-top:16px">
+      <h2><span class="bar"></span>التطبيقات (صفحات عربية)</h2>
       <p class="muted small">
-        هذه أوراق مبكرة كتبها المؤلف قبل بناء إطار الحساب الهرمي بصيغته الحالية.
-        يمكن تحميلها مباشرة بصيغة PDF من المستودع الرسمي.
+        صفحات تطبيقية تربط الحساب الهرمي بميادين علمية وهندسية واقتصادية، مع أمثلة ومناقشات واقعية.
       </p>
 
-      <div class="quicklinks">
+      <div class="cardsgrid">
+        <a class="boxlink" href="physics-ar.html">
+          <h3>الفيزياء <span class="badge">Physics</span></h3>
+          <p class="mini">تطبيقات فيزيائية على \(D_0^1\) و \(D_1^1\) و\(D_2^1\) وفكرة التحويل الهرمي.</p>
+        </a>
 
-        <div class="linkcard">
-          <strong>الحساب النسبي — Proportional Calculus (2011)</strong>
-          <span>
-            ورقة تأسيسية تشرح مفهوم الاشتقاق النسبي كإطار يركّز على التغير النسبي بدل التغير المطلق.
-          </span><br><br>
-          <a href="assets/papers/PROPORTIONAL_CALCULUS.pdf" target="_blank" rel="noopener">
-            تحميل الملف (PDF)
-          </a>
-        </div>
+        <a class="boxlink" href="astronomy-ar.html">
+          <h3>الفلك والكون <span class="badge">Astronomy</span></h3>
+          <p class="mini">عامل التمدد الكوني \(a(t)\)، التسارع، والطاقة المظلمة كإشارة إلى سلوك رتبي أعلى.</p>
+        </a>
 
-        <div class="linkcard">
-          <strong>الحساب اللوغاريتمي — Logarithmic Calculus (2012)</strong>
-          <span>
-            ورقة تطويرية تقدّم طبقة لوغاريتمية أعلى لتمثيل تغير “معدل التغير النسبي” ضمن منظور هرمي.
-          </span><br><br>
-          <a href="assets/papers/LOGARITMIC_CALCULUS.pdf" target="_blank" rel="noopener">
-            تحميل الملف (PDF)
-          </a>
-        </div>
+        <a class="boxlink" href="economics.html">
+          <h3>الاقتصاد <span class="badge">Economics</span></h3>
+          <p class="mini">قياس التضخم والنمو والمخاطر المتسارعة باستخدام الرتب \(D_0^1, D_1^1, D_2^1\).</p>
+        </a>
 
+        <a class="boxlink" href="civil-engineering.html">
+          <h3>الهندسة المدنية <span class="badge">Civil Eng.</span></h3>
+          <p class="mini">20 حالة هندسية مع أمثلة رقمية: الشروخ، الهبوط، التآكل، المخاطر المتسارعة.</p>
+        </a>
+
+        <a class="boxlink" href="euclidean-geometry.html">
+          <h3>الهندسة الإقليدية <span class="badge">Geometry</span></h3>
+          <p class="mini">أمثلة القياس والتشابه والمساحات والحجوم: \(D_0^1\) مقابل \(D_1^1\) كـ “مستخرج للثوابت”.</p>
+        </a>
       </div>
 
-      <div class="block">
-        <div class="label">ملاحظة <span class="tag">Tip</span></div>
+      <div class="block" style="margin-top:14px">
+        <div class="label">ملاحظة تنظيمية <span class="tag">Note</span></div>
         <p class="muted small" style="margin:0; line-height:1.9">
-          إذا فتحت الملفات في المتصفح يمكنك أيضًا الضغط على زر “Download” لحفظها مباشرة.
-          وفي حال لم تظهر فورًا بعد الرفع، انتظر 2–10 دقائق حتى يتم تحديث GitHub Pages.
+          إذا تم إضافة تطبيقات جديدة مستقبلاً (مثل الكيمياء، الأحياء، أو الذكاء الاصطناعي)، سيتم إدراجها هنا داخل قسم التطبيقات.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- ✅ NEW SECTION 2: مقالات وأدلة مرجعية (صفحات عربية) -->
+    <!-- ========================================================= -->
+    <section class="card" id="articles" style="margin-top:16px">
+      <h2><span class="bar"></span>مقالات وأدلة مرجعية (صفحات عربية)</h2>
+      <p class="muted small">
+        صفحات تفسيرية “على شكل ورقة بحثية” تساعد القارئ على فهم البنية الفكرية للحساب الهرمي: التعريف، المقارنة، الرتب والدرجات، والحدود.
+      </p>
+
+      <div class="cardsgrid">
+        <a class="boxlink" href="what-does-a-derivative-measure.html">
+          <h3>ماذا يقيس المشتق؟ <span class="badge">Meaning</span></h3>
+          <p class="mini">تفسير هرمي لمعنى “التغير”: من المطلق إلى النسبي إلى تغير آلية التغير.</p>
+        </a>
+
+        <a class="boxlink" href="comparison-hierarchical-calculus-ar.html">
+          <h3>مقارنة مع الحسابات الأخرى <span class="badge">Comparison</span></h3>
+          <p class="mini">مقارنة منظمة بين الحساب الهرمي والحساب الكلاسيكي والكسري واللوغاريتمي وغيرها.</p>
+        </a>
+
+        <a class="boxlink" href="derivative-rank-degree.html">
+          <h3>رتبة ودرجة المشتقة <span class="badge">Rank–Degree</span></h3>
+          <p class="mini">شرح الترميز الثنائي \(D_r^n\) وكيف يمنع الغموض في أنواع المشتقات.</p>
+        </a>
+
+        <a class="boxlink" href="hierarchical-derivatives-relations.html">
+          <h3>علاقات المشتقات الهرمية <span class="badge">Rules</span></h3>
+          <p class="mini">قواعد الربط والتحويل بين الرتب، وكيف نفهم صيغ التحويل باعتبارها لغة موحدة.</p>
+        </a>
+
+        <a class="boxlink" href="numerics.html">
+          <h3>الحساب العددي <span class="badge">Numerics</span></h3>
+          <p class="mini">لماذا قد يحسن تغيير الرتبة الدقة العددية؟ وكيف نتعامل مع التقريب في فضاء لوغاريتمي.</p>
+        </a>
+
+        <a class="boxlink" href="series.html">
+          <h3>السلاسل <span class="badge">Series</span></h3>
+          <p class="mini">صفحة السلاسل: أدوات تقريب، توسعات، وربطها بمستويات التحويل الهرمي.</p>
+        </a>
+
+        <a class="boxlink" href="faq.html">
+          <h3>الأسئلة الشائعة <span class="badge">FAQ</span></h3>
+          <p class="mini">أكثر الأسئلة تكرارًا حول المفهوم، التعريفات، حدود المجال، والتحسينات العددية.</p>
+        </a>
+
+        <a class="boxlink" href="references.html">
+          <h3>المراجع <span class="badge">References</span></h3>
+          <p class="mini">قائمة مراجع منظمة (مع ملفات PDF) لدعم الأساس العلمي والفكري.</p>
+        </a>
+      </div>
+
+      <div class="block" style="margin-top:14px">
+        <div class="label">فائدة هذا القسم <span class="tag">Why</span></div>
+        <p class="muted small" style="margin:0; line-height:1.9">
+          الهدف من جمع هذه المقالات في مكان واحد هو أن الزائر لا يحتاج معرفة أسماء الملفات مسبقًا.  
+          الصفحة الرئيسية تصبح “دليلًا” يغطي: الأساس + التطبيقات + المقالات المرجعية.
         </p>
       </div>
     </section>
